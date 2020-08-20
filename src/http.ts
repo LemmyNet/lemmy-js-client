@@ -1,3 +1,4 @@
+import fetch from 'node-fetch';
 import {
   MessageType,
   LoginForm,
@@ -364,7 +365,7 @@ export class LemmyHttp {
     form: MessageType
   ): Promise<Res> {
     if (type_ == HttpType.Get) {
-      let getUrl = `${endpoint}?${encodeGetParams(form)}`;
+      let getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
       return fetch(getUrl, {
         method: 'GET',
       }).then(d => d.json());
