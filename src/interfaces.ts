@@ -898,8 +898,11 @@ export interface PasswordResetForm {
   email: string;
 }
 
-// export interface PasswordResetResponse {
-// }
+export interface PasswordResetResponse {}
+
+export interface MarkAllAsReadForm {
+  auth: string;
+}
 
 export interface PasswordChangeForm {
   token: string;

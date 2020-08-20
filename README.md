@@ -21,17 +21,20 @@ Check out the [Lemmy HTTP / websocket API](https://dev.lemmy.ml/docs/contributin
 ### Websocket
 
 ```js
-// Set up a websocket connection
-import { LoginForm, wsSendLogin } from 'lemmy-js-client';
+import { LoginForm, LemmyWebsocket } from 'lemmy-js-client';
 
-public login(form: LoginForm) {
-  this.ws.send(wsSendLogin(form));
-}
+let client: LemmyWebsocket = new LemmyWebsocket();
+this.ws.send(client.login(form));
 ```
 
 ### HTTP
 
-TODO
+```js
+import { LemmyHttp } from 'lemmy-js-client';
+
+let client: LemmyHttp = new LemmyHttp(baseUrl);
+let jwt = await client.httpLogin(loginForm).jwt;
+```
 
 ## Support / Donate
 
