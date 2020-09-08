@@ -427,18 +427,6 @@ export interface GetModlogForm {
   limit?: number;
 }
 
-export interface GetModlogResponse {
-  removed_posts: ModRemovePost[];
-  locked_posts: ModLockPost[];
-  stickied_posts: ModStickyPost[];
-  removed_comments: ModRemoveComment[];
-  removed_communities: ModRemoveCommunity[];
-  banned_from_community: ModBanFromCommunity[];
-  banned: ModBan[];
-  added_to_community: ModAddCommunity[];
-  added: ModAdd[];
-}
-
 export interface ModRemovePost {
   id: number;
   mod_user_id: number;
@@ -556,6 +544,18 @@ export interface ModAdd {
 export interface LoginForm {
   username_or_email: string;
   password: string;
+}
+
+export interface GetModlogResponse {
+  removed_posts: ModRemovePost[];
+  locked_posts: ModLockPost[];
+  stickied_posts: ModStickyPost[];
+  removed_comments: ModRemoveComment[];
+  removed_communities: ModRemoveCommunity[];
+  banned_from_community: ModBanFromCommunity[];
+  banned: ModBan[];
+  added_to_community: ModAddCommunity[];
+  added: ModAdd[];
 }
 
 export interface RegisterForm {
@@ -781,6 +781,7 @@ export interface GetPostsForm {
   page?: number;
   limit?: number;
   community_id?: number;
+  community_name?: string;
   auth?: string;
 }
 
@@ -794,6 +795,7 @@ export interface GetCommentsForm {
   page?: number;
   limit: number;
   community_id?: number;
+  community_name?: string;
   auth?: string;
 }
 
