@@ -968,7 +968,6 @@ export interface UserJoinResponse {
 
 export interface PostJoinForm {
   post_id: number;
-  auth: string;
 }
 
 export interface PostJoinResponse {
@@ -977,7 +976,6 @@ export interface PostJoinResponse {
 
 export interface CommunityJoinForm {
   community_id: number;
-  auth: string;
 }
 
 export interface CommunityJoinResponse {
@@ -1032,7 +1030,9 @@ export type MessageType =
   | DeletePrivateMessageForm
   | MarkPrivateMessageAsReadForm
   | GetPrivateMessagesForm
-  | SiteConfigForm;
+  | SiteConfigForm
+  | PostJoinForm
+  | CommunityJoinForm;
 
 type ResponseType =
   | SiteResponse
@@ -1057,7 +1057,9 @@ type ResponseType =
   | PrivateMessageResponse
   | PrivateMessagesResponse
   | GetSiteConfigResponse
-  | GetSiteResponse;
+  | GetSiteResponse
+  | PostJoinResponse
+  | CommunityJoinResponse;
 
 export interface WebSocketResponse {
   op: UserOperation;
