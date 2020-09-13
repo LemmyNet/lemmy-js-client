@@ -82,6 +82,10 @@ import {
   AddModToCommunityResponse,
   GetFollowedCommunitiesResponse,
   PasswordResetResponse,
+  PostJoinForm,
+  PostJoinResponse,
+  CommunityJoinForm,
+  CommunityJoinResponse,
 } from './interfaces';
 
 enum HttpType {
@@ -321,6 +325,14 @@ export class LemmyHttp {
 
   async userJoin(form: UserJoinForm): Promise<UserJoinResponse> {
     return this.wrapper(HttpType.Post, '/user/join', form);
+  }
+
+  async postJoin(form: PostJoinForm): Promise<PostJoinResponse> {
+    return this.wrapper(HttpType.Post, '/post/join', form);
+  }
+
+  async communityJoin(form: CommunityJoinForm): Promise<CommunityJoinResponse> {
+    return this.wrapper(HttpType.Post, '/community/join', form);
   }
 
   async banUser(form: BanUserForm): Promise<BanUserResponse> {

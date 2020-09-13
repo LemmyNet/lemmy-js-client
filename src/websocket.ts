@@ -53,6 +53,8 @@ import {
   GetSiteForm,
   SiteConfigForm,
   MarkAllAsReadForm,
+  PostJoinForm,
+  CommunityJoinForm,
 } from './interfaces';
 
 export class LemmyWebsocket {
@@ -64,6 +66,14 @@ export class LemmyWebsocket {
 
   userJoin(form: UserJoinForm): string {
     return wrapper(UserOperation.UserJoin, form);
+  }
+
+  postJoin(form: PostJoinForm): string {
+    return wrapper(UserOperation.PostJoin, form);
+  }
+
+  communityJoin(form: CommunityJoinForm): string {
+    return wrapper(UserOperation.CommunityJoin, form);
   }
 
   register(registerForm: RegisterForm) {

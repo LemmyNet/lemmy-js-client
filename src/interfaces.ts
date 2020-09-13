@@ -57,6 +57,8 @@ export enum UserOperation {
   GetComments,
   GetSiteConfig,
   SaveSiteConfig,
+  PostJoin,
+  CommunityJoin,
 }
 
 export enum SortType {
@@ -961,7 +963,25 @@ export interface UserJoinForm {
 }
 
 export interface UserJoinResponse {
-  user_id: number;
+  joined: boolean;
+}
+
+export interface PostJoinForm {
+  post_id: number;
+  auth: string;
+}
+
+export interface PostJoinResponse {
+  joined: boolean;
+}
+
+export interface CommunityJoinForm {
+  community_id: number;
+  auth: string;
+}
+
+export interface CommunityJoinResponse {
+  joined: boolean;
 }
 
 export type MessageType =
