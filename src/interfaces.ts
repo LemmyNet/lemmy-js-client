@@ -881,6 +881,7 @@ export interface SearchForm {
   q: string;
   type_: SearchType;
   community_id?: number;
+  community_name?: string;
   sort: SortType;
   page?: number;
   limit?: number;
