@@ -96,9 +96,14 @@ enum HttpType {
 
 export class LemmyHttp {
   private baseUrl: string;
+  private headers: { [key: string]: string } = {};
 
-  constructor(baseUrl: string) {
+  constructor(baseUrl: string, headers?: { [key: string]: string }) {
     this.baseUrl = baseUrl;
+
+    if (headers) {
+      this.headers = headers;
+    }
   }
 
   async getSite(form: GetSiteForm): Promise<GetSiteResponse> {
@@ -380,12 +385,14 @@ export class LemmyHttp {
       let getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
       return fetch(getUrl, {
         method: 'GET',
+        headers: this.headers,
       }).then(d => d.json());
     } else {
       return fetch(this.buildFullUrl(endpoint), {
         method: type_,
         headers: {
           'Content-Type': 'application/json',
+          ...this.headers,
         },
         body: JSON.stringify(form),
       }).then(d => d.json());
