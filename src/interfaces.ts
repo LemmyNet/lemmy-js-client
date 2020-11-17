@@ -699,7 +699,8 @@ export interface PostFormParams {
   name: string;
   url?: string;
   body?: string;
-  community?: string;
+  community_name?: string;
+  community_id?: number;
 }
 
 export interface GetPostForm {
