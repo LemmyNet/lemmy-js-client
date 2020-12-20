@@ -98,7 +98,6 @@ import {
   UserJoinResponse,
   UserMentionResponse,
 } from './interfaces/api/user';
-import { MessageType } from './interfaces/others';
 
 enum HttpType {
   Get = 'GET',
@@ -386,11 +385,11 @@ export class LemmyHttp {
     return `${this.baseUrl}${endpoint}`;
   }
 
-  private async wrapper<Res>(
+  private async wrapper<ResponseType, MessageType>(
     type_: HttpType,
     endpoint: string,
     form: MessageType
-  ): Promise<Res> {
+  ): Promise<ResponseType> {
     if (type_ == HttpType.Get) {
       let getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
       return fetch(getUrl, {

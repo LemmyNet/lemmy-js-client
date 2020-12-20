@@ -66,7 +66,7 @@ import {
   SaveUserSettings,
   UserJoin,
 } from './interfaces/api/user';
-import { MessageType, UserOperation } from './interfaces/others';
+import { UserOperation } from './interfaces/others';
 
 export class LemmyWebsocket {
   constructor() {}
@@ -312,7 +312,7 @@ export class LemmyWebsocket {
   }
 }
 
-function wrapper(op: UserOperation, data: MessageType) {
+function wrapper<MessageType>(op: UserOperation, data: MessageType) {
   let send = { op: UserOperation[op], data: data };
   console.log(send);
   return JSON.stringify(send);
