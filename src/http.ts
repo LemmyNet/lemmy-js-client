@@ -1,92 +1,104 @@
 import fetch from 'node-fetch';
 import {
-  MessageType,
-  LoginForm,
-  RegisterForm,
-  CommunityForm,
-  DeleteCommunityForm,
-  RemoveCommunityForm,
-  PostForm,
-  DeletePostForm,
-  RemovePostForm,
-  LockPostForm,
-  StickyPostForm,
-  SavePostForm,
-  CommentForm,
-  DeleteCommentForm,
-  RemoveCommentForm,
-  MarkCommentAsReadForm,
-  SaveCommentForm,
-  CommentLikeForm,
-  GetPostForm,
-  GetPostsForm,
-  CreatePostLikeForm,
-  GetCommunityForm,
-  FollowCommunityForm,
-  GetFollowedCommunitiesForm,
-  GetUserDetailsForm,
-  ListCommunitiesForm,
-  GetModlogForm,
-  BanFromCommunityForm,
-  AddModToCommunityForm,
-  TransferCommunityForm,
-  AddAdminForm,
-  TransferSiteForm,
-  BanUserForm,
-  SiteForm,
-  GetRepliesForm,
-  GetUserMentionsForm,
-  MarkUserMentionAsReadForm,
-  SearchForm,
-  UserSettingsForm,
-  DeleteAccountForm,
-  PasswordResetForm,
-  PasswordChangeForm,
-  PrivateMessageForm,
-  EditPrivateMessageForm,
-  DeletePrivateMessageForm,
-  MarkPrivateMessageAsReadForm,
-  GetPrivateMessagesForm,
-  GetCommentsForm,
-  UserJoinForm,
-  GetSiteConfig,
-  GetSiteForm,
-  SiteConfigForm,
-  MarkAllAsReadForm,
-  GetSiteResponse,
-  GetSiteConfigResponse,
-  SiteResponse,
-  LoginResponse,
-  ListCategoriesResponse,
-  GetModlogResponse,
-  SearchResponse,
-  PostResponse,
   CommentResponse,
-  CommunityResponse,
-  GetRepliesResponse,
-  BanUserResponse,
-  GetPostResponse,
-  AddAdminResponse,
-  GetPostsResponse,
-  UserJoinResponse,
-  GetCaptchaResponse,
+  CreateComment,
+  CreateCommentLike,
+  DeleteComment,
+  EditComment,
+  GetComments,
   GetCommentsResponse,
-  UserDetailsResponse,
-  UserMentionResponse,
-  GetUserMentionsResponse,
-  GetCommunityResponse,
-  PrivateMessageResponse,
-  ListCommunitiesResponse,
-  PrivateMessagesResponse,
-  BanFromCommunityResponse,
+  MarkCommentAsRead,
+  RemoveComment,
+  SaveComment,
+} from './interfaces/api/comment';
+import {
+  AddModToCommunity,
   AddModToCommunityResponse,
-  GetFollowedCommunitiesResponse,
-  PasswordResetResponse,
-  PostJoinForm,
-  PostJoinResponse,
-  CommunityJoinForm,
+  BanFromCommunity,
+  BanFromCommunityResponse,
+  CommunityJoin,
   CommunityJoinResponse,
-} from './interfaces';
+  CommunityResponse,
+  CreateCommunity,
+  DeleteCommunity,
+  EditCommunity,
+  FollowCommunity,
+  GetCommunity,
+  GetCommunityResponse,
+  GetFollowedCommunities,
+  GetFollowedCommunitiesResponse,
+  ListCommunities,
+  ListCommunitiesResponse,
+  RemoveCommunity,
+  TransferCommunity,
+} from './interfaces/api/community';
+import {
+  CreatePost,
+  CreatePostLike,
+  DeletePost,
+  EditPost,
+  GetPost,
+  GetPostResponse,
+  GetPosts,
+  GetPostsResponse,
+  LockPost,
+  PostJoin,
+  PostJoinResponse,
+  PostResponse,
+  RemovePost,
+  SavePost,
+  StickyPost,
+} from './interfaces/api/post';
+import {
+  CreateSite,
+  EditSite,
+  GetModlog,
+  GetModlogResponse,
+  GetSite,
+  GetSiteConfig,
+  GetSiteConfigResponse,
+  GetSiteResponse,
+  ListCategoriesResponse,
+  SaveSiteConfig,
+  Search,
+  SearchResponse,
+  SiteResponse,
+  TransferSite,
+} from './interfaces/api/site';
+import {
+  AddAdmin,
+  AddAdminResponse,
+  BanUser,
+  BanUserResponse,
+  CreatePrivateMessage,
+  DeleteAccount,
+  DeletePrivateMessage,
+  EditPrivateMessage,
+  GetCaptchaResponse,
+  GetPrivateMessages,
+  GetReplies,
+  GetRepliesResponse,
+  GetUserDetails,
+  GetUserDetailsResponse,
+  GetUserMentions,
+  GetUserMentionsResponse,
+  Login,
+  LoginResponse,
+  MarkAllAsRead,
+  MarkPrivateMessageAsRead,
+  MarkUserMentionAsRead,
+  PasswordChange,
+  PasswordReset,
+  PasswordResetResponse,
+  PrivateMessageResponse,
+  PrivateMessagesResponse,
+  Register,
+  SaveUserSettings,
+  UserJoin,
+  UserJoinResponse,
+  UserMentionResponse,
+} from './interfaces/api/user';
+import { MessageType } from './interfaces/others';
 
 enum HttpType {
   Get = 'GET',
@@ -106,19 +118,19 @@ export class LemmyHttp {
     }
   }
 
-  async getSite(form: GetSiteForm): Promise<GetSiteResponse> {
+  async getSite(form: GetSite): Promise<GetSiteResponse> {
     return this.wrapper(HttpType.Get, '/site', form);
   }
 
-  async createSite(form: SiteForm): Promise<SiteResponse> {
+  async createSite(form: CreateSite): Promise<SiteResponse> {
     return this.wrapper(HttpType.Post, '/site', form);
   }
 
-  async editSite(form: SiteForm): Promise<SiteResponse> {
+  async editSite(form: EditSite): Promise<SiteResponse> {
     return this.wrapper(HttpType.Put, '/site', form);
   }
 
-  async transferSite(form: TransferSiteForm): Promise<GetSiteResponse> {
+  async transferSite(form: TransferSite): Promise<GetSiteResponse> {
     return this.wrapper(HttpType.Post, '/site/transfer', form);
   }
 
@@ -126,7 +138,7 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/site/config', form);
   }
 
-  async saveSiteConfig(form: SiteConfigForm): Promise<GetSiteConfigResponse> {
+  async saveSiteConfig(form: SaveSiteConfig): Promise<GetSiteConfigResponse> {
     return this.wrapper(HttpType.Put, '/site/config', form);
   }
 
@@ -134,213 +146,211 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/categories', {});
   }
 
-  async getModlog(form: GetModlogForm): Promise<GetModlogResponse> {
+  async getModlog(form: GetModlog): Promise<GetModlogResponse> {
     return this.wrapper(HttpType.Get, '/modlog', form);
   }
 
-  async search(form: SearchForm): Promise<SearchResponse> {
+  async search(form: Search): Promise<SearchResponse> {
     return this.wrapper(HttpType.Get, '/search', form);
   }
 
-  async createCommunity(form: CommunityForm): Promise<CommunityResponse> {
+  async createCommunity(form: CreateCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, '/community', form);
   }
 
-  async getCommunity(form: GetCommunityForm): Promise<GetCommunityResponse> {
+  async getCommunity(form: GetCommunity): Promise<GetCommunityResponse> {
     return this.wrapper(HttpType.Get, '/community', form);
   }
 
-  async editCommunity(form: CommunityForm): Promise<CommunityResponse> {
+  async editCommunity(form: EditCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Put, '/community', form);
   }
 
   async listCommunities(
-    form: ListCommunitiesForm
+    form: ListCommunities
   ): Promise<ListCommunitiesResponse> {
     return this.wrapper(HttpType.Get, '/community/list', form);
   }
 
-  async followCommunity(form: FollowCommunityForm): Promise<CommunityResponse> {
+  async followCommunity(form: FollowCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/follow', form);
   }
 
-  async deleteCommunity(form: DeleteCommunityForm): Promise<CommunityResponse> {
+  async deleteCommunity(form: DeleteCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/delete', form);
   }
 
-  async removeCommunity(form: RemoveCommunityForm): Promise<CommunityResponse> {
+  async removeCommunity(form: RemoveCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/remove', form);
   }
 
   async transferCommunity(
-    form: TransferCommunityForm
+    form: TransferCommunity
   ): Promise<GetCommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/transfer', form);
   }
 
   async banFromCommunity(
-    form: BanFromCommunityForm
+    form: BanFromCommunity
   ): Promise<BanFromCommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/ban_user', form);
   }
 
   async addModToCommunity(
-    form: AddModToCommunityForm
+    form: AddModToCommunity
   ): Promise<AddModToCommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/mod', form);
   }
 
-  async createPost(form: PostForm): Promise<PostResponse> {
+  async createPost(form: CreatePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, '/post', form);
   }
 
-  async getPost(form: GetPostForm): Promise<GetPostResponse> {
+  async getPost(form: GetPost): Promise<GetPostResponse> {
     return this.wrapper(HttpType.Get, '/post', form);
   }
 
-  async editPost(form: PostForm): Promise<PostResponse> {
+  async editPost(form: EditPost): Promise<PostResponse> {
     return this.wrapper(HttpType.Put, '/post', form);
   }
 
-  async deletePost(form: DeletePostForm): Promise<PostResponse> {
+  async deletePost(form: DeletePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, '/post/delete', form);
   }
 
-  async removePost(form: RemovePostForm): Promise<PostResponse> {
+  async removePost(form: RemovePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, '/post/remove', form);
   }
 
-  async lockPost(form: LockPostForm): Promise<PostResponse> {
+  async lockPost(form: LockPost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, '/post/lock', form);
   }
 
-  async stickyPost(form: StickyPostForm): Promise<PostResponse> {
+  async stickyPost(form: StickyPost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, '/post/sticky', form);
   }
 
-  async getPosts(form: GetPostsForm): Promise<GetPostsResponse> {
+  async getPosts(form: GetPosts): Promise<GetPostsResponse> {
     return this.wrapper(HttpType.Get, '/post/list', form);
   }
 
-  async likePost(form: CreatePostLikeForm): Promise<PostResponse> {
+  async likePost(form: CreatePostLike): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, '/post/like', form);
   }
 
-  async savePost(form: SavePostForm): Promise<PostResponse> {
+  async savePost(form: SavePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Put, '/post/save', form);
   }
 
-  async createComment(form: CommentForm): Promise<CommentResponse> {
+  async createComment(form: CreateComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, '/comment', form);
   }
 
-  async editComment(form: CommentForm): Promise<CommentResponse> {
+  async editComment(form: EditComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Put, '/comment', form);
   }
 
-  async deleteComment(form: DeleteCommentForm): Promise<CommentResponse> {
+  async deleteComment(form: DeleteComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, '/comment/delete', form);
   }
 
-  async removeComment(form: RemoveCommentForm): Promise<CommentResponse> {
+  async removeComment(form: RemoveComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, '/comment/remove', form);
   }
 
-  async markCommentAsRead(
-    form: MarkCommentAsReadForm
-  ): Promise<CommentResponse> {
+  async markCommentAsRead(form: MarkCommentAsRead): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, '/comment/mark_as_read', form);
   }
 
-  async likeComment(form: CommentLikeForm): Promise<CommentResponse> {
+  async likeComment(form: CreateCommentLike): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, '/comment/like', form);
   }
 
-  async saveComment(form: SaveCommentForm): Promise<CommentResponse> {
+  async saveComment(form: SaveComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Put, '/comment/save', form);
   }
 
-  async getComments(form: GetCommentsForm): Promise<GetCommentsResponse> {
+  async getComments(form: GetComments): Promise<GetCommentsResponse> {
     return this.wrapper(HttpType.Get, '/comment/list', form);
   }
 
   async getPrivateMessages(
-    form: GetPrivateMessagesForm
+    form: GetPrivateMessages
   ): Promise<PrivateMessagesResponse> {
     return this.wrapper(HttpType.Get, '/private_message/list', form);
   }
 
   async createPrivateMessage(
-    form: PrivateMessageForm
+    form: CreatePrivateMessage
   ): Promise<PrivateMessageResponse> {
     return this.wrapper(HttpType.Post, '/private_message', form);
   }
 
   async editPrivateMessage(
-    form: EditPrivateMessageForm
+    form: EditPrivateMessage
   ): Promise<PrivateMessageResponse> {
     return this.wrapper(HttpType.Put, '/private_message', form);
   }
 
   async deletePrivateMessage(
-    form: DeletePrivateMessageForm
+    form: DeletePrivateMessage
   ): Promise<PrivateMessageResponse> {
     return this.wrapper(HttpType.Post, '/private_message/delete', form);
   }
 
   async markPrivateMessageAsRead(
-    form: MarkPrivateMessageAsReadForm
+    form: MarkPrivateMessageAsRead
   ): Promise<PrivateMessageResponse> {
     return this.wrapper(HttpType.Post, '/private_message/mark_as_read', form);
   }
 
-  async register(form: RegisterForm): Promise<LoginResponse> {
+  async register(form: Register): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, '/user/register', form);
   }
 
-  async login(form: LoginForm): Promise<LoginResponse> {
+  async login(form: Login): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, '/user/login', form);
   }
 
-  async getUserDetails(form: GetUserDetailsForm): Promise<UserDetailsResponse> {
+  async getUserDetails(form: GetUserDetails): Promise<GetUserDetailsResponse> {
     return this.wrapper(HttpType.Get, '/user', form);
   }
 
   async getUserMentions(
-    form: GetUserMentionsForm
+    form: GetUserMentions
   ): Promise<GetUserMentionsResponse> {
     return this.wrapper(HttpType.Get, '/user/mention', form);
   }
 
   async markUserMentionAsRead(
-    form: MarkUserMentionAsReadForm
+    form: MarkUserMentionAsRead
   ): Promise<UserMentionResponse> {
     return this.wrapper(HttpType.Post, '/user/mention/mark_as_read', form);
   }
 
-  async getReplies(form: GetRepliesForm): Promise<GetRepliesResponse> {
+  async getReplies(form: GetReplies): Promise<GetRepliesResponse> {
     return this.wrapper(HttpType.Get, '/user/replies', form);
   }
 
   async getFollowedCommunities(
-    form: GetFollowedCommunitiesForm
+    form: GetFollowedCommunities
   ): Promise<GetFollowedCommunitiesResponse> {
     return this.wrapper(HttpType.Get, '/user/followed_communities', form);
   }
 
-  async userJoin(form: UserJoinForm): Promise<UserJoinResponse> {
+  async userJoin(form: UserJoin): Promise<UserJoinResponse> {
     return this.wrapper(HttpType.Post, '/user/join', form);
   }
 
-  async postJoin(form: PostJoinForm): Promise<PostJoinResponse> {
+  async postJoin(form: PostJoin): Promise<PostJoinResponse> {
     return this.wrapper(HttpType.Post, '/post/join', form);
   }
 
-  async communityJoin(form: CommunityJoinForm): Promise<CommunityJoinResponse> {
+  async communityJoin(form: CommunityJoin): Promise<CommunityJoinResponse> {
     return this.wrapper(HttpType.Post, '/community/join', form);
   }
 
-  async banUser(form: BanUserForm): Promise<BanUserResponse> {
+  async banUser(form: BanUser): Promise<BanUserResponse> {
     return this.wrapper(HttpType.Post, '/user/ban', form);
   }
 
@@ -348,27 +358,27 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/user/get_captcha', {});
   }
 
-  async deleteAccount(form: DeleteAccountForm): Promise<LoginResponse> {
+  async deleteAccount(form: DeleteAccount): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, '/user/delete_account', form);
   }
 
-  async passwordReset(form: PasswordResetForm): Promise<PasswordResetResponse> {
+  async passwordReset(form: PasswordReset): Promise<PasswordResetResponse> {
     return this.wrapper(HttpType.Post, '/user/password_reset', form);
   }
 
-  async passwordChange(form: PasswordChangeForm): Promise<LoginResponse> {
+  async passwordChange(form: PasswordChange): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, '/user/password_change', form);
   }
 
-  async markAllAsRead(form: MarkAllAsReadForm): Promise<LoginResponse> {
+  async markAllAsRead(form: MarkAllAsRead): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, '/user/mark_all_as_read', form);
   }
 
-  async saveUserSettings(form: UserSettingsForm): Promise<LoginResponse> {
+  async saveUserSettings(form: SaveUserSettings): Promise<LoginResponse> {
     return this.wrapper(HttpType.Put, '/user/save_user_settings', form);
   }
 
-  async addAdmin(form: AddAdminForm): Promise<AddAdminResponse> {
+  async addAdmin(form: AddAdmin): Promise<AddAdminResponse> {
     return this.wrapper(HttpType.Post, '/admin/add', form);
   }
 
