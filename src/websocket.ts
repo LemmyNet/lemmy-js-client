@@ -1,0 +1,319 @@
+import {
+  CreateComment,
+  CreateCommentLike,
+  DeleteComment,
+  EditComment,
+  GetComments,
+  MarkCommentAsRead,
+  RemoveComment,
+  SaveComment,
+} from './interfaces/api/comment';
+import {
+  AddModToCommunity,
+  BanFromCommunity,
+  CommunityJoin,
+  CreateCommunity,
+  DeleteCommunity,
+  EditCommunity,
+  FollowCommunity,
+  GetCommunity,
+  GetFollowedCommunities,
+  ListCommunities,
+  RemoveCommunity,
+  TransferCommunity,
+} from './interfaces/api/community';
+import {
+  CreatePost,
+  CreatePostLike,
+  DeletePost,
+  EditPost,
+  GetPost,
+  GetPosts,
+  LockPost,
+  PostJoin,
+  RemovePost,
+  SavePost,
+  StickyPost,
+} from './interfaces/api/post';
+import {
+  CreateSite,
+  EditSite,
+  GetModlog,
+  GetSite,
+  GetSiteConfig,
+  SaveSiteConfig,
+  Search,
+  TransferSite,
+} from './interfaces/api/site';
+import {
+  AddAdmin,
+  BanUser,
+  CreatePrivateMessage,
+  DeleteAccount,
+  DeletePrivateMessage,
+  EditPrivateMessage,
+  GetPrivateMessages,
+  GetReplies,
+  GetUserDetails,
+  GetUserMentions,
+  Login,
+  MarkAllAsRead,
+  MarkPrivateMessageAsRead,
+  MarkUserMentionAsRead,
+  PasswordChange,
+  PasswordReset,
+  Register,
+  SaveUserSettings,
+  UserJoin,
+} from './interfaces/api/user';
+import { MessageType, UserOperation } from './interfaces/others';
+
+export class LemmyWebsocket {
+  constructor() {}
+
+  login(form: Login): string {
+    return wrapper(UserOperation.Login, form);
+  }
+
+  userJoin(form: UserJoin): string {
+    return wrapper(UserOperation.UserJoin, form);
+  }
+
+  postJoin(form: PostJoin): string {
+    return wrapper(UserOperation.PostJoin, form);
+  }
+
+  communityJoin(form: CommunityJoin): string {
+    return wrapper(UserOperation.CommunityJoin, form);
+  }
+
+  register(register: Register) {
+    return wrapper(UserOperation.Register, register);
+  }
+
+  getCaptcha() {
+    return wrapper(UserOperation.GetCaptcha, {});
+  }
+
+  createCommunity(form: CreateCommunity) {
+    return wrapper(UserOperation.CreateCommunity, form);
+  }
+
+  editCommunity(form: EditCommunity) {
+    return wrapper(UserOperation.EditCommunity, form);
+  }
+
+  deleteCommunity(form: DeleteCommunity) {
+    return wrapper(UserOperation.DeleteCommunity, form);
+  }
+
+  removeCommunity(form: RemoveCommunity) {
+    return wrapper(UserOperation.RemoveCommunity, form);
+  }
+
+  followCommunity(form: FollowCommunity) {
+    return wrapper(UserOperation.FollowCommunity, form);
+  }
+
+  listCommunities(form: ListCommunities) {
+    return wrapper(UserOperation.ListCommunities, form);
+  }
+
+  getFollowedCommunities(form: GetFollowedCommunities) {
+    return wrapper(UserOperation.GetFollowedCommunities, form);
+  }
+
+  listCategories() {
+    return wrapper(UserOperation.ListCategories, {});
+  }
+
+  createPost(form: CreatePost) {
+    return wrapper(UserOperation.CreatePost, form);
+  }
+
+  getPost(form: GetPost) {
+    return wrapper(UserOperation.GetPost, form);
+  }
+
+  getCommunity(form: GetCommunity) {
+    return wrapper(UserOperation.GetCommunity, form);
+  }
+
+  createComment(form: CreateComment) {
+    return wrapper(UserOperation.CreateComment, form);
+  }
+
+  editComment(form: EditComment) {
+    return wrapper(UserOperation.EditComment, form);
+  }
+
+  deleteComment(form: DeleteComment) {
+    return wrapper(UserOperation.DeleteComment, form);
+  }
+
+  removeComment(form: RemoveComment) {
+    return wrapper(UserOperation.RemoveComment, form);
+  }
+
+  markCommentAsRead(form: MarkCommentAsRead) {
+    return wrapper(UserOperation.MarkCommentAsRead, form);
+  }
+
+  likeComment(form: CreateCommentLike) {
+    return wrapper(UserOperation.CreateCommentLike, form);
+  }
+
+  saveComment(form: SaveComment) {
+    return wrapper(UserOperation.SaveComment, form);
+  }
+
+  getPosts(form: GetPosts) {
+    return wrapper(UserOperation.GetPosts, form);
+  }
+
+  getComments(form: GetComments) {
+    return wrapper(UserOperation.GetComments, form);
+  }
+
+  likePost(form: CreatePostLike) {
+    return wrapper(UserOperation.CreatePostLike, form);
+  }
+
+  editPost(form: EditPost) {
+    return wrapper(UserOperation.EditPost, form);
+  }
+
+  deletePost(form: DeletePost) {
+    return wrapper(UserOperation.DeletePost, form);
+  }
+
+  removePost(form: RemovePost) {
+    return wrapper(UserOperation.RemovePost, form);
+  }
+
+  lockPost(form: LockPost) {
+    return wrapper(UserOperation.LockPost, form);
+  }
+
+  stickyPost(form: StickyPost) {
+    return wrapper(UserOperation.StickyPost, form);
+  }
+
+  savePost(form: SavePost) {
+    return wrapper(UserOperation.SavePost, form);
+  }
+
+  banFromCommunity(form: BanFromCommunity) {
+    return wrapper(UserOperation.BanFromCommunity, form);
+  }
+
+  addModToCommunity(form: AddModToCommunity) {
+    return wrapper(UserOperation.AddModToCommunity, form);
+  }
+
+  transferCommunity(form: TransferCommunity) {
+    return wrapper(UserOperation.TransferCommunity, form);
+  }
+
+  transferSite(form: TransferSite) {
+    return wrapper(UserOperation.TransferSite, form);
+  }
+
+  banUser(form: BanUser) {
+    return wrapper(UserOperation.BanUser, form);
+  }
+
+  addAdmin(form: AddAdmin) {
+    return wrapper(UserOperation.AddAdmin, form);
+  }
+
+  getUserDetails(form: GetUserDetails) {
+    return wrapper(UserOperation.GetUserDetails, form);
+  }
+
+  getReplies(form: GetReplies) {
+    return wrapper(UserOperation.GetReplies, form);
+  }
+
+  getUserMentions(form: GetUserMentions) {
+    return wrapper(UserOperation.GetUserMentions, form);
+  }
+
+  markUserMentionAsRead(form: MarkUserMentionAsRead) {
+    return wrapper(UserOperation.MarkUserMentionAsRead, form);
+  }
+
+  getModlog(form: GetModlog) {
+    return wrapper(UserOperation.GetModlog, form);
+  }
+
+  createSite(form: CreateSite) {
+    return wrapper(UserOperation.CreateSite, form);
+  }
+
+  editSite(form: EditSite) {
+    return wrapper(UserOperation.EditSite, form);
+  }
+
+  getSite(form: GetSite = {}) {
+    return wrapper(UserOperation.GetSite, form);
+  }
+
+  getSiteConfig(form: GetSiteConfig) {
+    return wrapper(UserOperation.GetSiteConfig, form);
+  }
+
+  search(form: Search) {
+    return wrapper(UserOperation.Search, form);
+  }
+
+  markAllAsRead(form: MarkAllAsRead) {
+    return wrapper(UserOperation.MarkAllAsRead, form);
+  }
+
+  saveUserSettings(form: SaveUserSettings) {
+    return wrapper(UserOperation.SaveUserSettings, form);
+  }
+
+  deleteAccount(form: DeleteAccount) {
+    return wrapper(UserOperation.DeleteAccount, form);
+  }
+
+  passwordReset(form: PasswordReset) {
+    return wrapper(UserOperation.PasswordReset, form);
+  }
+
+  passwordChange(form: PasswordChange) {
+    return wrapper(UserOperation.PasswordChange, form);
+  }
+
+  createPrivateMessage(form: CreatePrivateMessage) {
+    return wrapper(UserOperation.CreatePrivateMessage, form);
+  }
+
+  editPrivateMessage(form: EditPrivateMessage) {
+    return wrapper(UserOperation.EditPrivateMessage, form);
+  }
+
+  deletePrivateMessage(form: DeletePrivateMessage) {
+    return wrapper(UserOperation.DeletePrivateMessage, form);
+  }
+
+  markPrivateMessageAsRead(form: MarkPrivateMessageAsRead) {
+    return wrapper(UserOperation.MarkPrivateMessageAsRead, form);
+  }
+
+  getPrivateMessages(form: GetPrivateMessages) {
+    return wrapper(UserOperation.GetPrivateMessages, form);
+  }
+
+  saveSiteConfig(form: SaveSiteConfig) {
+    return wrapper(UserOperation.SaveSiteConfig, form);
+  }
+}
+
+function wrapper(op: UserOperation, data: MessageType) {
+  let send = { op: UserOperation[op], data: data };
+  console.log(send);
+  return JSON.stringify(send);
+}
