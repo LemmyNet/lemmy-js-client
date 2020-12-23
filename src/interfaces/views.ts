@@ -67,6 +67,7 @@ export interface PrivateMessageView {
 export interface PostView {
   post: Post;
   creator: UserSafe;
+  community: CommunitySafe;
   creator_banned_from_community: boolean; // Left Join to CommunityUserBan
   counts: PostAggregates;
   subscribed: boolean; // Left join to CommunityFollower
