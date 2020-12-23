@@ -1,4 +1,5 @@
 import {
+  CommunityView,
   CommentView,
   CommunityModeratorView,
   PostReportView,
@@ -25,6 +26,7 @@ export interface GetPost {
 
 export interface GetPostResponse {
   post_view: PostView;
+  community_view: CommunityView;
   comments: CommentView[];
   moderators: CommunityModeratorView[];
   online: number;
