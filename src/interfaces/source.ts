@@ -30,8 +30,8 @@ export interface User_ {
   updated?: string;
   show_nsfw: boolean;
   theme: string;
-  default_sort_type: SortType;
-  default_listing_type: ListingType;
+  default_sort_type: number;
+  default_listing_type: number;
   lang: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;

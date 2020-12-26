@@ -40,8 +40,8 @@ export interface CaptchaResponse {
 export interface SaveUserSettings {
   show_nsfw: boolean;
   theme: string;
-  default_sort_type: string;
-  default_listing_type: string;
+  default_sort_type: number;
+  default_listing_type: number;
   lang: string;
   avatar?: string;
   banner?: string;
