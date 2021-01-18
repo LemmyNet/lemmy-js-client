@@ -5,7 +5,6 @@ import {
   PostView,
   PrivateMessageView,
   UserMentionView,
-  UserViewDangerous,
   UserViewSafe,
 } from '../views';
 
@@ -22,7 +21,6 @@ export interface Register {
   email?: string;
   password: string;
   password_verify: string;
-  admin: boolean;
   show_nsfw: boolean;
   captcha_uuid?: string; // Only checked if these are enabled in the server
   captcha_answer?: string;
@@ -82,8 +80,7 @@ export interface GetUserDetails {
 }
 
 export interface GetUserDetailsResponse {
-  user_view?: UserViewSafe;
-  user_view_dangerous?: UserViewDangerous;
+  user_view: UserViewSafe;
   follows: CommunityFollowerView[];
   moderates: CommunityModeratorView[];
   comments: CommentView[];
@@ -179,19 +176,19 @@ export interface CreatePrivateMessage {
 }
 
 export interface EditPrivateMessage {
-  edit_id: number;
+  private_message_id: number;
   content: string;
   auth: string;
 }
 
 export interface DeletePrivateMessage {
-  edit_id: number;
+  private_message_id: number;
   deleted: boolean;
   auth: string;
 }
 
 export interface MarkPrivateMessageAsRead {
-  edit_id: number;
+  private_message_id: number;
   read: boolean;
   auth: string;
 }
@@ -209,14 +206,6 @@ export interface PrivateMessagesResponse {
 
 export interface PrivateMessageResponse {
   private_message_view: PrivateMessageView;
-}
-
-export interface UserJoin {
-  auth: string;
-}
-
-export interface UserJoinResponse {
-  joined: boolean;
 }
 
 /**

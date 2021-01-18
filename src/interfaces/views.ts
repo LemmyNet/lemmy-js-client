@@ -25,16 +25,10 @@ import {
   Site,
   UserMention,
   UserSafe,
-  User_,
 } from './source';
 
 export interface UserViewSafe {
   user: UserSafe;
-  counts: UserAggregates;
-}
-
-export interface UserViewDangerous {
-  user: User_;
   counts: UserAggregates;
 }
 

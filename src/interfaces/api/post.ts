@@ -61,7 +61,7 @@ export interface CreatePostLike {
 }
 
 export interface EditPost {
-  edit_id: number;
+  post_id: number;
   name: string;
   url?: string;
   body?: string;
@@ -70,7 +70,7 @@ export interface EditPost {
 }
 
 export interface DeletePost {
-  edit_id: number;
+  post_id: number;
   deleted: boolean;
   auth: string;
 }
@@ -79,7 +79,7 @@ export interface DeletePost {
  * Only admins and mods can remove a post.
  */
 export interface RemovePost {
-  edit_id: number;
+  post_id: number;
   removed: boolean;
   reason?: string;
   auth: string;
@@ -89,7 +89,7 @@ export interface RemovePost {
  * Only admins and mods can lock a post.
  */
 export interface LockPost {
-  edit_id: number;
+  post_id: number;
   locked: boolean;
   auth: string;
 }
@@ -98,7 +98,7 @@ export interface LockPost {
  * Only admins and mods can sticky a post.
  */
 export interface StickyPost {
-  edit_id: number;
+  post_id: number;
   stickied: boolean;
   auth: string;
 }
@@ -107,14 +107,6 @@ export interface SavePost {
   post_id: number;
   save: boolean;
   auth: string;
-}
-
-export interface PostJoin {
-  post_id: number;
-}
-
-export interface PostJoinResponse {
-  joined: boolean;
 }
 
 export interface CreatePostReport {

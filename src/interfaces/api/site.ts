@@ -1,4 +1,4 @@
-import { Category, User_ } from '../source';
+import { Category, UserSafeSettings } from '../source';
 import {
   CommentView,
   CommunityView,
@@ -99,7 +99,7 @@ export interface GetSiteResponse {
   banned: UserViewSafe[];
   online: number;
   version: string;
-  my_user?: User_; // Gives back your user and settings if logged in
+  my_user?: UserSafeSettings; // Gives back your user and settings if logged in
   federated_instances: string[];
 }
 

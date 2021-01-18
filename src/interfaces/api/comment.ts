@@ -10,7 +10,7 @@ export interface CreateComment {
 
 export interface EditComment {
   content: string;
-  edit_id: number;
+  comment_id: number;
   form_id?: string;
   auth: string;
 }
@@ -19,7 +19,7 @@ export interface EditComment {
  * Only the creator can delete the comment.
  */
 export interface DeleteComment {
-  edit_id: number;
+  comment_id: number;
   deleted: boolean;
   auth: string;
 }
@@ -28,7 +28,7 @@ export interface DeleteComment {
  * Only a mod or admin can remove the comment.
  */
 export interface RemoveComment {
-  edit_id: number;
+  comment_id: number;
   removed: boolean;
   reason?: string;
   auth: string;

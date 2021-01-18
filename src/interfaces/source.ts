@@ -17,11 +17,10 @@ export interface UserSafe {
   deleted: boolean;
 }
 
-export interface User_ {
+export interface UserSafeSettings {
   id: number;
   name: string;
   preferred_username?: string;
-  password_encrypted: string;
   email?: string;
   avatar?: string;
   admin: boolean;
@@ -39,8 +38,6 @@ export interface User_ {
   actor_id: string;
   bio?: string;
   local: boolean;
-  private_key?: string;
-  public_key?: string;
   last_refreshed_at: string;
   banner?: string;
   deleted: boolean;

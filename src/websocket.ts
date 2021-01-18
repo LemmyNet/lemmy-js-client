@@ -11,7 +11,6 @@ import {
 import {
   AddModToCommunity,
   BanFromCommunity,
-  CommunityJoin,
   CreateCommunity,
   DeleteCommunity,
   EditCommunity,
@@ -30,7 +29,6 @@ import {
   GetPost,
   GetPosts,
   LockPost,
-  PostJoin,
   RemovePost,
   SavePost,
   StickyPost,
@@ -64,8 +62,8 @@ import {
   PasswordReset,
   Register,
   SaveUserSettings,
-  UserJoin,
 } from './interfaces/api/user';
+import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
 import { UserOperation } from './interfaces/others';
 
 export class LemmyWebsocket {

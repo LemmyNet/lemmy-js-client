@@ -16,8 +16,6 @@ import {
   AddModToCommunityResponse,
   BanFromCommunity,
   BanFromCommunityResponse,
-  CommunityJoin,
-  CommunityJoinResponse,
   CommunityResponse,
   CreateCommunity,
   DeleteCommunity,
@@ -42,8 +40,6 @@ import {
   GetPosts,
   GetPostsResponse,
   LockPost,
-  PostJoin,
-  PostJoinResponse,
   PostResponse,
   RemovePost,
   SavePost,
@@ -94,8 +90,6 @@ import {
   PrivateMessagesResponse,
   Register,
   SaveUserSettings,
-  UserJoin,
-  UserJoinResponse,
   UserMentionResponse,
 } from './interfaces/api/user';
 
@@ -335,18 +329,6 @@ export class LemmyHttp {
     form: GetFollowedCommunities
   ): Promise<GetFollowedCommunitiesResponse> {
     return this.wrapper(HttpType.Get, '/user/followed_communities', form);
-  }
-
-  async userJoin(form: UserJoin): Promise<UserJoinResponse> {
-    return this.wrapper(HttpType.Post, '/user/join', form);
-  }
-
-  async postJoin(form: PostJoin): Promise<PostJoinResponse> {
-    return this.wrapper(HttpType.Post, '/post/join', form);
-  }
-
-  async communityJoin(form: CommunityJoin): Promise<CommunityJoinResponse> {
-    return this.wrapper(HttpType.Post, '/community/join', form);
   }
 
   async banUser(form: BanUser): Promise<BanUserResponse> {

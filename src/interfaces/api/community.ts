@@ -73,7 +73,7 @@ export interface AddModToCommunityResponse {
  * Only mods can edit a community.
  */
 export interface EditCommunity {
-  edit_id: number;
+  community_id: number;
   title: string;
   description?: string;
   icon?: string;
@@ -84,7 +84,7 @@ export interface EditCommunity {
 }
 
 export interface DeleteCommunity {
-  edit_id: number;
+  community_id: number;
   deleted: boolean;
   auth: string;
 }
@@ -93,7 +93,7 @@ export interface DeleteCommunity {
  * Only admins can remove a community.
  */
 export interface RemoveCommunity {
-  edit_id: number;
+  community_id: number;
   removed: boolean;
   reason?: string;
   expires?: number;
@@ -118,23 +118,4 @@ export interface TransferCommunity {
   community_id: number;
   user_id: number;
   auth: string;
-}
-
-/**
- * The main / frontpage community is `community_id: 0`.
- */
-export interface CommunityJoin {
-  community_id: number;
-}
-
-export interface CommunityJoinResponse {
-  joined: boolean;
-}
-
-export interface ModJoin {
-  community_id: number;
-}
-
-export interface ModJoinResponse {
-  joined: boolean;
 }
