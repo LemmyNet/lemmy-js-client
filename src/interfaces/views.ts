@@ -46,10 +46,10 @@ export interface UserMentionView {
   community: CommunitySafe;
   recipient: UserSafe;
   counts: CommentAggregates;
-  creator_banned_from_community: boolean; // Left Join to CommunityUserBan
-  subscribed: boolean; // Left join to CommunityFollower
-  saved: boolean; // Left join to CommentSaved
-  my_vote?: number; // Left join to CommentLi,
+  creator_banned_from_community: boolean;
+  subscribed: boolean;
+  saved: boolean;
+  my_vote?: number;
 }
 
 export interface SiteView {
@@ -68,12 +68,12 @@ export interface PostView {
   post: Post;
   creator: UserSafe;
   community: CommunitySafe;
-  creator_banned_from_community: boolean; // Left Join to CommunityUserBan
+  creator_banned_from_community: boolean;
   counts: PostAggregates;
-  subscribed: boolean; // Left join to CommunityFollower
-  saved: boolean; // Left join to PostSaved
-  read: boolean; // Left join to PostRead
-  my_vote?: number; // Left join to PostLi,
+  subscribed: boolean;
+  saved: boolean;
+  read: boolean;
+  my_vote?: number;
 }
 
 export interface PostReportView {
@@ -88,14 +88,14 @@ export interface PostReportView {
 export interface CommentView {
   comment: Comment;
   creator: UserSafe;
-  recipient?: UserSafe; // Left joins to comment and us,
+  recipient?: UserSafe;
   post: Post;
   community: CommunitySafe;
   counts: CommentAggregates;
-  creator_banned_from_community: boolean; // Left Join to CommunityUserBan
-  subscribed: boolean; // Left join to CommunityFollower
-  saved: boolean; // Left join to CommentSaved
-  my_vote?: number; // Left join to CommentLi,
+  creator_banned_from_community: boolean;
+  subscribed: boolean;
+  saved: boolean;
+  my_vote?: number;
 }
 
 export interface CommentReportView {

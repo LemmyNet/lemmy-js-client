@@ -32,6 +32,11 @@ export interface GetPostResponse {
   online: number;
 }
 
+/**
+ * Post listing types are `All, Subscribed, Community`
+ *
+ * `community_name` can only be used for local communities. To get posts for a federated community, pass `community_id` instead.
+ */
 export interface GetPosts {
   type_: string;
   sort: string;
@@ -46,6 +51,9 @@ export interface GetPostsResponse {
   posts: PostView[];
 }
 
+/**
+ * `score` can be 0, -1, or 1
+ */
 export interface CreatePostLike {
   post_id: number;
   score: number;
@@ -67,6 +75,9 @@ export interface DeletePost {
   auth: string;
 }
 
+/**
+ * Only admins and mods can remove a post.
+ */
 export interface RemovePost {
   edit_id: number;
   removed: boolean;
@@ -74,12 +85,18 @@ export interface RemovePost {
   auth: string;
 }
 
+/**
+ * Only admins and mods can lock a post.
+ */
 export interface LockPost {
   edit_id: number;
   locked: boolean;
   auth: string;
 }
 
+/**
+ * Only admins and mods can sticky a post.
+ */
 export interface StickyPost {
   edit_id: number;
   stickied: boolean;

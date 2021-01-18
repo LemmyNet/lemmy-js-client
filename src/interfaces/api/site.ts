@@ -22,6 +22,9 @@ export interface ListCategoriesResponse {
   categories: Category[];
 }
 
+/**
+ * Search types are `All, Comments, Posts, Communities, Users, Url`
+ */
 export interface Search {
   q: string;
   type_: string;
@@ -96,7 +99,7 @@ export interface GetSiteResponse {
   banned: UserViewSafe[];
   online: number;
   version: string;
-  my_user?: User_;
+  my_user?: User_; // Gives back your user and settings if logged in
   federated_instances: string[];
 }
 

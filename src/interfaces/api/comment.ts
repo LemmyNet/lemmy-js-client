@@ -4,7 +4,7 @@ export interface CreateComment {
   content: string;
   parent_id?: number;
   post_id: number;
-  form_id?: string;
+  form_id?: string; // An optional front end ID, to tell which is coming back
   auth: string;
 }
 
@@ -15,12 +15,18 @@ export interface EditComment {
   auth: string;
 }
 
+/**
+ * Only the creator can delete the comment.
+ */
 export interface DeleteComment {
   edit_id: number;
   deleted: boolean;
   auth: string;
 }
 
+/**
+ * Only a mod or admin can remove the comment.
+ */
 export interface RemoveComment {
   edit_id: number;
   removed: boolean;
@@ -28,6 +34,9 @@ export interface RemoveComment {
   auth: string;
 }
 
+/**
+ * Only the recipient can do this.
+ */
 export interface MarkCommentAsRead {
   comment_id: number;
   read: boolean;
@@ -42,8 +51,8 @@ export interface SaveComment {
 
 export interface CommentResponse {
   comment_view: CommentView;
-  recipient_ids: number[]; // TODO another way to do this? Maybe a UserMention belongs to Comment
-  form_id?: string; // An optional front end ID, to tell which is coming ba,
+  recipient_ids: number[];
+  form_id?: string; // An optional front end ID, to tell which is coming back
 }
 
 export interface CreateCommentLike {
@@ -52,6 +61,11 @@ export interface CreateCommentLike {
   auth: string;
 }
 
+/**
+ * Comment listing types are `All, Subscribed, Community`
+ *
+ * `community_name` can only be used for local communities. To get posts for a federated community, pass `community_id` instead.
+ */
 export interface GetComments {
   type_: string;
   sort: string;

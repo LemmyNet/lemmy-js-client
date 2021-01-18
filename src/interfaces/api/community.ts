@@ -47,7 +47,7 @@ export interface BanFromCommunity {
   community_id: number;
   user_id: number;
   ban: boolean;
-  remove_data: boolean;
+  remove_data: boolean; // Removes/Restores their comments and posts for that community
   reason?: string;
   expires?: number;
   auth: string;
@@ -69,6 +69,9 @@ export interface AddModToCommunityResponse {
   moderators: CommunityModeratorView[];
 }
 
+/**
+ * Only mods can edit a community.
+ */
 export interface EditCommunity {
   edit_id: number;
   title: string;
@@ -86,6 +89,9 @@ export interface DeleteCommunity {
   auth: string;
 }
 
+/**
+ * Only admins can remove a community.
+ */
 export interface RemoveCommunity {
   edit_id: number;
   removed: boolean;
@@ -114,6 +120,9 @@ export interface TransferCommunity {
   auth: string;
 }
 
+/**
+ * The main / frontpage community is `community_id: 0`.
+ */
 export interface CommunityJoin {
   community_id: number;
 }
