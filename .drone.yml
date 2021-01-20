@@ -1,0 +1,39 @@
+---
+kind: pipeline
+name: amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+
+  - name: yarn
+    image: node:14-alpine
+    commands:
+      - yarn
+
+  - name: yarn lint
+    image: node:14-alpine
+    commands:
+      - yarn lint
+
+---
+kind: pipeline
+name: arm64
+
+platform:
+  os: linux
+  arch: arm64
+
+steps:
+
+  - name: yarn
+    image: node:14-alpine
+    commands:
+      - yarn
+
+  - name: yarn lint
+    image: node:14-alpine
+    commands:
+      - yarn lint
