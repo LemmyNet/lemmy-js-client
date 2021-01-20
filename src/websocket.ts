@@ -1,114 +1,123 @@
 import {
-  MessageType,
-  LoginForm,
-  RegisterForm,
-  UserOperation,
-  CommunityForm,
-  DeleteCommunityForm,
-  RemoveCommunityForm,
-  PostForm,
-  DeletePostForm,
-  RemovePostForm,
-  LockPostForm,
-  StickyPostForm,
-  SavePostForm,
-  CommentForm,
-  DeleteCommentForm,
-  RemoveCommentForm,
-  MarkCommentAsReadForm,
-  SaveCommentForm,
-  CommentLikeForm,
-  GetPostForm,
-  GetPostsForm,
-  CreatePostLikeForm,
-  GetCommunityForm,
-  FollowCommunityForm,
-  GetFollowedCommunitiesForm,
-  GetUserDetailsForm,
-  ListCommunitiesForm,
-  GetModlogForm,
-  BanFromCommunityForm,
-  AddModToCommunityForm,
-  TransferCommunityForm,
-  AddAdminForm,
-  TransferSiteForm,
-  BanUserForm,
-  SiteForm,
-  GetRepliesForm,
-  GetUserMentionsForm,
-  MarkUserMentionAsReadForm,
-  SearchForm,
-  UserSettingsForm,
-  DeleteAccountForm,
-  PasswordResetForm,
-  PasswordChangeForm,
-  PrivateMessageForm,
-  EditPrivateMessageForm,
-  DeletePrivateMessageForm,
-  MarkPrivateMessageAsReadForm,
-  GetPrivateMessagesForm,
-  GetCommentsForm,
-  UserJoinForm,
+  CreateComment,
+  CreateCommentLike,
+  DeleteComment,
+  EditComment,
+  GetComments,
+  MarkCommentAsRead,
+  RemoveComment,
+  SaveComment,
+} from './interfaces/api/comment';
+import {
+  AddModToCommunity,
+  BanFromCommunity,
+  CreateCommunity,
+  DeleteCommunity,
+  EditCommunity,
+  FollowCommunity,
+  GetCommunity,
+  GetFollowedCommunities,
+  ListCommunities,
+  RemoveCommunity,
+  TransferCommunity,
+} from './interfaces/api/community';
+import {
+  CreatePost,
+  CreatePostLike,
+  DeletePost,
+  EditPost,
+  GetPost,
+  GetPosts,
+  LockPost,
+  RemovePost,
+  SavePost,
+  StickyPost,
+} from './interfaces/api/post';
+import {
+  CreateSite,
+  EditSite,
+  GetModlog,
+  GetSite,
   GetSiteConfig,
-  GetSiteForm,
-  SiteConfigForm,
-  MarkAllAsReadForm,
-  PostJoinForm,
-  CommunityJoinForm,
-} from './interfaces';
+  SaveSiteConfig,
+  Search,
+  TransferSite,
+} from './interfaces/api/site';
+import {
+  AddAdmin,
+  BanUser,
+  CreatePrivateMessage,
+  DeleteAccount,
+  DeletePrivateMessage,
+  EditPrivateMessage,
+  GetPrivateMessages,
+  GetReplies,
+  GetUserDetails,
+  GetUserMentions,
+  Login,
+  MarkAllAsRead,
+  MarkPrivateMessageAsRead,
+  MarkUserMentionAsRead,
+  PasswordChange,
+  PasswordReset,
+  Register,
+  SaveUserSettings,
+} from './interfaces/api/user';
+import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
+import { UserOperation } from './interfaces/others';
 
 export class LemmyWebsocket {
   constructor() {}
 
-  login(form: LoginForm): string {
+  login(form: Login): string {
     return wrapper(UserOperation.Login, form);
   }
 
-  userJoin(form: UserJoinForm): string {
+  userJoin(form: UserJoin): string {
     return wrapper(UserOperation.UserJoin, form);
   }
 
-  postJoin(form: PostJoinForm): string {
+  postJoin(form: PostJoin): string {
     return wrapper(UserOperation.PostJoin, form);
   }
 
-  communityJoin(form: CommunityJoinForm): string {
+  communityJoin(form: CommunityJoin): string {
     return wrapper(UserOperation.CommunityJoin, form);
   }
 
-  register(registerForm: RegisterForm) {
-    return wrapper(UserOperation.Register, registerForm);
+  register(register: Register) {
+    return wrapper(UserOperation.Register, register);
   }
 
   getCaptcha() {
     return wrapper(UserOperation.GetCaptcha, {});
   }
 
-  createCommunity(form: CommunityForm) {
+  createCommunity(form: CreateCommunity) {
     return wrapper(UserOperation.CreateCommunity, form);
   }
 
-  editCommunity(form: CommunityForm) {
+  editCommunity(form: EditCommunity) {
     return wrapper(UserOperation.EditCommunity, form);
   }
 
-  deleteCommunity(form: DeleteCommunityForm) {
+  deleteCommunity(form: DeleteCommunity) {
     return wrapper(UserOperation.DeleteCommunity, form);
   }
 
-  removeCommunity(form: RemoveCommunityForm) {
+  removeCommunity(form: RemoveCommunity) {
     return wrapper(UserOperation.RemoveCommunity, form);
   }
 
-  followCommunity(form: FollowCommunityForm) {
+  followCommunity(form: FollowCommunity) {
     return wrapper(UserOperation.FollowCommunity, form);
   }
 
-  listCommunities(form: ListCommunitiesForm) {
+  listCommunities(form: ListCommunities) {
     return wrapper(UserOperation.ListCommunities, form);
   }
 
-  getFollowedCommunities(form: GetFollowedCommunitiesForm) {
+  getFollowedCommunities(form: GetFollowedCommunities) {
     return wrapper(UserOperation.GetFollowedCommunities, form);
   }
 
@@ -116,135 +125,135 @@ export class LemmyWebsocket {
     return wrapper(UserOperation.ListCategories, {});
   }
 
-  createPost(form: PostForm) {
+  createPost(form: CreatePost) {
     return wrapper(UserOperation.CreatePost, form);
   }
 
-  getPost(form: GetPostForm) {
+  getPost(form: GetPost) {
     return wrapper(UserOperation.GetPost, form);
   }
 
-  getCommunity(form: GetCommunityForm) {
+  getCommunity(form: GetCommunity) {
     return wrapper(UserOperation.GetCommunity, form);
   }
 
-  createComment(form: CommentForm) {
+  createComment(form: CreateComment) {
     return wrapper(UserOperation.CreateComment, form);
   }
 
-  editComment(form: CommentForm) {
+  editComment(form: EditComment) {
     return wrapper(UserOperation.EditComment, form);
   }
 
-  deleteComment(form: DeleteCommentForm) {
+  deleteComment(form: DeleteComment) {
     return wrapper(UserOperation.DeleteComment, form);
   }
 
-  removeComment(form: RemoveCommentForm) {
+  removeComment(form: RemoveComment) {
     return wrapper(UserOperation.RemoveComment, form);
   }
 
-  markCommentAsRead(form: MarkCommentAsReadForm) {
+  markCommentAsRead(form: MarkCommentAsRead) {
     return wrapper(UserOperation.MarkCommentAsRead, form);
   }
 
-  likeComment(form: CommentLikeForm) {
+  likeComment(form: CreateCommentLike) {
     return wrapper(UserOperation.CreateCommentLike, form);
   }
 
-  saveComment(form: SaveCommentForm) {
+  saveComment(form: SaveComment) {
     return wrapper(UserOperation.SaveComment, form);
   }
 
-  getPosts(form: GetPostsForm) {
+  getPosts(form: GetPosts) {
     return wrapper(UserOperation.GetPosts, form);
   }
 
-  getComments(form: GetCommentsForm) {
+  getComments(form: GetComments) {
     return wrapper(UserOperation.GetComments, form);
   }
 
-  likePost(form: CreatePostLikeForm) {
+  likePost(form: CreatePostLike) {
     return wrapper(UserOperation.CreatePostLike, form);
   }
 
-  editPost(form: PostForm) {
+  editPost(form: EditPost) {
     return wrapper(UserOperation.EditPost, form);
   }
 
-  deletePost(form: DeletePostForm) {
+  deletePost(form: DeletePost) {
     return wrapper(UserOperation.DeletePost, form);
   }
 
-  removePost(form: RemovePostForm) {
+  removePost(form: RemovePost) {
     return wrapper(UserOperation.RemovePost, form);
   }
 
-  lockPost(form: LockPostForm) {
+  lockPost(form: LockPost) {
     return wrapper(UserOperation.LockPost, form);
   }
 
-  stickyPost(form: StickyPostForm) {
+  stickyPost(form: StickyPost) {
     return wrapper(UserOperation.StickyPost, form);
   }
 
-  savePost(form: SavePostForm) {
+  savePost(form: SavePost) {
     return wrapper(UserOperation.SavePost, form);
   }
 
-  banFromCommunity(form: BanFromCommunityForm) {
+  banFromCommunity(form: BanFromCommunity) {
     return wrapper(UserOperation.BanFromCommunity, form);
   }
 
-  addModToCommunity(form: AddModToCommunityForm) {
+  addModToCommunity(form: AddModToCommunity) {
     return wrapper(UserOperation.AddModToCommunity, form);
   }
 
-  transferCommunity(form: TransferCommunityForm) {
+  transferCommunity(form: TransferCommunity) {
     return wrapper(UserOperation.TransferCommunity, form);
   }
 
-  transferSite(form: TransferSiteForm) {
+  transferSite(form: TransferSite) {
     return wrapper(UserOperation.TransferSite, form);
   }
 
-  banUser(form: BanUserForm) {
+  banUser(form: BanUser) {
     return wrapper(UserOperation.BanUser, form);
   }
 
-  addAdmin(form: AddAdminForm) {
+  addAdmin(form: AddAdmin) {
     return wrapper(UserOperation.AddAdmin, form);
   }
 
-  getUserDetails(form: GetUserDetailsForm) {
+  getUserDetails(form: GetUserDetails) {
     return wrapper(UserOperation.GetUserDetails, form);
   }
 
-  getReplies(form: GetRepliesForm) {
+  getReplies(form: GetReplies) {
     return wrapper(UserOperation.GetReplies, form);
   }
 
-  getUserMentions(form: GetUserMentionsForm) {
+  getUserMentions(form: GetUserMentions) {
     return wrapper(UserOperation.GetUserMentions, form);
   }
 
-  markUserMentionAsRead(form: MarkUserMentionAsReadForm) {
+  markUserMentionAsRead(form: MarkUserMentionAsRead) {
     return wrapper(UserOperation.MarkUserMentionAsRead, form);
   }
 
-  getModlog(form: GetModlogForm) {
+  getModlog(form: GetModlog) {
     return wrapper(UserOperation.GetModlog, form);
   }
 
-  createSite(form: SiteForm) {
+  createSite(form: CreateSite) {
     return wrapper(UserOperation.CreateSite, form);
   }
 
-  editSite(form: SiteForm) {
+  editSite(form: EditSite) {
     return wrapper(UserOperation.EditSite, form);
   }
 
-  getSite(form: GetSiteForm = {}) {
+  getSite(form: GetSite = {}) {
     return wrapper(UserOperation.GetSite, form);
   }
 
@@ -252,56 +261,56 @@ export class LemmyWebsocket {
     return wrapper(UserOperation.GetSiteConfig, form);
   }
 
-  search(form: SearchForm) {
+  search(form: Search) {
     return wrapper(UserOperation.Search, form);
   }
 
-  markAllAsRead(form: MarkAllAsReadForm) {
+  markAllAsRead(form: MarkAllAsRead) {
     return wrapper(UserOperation.MarkAllAsRead, form);
   }
 
-  saveUserSettings(form: UserSettingsForm) {
+  saveUserSettings(form: SaveUserSettings) {
     return wrapper(UserOperation.SaveUserSettings, form);
   }
 
-  deleteAccount(form: DeleteAccountForm) {
+  deleteAccount(form: DeleteAccount) {
     return wrapper(UserOperation.DeleteAccount, form);
   }
 
-  passwordReset(form: PasswordResetForm) {
+  passwordReset(form: PasswordReset) {
     return wrapper(UserOperation.PasswordReset, form);
   }
 
-  passwordChange(form: PasswordChangeForm) {
+  passwordChange(form: PasswordChange) {
     return wrapper(UserOperation.PasswordChange, form);
   }
 
-  createPrivateMessage(form: PrivateMessageForm) {
+  createPrivateMessage(form: CreatePrivateMessage) {
     return wrapper(UserOperation.CreatePrivateMessage, form);
   }
 
-  editPrivateMessage(form: EditPrivateMessageForm) {
+  editPrivateMessage(form: EditPrivateMessage) {
     return wrapper(UserOperation.EditPrivateMessage, form);
   }
 
-  deletePrivateMessage(form: DeletePrivateMessageForm) {
+  deletePrivateMessage(form: DeletePrivateMessage) {
     return wrapper(UserOperation.DeletePrivateMessage, form);
   }
 
-  markPrivateMessageAsRead(form: MarkPrivateMessageAsReadForm) {
+  markPrivateMessageAsRead(form: MarkPrivateMessageAsRead) {
     return wrapper(UserOperation.MarkPrivateMessageAsRead, form);
   }
 
-  getPrivateMessages(form: GetPrivateMessagesForm) {
+  getPrivateMessages(form: GetPrivateMessages) {
     return wrapper(UserOperation.GetPrivateMessages, form);
   }
 
-  saveSiteConfig(form: SiteConfigForm) {
+  saveSiteConfig(form: SaveSiteConfig) {
     return wrapper(UserOperation.SaveSiteConfig, form);
   }
 }
 
-function wrapper(op: UserOperation, data: MessageType) {
+function wrapper<MessageType>(op: UserOperation, data: MessageType) {
   let send = { op: UserOperation[op], data: data };
   console.log(send);
   return JSON.stringify(send);
