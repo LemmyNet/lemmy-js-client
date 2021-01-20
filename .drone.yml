@@ -38,13 +38,13 @@ steps:
     commands:
       - yarn lint
 
-- name: npm
-  image: plugins/npm
-  settings:
-    username:
-      from_secret: npm_username
-    password:
-      from_secret: npm_password
-  when:
-    ref:
-      - refs/tags/*
+  - name: npm
+    image: plugins/npm
+    settings:
+      username:
+        from_secret: npm_username
+      password:
+        from_secret: npm_password
+    when:
+      ref:
+        - refs/tags/*
