@@ -66,6 +66,9 @@ import {
 import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
 import { UserOperation } from './interfaces/others';
 
+/**
+ * Helps build lemmy websocket message requests, that you can use in your Websocket sends
+ */
 export class LemmyWebsocket {
   constructor() {}
 

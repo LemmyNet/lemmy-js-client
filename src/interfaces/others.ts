@@ -1,3 +1,6 @@
+/**
+ * All of the websocket operations available
+ */
 export enum UserOperation {
   Login,
   Register,

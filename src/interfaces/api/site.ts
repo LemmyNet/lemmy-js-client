@@ -94,7 +94,7 @@ export interface SiteResponse {
 }
 
 export interface GetSiteResponse {
-  site_view?: SiteView; // Because the site might not be set up y,
+  site_view?: SiteView; // Because the site might not be set up yet
   admins: UserViewSafe[];
   banned: UserViewSafe[];
   online: number;

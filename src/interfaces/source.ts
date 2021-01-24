@@ -1,5 +1,3 @@
-import { ListingType, SortType } from './others';
-
 export interface UserSafe {
   id: number;
   name: string;

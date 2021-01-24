@@ -103,6 +103,11 @@ export class LemmyHttp {
   private baseUrl: string;
   private headers: { [key: string]: string } = {};
 
+  /**
+   * Generates a new instance of LemmyHttp
+   * @param baseUrl the full base url: https://lemmy.ml/api/v2
+   * @param headers optional headers. Should contain x-real-ip and x-forwarded-for
+   */
   constructor(baseUrl: string, headers?: { [key: string]: string }) {
     this.baseUrl = baseUrl;
 
