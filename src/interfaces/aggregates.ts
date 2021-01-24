@@ -23,7 +23,7 @@ export interface PostAggregates {
   score: number;
   upvotes: number;
   downvotes: number;
-  newest_comment_time: string;
+  newest_comment_time: Date;
 }
 
 export interface CommunityAggregates {
