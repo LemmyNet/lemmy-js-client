@@ -7,8 +7,8 @@ export interface UserSafe {
   avatar?: string;
   admin: boolean;
   banned: boolean;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
   matrix_user_id?: string;
   actor_id: string;
   bio?: string;
@@ -25,8 +25,8 @@ export interface UserSafeSettings {
   avatar?: string;
   admin: boolean;
   banned: boolean;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
   show_nsfw: boolean;
   theme: string;
   default_sort_type: number;
@@ -48,8 +48,8 @@ export interface Site {
   name: string;
   description?: string;
   creator_id: number;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
   enable_downvotes: boolean;
   open_registration: boolean;
   enable_nsfw: boolean;
@@ -64,8 +64,8 @@ export interface PrivateMessage {
   content: string;
   deleted: boolean;
   read: boolean;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
   ap_id: string;
   local: boolean;
 }
@@ -80,8 +80,8 @@ export interface PostReport {
   reason: string;
   resolved: boolean;
   resolver_id?: number;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
 }
 
 export interface Post {
@@ -93,8 +93,8 @@ export interface Post {
   community_id: number;
   removed: boolean;
   locked: boolean;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
   deleted: boolean;
   nsfw: boolean;
   stickied: boolean;
@@ -110,7 +110,7 @@ export interface PasswordResetRequest {
   id: number;
   user_id: number;
   token_encrypted: string;
-  published: Date;
+  published: string;
 }
 
 export interface ModRemovePost {
@@ -119,7 +119,7 @@ export interface ModRemovePost {
   post_id: number;
   reason?: string;
   removed?: boolean;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModLockPost {
@@ -127,7 +127,7 @@ export interface ModLockPost {
   mod_user_id: number;
   post_id: number;
   locked?: boolean;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModStickyPost {
@@ -135,7 +135,7 @@ export interface ModStickyPost {
   mod_user_id: number;
   post_id: number;
   stickied?: boolean;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModRemoveComment {
@@ -144,7 +144,7 @@ export interface ModRemoveComment {
   comment_id: number;
   reason?: string;
   removed?: boolean;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModRemoveCommunity {
@@ -154,7 +154,7 @@ export interface ModRemoveCommunity {
   reason?: string;
   removed?: boolean;
   expires?: string;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModBanFromCommunity {
@@ -165,7 +165,7 @@ export interface ModBanFromCommunity {
   reason?: string;
   banned?: boolean;
   expires?: string;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModBan {
@@ -175,7 +175,7 @@ export interface ModBan {
   reason?: string;
   banned?: boolean;
   expires?: string;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModAddCommunity {
@@ -184,7 +184,7 @@ export interface ModAddCommunity {
   other_user_id: number;
   community_id: number;
   removed?: boolean;
-  when_: Date;
+  when_: string;
 }
 
 export interface ModAdd {
@@ -192,7 +192,7 @@ export interface ModAdd {
   mod_user_id: number;
   other_user_id: number;
   removed?: boolean;
-  when_: Date;
+  when_: string;
 }
 
 export interface CommunitySafe {
@@ -203,8 +203,8 @@ export interface CommunitySafe {
   category_id: number;
   creator_id: number;
   removed: boolean;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
   deleted: boolean;
   nsfw: boolean;
   actor_id: string;
@@ -221,8 +221,8 @@ export interface CommentReport {
   reason: string;
   resolved: boolean;
   resolver_id?: number;
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
 }
 
 export interface Comment {
@@ -233,8 +233,8 @@ export interface Comment {
   content: string;
   removed: boolean;
   read: boolean; // Whether the recipient has read the comment or not
-  published: Date;
-  updated?: Date;
+  published: string;
+  updated?: string;
   deleted: boolean;
   ap_id: string;
   local: boolean;
@@ -250,5 +250,5 @@ export interface UserMention {
   recipient_id: number;
   comment_id: number;
   read: boolean;
-  published: Date;
+  published: string;
 }
