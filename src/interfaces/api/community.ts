@@ -33,6 +33,7 @@ export interface CommunityResponse {
 }
 
 export interface ListCommunities {
+  type_: string;
   sort: string;
   page?: number;
   limit?: number;
