@@ -40,17 +40,17 @@ export interface CaptchaResponse {
 
 export interface SaveUserSettings {
   show_nsfw: boolean;
-  theme: string; // Default 'default'
+  theme: string; // Default 'browser'
   default_sort_type: number; // The Sort types from above, zero indexed as a number
   default_listing_type: number; // Post listing types are `All, Subscribed, Community`
   lang: string;
   avatar?: string;
   banner?: string;
-  preferred_username?: string;
+  preferred_username?: string; // The display name
   email?: string;
   bio?: string;
   matrix_user_id?: string;
-  new_password?: string;
+  new_password?: string; // If setting a new password, you need all 3 password fields
   new_password_verify?: string;
   old_password?: string;
   show_avatars: boolean;
