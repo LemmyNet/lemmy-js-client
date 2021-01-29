@@ -14,6 +14,10 @@ export interface SiteAggregates {
   posts: number;
   comments: number;
   communities: number;
+  users_active_day: number;
+  users_active_week: number;
+  users_active_month: number;
+  users_active_half_year: number;
 }
 
 export interface PostAggregates {
@@ -32,6 +36,10 @@ export interface CommunityAggregates {
   subscribers: number;
   posts: number;
   comments: number;
+  users_active_day: number;
+  users_active_week: number;
+  users_active_month: number;
+  users_active_half_year: number;
 }
 
 export interface CommentAggregates {
