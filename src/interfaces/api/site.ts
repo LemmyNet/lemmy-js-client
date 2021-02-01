@@ -100,7 +100,7 @@ export interface GetSiteResponse {
   online: number;
   version: string;
   my_user?: UserSafeSettings; // Gives back your user and settings if logged in
-  federated_instances: string[];
+  federated_instances?: FederatedInstances;
 }
 
 export interface TransferSite {
@@ -119,4 +119,10 @@ export interface GetSiteConfigResponse {
 export interface SaveSiteConfig {
   config_hjson: string;
   auth: string;
+}
+
+export interface FederatedInstances {
+  linked: string[];
+  allowed: string[];
+  blocked: string[];
 }
