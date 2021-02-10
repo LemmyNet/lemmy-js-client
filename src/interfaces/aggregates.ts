@@ -27,6 +27,7 @@ export interface PostAggregates {
   score: number;
   upvotes: number;
   downvotes: number;
+  newest_comment_time_necro: string;
   newest_comment_time: string;
 }
 
