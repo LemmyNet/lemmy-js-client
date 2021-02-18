@@ -74,6 +74,7 @@ export enum SortType {
   TopYear = 'TopYear',
   TopAll = 'TopAll',
   MostComments = 'MostComments',
+  NewComments = 'NewComments',
 }
 
 export enum ListingType {
