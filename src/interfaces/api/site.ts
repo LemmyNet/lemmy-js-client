@@ -1,4 +1,4 @@
-import { Category, UserSafeSettings } from '../source';
+import { UserSafeSettings } from '../source';
 import {
   CommentView,
   CommunityView,
@@ -15,12 +15,6 @@ import {
   SiteView,
   UserViewSafe,
 } from '../views';
-
-export interface ListCategories {}
-
-export interface ListCategoriesResponse {
-  categories: Category[];
-}
 
 /**
  * Search types are `All, Comments, Posts, Communities, Users, Url`

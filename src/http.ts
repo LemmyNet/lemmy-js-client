@@ -54,7 +54,6 @@ import {
   GetSiteConfig,
   GetSiteConfigResponse,
   GetSiteResponse,
-  ListCategoriesResponse,
   SaveSiteConfig,
   Search,
   SearchResponse,
@@ -138,10 +137,6 @@ export class LemmyHttp {
 
   async saveSiteConfig(form: SaveSiteConfig): Promise<GetSiteConfigResponse> {
     return this.wrapper(HttpType.Put, '/site/config', form);
-  }
-
-  async listCategories(): Promise<ListCategoriesResponse> {
-    return this.wrapper(HttpType.Get, '/categories', {});
   }
 
   async getModlog(form: GetModlog): Promise<GetModlogResponse> {

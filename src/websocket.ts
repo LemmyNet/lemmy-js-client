@@ -124,10 +124,6 @@ export class LemmyWebsocket {
     return wrapper(UserOperation.GetFollowedCommunities, form);
   }
 
-  listCategories() {
-    return wrapper(UserOperation.ListCategories, {});
-  }
-
   createPost(form: CreatePost) {
     return wrapper(UserOperation.CreatePost, form);
   }

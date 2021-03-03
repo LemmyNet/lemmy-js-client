@@ -198,7 +198,6 @@ export interface CommunitySafe {
   name: string;
   title: string;
   description?: string;
-  category_id: number;
   creator_id: number;
   removed: boolean;
   published: string;
@@ -236,11 +235,6 @@ export interface Comment {
   deleted: boolean;
   ap_id: string;
   local: boolean;
-}
-
-export interface Category {
-  id: number;
-  name: string;
 }
 
 export interface UserMention {

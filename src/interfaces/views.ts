@@ -6,7 +6,6 @@ import {
   UserAggregates,
 } from './aggregates';
 import {
-  Category,
   Comment,
   CommentReport,
   CommunitySafe,
@@ -182,7 +181,6 @@ export interface CommunityUserBanView {
 export interface CommunityView {
   community: CommunitySafe;
   creator: UserSafe;
-  category: Category;
   subscribed: boolean;
   counts: CommunityAggregates;
 }
