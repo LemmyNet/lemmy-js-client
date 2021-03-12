@@ -357,7 +357,7 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Post, '/user/mark_all_as_read', form);
   }
 
-  async savePersonSettings(form: SaveUserSettings): Promise<LoginResponse> {
+  async saveUserSettings(form: SaveUserSettings): Promise<LoginResponse> {
     return this.wrapper(HttpType.Put, '/user/save_user_settings', form);
   }
 
