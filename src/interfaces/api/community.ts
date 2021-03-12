@@ -2,7 +2,7 @@ import {
   CommunityFollowerView,
   CommunityModeratorView,
   CommunityView,
-  UserViewSafe,
+  PersonViewSafe,
 } from '../views';
 
 export interface GetCommunity {
@@ -45,7 +45,7 @@ export interface ListCommunitiesResponse {
 
 export interface BanFromCommunity {
   community_id: number;
-  user_id: number;
+  person_id: number;
   ban: boolean;
   remove_data: boolean; // Removes/Restores their comments and posts for that community
   reason?: string;
@@ -54,13 +54,13 @@ export interface BanFromCommunity {
 }
 
 export interface BanFromCommunityResponse {
-  user_view: UserViewSafe;
+  person_view: PersonViewSafe;
   banned: boolean;
 }
 
 export interface AddModToCommunity {
   community_id: number;
-  user_id: number;
+  person_id: number;
   added: boolean;
   auth: string;
 }
@@ -115,6 +115,6 @@ export interface GetFollowedCommunitiesResponse {
 
 export interface TransferCommunity {
   community_id: number;
-  user_id: number;
+  person_id: number;
   auth: string;
 }

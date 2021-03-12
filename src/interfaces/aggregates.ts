@@ -1,6 +1,6 @@
-export interface UserAggregates {
+export interface PersonAggregates {
   id: number;
-  user_id: number;
+  person_id: number;
   post_count: number;
   post_score: number;
   comment_count: number;

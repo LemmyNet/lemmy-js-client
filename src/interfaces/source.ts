@@ -1,30 +1,8 @@
-export interface UserSafe {
+export interface LocalUserSettings {
   id: number;
-  name: string;
-  preferred_username?: string;
-  avatar?: string;
-  admin: boolean;
-  banned: boolean;
-  published: string;
-  updated?: string;
-  matrix_user_id?: string;
-  actor_id: string;
-  bio?: string;
-  local: boolean;
-  banner?: string;
-  deleted: boolean;
-}
-
-export interface UserSafeSettings {
-  id: number;
-  name: string;
-  preferred_username?: string;
+  person_id: number;
   email?: string;
-  avatar?: string;
   admin: boolean;
-  banned: boolean;
-  published: string;
-  updated?: string;
   show_nsfw: boolean;
   theme: string;
   default_sort_type: number;
@@ -33,12 +11,24 @@ export interface UserSafeSettings {
   show_avatars: boolean;
   send_notifications_to_email: boolean;
   matrix_user_id?: string;
+}
+
+export interface PersonSafe {
+  id: number;
+  name: string;
+  preferred_username?: string;
+  avatar?: string;
+  admin: boolean;
+  banned: boolean;
+  published: string;
+  updated?: string;
   actor_id: string;
   bio?: string;
   local: boolean;
-  last_refreshed_at: string;
   banner?: string;
   deleted: boolean;
+  inbox_url: string;
+  shared_inbox_url: string;
 }
 
 export interface Site {
@@ -106,14 +96,14 @@ export interface Post {
 
 export interface PasswordResetRequest {
   id: number;
-  user_id: number;
+  local_user_id: number;
   token_encrypted: string;
   published: string;
 }
 
 export interface ModRemovePost {
   id: number;
-  mod_user_id: number;
+  mod_person_id: number;
   post_id: number;
   reason?: string;
   removed?: boolean;
@@ -122,7 +112,7 @@ export interface ModRemovePost {
 
 export interface ModLockPost {
   id: number;
-  mod_user_id: number;
+  mod_person_id: number;
   post_id: number;
   locked?: boolean;
   when_: string;
@@ -130,7 +120,7 @@ export interface ModLockPost {
 
 export interface ModStickyPost {
   id: number;
-  mod_user_id: number;
+  mod_person_id: number;
   post_id: number;
   stickied?: boolean;
   when_: string;
@@ -138,7 +128,7 @@ export interface ModStickyPost {
 
 export interface ModRemoveComment {
   id: number;
-  mod_user_id: number;
+  mod_person_id: number;
   comment_id: number;
   reason?: string;
   removed?: boolean;
@@ -147,7 +137,7 @@ export interface ModRemoveComment {
 
 export interface ModRemoveCommunity {
   id: number;
-  mod_user_id: number;
+  mod_person_id: number;
   community_id: number;
   reason?: string;
   removed?: boolean;
@@ -157,8 +147,8 @@ export interface ModRemoveCommunity {
 
 export interface ModBanFromCommunity {
   id: number;
-  mod_user_id: number;
-  other_user_id: number;
+  mod_person_id: number;
+  other_person_id: number;
   community_id: number;
   reason?: string;
   banned?: boolean;
@@ -168,8 +158,8 @@ export interface ModBanFromCommunity {
 
 export interface ModBan {
   id: number;
-  mod_user_id: number;
-  other_user_id: number;
+  mod_person_id: number;
+  other_person_id: number;
   reason?: string;
   banned?: boolean;
   expires?: string;
@@ -178,8 +168,8 @@ export interface ModBan {
 
 export interface ModAddCommunity {
   id: number;
-  mod_user_id: number;
-  other_user_id: number;
+  mod_person_id: number;
+  other_person_id: number;
   community_id: number;
   removed?: boolean;
   when_: string;
@@ -187,8 +177,8 @@ export interface ModAddCommunity {
 
 export interface ModAdd {
   id: number;
-  mod_user_id: number;
-  other_user_id: number;
+  mod_person_id: number;
+  other_person_id: number;
   removed?: boolean;
   when_: string;
 }
@@ -237,7 +227,7 @@ export interface Comment {
   local: boolean;
 }
 
-export interface UserMention {
+export interface PersonMention {
   id: number;
   recipient_id: number;
   comment_id: number;

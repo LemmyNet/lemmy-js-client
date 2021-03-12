@@ -4,8 +4,8 @@ import {
   CommunityModeratorView,
   PostView,
   PrivateMessageView,
-  UserMentionView,
-  UserViewSafe,
+  PersonMentionView,
+  PersonViewSafe,
 } from '../views';
 
 export interface Login {
@@ -68,8 +68,8 @@ export interface LoginResponse {
 /**
  * `username` can only be used for local users. To get details for a federated user, pass `user_id` instead.
  */
-export interface GetUserDetails {
-  user_id?: number;
+export interface GetPersonDetails {
+  person_id?: number;
   username?: string;
   sort: string;
   page?: number;
@@ -79,8 +79,8 @@ export interface GetUserDetails {
   auth?: string;
 }
 
-export interface GetUserDetailsResponse {
-  user_view: UserViewSafe;
+export interface GetPersonDetailsResponse {
+  person_view: PersonViewSafe;
   follows: CommunityFollowerView[];
   moderates: CommunityModeratorView[];
   comments: CommentView[];
@@ -91,8 +91,8 @@ export interface GetRepliesResponse {
   replies: CommentView[];
 }
 
-export interface GetUserMentionsResponse {
-  mentions: UserMentionView[];
+export interface GetPersonMentionsResponse {
+  mentions: PersonMentionView[];
 }
 
 export interface MarkAllAsRead {
@@ -100,17 +100,17 @@ export interface MarkAllAsRead {
 }
 
 export interface AddAdmin {
-  user_id: number;
+  local_user_id: number;
   added: boolean;
   auth: string;
 }
 
 export interface AddAdminResponse {
-  admins: UserViewSafe[];
+  admins: PersonViewSafe[];
 }
 
-export interface BanUser {
-  user_id: number;
+export interface BanPerson {
+  person_id: number;
   ban: boolean;
   remove_data: boolean; // Removes/Restores their comments, posts, and communities
   reason?: string;
@@ -118,8 +118,8 @@ export interface BanUser {
   auth: string;
 }
 
-export interface BanUserResponse {
-  user_view: UserViewSafe;
+export interface BanPersonResponse {
+  person_view: PersonViewSafe;
   banned: boolean;
 }
 
@@ -131,7 +131,7 @@ export interface GetReplies {
   auth: string;
 }
 
-export interface GetUserMentions {
+export interface GetPersonMentions {
   sort: string;
   page?: number;
   limit?: number;
@@ -139,14 +139,14 @@ export interface GetUserMentions {
   auth: string;
 }
 
-export interface MarkUserMentionAsRead {
-  user_mention_id: number;
+export interface MarkPersonMentionAsRead {
+  person_mention_id: number;
   read: boolean;
   auth: string;
 }
 
-export interface UserMentionResponse {
-  user_mention_view: UserMentionView;
+export interface PersonMentionResponse {
+  person_mention_view: PersonMentionView;
 }
 
 /**

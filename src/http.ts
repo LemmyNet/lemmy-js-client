@@ -63,8 +63,8 @@ import {
 import {
   AddAdmin,
   AddAdminResponse,
-  BanUser,
-  BanUserResponse,
+  BanPerson,
+  BanPersonResponse,
   CreatePrivateMessage,
   DeleteAccount,
   DeletePrivateMessage,
@@ -73,15 +73,15 @@ import {
   GetPrivateMessages,
   GetReplies,
   GetRepliesResponse,
-  GetUserDetails,
-  GetUserDetailsResponse,
-  GetUserMentions,
-  GetUserMentionsResponse,
+  GetPersonDetails,
+  GetPersonDetailsResponse,
+  GetPersonMentions,
+  GetPersonMentionsResponse,
   Login,
   LoginResponse,
   MarkAllAsRead,
   MarkPrivateMessageAsRead,
-  MarkUserMentionAsRead,
+  MarkPersonMentionAsRead,
   PasswordChange,
   PasswordReset,
   PasswordResetResponse,
@@ -89,8 +89,8 @@ import {
   PrivateMessagesResponse,
   Register,
   SaveUserSettings,
-  UserMentionResponse,
-} from './interfaces/api/user';
+  PersonMentionResponse,
+} from './interfaces/api/person';
 
 enum HttpType {
   Get = 'GET',
@@ -305,19 +305,21 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Post, '/user/login', form);
   }
 
-  async getUserDetails(form: GetUserDetails): Promise<GetUserDetailsResponse> {
+  async getPersonDetails(
+    form: GetPersonDetails
+  ): Promise<GetPersonDetailsResponse> {
     return this.wrapper(HttpType.Get, '/user', form);
   }
 
-  async getUserMentions(
-    form: GetUserMentions
-  ): Promise<GetUserMentionsResponse> {
+  async getPersonMentions(
+    form: GetPersonMentions
+  ): Promise<GetPersonMentionsResponse> {
     return this.wrapper(HttpType.Get, '/user/mention', form);
   }
 
-  async markUserMentionAsRead(
-    form: MarkUserMentionAsRead
-  ): Promise<UserMentionResponse> {
+  async markPersonMentionAsRead(
+    form: MarkPersonMentionAsRead
+  ): Promise<PersonMentionResponse> {
     return this.wrapper(HttpType.Post, '/user/mention/mark_as_read', form);
   }
 
@@ -331,7 +333,7 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/user/followed_communities', form);
   }
 
-  async banUser(form: BanUser): Promise<BanUserResponse> {
+  async banPerson(form: BanPerson): Promise<BanPersonResponse> {
     return this.wrapper(HttpType.Post, '/user/ban', form);
   }
 
@@ -355,7 +357,7 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Post, '/user/mark_all_as_read', form);
   }
 
-  async saveUserSettings(form: SaveUserSettings): Promise<LoginResponse> {
+  async savePersonSettings(form: SaveUserSettings): Promise<LoginResponse> {
     return this.wrapper(HttpType.Put, '/user/save_user_settings', form);
   }
 

@@ -3,7 +3,7 @@ import {
   CommunityAggregates,
   PostAggregates,
   SiteAggregates,
-  UserAggregates,
+  PersonAggregates,
 } from './aggregates';
 import {
   Comment,
@@ -22,22 +22,23 @@ import {
   PostReport,
   PrivateMessage,
   Site,
-  UserMention,
-  UserSafe,
+  PersonMention,
+  PersonSafe,
+  LocalUserSettings,
 } from './source';
 
-export interface UserViewSafe {
-  user: UserSafe;
-  counts: UserAggregates;
+export interface PersonViewSafe {
+  person: PersonSafe;
+  counts: PersonAggregates;
 }
 
-export interface UserMentionView {
-  user_mention: UserMention;
+export interface PersonMentionView {
+  person_mention: PersonMention;
   comment: Comment;
-  creator: UserSafe;
+  creator: PersonSafe;
   post: Post;
   community: CommunitySafe;
-  recipient: UserSafe;
+  recipient: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   subscribed: boolean;
@@ -45,21 +46,27 @@ export interface UserMentionView {
   my_vote?: number;
 }
 
+export interface LocalUserSettingsView {
+  local_user: LocalUserSettings;
+  person: PersonSafe;
+  counts: PersonAggregates;
+}
+
 export interface SiteView {
   site: Site;
-  creator: UserSafe;
+  creator: PersonSafe;
   counts: SiteAggregates;
 }
 
 export interface PrivateMessageView {
   private_message: PrivateMessage;
-  creator: UserSafe;
-  recipient: UserSafe;
+  creator: PersonSafe;
+  recipient: PersonSafe;
 }
 
 export interface PostView {
   post: Post;
-  creator: UserSafe;
+  creator: PersonSafe;
   community: CommunitySafe;
   creator_banned_from_community: boolean;
   counts: PostAggregates;
@@ -73,15 +80,15 @@ export interface PostReportView {
   post_report: PostReport;
   post: Post;
   community: CommunitySafe;
-  creator: UserSafe;
-  post_creator: UserSafe;
-  resolver?: UserSafe;
+  creator: PersonSafe;
+  post_creator: PersonSafe;
+  resolver?: PersonSafe;
 }
 
 export interface CommentView {
   comment: Comment;
-  creator: UserSafe;
-  recipient?: UserSafe;
+  creator: PersonSafe;
+  recipient?: PersonSafe;
   post: Post;
   community: CommunitySafe;
   counts: CommentAggregates;
@@ -96,91 +103,91 @@ export interface CommentReportView {
   comment: Comment;
   post: Post;
   community: CommunitySafe;
-  creator: UserSafe;
-  comment_creator: UserSafe;
-  resolver?: UserSafe;
+  creator: PersonSafe;
+  comment_creator: PersonSafe;
+  resolver?: PersonSafe;
 }
 
 export interface ModAddCommunityView {
   mod_add_community: ModAddCommunity;
-  moderator: UserSafe;
+  moderator: PersonSafe;
   community: CommunitySafe;
-  modded_user: UserSafe;
+  modded_person: PersonSafe;
 }
 
 export interface ModAddView {
   mod_add: ModAdd;
-  moderator: UserSafe;
-  modded_user: UserSafe;
+  moderator: PersonSafe;
+  modded_person: PersonSafe;
 }
 
 export interface ModBanFromCommunityView {
   mod_ban_from_community: ModBanFromCommunity;
-  moderator: UserSafe;
+  moderator: PersonSafe;
   community: CommunitySafe;
-  banned_user: UserSafe;
+  banned_person: PersonSafe;
 }
 
 export interface ModBanView {
   mod_ban: ModBan;
-  moderator: UserSafe;
-  banned_user: UserSafe;
+  moderator: PersonSafe;
+  banned_person: PersonSafe;
 }
 
 export interface ModLockPostView {
   mod_lock_post: ModLockPost;
-  moderator: UserSafe;
+  moderator: PersonSafe;
   post: Post;
   community: CommunitySafe;
 }
 
 export interface ModRemoveCommentView {
   mod_remove_comment: ModRemoveComment;
-  moderator: UserSafe;
+  moderator: PersonSafe;
   comment: Comment;
-  commenter: UserSafe;
+  commenter: PersonSafe;
   post: Post;
   community: CommunitySafe;
 }
 
 export interface ModRemoveCommunityView {
   mod_remove_community: ModRemoveCommunity;
-  moderator: UserSafe;
+  moderator: PersonSafe;
   community: CommunitySafe;
 }
 
 export interface ModRemovePostView {
   mod_remove_post: ModRemovePost;
-  moderator: UserSafe;
+  moderator: PersonSafe;
   post: Post;
   community: CommunitySafe;
 }
 
 export interface ModStickyPostView {
   mod_sticky_post: ModStickyPost;
-  moderator: UserSafe;
+  moderator: PersonSafe;
   post: Post;
   community: CommunitySafe;
 }
 
 export interface CommunityFollowerView {
   community: CommunitySafe;
-  follower: UserSafe;
+  follower: PersonSafe;
 }
 
 export interface CommunityModeratorView {
   community: CommunitySafe;
-  moderator: UserSafe;
+  moderator: PersonSafe;
 }
 
-export interface CommunityUserBanView {
+export interface CommunityPersonBanView {
   community: CommunitySafe;
-  user: UserSafe;
+  person: PersonSafe;
 }
 
 export interface CommunityView {
   community: CommunitySafe;
-  creator: UserSafe;
+  creator: PersonSafe;
   subscribed: boolean;
   counts: CommunityAggregates;
 }
