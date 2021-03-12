@@ -100,7 +100,7 @@ export interface MarkAllAsRead {
 }
 
 export interface AddAdmin {
-  local_user_id: number;
+  person_id: number;
   added: boolean;
   auth: string;
 }
