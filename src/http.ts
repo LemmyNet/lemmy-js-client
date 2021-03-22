@@ -353,7 +353,7 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Post, '/user/password_change', form);
   }
 
-  async markAllAsRead(form: MarkAllAsRead): Promise<LoginResponse> {
+  async markAllAsRead(form: MarkAllAsRead): Promise<GetRepliesResponse> {
     return this.wrapper(HttpType.Post, '/user/mark_all_as_read', form);
   }
 
