@@ -2,7 +2,6 @@ export interface LocalUserSettings {
   id: number;
   person_id: number;
   email?: string;
-  admin: boolean;
   show_nsfw: boolean;
   theme: string;
   default_sort_type: number;
@@ -10,7 +9,6 @@ export interface LocalUserSettings {
   lang: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
-  matrix_user_id?: string;
 }
 
 export interface PersonSafe {
@@ -18,7 +16,6 @@ export interface PersonSafe {
   name: string;
   preferred_username?: string;
   avatar?: string;
-  admin: boolean;
   banned: boolean;
   published: string;
   updated?: string;
@@ -29,6 +26,8 @@ export interface PersonSafe {
   deleted: boolean;
   inbox_url: string;
   shared_inbox_url: string;
+  matrix_user_id?: string;
+  admin: boolean;
 }
 
 export interface Site {

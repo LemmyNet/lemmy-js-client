@@ -23,7 +23,7 @@ export interface CreateCommunity {
   description?: string;
   icon?: string;
   banner?: string;
-  nsfw: boolean;
+  nsfw?: boolean;
   auth: string;
 }
 
@@ -78,7 +78,7 @@ export interface EditCommunity {
   description?: string;
   icon?: string;
   banner?: string;
-  nsfw: boolean;
+  nsfw?: boolean;
   auth: string;
 }
 
