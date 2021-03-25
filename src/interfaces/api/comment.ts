@@ -73,6 +73,7 @@ export interface GetComments {
   limit?: number;
   community_id?: number;
   community_name?: string;
+  saved_only: boolean;
   auth?: string;
 }
 

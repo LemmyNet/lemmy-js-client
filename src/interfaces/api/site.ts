@@ -1,4 +1,4 @@
-import { UserSafeSettings } from '../source';
+import { LocalUserSettingsView } from '../views';
 import {
   CommentView,
   CommunityView,
@@ -13,7 +13,7 @@ import {
   ModStickyPostView,
   PostView,
   SiteView,
-  UserViewSafe,
+  PersonViewSafe,
 } from '../views';
 
 /**
@@ -35,11 +35,11 @@ export interface SearchResponse {
   comments: CommentView[];
   posts: PostView[];
   communities: CommunityView[];
-  users: UserViewSafe[];
+  users: PersonViewSafe[];
 }
 
 export interface GetModlog {
-  mod_user_id?: number;
+  mod_person_id?: number;
   community_id?: number;
   page?: number;
   limit?: number;
@@ -89,16 +89,16 @@ export interface SiteResponse {
 
 export interface GetSiteResponse {
   site_view?: SiteView; // Because the site might not be set up yet
-  admins: UserViewSafe[];
-  banned: UserViewSafe[];
+  admins: PersonViewSafe[];
+  banned: PersonViewSafe[];
   online: number;
   version: string;
-  my_user?: UserSafeSettings; // Gives back your user and settings if logged in
+  my_user?: LocalUserSettingsView; // Gives back your local user and settings if logged in
   federated_instances?: FederatedInstances;
 }
 
 export interface TransferSite {
-  user_id: number;
+  person_id: number;
   auth: string;
 }
 

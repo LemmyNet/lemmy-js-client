@@ -45,24 +45,24 @@ import {
 } from './interfaces/api/site';
 import {
   AddAdmin,
-  BanUser,
+  BanPerson,
   CreatePrivateMessage,
   DeleteAccount,
   DeletePrivateMessage,
   EditPrivateMessage,
   GetPrivateMessages,
   GetReplies,
-  GetUserDetails,
-  GetUserMentions,
+  GetPersonDetails,
+  GetPersonMentions,
   Login,
   MarkAllAsRead,
   MarkPrivateMessageAsRead,
-  MarkUserMentionAsRead,
+  MarkPersonMentionAsRead,
   PasswordChange,
   PasswordReset,
   Register,
   SaveUserSettings,
-} from './interfaces/api/user';
+} from './interfaces/api/person';
 import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
 import { UserOperation } from './interfaces/others';
 
@@ -216,28 +216,28 @@ export class LemmyWebsocket {
     return wrapper(UserOperation.TransferSite, form);
   }
 
-  banUser(form: BanUser) {
-    return wrapper(UserOperation.BanUser, form);
+  banPerson(form: BanPerson) {
+    return wrapper(UserOperation.BanPerson, form);
   }
 
   addAdmin(form: AddAdmin) {
     return wrapper(UserOperation.AddAdmin, form);
   }
 
-  getUserDetails(form: GetUserDetails) {
-    return wrapper(UserOperation.GetUserDetails, form);
+  getPersonDetails(form: GetPersonDetails) {
+    return wrapper(UserOperation.GetPersonDetails, form);
   }
 
   getReplies(form: GetReplies) {
     return wrapper(UserOperation.GetReplies, form);
   }
 
-  getUserMentions(form: GetUserMentions) {
-    return wrapper(UserOperation.GetUserMentions, form);
+  getPersonMentions(form: GetPersonMentions) {
+    return wrapper(UserOperation.GetPersonMentions, form);
   }
 
-  markUserMentionAsRead(form: MarkUserMentionAsRead) {
-    return wrapper(UserOperation.MarkUserMentionAsRead, form);
+  markPersonMentionAsRead(form: MarkPersonMentionAsRead) {
+    return wrapper(UserOperation.MarkPersonMentionAsRead, form);
   }
 
   getModlog(form: GetModlog) {
