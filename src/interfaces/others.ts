@@ -1,3 +1,5 @@
+export const VERSION = 'v3';
+
 /**
  * All of the websocket operations available
  */

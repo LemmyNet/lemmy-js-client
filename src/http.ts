@@ -92,6 +92,8 @@ import {
   PersonMentionResponse,
 } from './interfaces/api/person';
 
+import { VERSION } from './interfaces/others';
+
 enum HttpType {
   Get = 'GET',
   Post = 'POST',
@@ -99,16 +101,16 @@ enum HttpType {
 }
 
 export class LemmyHttp {
-  private baseUrl: string;
+  private apiUrl: string;
   private headers: { [key: string]: string } = {};
 
   /**
    * Generates a new instance of LemmyHttp
-   * @param baseUrl the full base url: https://lemmy.ml/api/v2
+   * @param baseUrl the base url, without the vX version: https://lemmy.ml -> goes to https://lemmy.ml/api/vX
    * @param headers optional headers. Should contain x-real-ip and x-forwarded-for
    */
   constructor(baseUrl: string, headers?: { [key: string]: string }) {
-    this.baseUrl = baseUrl;
+    this.apiUrl = `${baseUrl}/api/${VERSION}`;
 
     if (headers) {
       this.headers = headers;
@@ -366,7 +368,7 @@ export class LemmyHttp {
   }
 
   private buildFullUrl(endpoint: string): string {
-    return `${this.baseUrl}${endpoint}`;
+    return `${this.apiUrl}${endpoint}`;
   }
 
   private async wrapper<ResponseType, MessageType>(

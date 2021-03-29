@@ -32,6 +32,7 @@ this.ws.send(client.login(form));
 ```js
 import { LemmyHttp } from 'lemmy-js-client';
 
+let baseUrl = 'https://lemmy.ml';
 let client: LemmyHttp = new LemmyHttp(baseUrl, headers?);
 let jwt = await client.httpLogin(loginForm).jwt;
 ```
