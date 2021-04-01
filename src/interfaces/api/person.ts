@@ -46,7 +46,7 @@ export interface SaveUserSettings {
   lang: string;
   avatar?: string;
   banner?: string;
-  preferred_username?: string; // The display name
+  display_name?: string;
   email?: string;
   bio?: string;
   matrix_user_id?: string;
