@@ -89,6 +89,7 @@ import {
   PrivateMessagesResponse,
   Register,
   SaveUserSettings,
+  ChangePassword,
   PersonMentionResponse,
 } from './interfaces/api/person';
 
@@ -361,6 +362,10 @@ export class LemmyHttp {
 
   async saveUserSettings(form: SaveUserSettings): Promise<LoginResponse> {
     return this.wrapper(HttpType.Put, '/user/save_user_settings', form);
+  }
+
+  async changePassword(form: ChangePassword): Promise<LoginResponse> {
+    return this.wrapper(HttpType.Put, '/user/change_password', form);
   }
 
   async addAdmin(form: AddAdmin): Promise<AddAdminResponse> {

@@ -62,6 +62,7 @@ import {
   PasswordReset,
   Register,
   SaveUserSettings,
+  ChangePassword,
 } from './interfaces/api/person';
 import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
 import { UserOperation } from './interfaces/others';
@@ -270,6 +271,10 @@ export class LemmyWebsocket {
 
   saveUserSettings(form: SaveUserSettings) {
     return wrapper(UserOperation.SaveUserSettings, form);
+  }
+
+  changePassword(form: ChangePassword) {
+    return wrapper(UserOperation.ChangePassword, form);
   }
 
   deleteAccount(form: DeleteAccount) {

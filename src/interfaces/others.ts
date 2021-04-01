@@ -63,6 +63,7 @@ export enum UserOperation {
   SaveSiteConfig,
   PostJoin,
   CommunityJoin,
+  ChangePassword,
 }
 
 export enum SortType {

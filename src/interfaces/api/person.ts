@@ -50,11 +50,15 @@ export interface SaveUserSettings {
   email?: string;
   bio?: string;
   matrix_user_id?: string;
-  new_password?: string; // If setting a new password, you need all 3 password fields
-  new_password_verify?: string;
-  old_password?: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
+  auth: string;
+}
+
+export interface ChangePassword {
+  new_password: string;
+  new_password_verify: string;
+  old_password: string;
   auth: string;
 }
 
