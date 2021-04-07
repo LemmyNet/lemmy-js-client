@@ -187,7 +187,6 @@ export interface CommunityPersonBanView {
 
 export interface CommunityView {
   community: CommunitySafe;
-  creator: PersonSafe;
   subscribed: boolean;
   counts: CommunityAggregates;
 }

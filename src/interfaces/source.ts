@@ -187,7 +187,6 @@ export interface CommunitySafe {
   name: string;
   title: string;
   description?: string;
-  creator_id: number;
   removed: boolean;
   published: string;
   updated?: string;
