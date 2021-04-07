@@ -14,7 +14,7 @@ export interface LocalUserSettings {
 export interface PersonSafe {
   id: number;
   name: string;
-  preferred_username?: string;
+  display_name?: string;
   avatar?: string;
   banned: boolean;
   published: string;
