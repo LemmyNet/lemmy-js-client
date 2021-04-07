@@ -117,6 +117,6 @@ export interface SaveSiteConfig {
 
 export interface FederatedInstances {
   linked: string[];
-  allowed: string[];
-  blocked: string[];
+  allowed?: string[];
+  blocked?: string[];
 }
