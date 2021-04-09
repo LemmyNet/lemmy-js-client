@@ -9,6 +9,7 @@ export interface LocalUserSettings {
   lang: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
+  show_scores: boolean;
 }
 
 export interface PersonSafe {

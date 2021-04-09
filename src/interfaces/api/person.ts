@@ -39,19 +39,20 @@ export interface CaptchaResponse {
 }
 
 export interface SaveUserSettings {
-  show_nsfw: boolean;
-  theme: string; // Default 'browser'
-  default_sort_type: number; // The Sort types from above, zero indexed as a number
-  default_listing_type: number; // Post listing types are `All, Subscribed, Community`
-  lang: string;
+  show_nsfw?: boolean;
+  theme?: string; // Default 'browser'
+  default_sort_type?: number; // The Sort types from above, zero indexed as a number
+  default_listing_type?: number; // Post listing types are `All, Subscribed, Community`
+  lang?: string;
   avatar?: string;
   banner?: string;
   display_name?: string;
   email?: string;
   bio?: string;
   matrix_user_id?: string;
-  show_avatars: boolean;
-  send_notifications_to_email: boolean;
+  show_avatars?: boolean;
+  show_scores?: boolean;
+  send_notifications_to_email?: boolean;
   auth: string;
 }
 
