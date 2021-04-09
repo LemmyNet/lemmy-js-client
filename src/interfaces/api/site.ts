@@ -26,6 +26,7 @@ export interface Search {
   community_name?: string;
   creator_id?: number;
   sort: string;
+  listing_type: string;
   page?: number;
   limit?: number;
   auth?: string;
