@@ -10,7 +10,7 @@ export interface CreatePost {
   name: string;
   url?: string;
   body?: string;
-  nsfw: boolean;
+  nsfw?: boolean;
   community_id: number;
   auth: string;
 }
@@ -38,13 +38,13 @@ export interface GetPostResponse {
  * `community_name` can only be used for local communities. To get posts for a federated community, pass `community_id` instead.
  */
 export interface GetPosts {
-  type_: string;
-  sort: string;
+  type_?: string;
+  sort?: string;
   page?: number;
   limit?: number;
   community_id?: number;
   community_name?: string;
-  saved_only: boolean;
+  saved_only?: boolean;
   auth?: string;
 }
 
@@ -63,10 +63,10 @@ export interface CreatePostLike {
 
 export interface EditPost {
   post_id: number;
-  name: string;
+  name?: string;
   url?: string;
   body?: string;
-  nsfw: boolean;
+  nsfw?: boolean;
   auth: string;
 }
 

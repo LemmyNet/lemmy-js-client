@@ -21,12 +21,12 @@ import {
  */
 export interface Search {
   q: string;
-  type_: string;
+  type_?: string;
   community_id?: number;
   community_name?: string;
   creator_id?: number;
-  sort: string;
-  listing_type: string;
+  sort?: string;
+  listing_type?: string;
   page?: number;
   limit?: number;
   auth?: string;
@@ -64,20 +64,20 @@ export interface CreateSite {
   description?: string;
   icon?: string;
   banner?: string;
-  enable_downvotes: boolean;
-  open_registration: boolean;
-  enable_nsfw: boolean;
+  enable_downvotes?: boolean;
+  open_registration?: boolean;
+  enable_nsfw?: boolean;
   auth: string;
 }
 
 export interface EditSite {
-  name: string;
+  name?: string;
   description?: string;
   icon?: string;
   banner?: string;
-  enable_downvotes: boolean;
-  open_registration: boolean;
-  enable_nsfw: boolean;
+  enable_downvotes?: boolean;
+  open_registration?: boolean;
+  enable_nsfw?: boolean;
   auth: string;
 }
 
