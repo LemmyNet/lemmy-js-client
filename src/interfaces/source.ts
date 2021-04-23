@@ -9,6 +9,7 @@ export interface LocalUserSettings {
   lang: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
+  show_bot_accounts: boolean;
   show_scores: boolean;
 }
 
@@ -29,6 +30,7 @@ export interface PersonSafe {
   shared_inbox_url: string;
   matrix_user_id?: string;
   admin: boolean;
+  bot_account: boolean;
 }
 
 export interface Site {
