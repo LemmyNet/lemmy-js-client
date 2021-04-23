@@ -32,8 +32,8 @@ export interface CommunityResponse {
 }
 
 export interface ListCommunities {
-  type_: string;
-  sort: string;
+  type_?: string;
+  sort?: string;
   page?: number;
   limit?: number;
   auth?: string;
@@ -47,7 +47,7 @@ export interface BanFromCommunity {
   community_id: number;
   person_id: number;
   ban: boolean;
-  remove_data: boolean; // Removes/Restores their comments and posts for that community
+  remove_data?: boolean; // Removes/Restores their comments and posts for that community
   reason?: string;
   expires?: number;
   auth: string;
@@ -74,7 +74,7 @@ export interface AddModToCommunityResponse {
  */
 export interface EditCommunity {
   community_id: number;
-  title: string;
+  title?: string;
   description?: string;
   icon?: string;
   banner?: string;

@@ -76,11 +76,11 @@ export interface LoginResponse {
 export interface GetPersonDetails {
   person_id?: number;
   username?: string;
-  sort: string;
+  sort?: string;
   page?: number;
   limit?: number;
   community_id?: number;
-  saved_only: boolean;
+  saved_only?: boolean;
   auth?: string;
 }
 
@@ -117,7 +117,7 @@ export interface AddAdminResponse {
 export interface BanPerson {
   person_id: number;
   ban: boolean;
-  remove_data: boolean; // Removes/Restores their comments, posts, and communities
+  remove_data?: boolean; // Removes/Restores their comments, posts, and communities
   reason?: string;
   expires?: number;
   auth: string;
@@ -129,18 +129,18 @@ export interface BanPersonResponse {
 }
 
 export interface GetReplies {
-  sort: string;
+  sort?: string;
   page?: number;
   limit?: number;
-  unread_only: boolean;
+  unread_only?: boolean;
   auth: string;
 }
 
 export interface GetPersonMentions {
-  sort: string;
+  sort?: string;
   page?: number;
   limit?: number;
-  unread_only: boolean;
+  unread_only?: boolean;
   auth: string;
 }
 
@@ -199,7 +199,7 @@ export interface MarkPrivateMessageAsRead {
 }
 
 export interface GetPrivateMessages {
-  unread_only: boolean;
+  unread_only?: boolean;
   page?: number;
   limit?: number;
   auth: string;

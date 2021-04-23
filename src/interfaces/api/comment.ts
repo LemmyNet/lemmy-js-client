@@ -67,13 +67,13 @@ export interface CreateCommentLike {
  * `community_name` can only be used for local communities. To get posts for a federated community, pass `community_id` instead.
  */
 export interface GetComments {
-  type_: string;
-  sort: string;
+  type_?: string;
+  sort?: string;
   page?: number;
   limit?: number;
   community_id?: number;
   community_name?: string;
-  saved_only: boolean;
+  saved_only?: boolean;
   auth?: string;
 }
 
