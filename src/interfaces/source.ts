@@ -34,6 +34,7 @@ export interface PersonSafe {
 export interface Site {
   id: number;
   name: string;
+  sidebar?: string;
   description?: string;
   creator_id: number;
   published: string;
