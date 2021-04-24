@@ -68,6 +68,7 @@ export interface CreateSite {
   enable_downvotes?: boolean;
   open_registration?: boolean;
   enable_nsfw?: boolean;
+  community_creation_admin_only?: boolean;
   auth: string;
 }
 
@@ -80,6 +81,7 @@ export interface EditSite {
   enable_downvotes?: boolean;
   open_registration?: boolean;
   enable_nsfw?: boolean;
+  community_creation_admin_only?: boolean;
   auth: string;
 }
 
