@@ -44,6 +44,7 @@ export interface Site {
   enable_downvotes: boolean;
   open_registration: boolean;
   enable_nsfw: boolean;
+  community_creation_admin_only: boolean;
   icon?: string;
   banner?: string;
 }
