@@ -11,6 +11,7 @@ export interface LocalUserSettings {
   send_notifications_to_email: boolean;
   show_bot_accounts: boolean;
   show_scores: boolean;
+  show_read_posts: boolean;
 }
 
 export interface PersonSafe {
