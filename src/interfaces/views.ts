@@ -183,6 +183,11 @@ export interface CommunityFollowerView {
   follower: PersonSafe;
 }
 
+export interface CommunityBlockView {
+  person: PersonSafe;
+  community: CommunitySafe;
+}
+
 export interface CommunityModeratorView {
   community: CommunitySafe;
   moderator: PersonSafe;
@@ -191,6 +196,11 @@ export interface CommunityModeratorView {
 export interface CommunityPersonBanView {
   community: CommunitySafe;
   person: PersonSafe;
+}
+
+export interface PersonBlockView {
+  person: PersonSafe;
+  recipient: PersonSafe;
 }
 
 export interface CommunityView {

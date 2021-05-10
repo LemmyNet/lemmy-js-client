@@ -11,10 +11,12 @@ import {
 import {
   AddModToCommunity,
   BanFromCommunity,
+  BlockCommunity,
   CreateCommunity,
   DeleteCommunity,
   EditCommunity,
   FollowCommunity,
+  GetBlockedCommunities,
   GetCommunity,
   GetFollowedCommunities,
   ListCommunities,
@@ -64,6 +66,8 @@ import {
   Register,
   SaveUserSettings,
   ChangePassword,
+  BlockPerson,
+  GetBlockedPersons,
 } from './interfaces/api/person';
 import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
 import { UserOperation } from './interfaces/others';
@@ -316,6 +320,22 @@ export class LemmyWebsocket {
 
   saveSiteConfig(form: SaveSiteConfig) {
     return wrapper(UserOperation.SaveSiteConfig, form);
+  }
+
+  blockPerson(form: BlockPerson) {
+    return wrapper(UserOperation.BlockPerson, form);
+  }
+
+  getBlockedPersons(form: GetBlockedPersons) {
+    return wrapper(UserOperation.GetBlockedPersons, form);
+  }
+
+  blockCommunity(form: BlockCommunity) {
+    return wrapper(UserOperation.BlockCommunity, form);
+  }
+
+  getBlockedCommunities(form: GetBlockedCommunities) {
+    return wrapper(UserOperation.GetBlockedCommunities, form);
   }
 }
 

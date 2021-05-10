@@ -65,6 +65,10 @@ export enum UserOperation {
   CommunityJoin,
   ChangePassword,
   GetSiteMetadata,
+  BlockCommunity,
+  BlockPerson,
+  GetBlockedCommunities,
+  GetBlockedPersons,
 }
 
 export enum SortType {

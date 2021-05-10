@@ -16,11 +16,14 @@ import {
   AddModToCommunityResponse,
   BanFromCommunity,
   BanFromCommunityResponse,
+  BlockCommunity,
   CommunityResponse,
   CreateCommunity,
   DeleteCommunity,
   EditCommunity,
   FollowCommunity,
+  GetBlockedCommunities,
+  GetBlockedCommunitiesResponse,
   GetCommunity,
   GetCommunityResponse,
   GetFollowedCommunities,
@@ -93,6 +96,10 @@ import {
   SaveUserSettings,
   ChangePassword,
   PersonMentionResponse,
+  GetBlockedPersonsResponse,
+  GetBlockedPersons,
+  BlockPerson,
+  BlockPersonResponse,
 } from './interfaces/api/person';
 
 import { VERSION } from './interfaces/others';
@@ -172,6 +179,10 @@ export class LemmyHttp {
 
   async followCommunity(form: FollowCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/follow', form);
+  }
+
+  async blockCommunity(form: BlockCommunity): Promise<CommunityResponse> {
+    return this.wrapper(HttpType.Post, '/community/block', form);
   }
 
   async deleteCommunity(form: DeleteCommunity): Promise<CommunityResponse> {
@@ -328,6 +339,12 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/user/mention', form);
   }
 
+  async getBlockedPersons(
+    form: GetBlockedPersons
+  ): Promise<GetBlockedPersonsResponse> {
+    return this.wrapper(HttpType.Get, '/user/block', form);
+  }
+
   async markPersonMentionAsRead(
     form: MarkPersonMentionAsRead
   ): Promise<PersonMentionResponse> {
@@ -344,8 +361,18 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/user/followed_communities', form);
   }
 
+  async getBlockedCommunities(
+    form: GetBlockedCommunities
+  ): Promise<GetBlockedCommunitiesResponse> {
+    return this.wrapper(HttpType.Get, '/user/blocked_communities', form);
+  }
+
   async banPerson(form: BanPerson): Promise<BanPersonResponse> {
     return this.wrapper(HttpType.Post, '/user/ban', form);
+  }
+
+  async blockPerson(form: BlockPerson): Promise<BlockPersonResponse> {
+    return this.wrapper(HttpType.Post, '/user/block', form);
   }
 
   async getCaptcha(): Promise<GetCaptchaResponse> {
