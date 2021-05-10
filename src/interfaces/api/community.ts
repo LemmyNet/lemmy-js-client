@@ -1,6 +1,7 @@
 import {
   CommunityFollowerView,
   CommunityModeratorView,
+  CommunityBlockView,
   CommunityView,
   PersonViewSafe,
 } from '../views';
@@ -117,4 +118,18 @@ export interface TransferCommunity {
   community_id: number;
   person_id: number;
   auth: string;
+}
+
+export interface BlockCommunity {
+  community_id: number;
+  block: boolean;
+  auth: string;
+}
+
+export interface GetBlockedCommunities {
+  auth: string;
+}
+
+export interface GetBlockedCommunitiesResponse {
+  communities: CommunityBlockView[];
 }
