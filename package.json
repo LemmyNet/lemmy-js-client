@@ -11,6 +11,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src",
+    "postinstall": "husky install",
     "prepare": "yarn run build"
   },
   "repository": "https://github.com/LemmyNet/lemmy-js-client",
@@ -26,11 +27,6 @@
     "typescript": "^4.3.5"
   },
   "types": "./dist/index.d.ts",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
     "*.{ts,tsx,js}": [
       "prettier --write",
