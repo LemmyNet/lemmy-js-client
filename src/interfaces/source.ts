@@ -12,6 +12,7 @@ export interface LocalUserSettings {
   show_bot_accounts: boolean;
   show_scores: boolean;
   show_read_posts: boolean;
+  show_new_post_notifs: boolean;
 }
 
 export interface PersonSafe {

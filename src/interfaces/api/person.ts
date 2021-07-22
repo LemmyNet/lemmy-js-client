@@ -56,6 +56,7 @@ export interface SaveUserSettings {
   bot_account?: boolean;
   show_bot_accounts?: boolean;
   show_read_posts?: boolean;
+  show_new_post_notifs?: boolean;
   auth: string;
 }
 
