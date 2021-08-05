@@ -73,6 +73,7 @@ export interface PostView {
   subscribed: boolean;
   saved: boolean;
   read: boolean;
+  creator_blocked: boolean;
   my_vote?: number;
 }
 
@@ -95,6 +96,7 @@ export interface CommentView {
   creator_banned_from_community: boolean;
   subscribed: boolean;
   saved: boolean;
+  creator_blocked: boolean;
   my_vote?: number;
 }
 
@@ -198,5 +200,6 @@ export interface PersonBlockView {
 export interface CommunityView {
   community: CommunitySafe;
   subscribed: boolean;
+  blocked: boolean;
   counts: CommunityAggregates;
 }
