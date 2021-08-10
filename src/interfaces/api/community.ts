@@ -106,14 +106,6 @@ export interface FollowCommunity {
   auth: string;
 }
 
-export interface GetFollowedCommunities {
-  auth: string;
-}
-
-export interface GetFollowedCommunitiesResponse {
-  communities: CommunityFollowerView[];
-}
-
 export interface TransferCommunity {
   community_id: number;
   person_id: number;
@@ -124,12 +116,4 @@ export interface BlockCommunity {
   community_id: number;
   block: boolean;
   auth: string;
-}
-
-export interface GetBlockedCommunities {
-  auth: string;
-}
-
-export interface GetBlockedCommunitiesResponse {
-  communities: CommunityBlockView[];
 }

@@ -22,12 +22,8 @@ import {
   DeleteCommunity,
   EditCommunity,
   FollowCommunity,
-  GetBlockedCommunities,
-  GetBlockedCommunitiesResponse,
   GetCommunity,
   GetCommunityResponse,
-  GetFollowedCommunities,
-  GetFollowedCommunitiesResponse,
   ListCommunities,
   ListCommunitiesResponse,
   RemoveCommunity,
@@ -96,8 +92,6 @@ import {
   SaveUserSettings,
   ChangePassword,
   PersonMentionResponse,
-  GetBlockedPersonsResponse,
-  GetBlockedPersons,
   BlockPerson,
   BlockPersonResponse,
 } from './interfaces/api/person';
@@ -339,12 +333,6 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/user/mention', form);
   }
 
-  async getBlockedPersons(
-    form: GetBlockedPersons
-  ): Promise<GetBlockedPersonsResponse> {
-    return this.wrapper(HttpType.Get, '/user/block', form);
-  }
-
   async markPersonMentionAsRead(
     form: MarkPersonMentionAsRead
   ): Promise<PersonMentionResponse> {
@@ -353,18 +341,6 @@ export class LemmyHttp {
 
   async getReplies(form: GetReplies): Promise<GetRepliesResponse> {
     return this.wrapper(HttpType.Get, '/user/replies', form);
-  }
-
-  async getFollowedCommunities(
-    form: GetFollowedCommunities
-  ): Promise<GetFollowedCommunitiesResponse> {
-    return this.wrapper(HttpType.Get, '/user/followed_communities', form);
-  }
-
-  async getBlockedCommunities(
-    form: GetBlockedCommunities
-  ): Promise<GetBlockedCommunitiesResponse> {
-    return this.wrapper(HttpType.Get, '/user/blocked_communities', form);
   }
 
   async banPerson(form: BanPerson): Promise<BanPersonResponse> {
