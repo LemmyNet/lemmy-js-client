@@ -31,7 +31,6 @@ export enum UserOperation {
   DeleteCommunity,
   RemoveCommunity,
   FollowCommunity,
-  GetFollowedCommunities,
   GetPersonDetails,
   GetReplies,
   GetPersonMentions,
@@ -66,8 +65,6 @@ export enum UserOperation {
   ChangePassword,
   BlockCommunity,
   BlockPerson,
-  GetBlockedCommunities,
-  GetBlockedPersons,
 }
 
 export enum SortType {

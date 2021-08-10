@@ -1,4 +1,9 @@
-import { LocalUserSettingsView } from '../views';
+import {
+  CommunityBlockView,
+  CommunityFollowerView,
+  LocalUserSettingsView,
+  PersonBlockView,
+} from '../views';
 import {
   CommentView,
   CommunityView,
@@ -99,8 +104,15 @@ export interface GetSiteResponse {
   banned: PersonViewSafe[];
   online: number;
   version: string;
-  my_user?: LocalUserSettingsView; // Gives back your local user and settings if logged in
+  my_user?: MyUserInfo; // Gives back your local user, settings, follows, and blocks if logged in
   federated_instances?: FederatedInstances;
+}
+
+export interface MyUserInfo {
+  local_user: LocalUserSettingsView;
+  follows: CommunityFollowerView[];
+  community_blocks: CommunityBlockView[];
+  person_blocks: PersonBlockView[];
 }
 
 export interface TransferSite {

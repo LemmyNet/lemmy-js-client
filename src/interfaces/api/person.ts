@@ -245,11 +245,3 @@ export interface BlockPersonResponse {
   person_view: PersonViewSafe;
   blocked: boolean;
 }
-
-export interface GetBlockedPersons {
-  auth: string;
-}
-
-export interface GetBlockedPersonsResponse {
-  persons: PersonBlockView[];
-}
