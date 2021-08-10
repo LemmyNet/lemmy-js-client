@@ -111,7 +111,7 @@ export interface GetSiteResponse {
 }
 
 export interface MyUserInfo {
-  local_user: LocalUserSettingsView;
+  local_user_view: LocalUserSettingsView;
   follows: CommunityFollowerView[];
   community_blocks: CommunityBlockView[];
   person_blocks: PersonBlockView[];
