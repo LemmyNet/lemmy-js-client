@@ -44,6 +44,7 @@ export interface PersonMentionView {
   creator_banned_from_community: boolean;
   subscribed: boolean;
   saved: boolean;
+  creator_blocked: boolean;
   my_vote?: number;
 }
 
