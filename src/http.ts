@@ -17,6 +17,7 @@ import {
   BanFromCommunity,
   BanFromCommunityResponse,
   BlockCommunity,
+  BlockCommunityResponse,
   CommunityResponse,
   CreateCommunity,
   DeleteCommunity,
@@ -175,7 +176,7 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Post, '/community/follow', form);
   }
 
-  async blockCommunity(form: BlockCommunity): Promise<CommunityResponse> {
+  async blockCommunity(form: BlockCommunity): Promise<BlockCommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/block', form);
   }
 
