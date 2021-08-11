@@ -92,12 +92,9 @@ export interface GetPersonDetails {
 
 export interface GetPersonDetailsResponse {
   person_view: PersonViewSafe;
-  follows: CommunityFollowerView[];
-  community_blocks: CommunityBlockView[];
-  person_blocks: PersonBlockView[];
-  moderates: CommunityModeratorView[];
   comments: CommentView[];
   posts: PostView[];
+  moderates: CommunityModeratorView[];
 }
 
 export interface GetRepliesResponse {

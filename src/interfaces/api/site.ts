@@ -1,6 +1,7 @@
 import {
   CommunityBlockView,
   CommunityFollowerView,
+  CommunityModeratorView,
   LocalUserSettingsView,
   PersonBlockView,
 } from '../views';
@@ -111,6 +112,7 @@ export interface GetSiteResponse {
 export interface MyUserInfo {
   local_user_view: LocalUserSettingsView;
   follows: CommunityFollowerView[];
+  moderates: CommunityModeratorView[];
   community_blocks: CommunityBlockView[];
   person_blocks: PersonBlockView[];
 }
