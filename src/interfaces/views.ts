@@ -203,7 +203,7 @@ export interface CommunityPersonBanView {
 
 export interface PersonBlockView {
   person: PersonSafe;
-  recipient: PersonSafe;
+  target: PersonSafe;
 }
 
 export interface CommunityView {
