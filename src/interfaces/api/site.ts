@@ -3,6 +3,7 @@ import {
   CommentView,
   CommunityView,
   ModAddCommunityView,
+  ModTransferCommunityView,
   ModAddView,
   ModBanFromCommunityView,
   ModBanView,
@@ -56,6 +57,7 @@ export interface GetModlogResponse {
   banned_from_community: ModBanFromCommunityView[];
   banned: ModBanView[];
   added_to_community: ModAddCommunityView[];
+  transferred_to_community: ModTransferCommunityView[];
   added: ModAddView[];
 }
 
