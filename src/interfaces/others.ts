@@ -64,6 +64,7 @@ export enum UserOperation {
   PostJoin,
   CommunityJoin,
   ChangePassword,
+  GetSiteMetadata,
 }
 
 export enum SortType {
@@ -105,4 +106,11 @@ export interface WebSocketJsonResponse<ResponseType> {
   data?: ResponseType;
   error?: string;
   reconnect?: boolean;
+}
+
+export interface SiteMetadata {
+  title?: string;
+  description?: string;
+  image?: string;
+  html?: string;
 }
