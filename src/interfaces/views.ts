@@ -11,6 +11,7 @@ import {
   CommunitySafe,
   ModAdd,
   ModAddCommunity,
+  ModTransferCommunity,
   ModBan,
   ModBanFromCommunity,
   ModLockPost,
@@ -110,6 +111,13 @@ export interface CommentReportView {
 
 export interface ModAddCommunityView {
   mod_add_community: ModAddCommunity;
+  moderator: PersonSafe;
+  community: CommunitySafe;
+  modded_person: PersonSafe;
+}
+
+export interface ModTransferCommunityView {
+  mod_transfer_community: ModTransferCommunity;
   moderator: PersonSafe;
   community: CommunitySafe;
   modded_person: PersonSafe;
