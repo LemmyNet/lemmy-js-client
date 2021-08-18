@@ -39,6 +39,8 @@ import {
   GetPostResponse,
   GetPosts,
   GetPostsResponse,
+  GetSiteMetadata,
+  GetSiteMetadataResponse,
   LockPost,
   PostResponse,
   RemovePost,
@@ -236,6 +238,12 @@ export class LemmyHttp {
 
   async savePost(form: SavePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Put, '/post/save', form);
+  }
+
+  async getSiteMetadata(
+    form: GetSiteMetadata
+  ): Promise<GetSiteMetadataResponse> {
+    return this.wrapper(HttpType.Get, '/post/site_metadata', form);
   }
 
   async createComment(form: CreateComment): Promise<CommentResponse> {
