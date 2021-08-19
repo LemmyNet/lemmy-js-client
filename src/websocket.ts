@@ -28,6 +28,7 @@ import {
   EditPost,
   GetPost,
   GetPosts,
+  GetSiteMetadata,
   LockPost,
   RemovePost,
   SavePost,
@@ -199,6 +200,10 @@ export class LemmyWebsocket {
 
   savePost(form: SavePost) {
     return wrapper(UserOperation.SavePost, form);
+  }
+
+  getSiteMetadata(form: GetSiteMetadata) {
+    return wrapper(UserOperation.GetSiteMetadata, form);
   }
 
   banFromCommunity(form: BanFromCommunity) {

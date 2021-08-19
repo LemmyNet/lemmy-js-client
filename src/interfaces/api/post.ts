@@ -1,3 +1,4 @@
+import { SiteMetadata } from '..';
 import {
   CommunityView,
   CommentView,
@@ -140,4 +141,12 @@ export interface ListPostReports {
 
 export interface ListPostReportsResponse {
   posts: PostReportView[];
+}
+
+export interface GetSiteMetadata {
+  url: string;
+}
+
+export interface GetSiteMetadataResponse {
+  metadata: SiteMetadata;
 }
