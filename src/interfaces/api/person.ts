@@ -6,6 +6,8 @@ import {
   PrivateMessageView,
   PersonMentionView,
   PersonViewSafe,
+  CommunityBlockView,
+  PersonBlockView,
 } from '../views';
 
 export interface Login {
@@ -90,10 +92,9 @@ export interface GetPersonDetails {
 
 export interface GetPersonDetailsResponse {
   person_view: PersonViewSafe;
-  follows: CommunityFollowerView[];
-  moderates: CommunityModeratorView[];
   comments: CommentView[];
   posts: PostView[];
+  moderates: CommunityModeratorView[];
 }
 
 export interface GetRepliesResponse {
@@ -229,4 +230,15 @@ export interface GetReportCountResponse {
   community?: number;
   comment_reports: number;
   post_reports: number;
+}
+
+export interface BlockPerson {
+  person_id: number;
+  block: boolean;
+  auth: string;
+}
+
+export interface BlockPersonResponse {
+  person_view: PersonViewSafe;
+  blocked: boolean;
 }

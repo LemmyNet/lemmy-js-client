@@ -1,5 +1,4 @@
 import {
-  CommunityFollowerView,
   CommunityModeratorView,
   CommunityView,
   PersonViewSafe,
@@ -105,16 +104,19 @@ export interface FollowCommunity {
   auth: string;
 }
 
-export interface GetFollowedCommunities {
-  auth: string;
-}
-
-export interface GetFollowedCommunitiesResponse {
-  communities: CommunityFollowerView[];
-}
-
 export interface TransferCommunity {
   community_id: number;
   person_id: number;
   auth: string;
+}
+
+export interface BlockCommunity {
+  community_id: number;
+  block: boolean;
+  auth: string;
+}
+
+export interface BlockCommunityResponse {
+  community_view: CommunityView;
+  blocked: boolean;
 }

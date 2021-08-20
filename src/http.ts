@@ -16,6 +16,8 @@ import {
   AddModToCommunityResponse,
   BanFromCommunity,
   BanFromCommunityResponse,
+  BlockCommunity,
+  BlockCommunityResponse,
   CommunityResponse,
   CreateCommunity,
   DeleteCommunity,
@@ -23,8 +25,6 @@ import {
   FollowCommunity,
   GetCommunity,
   GetCommunityResponse,
-  GetFollowedCommunities,
-  GetFollowedCommunitiesResponse,
   ListCommunities,
   ListCommunitiesResponse,
   RemoveCommunity,
@@ -93,6 +93,8 @@ import {
   SaveUserSettings,
   ChangePassword,
   PersonMentionResponse,
+  BlockPerson,
+  BlockPersonResponse,
 } from './interfaces/api/person';
 
 import { VERSION } from './interfaces/others';
@@ -172,6 +174,10 @@ export class LemmyHttp {
 
   async followCommunity(form: FollowCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, '/community/follow', form);
+  }
+
+  async blockCommunity(form: BlockCommunity): Promise<BlockCommunityResponse> {
+    return this.wrapper(HttpType.Post, '/community/block', form);
   }
 
   async deleteCommunity(form: DeleteCommunity): Promise<CommunityResponse> {
@@ -338,14 +344,12 @@ export class LemmyHttp {
     return this.wrapper(HttpType.Get, '/user/replies', form);
   }
 
-  async getFollowedCommunities(
-    form: GetFollowedCommunities
-  ): Promise<GetFollowedCommunitiesResponse> {
-    return this.wrapper(HttpType.Get, '/user/followed_communities', form);
-  }
-
   async banPerson(form: BanPerson): Promise<BanPersonResponse> {
     return this.wrapper(HttpType.Post, '/user/ban', form);
+  }
+
+  async blockPerson(form: BlockPerson): Promise<BlockPersonResponse> {
+    return this.wrapper(HttpType.Post, '/user/block', form);
   }
 
   async getCaptcha(): Promise<GetCaptchaResponse> {
