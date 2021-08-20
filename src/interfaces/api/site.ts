@@ -128,3 +128,15 @@ export interface FederatedInstances {
   allowed?: string[];
   blocked?: string[];
 }
+
+export interface ResolveObject {
+  q: string;
+  auth?: string;
+}
+
+export interface ResolveObjectResponse {
+  comment?: CommentView;
+  post?: PostView;
+  community?: CommunityView;
+  person?: PersonViewSafe;
+}
