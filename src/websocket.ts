@@ -40,6 +40,7 @@ import {
   GetModlog,
   GetSite,
   GetSiteConfig,
+  ResolveObject,
   SaveSiteConfig,
   Search,
   TransferSite,
@@ -421,6 +422,13 @@ export class LemmyWebsocket {
    */
   search(form: Search) {
     return wrapper(UserOperation.Search, form);
+  }
+
+  /**
+   * Fetch a non-local / federated object.
+   */
+  resolveObject(form: ResolveObject) {
+    return wrapper(UserOperation.ResolveObject, form);
   }
 
   /**
