@@ -40,6 +40,7 @@ import {
   GetModlog,
   GetSite,
   GetSiteConfig,
+  ResolveObject,
   SaveSiteConfig,
   Search,
   TransferSite,
@@ -265,6 +266,10 @@ export class LemmyWebsocket {
 
   search(form: Search) {
     return wrapper(UserOperation.Search, form);
+  }
+
+  resolveObject(form: ResolveObject) {
+    return wrapper(UserOperation.ResolveObject, form);
   }
 
   markAllAsRead(form: MarkAllAsRead) {
