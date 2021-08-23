@@ -16,20 +16,28 @@ A javascript / typescript http and websocket client and type system for [Lemmy](
 
 ## Usage
 
-Check out the [Lemmy HTTP / websocket API](https://dev.lemmy.ml/docs/contributing_websocket_http_api.html) for all the commands. 
+### Websocket Client
 
-### Websocket
+[LemmyWebsocket docs](classes/LemmyWebsocket.html)
 
-```js
-import { LoginForm, LemmyWebsocket } from 'lemmy-js-client';
+```ts
+import { Login, LemmyWebsocket } from 'lemmy-js-client';
 
 let client: LemmyWebsocket = new LemmyWebsocket();
+
+let form: Login {
+  username_or_email: "my_email@email.tld",
+  password: "my_pass",
+};
+
 this.ws.send(client.login(form));
 ```
 
-### HTTP
+### HTTP Client
 
-```js
+[LemmyHttp docs](classes/LemmyHttp.html)
+
+```ts
 import { LemmyHttp } from 'lemmy-js-client';
 
 let baseUrl = 'https://lemmy.ml';

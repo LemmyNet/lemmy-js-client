@@ -33,17 +33,23 @@ export interface GetPostResponse {
   online: number;
 }
 
-/**
- * Post listing types are `All, Subscribed, Community`
- *
- * `community_name` can only be used for local communities. To get posts for a federated community, pass `community_id` instead.
- */
 export interface GetPosts {
+  /**
+   * The [[ListingType]].
+   *
+   * Post listing types are `All, Subscribed, Community`
+   */
   type_?: string;
+  /**
+   * The [[SortType]].
+   */
   sort?: string;
   page?: number;
   limit?: number;
   community_id?: number;
+  /**
+   * To get posts for a federated community by name, use `name@instance.tld` .
+   */
   community_name?: string;
   saved_only?: boolean;
   auth?: string;
@@ -53,11 +59,12 @@ export interface GetPostsResponse {
   posts: PostView[];
 }
 
-/**
- * `score` can be 0, -1, or 1
- */
 export interface CreatePostLike {
   post_id: number;
+
+  /**
+   * `score` can be 0, -1, or 1. Anything else will be rejected.
+   */
   score: number;
   auth: string;
 }

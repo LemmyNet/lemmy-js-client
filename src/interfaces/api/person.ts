@@ -1,13 +1,10 @@
 import {
   CommentView,
-  CommunityFollowerView,
   CommunityModeratorView,
   PostView,
   PrivateMessageView,
   PersonMentionView,
   PersonViewSafe,
-  CommunityBlockView,
-  PersonBlockView,
 } from '../views';
 
 export interface Login {
@@ -16,7 +13,9 @@ export interface Login {
 }
 
 /**
- * Only the first user will be able to be the admin.
+ * Register a new user.
+ *
+ * Only the first user to register will be able to be the admin.
  */
 export interface Register {
   username: string;
@@ -24,27 +23,60 @@ export interface Register {
   password: string;
   password_verify: string;
   show_nsfw: boolean;
-  captcha_uuid?: string; // Only checked if these are enabled in the server
+  /**
+   * Captcha is only checked if these are enabled in the server.
+   */
+  captcha_uuid?: string;
   captcha_answer?: string;
 }
 
 export interface GetCaptcha {}
 
 export interface GetCaptchaResponse {
-  ok?: CaptchaResponse; // Will be undefined if captchas are disabled
+  /**
+   * Will be undefined if captchas are disabled.
+   */
+  ok?: CaptchaResponse;
 }
 
 export interface CaptchaResponse {
-  png: string; // A Base64 encoded png
-  wav?: string; // A Base64 encoded wav aud,
+  /**
+   * A Base64 encoded png.
+   */
+  png: string;
+
+  /**
+   * A Base64 encoded wav file.
+   */
+  wav?: string;
+
+  /**
+   * A UUID to match the one given on request.
+   */
   uuid: string;
 }
 
 export interface SaveUserSettings {
   show_nsfw?: boolean;
-  theme?: string; // Default 'browser'
-  default_sort_type?: number; // The Sort types from above, zero indexed as a number
-  default_listing_type?: number; // Post listing types are `All, Subscribed, Community`
+
+  /**
+   * Default for this is `browser`.
+   */
+  theme?: string;
+
+  /**
+   * The [[SortType]].
+   *
+   * The Sort types from above, zero indexed as a number
+   */
+  default_sort_type?: number;
+
+  /**
+   * The [[ListingType]].
+   *
+   * Post listing types are `All, Subscribed, Community`
+   */
+  default_listing_type?: number;
   lang?: string;
   avatar?: string;
   banner?: string;
@@ -76,11 +108,11 @@ export interface LoginResponse {
   jwt: string;
 }
 
-/**
- * `username` can only be used for local users. To get details for a federated user, pass `user_id` instead.
- */
 export interface GetPersonDetails {
   person_id?: number;
+  /**
+   * To get details for a federated user, use `person@instance.tld`.
+   */
   username?: string;
   sort?: string;
   page?: number;
@@ -122,7 +154,11 @@ export interface AddAdminResponse {
 export interface BanPerson {
   person_id: number;
   ban: boolean;
-  remove_data?: boolean; // Removes/Restores their comments, posts, and communities
+
+  /**
+   * Removes/Restores their comments, posts, and communities
+   */
+  remove_data?: boolean;
   reason?: string;
   expires?: number;
   auth: string;
@@ -134,6 +170,9 @@ export interface BanPersonResponse {
 }
 
 export interface GetReplies {
+  /**
+   * The [[SortType]].
+   */
   sort?: string;
   page?: number;
   limit?: number;
@@ -142,6 +181,9 @@ export interface GetReplies {
 }
 
 export interface GetPersonMentions {
+  /**
+   * The [[SortType]].
+   */
   sort?: string;
   page?: number;
   limit?: number;
