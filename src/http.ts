@@ -56,6 +56,8 @@ import {
   GetSiteConfig,
   GetSiteConfigResponse,
   GetSiteResponse,
+  ResolveObject,
+  ResolveObjectResponse,
   SaveSiteConfig,
   Search,
   SearchResponse,
@@ -179,6 +181,13 @@ export class LemmyHttp {
    */
   async search(form: Search): Promise<SearchResponse> {
     return this.wrapper(HttpType.Get, '/search', form);
+  }
+
+  /**
+   * Fetch a non-local / federated object.
+   */
+  async resolveObject(form: ResolveObject): Promise<ResolveObjectResponse> {
+    return this.wrapper(HttpType.Get, '/resolve_object', form);
   }
 
   /**

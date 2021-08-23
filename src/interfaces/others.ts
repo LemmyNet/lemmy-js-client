@@ -44,6 +44,7 @@ export enum UserOperation {
   AddAdmin,
   BanPerson,
   Search,
+  ResolveObject,
   MarkAllAsRead,
   SaveUserSettings,
   TransferCommunity,
