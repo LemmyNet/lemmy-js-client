@@ -4,13 +4,19 @@ export interface CreateComment {
   content: string;
   parent_id?: number;
   post_id: number;
-  form_id?: string; // An optional front end ID, to tell which is coming back
+  /**
+   * An optional front end ID, to tell which is comment is coming back.
+   */
+  form_id?: string;
   auth: string;
 }
 
 export interface EditComment {
   content: string;
   comment_id: number;
+  /**
+   * An optional front end ID, to tell which is comment is coming back.
+   */
   form_id?: string;
   auth: string;
 }
@@ -52,7 +58,10 @@ export interface SaveComment {
 export interface CommentResponse {
   comment_view: CommentView;
   recipient_ids: number[];
-  form_id?: string; // An optional front end ID, to tell which is coming back
+  /**
+   * An optional front end ID, to tell which is comment is coming back.
+   */
+  form_id?: string;
 }
 
 export interface CreateCommentLike {
@@ -64,10 +73,17 @@ export interface CreateCommentLike {
 /**
  * Comment listing types are `All, Subscribed, Community`
  *
- * `community_name` can only be used for local communities. To get posts for a federated community, pass `community_id` instead.
+ * You can use either `community_id` or `community_name` as an id.
+ * To get posts for a federated community by name, use `name@instance.tld` .
  */
 export interface GetComments {
+  /**
+   * The [[ListingType]].
+   */
   type_?: string;
+  /**
+   * The [[SortType]].
+   */
   sort?: string;
   page?: number;
   limit?: number;
@@ -106,7 +122,9 @@ export interface ResolveCommentReportResponse {
 export interface ListCommentReports {
   page?: number;
   limit?: number;
-  // if no community is given, it returns reports for all communities moderated by the auth user
+  /**
+   * if no community is given, it returns reports for all communities moderated by the auth user.
+   */
   community?: number;
   auth: string;
 }

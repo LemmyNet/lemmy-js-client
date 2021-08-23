@@ -24,15 +24,28 @@ import {
 } from '../views';
 
 /**
- * Search types are `All, Comments, Posts, Communities, Users, Url`
+ * Search lemmy for different types of data.
  */
 export interface Search {
+  /**
+   * The search query string.
+   */
   q: string;
+
+  /**
+   * The [[SearchType]].
+   */
   type_?: string;
   community_id?: number;
   community_name?: string;
   creator_id?: number;
+  /**
+   * The [[SortType]].
+   */
   sort?: string;
+  /**
+   * The [[ListingType]].
+   */
   listing_type?: string;
   page?: number;
   limit?: number;
@@ -40,6 +53,9 @@ export interface Search {
 }
 
 export interface SearchResponse {
+  /**
+   * The [[SearchType]].
+   */
   type_: string;
   comments: CommentView[];
   posts: PostView[];
@@ -102,15 +118,24 @@ export interface SiteResponse {
 }
 
 export interface GetSiteResponse {
-  site_view?: SiteView; // Because the site might not be set up yet
+  /**
+   * Optional, because the site might not be set up yet.
+   */
+  site_view?: SiteView;
   admins: PersonViewSafe[];
   banned: PersonViewSafe[];
   online: number;
   version: string;
-  my_user?: MyUserInfo; // Gives back your local user, settings, follows, and blocks if logged in
+  /**
+   * If you're logged in, you'll get back extra user info.
+   */
+  my_user?: MyUserInfo;
   federated_instances?: FederatedInstances;
 }
 
+/**
+ * Your user info, such as blocks, follows, etc.
+ */
 export interface MyUserInfo {
   local_user_view: LocalUserSettingsView;
   follows: CommunityFollowerView[];

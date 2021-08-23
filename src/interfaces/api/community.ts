@@ -4,6 +4,11 @@ import {
   PersonViewSafe,
 } from '../views';
 
+/**
+ * You can use either `id` or `name` as an id.
+ *
+ * To get a federated community by name, use `name@instance.tld` .
+ */
 export interface GetCommunity {
   id?: number;
   name?: string;
@@ -31,7 +36,14 @@ export interface CommunityResponse {
 }
 
 export interface ListCommunities {
+  /**
+   * The [[ListingType]].
+   */
   type_?: string;
+
+  /**
+   * The [[SortType]].
+   */
   sort?: string;
   page?: number;
   limit?: number;
@@ -46,7 +58,11 @@ export interface BanFromCommunity {
   community_id: number;
   person_id: number;
   ban: boolean;
-  remove_data?: boolean; // Removes/Restores their comments and posts for that community
+
+  /**
+   * Removes/Restores their comments and posts for that community.
+   */
+  remove_data?: boolean;
   reason?: string;
   expires?: number;
   auth: string;
