@@ -72,7 +72,7 @@ import { UserOperation } from './interfaces/others';
 /**
  * Helps build lemmy websocket message requests, that you can use in your Websocket sends.
  *
- * You'll receive back a [[WebsocketResponse]].
+ * You'll receive back a [[WebSocketResponse]].
  *
  * The return types for these are given in [[LemmyHttp]]
  */
