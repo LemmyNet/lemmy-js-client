@@ -44,19 +44,3 @@ let baseUrl = 'https://lemmy.ml';
 let client: LemmyHttp = new LemmyHttp(baseUrl, headers?);
 let jwt = await client.httpLogin(loginForm).jwt;
 ```
-
-## Support / Donate
-
-Lemmy is free, open-source software, meaning no advertising, monetizing, or venture capital, ever. Your donations directly support full-time development of the project.
-
-- [Support on Liberapay](https://liberapay.com/Lemmy).
-- [Support on Patreon](https://www.patreon.com/dessalines).
-- [Support on OpenCollective](https://opencollective.com/lemmy).
-- [List of Sponsors](https://dev.lemmy.ml/sponsors).
-
-### Crypto
-
-- bitcoin: `1Hefs7miXS5ff5Ck5xvmjKjXf5242KzRtK`
-- ethereum: `0x400c96c96acbC6E7B3B43B1dc1BB446540a88A01`
-- monero: `41taVyY6e1xApqKyMVDRVxJ76sPkfZhALLTjRvVKpaAh2pBd4wv9RgYj1tSPrx8wc6iE1uWUfjtQdTmTy2FGMeChGVKPQuV`
-
