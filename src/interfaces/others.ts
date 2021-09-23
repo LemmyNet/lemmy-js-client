@@ -67,6 +67,13 @@ export enum UserOperation {
   GetSiteMetadata,
   BlockCommunity,
   BlockPerson,
+  CreateCommentReport,
+  ResolveCommentReport,
+  ListCommentReports,
+  CreatePostReport,
+  ResolvePostReport,
+  ListPostReports,
+  GetReportCount,
 }
 
 /**

@@ -1,11 +1,14 @@
 import {
   CreateComment,
   CreateCommentLike,
+  CreateCommentReport,
   DeleteComment,
   EditComment,
   GetComments,
+  ListCommentReports,
   MarkCommentAsRead,
   RemoveComment,
+  ResolveCommentReport,
   SaveComment,
 } from './interfaces/api/comment';
 import {
@@ -24,13 +27,16 @@ import {
 import {
   CreatePost,
   CreatePostLike,
+  CreatePostReport,
   DeletePost,
   EditPost,
   GetPost,
   GetPosts,
   GetSiteMetadata,
+  ListPostReports,
   LockPost,
   RemovePost,
+  ResolvePostReport,
   SavePost,
   StickyPost,
 } from './interfaces/api/post';
@@ -66,6 +72,7 @@ import {
   SaveUserSettings,
   ChangePassword,
   BlockPerson,
+  GetReportCount,
 } from './interfaces/api/person';
 import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
 import { UserOperation } from './interfaces/others';
@@ -243,6 +250,27 @@ export class LemmyWebsocket {
   }
 
   /**
+   * Report a comment.
+   */
+  createCommentReport(form: CreateCommentReport) {
+    return wrapper(UserOperation.CreateCommentReport, form);
+  }
+
+  /**
+   * Resolve a comment report. Only a mod can do this.
+   */
+  resolveCommentReport(form: ResolveCommentReport) {
+    return wrapper(UserOperation.ResolveCommentReport, form);
+  }
+
+  /**
+   * List comment reports.
+   */
+  listCommentReports(form: ListCommentReports) {
+    return wrapper(UserOperation.ListCommentReports, form);
+  }
+
+  /**
    * Get / fetch posts, with various filters.
    */
   getPosts(form: GetPosts) {
@@ -303,6 +331,27 @@ export class LemmyWebsocket {
    */
   savePost(form: SavePost) {
     return wrapper(UserOperation.SavePost, form);
+  }
+
+  /**
+   * Report a post.
+   */
+  createPostReport(form: CreatePostReport) {
+    return wrapper(UserOperation.CreatePostReport, form);
+  }
+
+  /**
+   * Resolve a post report. Only a mod can do this.
+   */
+  resolvePostReport(form: ResolvePostReport) {
+    return wrapper(UserOperation.ResolvePostReport, form);
+  }
+
+  /**
+   * List post reports.
+   */
+  listPostReports(form: ListPostReports) {
+    return wrapper(UserOperation.ListPostReports, form);
   }
 
   /**
@@ -450,6 +499,13 @@ export class LemmyWebsocket {
    */
   changePassword(form: ChangePassword) {
     return wrapper(UserOperation.ChangePassword, form);
+  }
+
+  /**
+   * Get counts for your reports
+   */
+  getReportCount(form: GetReportCount) {
+    return wrapper(UserOperation.GetReportCount, form);
   }
 
   /**

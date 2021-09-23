@@ -1,14 +1,19 @@
 import fetch from 'node-fetch';
 import {
+  CommentReportResponse,
   CommentResponse,
   CreateComment,
   CreateCommentLike,
+  CreateCommentReport,
   DeleteComment,
   EditComment,
   GetComments,
   GetCommentsResponse,
+  ListCommentReports,
+  ListCommentReportsResponse,
   MarkCommentAsRead,
   RemoveComment,
+  ResolveCommentReport,
   SaveComment,
 } from './interfaces/api/comment';
 import {
@@ -42,10 +47,15 @@ import {
   GetSiteMetadata,
   GetSiteMetadataResponse,
   LockPost,
+  CreatePostReport,
+  PostReportResponse,
   PostResponse,
   RemovePost,
   SavePost,
   StickyPost,
+  ResolvePostReport,
+  ListPostReports,
+  ListPostReportsResponse,
 } from './interfaces/api/post';
 import {
   CreateSite,
@@ -97,6 +107,8 @@ import {
   PersonMentionResponse,
   BlockPerson,
   BlockPersonResponse,
+  GetReportCount,
+  GetReportCountResponse,
 } from './interfaces/api/person';
 
 import { VERSION } from './interfaces/others';
@@ -346,6 +358,31 @@ export class LemmyHttp {
   }
 
   /**
+   * Report a post.
+   */
+  async createPostReport(form: CreatePostReport): Promise<PostReportResponse> {
+    return this.wrapper(HttpType.Post, '/post/report', form);
+  }
+
+  /**
+   * Resolve a post report. Only a mod can do this.
+   */
+  async resolvePostReport(
+    form: ResolvePostReport
+  ): Promise<PostReportResponse> {
+    return this.wrapper(HttpType.Put, '/post/report/resolve', form);
+  }
+
+  /**
+   * List post reports.
+   */
+  async listPostReports(
+    form: ListPostReports
+  ): Promise<ListPostReportsResponse> {
+    return this.wrapper(HttpType.Get, '/post/report/list', form);
+  }
+
+  /**
    * Fetch metadata for any given site.
    */
   async getSiteMetadata(
@@ -408,6 +445,33 @@ export class LemmyHttp {
    */
   async getComments(form: GetComments): Promise<GetCommentsResponse> {
     return this.wrapper(HttpType.Get, '/comment/list', form);
+  }
+
+  /**
+   * Report a comment.
+   */
+  async createCommentReport(
+    form: CreateCommentReport
+  ): Promise<CommentReportResponse> {
+    return this.wrapper(HttpType.Post, '/comment/report', form);
+  }
+
+  /**
+   * Resolve a comment report. Only a mod can do this.
+   */
+  async resolveCommentReport(
+    form: ResolveCommentReport
+  ): Promise<CommentReportResponse> {
+    return this.wrapper(HttpType.Put, '/comment/report/resolve', form);
+  }
+
+  /**
+   * List comment reports.
+   */
+  async listCommentReports(
+    form: ListCommentReports
+  ): Promise<ListCommentReportsResponse> {
+    return this.wrapper(HttpType.Get, '/comment/report/list', form);
   }
 
   /**
@@ -564,6 +628,13 @@ export class LemmyHttp {
    */
   async changePassword(form: ChangePassword): Promise<LoginResponse> {
     return this.wrapper(HttpType.Put, '/user/change_password', form);
+  }
+
+  /**
+   * Get counts for your reports
+   */
+  async getReportCount(form: GetReportCount): Promise<GetReportCountResponse> {
+    return this.wrapper(HttpType.Get, '/user/report_count', form);
   }
 
   /**

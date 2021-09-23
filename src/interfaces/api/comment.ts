@@ -103,20 +103,15 @@ export interface CreateCommentReport {
   auth: string;
 }
 
-export interface CreateCommentReportResponse {
-  success: boolean;
+export interface CommentReportResponse {
+  comment_report_view: CommentReportView;
 }
 
 export interface ResolveCommentReport {
   report_id: number;
+  /// Either resolve or unresolve a report.
   resolved: boolean;
   auth: string;
-}
-
-export interface ResolveCommentReportResponse {
-  // TODO this should probably return the view
-  report_id: number;
-  resolved: boolean;
 }
 
 export interface ListCommentReports {
@@ -125,7 +120,7 @@ export interface ListCommentReports {
   /**
    * if no community is given, it returns reports for all communities moderated by the auth user.
    */
-  community?: number;
+  community_id?: number;
   auth: string;
 }
 

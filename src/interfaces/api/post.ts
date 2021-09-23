@@ -124,24 +124,25 @@ export interface CreatePostReport {
   auth: string;
 }
 
-export interface CreatePostReportResponse {
-  success: boolean;
+export interface PostReportResponse {
+  post_report_view: PostReportView;
 }
 
 export interface ResolvePostReport {
   report_id: number;
+  /**
+   * Either resolve or unresolve a report.
+   */
   resolved: boolean;
   auth: string;
-}
-
-export interface ResolvePostReportResponse {
-  report_id: number;
-  resolved: boolean;
 }
 
 export interface ListPostReports {
   page?: number;
   limit?: number;
+  /**
+   * if no community is given, it returns reports for all communities moderated by the auth user.
+   */
   community?: number;
   auth: string;
 }
