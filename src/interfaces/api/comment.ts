@@ -125,5 +125,5 @@ export interface ListCommentReports {
 }
 
 export interface ListCommentReportsResponse {
-  comments: CommentReportView[];
+  comment_reports: CommentReportView[];
 }

@@ -148,7 +148,7 @@ export interface ListPostReports {
 }
 
 export interface ListPostReportsResponse {
-  posts: PostReportView[];
+  post_reports: PostReportView[];
 }
 
 export interface GetSiteMetadata {
