@@ -109,7 +109,9 @@ export interface CommentReportResponse {
 
 export interface ResolveCommentReport {
   report_id: number;
-  /// Either resolve or unresolve a report.
+  /**
+   * Either resolve or unresolve a report.
+   */
   resolved: boolean;
   auth: string;
 }
