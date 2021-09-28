@@ -658,7 +658,7 @@ export class LemmyHttp {
       return fetch(getUrl, {
         method: 'GET',
         headers: this.headers,
-      }).then(d => d.json());
+      }).then(d => d.json() as Promise<ResponseType>);
     } else {
       return fetch(this.buildFullUrl(endpoint), {
         method: type_,
@@ -667,7 +667,7 @@ export class LemmyHttp {
           ...this.headers,
         },
         body: JSON.stringify(form),
-      }).then(d => d.json());
+      }).then(d => d.json() as Promise<ResponseType>);
     }
   }
 }
