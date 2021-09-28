@@ -260,16 +260,16 @@ export interface PrivateMessageResponse {
   private_message_view: PrivateMessageView;
 }
 
-/**
- * If a community is supplied, returns the report count for only that community, otherwise returns the report count for all communities the user moderates.
- */
 export interface GetReportCount {
-  community?: number;
+  /**
+   * If a community is supplied, returns the report count for only that community, otherwise returns the report count for all communities the user moderates.
+   */
+  community_id?: number;
   auth: string;
 }
 
 export interface GetReportCountResponse {
-  community?: number;
+  community_id?: number;
   comment_reports: number;
   post_reports: number;
 }

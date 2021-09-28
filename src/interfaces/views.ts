@@ -85,6 +85,9 @@ export interface PostReportView {
   community: CommunitySafe;
   creator: PersonSafe;
   post_creator: PersonSafe;
+  creator_banned_from_community: boolean;
+  my_vote?: number;
+  counts: PostAggregates;
   resolver?: PersonSafe;
 }
 
@@ -109,6 +112,9 @@ export interface CommentReportView {
   community: CommunitySafe;
   creator: PersonSafe;
   comment_creator: PersonSafe;
+  counts: CommentAggregates;
+  creator_banned_from_community: boolean;
+  my_vote?: number;
   resolver?: PersonSafe;
 }
 
