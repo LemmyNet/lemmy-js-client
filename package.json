@@ -16,7 +16,7 @@
   },
   "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "devDependencies": {
-    "@types/node": "^16.10.1",
+    "@types/node": "^16.10.2",
     "@types/node-fetch": "^3.0.3",
     "eslint": "^7.32.0",
     "eslint-plugin-jane": "^9.0.6",
