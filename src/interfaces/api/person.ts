@@ -28,6 +28,7 @@ export interface Register {
    */
   captcha_uuid?: string;
   captcha_answer?: string;
+  honeypot?: string;
 }
 
 export interface GetCaptcha {}
