@@ -14,6 +14,7 @@ export interface CreatePost {
   nsfw?: boolean;
   community_id: number;
   auth: string;
+  honeypot?: string;
 }
 
 export interface PostResponse {
