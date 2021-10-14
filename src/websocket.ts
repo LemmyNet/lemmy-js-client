@@ -73,6 +73,7 @@ import {
   ChangePassword,
   BlockPerson,
   GetReportCount,
+  GetUnreadCount,
 } from './interfaces/api/person';
 import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
 import { UserOperation } from './interfaces/others';
@@ -508,6 +509,12 @@ export class LemmyWebsocket {
     return wrapper(UserOperation.GetReportCount, form);
   }
 
+  /**
+   * Get your unread counts
+   */
+  getUnreadCount(form: GetUnreadCount) {
+    return wrapper(UserOperation.GetUnreadCount, form);
+  }
   /**
    * Delete your account.
    */

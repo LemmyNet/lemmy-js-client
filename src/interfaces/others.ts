@@ -74,6 +74,7 @@ export enum UserOperation {
   ResolvePostReport,
   ListPostReports,
   GetReportCount,
+  GetUnreadCount,
 }
 
 /**
