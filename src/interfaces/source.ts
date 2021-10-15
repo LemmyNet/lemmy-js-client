@@ -198,6 +198,36 @@ export interface ModAdd {
   when_: string;
 }
 
+export interface AdminPurgePerson {
+  id: number;
+  admin_person_id: number;
+  reason?: string;
+  when_: string;
+}
+
+export interface AdminPurgeCommunity {
+  id: number;
+  admin_person_id: number;
+  reason?: string;
+  when_: string;
+}
+
+export interface AdminPurgePost {
+  id: number;
+  admin_person_id: number;
+  community_id: number;
+  reason?: string;
+  when_: string;
+}
+
+export interface AdminPurgeComment {
+  id: number;
+  admin_person_id: number;
+  post_id: number;
+  reason?: string;
+  when_: string;
+}
+
 export interface CommunitySafe {
   id: number;
   name: string;

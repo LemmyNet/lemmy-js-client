@@ -66,6 +66,11 @@ import {
   GetSiteConfig,
   GetSiteConfigResponse,
   GetSiteResponse,
+  PurgeComment,
+  PurgeCommunity,
+  PurgeItemResponse,
+  PurgePerson,
+  PurgePost,
   ResolveObject,
   ResolveObjectResponse,
   SaveSiteConfig,
@@ -642,6 +647,34 @@ export class LemmyHttp {
    */
   async addAdmin(form: AddAdmin): Promise<AddAdminResponse> {
     return this.wrapper(HttpType.Post, '/admin/add', form);
+  }
+
+  /**
+   * Purge / Delete a person from the database.
+   */
+  async purgePerson(form: PurgePerson): Promise<PurgeItemResponse> {
+    return this.wrapper(HttpType.Post, '/admin/purge/person', form);
+  }
+
+  /**
+   * Purge / Delete a community from the database.
+   */
+  async purgeCommunity(form: PurgeCommunity): Promise<PurgeItemResponse> {
+    return this.wrapper(HttpType.Post, '/admin/purge/community', form);
+  }
+
+  /**
+   * Purge / Delete a post from the database.
+   */
+  async purgePost(form: PurgePost): Promise<PurgeItemResponse> {
+    return this.wrapper(HttpType.Post, '/admin/purge/post', form);
+  }
+
+  /**
+   * Purge / Delete a comment from the database.
+   */
+  async purgeComment(form: PurgeComment): Promise<PurgeItemResponse> {
+    return this.wrapper(HttpType.Post, '/admin/purge/comment', form);
   }
 
   private buildFullUrl(endpoint: string): string {

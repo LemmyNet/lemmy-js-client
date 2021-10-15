@@ -46,6 +46,10 @@ import {
   GetModlog,
   GetSite,
   GetSiteConfig,
+  PurgeComment,
+  PurgeCommunity,
+  PurgePerson,
+  PurgePost,
   ResolveObject,
   SaveSiteConfig,
   Search,
@@ -583,6 +587,34 @@ export class LemmyWebsocket {
    */
   blockCommunity(form: BlockCommunity) {
     return wrapper(UserOperation.BlockCommunity, form);
+  }
+
+  /**
+   * Purge / Delete a person from the database.
+   */
+  purgePerson(form: PurgePerson) {
+    return wrapper(UserOperation.PurgePerson, form);
+  }
+
+  /**
+   * Purge / Delete a community from the database.
+   */
+  purgeCommunity(form: PurgeCommunity) {
+    return wrapper(UserOperation.PurgeCommunity, form);
+  }
+
+  /**
+   * Purge / Delete a post from the database.
+   */
+  purgePost(form: PurgePost) {
+    return wrapper(UserOperation.PurgePost, form);
+  }
+
+  /**
+   * Purge / Delete a comment from the database.
+   */
+  purgeComment(form: PurgeComment) {
+    return wrapper(UserOperation.PurgeComment, form);
   }
 }
 

@@ -1,4 +1,8 @@
 import {
+  AdminPurgeCommentView,
+  AdminPurgeCommunityView,
+  AdminPurgePersonView,
+  AdminPurgePostView,
   CommunityBlockView,
   CommunityFollowerView,
   CommunityModeratorView,
@@ -81,6 +85,10 @@ export interface GetModlogResponse {
   added_to_community: ModAddCommunityView[];
   transferred_to_community: ModTransferCommunityView[];
   added: ModAddView[];
+  admin_purged_persons: AdminPurgePersonView[];
+  admin_purged_communities: AdminPurgeCommunityView[];
+  admin_purged_posts: AdminPurgePostView[];
+  admin_purged_comments: AdminPurgeCommentView[];
 }
 
 export interface CreateSite {
@@ -178,4 +186,34 @@ export interface ResolveObjectResponse {
   post?: PostView;
   community?: CommunityView;
   person?: PersonViewSafe;
+}
+
+export interface PurgePerson {
+  person_id: number;
+  remove_images: boolean;
+  reason?: string;
+  auth: string;
+}
+
+export interface PurgeCommunity {
+  community_id: number;
+  remove_images: boolean;
+  reason?: string;
+  auth: string;
+}
+
+export interface PurgePost {
+  post_id: number;
+  reason?: string;
+  auth: string;
+}
+
+export interface PurgeComment {
+  comment_id: number;
+  reason?: string;
+  auth: string;
+}
+
+export interface PurgeItemResponse {
+  success: boolean;
 }

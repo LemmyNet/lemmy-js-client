@@ -26,6 +26,10 @@ import {
   PersonMention,
   PersonSafe,
   LocalUserSettings,
+  AdminPurgeCommunity,
+  AdminPurgePerson,
+  AdminPurgePost,
+  AdminPurgeComment,
 } from './source';
 
 export interface PersonViewSafe {
@@ -185,6 +189,28 @@ export interface ModStickyPostView {
   moderator: PersonSafe;
   post: Post;
   community: CommunitySafe;
+}
+
+export interface AdminPurgeCommunityView {
+  admin_purge_community: AdminPurgeCommunity;
+  admin: PersonSafe;
+}
+
+export interface AdminPurgePersonView {
+  admin_purge_person: AdminPurgePerson;
+  admin: PersonSafe;
+}
+
+export interface AdminPurgePostView {
+  admin_purge_post: AdminPurgePost;
+  admin: PersonSafe;
+  community: CommunitySafe;
+}
+
+export interface AdminPurgeCommentView {
+  admin_purge_comment: AdminPurgeComment;
+  admin: PersonSafe;
+  post: Post;
 }
 
 export interface CommunityFollowerView {
