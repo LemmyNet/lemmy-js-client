@@ -275,6 +275,16 @@ export interface GetReportCountResponse {
   post_reports: number;
 }
 
+export interface GetUnreadCount {
+  auth: string;
+}
+
+export interface GetUnreadCountResponse {
+  replies: number;
+  mentions: number;
+  private_messages: number;
+}
+
 export interface BlockPerson {
   person_id: number;
   block: boolean;

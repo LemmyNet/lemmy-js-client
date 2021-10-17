@@ -109,6 +109,8 @@ import {
   BlockPersonResponse,
   GetReportCount,
   GetReportCountResponse,
+  GetUnreadCount,
+  GetUnreadCountResponse,
 } from './interfaces/api/person';
 
 import { VERSION } from './interfaces/others';
@@ -635,6 +637,13 @@ export class LemmyHttp {
    */
   async getReportCount(form: GetReportCount): Promise<GetReportCountResponse> {
     return this.wrapper(HttpType.Get, '/user/report_count', form);
+  }
+
+  /**
+   * Get your unread counts
+   */
+  async getUnreadCount(form: GetUnreadCount): Promise<GetUnreadCountResponse> {
+    return this.wrapper(HttpType.Get, '/user/unread_count', form);
   }
 
   /**
