@@ -2,7 +2,7 @@ import {
   CommunityModeratorView,
   CommunityView,
   PersonViewSafe,
-} from '../views';
+} from "../views";
 
 /**
  * You can use either `id` or `name` as an id.

@@ -1,11 +1,11 @@
 import {
   CommentView,
   CommunityModeratorView,
-  PostView,
-  PrivateMessageView,
   PersonMentionView,
   PersonViewSafe,
-} from '../views';
+  PostView,
+  PrivateMessageView,
+} from "../views";
 
 export interface Login {
   username_or_email: string;

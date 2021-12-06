@@ -1,15 +1,11 @@
 import {
+  CommentView,
   CommunityBlockView,
   CommunityFollowerView,
   CommunityModeratorView,
-  LocalUserSettingsView,
-  PersonBlockView,
-} from '../views';
-import {
-  CommentView,
   CommunityView,
+  LocalUserSettingsView,
   ModAddCommunityView,
-  ModTransferCommunityView,
   ModAddView,
   ModBanFromCommunityView,
   ModBanView,
@@ -18,10 +14,12 @@ import {
   ModRemoveCommunityView,
   ModRemovePostView,
   ModStickyPostView,
+  ModTransferCommunityView,
+  PersonBlockView,
+  PersonViewSafe,
   PostView,
   SiteView,
-  PersonViewSafe,
-} from '../views';
+} from "../views";
 
 /**
  * Search lemmy for different types of data.

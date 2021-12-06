@@ -1,11 +1,11 @@
-import { SiteMetadata } from '..';
+import { SiteMetadata } from "..";
 import {
-  CommunityView,
   CommentView,
   CommunityModeratorView,
+  CommunityView,
   PostReportView,
   PostView,
-} from '../views';
+} from "../views";
 
 export interface CreatePost {
   name: string;
