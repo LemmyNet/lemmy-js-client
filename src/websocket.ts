@@ -25,6 +25,31 @@ import {
   TransferCommunity,
 } from "./interfaces/api/community";
 import {
+  AddAdmin,
+  BanPerson,
+  BlockPerson,
+  ChangePassword,
+  CreatePrivateMessage,
+  DeleteAccount,
+  DeletePrivateMessage,
+  EditPrivateMessage,
+  GetPersonDetails,
+  GetPersonMentions,
+  GetPrivateMessages,
+  GetReplies,
+  GetReportCount,
+  GetUnreadCount,
+  Login,
+  MarkAllAsRead,
+  MarkPersonMentionAsRead,
+  MarkPrivateMessageAsRead,
+  PasswordChange,
+  PasswordReset,
+  Register,
+  SaveUserSettings,
+  VerifyEmail,
+} from "./interfaces/api/person";
+import {
   CreatePost,
   CreatePostLike,
   CreatePostReport,
@@ -54,33 +79,8 @@ import {
   Search,
   TransferSite,
 } from "./interfaces/api/site";
-import {
-  AddAdmin,
-  BanPerson,
-  CreatePrivateMessage,
-  DeleteAccount,
-  DeletePrivateMessage,
-  EditPrivateMessage,
-  GetPrivateMessages,
-  GetReplies,
-  GetPersonDetails,
-  GetPersonMentions,
-  Login,
-  MarkAllAsRead,
-  MarkPrivateMessageAsRead,
-  MarkPersonMentionAsRead,
-  PasswordChange,
-  PasswordReset,
-  Register,
-  SaveUserSettings,
-  ChangePassword,
-  BlockPerson,
-  GetReportCount,
-  GetUnreadCount,
-  VerifyEmail,
-} from './interfaces/api/person';
-import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
-import { UserOperation } from './interfaces/others';
+import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
+import { UserOperation } from "./interfaces/others";
 
 /**
  * Helps build lemmy websocket message requests, that you can use in your Websocket sends.

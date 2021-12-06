@@ -1,9 +1,8 @@
 import {
+  CommentView,
   CommunityBlockView,
   CommunityFollowerView,
   CommunityModeratorView,
-  RegistrationApplicationView,
-  CommentView,
   CommunityView,
   LocalUserSettingsView,
   ModAddCommunityView,
@@ -19,6 +18,7 @@ import {
   PersonBlockView,
   PersonViewSafe,
   PostView,
+  RegistrationApplicationView,
   SiteView,
 } from "../views";
 

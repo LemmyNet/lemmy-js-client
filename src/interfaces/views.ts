@@ -9,6 +9,7 @@ import {
   Comment,
   CommentReport,
   CommunitySafe,
+  LocalUserSettings,
   ModAdd,
   ModAddCommunity,
   ModBan,
@@ -19,15 +20,14 @@ import {
   ModRemovePost,
   ModStickyPost,
   ModTransferCommunity,
+  PersonMention,
+  PersonSafe,
   Post,
   PostReport,
   PrivateMessage,
-  Site,
-  PersonMention,
-  PersonSafe,
-  LocalUserSettings,
   RegistrationApplication,
-} from './source';
+  Site,
+} from "./source";
 
 export interface PersonViewSafe {
   person: PersonSafe;

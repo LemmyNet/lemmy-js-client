@@ -602,7 +602,7 @@ export class LemmyHttp {
    * Delete your account.
    */
   async deleteAccount(form: DeleteAccount): Promise<DeleteAccountResponse> {
-    return this.wrapper(HttpType.Post, '/user/delete_account', form);
+    return this.wrapper(HttpType.Post, "/user/delete_account", form);
   }
 
   /**
@@ -658,7 +658,7 @@ export class LemmyHttp {
    * Verify your email
    */
   async verifyEmail(form: VerifyEmail): Promise<VerifyEmailResponse> {
-    return this.wrapper(HttpType.Post, '/user/verify_email', form);
+    return this.wrapper(HttpType.Post, "/user/verify_email", form);
   }
 
   /**
@@ -676,7 +676,7 @@ export class LemmyHttp {
   ): Promise<GetUnreadRegistrationApplicationCountResponse> {
     return this.wrapper(
       HttpType.Get,
-      '/admin/registration_application/count',
+      "/admin/registration_application/count",
       form
     );
   }
@@ -689,7 +689,7 @@ export class LemmyHttp {
   ): Promise<ListRegistrationApplicationsResponse> {
     return this.wrapper(
       HttpType.Get,
-      '/admin/registration_application/list',
+      "/admin/registration_application/list",
       form
     );
   }
@@ -702,7 +702,7 @@ export class LemmyHttp {
   ): Promise<RegistrationApplicationResponse> {
     return this.wrapper(
       HttpType.Put,
-      '/admin/registration_application/approve',
+      "/admin/registration_application/approve",
       form
     );
   }
