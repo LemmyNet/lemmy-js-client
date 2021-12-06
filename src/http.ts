@@ -45,6 +45,7 @@ import {
   ChangePassword,
   CreatePrivateMessage,
   DeleteAccount,
+  DeleteAccountResponse,
   DeletePrivateMessage,
   EditPrivateMessage,
   GetCaptchaResponse,
@@ -72,6 +73,8 @@ import {
   PrivateMessagesResponse,
   Register,
   SaveUserSettings,
+  VerifyEmail,
+  VerifyEmailResponse,
 } from "./interfaces/api/person";
 import {
   CreatePost,
@@ -96,6 +99,7 @@ import {
   StickyPost,
 } from "./interfaces/api/post";
 import {
+  ApproveRegistrationApplication,
   CreateSite,
   EditSite,
   GetModlog,
@@ -104,6 +108,11 @@ import {
   GetSiteConfig,
   GetSiteConfigResponse,
   GetSiteResponse,
+  GetUnreadRegistrationApplicationCount,
+  GetUnreadRegistrationApplicationCountResponse,
+  ListRegistrationApplications,
+  ListRegistrationApplicationsResponse,
+  RegistrationApplicationResponse,
   ResolveObject,
   ResolveObjectResponse,
   SaveSiteConfig,
@@ -592,8 +601,8 @@ export class LemmyHttp {
   /**
    * Delete your account.
    */
-  async deleteAccount(form: DeleteAccount): Promise<LoginResponse> {
-    return this.wrapper(HttpType.Post, "/user/delete_account", form);
+  async deleteAccount(form: DeleteAccount): Promise<DeleteAccountResponse> {
+    return this.wrapper(HttpType.Post, '/user/delete_account', form);
   }
 
   /**
@@ -646,10 +655,56 @@ export class LemmyHttp {
   }
 
   /**
+   * Verify your email
+   */
+  async verifyEmail(form: VerifyEmail): Promise<VerifyEmailResponse> {
+    return this.wrapper(HttpType.Post, '/user/verify_email', form);
+  }
+
+  /**
    * Add an admin to your site.
    */
   async addAdmin(form: AddAdmin): Promise<AddAdminResponse> {
     return this.wrapper(HttpType.Post, "/admin/add", form);
+  }
+
+  /**
+   * Get the unread registration applications count.
+   */
+  async getUnreadRegistrationApplicationCount(
+    form: GetUnreadRegistrationApplicationCount
+  ): Promise<GetUnreadRegistrationApplicationCountResponse> {
+    return this.wrapper(
+      HttpType.Get,
+      '/admin/registration_application/count',
+      form
+    );
+  }
+
+  /**
+   * List the unread registration applications.
+   */
+  async listRegistrationApplications(
+    form: ListRegistrationApplications
+  ): Promise<ListRegistrationApplicationsResponse> {
+    return this.wrapper(
+      HttpType.Get,
+      '/admin/registration_application/list',
+      form
+    );
+  }
+
+  /**
+   * Approve a registration application
+   */
+  async approveRegistrationApplication(
+    form: ApproveRegistrationApplication
+  ): Promise<RegistrationApplicationResponse> {
+    return this.wrapper(
+      HttpType.Put,
+      '/admin/registration_application/approve',
+      form
+    );
   }
 
   private buildFullUrl(endpoint: string): string {

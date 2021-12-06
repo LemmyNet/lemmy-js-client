@@ -25,30 +25,6 @@ import {
   TransferCommunity,
 } from "./interfaces/api/community";
 import {
-  AddAdmin,
-  BanPerson,
-  BlockPerson,
-  ChangePassword,
-  CreatePrivateMessage,
-  DeleteAccount,
-  DeletePrivateMessage,
-  EditPrivateMessage,
-  GetPersonDetails,
-  GetPersonMentions,
-  GetPrivateMessages,
-  GetReplies,
-  GetReportCount,
-  GetUnreadCount,
-  Login,
-  MarkAllAsRead,
-  MarkPersonMentionAsRead,
-  MarkPrivateMessageAsRead,
-  PasswordChange,
-  PasswordReset,
-  Register,
-  SaveUserSettings,
-} from "./interfaces/api/person";
-import {
   CreatePost,
   CreatePostLike,
   CreatePostReport,
@@ -65,18 +41,46 @@ import {
   StickyPost,
 } from "./interfaces/api/post";
 import {
+  ApproveRegistrationApplication,
   CreateSite,
   EditSite,
   GetModlog,
   GetSite,
   GetSiteConfig,
+  GetUnreadRegistrationApplicationCount,
+  ListRegistrationApplications,
   ResolveObject,
   SaveSiteConfig,
   Search,
   TransferSite,
 } from "./interfaces/api/site";
-import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
-import { UserOperation } from "./interfaces/others";
+import {
+  AddAdmin,
+  BanPerson,
+  CreatePrivateMessage,
+  DeleteAccount,
+  DeletePrivateMessage,
+  EditPrivateMessage,
+  GetPrivateMessages,
+  GetReplies,
+  GetPersonDetails,
+  GetPersonMentions,
+  Login,
+  MarkAllAsRead,
+  MarkPrivateMessageAsRead,
+  MarkPersonMentionAsRead,
+  PasswordChange,
+  PasswordReset,
+  Register,
+  SaveUserSettings,
+  ChangePassword,
+  BlockPerson,
+  GetReportCount,
+  GetUnreadCount,
+  VerifyEmail,
+} from './interfaces/api/person';
+import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
+import { UserOperation } from './interfaces/others';
 
 /**
  * Helps build lemmy websocket message requests, that you can use in your Websocket sends.
@@ -405,6 +409,29 @@ export class LemmyWebsocket {
   }
 
   /**
+   * Get the unread registration applications count.
+   */
+  getUnreadRegistrationApplicationCount(
+    form: GetUnreadRegistrationApplicationCount
+  ) {
+    return wrapper(UserOperation.GetUnreadRegistrationApplicationCount, form);
+  }
+
+  /**
+   * List the unread registration applications.
+   */
+  listRegistrationApplications(form: ListRegistrationApplications) {
+    return wrapper(UserOperation.ListRegistrationApplications, form);
+  }
+
+  /**
+   * Approve a registration application
+   */
+  approveRegistrationApplication(form: ApproveRegistrationApplication) {
+    return wrapper(UserOperation.ApproveRegistrationApplication, form);
+  }
+
+  /**
    * Get the details for a person.
    */
   getPersonDetails(form: GetPersonDetails) {
@@ -515,6 +542,14 @@ export class LemmyWebsocket {
   getUnreadCount(form: GetUnreadCount) {
     return wrapper(UserOperation.GetUnreadCount, form);
   }
+
+  /**
+   * Verify your email
+   */
+  verifyEmail(form: VerifyEmail) {
+    return wrapper(UserOperation.VerifyEmail, form);
+  }
+
   /**
    * Delete your account.
    */

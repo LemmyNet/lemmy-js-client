@@ -42,6 +42,9 @@ export enum UserOperation {
   EditSite,
   GetSite,
   AddAdmin,
+  GetUnreadRegistrationApplicationCount,
+  ListRegistrationApplications,
+  ApproveRegistrationApplication,
   BanPerson,
   Search,
   ResolveObject,
@@ -75,6 +78,7 @@ export enum UserOperation {
   ListPostReports,
   GetReportCount,
   GetUnreadCount,
+  VerifyEmail,
 }
 
 /**

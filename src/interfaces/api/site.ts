@@ -1,8 +1,9 @@
 import {
-  CommentView,
   CommunityBlockView,
   CommunityFollowerView,
   CommunityModeratorView,
+  RegistrationApplicationView,
+  CommentView,
   CommunityView,
   LocalUserSettingsView,
   ModAddCommunityView,
@@ -91,6 +92,10 @@ export interface CreateSite {
   open_registration?: boolean;
   enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
+  require_email_verification?: boolean;
+  require_application?: boolean;
+  application_question?: string;
+  private_instance?: boolean;
   auth: string;
 }
 
@@ -104,6 +109,10 @@ export interface EditSite {
   open_registration?: boolean;
   enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
+  require_email_verification?: boolean;
+  require_application?: boolean;
+  application_question?: string;
+  private_instance?: boolean;
   auth: string;
 }
 
@@ -176,4 +185,37 @@ export interface ResolveObjectResponse {
   post?: PostView;
   community?: CommunityView;
   person?: PersonViewSafe;
+}
+
+export interface ListRegistrationApplications {
+  /**
+   * Only shows the unread applications (IE those without an admin actor)
+   */
+  unread_only?: boolean;
+  page?: number;
+  limit?: number;
+  auth: string;
+}
+
+export interface ListRegistrationApplicationsResponse {
+  registration_applications: RegistrationApplicationView[];
+}
+
+export interface ApproveRegistrationApplication {
+  id: number;
+  approve: boolean;
+  deny_reason?: string;
+  auth: string;
+}
+
+export interface RegistrationApplicationResponse {
+  registration_application: RegistrationApplicationView;
+}
+
+export interface GetUnreadRegistrationApplicationCount {
+  auth: string;
+}
+
+export interface GetUnreadRegistrationApplicationCountResponse {
+  registration_applications: number;
 }

@@ -9,7 +9,6 @@ import {
   Comment,
   CommentReport,
   CommunitySafe,
-  LocalUserSettings,
   ModAdd,
   ModAddCommunity,
   ModBan,
@@ -20,13 +19,15 @@ import {
   ModRemovePost,
   ModStickyPost,
   ModTransferCommunity,
-  PersonMention,
-  PersonSafe,
   Post,
   PostReport,
   PrivateMessage,
   Site,
-} from "./source";
+  PersonMention,
+  PersonSafe,
+  LocalUserSettings,
+  RegistrationApplication,
+} from './source';
 
 export interface PersonViewSafe {
   person: PersonSafe;
@@ -217,4 +218,11 @@ export interface CommunityView {
   subscribed: boolean;
   blocked: boolean;
   counts: CommunityAggregates;
+}
+
+export interface RegistrationApplicationView {
+  registration_application: RegistrationApplication;
+  creator_local_user: LocalUserSettings;
+  creator: PersonSafe;
+  admin?: PersonSafe;
 }
