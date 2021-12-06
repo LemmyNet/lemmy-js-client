@@ -1,4 +1,4 @@
-import { CommentReportView, CommentView } from '../views';
+import { CommentReportView, CommentView } from "../views";
 
 export interface CreateComment {
   content: string;

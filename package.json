@@ -16,18 +16,23 @@
   },
   "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "devDependencies": {
-    "@types/node": "^16.10.2",
+    "@types/node": "^16.11.11",
     "@types/node-fetch": "^3.0.3",
-    "eslint": "^7.32.0",
-    "eslint-plugin-jane": "^9.0.6",
-    "husky": "^7.0.2",
-    "lint-staged": "^11.1.2",
-    "node-fetch": "^3.0.0",
-    "prettier": "^2.4.1",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "node-fetch": "^3.1.0",
+    "prettier": "^2.5.0",
+    "prettier-plugin-import-sort": "^0.0.7",
+    "prettier-plugin-organize-imports": "^2.3.4",
+    "prettier-plugin-packagejson": "^2.2.15",
     "sortpack": "^2.2.0",
     "typedoc": "^0.21.6",
     "typedoc-plugin-sourcefile-url": "^1.0.6",
-    "typescript": "^4.4.3"
+    "typescript": "^4.5.2"
   },
   "types": "./dist/index.d.ts",
   "lint-staged": {
@@ -38,5 +43,11 @@
     "package.json": [
       "sortpack"
     ]
+  },
+  "importSort": {
+    ".js, .jsx, .ts, .tsx": {
+      "style": "module",
+      "parser": "typescript"
+    }
   }
 }

@@ -1,17 +1,17 @@
 import {
   CommentAggregates,
   CommunityAggregates,
+  PersonAggregates,
   PostAggregates,
   SiteAggregates,
-  PersonAggregates,
-} from './aggregates';
+} from "./aggregates";
 import {
   Comment,
   CommentReport,
   CommunitySafe,
+  LocalUserSettings,
   ModAdd,
   ModAddCommunity,
-  ModTransferCommunity,
   ModBan,
   ModBanFromCommunity,
   ModLockPost,
@@ -19,14 +19,14 @@ import {
   ModRemoveCommunity,
   ModRemovePost,
   ModStickyPost,
+  ModTransferCommunity,
+  PersonMention,
+  PersonSafe,
   Post,
   PostReport,
   PrivateMessage,
   Site,
-  PersonMention,
-  PersonSafe,
-  LocalUserSettings,
-} from './source';
+} from "./source";
 
 export interface PersonViewSafe {
   person: PersonSafe;
