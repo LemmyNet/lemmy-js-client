@@ -74,7 +74,6 @@ import {
   Register,
   SaveUserSettings,
   VerifyEmail,
-  VerifyEmailResponse,
 } from "./interfaces/api/person";
 import {
   CreatePost,
@@ -657,7 +656,7 @@ export class LemmyHttp {
   /**
    * Verify your email
    */
-  async verifyEmail(form: VerifyEmail): Promise<VerifyEmailResponse> {
+  async verifyEmail(form: VerifyEmail): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, "/user/verify_email", form);
   }
 
