@@ -303,6 +303,8 @@ export interface VerifyEmail {
   token: string;
 }
 
+export interface VerifyEmailResponse {}
+
 export interface BlockPerson {
   person_id: number;
   block: boolean;
