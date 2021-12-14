@@ -67,6 +67,7 @@ export interface GetModlog {
   community_id?: number;
   page?: number;
   limit?: number;
+  auth?: string;
 }
 
 export interface GetModlogResponse {
