@@ -161,6 +161,9 @@ export interface BanPerson {
    */
   remove_data?: boolean;
   reason?: string;
+  /**
+   * The expire time in Unix seconds
+   */
   expires?: number;
   auth: string;
 }

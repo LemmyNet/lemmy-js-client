@@ -33,6 +33,7 @@ export interface PersonSafe {
   matrix_user_id?: string;
   admin: boolean;
   bot_account: boolean;
+  ban_expires?: string;
 }
 
 export interface Site {
