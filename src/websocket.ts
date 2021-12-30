@@ -47,6 +47,7 @@ import {
   PasswordReset,
   Register,
   SaveUserSettings,
+  VerifyEmail,
 } from "./interfaces/api/person";
 import {
   CreatePost,
@@ -65,11 +66,14 @@ import {
   StickyPost,
 } from "./interfaces/api/post";
 import {
+  ApproveRegistrationApplication,
   CreateSite,
   EditSite,
   GetModlog,
   GetSite,
   GetSiteConfig,
+  GetUnreadRegistrationApplicationCount,
+  ListRegistrationApplications,
   ResolveObject,
   SaveSiteConfig,
   Search,
@@ -405,6 +409,29 @@ export class LemmyWebsocket {
   }
 
   /**
+   * Get the unread registration applications count.
+   */
+  getUnreadRegistrationApplicationCount(
+    form: GetUnreadRegistrationApplicationCount
+  ) {
+    return wrapper(UserOperation.GetUnreadRegistrationApplicationCount, form);
+  }
+
+  /**
+   * List the unread registration applications.
+   */
+  listRegistrationApplications(form: ListRegistrationApplications) {
+    return wrapper(UserOperation.ListRegistrationApplications, form);
+  }
+
+  /**
+   * Approve a registration application
+   */
+  approveRegistrationApplication(form: ApproveRegistrationApplication) {
+    return wrapper(UserOperation.ApproveRegistrationApplication, form);
+  }
+
+  /**
    * Get the details for a person.
    */
   getPersonDetails(form: GetPersonDetails) {
@@ -515,6 +542,14 @@ export class LemmyWebsocket {
   getUnreadCount(form: GetUnreadCount) {
     return wrapper(UserOperation.GetUnreadCount, form);
   }
+
+  /**
+   * Verify your email
+   */
+  verifyEmail(form: VerifyEmail) {
+    return wrapper(UserOperation.VerifyEmail, form);
+  }
+
   /**
    * Delete your account.
    */

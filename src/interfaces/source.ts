@@ -13,6 +13,8 @@ export interface LocalUserSettings {
   show_scores: boolean;
   show_read_posts: boolean;
   show_new_post_notifs: boolean;
+  email_verified: boolean;
+  accepted_application: boolean;
 }
 
 export interface PersonSafe {
@@ -39,16 +41,20 @@ export interface Site {
   id: number;
   name: string;
   sidebar?: string;
-  description?: string;
   creator_id: number;
   published: string;
   updated?: string;
   enable_downvotes: boolean;
   open_registration: boolean;
   enable_nsfw: boolean;
-  community_creation_admin_only: boolean;
   icon?: string;
   banner?: string;
+  description?: string;
+  community_creation_admin_only: boolean;
+  require_email_verification: boolean;
+  require_application: boolean;
+  application_question?: string;
+  private_instance: boolean;
 }
 
 export interface PrivateMessage {
@@ -246,5 +252,14 @@ export interface PersonMention {
   recipient_id: number;
   comment_id: number;
   read: boolean;
+  published: string;
+}
+
+export interface RegistrationApplication {
+  id: number;
+  local_user_id: number;
+  answer: string;
+  admin_id?: number;
+  deny_reason?: string;
   published: string;
 }

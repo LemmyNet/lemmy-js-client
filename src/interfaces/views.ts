@@ -25,6 +25,7 @@ import {
   Post,
   PostReport,
   PrivateMessage,
+  RegistrationApplication,
   Site,
 } from "./source";
 
@@ -217,4 +218,11 @@ export interface CommunityView {
   subscribed: boolean;
   blocked: boolean;
   counts: CommunityAggregates;
+}
+
+export interface RegistrationApplicationView {
+  registration_application: RegistrationApplication;
+  creator_local_user: LocalUserSettings;
+  creator: PersonSafe;
+  admin?: PersonSafe;
 }

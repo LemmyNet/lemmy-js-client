@@ -19,6 +19,9 @@ export interface Login {
  */
 export interface Register {
   username: string;
+  /**
+   * Email is mandatory if email verification is enabled on the server
+   */
   email?: string;
   password: string;
   password_verify: string;
@@ -29,6 +32,10 @@ export interface Register {
   captcha_uuid?: string;
   captcha_answer?: string;
   honeypot?: string;
+  /**
+   * An answer is mandatory if require application is enabled on the server
+   */
+  answer?: string;
 }
 
 export interface GetCaptcha {}
@@ -106,7 +113,12 @@ export interface ChangePassword {
  * The `jwt` string should be stored and used anywhere `auth` is called for.
  */
 export interface LoginResponse {
-  jwt: string;
+  /**
+   * This is None in response to `Register` if email verification is enabled, or the server requires registration applications.
+   */
+  jwt?: string;
+  verify_email_sent: boolean;
+  registration_created: boolean;
 }
 
 export interface GetPersonDetails {
@@ -210,6 +222,8 @@ export interface DeleteAccount {
   auth: string;
 }
 
+export interface DeleteAccountResponse {}
+
 export interface PasswordReset {
   email: string;
 }
@@ -284,6 +298,12 @@ export interface GetUnreadCountResponse {
   mentions: number;
   private_messages: number;
 }
+
+export interface VerifyEmail {
+  token: string;
+}
+
+export interface VerifyEmailResponse {}
 
 export interface BlockPerson {
   person_id: number;
