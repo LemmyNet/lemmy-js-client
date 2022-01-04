@@ -315,3 +315,11 @@ export interface BlockPersonResponse {
   person_view: PersonViewSafe;
   blocked: boolean;
 }
+
+export interface GetBannedPersons {
+  auth: string;
+}
+
+export interface BannedPersonsResponse {
+  banned: PersonViewSafe[];
+}

@@ -131,7 +131,6 @@ export interface GetSiteResponse {
    */
   site_view?: SiteView;
   admins: PersonViewSafe[];
-  banned: PersonViewSafe[];
   online: number;
   version: string;
   /**
