@@ -38,6 +38,7 @@ import {
 import {
   AddAdmin,
   AddAdminResponse,
+  BannedPersonsResponse,
   BanPerson,
   BanPersonResponse,
   BlockPerson,
@@ -48,6 +49,7 @@ import {
   DeleteAccountResponse,
   DeletePrivateMessage,
   EditPrivateMessage,
+  GetBannedPersons,
   GetCaptchaResponse,
   GetPersonDetails,
   GetPersonDetailsResponse,
@@ -582,6 +584,15 @@ export class LemmyHttp {
    */
   async banPerson(form: BanPerson): Promise<BanPersonResponse> {
     return this.wrapper(HttpType.Post, "/user/ban", form);
+  }
+
+  /**
+   * Get a list of banned users
+   */
+  async getBannedPersons(
+    form: GetBannedPersons
+  ): Promise<BannedPersonsResponse> {
+    return this.wrapper(HttpType.Get, "/user/banned", form);
   }
 
   /**

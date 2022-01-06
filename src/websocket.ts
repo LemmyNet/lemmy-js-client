@@ -33,6 +33,7 @@ import {
   DeleteAccount,
   DeletePrivateMessage,
   EditPrivateMessage,
+  GetBannedPersons,
   GetPersonDetails,
   GetPersonMentions,
   GetPrivateMessages,
@@ -399,6 +400,13 @@ export class LemmyWebsocket {
    */
   banPerson(form: BanPerson) {
     return wrapper(UserOperation.BanPerson, form);
+  }
+
+  /**
+   * Get a list of banned users
+   */
+  getBannedPersons(form: GetBannedPersons) {
+    return wrapper(UserOperation.GetBannedPersons, form);
   }
 
   /**
