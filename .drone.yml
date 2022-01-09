@@ -18,23 +18,31 @@ steps:
     commands:
       - yarn lint
 
-  - name: npm
-    image: plugins/npm
-    settings:
-      username:
-        from_secret: npm_username
-      password:
-        from_secret: npm_password
-      email: tyhou13@gmx.com
-      registry: https://registry.npmjs.org/:_authToken=$NPM_TOKEN
-      token:
-        from_secret: npm_token
+  # - name: npm
+  #   image: plugins/npm
+  #   settings:
+  #     username:
+  #       from_secret: npm_username
+  #     password:
+  #       from_secret: npm_password
+  #     email: tyhou13@gmx.com
+  #     registry: https://registry.npmjs.org/:_authToken=$NPM_TOKEN
+  #     token:
+  #       from_secret: npm_token
+  #   environment:
+  #     NPM_TOKEN:
+  #       from_secret: npm_token
+  #   when:
+  #     ref:
+  #       - refs/tags/*
+  - name: npm publish
+    image: 17-alpine
+    commands:
+      - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+      - npm publish
     environment:
       NPM_TOKEN:
         from_secret: npm_token
-    when:
-      ref:
-        - refs/tags/*
 
 ---
 kind: pipeline
