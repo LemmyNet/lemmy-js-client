@@ -40,12 +40,17 @@ steps:
     commands:
 
       - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
+      - echo "registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" > ~/.npmrc
       - npm publish
     environment:
       NPM_TOKEN:
         from_secret: npm_token
       NODE_AUTH_TOKEN:
         from_secret: npm_token
+      USERNAME:
+        from_secret: npm_username
+      PASSWORD:
+        from_secret: npm_password
 
 ---
 kind: pipeline
