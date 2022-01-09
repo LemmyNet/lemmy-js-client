@@ -42,8 +42,8 @@ steps:
       # - npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
       # - echo "https://registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       # - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
-        echo "_auth = $NPM_AUTH_TOKEN" > ~/.npmrc
-        echo "email = $NPM_EMAIL" >> ~/.npmrc
+      - echo "_auth = $NPM_AUTH_TOKEN" > ~/.npmrc
+      - echo "email = $NPM_EMAIL" >> ~/.npmrc
       - npm publish
     environment:
       NPM_AUTH_TOKEN:
