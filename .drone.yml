@@ -26,8 +26,10 @@ steps:
       password:
         from_secret: npm_password
       email: tyhou13@gmx.com
-      registry: https://registry.npmjs.org/:_authToken=$npm_token
+      registry: https://registry.npmjs.org/:_authToken=$NPM_TOKEN
       token: npm_token
+    environment:
+      NPM_TOKEN: $npm_token
     when:
       ref:
         - refs/tags/*
