@@ -18,37 +18,33 @@ steps:
     commands:
       - yarn lint
 
-  # - name: npm
-  #   image: plugins/npm
-  #   settings:
-  #     username:
-  #       from_secret: npm_username
-  #     password:
-  #       from_secret: npm_password
-  #     email: tyhou13@gmx.com
-  #     registry: https://registry.npmjs.org/:_authToken=$NPM_TOKEN
-  #     token:
-  #       from_secret: npm_token
-  #   environment:
-  #     NPM_TOKEN:
-  #       from_secret: npm_token
-  #   when:
-  #     ref:
-  #       - refs/tags/*
-  - name: npm publish
-    image: node:17-alpine
-    commands:
-
-      # - npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-      # - echo "https://registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-      - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> .npmrc
-      # - echo "_auth = $NPM_AUTH_TOKEN" > ~/.npmrc
-      - echo "email = $NPM_EMAIL" >> ~/.npmrc
-      - npm publish
-    environment:
-      NPM_AUTH_TOKEN:
+  - name: npm
+    image: plugins/npm
+    settings:
+      username:
+        from_secret: npm_username
+      password:
+        from_secret: npm_password
+      email: tyhou13@gmx.com
+      registry: //registry.npmjs.org/:_authToken=$NPM_TOKEN
+      token:
         from_secret: npm_token
-      NPM_EMAIL: tyhou13@gmx.com
+    environment:
+      NPM_TOKEN:
+        from_secret: npm_token
+    when:
+      ref:
+        - refs/tags/*
+  # - name: npm publish
+  #   image: node:17-alpine
+  #   commands:
+  #     - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> .npmrc
+  #     - echo "email = $NPM_EMAIL" >> ~/.npmrc
+  #     - npm publish
+  #   environment:
+  #     NPM_AUTH_TOKEN:
+  #       from_secret: npm_token
+  #     NPM_EMAIL: tyhou13@gmx.com
 
 ---
 kind: pipeline
