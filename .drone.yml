@@ -9,12 +9,12 @@ platform:
 steps:
 
   - name: yarn
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn
 
   - name: yarn lint
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn lint
 
@@ -36,7 +36,7 @@ steps:
   #     ref:
   #       - refs/tags/*
   - name: npm publish
-    image: 17-alpine
+    image: node:17-alpine
     commands:
       - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
       - npm publish
@@ -55,11 +55,11 @@ platform:
 steps:
 
   - name: yarn
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn
 
   - name: yarn lint
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn lint
