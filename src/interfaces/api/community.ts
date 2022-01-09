@@ -64,6 +64,9 @@ export interface BanFromCommunity {
    */
   remove_data?: boolean;
   reason?: string;
+  /**
+   * The expire time in Unix seconds
+   */
   expires?: number;
   auth: string;
 }
@@ -110,6 +113,9 @@ export interface RemoveCommunity {
   community_id: number;
   removed: boolean;
   reason?: string;
+  /**
+   * The expire time in Unix seconds
+   */
   expires?: number;
   auth: string;
 }
