@@ -38,10 +38,13 @@ steps:
   - name: npm publish
     image: node:17-alpine
     commands:
+
       - npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
       - npm publish
     environment:
       NPM_TOKEN:
+        from_secret: npm_token
+      NODE_AUTH_TOKEN:
         from_secret: npm_token
 
 ---
