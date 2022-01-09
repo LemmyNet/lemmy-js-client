@@ -26,6 +26,7 @@ steps:
       password:
         from_secret: npm_password
       email: tyhou13@gmx.com
+      token: npm_token
     when:
       ref:
         - refs/tags/*
