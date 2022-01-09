@@ -39,13 +39,16 @@ steps:
     image: node:17-alpine
     commands:
 
-      - npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-      - echo "https://registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
-      - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
+      # - npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+      # - echo "https://registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      # - echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' >> .npmrc
+        echo "_auth = $NPM_AUTH_TOKEN" > ~/.npmrc
+        echo "email = $NPM_EMAIL" >> ~/.npmrc
       - npm publish
     environment:
-      NPM_TOKEN:
+      NPM_AUTH_TOKEN:
         from_secret: npm_token
+      NPM_EMAIL: tyhou13@gmx.com
 
 ---
 kind: pipeline
