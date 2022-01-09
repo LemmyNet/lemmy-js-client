@@ -39,7 +39,7 @@ steps:
     image: node:17-alpine
     commands:
 
-      - npm config set //registry.npmjs.org/:_authToken "{NPM_TOKEN""
+      - npm config set //registry.npmjs.org/:_authToken "NPM_TOKEN""
       - echo "registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - npm publish
     environment:
