@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "0.15.0-rc.34",
+  "version": "0.15.0",
   "author": "Dessalines <tyhou13@gmx.com>",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
@@ -16,14 +16,14 @@
   },
   "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "devDependencies": {
-    "@types/node": "^16.11.11",
+    "@types/node": "^17.0.8",
     "@types/node-fetch": "^3.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "^5.5.0",
-    "eslint": "^8.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "eslint": "^8.6.0",
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
-    "lint-staged": "^12.1.2",
+    "lint-staged": "^12.1.7",
     "node-fetch": "^3.1.0",
     "prettier": "^2.5.0",
     "prettier-plugin-import-sort": "^0.0.7",
@@ -32,7 +32,7 @@
     "sortpack": "^2.2.0",
     "typedoc": "^0.21.6",
     "typedoc-plugin-sourcefile-url": "^1.0.6",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.4"
   },
   "types": "./dist/index.d.ts",
   "lint-staged": {
