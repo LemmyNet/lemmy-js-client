@@ -112,6 +112,7 @@ import {
   GetSiteResponse,
   GetUnreadRegistrationApplicationCount,
   GetUnreadRegistrationApplicationCountResponse,
+  LeaveAdmin,
   ListRegistrationApplications,
   ListRegistrationApplicationsResponse,
   RegistrationApplicationResponse,
@@ -121,7 +122,6 @@ import {
   Search,
   SearchResponse,
   SiteResponse,
-  TransferSite,
 } from "./interfaces/api/site";
 import { VERSION } from "./interfaces/others";
 
@@ -173,10 +173,10 @@ export class LemmyHttp {
   }
 
   /**
-   * Transfer your site to another user.
+   * Leave the Site admins.
    */
-  async transferSite(form: TransferSite): Promise<GetSiteResponse> {
-    return this.wrapper(HttpType.Post, "/site/transfer", form);
+  async leaveAdmin(form: LeaveAdmin): Promise<GetSiteResponse> {
+    return this.wrapper(HttpType.Post, "/user/leave_admin", form);
   }
 
   /**

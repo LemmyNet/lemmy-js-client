@@ -42,7 +42,6 @@ export interface Site {
   id: number;
   name: string;
   sidebar?: string;
-  creator_id: number;
   published: string;
   updated?: string;
   enable_downvotes: boolean;
