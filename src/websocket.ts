@@ -74,11 +74,11 @@ import {
   GetSite,
   GetSiteConfig,
   GetUnreadRegistrationApplicationCount,
+  LeaveAdmin,
   ListRegistrationApplications,
   ResolveObject,
   SaveSiteConfig,
   Search,
-  TransferSite,
 } from "./interfaces/api/site";
 import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
 import { UserOperation } from "./interfaces/others";
@@ -389,10 +389,10 @@ export class LemmyWebsocket {
   }
 
   /**
-   * Transfer your site to another user.
+   * Leave the Site admins.
    */
-  transferSite(form: TransferSite) {
-    return wrapper(UserOperation.TransferSite, form);
+  leaveAdmin(form: LeaveAdmin) {
+    return wrapper(UserOperation.LeaveAdmin, form);
   }
 
   /**

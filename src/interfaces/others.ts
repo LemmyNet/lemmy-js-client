@@ -52,7 +52,7 @@ export enum UserOperation {
   MarkAllAsRead,
   SaveUserSettings,
   TransferCommunity,
-  TransferSite,
+  LeaveAdmin,
   DeleteAccount,
   PasswordReset,
   PasswordChange,
