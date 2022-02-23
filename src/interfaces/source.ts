@@ -56,6 +56,7 @@ export interface Site {
   require_application: boolean;
   application_question?: string;
   private_instance: boolean;
+  default_theme: string;
 }
 
 export interface PrivateMessage {
