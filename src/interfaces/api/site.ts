@@ -97,6 +97,7 @@ export interface CreateSite {
   require_application?: boolean;
   application_question?: string;
   private_instance?: boolean;
+  default_theme?: string;
   auth: string;
 }
 
@@ -114,6 +115,7 @@ export interface EditSite {
   require_application?: boolean;
   application_question?: string;
   private_instance?: boolean;
+  default_theme?: string;
   auth: string;
 }
 
