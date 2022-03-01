@@ -153,8 +153,7 @@ export interface MyUserInfo {
   person_blocks: PersonBlockView[];
 }
 
-export interface TransferSite {
-  person_id: number;
+export interface LeaveAdmin {
   auth: string;
 }
 
