@@ -1,3 +1,4 @@
+import { Site } from "../source";
 import {
   CommunityModeratorView,
   CommunityView,
@@ -17,6 +18,7 @@ export interface GetCommunity {
 
 export interface GetCommunityResponse {
   community_view: CommunityView;
+  site?: Site;
   moderators: CommunityModeratorView[];
   online: number;
 }
