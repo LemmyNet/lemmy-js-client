@@ -30,6 +30,7 @@ export interface CreateCommunity {
   icon?: string;
   banner?: string;
   nsfw?: boolean;
+  posting_restricted_to_mods?: boolean;
   auth: string;
 }
 
@@ -99,6 +100,7 @@ export interface EditCommunity {
   icon?: string;
   banner?: string;
   nsfw?: boolean;
+  posting_restricted_to_mods?: boolean;
   auth: string;
 }
 
