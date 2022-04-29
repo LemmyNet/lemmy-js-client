@@ -223,6 +223,7 @@ export interface CommunitySafe {
   local: boolean;
   icon?: string;
   banner?: string;
+  posting_restricted_to_mods: boolean;
 }
 
 export interface CommentReport {
