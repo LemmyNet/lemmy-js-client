@@ -191,6 +191,7 @@ export interface ModStickyPostView {
 export interface CommunityFollowerView {
   community: CommunitySafe;
   follower: PersonSafe;
+  pending?: boolean;
 }
 
 export interface CommunityBlockView {

@@ -28,6 +28,7 @@ import {
   DeleteCommunity,
   EditCommunity,
   FollowCommunity,
+  FollowCommunityResponse,
   GetCommunity,
   GetCommunityResponse,
   ListCommunities,
@@ -247,7 +248,9 @@ export class LemmyHttp {
   /**
    * Follow / subscribe to a community.
    */
-  async followCommunity(form: FollowCommunity): Promise<CommunityResponse> {
+  async followCommunity(
+    form: FollowCommunity
+  ): Promise<FollowCommunityResponse> {
     return this.wrapper(HttpType.Post, "/community/follow", form);
   }
 
