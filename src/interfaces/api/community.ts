@@ -40,7 +40,7 @@ export interface CommunityResponse {
 }
 
 export interface FollowCommunityResponse {
-  community_follower_view: CommunityFollowerView;
+  community_follower_view?: CommunityFollowerView;
 }
 
 export interface ListCommunities {
