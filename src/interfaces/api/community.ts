@@ -40,6 +40,9 @@ export interface CommunityResponse {
 }
 
 export interface FollowCommunityResponse {
+  /**
+   * An unfollow returns null.
+   */
   community_follower_view?: CommunityFollowerView;
 }
 
