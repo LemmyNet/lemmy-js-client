@@ -98,6 +98,7 @@ export interface CreateSite {
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
+  default_post_listing_type?: string;
   auth: string;
 }
 
@@ -116,6 +117,7 @@ export interface EditSite {
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
+  default_post_listing_type?: string;
   auth: string;
 }
 
