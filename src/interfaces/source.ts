@@ -1,3 +1,5 @@
+import { Option } from "@sniptt/monads";
+
 export interface LocalUserSettings {
   id: number;
   person_id: number;
@@ -41,14 +43,14 @@ export interface PersonSafe {
 export interface Site {
   id: number;
   name: string;
-  sidebar?: string;
+  sidebar: Option<string>;
   published: string;
   updated?: string;
   enable_downvotes: boolean;
   open_registration: boolean;
   enable_nsfw: boolean;
   icon?: string;
-  banner?: string;
+  banner: Option<string>;
   description?: string;
   community_creation_admin_only: boolean;
   require_email_verification: boolean;

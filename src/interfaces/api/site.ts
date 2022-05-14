@@ -1,3 +1,4 @@
+import { Option } from "@sniptt/monads";
 import {
   CommentView,
   CommunityBlockView,
@@ -103,7 +104,7 @@ export interface CreateSite {
 
 export interface EditSite {
   name?: string;
-  sidebar?: string;
+  sidebar: Option<string>;
   description?: string;
   icon?: string;
   banner?: string;
@@ -131,14 +132,14 @@ export interface GetSiteResponse {
   /**
    * Optional, because the site might not be set up yet.
    */
-  site_view?: SiteView;
+  site_view: Option<SiteView>;
   admins: PersonViewSafe[];
   online: number;
   version: string;
   /**
    * If you're logged in, you'll get back extra user info.
    */
-  my_user?: MyUserInfo;
+  my_user: Option<MyUserInfo>;
   federated_instances?: FederatedInstances;
 }
 
