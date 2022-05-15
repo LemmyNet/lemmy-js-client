@@ -132,14 +132,14 @@ export interface GetSiteResponse {
   /**
    * Optional, because the site might not be set up yet.
    */
-  site_view: Option<SiteView>;
+  site_view?: SiteView;
   admins: PersonViewSafe[];
   online: number;
   version: string;
   /**
    * If you're logged in, you'll get back extra user info.
    */
-  my_user: Option<MyUserInfo>;
+  my_user?: MyUserInfo;
   federated_instances?: FederatedInstances;
 }
 
