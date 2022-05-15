@@ -86,7 +86,7 @@ export interface GetModlogResponse {
 
 export interface CreateSite {
   name: string;
-  sidebar?: string;
+  sidebar: Option<string>;
   description?: string;
   icon?: string;
   banner?: string;

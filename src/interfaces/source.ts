@@ -50,7 +50,7 @@ export interface Site {
   open_registration: boolean;
   enable_nsfw: boolean;
   icon?: string;
-  banner: Option<string>;
+  banner?: string;
   description?: string;
   community_creation_admin_only: boolean;
   require_email_verification: boolean;
