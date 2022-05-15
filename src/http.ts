@@ -153,6 +153,7 @@ export class LemmyHttp {
 
   /**
    * Gets the site, and your user data.
+   * `HTTP.GET /site`
    */
   async getSite(form: GetSite): Promise<GetSiteResponse> {
     return this.wrapper(HttpType.Get, "/site", form);
@@ -160,6 +161,7 @@ export class LemmyHttp {
 
   /**
    * Create your site.
+   * `HTTP.POST /site`
    */
   async createSite(form: CreateSite): Promise<SiteResponse> {
     return this.wrapper(HttpType.Post, "/site", form);
@@ -167,6 +169,7 @@ export class LemmyHttp {
 
   /**
    * Edit your site.
+   * `HTTP.PUT /site`
    */
   async editSite(form: EditSite): Promise<SiteResponse> {
     return this.wrapper(HttpType.Put, "/site", form);
@@ -174,6 +177,7 @@ export class LemmyHttp {
 
   /**
    * Leave the Site admins.
+   * `HTTP.POST /user/leave_admin`
    */
   async leaveAdmin(form: LeaveAdmin): Promise<GetSiteResponse> {
     return this.wrapper(HttpType.Post, "/user/leave_admin", form);
@@ -181,6 +185,7 @@ export class LemmyHttp {
 
   /**
    * Get your site configuration.
+   * `HTTP.GET /site/config`
    */
   async getSiteConfig(form: GetSiteConfig): Promise<GetSiteConfigResponse> {
     return this.wrapper(HttpType.Get, "/site/config", form);
@@ -188,6 +193,7 @@ export class LemmyHttp {
 
   /**
    * Save your site config.
+   * `HTTP.PUT /site/config`
    */
   async saveSiteConfig(form: SaveSiteConfig): Promise<GetSiteConfigResponse> {
     return this.wrapper(HttpType.Put, "/site/config", form);
@@ -195,6 +201,7 @@ export class LemmyHttp {
 
   /**
    * Get the modlog.
+   * `HTTP.GET /modlog`
    */
   async getModlog(form: GetModlog): Promise<GetModlogResponse> {
     return this.wrapper(HttpType.Get, "/modlog", form);
@@ -202,6 +209,7 @@ export class LemmyHttp {
 
   /**
    * Search lemmy.
+   * `HTTP.GET /search`
    */
   async search(form: Search): Promise<SearchResponse> {
     return this.wrapper(HttpType.Get, "/search", form);
@@ -209,6 +217,7 @@ export class LemmyHttp {
 
   /**
    * Fetch a non-local / federated object.
+   * `HTTP.GET /resolve_object`
    */
   async resolveObject(form: ResolveObject): Promise<ResolveObjectResponse> {
     return this.wrapper(HttpType.Get, "/resolve_object", form);
@@ -216,6 +225,7 @@ export class LemmyHttp {
 
   /**
    * Create a new community.
+   * `HTTP.POST /community`
    */
   async createCommunity(form: CreateCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, "/community", form);
@@ -223,6 +233,7 @@ export class LemmyHttp {
 
   /**
    * Get / fetch a community.
+   * `HTTP.GET /community`
    */
   async getCommunity(form: GetCommunity): Promise<GetCommunityResponse> {
     return this.wrapper(HttpType.Get, "/community", form);
@@ -230,6 +241,7 @@ export class LemmyHttp {
 
   /**
    * Edit a community.
+   * `HTTP.PUT /community`
    */
   async editCommunity(form: EditCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Put, "/community", form);
@@ -237,6 +249,7 @@ export class LemmyHttp {
 
   /**
    * List communities, with various filters.
+   * `HTTP.GET /community/list`
    */
   async listCommunities(
     form: ListCommunities
@@ -246,6 +259,7 @@ export class LemmyHttp {
 
   /**
    * Follow / subscribe to a community.
+   * `HTTP.POST /community/follow`
    */
   async followCommunity(form: FollowCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, "/community/follow", form);
@@ -253,6 +267,7 @@ export class LemmyHttp {
 
   /**
    * Block a community.
+   * `HTTP.POST /community/block`
    */
   async blockCommunity(form: BlockCommunity): Promise<BlockCommunityResponse> {
     return this.wrapper(HttpType.Post, "/community/block", form);
@@ -260,6 +275,7 @@ export class LemmyHttp {
 
   /**
    * Delete a community.
+   * `HTTP.POST /community/delete`
    */
   async deleteCommunity(form: DeleteCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, "/community/delete", form);
@@ -267,6 +283,7 @@ export class LemmyHttp {
 
   /**
    * A moderator remove for a community.
+   * `HTTP.POST /community/remove`
    */
   async removeCommunity(form: RemoveCommunity): Promise<CommunityResponse> {
     return this.wrapper(HttpType.Post, "/community/remove", form);
@@ -274,6 +291,7 @@ export class LemmyHttp {
 
   /**
    * Transfer your community to an existing moderator.
+   * `HTTP.POST /community/transfer`
    */
   async transferCommunity(
     form: TransferCommunity
@@ -283,6 +301,7 @@ export class LemmyHttp {
 
   /**
    * Ban a user from a community.
+   * `HTTP.POST /community/ban_user`
    */
   async banFromCommunity(
     form: BanFromCommunity
@@ -292,6 +311,7 @@ export class LemmyHttp {
 
   /**
    * Add a moderator to your community.
+   * `HTTP.POST /community/mod`
    */
   async addModToCommunity(
     form: AddModToCommunity
@@ -301,6 +321,7 @@ export class LemmyHttp {
 
   /**
    * Create a post.
+   * `HTTP.POST /post`
    */
   async createPost(form: CreatePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, "/post", form);
@@ -308,6 +329,7 @@ export class LemmyHttp {
 
   /**
    * Get / fetch a post.
+   * `HTTP.GET /post`
    */
   async getPost(form: GetPost): Promise<GetPostResponse> {
     return this.wrapper(HttpType.Get, "/post", form);
@@ -315,6 +337,7 @@ export class LemmyHttp {
 
   /**
    * Edit a post.
+   * `HTTP.PUT /post`
    */
   async editPost(form: EditPost): Promise<PostResponse> {
     return this.wrapper(HttpType.Put, "/post", form);
@@ -322,6 +345,7 @@ export class LemmyHttp {
 
   /**
    * Delete a post.
+   * `HTTP.POST /post/delete`
    */
   async deletePost(form: DeletePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, "/post/delete", form);
@@ -329,6 +353,7 @@ export class LemmyHttp {
 
   /**
    * A moderator remove for a post.
+   * `HTTP.POST /post/remove`
    */
   async removePost(form: RemovePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, "/post/remove", form);
@@ -336,6 +361,7 @@ export class LemmyHttp {
 
   /**
    * A moderator can lock a post ( IE disable new comments ).
+   * `HTTP.POST /post/lock`
    */
   async lockPost(form: LockPost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, "/post/lock", form);
@@ -343,6 +369,7 @@ export class LemmyHttp {
 
   /**
    * A moderator can sticky a post ( IE stick it to the top of a community ).
+   * `HTTP.POST /post/sticky`
    */
   async stickyPost(form: StickyPost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, "/post/sticky", form);
@@ -350,6 +377,7 @@ export class LemmyHttp {
 
   /**
    * Get / fetch posts, with various filters.
+   * `HTTP.GET /post/list`
    */
   async getPosts(form: GetPosts): Promise<GetPostsResponse> {
     return this.wrapper(HttpType.Get, "/post/list", form);
@@ -357,6 +385,7 @@ export class LemmyHttp {
 
   /**
    * Like / vote on a post.
+   * `HTTP.POST /post/like`
    */
   async likePost(form: CreatePostLike): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, "/post/like", form);
@@ -364,6 +393,7 @@ export class LemmyHttp {
 
   /**
    * Save a post.
+   * `HTTP.PUT /post/save`
    */
   async savePost(form: SavePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Put, "/post/save", form);
@@ -371,6 +401,7 @@ export class LemmyHttp {
 
   /**
    * Report a post.
+   * `HTTP.POST /post/report`
    */
   async createPostReport(form: CreatePostReport): Promise<PostReportResponse> {
     return this.wrapper(HttpType.Post, "/post/report", form);
@@ -378,6 +409,7 @@ export class LemmyHttp {
 
   /**
    * Resolve a post report. Only a mod can do this.
+   * `HTTP.PUT /post/report/resolve`
    */
   async resolvePostReport(
     form: ResolvePostReport
@@ -387,6 +419,7 @@ export class LemmyHttp {
 
   /**
    * List post reports.
+   * `HTTP.GET /post/report/list`
    */
   async listPostReports(
     form: ListPostReports
@@ -396,6 +429,7 @@ export class LemmyHttp {
 
   /**
    * Fetch metadata for any given site.
+   * `HTTP.GET /post/site_metadata`
    */
   async getSiteMetadata(
     form: GetSiteMetadata
@@ -405,6 +439,7 @@ export class LemmyHttp {
 
   /**
    * Create a comment.
+   * `HTTP.POST /comment`
    */
   async createComment(form: CreateComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, "/comment", form);
@@ -412,6 +447,7 @@ export class LemmyHttp {
 
   /**
    * Edit a comment.
+   * `HTTP.PUT /comment`
    */
   async editComment(form: EditComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Put, "/comment", form);
@@ -419,6 +455,7 @@ export class LemmyHttp {
 
   /**
    * Delete a comment.
+   * `HTTP.POST /comment/delete`
    */
   async deleteComment(form: DeleteComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, "/comment/delete", form);
@@ -426,6 +463,7 @@ export class LemmyHttp {
 
   /**
    * A moderator remove for a comment.
+   * `HTTP.POST /comment/remove`
    */
   async removeComment(form: RemoveComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, "/comment/remove", form);
@@ -433,6 +471,7 @@ export class LemmyHttp {
 
   /**
    * Mark a comment as read.
+   * `HTTP.POST /comment/mark_as_read`
    */
   async markCommentAsRead(form: MarkCommentAsRead): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, "/comment/mark_as_read", form);
@@ -440,6 +479,7 @@ export class LemmyHttp {
 
   /**
    * Like / vote on a comment.
+   * `HTTP.POST /comment/like`
    */
   async likeComment(form: CreateCommentLike): Promise<CommentResponse> {
     return this.wrapper(HttpType.Post, "/comment/like", form);
@@ -447,6 +487,7 @@ export class LemmyHttp {
 
   /**
    * Save a comment.
+   * `HTTP.PUT /comment/save`
    */
   async saveComment(form: SaveComment): Promise<CommentResponse> {
     return this.wrapper(HttpType.Put, "/comment/save", form);
@@ -454,6 +495,7 @@ export class LemmyHttp {
 
   /**
    * Get / fetch comments.
+   * `HTTP.GET /comment/list`
    */
   async getComments(form: GetComments): Promise<GetCommentsResponse> {
     return this.wrapper(HttpType.Get, "/comment/list", form);
@@ -461,6 +503,7 @@ export class LemmyHttp {
 
   /**
    * Report a comment.
+   * `HTTP.POST /comment/report`
    */
   async createCommentReport(
     form: CreateCommentReport
@@ -470,6 +513,7 @@ export class LemmyHttp {
 
   /**
    * Resolve a comment report. Only a mod can do this.
+   * `HTTP.PUT /comment/report/resolve`
    */
   async resolveCommentReport(
     form: ResolveCommentReport
@@ -479,6 +523,7 @@ export class LemmyHttp {
 
   /**
    * List comment reports.
+   * `HTTP.GET /comment/report/list`
    */
   async listCommentReports(
     form: ListCommentReports
@@ -488,6 +533,7 @@ export class LemmyHttp {
 
   /**
    * Get / fetch private messages.
+   * `HTTP.GET /private_message/list`
    */
   async getPrivateMessages(
     form: GetPrivateMessages
@@ -497,6 +543,7 @@ export class LemmyHttp {
 
   /**
    * Create a private message.
+   * `HTTP.POST /private_message`
    */
   async createPrivateMessage(
     form: CreatePrivateMessage
@@ -506,6 +553,7 @@ export class LemmyHttp {
 
   /**
    * Edit a private message.
+   * `HTTP.PUT /private_message`
    */
   async editPrivateMessage(
     form: EditPrivateMessage
@@ -515,6 +563,7 @@ export class LemmyHttp {
 
   /**
    * Delete a private message.
+   * `HTTP.POST /private_message/delete`
    */
   async deletePrivateMessage(
     form: DeletePrivateMessage
@@ -524,6 +573,7 @@ export class LemmyHttp {
 
   /**
    * Mark a private message as read.
+   * `HTTP.POST /private_message/mark_as_read`
    */
   async markPrivateMessageAsRead(
     form: MarkPrivateMessageAsRead
@@ -533,6 +583,7 @@ export class LemmyHttp {
 
   /**
    * Register a new user.
+   * `HTTP.POST /user/register`
    */
   async register(form: Register): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, "/user/register", form);
@@ -540,6 +591,7 @@ export class LemmyHttp {
 
   /**
    * Log into lemmy.
+   * `HTTP.POST /user/login`
    */
   async login(form: Login): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, "/user/login", form);
@@ -547,6 +599,7 @@ export class LemmyHttp {
 
   /**
    * Get the details for a person.
+   * `HTTP.GET /user`
    */
   async getPersonDetails(
     form: GetPersonDetails
@@ -556,6 +609,7 @@ export class LemmyHttp {
 
   /**
    * Get mentions for your user.
+   * `HTTP.GET /user/mention`
    */
   async getPersonMentions(
     form: GetPersonMentions
@@ -565,6 +619,7 @@ export class LemmyHttp {
 
   /**
    * Mark a person mention as read.
+   * `HTTP.POST /user/mention/mark_as_read`
    */
   async markPersonMentionAsRead(
     form: MarkPersonMentionAsRead
@@ -574,6 +629,7 @@ export class LemmyHttp {
 
   /**
    * Get comment replies.
+   * `HTTP.GET /user/replies`
    */
   async getReplies(form: GetReplies): Promise<GetRepliesResponse> {
     return this.wrapper(HttpType.Get, "/user/replies", form);
@@ -581,6 +637,7 @@ export class LemmyHttp {
 
   /**
    * Ban a person from your site.
+   * `HTTP.POST /user/ban`
    */
   async banPerson(form: BanPerson): Promise<BanPersonResponse> {
     return this.wrapper(HttpType.Post, "/user/ban", form);
@@ -588,6 +645,7 @@ export class LemmyHttp {
 
   /**
    * Get a list of banned users
+   * `HTTP.GET /user/banned`
    */
   async getBannedPersons(
     form: GetBannedPersons
@@ -597,6 +655,7 @@ export class LemmyHttp {
 
   /**
    * Block a person.
+   * `HTTP.POST /user/block`
    */
   async blockPerson(form: BlockPerson): Promise<BlockPersonResponse> {
     return this.wrapper(HttpType.Post, "/user/block", form);
@@ -604,6 +663,7 @@ export class LemmyHttp {
 
   /**
    * Fetch a Captcha.
+   * `HTTP.GET /user/get_captcha`
    */
   async getCaptcha(): Promise<GetCaptchaResponse> {
     return this.wrapper(HttpType.Get, "/user/get_captcha", {});
@@ -611,6 +671,7 @@ export class LemmyHttp {
 
   /**
    * Delete your account.
+   * `HTTP.POST /user/delete_account`
    */
   async deleteAccount(form: DeleteAccount): Promise<DeleteAccountResponse> {
     return this.wrapper(HttpType.Post, "/user/delete_account", form);
@@ -618,6 +679,7 @@ export class LemmyHttp {
 
   /**
    * Reset your password.
+   * `HTTP.POST /user/password_reset`
    */
   async passwordReset(form: PasswordReset): Promise<PasswordResetResponse> {
     return this.wrapper(HttpType.Post, "/user/password_reset", form);
@@ -625,6 +687,7 @@ export class LemmyHttp {
 
   /**
    * Change your password from an email / token based reset.
+   * `HTTP.POST /user/password_change`
    */
   async passwordChange(form: PasswordChange): Promise<LoginResponse> {
     return this.wrapper(HttpType.Post, "/user/password_change", form);
@@ -632,6 +695,7 @@ export class LemmyHttp {
 
   /**
    * Mark all replies as read.
+   * `HTTP.POST /user/mark_all_as_read`
    */
   async markAllAsRead(form: MarkAllAsRead): Promise<GetRepliesResponse> {
     return this.wrapper(HttpType.Post, "/user/mark_all_as_read", form);
@@ -639,6 +703,7 @@ export class LemmyHttp {
 
   /**
    * Save your user settings.
+   * `HTTP.PUT /user/save_user_settings`
    */
   async saveUserSettings(form: SaveUserSettings): Promise<LoginResponse> {
     return this.wrapper(HttpType.Put, "/user/save_user_settings", form);
@@ -646,6 +711,7 @@ export class LemmyHttp {
 
   /**
    * Change your user password.
+   * `HTTP.PUT /user/change_password`
    */
   async changePassword(form: ChangePassword): Promise<LoginResponse> {
     return this.wrapper(HttpType.Put, "/user/change_password", form);
@@ -653,6 +719,7 @@ export class LemmyHttp {
 
   /**
    * Get counts for your reports
+   * `HTTP.GET /user/report_count`
    */
   async getReportCount(form: GetReportCount): Promise<GetReportCountResponse> {
     return this.wrapper(HttpType.Get, "/user/report_count", form);
@@ -660,6 +727,7 @@ export class LemmyHttp {
 
   /**
    * Get your unread counts
+   * `HTTP.GET /user/unread_count`
    */
   async getUnreadCount(form: GetUnreadCount): Promise<GetUnreadCountResponse> {
     return this.wrapper(HttpType.Get, "/user/unread_count", form);
@@ -667,6 +735,7 @@ export class LemmyHttp {
 
   /**
    * Verify your email
+   * `HTTP.POST /user/verify_email`
    */
   async verifyEmail(form: VerifyEmail): Promise<VerifyEmailResponse> {
     return this.wrapper(HttpType.Post, "/user/verify_email", form);
@@ -674,6 +743,7 @@ export class LemmyHttp {
 
   /**
    * Add an admin to your site.
+   * `HTTP.POST /admin/add`
    */
   async addAdmin(form: AddAdmin): Promise<AddAdminResponse> {
     return this.wrapper(HttpType.Post, "/admin/add", form);
@@ -681,6 +751,7 @@ export class LemmyHttp {
 
   /**
    * Get the unread registration applications count.
+   * `HTTP.GET /admin/registration_application/count`
    */
   async getUnreadRegistrationApplicationCount(
     form: GetUnreadRegistrationApplicationCount
@@ -693,7 +764,8 @@ export class LemmyHttp {
   }
 
   /**
-   * List the unread registration applications.
+   * List the registration applications.
+   * `HTTP.GET /admin/registration_application/list`
    */
   async listRegistrationApplications(
     form: ListRegistrationApplications
@@ -707,6 +779,7 @@ export class LemmyHttp {
 
   /**
    * Approve a registration application
+   * `HTTP.PUT /admin/registration_application/approve`
    */
   async approveRegistrationApplication(
     form: ApproveRegistrationApplication
