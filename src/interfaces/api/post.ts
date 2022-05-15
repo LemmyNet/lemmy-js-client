@@ -96,6 +96,15 @@ export interface RemovePost {
 }
 
 /**
+ * Marks a post as read.
+ */
+export interface MarkPostAsRead {
+  post_id: number;
+  read: boolean;
+  auth: string;
+}
+
+/**
  * Only admins and mods can lock a post.
  */
 export interface LockPost {
