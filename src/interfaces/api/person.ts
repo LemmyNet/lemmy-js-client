@@ -86,7 +86,7 @@ export interface SaveUserSettings {
    * Post listing types are `All, Subscribed, Community`
    */
   default_listing_type?: number;
-  lang?: string;
+  interface_language?: string;
   avatar?: string;
   banner?: string;
   display_name?: string;
@@ -100,6 +100,7 @@ export interface SaveUserSettings {
   show_bot_accounts?: boolean;
   show_read_posts?: boolean;
   show_new_post_notifs?: boolean;
+  discussion_languages: string[];
   auth: string;
 }
 

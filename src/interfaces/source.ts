@@ -109,6 +109,7 @@ export interface Post {
   thumbnail_url?: string;
   ap_id: string;
   local: boolean;
+  language: string;
 }
 
 export interface PasswordResetRequest {

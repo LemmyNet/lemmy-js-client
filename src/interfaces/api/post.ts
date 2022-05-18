@@ -12,6 +12,7 @@ export interface CreatePost {
   url?: string;
   body?: string;
   nsfw?: boolean;
+  language?: string;
   community_id: number;
   auth: string;
   honeypot?: string;
