@@ -1,4 +1,4 @@
-import { SiteMetadata } from "..";
+import { ListingType, SiteMetadata, SortType } from "../others";
 import {
   CommentView,
   CommunityModeratorView,
@@ -35,16 +35,8 @@ export interface GetPostResponse {
 }
 
 export interface GetPosts {
-  /**
-   * The [[ListingType]].
-   *
-   * Post listing types are `All, Subscribed, Community`
-   */
-  type_?: string;
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  type_?: ListingType;
+  sort?: SortType;
   page?: number;
   limit?: number;
   community_id?: number;

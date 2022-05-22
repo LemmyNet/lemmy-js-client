@@ -1,3 +1,4 @@
+import { ListingType, SortType } from "../others";
 import { Site } from "../source";
 import {
   CommunityFollowerView,
@@ -47,15 +48,8 @@ export interface FollowCommunityResponse {
 }
 
 export interface ListCommunities {
-  /**
-   * The [[ListingType]].
-   */
-  type_?: string;
-
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  type_?: ListingType;
+  sort?: SortType;
   page?: number;
   limit?: number;
   auth?: string;

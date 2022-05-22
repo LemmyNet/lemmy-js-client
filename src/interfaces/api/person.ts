@@ -1,3 +1,4 @@
+import { SortType } from "../others";
 import {
   CommentView,
   CommunityModeratorView,
@@ -127,7 +128,7 @@ export interface GetPersonDetails {
    * To get details for a federated user, use `person@instance.tld`.
    */
   username?: string;
-  sort?: string;
+  sort?: SortType;
   page?: number;
   limit?: number;
   community_id?: number;
@@ -186,10 +187,7 @@ export interface BanPersonResponse {
 }
 
 export interface GetReplies {
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  sort?: SortType;
   page?: number;
   limit?: number;
   unread_only?: boolean;
@@ -197,10 +195,7 @@ export interface GetReplies {
 }
 
 export interface GetPersonMentions {
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  sort?: SortType;
   page?: number;
   limit?: number;
   unread_only?: boolean;

@@ -57,7 +57,6 @@ export interface LocalUserSettingsView {
 
 export interface SiteView {
   site: Site;
-  creator: PersonSafe;
   counts: SiteAggregates;
 }
 
