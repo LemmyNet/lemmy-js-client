@@ -1,5 +1,7 @@
+import { ListingType, SortType } from "../others";
 import { Site } from "../source";
 import {
+  CommunityFollowerView,
   CommunityModeratorView,
   CommunityView,
   PersonViewSafe,
@@ -38,16 +40,16 @@ export interface CommunityResponse {
   community_view: CommunityView;
 }
 
-export interface ListCommunities {
+export interface FollowCommunityResponse {
   /**
-   * The [[ListingType]].
+   * An unfollow returns null.
    */
-  type_?: string;
+  community_follower_view?: CommunityFollowerView;
+}
 
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+export interface ListCommunities {
+  type_?: ListingType;
+  sort?: SortType;
   page?: number;
   limit?: number;
   auth?: string;
