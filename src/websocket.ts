@@ -61,6 +61,7 @@ import {
   GetSiteMetadata,
   ListPostReports,
   LockPost,
+  MarkPostAsRead,
   RemovePost,
   ResolvePostReport,
   SavePost,
@@ -330,6 +331,13 @@ export class LemmyWebsocket {
    */
   stickyPost(form: StickyPost) {
     return wrapper(UserOperation.StickyPost, form);
+  }
+
+  /**
+   * Mark a post as read.
+   */
+  markPostAsRead(form: MarkPostAsRead) {
+    return wrapper(UserOperation.MarkPostAsRead, form);
   }
 
   /**

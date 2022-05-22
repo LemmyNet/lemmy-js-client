@@ -1,6 +1,7 @@
 import { ListingType, SortType } from "../others";
 import { Site } from "../source";
 import {
+  CommunityFollowerView,
   CommunityModeratorView,
   CommunityView,
   PersonViewSafe,
@@ -37,6 +38,13 @@ export interface CreateCommunity {
 
 export interface CommunityResponse {
   community_view: CommunityView;
+}
+
+export interface FollowCommunityResponse {
+  /**
+   * An unfollow returns null.
+   */
+  community_follower_view?: CommunityFollowerView;
 }
 
 export interface ListCommunities {

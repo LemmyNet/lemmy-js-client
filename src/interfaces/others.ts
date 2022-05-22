@@ -26,6 +26,7 @@ export enum UserOperation {
   RemovePost,
   LockPost,
   StickyPost,
+  MarkPostAsRead,
   SavePost,
   EditCommunity,
   DeleteCommunity,
