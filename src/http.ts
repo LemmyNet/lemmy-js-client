@@ -94,6 +94,7 @@ import {
   ListPostReports,
   ListPostReportsResponse,
   LockPost,
+  MarkPostAsRead,
   PostReportResponse,
   PostResponse,
   RemovePost,
@@ -360,6 +361,14 @@ export class LemmyHttp {
    */
   async removePost(form: RemovePost): Promise<PostResponse> {
     return this.wrapper(HttpType.Post, "/post/remove", form);
+  }
+
+  /**
+   * Mark a post as read.
+   * `HTTP.POST /post/mark_as_read`
+   */
+  async markPostAsRead(form: MarkPostAsRead): Promise<PostResponse> {
+    return this.wrapper(HttpType.Post, "/post/mark_as_read", form);
   }
 
   /**
