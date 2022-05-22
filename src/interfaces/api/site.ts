@@ -108,6 +108,7 @@ export interface EditSite {
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
+  legal_information?: string;
   default_post_listing_type?: string;
   auth: string;
 }

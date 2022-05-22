@@ -61,6 +61,7 @@ export interface Site {
   last_refreshed_at: string;
   inbox_url: string;
   public_key: string;
+  legal_information?: string;
 }
 
 export interface PrivateMessage {
