@@ -5,6 +5,7 @@ import {
   PostAggregates,
   SiteAggregates,
 } from "./aggregates";
+import { SubscribedType } from "./others";
 import {
   Comment,
   CommentReport,
@@ -43,7 +44,7 @@ export interface PersonMentionView {
   recipient: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   saved: boolean;
   creator_blocked: boolean;
   my_vote?: number;
@@ -72,7 +73,7 @@ export interface PostView {
   community: CommunitySafe;
   creator_banned_from_community: boolean;
   counts: PostAggregates;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   saved: boolean;
   read: boolean;
   creator_blocked: boolean;
@@ -99,7 +100,7 @@ export interface CommentView {
   community: CommunitySafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   saved: boolean;
   creator_blocked: boolean;
   my_vote?: number;
@@ -215,7 +216,7 @@ export interface PersonBlockView {
 
 export interface CommunityView {
   community: CommunitySafe;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   blocked: boolean;
   counts: CommunityAggregates;
 }

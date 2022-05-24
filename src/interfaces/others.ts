@@ -149,6 +149,15 @@ export enum SearchType {
 }
 
 /**
+ * Different Subscribed states
+ */
+export enum SubscribedType {
+  Subscribed = "Subscribed",
+  NotSubscribed = "NotSubscribed",
+  Pending = "Pending",
+}
+
+/**
  * A websocket response. Includes the return type.
  * Can be used like:
  *
