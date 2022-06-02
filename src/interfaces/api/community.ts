@@ -1,8 +1,10 @@
+import { ListingType, SortType } from "../others";
+import { Site } from "../source";
 import {
   CommunityModeratorView,
   CommunityView,
   PersonViewSafe,
-} from '../views';
+} from "../views";
 
 /**
  * You can use either `id` or `name` as an id.
@@ -17,6 +19,7 @@ export interface GetCommunity {
 
 export interface GetCommunityResponse {
   community_view: CommunityView;
+  site?: Site;
   moderators: CommunityModeratorView[];
   online: number;
 }
@@ -28,6 +31,7 @@ export interface CreateCommunity {
   icon?: string;
   banner?: string;
   nsfw?: boolean;
+  posting_restricted_to_mods?: boolean;
   auth: string;
 }
 
@@ -36,15 +40,8 @@ export interface CommunityResponse {
 }
 
 export interface ListCommunities {
-  /**
-   * The [[ListingType]].
-   */
-  type_?: string;
-
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  type_?: ListingType;
+  sort?: SortType;
   page?: number;
   limit?: number;
   auth?: string;
@@ -64,6 +61,9 @@ export interface BanFromCommunity {
    */
   remove_data?: boolean;
   reason?: string;
+  /**
+   * The expire time in Unix seconds
+   */
   expires?: number;
   auth: string;
 }
@@ -94,6 +94,7 @@ export interface EditCommunity {
   icon?: string;
   banner?: string;
   nsfw?: boolean;
+  posting_restricted_to_mods?: boolean;
   auth: string;
 }
 
@@ -110,6 +111,9 @@ export interface RemoveCommunity {
   community_id: number;
   removed: boolean;
   reason?: string;
+  /**
+   * The expire time in Unix seconds
+   */
   expires?: number;
   auth: string;
 }

@@ -1,17 +1,21 @@
 import {
   CommentAggregates,
   CommunityAggregates,
+  PersonAggregates,
   PostAggregates,
   SiteAggregates,
-  PersonAggregates,
-} from './aggregates';
+} from "./aggregates";
 import {
+  AdminPurgeComment,
+  AdminPurgeCommunity,
+  AdminPurgePerson,
+  AdminPurgePost,
   Comment,
   CommentReport,
   CommunitySafe,
+  LocalUserSettings,
   ModAdd,
   ModAddCommunity,
-  ModTransferCommunity,
   ModBan,
   ModBanFromCommunity,
   ModLockPost,
@@ -19,18 +23,15 @@ import {
   ModRemoveCommunity,
   ModRemovePost,
   ModStickyPost,
+  ModTransferCommunity,
+  PersonMention,
+  PersonSafe,
   Post,
   PostReport,
   PrivateMessage,
+  RegistrationApplication,
   Site,
-  PersonMention,
-  PersonSafe,
-  LocalUserSettings,
-  AdminPurgeCommunity,
-  AdminPurgePerson,
-  AdminPurgePost,
-  AdminPurgeComment,
-} from './source';
+} from "./source";
 
 export interface PersonViewSafe {
   person: PersonSafe;
@@ -60,7 +61,6 @@ export interface LocalUserSettingsView {
 
 export interface SiteView {
   site: Site;
-  creator: PersonSafe;
   counts: SiteAggregates;
 }
 
@@ -243,4 +243,11 @@ export interface CommunityView {
   subscribed: boolean;
   blocked: boolean;
   counts: CommunityAggregates;
+}
+
+export interface RegistrationApplicationView {
+  registration_application: RegistrationApplication;
+  creator_local_user: LocalUserSettings;
+  creator: PersonSafe;
+  admin?: PersonSafe;
 }

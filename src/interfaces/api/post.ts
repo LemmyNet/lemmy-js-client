@@ -1,11 +1,11 @@
-import { SiteMetadata } from '..';
+import { ListingType, SiteMetadata, SortType } from "../others";
 import {
-  CommunityView,
   CommentView,
   CommunityModeratorView,
+  CommunityView,
   PostReportView,
   PostView,
-} from '../views';
+} from "../views";
 
 export interface CreatePost {
   name: string;
@@ -35,16 +35,8 @@ export interface GetPostResponse {
 }
 
 export interface GetPosts {
-  /**
-   * The [[ListingType]].
-   *
-   * Post listing types are `All, Subscribed, Community`
-   */
-  type_?: string;
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  type_?: ListingType;
+  sort?: SortType;
   page?: number;
   limit?: number;
   community_id?: number;
@@ -92,6 +84,15 @@ export interface RemovePost {
   post_id: number;
   removed: boolean;
   reason?: string;
+  auth: string;
+}
+
+/**
+ * Marks a post as read.
+ */
+export interface MarkPostAsRead {
+  post_id: number;
+  read: boolean;
   auth: string;
 }
 

@@ -1,4 +1,4 @@
-export const VERSION = 'v3';
+export const VERSION = "v3";
 
 /**
  * All of the websocket operations available.
@@ -26,6 +26,7 @@ export enum UserOperation {
   RemovePost,
   LockPost,
   StickyPost,
+  MarkPostAsRead,
   SavePost,
   EditCommunity,
   DeleteCommunity,
@@ -42,13 +43,17 @@ export enum UserOperation {
   EditSite,
   GetSite,
   AddAdmin,
+  GetUnreadRegistrationApplicationCount,
+  ListRegistrationApplications,
+  ApproveRegistrationApplication,
   BanPerson,
+  GetBannedPersons,
   Search,
   ResolveObject,
   MarkAllAsRead,
   SaveUserSettings,
   TransferCommunity,
-  TransferSite,
+  LeaveAdmin,
   DeleteAccount,
   PasswordReset,
   PasswordChange,
@@ -78,6 +83,8 @@ export enum UserOperation {
   ResolvePostReport,
   ListPostReports,
   GetReportCount,
+  GetUnreadCount,
+  VerifyEmail,
 }
 
 /**
@@ -87,62 +94,62 @@ export enum SortType {
   /**
    * Posts sorted by the most recent comment.
    */
-  Active = 'Active',
+  Active = "Active",
   /**
    * Posts sorted by the published time.
    */
-  Hot = 'Hot',
-  New = 'New',
+  Hot = "Hot",
+  New = "New",
   /**
    * The top posts for this last day.
    */
-  TopDay = 'TopDay',
+  TopDay = "TopDay",
   /**
    * The top posts for this last week.
    */
-  TopWeek = 'TopWeek',
+  TopWeek = "TopWeek",
   /**
    * The top posts for this last month.
    */
-  TopMonth = 'TopMonth',
+  TopMonth = "TopMonth",
   /**
    * The top posts for this last year.
    */
-  TopYear = 'TopYear',
+  TopYear = "TopYear",
   /**
    * The top posts of all time.
    */
-  TopAll = 'TopAll',
+  TopAll = "TopAll",
   /**
    * Posts sorted by the most comments.
    */
-  MostComments = 'MostComments',
+  MostComments = "MostComments",
   /**
    * Posts sorted by the newest comments, with no necrobumping. IE a forum sort.
    */
-  NewComments = 'NewComments',
+  NewComments = "NewComments",
 }
 
 /**
  * The different listing types for post and comment fetches.
  */
 export enum ListingType {
-  All = 'All',
-  Local = 'Local',
-  Subscribed = 'Subscribed',
-  Community = 'Community',
+  All = "All",
+  Local = "Local",
+  Subscribed = "Subscribed",
+  Community = "Community",
 }
 
 /**
  * Search types for lemmy's search.
  */
 export enum SearchType {
-  All = 'All',
-  Comments = 'Comments',
-  Posts = 'Posts',
-  Communities = 'Communities',
-  Users = 'Users',
-  Url = 'Url',
+  All = "All",
+  Comments = "Comments",
+  Posts = "Posts",
+  Communities = "Communities",
+  Users = "Users",
+  Url = "Url",
 }
 
 /**

@@ -9,23 +9,25 @@ platform:
 steps:
 
   - name: yarn
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn
 
   - name: yarn lint
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn lint
 
-  - name: npm
-    image: plugins/npm
-    settings:
-      username:
-        from_secret: npm_username
-      password:
-        from_secret: npm_password
-      email: tyhou13@gmx.com
+  - name: npm publish
+    image: node:17-alpine
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> .npmrc
+      - echo "email = $NPM_EMAIL" >> ~/.npmrc
+      - npm publish
+    environment:
+      NPM_AUTH_TOKEN:
+        from_secret: npm_token
+      NPM_EMAIL: tyhou13@gmx.com
     when:
       ref:
         - refs/tags/*
@@ -41,11 +43,11 @@ platform:
 steps:
 
   - name: yarn
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn
 
   - name: yarn lint
-    image: node:14-alpine
+    image: node:17-alpine
     commands:
       - yarn lint

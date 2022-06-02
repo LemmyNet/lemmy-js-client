@@ -1,19 +1,16 @@
+import { ListingType, SearchType, SortType } from "../others";
 import {
   AdminPurgeCommentView,
   AdminPurgeCommunityView,
   AdminPurgePersonView,
   AdminPurgePostView,
+  CommentView,
   CommunityBlockView,
   CommunityFollowerView,
   CommunityModeratorView,
-  LocalUserSettingsView,
-  PersonBlockView,
-} from '../views';
-import {
-  CommentView,
   CommunityView,
+  LocalUserSettingsView,
   ModAddCommunityView,
-  ModTransferCommunityView,
   ModAddView,
   ModBanFromCommunityView,
   ModBanView,
@@ -22,10 +19,13 @@ import {
   ModRemoveCommunityView,
   ModRemovePostView,
   ModStickyPostView,
-  PostView,
-  SiteView,
+  ModTransferCommunityView,
+  PersonBlockView,
   PersonViewSafe,
-} from '../views';
+  PostView,
+  RegistrationApplicationView,
+  SiteView,
+} from "../views";
 
 /**
  * Search lemmy for different types of data.
@@ -35,22 +35,12 @@ export interface Search {
    * The search query string.
    */
   q: string;
-
-  /**
-   * The [[SearchType]].
-   */
-  type_?: string;
+  type_?: SearchType;
   community_id?: number;
   community_name?: string;
   creator_id?: number;
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
-  /**
-   * The [[ListingType]].
-   */
-  listing_type?: string;
+  sort?: SortType;
+  listing_type?: ListingType;
   page?: number;
   limit?: number;
   auth?: string;
@@ -72,6 +62,7 @@ export interface GetModlog {
   community_id?: number;
   page?: number;
   limit?: number;
+  auth?: string;
 }
 
 export interface GetModlogResponse {
@@ -101,6 +92,12 @@ export interface CreateSite {
   open_registration?: boolean;
   enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
+  require_email_verification?: boolean;
+  require_application?: boolean;
+  application_question?: string;
+  private_instance?: boolean;
+  default_theme?: string;
+  default_post_listing_type?: string;
   auth: string;
 }
 
@@ -114,6 +111,13 @@ export interface EditSite {
   open_registration?: boolean;
   enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
+  require_email_verification?: boolean;
+  require_application?: boolean;
+  application_question?: string;
+  private_instance?: boolean;
+  default_theme?: string;
+  legal_information?: string;
+  default_post_listing_type?: string;
   auth: string;
 }
 
@@ -131,7 +135,6 @@ export interface GetSiteResponse {
    */
   site_view?: SiteView;
   admins: PersonViewSafe[];
-  banned: PersonViewSafe[];
   online: number;
   version: string;
   /**
@@ -152,8 +155,7 @@ export interface MyUserInfo {
   person_blocks: PersonBlockView[];
 }
 
-export interface TransferSite {
-  person_id: number;
+export interface LeaveAdmin {
   auth: string;
 }
 
@@ -190,14 +192,12 @@ export interface ResolveObjectResponse {
 
 export interface PurgePerson {
   person_id: number;
-  remove_images: boolean;
   reason?: string;
   auth: string;
 }
 
 export interface PurgeCommunity {
   community_id: number;
-  remove_images: boolean;
   reason?: string;
   auth: string;
 }
@@ -216,4 +216,37 @@ export interface PurgeComment {
 
 export interface PurgeItemResponse {
   success: boolean;
+}
+
+export interface ListRegistrationApplications {
+  /**
+   * Only shows the unread applications (IE those without an admin actor)
+   */
+  unread_only?: boolean;
+  page?: number;
+  limit?: number;
+  auth: string;
+}
+
+export interface ListRegistrationApplicationsResponse {
+  registration_applications: RegistrationApplicationView[];
+}
+
+export interface ApproveRegistrationApplication {
+  id: number;
+  approve: boolean;
+  deny_reason?: string;
+  auth: string;
+}
+
+export interface RegistrationApplicationResponse {
+  registration_application: RegistrationApplicationView;
+}
+
+export interface GetUnreadRegistrationApplicationCount {
+  auth: string;
+}
+
+export interface GetUnreadRegistrationApplicationCountResponse {
+  registration_applications: number;
 }

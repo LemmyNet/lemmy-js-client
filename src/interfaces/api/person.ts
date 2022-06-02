@@ -1,11 +1,12 @@
+import { SortType } from "../others";
 import {
   CommentView,
   CommunityModeratorView,
-  PostView,
-  PrivateMessageView,
   PersonMentionView,
   PersonViewSafe,
-} from '../views';
+  PostView,
+  PrivateMessageView,
+} from "../views";
 
 export interface Login {
   username_or_email: string;
@@ -19,6 +20,9 @@ export interface Login {
  */
 export interface Register {
   username: string;
+  /**
+   * Email is mandatory if email verification is enabled on the server
+   */
   email?: string;
   password: string;
   password_verify: string;
@@ -29,6 +33,10 @@ export interface Register {
   captcha_uuid?: string;
   captcha_answer?: string;
   honeypot?: string;
+  /**
+   * An answer is mandatory if require application is enabled on the server
+   */
+  answer?: string;
 }
 
 export interface GetCaptcha {}
@@ -106,7 +114,12 @@ export interface ChangePassword {
  * The `jwt` string should be stored and used anywhere `auth` is called for.
  */
 export interface LoginResponse {
-  jwt: string;
+  /**
+   * This is None in response to `Register` if email verification is enabled, or the server requires registration applications.
+   */
+  jwt?: string;
+  verify_email_sent: boolean;
+  registration_created: boolean;
 }
 
 export interface GetPersonDetails {
@@ -115,7 +128,7 @@ export interface GetPersonDetails {
    * To get details for a federated user, use `person@instance.tld`.
    */
   username?: string;
-  sort?: string;
+  sort?: SortType;
   page?: number;
   limit?: number;
   community_id?: number;
@@ -161,6 +174,9 @@ export interface BanPerson {
    */
   remove_data?: boolean;
   reason?: string;
+  /**
+   * The expire time in Unix seconds
+   */
   expires?: number;
   auth: string;
 }
@@ -171,10 +187,7 @@ export interface BanPersonResponse {
 }
 
 export interface GetReplies {
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  sort?: SortType;
   page?: number;
   limit?: number;
   unread_only?: boolean;
@@ -182,10 +195,7 @@ export interface GetReplies {
 }
 
 export interface GetPersonMentions {
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  sort?: SortType;
   page?: number;
   limit?: number;
   unread_only?: boolean;
@@ -209,6 +219,8 @@ export interface DeleteAccount {
   password: string;
   auth: string;
 }
+
+export interface DeleteAccountResponse {}
 
 export interface PasswordReset {
   email: string;
@@ -275,6 +287,22 @@ export interface GetReportCountResponse {
   post_reports: number;
 }
 
+export interface GetUnreadCount {
+  auth: string;
+}
+
+export interface GetUnreadCountResponse {
+  replies: number;
+  mentions: number;
+  private_messages: number;
+}
+
+export interface VerifyEmail {
+  token: string;
+}
+
+export interface VerifyEmailResponse {}
+
 export interface BlockPerson {
   person_id: number;
   block: boolean;
@@ -284,4 +312,12 @@ export interface BlockPerson {
 export interface BlockPersonResponse {
   person_view: PersonViewSafe;
   blocked: boolean;
+}
+
+export interface GetBannedPersons {
+  auth: string;
+}
+
+export interface BannedPersonsResponse {
+  banned: PersonViewSafe[];
 }

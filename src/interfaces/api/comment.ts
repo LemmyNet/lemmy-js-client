@@ -1,4 +1,5 @@
-import { CommentReportView, CommentView } from '../views';
+import { ListingType, SortType } from "../others";
+import { CommentReportView, CommentView } from "../views";
 
 export interface CreateComment {
   content: string;
@@ -77,14 +78,8 @@ export interface CreateCommentLike {
  * To get posts for a federated community by name, use `name@instance.tld` .
  */
 export interface GetComments {
-  /**
-   * The [[ListingType]].
-   */
-  type_?: string;
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
+  type_?: ListingType;
+  sort?: SortType;
   page?: number;
   limit?: number;
   community_id?: number;

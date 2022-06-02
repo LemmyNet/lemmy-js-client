@@ -10,7 +10,7 @@ import {
   RemoveComment,
   ResolveCommentReport,
   SaveComment,
-} from './interfaces/api/comment';
+} from "./interfaces/api/comment";
 import {
   AddModToCommunity,
   BanFromCommunity,
@@ -23,7 +23,33 @@ import {
   ListCommunities,
   RemoveCommunity,
   TransferCommunity,
-} from './interfaces/api/community';
+} from "./interfaces/api/community";
+import {
+  AddAdmin,
+  BanPerson,
+  BlockPerson,
+  ChangePassword,
+  CreatePrivateMessage,
+  DeleteAccount,
+  DeletePrivateMessage,
+  EditPrivateMessage,
+  GetBannedPersons,
+  GetPersonDetails,
+  GetPersonMentions,
+  GetPrivateMessages,
+  GetReplies,
+  GetReportCount,
+  GetUnreadCount,
+  Login,
+  MarkAllAsRead,
+  MarkPersonMentionAsRead,
+  MarkPrivateMessageAsRead,
+  PasswordChange,
+  PasswordReset,
+  Register,
+  SaveUserSettings,
+  VerifyEmail,
+} from "./interfaces/api/person";
 import {
   CreatePost,
   CreatePostLike,
@@ -35,17 +61,22 @@ import {
   GetSiteMetadata,
   ListPostReports,
   LockPost,
+  MarkPostAsRead,
   RemovePost,
   ResolvePostReport,
   SavePost,
   StickyPost,
-} from './interfaces/api/post';
+} from "./interfaces/api/post";
 import {
+  ApproveRegistrationApplication,
   CreateSite,
   EditSite,
   GetModlog,
   GetSite,
   GetSiteConfig,
+  GetUnreadRegistrationApplicationCount,
+  LeaveAdmin,
+  ListRegistrationApplications,
   PurgeComment,
   PurgeCommunity,
   PurgePerson,
@@ -53,33 +84,9 @@ import {
   ResolveObject,
   SaveSiteConfig,
   Search,
-  TransferSite,
-} from './interfaces/api/site';
-import {
-  AddAdmin,
-  BanPerson,
-  CreatePrivateMessage,
-  DeleteAccount,
-  DeletePrivateMessage,
-  EditPrivateMessage,
-  GetPrivateMessages,
-  GetReplies,
-  GetPersonDetails,
-  GetPersonMentions,
-  Login,
-  MarkAllAsRead,
-  MarkPrivateMessageAsRead,
-  MarkPersonMentionAsRead,
-  PasswordChange,
-  PasswordReset,
-  Register,
-  SaveUserSettings,
-  ChangePassword,
-  BlockPerson,
-  GetReportCount,
-} from './interfaces/api/person';
-import { UserJoin, PostJoin, CommunityJoin } from './interfaces/api/websocket';
-import { UserOperation } from './interfaces/others';
+} from "./interfaces/api/site";
+import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
+import { UserOperation } from "./interfaces/others";
 
 /**
  * Helps build lemmy websocket message requests, that you can use in your Websocket sends.
@@ -331,6 +338,13 @@ export class LemmyWebsocket {
   }
 
   /**
+   * Mark a post as read.
+   */
+  markPostAsRead(form: MarkPostAsRead) {
+    return wrapper(UserOperation.MarkPostAsRead, form);
+  }
+
+  /**
    * Save a post.
    */
   savePost(form: SavePost) {
@@ -387,10 +401,10 @@ export class LemmyWebsocket {
   }
 
   /**
-   * Transfer your site to another user.
+   * Leave the Site admins.
    */
-  transferSite(form: TransferSite) {
-    return wrapper(UserOperation.TransferSite, form);
+  leaveAdmin(form: LeaveAdmin) {
+    return wrapper(UserOperation.LeaveAdmin, form);
   }
 
   /**
@@ -401,10 +415,40 @@ export class LemmyWebsocket {
   }
 
   /**
+   * Get a list of banned users
+   */
+  getBannedPersons(form: GetBannedPersons) {
+    return wrapper(UserOperation.GetBannedPersons, form);
+  }
+
+  /**
    * Add an admin to your site.
    */
   addAdmin(form: AddAdmin) {
     return wrapper(UserOperation.AddAdmin, form);
+  }
+
+  /**
+   * Get the unread registration applications count.
+   */
+  getUnreadRegistrationApplicationCount(
+    form: GetUnreadRegistrationApplicationCount
+  ) {
+    return wrapper(UserOperation.GetUnreadRegistrationApplicationCount, form);
+  }
+
+  /**
+   * List the unread registration applications.
+   */
+  listRegistrationApplications(form: ListRegistrationApplications) {
+    return wrapper(UserOperation.ListRegistrationApplications, form);
+  }
+
+  /**
+   * Approve a registration application
+   */
+  approveRegistrationApplication(form: ApproveRegistrationApplication) {
+    return wrapper(UserOperation.ApproveRegistrationApplication, form);
   }
 
   /**
@@ -510,6 +554,20 @@ export class LemmyWebsocket {
    */
   getReportCount(form: GetReportCount) {
     return wrapper(UserOperation.GetReportCount, form);
+  }
+
+  /**
+   * Get your unread counts
+   */
+  getUnreadCount(form: GetUnreadCount) {
+    return wrapper(UserOperation.GetUnreadCount, form);
+  }
+
+  /**
+   * Verify your email
+   */
+  verifyEmail(form: VerifyEmail) {
+    return wrapper(UserOperation.VerifyEmail, form);
   }
 
   /**
