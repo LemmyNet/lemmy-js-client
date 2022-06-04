@@ -251,10 +251,10 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@sniptt/monads@^0.5.10":
-  version "0.5.10"
-  resolved "https://registry.yarnpkg.com/@sniptt/monads/-/monads-0.5.10.tgz#a80cd00738bbd682d36d36dd36bdc0bddc96eb76"
-  integrity sha512-+agDOv9DpDV+9e2zN/Vmdk+XaqGx5Sykl0fqhqgiJ90r18nsBkxe44DmZ2sA1HYK+MSsBeZBiAr6pq4w+5uhfw==
+"@swan-io/boxed@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@swan-io/boxed/-/boxed-0.9.0.tgz#b98c07ebcd0dded693666c05ed174e61493e513f"
+  integrity sha512-ZLiLvPn5WAEFJCFnUbEeE+BSX472b0bNIzvNLhWbzk8hooQEtBc2B/WBiNS+drJuE0V4aNXlTN6Y8f3b8iiORA==
 
 "@types/glob@^7.1.1":
   version "7.2.0"

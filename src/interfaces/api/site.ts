@@ -1,4 +1,4 @@
-import { Option } from "@sniptt/monads";
+import { Option } from "@swan-io/boxed";
 import { ListingType, SearchType, SortType } from "../others";
 import {
   CommentView,

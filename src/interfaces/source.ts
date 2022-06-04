@@ -1,4 +1,4 @@
-import { Option } from "@sniptt/monads";
+import { Option } from "@swan-io/boxed";
 
 export interface LocalUserSettings {
   id: number;
