@@ -58,10 +58,12 @@ export interface Site {
   application_question?: string;
   private_instance: boolean;
   default_theme: string;
+  default_post_listing_type: string;
   actor_id: string;
   last_refreshed_at: string;
   inbox_url: string;
   public_key: string;
+  legal_information?: string;
 }
 
 export interface PrivateMessage {

@@ -1,4 +1,5 @@
 import { Option } from "@sniptt/monads";
+import { ListingType, SearchType, SortType } from "../others";
 import {
   CommentView,
   CommunityBlockView,
@@ -31,22 +32,12 @@ export interface Search {
    * The search query string.
    */
   q: string;
-
-  /**
-   * The [[SearchType]].
-   */
-  type_?: string;
+  type_?: SearchType;
   community_id?: number;
   community_name?: string;
   creator_id?: number;
-  /**
-   * The [[SortType]].
-   */
-  sort?: string;
-  /**
-   * The [[ListingType]].
-   */
-  listing_type?: string;
+  sort?: SortType;
+  listing_type?: ListingType;
   page?: number;
   limit?: number;
   auth?: string;
@@ -99,6 +90,7 @@ export interface CreateSite {
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
+  default_post_listing_type?: string;
   auth: string;
 }
 
@@ -117,6 +109,8 @@ export interface EditSite {
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
+  legal_information?: string;
+  default_post_listing_type?: string;
   auth: string;
 }
 
