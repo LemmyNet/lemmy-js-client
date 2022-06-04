@@ -226,6 +226,7 @@ export interface CommunitySafe {
   icon?: string;
   banner?: string;
   posting_restricted_to_mods: boolean;
+  is_default_community: boolean;
 }
 
 export interface CommentReport {

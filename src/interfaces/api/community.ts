@@ -33,6 +33,7 @@ export interface CreateCommunity {
   nsfw?: boolean;
   posting_restricted_to_mods?: boolean;
   auth: string;
+  is_default_community: boolean
 }
 
 export interface CommunityResponse {
@@ -96,6 +97,7 @@ export interface EditCommunity {
   nsfw?: boolean;
   posting_restricted_to_mods?: boolean;
   auth: string;
+  is_default_community: boolean
 }
 
 export interface DeleteCommunity {
