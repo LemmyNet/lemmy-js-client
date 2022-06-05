@@ -1,4 +1,4 @@
-import { Option } from "@swan-io/boxed";
+import { Option } from "option-t/esm/PlainOption";
 
 export interface LocalUserSettings {
   id: number;

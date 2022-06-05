@@ -1,4 +1,4 @@
-import { Option } from "@swan-io/boxed";
+import { Option } from "option-t/esm/PlainOption";
 import { ListingType, SearchType, SortType } from "../others";
 import {
   CommentView,
