@@ -209,7 +209,7 @@ export class ModAddCommunityView {
   @Type(() => ModAddCommunity)
   mod_add_community: ModAddCommunity;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
   @Type(() => PersonSafe)
@@ -220,7 +220,7 @@ export class ModTransferCommunityView {
   @Type(() => ModTransferCommunity)
   mod_transfer_community: ModTransferCommunity;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
   @Type(() => PersonSafe)
@@ -231,7 +231,7 @@ export class ModAddView {
   @Type(() => ModAdd)
   mod_add: ModAdd;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => PersonSafe)
   modded_person: PersonSafe;
 }
@@ -240,7 +240,7 @@ export class ModBanFromCommunityView {
   @Type(() => ModBanFromCommunity)
   mod_ban_from_community: ModBanFromCommunity;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
   @Type(() => PersonSafe)
@@ -251,7 +251,7 @@ export class ModBanView {
   @Type(() => ModBan)
   mod_ban: ModBan;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => PersonSafe)
   banned_person: PersonSafe;
 }
@@ -260,7 +260,7 @@ export class ModLockPostView {
   @Type(() => ModLockPost)
   mod_lock_post: ModLockPost;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => Post)
   post: Post;
   @Type(() => CommunitySafe)
@@ -271,7 +271,7 @@ export class ModRemoveCommentView {
   @Type(() => ModRemoveComment)
   mod_remove_comment: ModRemoveComment;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => Comment)
   comment: Comment;
   @Type(() => PersonSafe)
@@ -286,7 +286,7 @@ export class ModRemoveCommunityView {
   @Type(() => ModRemoveCommunity)
   mod_remove_community: ModRemoveCommunity;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
@@ -295,7 +295,7 @@ export class ModRemovePostView {
   @Type(() => ModRemovePost)
   mod_remove_post: ModRemovePost;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => Post)
   post: Post;
   @Type(() => CommunitySafe)
@@ -306,7 +306,7 @@ export class ModStickyPostView {
   @Type(() => ModStickyPost)
   mod_sticky_post: ModStickyPost;
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator?: PersonSafe;
   @Type(() => Post)
   post: Post;
   @Type(() => CommunitySafe)
