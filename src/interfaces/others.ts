@@ -1,3 +1,6 @@
+import { Option, Some } from "@sniptt/monads";
+import { Expose, Transform } from "class-transformer";
+import { toUndefined } from "../utils";
 export const VERSION = "v3";
 
 /**
@@ -149,47 +152,23 @@ export enum SearchType {
 }
 
 /**
- * A websocket response. Includes the return type.
- * Can be used like:
- *
- * ```ts
- * if (op == UserOperation.Search) {
- *   let data = wsJsonToRes<SearchResponse>(msg).data;
- * }
- * ```
- */
-export interface WebSocketResponse<ResponseType> {
-  op: UserOperation;
-  /**
-   * This contains the data for a websocket response.
-   *
-   * The correct response type if given is in [[LemmyHttp]].
-   */
-  data: ResponseType;
-}
-
-/**
- * A websocket JSON response that includes the errors.
- */
-export interface WebSocketJsonResponse<ResponseType> {
-  op?: string;
-
-  /**
-   * This contains the data for a websocket response.
-   *
-   * The correct response type if given is in [[LemmyHttp]].
-   */
-  data?: ResponseType;
-  error?: string;
-  reconnect?: boolean;
-}
-
-/**
  * A holder for a site's metadata ( such as opengraph tags ), used for post links.
  */
-export interface SiteMetadata {
-  title?: string;
-  description?: string;
-  image?: string;
-  html?: string;
+export class SiteMetadata {
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  title: Option<string>;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  description: Option<string>;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  image: Option<string>;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  html: Option<string>;
 }

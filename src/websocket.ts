@@ -1,3 +1,4 @@
+import { ClassConstructor, deserialize, serialize } from "class-transformer";
 import {
   CreateComment,
   CreateCommentLike,
@@ -499,7 +500,7 @@ export class LemmyWebsocket {
   /**
    * Gets the site, and your user data.
    */
-  getSite(form: GetSite = {}) {
+  getSite(form: GetSite) {
     return wrapper(UserOperation.GetSite, form);
   }
 
@@ -645,7 +646,38 @@ export class LemmyWebsocket {
 }
 
 function wrapper<MessageType>(op: UserOperation, data: MessageType) {
-  let send = { op: UserOperation[op], data: data };
+  let send = { op: UserOperation[op], data: serialize(data) };
   console.log(send);
   return JSON.stringify(send);
+}
+
+/**
+ * A websocket JSON response that includes the errors.
+ */
+// interface WebSocketJsonResponse {
+//   op?: string;
+
+//   /**
+//    * This contains the data for a websocket response.
+//    *
+//    * The correct response type if given is in [[LemmyHttp]].
+//    */
+//   data?: ResponseType;
+//   error?: string;
+//   reconnect?: boolean;
+// }
+
+export function wsUserOp(msg: any): UserOperation {
+  let opStr: string = msg.op;
+  return UserOperation[opStr as keyof typeof UserOperation];
+}
+
+/**
+ * Converts a websocket string response to a usable result
+ */
+export function wsJsonToRes<ResponseType>(
+  msg: any,
+  responseClass: ClassConstructor<ResponseType>
+): ResponseType {
+  return deserialize(responseClass, msg.data);
 }

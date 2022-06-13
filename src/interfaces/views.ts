@@ -1,3 +1,6 @@
+import { Option, Some } from "@sniptt/monads";
+import { Expose, Transform } from "class-transformer";
+import { toUndefined } from "../utils";
 import {
   CommentAggregates,
   CommunityAggregates,
@@ -29,12 +32,12 @@ import {
   Site,
 } from "./source";
 
-export interface PersonViewSafe {
+export class PersonViewSafe {
   person: PersonSafe;
   counts: PersonAggregates;
 }
 
-export interface PersonMentionView {
+export class PersonMentionView {
   person_mention: PersonMention;
   comment: Comment;
   creator: PersonSafe;
@@ -46,27 +49,30 @@ export interface PersonMentionView {
   subscribed: boolean;
   saved: boolean;
   creator_blocked: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
 }
 
-export interface LocalUserSettingsView {
+export class LocalUserSettingsView {
   local_user: LocalUserSettings;
   person: PersonSafe;
   counts: PersonAggregates;
 }
 
-export interface SiteView {
+export class SiteView {
   site: Site;
   counts: SiteAggregates;
 }
 
-export interface PrivateMessageView {
+export class PrivateMessageView {
   private_message: PrivateMessage;
   creator: PersonSafe;
   recipient: PersonSafe;
 }
 
-export interface PostView {
+export class PostView {
   post: Post;
   creator: PersonSafe;
   community: CommunitySafe;
@@ -76,25 +82,37 @@ export interface PostView {
   saved: boolean;
   read: boolean;
   creator_blocked: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
 }
 
-export interface PostReportView {
+export class PostReportView {
   post_report: PostReport;
   post: Post;
   community: CommunitySafe;
   creator: PersonSafe;
   post_creator: PersonSafe;
   creator_banned_from_community: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
   counts: PostAggregates;
-  resolver?: PersonSafe;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  resolver: Option<PersonSafe>;
 }
 
-export interface CommentView {
+export class CommentView {
   comment: Comment;
   creator: PersonSafe;
-  recipient?: PersonSafe;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  recipient: Option<PersonSafe>;
   post: Post;
   community: CommunitySafe;
   counts: CommentAggregates;
@@ -102,10 +120,13 @@ export interface CommentView {
   subscribed: boolean;
   saved: boolean;
   creator_blocked: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
 }
 
-export interface CommentReportView {
+export class CommentReportView {
   comment_report: CommentReport;
   comment: Comment;
   post: Post;
@@ -114,51 +135,57 @@ export interface CommentReportView {
   comment_creator: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
-  my_vote?: number;
-  resolver?: PersonSafe;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  resolver: Option<PersonSafe>;
 }
 
-export interface ModAddCommunityView {
+export class ModAddCommunityView {
   mod_add_community: ModAddCommunity;
   moderator: PersonSafe;
   community: CommunitySafe;
   modded_person: PersonSafe;
 }
 
-export interface ModTransferCommunityView {
+export class ModTransferCommunityView {
   mod_transfer_community: ModTransferCommunity;
   moderator: PersonSafe;
   community: CommunitySafe;
   modded_person: PersonSafe;
 }
 
-export interface ModAddView {
+export class ModAddView {
   mod_add: ModAdd;
   moderator: PersonSafe;
   modded_person: PersonSafe;
 }
 
-export interface ModBanFromCommunityView {
+export class ModBanFromCommunityView {
   mod_ban_from_community: ModBanFromCommunity;
   moderator: PersonSafe;
   community: CommunitySafe;
   banned_person: PersonSafe;
 }
 
-export interface ModBanView {
+export class ModBanView {
   mod_ban: ModBan;
   moderator: PersonSafe;
   banned_person: PersonSafe;
 }
 
-export interface ModLockPostView {
+export class ModLockPostView {
   mod_lock_post: ModLockPost;
   moderator: PersonSafe;
   post: Post;
   community: CommunitySafe;
 }
 
-export interface ModRemoveCommentView {
+export class ModRemoveCommentView {
   mod_remove_comment: ModRemoveComment;
   moderator: PersonSafe;
   comment: Comment;
@@ -167,61 +194,64 @@ export interface ModRemoveCommentView {
   community: CommunitySafe;
 }
 
-export interface ModRemoveCommunityView {
+export class ModRemoveCommunityView {
   mod_remove_community: ModRemoveCommunity;
   moderator: PersonSafe;
   community: CommunitySafe;
 }
 
-export interface ModRemovePostView {
+export class ModRemovePostView {
   mod_remove_post: ModRemovePost;
   moderator: PersonSafe;
   post: Post;
   community: CommunitySafe;
 }
 
-export interface ModStickyPostView {
+export class ModStickyPostView {
   mod_sticky_post: ModStickyPost;
   moderator: PersonSafe;
   post: Post;
   community: CommunitySafe;
 }
 
-export interface CommunityFollowerView {
+export class CommunityFollowerView {
   community: CommunitySafe;
   follower: PersonSafe;
 }
 
-export interface CommunityBlockView {
+export class CommunityBlockView {
   person: PersonSafe;
   community: CommunitySafe;
 }
 
-export interface CommunityModeratorView {
+export class CommunityModeratorView {
   community: CommunitySafe;
   moderator: PersonSafe;
 }
 
-export interface CommunityPersonBanView {
+export class CommunityPersonBanView {
   community: CommunitySafe;
   person: PersonSafe;
 }
 
-export interface PersonBlockView {
+export class PersonBlockView {
   person: PersonSafe;
   target: PersonSafe;
 }
 
-export interface CommunityView {
+export class CommunityView {
   community: CommunitySafe;
   subscribed: boolean;
   blocked: boolean;
   counts: CommunityAggregates;
 }
 
-export interface RegistrationApplicationView {
+export class RegistrationApplicationView {
   registration_application: RegistrationApplication;
   creator_local_user: LocalUserSettings;
   creator: PersonSafe;
-  admin?: PersonSafe;
+  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  admin: Option<PersonSafe>;
 }

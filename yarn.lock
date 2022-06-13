@@ -251,6 +251,11 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
+"@sniptt/monads@^0.5.10":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@sniptt/monads/-/monads-0.5.10.tgz#a80cd00738bbd682d36d36dd36bdc0bddc96eb76"
+  integrity sha512-+agDOv9DpDV+9e2zN/Vmdk+XaqGx5Sykl0fqhqgiJ90r18nsBkxe44DmZ2sA1HYK+MSsBeZBiAr6pq4w+5uhfw==
+
 "@types/glob@^7.1.1":
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.2.0.tgz#bc1b5bf3aa92f25bd5dd39f35c57361bdce5b2eb"
@@ -538,6 +543,11 @@ chalk@^4.0.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+class-transformer@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/class-transformer/-/class-transformer-0.5.1.tgz#24147d5dffd2a6cea930a3250a677addf96ab336"
+  integrity sha512-SQa1Ws6hUbfC98vKGxZH3KFY0Y1lm5Zm0SY8XX9zbK7FJCyVEac3ATW0RIpwzW+oOfmHE5PMPufDG9hCfoEOMw==
 
 clean-stack@^2.0.0:
   version "2.2.0"
@@ -1582,11 +1592,6 @@ onigasm@^2.2.5:
   integrity sha512-F+th54mPc0l1lp1ZcFMyL/jTs2Tlq4SqIHKIXGZOR/VkHkF9A7Fr5rRr5+ZG/lWeRsyrClLYRq7s/yFQ/XhWCA==
   dependencies:
     lru-cache "^5.1.1"
-
-option-t@^32.2.0:
-  version "32.2.0"
-  resolved "https://registry.yarnpkg.com/option-t/-/option-t-32.2.0.tgz#9f24f5f36a1237a1302c37c7fef4489f4333eeb2"
-  integrity sha512-dff/0MN6ckHoKVeGNNFYGyWunwFAvKI9FqKDIJlzh7gZ0EZD0hVflTWs7DzznsTPVhV6F+TSSaSIe3bzWi0Z7Q==
 
 optionator@^0.9.1:
   version "0.9.1"
