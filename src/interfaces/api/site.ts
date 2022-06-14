@@ -306,16 +306,12 @@ export class GetSiteResponse {
 /**
  * Your user info, such as blocks, follows, etc.
  */
-export class MyUserInfo {
+export interface MyUserInfo {
   local_user_view: LocalUserSettingsView;
   follows: CommunityFollowerView[];
   moderates: CommunityModeratorView[];
   community_blocks: CommunityBlockView[];
   person_blocks: PersonBlockView[];
-
-  constructor(init: MyUserInfo) {
-    Object.assign(this, init);
-  }
 }
 
 export class LeaveAdmin {
