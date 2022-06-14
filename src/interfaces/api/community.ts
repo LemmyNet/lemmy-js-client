@@ -1,5 +1,5 @@
 import { Option, Some } from "@sniptt/monads";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 import { toUndefined } from "../../utils";
 import { ListingType, SortType } from "../others";
 import { Site } from "../source";
@@ -38,6 +38,7 @@ export class GetCommunityResponse {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => Site)
   site: Option<Site>;
   moderators: CommunityModeratorView[];
   online: number;

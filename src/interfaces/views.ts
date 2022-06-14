@@ -1,5 +1,5 @@
 import { Option, Some } from "@sniptt/monads";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 import { toUndefined } from "../utils";
 import {
   CommentAggregates,
@@ -103,6 +103,7 @@ export class PostReportView {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => PersonSafe)
   resolver: Option<PersonSafe>;
 }
 
@@ -112,6 +113,7 @@ export class CommentView {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => PersonSafe)
   recipient: Option<PersonSafe>;
   post: Post;
   community: CommunitySafe;
@@ -142,6 +144,7 @@ export class CommentReportView {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => PersonSafe)
   resolver: Option<PersonSafe>;
 }
 
@@ -253,5 +256,6 @@ export class RegistrationApplicationView {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => PersonSafe)
   admin: Option<PersonSafe>;
 }

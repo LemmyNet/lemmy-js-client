@@ -1,5 +1,5 @@
 import { Option, Some } from "@sniptt/monads";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 import { toUndefined } from "../../utils";
 import { ListingType, SearchType, SortType } from "../others";
 import {
@@ -286,6 +286,7 @@ export class GetSiteResponse {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => SiteView)
   site_view: Option<SiteView>;
   admins: PersonViewSafe[];
   online: number;
@@ -296,17 +297,19 @@ export class GetSiteResponse {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => MyUserInfo)
   my_user: Option<MyUserInfo>;
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => FederatedInstances)
   federated_instances: Option<FederatedInstances>;
 }
 
 /**
  * Your user info, such as blocks, follows, etc.
  */
-export interface MyUserInfo {
+export class MyUserInfo {
   local_user_view: LocalUserSettingsView;
   follows: CommunityFollowerView[];
   moderates: CommunityModeratorView[];
@@ -375,18 +378,22 @@ export class ResolveObjectResponse {
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => CommentView)
   comment: Option<CommentView>;
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => PostView)
   post: Option<PostView>;
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => CommunityView)
   community: Option<CommunityView>;
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => PersonViewSafe)
   person: Option<PersonViewSafe>;
 }
 

@@ -1,5 +1,5 @@
 import { Option, Some } from "@sniptt/monads";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 import { toUndefined } from "../../utils";
 import { SortType } from "../others";
 import {
@@ -71,6 +71,7 @@ export class GetCaptchaResponse {
   /**
    * Will be undefined if captchas are disabled.
    */
+  @Type(() => CaptchaResponse)
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
