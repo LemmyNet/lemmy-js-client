@@ -63,6 +63,7 @@ export class LocalUserSettingsView {
 }
 
 export class SiteView {
+  @Type(() => Site)
   site: Site;
   counts: SiteAggregates;
 }
