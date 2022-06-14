@@ -1,7 +1,7 @@
-import { Option, Some } from "@sniptt/monads";
+import { Option } from "@sniptt/monads";
 import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
-import { toUndefined } from "../utils";
+import { toOption, toUndefined } from "../utils";
 import {
   CommentAggregates,
   CommunityAggregates,
@@ -57,7 +57,7 @@ export class PersonMentionView {
   subscribed: boolean;
   saved: boolean;
   creator_blocked: boolean;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   my_vote: Option<number>;
@@ -99,7 +99,7 @@ export class PostView {
   saved: boolean;
   read: boolean;
   creator_blocked: boolean;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   my_vote: Option<number>;
@@ -117,12 +117,12 @@ export class PostReportView {
   @Type(() => PersonSafe)
   post_creator: PersonSafe;
   creator_banned_from_community: boolean;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   my_vote: Option<number>;
   counts: PostAggregates;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   @Type(() => PersonSafe)
@@ -134,7 +134,7 @@ export class CommentView {
   comment: Comment;
   @Type(() => PersonSafe)
   creator: PersonSafe;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   @Type(() => PersonSafe)
@@ -148,7 +148,7 @@ export class CommentView {
   subscribed: boolean;
   saved: boolean;
   creator_blocked: boolean;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   my_vote: Option<number>;
@@ -169,11 +169,11 @@ export class CommentReportView {
   comment_creator: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   my_vote: Option<number>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   @Type(() => PersonSafe)
@@ -338,7 +338,7 @@ export class RegistrationApplicationView {
   creator_local_user: LocalUserSettings;
   @Type(() => PersonSafe)
   creator: PersonSafe;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   @Type(() => PersonSafe)

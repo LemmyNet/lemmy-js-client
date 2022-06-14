@@ -1,7 +1,7 @@
-import { Option, Some } from "@sniptt/monads";
+import { Option } from "@sniptt/monads";
 import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
-import { toUndefined } from "../../utils";
+import { toOption, toUndefined } from "../../utils";
 import { ListingType, SortType } from "../others";
 import { Site } from "../source";
 import {
@@ -16,15 +16,15 @@ import {
  * To get a federated community by name, use `name@instance.tld` .
  */
 export class GetCommunity {
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   id: Option<number>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   name: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   auth: Option<string>;
@@ -36,7 +36,7 @@ export class GetCommunity {
 
 export class GetCommunityResponse {
   community_view: CommunityView;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   @Type(() => Site)
@@ -49,23 +49,23 @@ export class GetCommunityResponse {
 export class CreateCommunity {
   name: string;
   title: string;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   description: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   icon: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   banner: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   nsfw: Option<boolean>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   posting_restricted_to_mods: Option<boolean>;
@@ -82,23 +82,23 @@ export class CommunityResponse {
 }
 
 export class ListCommunities {
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   type_: Option<ListingType>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   sort: Option<SortType>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   page: Option<number>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   limit: Option<number>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   auth: Option<string>;
@@ -121,18 +121,18 @@ export class BanFromCommunity {
   /**
    * Removes/Restores their comments and posts for that community.
    */
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   remove_data: Option<boolean>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   reason: Option<string>;
   /**
    * The expire time in Unix seconds
    */
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   expires: Option<number>;
@@ -170,27 +170,27 @@ export class AddModToCommunityResponse {
  */
 export class EditCommunity {
   community_id: number;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   title: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   description: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   icon: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   banner: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   nsfw: Option<boolean>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   posting_restricted_to_mods: Option<boolean>;
@@ -217,14 +217,14 @@ export class DeleteCommunity {
 export class RemoveCommunity {
   community_id: number;
   removed: boolean;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   reason: Option<string>;
   /**
    * The expire time in Unix seconds
    */
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   expires: Option<number>;

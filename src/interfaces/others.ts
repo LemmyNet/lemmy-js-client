@@ -1,6 +1,6 @@
-import { Option, Some } from "@sniptt/monads";
+import { Option } from "@sniptt/monads";
 import { Expose, Transform } from "class-transformer";
-import { toUndefined } from "../utils";
+import { toOption, toUndefined } from "../utils";
 export const VERSION = "v3";
 
 /**
@@ -155,19 +155,19 @@ export enum SearchType {
  * A holder for a site's metadata ( such as opengraph tags ), used for post links.
  */
 export class SiteMetadata {
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   title: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   description: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   image: Option<string>;
-  @Transform(({ value }) => Some(value), { toClassOnly: true })
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   html: Option<string>;
