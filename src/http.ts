@@ -1097,10 +1097,12 @@ export class LemmyHttp {
 }
 
 function encodeGetParams<BodyType>(p: BodyType): string {
+  // Necessary to remove the Options
+  let serialized = JSON.parse(serialize(p));
   return (
-    Object.entries(p)
+    Object.entries(serialized)
       // TODO test this, it might serialize the undefineds
-      .map(kv => kv.map(a => encodeURIComponent(serialize(a))).join("="))
+      .map(kv => kv.map(encodeURIComponent).join("="))
       .join("&")
   );
 }
