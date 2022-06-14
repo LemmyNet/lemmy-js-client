@@ -20,18 +20,8 @@ export class CreateComment {
   form_id: Option<string>;
   auth: string;
 
-  constructor(
-    content: string,
-    parent_id: Option<number>,
-    post_id: number,
-    form_id: Option<string>,
-    auth: string
-  ) {
-    this.content = content;
-    this.parent_id = parent_id;
-    this.post_id = post_id;
-    this.form_id = form_id;
-    this.auth = auth;
+  constructor(init: CreateComment) {
+    Object.assign(this, init);
   }
 }
 
@@ -47,16 +37,8 @@ export class EditComment {
   form_id: Option<string>;
   auth: string;
 
-  constructor(
-    content: string,
-    comment_id: number,
-    form_id: Option<string>,
-    auth: string
-  ) {
-    this.content = content;
-    this.comment_id = comment_id;
-    this.form_id = form_id;
-    this.auth = auth;
+  constructor(init: EditComment) {
+    Object.assign(this, init);
   }
 }
 
@@ -68,10 +50,8 @@ export class DeleteComment {
   deleted: boolean;
   auth: string;
 
-  constructor(comment_id: number, deleted: boolean, auth: string) {
-    this.comment_id = comment_id;
-    this.deleted = deleted;
-    this.auth = auth;
+  constructor(init: DeleteComment) {
+    Object.assign(this, init);
   }
 }
 
@@ -87,16 +67,8 @@ export class RemoveComment {
   reason: Option<string>;
   auth: string;
 
-  constructor(
-    comment_id: number,
-    removed: boolean,
-    reason: Option<string>,
-    auth: string
-  ) {
-    this.comment_id = comment_id;
-    this.removed = removed;
-    this.reason = reason;
-    this.auth = auth;
+  constructor(init: RemoveComment) {
+    Object.assign(this, init);
   }
 }
 
@@ -108,10 +80,8 @@ export class MarkCommentAsRead {
   read: boolean;
   auth: string;
 
-  constructor(comment_id: number, read: boolean, auth: string) {
-    this.comment_id = comment_id;
-    this.read = read;
-    this.auth = auth;
+  constructor(init: MarkCommentAsRead) {
+    Object.assign(this, init);
   }
 }
 
@@ -120,10 +90,8 @@ export class SaveComment {
   save: boolean;
   auth: string;
 
-  constructor(comment_id: number, save: boolean, auth: string) {
-    this.comment_id = comment_id;
-    this.save = save;
-    this.auth = auth;
+  constructor(init: SaveComment) {
+    Object.assign(this, init);
   }
 }
 
@@ -144,10 +112,8 @@ export class CreateCommentLike {
   score: number;
   auth: string;
 
-  constructor(comment_id: number, score: number, auth: string) {
-    this.comment_id = comment_id;
-    this.score = score;
-    this.auth = auth;
+  constructor(init: CreateCommentLike) {
+    Object.assign(this, init);
   }
 }
 
@@ -191,24 +157,8 @@ export class GetComments {
   @Expose()
   auth: Option<string>;
 
-  constructor(
-    type_: Option<ListingType>,
-    sort: Option<SortType>,
-    page: Option<number>,
-    limit: Option<number>,
-    community_id: Option<number>,
-    community_name: Option<string>,
-    saved_only: Option<boolean>,
-    auth: Option<string>
-  ) {
-    this.type_ = type_;
-    this.sort = sort;
-    this.page = page;
-    this.limit = limit;
-    this.community_id = community_id;
-    this.community_name = community_name;
-    this.saved_only = saved_only;
-    this.auth = auth;
+  constructor(init: GetComments) {
+    Object.assign(this, init);
   }
 }
 
@@ -221,10 +171,8 @@ export class CreateCommentReport {
   reason: string;
   auth: string;
 
-  constructor(comment_id: number, reason: string, auth: string) {
-    this.comment_id = comment_id;
-    this.reason = reason;
-    this.auth = auth;
+  constructor(init: CreateCommentReport) {
+    Object.assign(this, init);
   }
 }
 
@@ -240,10 +188,8 @@ export class ResolveCommentReport {
   resolved: boolean;
   auth: string;
 
-  constructor(report_id: number, resolved: boolean, auth: string) {
-    this.report_id = report_id;
-    this.resolved = resolved;
-    this.auth = auth;
+  constructor(init: ResolveCommentReport) {
+    Object.assign(this, init);
   }
 }
 
@@ -273,18 +219,8 @@ export class ListCommentReports {
   unresolved_only: Option<boolean>;
   auth: string;
 
-  constructor(
-    page: Option<number>,
-    limit: Option<number>,
-    community_id: Option<number>,
-    unresolved_only: Option<boolean>,
-    auth: string
-  ) {
-    this.page = page;
-    this.limit = limit;
-    this.community_id = community_id;
-    this.unresolved_only = unresolved_only;
-    this.auth = auth;
+  constructor(init: ListCommentReports) {
+    Object.assign(this, init);
   }
 }
 

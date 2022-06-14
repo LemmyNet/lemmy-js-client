@@ -171,4 +171,8 @@ export class SiteMetadata {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   html: Option<string>;
+
+  constructor(init: SiteMetadata) {
+    Object.assign(this, init);
+  }
 }

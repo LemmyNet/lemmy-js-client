@@ -71,28 +71,8 @@ export class Search {
   @Expose()
   auth: Option<string>;
 
-  constructor(
-    q: string,
-    type_: Option<SearchType>,
-    community_id: Option<number>,
-    community_name: Option<string>,
-    creator_id: Option<number>,
-    sort: Option<SortType>,
-    listing_type: Option<ListingType>,
-    page: Option<number>,
-    limit: Option<number>,
-    auth: Option<string>
-  ) {
-    this.q = q;
-    this.type_ = type_;
-    this.community_id = community_id;
-    this.community_name = community_name;
-    this.creator_id = creator_id;
-    this.sort = sort;
-    this.listing_type = listing_type;
-    this.page = page;
-    this.limit = limit;
-    this.auth = auth;
+  constructor(init: Search) {
+    Object.assign(this, init);
   }
 }
 
@@ -129,18 +109,8 @@ export class GetModlog {
   @Expose()
   auth: Option<string>;
 
-  constructor(
-    mod_person_id: Option<number>,
-    community_id: Option<number>,
-    page: Option<number>,
-    limit: Option<number>,
-    auth: Option<string>
-  ) {
-    this.mod_person_id = mod_person_id;
-    this.community_id = community_id;
-    this.page = page;
-    this.limit = limit;
-    this.auth = auth;
+  constructor(init: GetModlog) {
+    Object.assign(this, init);
   }
 }
 
@@ -217,40 +187,8 @@ export class CreateSite {
   default_post_listing_type: Option<string>;
   auth: string;
 
-  constructor(
-    name: string,
-    sidebar: Option<string>,
-    description: Option<string>,
-    icon: Option<string>,
-    banner: Option<string>,
-    enable_downvotes: Option<boolean>,
-    open_registration: Option<boolean>,
-    enable_nsfw: Option<boolean>,
-    community_creation_admin_only: Option<boolean>,
-    require_email_verification: Option<boolean>,
-    require_application: Option<boolean>,
-    application_question: Option<string>,
-    private_instance: Option<boolean>,
-    default_theme: Option<string>,
-    default_post_listing_type: Option<string>,
-    auth: string
-  ) {
-    this.name = name;
-    this.sidebar = sidebar;
-    this.description = description;
-    this.icon = icon;
-    this.banner = banner;
-    this.enable_downvotes = enable_downvotes;
-    this.open_registration = open_registration;
-    this.enable_nsfw = enable_nsfw;
-    this.community_creation_admin_only = community_creation_admin_only;
-    this.require_email_verification = require_email_verification;
-    this.require_application = require_application;
-    this.application_question = application_question;
-    this.private_instance = private_instance;
-    this.default_theme = default_theme;
-    this.default_post_listing_type = default_post_listing_type;
-    this.auth = auth;
+  constructor(init: CreateSite) {
+    Object.assign(this, init);
   }
 }
 
@@ -321,42 +259,8 @@ export class EditSite {
   default_post_listing_type: Option<string>;
   auth: string;
 
-  constructor(
-    name: Option<string>,
-    sidebar: Option<string>,
-    description: Option<string>,
-    icon: Option<string>,
-    banner: Option<string>,
-    enable_downvotes: Option<boolean>,
-    open_registration: Option<boolean>,
-    enable_nsfw: Option<boolean>,
-    community_creation_admin_only: Option<boolean>,
-    require_email_verification: Option<boolean>,
-    require_application: Option<boolean>,
-    application_question: Option<string>,
-    private_instance: Option<boolean>,
-    default_theme: Option<string>,
-    legal_information: Option<string>,
-    default_post_listing_type: Option<string>,
-    auth: string
-  ) {
-    this.name = name;
-    this.sidebar = sidebar;
-    this.description = description;
-    this.icon = icon;
-    this.banner = banner;
-    this.enable_downvotes = enable_downvotes;
-    this.open_registration = open_registration;
-    this.enable_nsfw = enable_nsfw;
-    this.community_creation_admin_only = community_creation_admin_only;
-    this.require_email_verification = require_email_verification;
-    this.require_application = require_application;
-    this.application_question = application_question;
-    this.private_instance = private_instance;
-    this.default_theme = default_theme;
-    this.legal_information = legal_information;
-    this.default_post_listing_type = default_post_listing_type;
-    this.auth = auth;
+  constructor(init: EditSite) {
+    Object.assign(this, init);
   }
 }
 
@@ -366,8 +270,8 @@ export class GetSite {
   @Expose()
   auth: Option<string>;
 
-  constructor(auth: Option<string>) {
-    this.auth = auth;
+  constructor(init: GetSite) {
+    Object.assign(this, init);
   }
 }
 
@@ -402,27 +306,31 @@ export class GetSiteResponse {
 /**
  * Your user info, such as blocks, follows, etc.
  */
-export interface MyUserInfo {
+export class MyUserInfo {
   local_user_view: LocalUserSettingsView;
   follows: CommunityFollowerView[];
   moderates: CommunityModeratorView[];
   community_blocks: CommunityBlockView[];
   person_blocks: PersonBlockView[];
+
+  constructor(init: MyUserInfo) {
+    Object.assign(this, init);
+  }
 }
 
 export class LeaveAdmin {
   auth: string;
 
-  constructor(auth: string) {
-    this.auth = auth;
+  constructor(init: LeaveAdmin) {
+    Object.assign(this, init);
   }
 }
 
 export class GetSiteConfig {
   auth: string;
 
-  constructor(auth: string) {
-    this.auth = auth;
+  constructor(init: GetSiteConfig) {
+    Object.assign(this, init);
   }
 }
 
@@ -434,9 +342,8 @@ export class SaveSiteConfig {
   config_hjson: string;
   auth: string;
 
-  constructor(config_hjson: string, auth: string) {
-    this.config_hjson = config_hjson;
-    this.auth = auth;
+  constructor(init: SaveSiteConfig) {
+    Object.assign(this, init);
   }
 }
 
@@ -450,6 +357,10 @@ export class FederatedInstances {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   blocked: Option<string[]>;
+
+  constructor(init: FederatedInstances) {
+    Object.assign(this, init);
+  }
 }
 
 export class ResolveObject {
@@ -459,9 +370,8 @@ export class ResolveObject {
   @Expose()
   auth: Option<string>;
 
-  constructor(q: string, auth: Option<string>) {
-    this.q = q;
-    this.auth = auth;
+  constructor(init: ResolveObject) {
+    Object.assign(this, init);
   }
 }
 
@@ -502,16 +412,8 @@ export class ListRegistrationApplications {
   limit: Option<number>;
   auth: string;
 
-  constructor(
-    unread_only: Option<boolean>,
-    page: Option<number>,
-    limit: Option<number>,
-    auth: string
-  ) {
-    this.unread_only = unread_only;
-    this.page = page;
-    this.limit = limit;
-    this.auth = auth;
+  constructor(init: ListRegistrationApplications) {
+    Object.assign(this, init);
   }
 }
 
@@ -528,16 +430,8 @@ export class ApproveRegistrationApplication {
   deny_reason: Option<string>;
   auth: string;
 
-  constructor(
-    id: number,
-    approve: boolean,
-    deny_reason: Option<string>,
-    auth: string
-  ) {
-    this.id = id;
-    this.approve = approve;
-    this.deny_reason = deny_reason;
-    this.auth = auth;
+  constructor(init: ApproveRegistrationApplication) {
+    Object.assign(this, init);
   }
 }
 
@@ -548,8 +442,8 @@ export class RegistrationApplicationResponse {
 export class GetUnreadRegistrationApplicationCount {
   auth: string;
 
-  constructor(auth: string) {
-    this.auth = auth;
+  constructor(init: GetUnreadRegistrationApplicationCount) {
+    Object.assign(this, init);
   }
 }
 

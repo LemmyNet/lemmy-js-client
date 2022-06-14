@@ -15,9 +15,8 @@ export class Login {
   username_or_email: string;
   password: string;
 
-  constructor(username_or_email: string, password: string) {
-    this.username_or_email = username_or_email;
-    this.password = password;
+  constructor(init: Login) {
+    Object.assign(this, init);
   }
 }
 
@@ -61,26 +60,8 @@ export class Register {
   @Expose()
   answer: Option<string>;
 
-  constructor(
-    username: string,
-    email: Option<string>,
-    password: string,
-    password_verify: string,
-    show_nsfw: boolean,
-    captcha_uuid: Option<string>,
-    captcha_answer: Option<string>,
-    honeypot: Option<string>,
-    answer: Option<string>
-  ) {
-    this.username = username;
-    this.email = email;
-    this.password = password;
-    this.password_verify = password_verify;
-    this.show_nsfw = show_nsfw;
-    this.captcha_uuid = captcha_uuid;
-    this.captcha_answer = captcha_answer;
-    this.honeypot = honeypot;
-    this.answer = answer;
+  constructor(init: Register) {
+    Object.assign(this, init);
   }
 }
 
@@ -207,46 +188,8 @@ export class SaveUserSettings {
   show_new_post_notifs: Option<boolean>;
   auth: string;
 
-  constructor(
-    show_nsfw: Option<boolean>,
-    theme: Option<string>,
-    default_sort_type: Option<number>,
-    default_listing_type: Option<number>,
-    lang: Option<string>,
-    avatar: Option<string>,
-    banner: Option<string>,
-    display_name: Option<string>,
-    email: Option<string>,
-    bio: Option<string>,
-    matrix_user_id: Option<string>,
-    show_avatars: Option<boolean>,
-    show_scores: Option<boolean>,
-    send_notifications_to_email: Option<boolean>,
-    bot_account: Option<boolean>,
-    show_bot_accounts: Option<boolean>,
-    show_read_posts: Option<boolean>,
-    show_new_post_notifs: Option<boolean>,
-    auth: string
-  ) {
-    this.show_nsfw = show_nsfw;
-    this.theme = theme;
-    this.default_sort_type = default_sort_type;
-    this.default_listing_type = default_listing_type;
-    this.lang = lang;
-    this.avatar = avatar;
-    this.banner = banner;
-    this.display_name = display_name;
-    this.email = email;
-    this.bio = bio;
-    this.matrix_user_id = matrix_user_id;
-    this.show_avatars = show_avatars;
-    this.show_scores = show_scores;
-    this.send_notifications_to_email = send_notifications_to_email;
-    this.bot_account = bot_account;
-    this.show_bot_accounts = show_bot_accounts;
-    this.show_read_posts = show_read_posts;
-    this.show_new_post_notifs = show_new_post_notifs;
-    this.auth = auth;
+  constructor(init: SaveUserSettings) {
+    Object.assign(this, init);
   }
 }
 
@@ -256,16 +199,8 @@ export class ChangePassword {
   old_password: string;
   auth: string;
 
-  constructor(
-    new_password: string,
-    new_password_verify: string,
-    old_password: string,
-    auth: string
-  ) {
-    this.new_password = new_password;
-    this.new_password_verify = new_password_verify;
-    this.old_password = old_password;
-    this.auth = auth;
+  constructor(init: ChangePassword) {
+    Object.assign(this, init);
   }
 }
 
@@ -321,24 +256,8 @@ export class GetPersonDetails {
   @Expose()
   auth: Option<string>;
 
-  constructor(
-    person_id: Option<number>,
-    username: Option<string>,
-    sort: Option<SortType>,
-    page: Option<number>,
-    limit: Option<number>,
-    community_id: Option<number>,
-    saved_only: Option<boolean>,
-    auth: Option<string>
-  ) {
-    this.person_id = person_id;
-    this.username = username;
-    this.sort = sort;
-    this.page = page;
-    this.limit = limit;
-    this.community_id = community_id;
-    this.saved_only = saved_only;
-    this.auth = auth;
+  constructor(init: GetPersonDetails) {
+    Object.assign(this, init);
   }
 }
 
@@ -370,10 +289,8 @@ export class AddAdmin {
   added: boolean;
   auth: string;
 
-  constructor(person_id: number, added: boolean, auth: string) {
-    this.person_id = person_id;
-    this.added = added;
-    this.auth = auth;
+  constructor(init: AddAdmin) {
+    Object.assign(this, init);
   }
 }
 
@@ -405,20 +322,8 @@ export class BanPerson {
   expires: Option<number>;
   auth: string;
 
-  constructor(
-    person_id: number,
-    ban: boolean,
-    remove_data: Option<boolean>,
-    reason: Option<string>,
-    expires: Option<number>,
-    auth: string
-  ) {
-    this.person_id = person_id;
-    this.ban = ban;
-    this.remove_data = remove_data;
-    this.reason = reason;
-    this.expires = expires;
-    this.auth = auth;
+  constructor(init: BanPerson) {
+    Object.assign(this, init);
   }
 }
 
@@ -446,18 +351,8 @@ export class GetReplies {
   unread_only: Option<boolean>;
   auth: string;
 
-  constructor(
-    sort: Option<SortType>,
-    page: Option<number>,
-    limit: Option<number>,
-    unread_only: Option<boolean>,
-    auth: string
-  ) {
-    this.sort = sort;
-    this.page = page;
-    this.limit = limit;
-    this.unread_only = unread_only;
-    this.auth = auth;
+  constructor(init: GetReplies) {
+    Object.assign(this, init);
   }
 }
 
@@ -480,18 +375,8 @@ export class GetPersonMentions {
   unread_only: Option<boolean>;
   auth: string;
 
-  constructor(
-    sort: Option<SortType>,
-    page: Option<number>,
-    limit: Option<number>,
-    unread_only: Option<boolean>,
-    auth: string
-  ) {
-    this.sort = sort;
-    this.page = page;
-    this.limit = limit;
-    this.unread_only = unread_only;
-    this.auth = auth;
+  constructor(init: GetPersonMentions) {
+    Object.assign(this, init);
   }
 }
 
@@ -500,10 +385,8 @@ export class MarkPersonMentionAsRead {
   read: boolean;
   auth: string;
 
-  constructor(person_mention_id: number, read: boolean, auth: string) {
-    this.person_mention_id = person_mention_id;
-    this.read = read;
-    this.auth = auth;
+  constructor(init: MarkPersonMentionAsRead) {
+    Object.assign(this, init);
   }
 }
 
@@ -518,9 +401,8 @@ export class DeleteAccount {
   password: string;
   auth: string;
 
-  constructor(password: string, auth: string) {
-    this.password = password;
-    this.auth = auth;
+  constructor(init: DeleteAccount) {
+    Object.assign(this, init);
   }
 }
 
@@ -529,8 +411,8 @@ export class DeleteAccountResponse {}
 export class PasswordReset {
   email: string;
 
-  constructor(email: string) {
-    this.email = email;
+  constructor(init: PasswordReset) {
+    Object.assign(this, init);
   }
 }
 
@@ -541,10 +423,8 @@ export class PasswordChange {
   password: string;
   password_verify: string;
 
-  constructor(token: string, password: string, password_verify: string) {
-    this.token = token;
-    this.password = password;
-    this.password_verify = password_verify;
+  constructor(init: PasswordChange) {
+    Object.assign(this, init);
   }
 }
 
@@ -553,10 +433,8 @@ export class CreatePrivateMessage {
   recipient_id: number;
   auth: string;
 
-  constructor(content: string, recipient_id: number, auth: string) {
-    this.content = content;
-    this.recipient_id = recipient_id;
-    this.auth = auth;
+  constructor(init: CreatePrivateMessage) {
+    Object.assign(this, init);
   }
 }
 
@@ -565,10 +443,8 @@ export class EditPrivateMessage {
   content: string;
   auth: string;
 
-  constructor(private_message_id: number, content: string, auth: string) {
-    this.private_message_id = private_message_id;
-    this.content = content;
-    this.auth = auth;
+  constructor(init: EditPrivateMessage) {
+    Object.assign(this, init);
   }
 }
 
@@ -577,10 +453,8 @@ export class DeletePrivateMessage {
   deleted: boolean;
   auth: string;
 
-  constructor(private_message_id: number, deleted: boolean, auth: string) {
-    this.private_message_id = private_message_id;
-    this.deleted = deleted;
-    this.auth = auth;
+  constructor(init: DeletePrivateMessage) {
+    Object.assign(this, init);
   }
 }
 
@@ -589,10 +463,8 @@ export class MarkPrivateMessageAsRead {
   read: boolean;
   auth: string;
 
-  constructor(private_message_id: number, read: boolean, auth: string) {
-    this.private_message_id = private_message_id;
-    this.read = read;
-    this.auth = auth;
+  constructor(init: MarkPrivateMessageAsRead) {
+    Object.assign(this, init);
   }
 }
 
@@ -610,6 +482,10 @@ export class GetPrivateMessages {
   @Expose()
   limit: Option<number>;
   auth: string;
+
+  constructor(init: GetPrivateMessages) {
+    Object.assign(this, init);
+  }
 }
 
 export class PrivateMessagesResponse {
@@ -630,9 +506,8 @@ export class GetReportCount {
   community_id: Option<number>;
   auth: string;
 
-  constructor(community_id: Option<number>, auth: string) {
-    this.community_id = community_id;
-    this.auth = auth;
+  constructor(init: GetReportCount) {
+    Object.assign(this, init);
   }
 }
 
@@ -648,8 +523,8 @@ export class GetReportCountResponse {
 export class GetUnreadCount {
   auth: string;
 
-  constructor(auth: string) {
-    this.auth = auth;
+  constructor(init: GetUnreadCount) {
+    Object.assign(this, init);
   }
 }
 
@@ -662,8 +537,8 @@ export class GetUnreadCountResponse {
 export class VerifyEmail {
   token: string;
 
-  constructor(token: string) {
-    this.token = token;
+  constructor(init: VerifyEmail) {
+    Object.assign(this, init);
   }
 }
 
@@ -674,10 +549,8 @@ export class BlockPerson {
   block: boolean;
   auth: string;
 
-  constructor(person_id: number, block: boolean, auth: string) {
-    this.person_id = person_id;
-    this.block = block;
-    this.auth = auth;
+  constructor(init: BlockPerson) {
+    Object.assign(this, init);
   }
 }
 
@@ -689,8 +562,8 @@ export class BlockPersonResponse {
 export class GetBannedPersons {
   auth: string;
 
-  constructor(auth: string) {
-    this.auth = auth;
+  constructor(init: GetBannedPersons) {
+    Object.assign(this, init);
   }
 }
 

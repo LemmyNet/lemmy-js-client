@@ -31,22 +31,8 @@ export class CreatePost {
   honeypot: Option<string>;
   auth: string;
 
-  constructor(
-    name: string,
-    url: Option<string>,
-    body: Option<string>,
-    nsfw: Option<boolean>,
-    community_id: number,
-    honeypot: Option<string>,
-    auth: string
-  ) {
-    this.name = name;
-    this.url = url;
-    this.body = body;
-    this.nsfw = nsfw;
-    this.community_id = community_id;
-    this.honeypot = honeypot;
-    this.auth = auth;
+  constructor(init: CreatePost) {
+    Object.assign(this, init);
   }
 }
 
@@ -61,9 +47,8 @@ export class GetPost {
   @Expose()
   auth: Option<string>;
 
-  constructor(id: number, auth: Option<string>) {
-    this.id = id;
-    this.auth = auth;
+  constructor(init: GetPost) {
+    Object.assign(this, init);
   }
 }
 
@@ -112,24 +97,8 @@ export class GetPosts {
   @Expose()
   auth: Option<string>;
 
-  constructor(
-    type_: Option<ListingType>,
-    sort: Option<SortType>,
-    page: Option<number>,
-    limit: Option<number>,
-    community_id: Option<number>,
-    community_name: Option<string>,
-    saved_only: Option<boolean>,
-    auth: Option<string>
-  ) {
-    this.type_ = type_;
-    this.sort = sort;
-    this.page = page;
-    this.limit = limit;
-    this.community_id = community_id;
-    this.community_name = community_name;
-    this.saved_only = saved_only;
-    this.auth = auth;
+  constructor(init: GetPosts) {
+    Object.assign(this, init);
   }
 }
 
@@ -146,10 +115,8 @@ export class CreatePostLike {
   score: number;
   auth: string;
 
-  constructor(post_id: number, score: number, auth: string) {
-    this.post_id = post_id;
-    this.score = score;
-    this.auth = auth;
+  constructor(init: CreatePostLike) {
+    Object.assign(this, init);
   }
 }
 
@@ -173,20 +140,8 @@ export class EditPost {
   nsfw: Option<boolean>;
   auth: string;
 
-  constructor(
-    post_id: number,
-    name: Option<string>,
-    url: Option<string>,
-    body: Option<string>,
-    nsfw: Option<boolean>,
-    auth: string
-  ) {
-    this.post_id = post_id;
-    this.name = name;
-    this.url = url;
-    this.body = body;
-    this.nsfw = nsfw;
-    this.auth = auth;
+  constructor(init: EditPost) {
+    Object.assign(this, init);
   }
 }
 
@@ -195,10 +150,8 @@ export class DeletePost {
   deleted: boolean;
   auth: string;
 
-  constructor(post_id: number, deleted: boolean, auth: string) {
-    this.post_id = post_id;
-    this.deleted = deleted;
-    this.auth = auth;
+  constructor(init: DeletePost) {
+    Object.assign(this, init);
   }
 }
 
@@ -214,16 +167,8 @@ export class RemovePost {
   reason: Option<string>;
   auth: string;
 
-  constructor(
-    post_id: number,
-    removed: boolean,
-    reason: Option<string>,
-    auth: string
-  ) {
-    this.post_id = post_id;
-    this.removed = removed;
-    this.reason = reason;
-    this.auth = auth;
+  constructor(init: RemovePost) {
+    Object.assign(this, init);
   }
 }
 
@@ -235,10 +180,8 @@ export class MarkPostAsRead {
   read: boolean;
   auth: string;
 
-  constructor(post_id: number, read: boolean, auth: string) {
-    this.post_id = post_id;
-    this.read = read;
-    this.auth = auth;
+  constructor(init: MarkPostAsRead) {
+    Object.assign(this, init);
   }
 }
 
@@ -250,10 +193,8 @@ export class LockPost {
   locked: boolean;
   auth: string;
 
-  constructor(post_id: number, locked: boolean, auth: string) {
-    this.post_id = post_id;
-    this.locked = locked;
-    this.auth = auth;
+  constructor(init: LockPost) {
+    Object.assign(this, init);
   }
 }
 
@@ -265,10 +206,8 @@ export class StickyPost {
   stickied: boolean;
   auth: string;
 
-  constructor(post_id: number, stickied: boolean, auth: string) {
-    this.post_id = post_id;
-    this.stickied = stickied;
-    this.auth = auth;
+  constructor(init: StickyPost) {
+    Object.assign(this, init);
   }
 }
 
@@ -277,10 +216,8 @@ export class SavePost {
   save: boolean;
   auth: string;
 
-  constructor(post_id: number, save: boolean, auth: string) {
-    this.post_id = post_id;
-    this.save = save;
-    this.auth = auth;
+  constructor(init: SavePost) {
+    Object.assign(this, init);
   }
 }
 
@@ -289,10 +226,8 @@ export class CreatePostReport {
   reason: string;
   auth: string;
 
-  constructor(post_id: number, reason: string, auth: string) {
-    this.post_id = post_id;
-    this.reason = reason;
-    this.auth = auth;
+  constructor(init: CreatePostReport) {
+    Object.assign(this, init);
   }
 }
 
@@ -308,10 +243,8 @@ export class ResolvePostReport {
   resolved: boolean;
   auth: string;
 
-  constructor(report_id: number, resolved: boolean, auth: string) {
-    this.report_id = report_id;
-    this.resolved = resolved;
-    this.auth = auth;
+  constructor(init: ResolvePostReport) {
+    Object.assign(this, init);
   }
 }
 
@@ -340,18 +273,8 @@ export class ListPostReports {
   unresolved_only: Option<boolean>;
   auth: string;
 
-  constructor(
-    page: Option<number>,
-    limit: Option<number>,
-    community_id: Option<number>,
-    unresolved_only: Option<boolean>,
-    auth: string
-  ) {
-    this.page = page;
-    this.limit = limit;
-    this.community_id = community_id;
-    this.unresolved_only = unresolved_only;
-    this.auth = auth;
+  constructor(init: ListPostReports) {
+    Object.assign(this, init);
   }
 }
 
@@ -362,8 +285,8 @@ export class ListPostReportsResponse {
 export class GetSiteMetadata {
   url: string;
 
-  constructor(url: string) {
-    this.url = url;
+  constructor(init: GetSiteMetadata) {
+    Object.assign(this, init);
   }
 }
 

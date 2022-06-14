@@ -1097,10 +1097,8 @@ export class LemmyHttp {
 }
 
 function encodeGetParams<BodyType>(p: BodyType): string {
-  console.log(p);
   // Necessary to remove the Options
   let serialized = JSON.parse(serialize(p));
-  console.log(serialized);
   return (
     Object.entries(serialized)
       // TODO test this, it might serialize the undefineds

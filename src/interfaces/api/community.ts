@@ -28,10 +28,8 @@ export class GetCommunity {
   @Expose()
   auth: Option<string>;
 
-  constructor(id: Option<number>, name: Option<string>, auth: Option<string>) {
-    this.id = id;
-    this.name = name;
-    this.auth = auth;
+  constructor(init: GetCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -70,24 +68,8 @@ export class CreateCommunity {
   posting_restricted_to_mods: Option<boolean>;
   auth: string;
 
-  constructor(
-    name: string,
-    title: string,
-    description: Option<string>,
-    icon: Option<string>,
-    banner: Option<string>,
-    nsfw: Option<boolean>,
-    posting_restricted_to_mods: Option<boolean>,
-    auth: string
-  ) {
-    this.name = name;
-    this.title = title;
-    this.description = description;
-    this.icon = icon;
-    this.banner = banner;
-    this.nsfw = nsfw;
-    this.posting_restricted_to_mods = posting_restricted_to_mods;
-    this.auth = auth;
+  constructor(init: CreateCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -117,18 +99,8 @@ export class ListCommunities {
   @Expose()
   auth: Option<string>;
 
-  constructor(
-    type_: Option<ListingType>,
-    sort: Option<SortType>,
-    page: Option<number>,
-    limit: Option<number>,
-    auth: Option<string>
-  ) {
-    this.type_ = type_;
-    this.sort = sort;
-    this.page = page;
-    this.limit = limit;
-    this.auth = auth;
+  constructor(init: ListCommunities) {
+    Object.assign(this, init);
   }
 }
 
@@ -161,22 +133,8 @@ export class BanFromCommunity {
   expires: Option<number>;
   auth: string;
 
-  constructor(
-    community_id: number,
-    person_id: number,
-    ban: boolean,
-    remove_data: Option<boolean>,
-    reason: Option<string>,
-    expires: Option<number>,
-    auth: string
-  ) {
-    this.community_id = community_id;
-    this.person_id = person_id;
-    this.ban = ban;
-    this.remove_data = remove_data;
-    this.reason = reason;
-    this.expires = expires;
-    this.auth = auth;
+  constructor(init: BanFromCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -191,16 +149,8 @@ export class AddModToCommunity {
   added: boolean;
   auth: string;
 
-  constructor(
-    community_id: number,
-    person_id: number,
-    added: boolean,
-    auth: string
-  ) {
-    this.community_id = community_id;
-    this.person_id = person_id;
-    this.added = added;
-    this.auth = auth;
+  constructor(init: AddModToCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -239,24 +189,8 @@ export class EditCommunity {
   posting_restricted_to_mods: Option<boolean>;
   auth: string;
 
-  constructor(
-    community_id: number,
-    title: Option<string>,
-    description: Option<string>,
-    icon: Option<string>,
-    banner: Option<string>,
-    nsfw: Option<boolean>,
-    posting_restricted_to_mods: Option<boolean>,
-    auth: string
-  ) {
-    this.community_id = community_id;
-    this.title = title;
-    this.description = description;
-    this.icon = icon;
-    this.banner = banner;
-    this.nsfw = nsfw;
-    this.posting_restricted_to_mods = posting_restricted_to_mods;
-    this.auth = auth;
+  constructor(init: EditCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -265,10 +199,8 @@ export class DeleteCommunity {
   deleted: boolean;
   auth: string;
 
-  constructor(community_id: number, deleted: boolean, auth: string) {
-    this.community_id = community_id;
-    this.deleted = deleted;
-    this.auth = auth;
+  constructor(init: DeleteCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -291,18 +223,8 @@ export class RemoveCommunity {
   expires: Option<number>;
   auth: string;
 
-  constructor(
-    community_id: number,
-    removed: boolean,
-    reason: Option<string>,
-    expires: Option<number>,
-    auth: string
-  ) {
-    this.community_id = community_id;
-    this.removed = removed;
-    this.reason = reason;
-    this.expires = expires;
-    this.auth = auth;
+  constructor(init: RemoveCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -311,10 +233,8 @@ export class FollowCommunity {
   follow: boolean;
   auth: string;
 
-  constructor(community_id: number, follow: boolean, auth: string) {
-    this.community_id = community_id;
-    this.follow = follow;
-    this.auth = auth;
+  constructor(init: FollowCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -323,10 +243,8 @@ export class TransferCommunity {
   person_id: number;
   auth: string;
 
-  constructor(community_id: number, person_id: number, auth: string) {
-    this.community_id = community_id;
-    this.person_id = person_id;
-    this.auth = auth;
+  constructor(init: TransferCommunity) {
+    Object.assign(this, init);
   }
 }
 
@@ -335,10 +253,8 @@ export class BlockCommunity {
   block: boolean;
   auth: string;
 
-  constructor(community_id: number, block: boolean, auth: string) {
-    this.community_id = community_id;
-    this.block = block;
-    this.auth = auth;
+  constructor(init: BlockCommunity) {
+    Object.assign(this, init);
   }
 }
 
