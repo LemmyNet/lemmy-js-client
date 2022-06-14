@@ -1,5 +1,6 @@
 import { Option, Some } from "@sniptt/monads";
 import { Expose, Transform, Type } from "class-transformer";
+import "reflect-metadata";
 import { toUndefined } from "../utils";
 import {
   CommentAggregates,
