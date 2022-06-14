@@ -41,6 +41,7 @@ export class GetCommunityResponse {
   @Expose()
   @Type(() => Site)
   site: Option<Site>;
+  @Type(() => CommunityModeratorView)
   moderators: CommunityModeratorView[];
   online: number;
 }
@@ -76,6 +77,7 @@ export class CreateCommunity {
 }
 
 export class CommunityResponse {
+  @Type(() => CommunityView)
   community_view: CommunityView;
 }
 
@@ -107,6 +109,7 @@ export class ListCommunities {
 }
 
 export class ListCommunitiesResponse {
+  @Type(() => CommunityView)
   communities: CommunityView[];
 }
 
@@ -141,6 +144,7 @@ export class BanFromCommunity {
 }
 
 export class BanFromCommunityResponse {
+  @Type(() => PersonViewSafe)
   person_view: PersonViewSafe;
   banned: boolean;
 }
@@ -157,6 +161,7 @@ export class AddModToCommunity {
 }
 
 export class AddModToCommunityResponse {
+  @Type(() => CommunityModeratorView)
   moderators: CommunityModeratorView[];
 }
 
@@ -261,6 +266,7 @@ export class BlockCommunity {
 }
 
 export class BlockCommunityResponse {
+  @Type(() => CommunityView)
   community_view: CommunityView;
   blocked: boolean;
 }

@@ -72,10 +72,10 @@ export class GetCaptchaResponse {
   /**
    * Will be undefined if captchas are disabled.
    */
-  @Type(() => CaptchaResponse)
   @Transform(({ value }) => Some(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => CaptchaResponse)
   ok: Option<CaptchaResponse>;
 }
 
@@ -264,17 +264,23 @@ export class GetPersonDetails {
 }
 
 export class GetPersonDetailsResponse {
+  @Type(() => PersonViewSafe)
   person_view: PersonViewSafe;
+  @Type(() => CommentView)
   comments: CommentView[];
+  @Type(() => PostView)
   posts: PostView[];
+  @Type(() => CommunityModeratorView)
   moderates: CommunityModeratorView[];
 }
 
 export class GetRepliesResponse {
+  @Type(() => CommentView)
   replies: CommentView[];
 }
 
 export class GetPersonMentionsResponse {
+  @Type(() => PersonMentionView)
   mentions: PersonMentionView[];
 }
 
@@ -297,6 +303,7 @@ export class AddAdmin {
 }
 
 export class AddAdminResponse {
+  @Type(() => PersonViewSafe)
   admins: PersonViewSafe[];
 }
 
@@ -330,6 +337,7 @@ export class BanPerson {
 }
 
 export class BanPersonResponse {
+  @Type(() => PersonViewSafe)
   person_view: PersonViewSafe;
   banned: boolean;
 }
@@ -393,6 +401,7 @@ export class MarkPersonMentionAsRead {
 }
 
 export class PersonMentionResponse {
+  @Type(() => PersonMentionView)
   person_mention_view: PersonMentionView;
 }
 
@@ -491,10 +500,12 @@ export class GetPrivateMessages {
 }
 
 export class PrivateMessagesResponse {
+  @Type(() => PrivateMessageView)
   private_messages: PrivateMessageView[];
 }
 
 export class PrivateMessageResponse {
+  @Type(() => PrivateMessageView)
   private_message_view: PrivateMessageView;
 }
 
@@ -557,6 +568,7 @@ export class BlockPerson {
 }
 
 export class BlockPersonResponse {
+  @Type(() => PersonViewSafe)
   person_view: PersonViewSafe;
   blocked: boolean;
 }
@@ -570,5 +582,6 @@ export class GetBannedPersons {
 }
 
 export class BannedPersonsResponse {
+  @Type(() => PersonViewSafe)
   banned: PersonViewSafe[];
 }

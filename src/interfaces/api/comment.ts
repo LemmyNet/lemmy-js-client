@@ -1,5 +1,6 @@
 import { Option, Some } from "@sniptt/monads";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
+import "reflect-metadata";
 import { toUndefined } from "../../utils";
 import { ListingType, SortType } from "../others";
 import { CommentReportView, CommentView } from "../views";
@@ -96,6 +97,7 @@ export class SaveComment {
 }
 
 export class CommentResponse {
+  @Type(() => CommentView)
   comment_view: CommentView;
   recipient_ids: number[];
   /**
@@ -163,6 +165,7 @@ export class GetComments {
 }
 
 export class GetCommentsResponse {
+  @Type(() => CommentView)
   comments: CommentView[];
 }
 
@@ -177,6 +180,7 @@ export class CreateCommentReport {
 }
 
 export class CommentReportResponse {
+  @Type(() => CommentReportView)
   comment_report_view: CommentReportView;
 }
 
@@ -225,5 +229,6 @@ export class ListCommentReports {
 }
 
 export class ListCommentReportsResponse {
+  @Type(() => CommentReportView)
   comment_reports: CommentReportView[];
 }

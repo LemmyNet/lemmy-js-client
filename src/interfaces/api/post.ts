@@ -1,5 +1,6 @@
 import { Option, Some } from "@sniptt/monads";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
+import "reflect-metadata";
 import { toUndefined } from "../../utils";
 import { ListingType, SiteMetadata, SortType } from "../others";
 import {
@@ -37,6 +38,7 @@ export class CreatePost {
 }
 
 export class PostResponse {
+  @Type(() => PostView)
   post_view: PostView;
 }
 
@@ -53,9 +55,13 @@ export class GetPost {
 }
 
 export class GetPostResponse {
+  @Type(() => PostView)
   post_view: PostView;
+  @Type(() => CommunityView)
   community_view: CommunityView;
+  @Type(() => CommentView)
   comments: CommentView[];
+  @Type(() => CommunityModeratorView)
   moderators: CommunityModeratorView[];
   online: number;
 }
@@ -103,6 +109,7 @@ export class GetPosts {
 }
 
 export class GetPostsResponse {
+  @Type(() => PostView)
   posts: PostView[];
 }
 
@@ -232,6 +239,7 @@ export class CreatePostReport {
 }
 
 export class PostReportResponse {
+  @Type(() => PostReportView)
   post_report_view: PostReportView;
 }
 
@@ -279,6 +287,7 @@ export class ListPostReports {
 }
 
 export class ListPostReportsResponse {
+  @Type(() => PostReportView)
   post_reports: PostReportView[];
 }
 
@@ -291,5 +300,6 @@ export class GetSiteMetadata {
 }
 
 export class GetSiteMetadataResponse {
+  @Type(() => SiteMetadata)
   metadata: SiteMetadata;
 }

@@ -82,9 +82,13 @@ export class SearchResponse {
    * The [[SearchType]].
    */
   type_: string;
+  @Type(() => CommentView)
   comments: CommentView[];
+  @Type(() => PostView)
   posts: PostView[];
+  @Type(() => CommunityView)
   communities: CommunityView[];
+  @Type(() => PersonViewSafe)
   users: PersonViewSafe[];
 }
 
@@ -116,15 +120,25 @@ export class GetModlog {
 }
 
 export class GetModlogResponse {
+  @Type(() => ModRemovePostView)
   removed_posts: ModRemovePostView[];
+  @Type(() => ModLockPostView)
   locked_posts: ModLockPostView[];
+  @Type(() => ModStickyPostView)
   stickied_posts: ModStickyPostView[];
+  @Type(() => ModRemoveCommentView)
   removed_comments: ModRemoveCommentView[];
+  @Type(() => ModRemoveCommunityView)
   removed_communities: ModRemoveCommunityView[];
+  @Type(() => ModBanFromCommunityView)
   banned_from_community: ModBanFromCommunityView[];
+  @Type(() => ModBanView)
   banned: ModBanView[];
+  @Type(() => ModAddCommunityView)
   added_to_community: ModAddCommunityView[];
+  @Type(() => ModTransferCommunityView)
   transferred_to_community: ModTransferCommunityView[];
+  @Type(() => ModAddView)
   added: ModAddView[];
 }
 
@@ -277,6 +291,7 @@ export class GetSite {
 }
 
 export class SiteResponse {
+  @Type(() => SiteView)
   site_view: SiteView;
 }
 
@@ -289,6 +304,7 @@ export class GetSiteResponse {
   @Expose()
   @Type(() => SiteView)
   site_view: Option<SiteView>;
+  @Type(() => PersonViewSafe)
   admins: PersonViewSafe[];
   online: number;
   version: string;
@@ -311,10 +327,15 @@ export class GetSiteResponse {
  * Your user info, such as blocks, follows, etc.
  */
 export class MyUserInfo {
+  @Type(() => LocalUserSettingsView)
   local_user_view: LocalUserSettingsView;
+  @Type(() => CommunityFollowerView)
   follows: CommunityFollowerView[];
+  @Type(() => CommunityModeratorView)
   moderates: CommunityModeratorView[];
+  @Type(() => CommunityBlockView)
   community_blocks: CommunityBlockView[];
+  @Type(() => PersonBlockView)
   person_blocks: PersonBlockView[];
 }
 
@@ -440,6 +461,7 @@ export class ApproveRegistrationApplication {
 }
 
 export class RegistrationApplicationResponse {
+  @Type(() => RegistrationApplicationView)
   registration_application: RegistrationApplicationView;
 }
 
