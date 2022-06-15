@@ -679,5 +679,5 @@ export function wsJsonToRes<ResponseType>(
   msg: any,
   responseClass: ClassConstructor<ResponseType>
 ): ResponseType {
-  return deserialize(responseClass, msg.data);
+  return deserialize(responseClass, JSON.stringify(msg.data));
 }
