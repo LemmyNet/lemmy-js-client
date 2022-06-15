@@ -35,6 +35,7 @@ export class GetCommunity {
 }
 
 export class GetCommunityResponse {
+  @Type(() => CommunityView)
   community_view: CommunityView;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
