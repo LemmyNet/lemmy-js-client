@@ -647,25 +647,8 @@ export class LemmyWebsocket {
 
 function wrapper<MessageType>(op: UserOperation, data: MessageType) {
   let send = serialize({ op: UserOperation[op], data });
-  console.log(send);
   return send;
 }
-
-/**
- * A websocket JSON response that includes the errors.
- */
-// interface WebSocketJsonResponse {
-//   op?: string;
-
-//   /**
-//    * This contains the data for a websocket response.
-//    *
-//    * The correct response type if given is in [[LemmyHttp]].
-//    */
-//   data?: ResponseType;
-//   error?: string;
-//   reconnect?: boolean;
-// }
 
 export function wsUserOp(msg: any): UserOperation {
   let opStr: string = msg.op;
@@ -679,5 +662,6 @@ export function wsJsonToRes<ResponseType>(
   msg: any,
   responseClass: ClassConstructor<ResponseType>
 ): ResponseType {
+  // Have to deserialize the response again into the correct class
   return deserialize(responseClass, serialize(msg.data));
 }
