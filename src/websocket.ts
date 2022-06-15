@@ -1,4 +1,4 @@
-import { ClassConstructor, deserialize, serialize } from "class-transformer";
+import { ClassConstructor, deserialize } from "class-transformer";
 import {
   CreateComment,
   CreateCommentLike,
@@ -646,7 +646,7 @@ export class LemmyWebsocket {
 }
 
 function wrapper<MessageType>(op: UserOperation, data: MessageType) {
-  let send = { op: UserOperation[op], data: serialize(data) };
+  let send = { op: UserOperation[op], data };
   console.log(send);
   return JSON.stringify(send);
 }
