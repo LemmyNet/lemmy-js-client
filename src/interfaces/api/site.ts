@@ -443,6 +443,7 @@ export class ListRegistrationApplications {
 }
 
 export class ListRegistrationApplicationsResponse {
+  @Type(() => RegistrationApplicationView)
   registration_applications: RegistrationApplicationView[];
 }
 
