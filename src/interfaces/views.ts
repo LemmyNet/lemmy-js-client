@@ -1,3 +1,7 @@
+import { Option } from "@sniptt/monads";
+import { Expose, Transform, Type } from "class-transformer";
+import "reflect-metadata";
+import { toOption, toUndefined } from "../utils";
 import {
   CommentAggregates,
   CommunityAggregates,
@@ -29,46 +33,65 @@ import {
   Site,
 } from "./source";
 
-export interface PersonViewSafe {
+export class PersonViewSafe {
+  @Type(() => PersonSafe)
   person: PersonSafe;
   counts: PersonAggregates;
 }
 
-export interface PersonMentionView {
+export class PersonMentionView {
+  @Type(() => PersonMention)
   person_mention: PersonMention;
+  @Type(() => Comment)
   comment: Comment;
+  @Type(() => PersonSafe)
   creator: PersonSafe;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   recipient: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   subscribed: boolean;
   saved: boolean;
   creator_blocked: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
 }
 
-export interface LocalUserSettingsView {
+export class LocalUserSettingsView {
+  @Type(() => LocalUserSettings)
   local_user: LocalUserSettings;
+  @Type(() => PersonSafe)
   person: PersonSafe;
   counts: PersonAggregates;
 }
 
-export interface SiteView {
+export class SiteView {
+  @Type(() => Site)
   site: Site;
   counts: SiteAggregates;
 }
 
-export interface PrivateMessageView {
+export class PrivateMessageView {
+  @Type(() => PrivateMessage)
   private_message: PrivateMessage;
+  @Type(() => PersonSafe)
   creator: PersonSafe;
+  @Type(() => PersonSafe)
   recipient: PersonSafe;
 }
 
-export interface PostView {
+export class PostView {
+  @Type(() => Post)
   post: Post;
+  @Type(() => PersonSafe)
   creator: PersonSafe;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
   creator_banned_from_community: boolean;
   counts: PostAggregates;
@@ -76,152 +99,248 @@ export interface PostView {
   saved: boolean;
   read: boolean;
   creator_blocked: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
 }
 
-export interface PostReportView {
+export class PostReportView {
+  @Type(() => PostReport)
   post_report: PostReport;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   creator: PersonSafe;
+  @Type(() => PersonSafe)
   post_creator: PersonSafe;
   creator_banned_from_community: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
   counts: PostAggregates;
-  resolver?: PersonSafe;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  @Type(() => PersonSafe)
+  resolver: Option<PersonSafe>;
 }
 
-export interface CommentView {
+export class CommentView {
+  @Type(() => Comment)
   comment: Comment;
+  @Type(() => PersonSafe)
   creator: PersonSafe;
-  recipient?: PersonSafe;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  @Type(() => PersonSafe)
+  recipient: Option<PersonSafe>;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   subscribed: boolean;
   saved: boolean;
   creator_blocked: boolean;
-  my_vote?: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
 }
 
-export interface CommentReportView {
+export class CommentReportView {
+  @Type(() => CommentReport)
   comment_report: CommentReport;
+  @Type(() => Comment)
   comment: Comment;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   creator: PersonSafe;
+  @Type(() => PersonSafe)
   comment_creator: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
-  my_vote?: number;
-  resolver?: PersonSafe;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  @Type(() => PersonSafe)
+  resolver: Option<PersonSafe>;
 }
 
-export interface ModAddCommunityView {
+export class ModAddCommunityView {
+  @Type(() => ModAddCommunity)
   mod_add_community: ModAddCommunity;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   modded_person: PersonSafe;
 }
 
-export interface ModTransferCommunityView {
+export class ModTransferCommunityView {
+  @Type(() => ModTransferCommunity)
   mod_transfer_community: ModTransferCommunity;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   modded_person: PersonSafe;
 }
 
-export interface ModAddView {
+export class ModAddView {
+  @Type(() => ModAdd)
   mod_add: ModAdd;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => PersonSafe)
   modded_person: PersonSafe;
 }
 
-export interface ModBanFromCommunityView {
+export class ModBanFromCommunityView {
+  @Type(() => ModBanFromCommunity)
   mod_ban_from_community: ModBanFromCommunity;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   banned_person: PersonSafe;
 }
 
-export interface ModBanView {
+export class ModBanView {
+  @Type(() => ModBan)
   mod_ban: ModBan;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => PersonSafe)
   banned_person: PersonSafe;
 }
 
-export interface ModLockPostView {
+export class ModLockPostView {
+  @Type(() => ModLockPost)
   mod_lock_post: ModLockPost;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
 
-export interface ModRemoveCommentView {
+export class ModRemoveCommentView {
+  @Type(() => ModRemoveComment)
   mod_remove_comment: ModRemoveComment;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => Comment)
   comment: Comment;
+  @Type(() => PersonSafe)
   commenter: PersonSafe;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
 
-export interface ModRemoveCommunityView {
+export class ModRemoveCommunityView {
+  @Type(() => ModRemoveCommunity)
   mod_remove_community: ModRemoveCommunity;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
 
-export interface ModRemovePostView {
+export class ModRemovePostView {
+  @Type(() => ModRemovePost)
   mod_remove_post: ModRemovePost;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
 
-export interface ModStickyPostView {
+export class ModStickyPostView {
+  @Type(() => ModStickyPost)
   mod_sticky_post: ModStickyPost;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
+  @Type(() => Post)
   post: Post;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
 
-export interface CommunityFollowerView {
+export class CommunityFollowerView {
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   follower: PersonSafe;
 }
 
-export interface CommunityBlockView {
+export class CommunityBlockView {
+  @Type(() => PersonSafe)
   person: PersonSafe;
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
 
-export interface CommunityModeratorView {
+export class CommunityModeratorView {
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   moderator: PersonSafe;
 }
 
-export interface CommunityPersonBanView {
+export class CommunityPersonBanView {
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
+  @Type(() => PersonSafe)
   person: PersonSafe;
 }
 
-export interface PersonBlockView {
+export class PersonBlockView {
+  @Type(() => PersonSafe)
   person: PersonSafe;
+  @Type(() => PersonSafe)
   target: PersonSafe;
 }
 
-export interface CommunityView {
+export class CommunityView {
+  @Type(() => CommunitySafe)
   community: CommunitySafe;
   subscribed: boolean;
   blocked: boolean;
   counts: CommunityAggregates;
 }
 
-export interface RegistrationApplicationView {
+export class RegistrationApplicationView {
+  @Type(() => RegistrationApplication)
   registration_application: RegistrationApplication;
+  @Type(() => LocalUserSettings)
   creator_local_user: LocalUserSettings;
+  @Type(() => PersonSafe)
   creator: PersonSafe;
-  admin?: PersonSafe;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  @Type(() => PersonSafe)
+  admin: Option<PersonSafe>;
 }
