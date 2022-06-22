@@ -67,8 +67,6 @@ export enum UserOperation {
   GetPrivateMessages,
   UserJoin,
   GetComments,
-  GetSiteConfig,
-  SaveSiteConfig,
   PostJoin,
   CommunityJoin,
   ChangePassword,
