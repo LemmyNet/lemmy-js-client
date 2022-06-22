@@ -9,6 +9,7 @@ import {
   PostAggregates,
   SiteAggregates,
 } from "./aggregates";
+import { SubscribedType } from "./others";
 import {
   Comment,
   CommentReport,
@@ -54,7 +55,7 @@ export class PersonMentionView {
   recipient: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   saved: boolean;
   creator_blocked: boolean;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
@@ -95,7 +96,7 @@ export class PostView {
   community: CommunitySafe;
   creator_banned_from_community: boolean;
   counts: PostAggregates;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   saved: boolean;
   read: boolean;
   creator_blocked: boolean;
@@ -145,7 +146,7 @@ export class CommentView {
   community: CommunitySafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   saved: boolean;
   creator_blocked: boolean;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
@@ -326,7 +327,7 @@ export class PersonBlockView {
 export class CommunityView {
   @Type(() => CommunitySafe)
   community: CommunitySafe;
-  subscribed: boolean;
+  subscribed: SubscribedType;
   blocked: boolean;
   counts: CommunityAggregates;
 }

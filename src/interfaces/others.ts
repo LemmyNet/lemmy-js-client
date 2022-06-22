@@ -152,6 +152,15 @@ export enum SearchType {
 }
 
 /**
+ * Different Subscribed states
+ */
+export enum SubscribedType {
+  Subscribed = "Subscribed",
+  NotSubscribed = "NotSubscribed",
+  Pending = "Pending",
+}
+
+/**
  * A holder for a site's metadata ( such as opengraph tags ), used for post links.
  */
 export class SiteMetadata {
