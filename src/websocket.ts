@@ -1,3 +1,4 @@
+import { ClassConstructor, deserialize, serialize } from "class-transformer";
 import {
   CreateComment,
   CreateCommentLike,
@@ -73,7 +74,6 @@ import {
   EditSite,
   GetModlog,
   GetSite,
-  GetSiteConfig,
   GetUnreadRegistrationApplicationCount,
   LeaveAdmin,
   ListRegistrationApplications,
@@ -82,7 +82,6 @@ import {
   PurgePerson,
   PurgePost,
   ResolveObject,
-  SaveSiteConfig,
   Search,
 } from "./interfaces/api/site";
 import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
@@ -503,15 +502,8 @@ export class LemmyWebsocket {
   /**
    * Gets the site, and your user data.
    */
-  getSite(form: GetSite = {}) {
+  getSite(form: GetSite) {
     return wrapper(UserOperation.GetSite, form);
-  }
-
-  /**
-   * Get your site configuration.
-   */
-  getSiteConfig(form: GetSiteConfig) {
-    return wrapper(UserOperation.GetSiteConfig, form);
   }
 
   /**
@@ -627,13 +619,6 @@ export class LemmyWebsocket {
   }
 
   /**
-   * Save your site config.
-   */
-  saveSiteConfig(form: SaveSiteConfig) {
-    return wrapper(UserOperation.SaveSiteConfig, form);
-  }
-
-  /**
    * Block a person.
    */
   blockPerson(form: BlockPerson) {
@@ -677,7 +662,22 @@ export class LemmyWebsocket {
 }
 
 function wrapper<MessageType>(op: UserOperation, data: MessageType) {
-  let send = { op: UserOperation[op], data: data };
-  console.log(send);
-  return JSON.stringify(send);
+  let send = serialize({ op: UserOperation[op], data });
+  return send;
+}
+
+export function wsUserOp(msg: any): UserOperation {
+  let opStr: string = msg.op;
+  return UserOperation[opStr as keyof typeof UserOperation];
+}
+
+/**
+ * Converts a websocket string response to a usable result
+ */
+export function wsJsonToRes<ResponseType>(
+  msg: any,
+  responseClass: ClassConstructor<ResponseType>
+): ResponseType {
+  // Have to deserialize the response again into the correct class
+  return deserialize(responseClass, serialize(msg.data));
 }
