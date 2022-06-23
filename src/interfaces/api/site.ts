@@ -347,27 +347,6 @@ export class LeaveAdmin {
   }
 }
 
-export class GetSiteConfig {
-  auth: string;
-
-  constructor(init: GetSiteConfig) {
-    Object.assign(this, init);
-  }
-}
-
-export class GetSiteConfigResponse {
-  config_hjson: string;
-}
-
-export class SaveSiteConfig {
-  config_hjson: string;
-  auth: string;
-
-  constructor(init: SaveSiteConfig) {
-    Object.assign(this, init);
-  }
-}
-
 export class FederatedInstances {
   linked: string[];
   @Transform(({ value }) => toOption(value), { toClassOnly: true })

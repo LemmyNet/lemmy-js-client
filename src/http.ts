@@ -109,8 +109,6 @@ import {
   GetModlog,
   GetModlogResponse,
   GetSite,
-  GetSiteConfig,
-  GetSiteConfigResponse,
   GetSiteResponse,
   GetUnreadRegistrationApplicationCount,
   GetUnreadRegistrationApplicationCountResponse,
@@ -120,7 +118,6 @@ import {
   RegistrationApplicationResponse,
   ResolveObject,
   ResolveObjectResponse,
-  SaveSiteConfig,
   Search,
   SearchResponse,
   SiteResponse,
@@ -191,34 +188,6 @@ export class LemmyHttp {
       "/user/leave_admin",
       form,
       GetSiteResponse
-    );
-  }
-
-  /**
-   * Get your site configuration.
-   *
-   * `HTTP.GET /site/config`
-   */
-  async getSiteConfig(form: GetSiteConfig) {
-    return this.wrapper(
-      HttpType.Get,
-      "/site/config",
-      form,
-      GetSiteConfigResponse
-    );
-  }
-
-  /**
-   * Save your site config.
-   *
-   * `HTTP.PUT /site/config`
-   */
-  async saveSiteConfig(form: SaveSiteConfig) {
-    return this.wrapper(
-      HttpType.Put,
-      "/site/config",
-      form,
-      GetSiteConfigResponse
     );
   }
 

@@ -74,12 +74,10 @@ import {
   EditSite,
   GetModlog,
   GetSite,
-  GetSiteConfig,
   GetUnreadRegistrationApplicationCount,
   LeaveAdmin,
   ListRegistrationApplications,
   ResolveObject,
-  SaveSiteConfig,
   Search,
 } from "./interfaces/api/site";
 import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
@@ -505,13 +503,6 @@ export class LemmyWebsocket {
   }
 
   /**
-   * Get your site configuration.
-   */
-  getSiteConfig(form: GetSiteConfig) {
-    return wrapper(UserOperation.GetSiteConfig, form);
-  }
-
-  /**
    * Search lemmy.
    */
   search(form: Search) {
@@ -621,13 +612,6 @@ export class LemmyWebsocket {
    */
   getPrivateMessages(form: GetPrivateMessages) {
     return wrapper(UserOperation.GetPrivateMessages, form);
-  }
-
-  /**
-   * Save your site config.
-   */
-  saveSiteConfig(form: SaveSiteConfig) {
-    return wrapper(UserOperation.SaveSiteConfig, form);
   }
 
   /**
