@@ -4,6 +4,10 @@ import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
 import { ListingType, SearchType, SortType } from "../others";
 import {
+  AdminPurgeCommentView,
+  AdminPurgeCommunityView,
+  AdminPurgePersonView,
+  AdminPurgePostView,
   CommentView,
   CommunityBlockView,
   CommunityFollowerView,
@@ -140,6 +144,14 @@ export class GetModlogResponse {
   transferred_to_community: ModTransferCommunityView[];
   @Type(() => ModAddView)
   added: ModAddView[];
+  @Type(() => AdminPurgePersonView)
+  admin_purged_persons: AdminPurgePersonView[];
+  @Type(() => AdminPurgeCommunityView)
+  admin_purged_communities: AdminPurgeCommunityView[];
+  @Type(() => AdminPurgePostView)
+  admin_purged_posts: AdminPurgePostView[];
+  @Type(() => AdminPurgeCommentView)
+  admin_purged_comments: AdminPurgeCommentView[];
 }
 
 export class CreateSite {
@@ -396,6 +408,62 @@ export class ResolveObjectResponse {
   @Expose()
   @Type(() => PersonViewSafe)
   person: Option<PersonViewSafe>;
+}
+
+export class PurgePerson {
+  person_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  auth: string;
+
+  constructor(init: PurgePerson) {
+    Object.assign(this, init);
+  }
+}
+
+export class PurgeCommunity {
+  community_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  auth: string;
+
+  constructor(init: PurgeCommunity) {
+    Object.assign(this, init);
+  }
+}
+
+export class PurgePost {
+  post_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  auth: string;
+
+  constructor(init: PurgePost) {
+    Object.assign(this, init);
+  }
+}
+
+export class PurgeComment {
+  comment_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  auth: string;
+
+  constructor(init: PurgeComment) {
+    Object.assign(this, init);
+  }
+}
+
+export class PurgeItemResponse {
+  success: boolean;
 }
 
 export class ListRegistrationApplications {

@@ -77,6 +77,10 @@ import {
   GetUnreadRegistrationApplicationCount,
   LeaveAdmin,
   ListRegistrationApplications,
+  PurgeComment,
+  PurgeCommunity,
+  PurgePerson,
+  PurgePost,
   ResolveObject,
   Search,
 } from "./interfaces/api/site";
@@ -626,6 +630,34 @@ export class LemmyWebsocket {
    */
   blockCommunity(form: BlockCommunity) {
     return wrapper(UserOperation.BlockCommunity, form);
+  }
+
+  /**
+   * Purge / Delete a person from the database.
+   */
+  purgePerson(form: PurgePerson) {
+    return wrapper(UserOperation.PurgePerson, form);
+  }
+
+  /**
+   * Purge / Delete a community from the database.
+   */
+  purgeCommunity(form: PurgeCommunity) {
+    return wrapper(UserOperation.PurgeCommunity, form);
+  }
+
+  /**
+   * Purge / Delete a post from the database.
+   */
+  purgePost(form: PurgePost) {
+    return wrapper(UserOperation.PurgePost, form);
+  }
+
+  /**
+   * Purge / Delete a comment from the database.
+   */
+  purgeComment(form: PurgeComment) {
+    return wrapper(UserOperation.PurgeComment, form);
   }
 }
 

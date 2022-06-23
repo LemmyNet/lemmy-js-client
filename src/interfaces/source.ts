@@ -350,6 +350,48 @@ export class ModAdd {
   when_: string;
 }
 
+export class AdminPurgePerson {
+  id: number;
+  admin_person_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  when_: string;
+}
+
+export class AdminPurgeCommunity {
+  id: number;
+  admin_person_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  when_: string;
+}
+
+export class AdminPurgePost {
+  id: number;
+  admin_person_id: number;
+  community_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  when_: string;
+}
+
+export class AdminPurgeComment {
+  id: number;
+  admin_person_id: number;
+  post_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  reason: Option<string>;
+  when_: string;
+}
+
 export class CommunitySafe {
   id: number;
   name: string;

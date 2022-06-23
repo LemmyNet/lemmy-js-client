@@ -11,6 +11,10 @@ import {
 } from "./aggregates";
 import { SubscribedType } from "./others";
 import {
+  AdminPurgeComment,
+  AdminPurgeCommunity,
+  AdminPurgePerson,
+  AdminPurgePost,
   Comment,
   CommentReport,
   CommunitySafe,
@@ -287,6 +291,38 @@ export class ModStickyPostView {
   post: Post;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
+}
+
+export class AdminPurgeCommunityView {
+  @Type(() => AdminPurgeCommunity)
+  admin_purge_community: AdminPurgeCommunity;
+  @Type(() => PersonSafe)
+  admin: PersonSafe;
+}
+
+export class AdminPurgePersonView {
+  @Type(() => AdminPurgePerson)
+  admin_purge_person: AdminPurgePerson;
+  @Type(() => PersonSafe)
+  admin: PersonSafe;
+}
+
+export class AdminPurgePostView {
+  @Type(() => AdminPurgePost)
+  admin_purge_post: AdminPurgePost;
+  @Type(() => PersonSafe)
+  admin: PersonSafe;
+  @Type(() => CommunitySafe)
+  community: CommunitySafe;
+}
+
+export class AdminPurgeCommentView {
+  @Type(() => AdminPurgeComment)
+  admin_purge_comment: AdminPurgeComment;
+  @Type(() => PersonSafe)
+  admin: PersonSafe;
+  @Type(() => Post)
+  post: Post;
 }
 
 export class CommunityFollowerView {

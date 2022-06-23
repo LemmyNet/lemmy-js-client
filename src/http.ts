@@ -115,6 +115,11 @@ import {
   LeaveAdmin,
   ListRegistrationApplications,
   ListRegistrationApplicationsResponse,
+  PurgeComment,
+  PurgeCommunity,
+  PurgeItemResponse,
+  PurgePerson,
+  PurgePost,
   RegistrationApplicationResponse,
   ResolveObject,
   ResolveObjectResponse,
@@ -1022,6 +1027,62 @@ export class LemmyHttp {
       "/admin/registration_application/approve",
       form,
       RegistrationApplicationResponse
+    );
+  }
+
+  /**
+   * Purge / Delete a person from the database.
+   *
+   * `HTTP.POST /admin/purge/person`
+   */
+  async purgePerson(form: PurgePerson) {
+    return this.wrapper(
+      HttpType.Post,
+      "/admin/purge/person",
+      form,
+      PurgeItemResponse
+    );
+  }
+
+  /**
+   * Purge / Delete a community from the database.
+   *
+   * `HTTP.POST /admin/purge/community`
+   */
+  async purgeCommunity(form: PurgeCommunity) {
+    return this.wrapper(
+      HttpType.Post,
+      "/admin/purge/community",
+      form,
+      PurgeItemResponse
+    );
+  }
+
+  /**
+   * Purge / Delete a post from the database.
+   *
+   * `HTTP.POST /admin/purge/post`
+   */
+  async purgePost(form: PurgePost) {
+    return this.wrapper(
+      HttpType.Post,
+      "/admin/purge/post",
+      form,
+      PurgeItemResponse
+    );
+  }
+
+  /**
+   * Purge / Delete a comment from the database.
+   *
+   * `HTTP.POST /admin/purge/comment`
+   */
+  async purgeComment(form: PurgeComment) {
+    return this.wrapper(
+      HttpType.Post,
+      "/admin/purge/comment",
+      form,
+      PurgeItemResponse
     );
   }
 
