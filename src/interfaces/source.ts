@@ -388,7 +388,7 @@ export class AdminPurgeComment {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  reason?: string;
+  reason: Option<string>;
   when_: string;
 }
 

@@ -144,9 +144,13 @@ export class GetModlogResponse {
   transferred_to_community: ModTransferCommunityView[];
   @Type(() => ModAddView)
   added: ModAddView[];
+  @Type(() => AdminPurgePersonView)
   admin_purged_persons: AdminPurgePersonView[];
+  @Type(() => AdminPurgeCommunityView)
   admin_purged_communities: AdminPurgeCommunityView[];
+  @Type(() => AdminPurgePostView)
   admin_purged_posts: AdminPurgePostView[];
+  @Type(() => AdminPurgeCommentView)
   admin_purged_comments: AdminPurgeCommentView[];
 }
 
