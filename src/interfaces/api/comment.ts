@@ -73,19 +73,6 @@ export class RemoveComment {
   }
 }
 
-/**
- * Only the recipient can do this.
- */
-export class MarkCommentAsRead {
-  comment_id: number;
-  read: boolean;
-  auth: string;
-
-  constructor(init: MarkCommentAsRead) {
-    Object.assign(this, init);
-  }
-}
-
 export class SaveComment {
   comment_id: number;
   save: boolean;

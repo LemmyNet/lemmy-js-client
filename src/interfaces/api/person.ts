@@ -406,6 +406,21 @@ export class PersonMentionResponse {
   person_mention_view: PersonMentionView;
 }
 
+export class MarkCommentReplyAsRead {
+  comment_reply_id: number;
+  read: boolean;
+  auth: string;
+
+  constructor(init: MarkCommentReplyAsRead) {
+    Object.assign(this, init);
+  }
+}
+
+export class CommentReplyResponse {
+  @Type(() => CommentReplyView)
+  comment_reply_view: CommentReplyView;
+}
+
 /**
  * Permanently deletes your posts and comments
  */

@@ -12,7 +12,6 @@ import {
   GetCommentsResponse,
   ListCommentReports,
   ListCommentReportsResponse,
-  MarkCommentAsRead,
   RemoveComment,
   ResolveCommentReport,
   SaveComment,
@@ -66,6 +65,7 @@ import {
   Login,
   LoginResponse,
   MarkAllAsRead,
+  MarkCommentReplyAsRead,
   MarkPersonMentionAsRead,
   MarkPrivateMessageAsRead,
   PasswordChange,
@@ -578,7 +578,7 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/mark_as_read`
    */
-  async markCommentAsRead(form: MarkCommentAsRead) {
+  async markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
     return this.wrapper(
       HttpType.Post,
       "/comment/mark_as_read",
