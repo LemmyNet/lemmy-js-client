@@ -4,6 +4,7 @@ import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
 import { SortType } from "../others";
 import {
+  CommentReplyView,
   CommentView,
   CommunityModeratorView,
   PersonMentionView,
@@ -275,8 +276,8 @@ export class GetPersonDetailsResponse {
 }
 
 export class GetRepliesResponse {
-  @Type(() => CommentView)
-  replies: CommentView[];
+  @Type(() => CommentReplyView)
+  replies: CommentReplyView[];
 }
 
 export class GetPersonMentionsResponse {

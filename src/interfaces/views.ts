@@ -16,6 +16,7 @@ import {
   AdminPurgePerson,
   AdminPurgePost,
   Comment,
+  CommentReply,
   CommentReport,
   CommunitySafe,
   LocalUserSettings,
@@ -139,15 +140,34 @@ export class CommentView {
   comment: Comment;
   @Type(() => PersonSafe)
   creator: PersonSafe;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => PersonSafe)
-  recipient: Option<PersonSafe>;
   @Type(() => Post)
   post: Post;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
+  counts: CommentAggregates;
+  creator_banned_from_community: boolean;
+  subscribed: SubscribedType;
+  saved: boolean;
+  creator_blocked: boolean;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  my_vote: Option<number>;
+}
+
+export class CommentReplyView {
+  @Type(() => CommentReply)
+  comment_reply: CommentReply;
+  @Type(() => Comment)
+  comment: Comment;
+  @Type(() => PersonSafe)
+  creator: PersonSafe;
+  @Type(() => Post)
+  post: Post;
+  @Type(() => CommunitySafe)
+  community: CommunitySafe;
+  @Type(() => PersonSafe)
+  recipient: PersonSafe;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   subscribed: SubscribedType;

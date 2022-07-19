@@ -4,7 +4,6 @@ import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
 import { ListingType, SiteMetadata, SortType } from "../others";
 import {
-  CommentView,
   CommunityModeratorView,
   CommunityView,
   PostReportView,
@@ -59,8 +58,6 @@ export class GetPostResponse {
   post_view: PostView;
   @Type(() => CommunityView)
   community_view: CommunityView;
-  @Type(() => CommentView)
-  comments: CommentView[];
   @Type(() => CommunityModeratorView)
   moderators: CommunityModeratorView[];
   online: number;

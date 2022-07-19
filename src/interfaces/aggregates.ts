@@ -91,4 +91,5 @@ export interface CommentAggregates {
   score: number;
   upvotes: number;
   downvotes: number;
+  child_count: number;
 }
