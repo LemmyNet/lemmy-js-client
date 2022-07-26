@@ -118,14 +118,11 @@ export class GetModlog {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   auth: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
   type_: ModlogActionType;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  other_person_id: Option<number>;;
+  other_person_id: Option<number>;
   constructor(init: GetModlog) {
     Object.assign(this, init);
   }
