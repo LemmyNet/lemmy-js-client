@@ -1,7 +1,6 @@
 import { Option } from "@sniptt/monads";
 import { Expose, Transform } from "class-transformer";
 import { toOption, toUndefined } from "../utils";
-import { CommentReplyView, CommentView, PersonMentionView } from "./views";
 export const VERSION = "v3";
 
 /**
@@ -216,10 +215,4 @@ export class SiteMetadata {
   constructor(init: SiteMetadata) {
     Object.assign(this, init);
   }
-}
-
-export interface CommentNode {
-  comment_view: CommentView | PersonMentionView | CommentReplyView;
-  children: CommentNode[];
-  depth: number;
 }

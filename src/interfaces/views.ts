@@ -401,3 +401,9 @@ export class RegistrationApplicationView {
   @Type(() => PersonSafe)
   admin: Option<PersonSafe>;
 }
+
+export interface CommentNode {
+  comment_view: CommentView | PersonMentionView | CommentReplyView;
+  children: CommentNode[];
+  depth: number;
+}
