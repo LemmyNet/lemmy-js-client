@@ -2,7 +2,7 @@ import { Option } from "@sniptt/monads";
 import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
-import { SortType } from "../others";
+import { CommentSortType, SortType } from "../others";
 import {
   CommentReplyView,
   CommentView,
@@ -347,7 +347,7 @@ export class GetReplies {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  sort: Option<SortType>;
+  sort: Option<CommentSortType>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -371,7 +371,7 @@ export class GetPersonMentions {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  sort: Option<SortType>;
+  sort: Option<CommentSortType>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
