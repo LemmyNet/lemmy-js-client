@@ -4,7 +4,6 @@ import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
 import { ListingType, SiteMetadata, SortType } from "../others";
 import {
-  CommentView,
   CommunityModeratorView,
   CommunityView,
   PostReportView,
@@ -43,7 +42,14 @@ export class PostResponse {
 }
 
 export class GetPost {
-  id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  id: Option<number>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  comment_id: Option<number>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -59,8 +65,6 @@ export class GetPostResponse {
   post_view: PostView;
   @Type(() => CommunityView)
   community_view: CommunityView;
-  @Type(() => CommentView)
-  comments: CommentView[];
   @Type(() => CommunityModeratorView)
   moderators: CommunityModeratorView[];
   online: number;

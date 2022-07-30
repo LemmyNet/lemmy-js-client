@@ -19,7 +19,6 @@ export enum UserOperation {
   EditComment,
   DeleteComment,
   RemoveComment,
-  MarkCommentAsRead,
   SaveComment,
   CreateCommentLike,
   GetPosts,
@@ -39,6 +38,7 @@ export enum UserOperation {
   GetReplies,
   GetPersonMentions,
   MarkPersonMentionAsRead,
+  MarkCommentReplyAsRead,
   GetModlog,
   BanFromCommunity,
   AddModToCommunity,
@@ -89,18 +89,25 @@ export enum UserOperation {
 }
 
 /**
- * Different sort types used in lemmy.
+ * Different post sort types used in lemmy.
  */
 export enum SortType {
   /**
-   * Posts sorted by the most recent comment.
+   * Posts sorted by hot, but bumped by new comments up to 2 days
    */
   Active = "Active",
   /**
-   * Posts sorted by the published time.
+   * Posts sorted by a decaying rank.
    */
   Hot = "Hot",
+  /**
+   * Posts sorted by the published time.
+   */
   New = "New",
+  /**
+   * Posts sorted by the published time ascending
+   */
+  Old = "Old",
   /**
    * The top posts for this last day.
    */
@@ -129,6 +136,28 @@ export enum SortType {
    * Posts sorted by the newest comments, with no necrobumping. IE a forum sort.
    */
   NewComments = "NewComments",
+}
+
+/**
+ * Different comment sort types used in lemmy.
+ */
+export enum CommentSortType {
+  /**
+   * Comments sorted by a decaying rank.
+   */
+  Hot = "Hot",
+  /**
+   * Comments sorted by top score.
+   */
+  Top = "Top",
+  /**
+   * Comments sorted by new.
+   */
+  New = "New",
+  /**
+   * Comments sorted by old.
+   */
+  Old = "Old",
 }
 
 /**
