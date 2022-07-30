@@ -443,13 +443,8 @@ export class Comment {
   id: number;
   creator_id: number;
   post_id: number;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  parent_id: Option<number>;
   content: string;
   removed: boolean;
-  read: boolean; // Whether the recipient has read the comment or not
   published: string;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
@@ -458,9 +453,18 @@ export class Comment {
   deleted: boolean;
   ap_id: string;
   local: boolean;
+  path: string;
 }
 
 export class PersonMention {
+  id: number;
+  recipient_id: number;
+  comment_id: number;
+  read: boolean;
+  published: string;
+}
+
+export class CommentReply {
   id: number;
   recipient_id: number;
   comment_id: number;

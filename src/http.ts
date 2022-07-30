@@ -12,7 +12,6 @@ import {
   GetCommentsResponse,
   ListCommentReports,
   ListCommentReportsResponse,
-  MarkCommentAsRead,
   RemoveComment,
   ResolveCommentReport,
   SaveComment,
@@ -66,6 +65,7 @@ import {
   Login,
   LoginResponse,
   MarkAllAsRead,
+  MarkCommentReplyAsRead,
   MarkPersonMentionAsRead,
   MarkPrivateMessageAsRead,
   PasswordChange,
@@ -578,7 +578,7 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/mark_as_read`
    */
-  async markCommentAsRead(form: MarkCommentAsRead) {
+  async markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
     return this.wrapper(
       HttpType.Post,
       "/comment/mark_as_read",
@@ -1098,20 +1098,14 @@ export class LemmyHttp {
   ): Promise<ResponseType> {
     if (type_ == HttpType.Get) {
       let getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
-      return (
-        fetch(getUrl, {
-          method: "GET",
-          headers: this.headers,
-        })
-          // TODO test this
-          .then(
-            d =>
-              d
-                .text()
-                .then(a =>
-                  deserialize(responseClass, a)
-                ) as Promise<ResponseType>
-          )
+      return fetch(getUrl, {
+        method: "GET",
+        headers: this.headers,
+      }).then(
+        d =>
+          d
+            .text()
+            .then(a => deserialize(responseClass, a)) as Promise<ResponseType>
       );
     } else {
       return fetch(this.buildFullUrl(endpoint), {
@@ -1121,7 +1115,12 @@ export class LemmyHttp {
           ...this.headers,
         },
         body: serialize(form),
-      }).then(d => d.json() as Promise<ResponseType>);
+      }).then(
+        d =>
+          d
+            .text()
+            .then(a => deserialize(responseClass, a)) as Promise<ResponseType>
+      );
     }
   }
 }
@@ -1129,10 +1128,7 @@ export class LemmyHttp {
 function encodeGetParams<BodyType>(p: BodyType): string {
   // Necessary to remove the Options
   let serialized = JSON.parse(serialize(p));
-  return (
-    Object.entries(serialized)
-      // TODO test this, it might serialize the undefineds
-      .map(kv => kv.map(encodeURIComponent).join("="))
-      .join("&")
-  );
+  return Object.entries(serialized)
+    .map(kv => kv.map(encodeURIComponent).join("="))
+    .join("&");
 }

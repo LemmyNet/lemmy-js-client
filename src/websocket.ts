@@ -7,7 +7,6 @@ import {
   EditComment,
   GetComments,
   ListCommentReports,
-  MarkCommentAsRead,
   RemoveComment,
   ResolveCommentReport,
   SaveComment,
@@ -43,6 +42,7 @@ import {
   GetUnreadCount,
   Login,
   MarkAllAsRead,
+  MarkCommentReplyAsRead,
   MarkPersonMentionAsRead,
   MarkPrivateMessageAsRead,
   PasswordChange,
@@ -241,8 +241,8 @@ export class LemmyWebsocket {
   /**
    * Mark a comment as read.
    */
-  markCommentAsRead(form: MarkCommentAsRead) {
-    return wrapper(UserOperation.MarkCommentAsRead, form);
+  markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
+    return wrapper(UserOperation.MarkCommentReplyAsRead, form);
   }
 
   /**

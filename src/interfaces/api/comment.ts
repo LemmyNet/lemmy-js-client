@@ -2,7 +2,7 @@ import { Option } from "@sniptt/monads";
 import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
-import { ListingType, SortType } from "../others";
+import { CommentSortType, ListingType } from "../others";
 import { CommentReportView, CommentView } from "../views";
 
 export class CreateComment {
@@ -73,19 +73,6 @@ export class RemoveComment {
   }
 }
 
-/**
- * Only the recipient can do this.
- */
-export class MarkCommentAsRead {
-  comment_id: number;
-  read: boolean;
-  auth: string;
-
-  constructor(init: MarkCommentAsRead) {
-    Object.assign(this, init);
-  }
-}
-
 export class SaveComment {
   comment_id: number;
   save: boolean;
@@ -133,7 +120,11 @@ export class GetComments {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  sort: Option<SortType>;
+  sort: Option<CommentSortType>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  max_depth: Option<number>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -150,6 +141,14 @@ export class GetComments {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   community_name: Option<string>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  post_id: Option<number>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  parent_id: Option<number>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
