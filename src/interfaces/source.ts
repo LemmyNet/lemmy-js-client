@@ -454,6 +454,7 @@ export class Comment {
   ap_id: string;
   local: boolean;
   path: string;
+  distinguished: boolean;
 }
 
 export class PersonMention {
