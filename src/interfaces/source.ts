@@ -111,6 +111,10 @@ export class Site {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   legal_information: Option<string>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  hide_modlog_mod_names: Option<boolean>;
 }
 
 export class PrivateMessage {
