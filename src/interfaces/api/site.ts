@@ -2,7 +2,8 @@ import { Option } from "@sniptt/monads";
 import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
-import { ListingType, SearchType, SortType, ModlogActionType } from "../others";
+import { ListingType, ModlogActionType, SearchType, SortType } from "../others";
+import { Language } from "../source";
 import {
   AdminPurgeCommentView,
   AdminPurgeCommunityView,
@@ -95,7 +96,6 @@ export class SearchResponse {
   @Type(() => PersonViewSafe)
   users: PersonViewSafe[];
 }
-
 
 export class GetModlog {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
@@ -296,8 +296,12 @@ export class EditSite {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   hide_modlog_mod_names: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  discussion_languages: Option<number[]>;
   auth: string;
-  
+
   constructor(init: EditSite) {
     Object.assign(this, init);
   }
@@ -345,6 +349,7 @@ export class GetSiteResponse {
   @Expose()
   @Type(() => FederatedInstances)
   federated_instances: Option<FederatedInstances>;
+  all_languages: Language[];
 }
 
 /**
@@ -361,6 +366,7 @@ export class MyUserInfo {
   community_blocks: CommunityBlockView[];
   @Type(() => PersonBlockView)
   person_blocks: PersonBlockView[];
+  discussion_languages: Language[];
 }
 
 export class LeaveAdmin {

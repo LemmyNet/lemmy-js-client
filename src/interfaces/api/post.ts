@@ -29,6 +29,10 @@ export class CreatePost {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   honeypot: Option<string>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  language_id: Option<number>;
   auth: string;
 
   constructor(init: CreatePost) {
@@ -149,6 +153,10 @@ export class EditPost {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   nsfw: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  language_id: Option<number>;
   auth: string;
 
   constructor(init: EditPost) {

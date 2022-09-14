@@ -19,6 +19,7 @@ import {
   CommentReply,
   CommentReport,
   CommunitySafe,
+  Language,
   LocalUserSettings,
   ModAdd,
   ModAddCommunity,
@@ -81,6 +82,7 @@ export class SiteView {
   @Type(() => Site)
   site: Site;
   counts: SiteAggregates;
+  languages: Language[];
 }
 
 export class PrivateMessageView {
@@ -428,6 +430,7 @@ export class CommunityView {
   subscribed: SubscribedType;
   blocked: boolean;
   counts: CommunityAggregates;
+  languages: Language[];
 }
 
 export class RegistrationApplicationView {

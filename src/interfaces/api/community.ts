@@ -195,6 +195,10 @@ export class EditCommunity {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   posting_restricted_to_mods: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  discussion_languages: Option<number[]>;
   auth: string;
 
   constructor(init: EditCommunity) {

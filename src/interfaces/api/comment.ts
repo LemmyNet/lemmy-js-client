@@ -19,6 +19,10 @@ export class CreateComment {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   form_id: Option<string>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  language_id: Option<number>;
   auth: string;
 
   constructor(init: CreateComment) {
@@ -46,6 +50,10 @@ export class EditComment {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   form_id: Option<string>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  language_id: Option<number>;
   auth: string;
 
   constructor(init: EditComment) {

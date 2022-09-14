@@ -13,7 +13,7 @@ export class LocalUserSettings {
   theme: string;
   default_sort_type: number;
   default_listing_type: number;
-  lang: string;
+  interface_language: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
   show_bot_accounts: boolean;
@@ -200,6 +200,7 @@ export class Post {
   thumbnail_url: Option<string>;
   ap_id: string;
   local: boolean;
+  language_id: number;
 }
 
 export class PasswordResetRequest {
@@ -490,4 +491,10 @@ export class RegistrationApplication {
   @Expose()
   deny_reason: Option<string>;
   published: string;
+}
+
+export class Language {
+  id: number;
+  code: string;
+  name: string;
 }
