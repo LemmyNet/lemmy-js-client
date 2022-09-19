@@ -11,6 +11,10 @@ export class CreateComment {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   parent_id: Option<number>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  language_id: Option<number>;
   post_id: number;
   /**
    * An optional front end ID, to tell which is comment is coming back.
@@ -39,6 +43,10 @@ export class EditComment {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   distinguished: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  language_id: Option<number>;
   /**
    * An optional front end ID, to tell which is comment is coming back.
    */
