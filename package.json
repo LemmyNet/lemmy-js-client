@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "0.17.0-rc.43",
+  "version": "0.17.0-rc.44",
   "author": "Dessalines <tyhou13@gmx.com>",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",

@@ -136,7 +136,7 @@ export class SaveUserSettings {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  lang: Option<string>;
+  interface_language: Option<string>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -189,6 +189,10 @@ export class SaveUserSettings {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   show_new_post_notifs: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  discussion_languages: Option<number[]>;
   auth: string;
 
   constructor(init: SaveUserSettings) {
