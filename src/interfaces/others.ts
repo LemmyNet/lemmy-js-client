@@ -183,6 +183,28 @@ export enum SearchType {
 }
 
 /**
+ * Mod log action types
+ */
+export enum ModlogActionType {
+  All = "All",
+  ModRemovePost = "ModRemovePost",
+  ModLockPost = "ModLockPost",
+  ModStickyPost = "ModStickyPost",
+  ModRemoveComment = "ModRemoveComment",
+  ModRemoveCommunity = "ModRemoveCommunity",
+  ModBanFromCommunity = "ModBanFromCommunity",
+  ModAddCommunity = "ModAddCommunity",
+  ModTransferCommunity = "ModTransferCommunity",
+  ModAdd = "ModAdd",
+  ModBan = "ModBan",
+  ModHideCommunity = "ModHideCommunity",
+  AdminPurgePerson = "AdminPurgePerson",
+  AdminPurgeCommunity = "AdminPurgeCommunity",
+  AdminPurgePost = "AdminPurgePost",
+  AdminPurgeComment = "AdminPurgeComment",
+}
+
+/**
  * Different Subscribed states
  */
 export enum SubscribedType {
