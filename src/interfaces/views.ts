@@ -109,6 +109,7 @@ export class PostView {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   my_vote: Option<number>;
+  unread_comments: number;
 }
 
 export class PostReportView {
@@ -208,8 +209,11 @@ export class CommentReportView {
 export class ModAddCommunityView {
   @Type(() => ModAddCommunity)
   mod_add_community: ModAddCommunity;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
   @Type(() => PersonSafe)
@@ -219,8 +223,11 @@ export class ModAddCommunityView {
 export class ModTransferCommunityView {
   @Type(() => ModTransferCommunity)
   mod_transfer_community: ModTransferCommunity;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
   @Type(() => PersonSafe)
@@ -230,8 +237,11 @@ export class ModTransferCommunityView {
 export class ModAddView {
   @Type(() => ModAdd)
   mod_add: ModAdd;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => PersonSafe)
   modded_person: PersonSafe;
 }
@@ -239,8 +249,11 @@ export class ModAddView {
 export class ModBanFromCommunityView {
   @Type(() => ModBanFromCommunity)
   mod_ban_from_community: ModBanFromCommunity;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
   @Type(() => PersonSafe)
@@ -250,8 +263,11 @@ export class ModBanFromCommunityView {
 export class ModBanView {
   @Type(() => ModBan)
   mod_ban: ModBan;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => PersonSafe)
   banned_person: PersonSafe;
 }
@@ -259,8 +275,11 @@ export class ModBanView {
 export class ModLockPostView {
   @Type(() => ModLockPost)
   mod_lock_post: ModLockPost;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => Post)
   post: Post;
   @Type(() => CommunitySafe)
@@ -270,8 +289,11 @@ export class ModLockPostView {
 export class ModRemoveCommentView {
   @Type(() => ModRemoveComment)
   mod_remove_comment: ModRemoveComment;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => Comment)
   comment: Comment;
   @Type(() => PersonSafe)
@@ -285,8 +307,11 @@ export class ModRemoveCommentView {
 export class ModRemoveCommunityView {
   @Type(() => ModRemoveCommunity)
   mod_remove_community: ModRemoveCommunity;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
@@ -294,8 +319,11 @@ export class ModRemoveCommunityView {
 export class ModRemovePostView {
   @Type(() => ModRemovePost)
   mod_remove_post: ModRemovePost;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => Post)
   post: Post;
   @Type(() => CommunitySafe)
@@ -305,8 +333,11 @@ export class ModRemovePostView {
 export class ModStickyPostView {
   @Type(() => ModStickyPost)
   mod_sticky_post: ModStickyPost;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  moderator: PersonSafe;
+  moderator: Option<PersonSafe>;
   @Type(() => Post)
   post: Post;
   @Type(() => CommunitySafe)
@@ -316,22 +347,31 @@ export class ModStickyPostView {
 export class AdminPurgeCommunityView {
   @Type(() => AdminPurgeCommunity)
   admin_purge_community: AdminPurgeCommunity;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  admin: PersonSafe;
+  admin: Option<PersonSafe>;
 }
 
 export class AdminPurgePersonView {
   @Type(() => AdminPurgePerson)
   admin_purge_person: AdminPurgePerson;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  admin: PersonSafe;
+  admin: Option<PersonSafe>;
 }
 
 export class AdminPurgePostView {
   @Type(() => AdminPurgePost)
   admin_purge_post: AdminPurgePost;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  admin: PersonSafe;
+  admin: Option<PersonSafe>;
   @Type(() => CommunitySafe)
   community: CommunitySafe;
 }
@@ -339,8 +379,11 @@ export class AdminPurgePostView {
 export class AdminPurgeCommentView {
   @Type(() => AdminPurgeComment)
   admin_purge_comment: AdminPurgeComment;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   @Type(() => PersonSafe)
-  admin: PersonSafe;
+  admin: Option<PersonSafe>;
   @Type(() => Post)
   post: Post;
 }

@@ -13,7 +13,7 @@ export class LocalUserSettings {
   theme: string;
   default_sort_type: number;
   default_listing_type: number;
-  lang: string;
+  interface_language: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
   show_bot_accounts: boolean;
@@ -112,6 +112,10 @@ export class Site {
   @Expose()
   legal_information: Option<string>;
   application_email_admins: boolean;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  hide_modlog_mod_names: Option<boolean>;
 }
 
 export class PrivateMessage {
@@ -190,13 +194,14 @@ export class Post {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  embed_html: Option<string>;
+  embed_video_url: Option<string>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   thumbnail_url: Option<string>;
   ap_id: string;
   local: boolean;
+  language_id: number;
 }
 
 export class PasswordResetRequest {
@@ -455,6 +460,8 @@ export class Comment {
   ap_id: string;
   local: boolean;
   path: string;
+  distinguished: boolean;
+  language_id: number;
 }
 
 export class PersonMention {
@@ -486,4 +493,10 @@ export class RegistrationApplication {
   @Expose()
   deny_reason: Option<string>;
   published: string;
+}
+
+export class Language {
+  id: number;
+  code: string;
+  name: string;
 }
