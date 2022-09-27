@@ -111,6 +111,7 @@ export class Site {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   legal_information: Option<string>;
+  application_email_admins: boolean;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()

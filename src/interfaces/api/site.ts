@@ -220,6 +220,7 @@ export class CreateSite {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  application_email_admins: Option<boolean>;
   hide_modlog_mod_names: Option<boolean>;
   auth: string;
   constructor(init: CreateSite) {
@@ -295,6 +296,7 @@ export class EditSite {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  application_email_admins: Option<boolean>;
   hide_modlog_mod_names: Option<boolean>;
   auth: string;
 
