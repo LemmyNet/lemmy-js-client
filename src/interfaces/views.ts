@@ -109,6 +109,7 @@ export class PostView {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   my_vote: Option<number>;
+  unread_comments: number;
 }
 
 export class PostReportView {
