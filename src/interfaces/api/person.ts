@@ -10,6 +10,7 @@ import {
   PersonMentionView,
   PersonViewSafe,
   PostView,
+  PrivateMessageReportView,
   PrivateMessageView,
 } from "../views";
 
@@ -529,6 +530,57 @@ export class PrivateMessageResponse {
   private_message_view: PrivateMessageView;
 }
 
+export class CreatePrivateMessageReport {
+  private_message_id: number;
+  reason: string;
+  auth: string;
+
+  constructor(init: CreatePrivateMessageReport) {
+    Object.assign(this, init);
+  }
+}
+
+export class PrivateMessageReportResponse {
+  @Type(() => PrivateMessageReportView)
+  private_message_report_view: PrivateMessageReportView;
+}
+
+export class ResolvePrivateMessageReport {
+  report_id: number;
+  resolved: boolean;
+  auth: string;
+
+  constructor(init: ResolvePrivateMessageReport) {
+    Object.assign(this, init);
+  }
+}
+
+export class ListPrivateMessageReports {
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  page: Option<number>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  limit: Option<number>;
+  /// Only shows the unresolved reports
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  unresolved_only: Option<boolean>;
+  auth: string;
+
+  constructor(init: ListPrivateMessageReports) {
+    Object.assign(this, init);
+  }
+}
+
+export class ListPrivateMessageReportsResponse {
+  @Type(() => PrivateMessageReportView)
+  private_message_reports: PrivateMessageReportView[];
+}
+
 export class GetReportCount {
   /**
    * If a community is supplied, returns the report count for only that community, otherwise returns the report count for all communities the user moderates.
@@ -551,6 +603,10 @@ export class GetReportCountResponse {
   community_id: Option<number>;
   comment_reports: number;
   post_reports: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  private_message_reports: Option<number>;
 }
 
 export class GetUnreadCount {

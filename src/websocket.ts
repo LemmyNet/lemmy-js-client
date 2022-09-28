@@ -30,6 +30,7 @@ import {
   BlockPerson,
   ChangePassword,
   CreatePrivateMessage,
+  CreatePrivateMessageReport,
   DeleteAccount,
   DeletePrivateMessage,
   EditPrivateMessage,
@@ -40,6 +41,7 @@ import {
   GetReplies,
   GetReportCount,
   GetUnreadCount,
+  ListPrivateMessageReports,
   Login,
   MarkAllAsRead,
   MarkCommentReplyAsRead,
@@ -48,6 +50,7 @@ import {
   PasswordChange,
   PasswordReset,
   Register,
+  ResolvePrivateMessageReport,
   SaveUserSettings,
   VerifyEmail,
 } from "./interfaces/api/person";
@@ -616,6 +619,27 @@ export class LemmyWebsocket {
    */
   getPrivateMessages(form: GetPrivateMessages) {
     return wrapper(UserOperation.GetPrivateMessages, form);
+  }
+
+  /**
+   * Create a report for a private message.
+   */
+  createPrivateMessageReport(form: CreatePrivateMessageReport) {
+    return wrapper(UserOperation.CreatePrivateMessageReport, form);
+  }
+
+  /**
+   * Resolve a report for a private message.
+   */
+  resolvePrivateMessageReport(form: ResolvePrivateMessageReport) {
+    return wrapper(UserOperation.ResolvePrivateMessageReport, form);
+  }
+
+  /**
+   * List private message reports.
+   */
+  listPrivateMessageReports(form: ListPrivateMessageReports) {
+    return wrapper(UserOperation.ListPrivateMessageReports, form);
   }
 
   /**
