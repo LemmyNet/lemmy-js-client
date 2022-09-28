@@ -45,6 +45,7 @@ import {
   BlockPersonResponse,
   ChangePassword,
   CreatePrivateMessage,
+  CreatePrivateMessageReport,
   DeleteAccount,
   DeleteAccountResponse,
   DeletePrivateMessage,
@@ -62,6 +63,8 @@ import {
   GetReportCountResponse,
   GetUnreadCount,
   GetUnreadCountResponse,
+  ListPrivateMessageReports,
+  ListPrivateMessageReportsResponse,
   Login,
   LoginResponse,
   MarkAllAsRead,
@@ -72,9 +75,11 @@ import {
   PasswordReset,
   PasswordResetResponse,
   PersonMentionResponse,
+  PrivateMessageReportResponse,
   PrivateMessageResponse,
   PrivateMessagesResponse,
   Register,
+  ResolvePrivateMessageReport,
   SaveUserSettings,
   VerifyEmail,
   VerifyEmailResponse,
@@ -728,6 +733,48 @@ export class LemmyHttp {
       "/private_message/mark_as_read",
       form,
       PrivateMessageResponse
+    );
+  }
+
+  /**
+   * Create a report for a private message.
+   *
+   * `HTTP.POST /private_message/report`
+   */
+  async createPrivateMessageReport(form: CreatePrivateMessageReport) {
+    return this.wrapper(
+      HttpType.Post,
+      "/private_message/report",
+      form,
+      PrivateMessageReportResponse
+    );
+  }
+
+  /**
+   * Resolve a report for a private message.
+   *
+   * `HTTP.PUT /private_message/report/resolve`
+   */
+  async resolvePrivateMessageReport(form: ResolvePrivateMessageReport) {
+    return this.wrapper(
+      HttpType.Put,
+      "/private_message/report/resolve",
+      form,
+      PrivateMessageReportResponse
+    );
+  }
+
+  /**
+   * List private message reports.
+   *
+   * `HTTP.GET /private_message/report/list`
+   */
+  async listPrivateMessageReports(form: ListPrivateMessageReports) {
+    return this.wrapper(
+      HttpType.Get,
+      "/private_message/report/list",
+      form,
+      ListPrivateMessageReportsResponse
     );
   }
 

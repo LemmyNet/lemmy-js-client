@@ -35,6 +35,7 @@ import {
   Post,
   PostReport,
   PrivateMessage,
+  PrivateMessageReport,
   RegistrationApplication,
   Site,
 } from "./source";
@@ -449,4 +450,20 @@ export interface CommentNode {
   comment_view: CommentView | PersonMentionView | CommentReplyView;
   children: CommentNode[];
   depth: number;
+}
+
+export class PrivateMessageReportView {
+  @Type(() => PrivateMessageReport)
+  private_message_report: PrivateMessageReport;
+  @Type(() => PrivateMessage)
+  private_message: PrivateMessage;
+  @Type(() => PersonSafe)
+  private_message_creator: PersonSafe;
+  @Type(() => PersonSafe)
+  creator: PersonSafe;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  @Type(() => PersonSafe)
+  resolver: Option<PersonSafe>;
 }

@@ -500,3 +500,21 @@ export class Language {
   code: string;
   name: string;
 }
+
+export class PrivateMessageReport {
+  id: number;
+  creator_id: number;
+  private_message_id: number;
+  original_pm_text: string;
+  reason: string;
+  resolved: boolean;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  resolver_id: Option<number>;
+  published: string;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  updated: Option<string>;
+}

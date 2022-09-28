@@ -297,6 +297,9 @@ export class EditSite {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   application_email_admins: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
   hide_modlog_mod_names: Option<boolean>;
   auth: string;
 
