@@ -19,6 +19,8 @@ import {
   CommentReply,
   CommentReport,
   CommunitySafe,
+  LocalSite,
+  LocalSiteRateLimit,
   LocalUserSettings,
   ModAdd,
   ModAddCommunity,
@@ -81,6 +83,10 @@ export class LocalUserSettingsView {
 export class SiteView {
   @Type(() => Site)
   site: Site;
+  @Type(() => LocalSite)
+  local_site: LocalSite;
+  @Type(() => LocalSiteRateLimit)
+  local_site_rate_limit: LocalSiteRateLimit;
   counts: SiteAggregates;
 }
 
