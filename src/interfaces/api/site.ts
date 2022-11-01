@@ -192,6 +192,7 @@ export class CreateSite {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  community_creation_admin_only: Option<boolean>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -225,6 +226,10 @@ export class CreateSite {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   hide_modlog_mod_names: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  discussion_languages: Option<number[]>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -539,6 +544,7 @@ export class GetSiteResponse {
   federated_instances: Option<FederatedInstances>;
   @Type(() => Language)
   all_languages: Language[];
+  discussion_languages: number[];
 }
 
 /**

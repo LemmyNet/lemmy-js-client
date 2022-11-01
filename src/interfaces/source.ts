@@ -125,12 +125,12 @@ export class LocalSite {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   slur_filter_regex: Option<string>;
-  actor_name_max_length: string;
+  actor_name_max_length: number;
   federation_enabled: boolean;
   federation_debug: boolean;
   federation_strict_allowlist: boolean;
-  federation_http_fetch_retry_limit: string;
-  federation_worker_count: string;
+  federation_http_fetch_retry_limit: number;
+  federation_worker_count: number;
   captcha_enabled: boolean;
   captcha_difficulty: string;
   published: string;
