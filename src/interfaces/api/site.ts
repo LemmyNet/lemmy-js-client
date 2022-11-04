@@ -524,6 +524,7 @@ export class SiteResponse {
 }
 
 export class GetSiteResponse {
+  @Type(() => SiteView)
   site_view: SiteView;
   @Type(() => PersonViewSafe)
   admins: PersonViewSafe[];
