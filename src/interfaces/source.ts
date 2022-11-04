@@ -16,6 +16,7 @@ export class LocalUserSettings {
   interface_language: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
+  validator_time: string;
   show_bot_accounts: boolean;
   show_scores: boolean;
   show_read_posts: boolean;
@@ -53,7 +54,10 @@ export class PersonSafe {
   banner: Option<string>;
   deleted: boolean;
   inbox_url: string;
-  shared_inbox_url: string;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  shared_inbox_url: Option<string>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -468,6 +472,7 @@ export class CommunitySafe {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   banner: Option<string>;
+  hidden: boolean;
   posting_restricted_to_mods: boolean;
   instance_id: number;
 }
