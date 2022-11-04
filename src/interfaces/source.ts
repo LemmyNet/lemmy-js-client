@@ -98,6 +98,7 @@ export class Site {
   actor_id: string;
   last_refreshed_at: string;
   inbox_url: string;
+  private_key: Option<string>;
   public_key: string;
   instance_id: number;
 }
