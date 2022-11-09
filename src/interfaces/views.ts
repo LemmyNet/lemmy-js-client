@@ -40,6 +40,7 @@ import {
   PrivateMessageReport,
   RegistrationApplication,
   Site,
+  Tagline,
 } from "./source";
 
 export class PersonViewSafe {
@@ -87,6 +88,8 @@ export class SiteView {
   local_site: LocalSite;
   @Type(() => LocalSiteRateLimit)
   local_site_rate_limit: LocalSiteRateLimit;
+  @Type(() => Tagline)
+  taglines: Tagline[];
   counts: SiteAggregates;
 }
 
