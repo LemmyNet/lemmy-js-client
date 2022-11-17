@@ -572,8 +572,11 @@ export class PrivateMessageReport {
 
 export class Tagline {
   id: number;
-  local_site_id:  number;
+  local_site_id: number;
   content: string;
   published: string;
-  updated: string;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  updated: Option<string>;
 }
