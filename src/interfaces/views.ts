@@ -88,8 +88,10 @@ export class SiteView {
   local_site: LocalSite;
   @Type(() => LocalSiteRateLimit)
   local_site_rate_limit: LocalSiteRateLimit;
-  @Type(() => Tagline)
-  taglines: Tagline[];
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  taglines: Option<Tagline[]>;
   counts: SiteAggregates;
 }
 
