@@ -40,7 +40,6 @@ import {
   PrivateMessageReport,
   RegistrationApplication,
   Site,
-  Tagline,
 } from "./source";
 
 export class PersonViewSafe {
@@ -88,10 +87,6 @@ export class SiteView {
   local_site: LocalSite;
   @Type(() => LocalSiteRateLimit)
   local_site_rate_limit: LocalSiteRateLimit;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  taglines: Option<Tagline[]>;
   counts: SiteAggregates;
 }
 

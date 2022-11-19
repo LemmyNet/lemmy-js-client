@@ -3,7 +3,7 @@ import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
 import { ListingType, ModlogActionType, SearchType, SortType } from "../others";
-import { Language } from "../source";
+import { Language, Tagline } from "../source";
 import {
   AdminPurgeCommentView,
   AdminPurgeCommunityView,
@@ -550,6 +550,10 @@ export class GetSiteResponse {
   @Type(() => Language)
   all_languages: Language[];
   discussion_languages: number[];
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  taglines: Option<Tagline[]>;
 }
 
 /**
