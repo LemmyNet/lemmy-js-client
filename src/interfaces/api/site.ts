@@ -553,6 +553,7 @@ export class GetSiteResponse {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
+  @Type(() => Tagline)
   taglines: Option<Tagline[]>;
 }
 
