@@ -231,7 +231,6 @@ export class Post {
   updated: Option<string>;
   deleted: boolean;
   nsfw: boolean;
-  stickied: boolean;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -251,6 +250,8 @@ export class Post {
   ap_id: string;
   local: boolean;
   language_id: number;
+  featured_community: boolean;
+  featured_local: boolean;
 }
 
 export class PasswordResetRequest {
@@ -286,14 +287,14 @@ export class ModLockPost {
   when_: string;
 }
 
-export class ModStickyPost {
+export class ModFeaturePost {
   id: number;
   mod_person_id: number;
   post_id: number;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  stickied: Option<boolean>;
+  featured: Option<boolean>;
   when_: string;
 }
 

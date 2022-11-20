@@ -19,11 +19,11 @@ import {
   ModAddView,
   ModBanFromCommunityView,
   ModBanView,
+  ModFeaturePostView,
   ModLockPostView,
   ModRemoveCommentView,
   ModRemoveCommunityView,
   ModRemovePostView,
-  ModStickyPostView,
   ModTransferCommunityView,
   PersonBlockView,
   PersonViewSafe,
@@ -133,8 +133,8 @@ export class GetModlogResponse {
   removed_posts: ModRemovePostView[];
   @Type(() => ModLockPostView)
   locked_posts: ModLockPostView[];
-  @Type(() => ModStickyPostView)
-  stickied_posts: ModStickyPostView[];
+  @Type(() => ModFeaturePostView)
+  featured_posts: ModFeaturePostView[];
   @Type(() => ModRemoveCommentView)
   removed_comments: ModRemoveCommentView[];
   @Type(() => ModRemoveCommunityView)

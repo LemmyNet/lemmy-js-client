@@ -27,7 +27,7 @@ export enum UserOperation {
   DeletePost,
   RemovePost,
   LockPost,
-  StickyPost,
+  FeaturePost,
   MarkPostAsRead,
   SavePost,
   EditCommunity,
@@ -192,7 +192,7 @@ export enum ModlogActionType {
   All = "All",
   ModRemovePost = "ModRemovePost",
   ModLockPost = "ModLockPost",
-  ModStickyPost = "ModStickyPost",
+  ModFeaturePost = "ModFeaturePost",
   ModRemoveComment = "ModRemoveComment",
   ModRemoveCommunity = "ModRemoveCommunity",
   ModBanFromCommunity = "ModBanFromCommunity",
@@ -214,6 +214,14 @@ export enum SubscribedType {
   Subscribed = "Subscribed",
   NotSubscribed = "NotSubscribed",
   Pending = "Pending",
+}
+
+/**
+ * Different Subscribed states
+ */
+export enum PostFeatureType {
+  Local = "Local",
+  Community = "Community",
 }
 
 /**

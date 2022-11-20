@@ -60,6 +60,7 @@ import {
   CreatePostReport,
   DeletePost,
   EditPost,
+  FeaturePost,
   GetPost,
   GetPosts,
   GetSiteMetadata,
@@ -69,7 +70,6 @@ import {
   RemovePost,
   ResolvePostReport,
   SavePost,
-  StickyPost,
 } from "./interfaces/api/post";
 import {
   ApproveRegistrationApplication,
@@ -333,10 +333,10 @@ export class LemmyWebsocket {
   }
 
   /**
-   * A moderator can sticky a post ( IE stick it to the top of a community ).
+   * A moderator can feature a post ( IE stick it to the top of a community ).
    */
-  stickyPost(form: StickyPost) {
-    return wrapper(UserOperation.StickyPost, form);
+  featurePost(form: FeaturePost) {
+    return wrapper(UserOperation.FeaturePost, form);
   }
 
   /**
