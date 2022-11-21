@@ -133,8 +133,6 @@ export class LocalSite {
   actor_name_max_length: number;
   federation_enabled: boolean;
   federation_debug: boolean;
-  federation_strict_allowlist: boolean;
-  federation_http_fetch_retry_limit: number;
   federation_worker_count: number;
   captcha_enabled: boolean;
   captcha_difficulty: string;
