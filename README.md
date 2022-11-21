@@ -18,7 +18,7 @@ A javascript / typescript http and websocket client and type system for [Lemmy](
 
 ### Websocket Client
 
-[LemmyWebsocket docs](classes/LemmyWebsocket.html)
+[LemmyWebsocket docs](https://join-lemmy.org/api/classes/LemmyWebsocket.html)
 
 ```ts
 import { Login, LemmyWebsocket } from 'lemmy-js-client';
@@ -35,7 +35,7 @@ this.ws.send(client.login(form));
 
 ### HTTP Client
 
-[LemmyHttp docs](classes/LemmyHttp.html)
+[LemmyHttp docs](https://join-lemmy.org/api/classes/LemmyHttp.html)
 
 ```ts
 import { LemmyHttp } from 'lemmy-js-client';
