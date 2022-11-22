@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsc",
     "docs": "typedoc src/index.ts --sourcefile-url-prefix 'https://github.com/LemmyNet/lemmy-js-client/tree/main/src/'",
-    "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src",
+    "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src && prettier --check src",
     "prepare": "yarn run build && husky install"
   },
   "repository": "https://github.com/LemmyNet/lemmy-js-client",

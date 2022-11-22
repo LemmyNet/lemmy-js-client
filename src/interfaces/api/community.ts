@@ -45,6 +45,11 @@ export class GetCommunityResponse {
   @Type(() => CommunityModeratorView)
   moderators: CommunityModeratorView[];
   online: number;
+  discussion_languages: number[];
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  default_post_language: Option<number>;
 }
 
 export class CreateCommunity {
@@ -70,6 +75,10 @@ export class CreateCommunity {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   posting_restricted_to_mods: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  discussion_languages: Option<number[]>;
   auth: string;
 
   constructor(init: CreateCommunity) {
@@ -195,6 +204,10 @@ export class EditCommunity {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   posting_restricted_to_mods: Option<boolean>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  discussion_languages: Option<number[]>;
   auth: string;
 
   constructor(init: EditCommunity) {
