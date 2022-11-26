@@ -25,7 +25,7 @@ import { Login, LemmyWebsocket } from 'lemmy-js-client';
 
 let client: LemmyWebsocket = new LemmyWebsocket();
 
-let form: Login {
+let form: Login = {
   username_or_email: "my_email@email.tld",
   password: "my_pass",
 };
