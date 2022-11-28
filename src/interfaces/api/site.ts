@@ -10,6 +10,7 @@ import {
   CommunityFollowerView,
   CommunityModeratorView,
   CommunityView,
+  CustomEmojiView,
   LocalUserSettingsView,
   ModAddCommunityView,
   ModAddView,
@@ -194,6 +195,7 @@ export interface GetSiteResponse {
   all_languages: Language[];
   discussion_languages: number[];
   taglines?: Tagline[];
+  custom_emojis: CustomEmojiView[];
 }
 
 /**

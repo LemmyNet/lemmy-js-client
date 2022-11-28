@@ -15,6 +15,8 @@ import {
   CommentReply,
   CommentReport,
   CommunitySafe,
+  CustomEmoji,
+  CustomEmojiKeyword,
   LocalSite,
   LocalSiteRateLimit,
   LocalUserSettings,
@@ -288,4 +290,11 @@ export interface PrivateMessageReportView {
   private_message_creator: PersonSafe;
   creator: PersonSafe;
   resolver?: PersonSafe;
+}
+
+export class CustomEmojiView {
+  @Type(() => CustomEmoji)
+  custom_emoji: CustomEmoji;
+  @Type(() => CustomEmojiKeyword)
+  keywords: CustomEmojiKeyword[];
 }

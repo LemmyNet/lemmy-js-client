@@ -86,6 +86,9 @@ export enum UserOperation {
   GetReportCount,
   GetUnreadCount,
   VerifyEmail,
+  CreateCustomEmoji,
+  EditCustomEmoji,
+  DeleteCustomEmoji,
 }
 
 /**

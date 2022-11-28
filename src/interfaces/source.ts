@@ -386,3 +386,23 @@ export interface Tagline {
   published: string;
   updated?: string;
 }
+
+export class CustomEmoji {
+  id: number;
+  local_site_id: number;
+  shortcode: string;
+  image_url: string;
+  alt_text: string;
+  category: string;
+  published: string;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  updated: Option<string>;
+}
+
+export class CustomEmojiKeyword {
+  id: number;
+  custom_emoji_id: number;
+  keyword: string;
+}

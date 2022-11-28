@@ -35,6 +35,13 @@ import {
   TransferCommunity,
 } from "./interfaces/api/community";
 import {
+  CreateCustomEmoji,
+  CustomEmojiResponse,
+  DeleteCustomEmoji,
+  DeleteCustomEmojiResponse,
+  EditCustomEmoji,
+} from "./interfaces/api/custom_emoji";
+import {
   AddAdmin,
   AddAdminResponse,
   BannedPersonsResponse,
@@ -1151,6 +1158,48 @@ export class LemmyHttp {
       HttpType.Post,
       "/admin/purge/comment",
       form
+    );
+  }
+
+  /**
+   * Create a new custom emoji
+   *
+   * `HTTP.POST /custom_emoji`
+   */
+  async createCustomEmoji(form: CreateCustomEmoji) {
+    return this.wrapper(
+      HttpType.Post,
+      "/custom_emoji",
+      form,
+      CustomEmojiResponse
+    );
+  }
+
+  /**
+   * Edit an existing custom emoji
+   *
+   * `HTTP.PUT /custom_emoji`
+   */
+  async editCustomEmoji(form: EditCustomEmoji) {
+    return this.wrapper(
+      HttpType.Put,
+      "/custom_emoji",
+      form,
+      CustomEmojiResponse
+    );
+  }
+
+  /**
+   * Delete a custom emoji
+   *
+   * `HTTP.Post /custom_emoji/delete`
+   */
+  async deleteCustomEmoji(form: DeleteCustomEmoji) {
+    return this.wrapper(
+      HttpType.Post,
+      "/custom_emoji/delete",
+      form,
+      DeleteCustomEmojiResponse
     );
   }
 
