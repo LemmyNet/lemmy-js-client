@@ -1,5 +1,6 @@
 import { Option } from "@sniptt/monads";
 import { Expose, Transform } from "class-transformer";
+
 import { toOption, toUndefined } from "../utils";
 
 export class LocalUserSettings {
@@ -511,6 +512,10 @@ export class Comment {
   path: string;
   distinguished: boolean;
   language_id: number;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  parent_id: Option<number>;
 }
 
 export class PersonMention {
