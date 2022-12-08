@@ -1,93 +1,88 @@
 import { ClassConstructor, deserialize, serialize } from "class-transformer";
+
 import {
-  CreateComment,
-  CreateCommentLike,
-  CreateCommentReport,
-  DeleteComment,
-  EditComment,
-  GetComments,
-  ListCommentReports,
-  RemoveComment,
-  ResolveCommentReport,
-  SaveComment,
-} from "./interfaces/api/comment";
-import {
-  AddModToCommunity,
-  BanFromCommunity,
-  BlockCommunity,
-  CreateCommunity,
-  DeleteCommunity,
-  EditCommunity,
-  FollowCommunity,
-  GetCommunity,
-  ListCommunities,
-  RemoveCommunity,
-  TransferCommunity,
-} from "./interfaces/api/community";
-import {
-  AddAdmin,
-  BanPerson,
-  BlockPerson,
-  ChangePassword,
-  CreatePrivateMessage,
-  CreatePrivateMessageReport,
-  DeleteAccount,
-  DeletePrivateMessage,
-  EditPrivateMessage,
-  GetBannedPersons,
-  GetPersonDetails,
-  GetPersonMentions,
-  GetPrivateMessages,
-  GetReplies,
-  GetReportCount,
-  GetUnreadCount,
-  ListPrivateMessageReports,
-  Login,
-  MarkAllAsRead,
-  MarkCommentReplyAsRead,
-  MarkPersonMentionAsRead,
-  MarkPrivateMessageAsRead,
-  PasswordChange,
-  PasswordReset,
-  Register,
-  ResolvePrivateMessageReport,
-  SaveUserSettings,
-  VerifyEmail,
-} from "./interfaces/api/person";
-import {
-  CreatePost,
-  CreatePostLike,
-  CreatePostReport,
-  DeletePost,
-  EditPost,
-  GetPost,
-  GetPosts,
-  GetSiteMetadata,
-  ListPostReports,
-  LockPost,
-  MarkPostAsRead,
-  RemovePost,
-  ResolvePostReport,
-  SavePost,
-  StickyPost,
-} from "./interfaces/api/post";
-import {
-  ApproveRegistrationApplication,
-  CreateSite,
-  EditSite,
-  GetModlog,
-  GetSite,
-  GetUnreadRegistrationApplicationCount,
-  LeaveAdmin,
-  ListRegistrationApplications,
-  PurgeComment,
-  PurgeCommunity,
-  PurgePerson,
-  PurgePost,
-  ResolveObject,
-  Search,
-} from "./interfaces/api/site";
-import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
+  AddAdminInput,
+  AddModToCommunityInput,
+  ApproveRegistrationApplicationInput,
+  BanFromCommunityInput,
+  BanPersonInput,
+  BlockCommunityInput,
+  BlockPersonInput,
+  ChangePasswordInput,
+  CommunityJoinInput,
+  CreateCommentInput,
+  CreateCommentLikeInput,
+  CreateCommentReportInput,
+  CreateCommunityInput,
+  CreatePostInput,
+  CreatePostLikeInput,
+  CreatePostReportInput,
+  CreatePrivateMessageInput,
+  CreatePrivateMessageReportInput,
+  CreateSiteInput,
+  DeleteAccountInput,
+  DeleteCommentInput,
+  DeleteCommunityInput,
+  DeletePostInput,
+  DeletePrivateMessageInput,
+  EditCommentInput,
+  EditCommunityInput,
+  EditPostInput,
+  EditPrivateMessageInput,
+  EditSiteInput,
+  FollowCommunityInput,
+  GetBannedPersonsInput,
+  GetCommentsInput,
+  GetCommunityInput,
+  GetModlogInput,
+  GetPersonDetailsInput,
+  GetPersonMentionsInput,
+  GetPostInput,
+  GetPostsInput,
+  GetPrivateMessagesInput,
+  GetRepliesInput,
+  GetReportCountInput,
+  GetSiteInput,
+  GetSiteMetadataInput,
+  GetUnreadCountInput,
+  GetUnreadRegistrationApplicationCountInput,
+  LeaveAdminInput,
+  ListCommentReportsInput,
+  ListCommunitiesInput,
+  ListPostReportsInput,
+  ListPrivateMessageReportsInput,
+  ListRegistrationApplicationsInput,
+  LockPostInput,
+  LoginInput,
+  MarkAllAsReadInput,
+  MarkCommentReplyAsReadInput,
+  MarkPersonMentionAsReadInput,
+  MarkPostAsReadInput,
+  MarkPrivateMessageAsReadInput,
+  PasswordChangeInput,
+  PasswordResetInput,
+  PostJoinInput,
+  PurgeCommentInput,
+  PurgeCommunityInput,
+  PurgePersonInput,
+  PurgePostInput,
+  RegisterInput,
+  RemoveCommentInput,
+  RemoveCommunityInput,
+  RemovePostInput,
+  ResolveCommentReportInput,
+  ResolveObjectInput,
+  ResolvePostReportInput,
+  ResolvePrivateMessageReportInput,
+  SaveCommentInput,
+  SavePostInput,
+  SaveUserSettingsInput,
+  SearchInput,
+  StickyPostInput,
+  TransferCommunityInput,
+  UserJoinInput,
+  VerifyEmailInput,
+} from "./inputTypes";
 import { UserOperation } from "./interfaces/others";
 
 /**
@@ -103,7 +98,7 @@ export class LemmyWebsocket {
   /**
    * Log into lemmy.
    */
-  login(form: Login): string {
+  login(form: LoginInput): string {
     return wrapper(UserOperation.Login, form);
   }
 
@@ -112,7 +107,7 @@ export class LemmyWebsocket {
    *
    * Allows your user to receive private messages and notifications.
    */
-  userJoin(form: UserJoin): string {
+  userJoin(form: UserJoinInput): string {
     return wrapper(UserOperation.UserJoin, form);
   }
 
@@ -121,7 +116,7 @@ export class LemmyWebsocket {
    *
    * Allows your user to receive new comments and updates for that post.
    */
-  postJoin(form: PostJoin): string {
+  postJoin(form: PostJoinInput): string {
     return wrapper(UserOperation.PostJoin, form);
   }
 
@@ -132,14 +127,14 @@ export class LemmyWebsocket {
    *
    * Note: community_id: 0, is your front page.
    */
-  communityJoin(form: CommunityJoin): string {
+  communityJoin(form: CommunityJoinInput): string {
     return wrapper(UserOperation.CommunityJoin, form);
   }
 
   /**
    * Register a new user.
    */
-  register(register: Register) {
+  register(register: RegisterInput) {
     return wrapper(UserOperation.Register, register);
   }
 
@@ -153,280 +148,280 @@ export class LemmyWebsocket {
   /**
    * Create a new community.
    */
-  createCommunity(form: CreateCommunity) {
+  createCommunity(form: CreateCommunityInput) {
     return wrapper(UserOperation.CreateCommunity, form);
   }
 
   /**
    * Edit a community.
    */
-  editCommunity(form: EditCommunity) {
+  editCommunity(form: EditCommunityInput) {
     return wrapper(UserOperation.EditCommunity, form);
   }
 
   /**
    * Delete a community.
    */
-  deleteCommunity(form: DeleteCommunity) {
+  deleteCommunity(form: DeleteCommunityInput) {
     return wrapper(UserOperation.DeleteCommunity, form);
   }
 
   /**
    * A moderator remove for a community.
    */
-  removeCommunity(form: RemoveCommunity) {
+  removeCommunity(form: RemoveCommunityInput) {
     return wrapper(UserOperation.RemoveCommunity, form);
   }
 
   /**
    * Follow / subscribe to a community.
    */
-  followCommunity(form: FollowCommunity) {
+  followCommunity(form: FollowCommunityInput) {
     return wrapper(UserOperation.FollowCommunity, form);
   }
 
   /**
    * List communities, with various filters.
    */
-  listCommunities(form: ListCommunities) {
+  listCommunities(form: ListCommunitiesInput = {}) {
     return wrapper(UserOperation.ListCommunities, form);
   }
 
   /**
    * Create a post.
    */
-  createPost(form: CreatePost) {
+  createPost(form: CreatePostInput) {
     return wrapper(UserOperation.CreatePost, form);
   }
 
   /**
    * Get / fetch a post.
    */
-  getPost(form: GetPost) {
+  getPost(form: GetPostInput = {}) {
     return wrapper(UserOperation.GetPost, form);
   }
 
   /**
    * Get / fetch a community.
    */
-  getCommunity(form: GetCommunity) {
+  getCommunity(form: GetCommunityInput = {}) {
     return wrapper(UserOperation.GetCommunity, form);
   }
 
   /**
    * Create a comment.
    */
-  createComment(form: CreateComment) {
+  createComment(form: CreateCommentInput) {
     return wrapper(UserOperation.CreateComment, form);
   }
 
   /**
    * Edit a comment.
    */
-  editComment(form: EditComment) {
+  editComment(form: EditCommentInput) {
     return wrapper(UserOperation.EditComment, form);
   }
 
   /**
    * Delete a comment.
    */
-  deleteComment(form: DeleteComment) {
+  deleteComment(form: DeleteCommentInput) {
     return wrapper(UserOperation.DeleteComment, form);
   }
 
   /**
    * A moderator remove for a comment.
    */
-  removeComment(form: RemoveComment) {
+  removeComment(form: RemoveCommentInput) {
     return wrapper(UserOperation.RemoveComment, form);
   }
 
   /**
    * Mark a comment as read.
    */
-  markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
+  markCommentReplyAsRead(form: MarkCommentReplyAsReadInput) {
     return wrapper(UserOperation.MarkCommentReplyAsRead, form);
   }
 
   /**
    * Like / vote on a comment.
    */
-  likeComment(form: CreateCommentLike) {
+  likeComment(form: CreateCommentLikeInput) {
     return wrapper(UserOperation.CreateCommentLike, form);
   }
 
   /**
    * Save a comment.
    */
-  saveComment(form: SaveComment) {
+  saveComment(form: SaveCommentInput) {
     return wrapper(UserOperation.SaveComment, form);
   }
 
   /**
    * Report a comment.
    */
-  createCommentReport(form: CreateCommentReport) {
+  createCommentReport(form: CreateCommentReportInput) {
     return wrapper(UserOperation.CreateCommentReport, form);
   }
 
   /**
    * Resolve a comment report. Only a mod can do this.
    */
-  resolveCommentReport(form: ResolveCommentReport) {
+  resolveCommentReport(form: ResolveCommentReportInput) {
     return wrapper(UserOperation.ResolveCommentReport, form);
   }
 
   /**
    * List comment reports.
    */
-  listCommentReports(form: ListCommentReports) {
+  listCommentReports(form: ListCommentReportsInput) {
     return wrapper(UserOperation.ListCommentReports, form);
   }
 
   /**
    * Get / fetch posts, with various filters.
    */
-  getPosts(form: GetPosts) {
+  getPosts(form: GetPostsInput = {}) {
     return wrapper(UserOperation.GetPosts, form);
   }
 
   /**
    * Get / fetch comments.
    */
-  getComments(form: GetComments) {
+  getComments(form: GetCommentsInput = {}) {
     return wrapper(UserOperation.GetComments, form);
   }
 
   /**
    * Like / vote on a post.
    */
-  likePost(form: CreatePostLike) {
+  likePost(form: CreatePostLikeInput) {
     return wrapper(UserOperation.CreatePostLike, form);
   }
 
   /**
    * Edit a post.
    */
-  editPost(form: EditPost) {
+  editPost(form: EditPostInput) {
     return wrapper(UserOperation.EditPost, form);
   }
 
   /**
    * Delete a post.
    */
-  deletePost(form: DeletePost) {
+  deletePost(form: DeletePostInput) {
     return wrapper(UserOperation.DeletePost, form);
   }
 
   /**
    * A moderator remove for a post.
    */
-  removePost(form: RemovePost) {
+  removePost(form: RemovePostInput) {
     return wrapper(UserOperation.RemovePost, form);
   }
 
   /**
    * A moderator can lock a post ( IE disable new comments ).
    */
-  lockPost(form: LockPost) {
+  lockPost(form: LockPostInput) {
     return wrapper(UserOperation.LockPost, form);
   }
 
   /**
    * A moderator can sticky a post ( IE stick it to the top of a community ).
    */
-  stickyPost(form: StickyPost) {
+  stickyPost(form: StickyPostInput) {
     return wrapper(UserOperation.StickyPost, form);
   }
 
   /**
    * Mark a post as read.
    */
-  markPostAsRead(form: MarkPostAsRead) {
+  markPostAsRead(form: MarkPostAsReadInput) {
     return wrapper(UserOperation.MarkPostAsRead, form);
   }
 
   /**
    * Save a post.
    */
-  savePost(form: SavePost) {
+  savePost(form: SavePostInput) {
     return wrapper(UserOperation.SavePost, form);
   }
 
   /**
    * Report a post.
    */
-  createPostReport(form: CreatePostReport) {
+  createPostReport(form: CreatePostReportInput) {
     return wrapper(UserOperation.CreatePostReport, form);
   }
 
   /**
    * Resolve a post report. Only a mod can do this.
    */
-  resolvePostReport(form: ResolvePostReport) {
+  resolvePostReport(form: ResolvePostReportInput) {
     return wrapper(UserOperation.ResolvePostReport, form);
   }
 
   /**
    * List post reports.
    */
-  listPostReports(form: ListPostReports) {
+  listPostReports(form: ListPostReportsInput) {
     return wrapper(UserOperation.ListPostReports, form);
   }
 
   /**
    * Fetch metadata for any given site.
    */
-  getSiteMetadata(form: GetSiteMetadata) {
+  getSiteMetadata(form: GetSiteMetadataInput) {
     return wrapper(UserOperation.GetSiteMetadata, form);
   }
 
   /**
    * Ban a user from a community.
    */
-  banFromCommunity(form: BanFromCommunity) {
+  banFromCommunity(form: BanFromCommunityInput) {
     return wrapper(UserOperation.BanFromCommunity, form);
   }
 
   /**
    * Add a moderator to your community.
    */
-  addModToCommunity(form: AddModToCommunity) {
+  addModToCommunity(form: AddModToCommunityInput) {
     return wrapper(UserOperation.AddModToCommunity, form);
   }
 
   /**
    * Transfer your community to an existing moderator.
    */
-  transferCommunity(form: TransferCommunity) {
+  transferCommunity(form: TransferCommunityInput) {
     return wrapper(UserOperation.TransferCommunity, form);
   }
 
   /**
    * Leave the Site admins.
    */
-  leaveAdmin(form: LeaveAdmin) {
+  leaveAdmin(form: LeaveAdminInput) {
     return wrapper(UserOperation.LeaveAdmin, form);
   }
 
   /**
    * Ban a person from your site.
    */
-  banPerson(form: BanPerson) {
+  banPerson(form: BanPersonInput) {
     return wrapper(UserOperation.BanPerson, form);
   }
 
   /**
    * Get a list of banned users
    */
-  getBannedPersons(form: GetBannedPersons) {
+  getBannedPersons(form: GetBannedPersonsInput) {
     return wrapper(UserOperation.GetBannedPersons, form);
   }
 
   /**
    * Add an admin to your site.
    */
-  addAdmin(form: AddAdmin) {
+  addAdmin(form: AddAdminInput) {
     return wrapper(UserOperation.AddAdmin, form);
   }
 
@@ -434,7 +429,7 @@ export class LemmyWebsocket {
    * Get the unread registration applications count.
    */
   getUnreadRegistrationApplicationCount(
-    form: GetUnreadRegistrationApplicationCount
+    form: GetUnreadRegistrationApplicationCountInput
   ) {
     return wrapper(UserOperation.GetUnreadRegistrationApplicationCount, form);
   }
@@ -442,245 +437,245 @@ export class LemmyWebsocket {
   /**
    * List the unread registration applications.
    */
-  listRegistrationApplications(form: ListRegistrationApplications) {
+  listRegistrationApplications(form: ListRegistrationApplicationsInput) {
     return wrapper(UserOperation.ListRegistrationApplications, form);
   }
 
   /**
    * Approve a registration application
    */
-  approveRegistrationApplication(form: ApproveRegistrationApplication) {
+  approveRegistrationApplication(form: ApproveRegistrationApplicationInput) {
     return wrapper(UserOperation.ApproveRegistrationApplication, form);
   }
 
   /**
    * Get the details for a person.
    */
-  getPersonDetails(form: GetPersonDetails) {
+  getPersonDetails(form: GetPersonDetailsInput = {}) {
     return wrapper(UserOperation.GetPersonDetails, form);
   }
 
   /**
    * Get comment replies.
    */
-  getReplies(form: GetReplies) {
+  getReplies(form: GetRepliesInput) {
     return wrapper(UserOperation.GetReplies, form);
   }
 
   /**
    * Get mentions for your user.
    */
-  getPersonMentions(form: GetPersonMentions) {
+  getPersonMentions(form: GetPersonMentionsInput) {
     return wrapper(UserOperation.GetPersonMentions, form);
   }
 
   /**
    * Mark a person mention as read.
    */
-  markPersonMentionAsRead(form: MarkPersonMentionAsRead) {
+  markPersonMentionAsRead(form: MarkPersonMentionAsReadInput) {
     return wrapper(UserOperation.MarkPersonMentionAsRead, form);
   }
 
   /**
    * Get the modlog.
    */
-  getModlog(form: GetModlog) {
+  getModlog(form: GetModlogInput) {
     return wrapper(UserOperation.GetModlog, form);
   }
 
   /**
    * Create your site.
    */
-  createSite(form: CreateSite) {
+  createSite(form: CreateSiteInput) {
     return wrapper(UserOperation.CreateSite, form);
   }
 
   /**
    * Edit your site.
    */
-  editSite(form: EditSite) {
+  editSite(form: EditSiteInput) {
     return wrapper(UserOperation.EditSite, form);
   }
 
   /**
    * Gets the site, and your user data.
    */
-  getSite(form: GetSite) {
+  getSite(form: GetSiteInput = {}) {
     return wrapper(UserOperation.GetSite, form);
   }
 
   /**
    * Search lemmy.
    */
-  search(form: Search) {
+  search(form: SearchInput) {
     return wrapper(UserOperation.Search, form);
   }
 
   /**
    * Fetch a non-local / federated object.
    */
-  resolveObject(form: ResolveObject) {
+  resolveObject(form: ResolveObjectInput) {
     return wrapper(UserOperation.ResolveObject, form);
   }
 
   /**
    * Mark all replies as read.
    */
-  markAllAsRead(form: MarkAllAsRead) {
+  markAllAsRead(form: MarkAllAsReadInput) {
     return wrapper(UserOperation.MarkAllAsRead, form);
   }
 
   /**
    * Save your user settings.
    */
-  saveUserSettings(form: SaveUserSettings) {
+  saveUserSettings(form: SaveUserSettingsInput) {
     return wrapper(UserOperation.SaveUserSettings, form);
   }
 
   /**
    * Change your user password.
    */
-  changePassword(form: ChangePassword) {
+  changePassword(form: ChangePasswordInput) {
     return wrapper(UserOperation.ChangePassword, form);
   }
 
   /**
    * Get counts for your reports
    */
-  getReportCount(form: GetReportCount) {
+  getReportCount(form: GetReportCountInput) {
     return wrapper(UserOperation.GetReportCount, form);
   }
 
   /**
    * Get your unread counts
    */
-  getUnreadCount(form: GetUnreadCount) {
+  getUnreadCount(form: GetUnreadCountInput) {
     return wrapper(UserOperation.GetUnreadCount, form);
   }
 
   /**
    * Verify your email
    */
-  verifyEmail(form: VerifyEmail) {
+  verifyEmail(form: VerifyEmailInput) {
     return wrapper(UserOperation.VerifyEmail, form);
   }
 
   /**
    * Delete your account.
    */
-  deleteAccount(form: DeleteAccount) {
+  deleteAccount(form: DeleteAccountInput) {
     return wrapper(UserOperation.DeleteAccount, form);
   }
 
   /**
    * Reset your password.
    */
-  passwordReset(form: PasswordReset) {
+  passwordReset(form: PasswordResetInput) {
     return wrapper(UserOperation.PasswordReset, form);
   }
 
   /**
    * Change your password from an email / token based reset.
    */
-  passwordChange(form: PasswordChange) {
+  passwordChange(form: PasswordChangeInput) {
     return wrapper(UserOperation.PasswordChange, form);
   }
 
   /**
    * Create a private message.
    */
-  createPrivateMessage(form: CreatePrivateMessage) {
+  createPrivateMessage(form: CreatePrivateMessageInput) {
     return wrapper(UserOperation.CreatePrivateMessage, form);
   }
 
   /**
    * Edit a private message.
    */
-  editPrivateMessage(form: EditPrivateMessage) {
+  editPrivateMessage(form: EditPrivateMessageInput) {
     return wrapper(UserOperation.EditPrivateMessage, form);
   }
 
   /**
    * Delete a private message.
    */
-  deletePrivateMessage(form: DeletePrivateMessage) {
+  deletePrivateMessage(form: DeletePrivateMessageInput) {
     return wrapper(UserOperation.DeletePrivateMessage, form);
   }
 
   /**
    * Mark a private message as read.
    */
-  markPrivateMessageAsRead(form: MarkPrivateMessageAsRead) {
+  markPrivateMessageAsRead(form: MarkPrivateMessageAsReadInput) {
     return wrapper(UserOperation.MarkPrivateMessageAsRead, form);
   }
 
   /**
    * Get / fetch private messages.
    */
-  getPrivateMessages(form: GetPrivateMessages) {
+  getPrivateMessages(form: GetPrivateMessagesInput) {
     return wrapper(UserOperation.GetPrivateMessages, form);
   }
 
   /**
    * Create a report for a private message.
    */
-  createPrivateMessageReport(form: CreatePrivateMessageReport) {
+  createPrivateMessageReport(form: CreatePrivateMessageReportInput) {
     return wrapper(UserOperation.CreatePrivateMessageReport, form);
   }
 
   /**
    * Resolve a report for a private message.
    */
-  resolvePrivateMessageReport(form: ResolvePrivateMessageReport) {
+  resolvePrivateMessageReport(form: ResolvePrivateMessageReportInput) {
     return wrapper(UserOperation.ResolvePrivateMessageReport, form);
   }
 
   /**
    * List private message reports.
    */
-  listPrivateMessageReports(form: ListPrivateMessageReports) {
+  listPrivateMessageReports(form: ListPrivateMessageReportsInput) {
     return wrapper(UserOperation.ListPrivateMessageReports, form);
   }
 
   /**
    * Block a person.
    */
-  blockPerson(form: BlockPerson) {
+  blockPerson(form: BlockPersonInput) {
     return wrapper(UserOperation.BlockPerson, form);
   }
 
   /**
    * Block a community.
    */
-  blockCommunity(form: BlockCommunity) {
+  blockCommunity(form: BlockCommunityInput) {
     return wrapper(UserOperation.BlockCommunity, form);
   }
 
   /**
    * Purge / Delete a person from the database.
    */
-  purgePerson(form: PurgePerson) {
+  purgePerson(form: PurgePersonInput) {
     return wrapper(UserOperation.PurgePerson, form);
   }
 
   /**
    * Purge / Delete a community from the database.
    */
-  purgeCommunity(form: PurgeCommunity) {
+  purgeCommunity(form: PurgeCommunityInput) {
     return wrapper(UserOperation.PurgeCommunity, form);
   }
 
   /**
    * Purge / Delete a post from the database.
    */
-  purgePost(form: PurgePost) {
+  purgePost(form: PurgePostInput) {
     return wrapper(UserOperation.PurgePost, form);
   }
 
   /**
    * Purge / Delete a comment from the database.
    */
-  purgeComment(form: PurgeComment) {
+  purgeComment(form: PurgeCommentInput) {
     return wrapper(UserOperation.PurgeComment, form);
   }
 }
