@@ -291,10 +291,8 @@ export class ModFeaturePost {
   id: number;
   mod_person_id: number;
   post_id: number;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  featured: Option<boolean>;
+  featured: boolean;
+  is_featured_community: boolean;
   when_: string;
 }
 
