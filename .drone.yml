@@ -31,23 +31,3 @@ steps:
     when:
       ref:
         - refs/tags/*
-
----
-kind: pipeline
-name: arm64
-
-platform:
-  os: linux
-  arch: arm64
-
-steps:
-
-  - name: yarn
-    image: node:17-alpine
-    commands:
-      - yarn
-
-  - name: yarn lint
-    image: node:17-alpine
-    commands:
-      - yarn lint
