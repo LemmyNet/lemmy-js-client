@@ -26,11 +26,11 @@ import {
   ModAddCommunity,
   ModBan,
   ModBanFromCommunity,
+  ModFeaturePost,
   ModLockPost,
   ModRemoveComment,
   ModRemoveCommunity,
   ModRemovePost,
-  ModStickyPost,
   ModTransferCommunity,
   PersonMention,
   PersonSafe,
@@ -342,9 +342,9 @@ export class ModRemovePostView {
   community: CommunitySafe;
 }
 
-export class ModStickyPostView {
-  @Type(() => ModStickyPost)
-  mod_sticky_post: ModStickyPost;
+export class ModFeaturePostView {
+  @Type(() => ModFeaturePost)
+  mod_feature_post: ModFeaturePost;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
