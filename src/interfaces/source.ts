@@ -103,16 +103,21 @@ export class Site {
   instance_id: number;
 }
 
+export enum RegistrationMode {
+  Closed = "closed",
+  RequireApplication = "require_application",
+  Open = "open",
+}
+
 export class LocalSite {
   id: number;
   site_id: number;
   site_setup: boolean;
   enable_downvotes: boolean;
-  open_registration: boolean;
+  registration_mode: RegistrationMode;
   enable_nsfw: boolean;
   community_creation_admin_only: boolean;
   require_email_verification: boolean;
-  require_application: boolean;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
