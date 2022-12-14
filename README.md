@@ -18,24 +18,24 @@ A javascript / typescript http and websocket client and type system for [Lemmy](
 
 ### Websocket Client
 
-[LemmyWebsocket docs](classes/LemmyWebsocket.html)
+[LemmyWebsocket docs](https://join-lemmy.org/api/classes/LemmyWebsocket.html)
 
 ```ts
 import { Login, LemmyWebsocket } from 'lemmy-js-client';
 
 let client: LemmyWebsocket = new LemmyWebsocket();
 
-let form: Login {
+let form = new Login({
   username_or_email: "my_email@email.tld",
   password: "my_pass",
-};
+});
 
 this.ws.send(client.login(form));
 ```
 
 ### HTTP Client
 
-[LemmyHttp docs](classes/LemmyHttp.html)
+[LemmyHttp docs](https://join-lemmy.org/api/classes/LemmyHttp.html)
 
 ```ts
 import { LemmyHttp } from 'lemmy-js-client';

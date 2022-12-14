@@ -2,7 +2,12 @@ import { Option } from "@sniptt/monads";
 import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
-import { ListingType, SiteMetadata, SortType } from "../others";
+import {
+  ListingType,
+  PostFeatureType,
+  SiteMetadata,
+  SortType,
+} from "../others";
 import {
   CommunityModeratorView,
   CommunityView,
@@ -218,14 +223,15 @@ export class LockPost {
 }
 
 /**
- * Only admins and mods can sticky a post.
+ * Only admins and mods can feature a community post.
  */
-export class StickyPost {
+export class FeaturePost {
   post_id: number;
-  stickied: boolean;
+  featured: boolean;
+  feature_type: PostFeatureType;
   auth: string;
 
-  constructor(init: StickyPost) {
+  constructor(init: FeaturePost) {
     Object.assign(this, init);
   }
 }

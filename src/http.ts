@@ -90,6 +90,7 @@ import {
   CreatePostReport,
   DeletePost,
   EditPost,
+  FeaturePost,
   GetPost,
   GetPostResponse,
   GetPosts,
@@ -105,7 +106,6 @@ import {
   RemovePost,
   ResolvePostReport,
   SavePost,
-  StickyPost,
 } from "./interfaces/api/post";
 import {
   ApproveRegistrationApplication,
@@ -441,12 +441,12 @@ export class LemmyHttp {
   }
 
   /**
-   * A moderator can sticky a post ( IE stick it to the top of a community ).
+   * A moderator can feature a community post ( IE stick it to the top of a community ).
    *
-   * `HTTP.POST /post/sticky`
+   * `HTTP.POST /post/feature`
    */
-  async stickyPost(form: StickyPost) {
-    return this.wrapper(HttpType.Post, "/post/sticky", form, PostResponse);
+  async featurePost(form: FeaturePost) {
+    return this.wrapper(HttpType.Post, "/post/feature", form, PostResponse);
   }
 
   /**

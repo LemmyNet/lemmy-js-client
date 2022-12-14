@@ -53,6 +53,8 @@ export interface PostAggregates {
    */
   newest_comment_time_necro: string;
   newest_comment_time: string;
+  featured_community: boolean;
+  featured_local: boolean;
 }
 
 /**

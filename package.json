@@ -1,10 +1,12 @@
 {
   "name": "lemmy-js-client",
+  "version": "0.17.0-rc.56",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "0.17.0-rc.55",
   "author": "Dessalines <tyhou13@gmx.com>",
+  "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "/dist"
   ],
@@ -14,30 +16,6 @@
     "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src && prettier --check src",
     "prepare": "yarn run build && husky install"
   },
-  "repository": "https://github.com/LemmyNet/lemmy-js-client",
-  "devDependencies": {
-    "@sniptt/monads": "^0.5.10",
-    "@types/node": "^18.6.2",
-    "@types/node-fetch": "^3.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.31.0",
-    "@typescript-eslint/parser": "^5.31.0",
-    "class-transformer": "^0.5.1",
-    "eslint": "^8.20.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "node-fetch": "^3.2.9",
-    "prettier": "^2.7.1",
-    "prettier-plugin-import-sort": "^0.0.7",
-    "prettier-plugin-organize-imports": "^3.0.0",
-    "prettier-plugin-packagejson": "^2.2.18",
-    "reflect-metadata": "^0.1.13",
-    "sortpack": "^2.3.0",
-    "typedoc": "^0.21.6",
-    "typedoc-plugin-sourcefile-url": "^1.0.6",
-    "typescript": "^4.7.4"
-  },
-  "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
       "prettier --write",
@@ -46,6 +24,30 @@
     "package.json": [
       "sortpack"
     ]
+  },
+  "dependencies": {
+    "@sniptt/monads": "^0.5.10",
+    "class-transformer": "^0.5.1",
+    "node-fetch": "2.6.6",
+    "reflect-metadata": "^0.1.13"
+  },
+  "devDependencies": {
+    "@types/node": "^18.6.2",
+    "@types/node-fetch": "2.6.2",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "eslint": "^8.20.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
+    "prettier-plugin-import-sort": "^0.0.7",
+    "prettier-plugin-organize-imports": "^3.0.0",
+    "prettier-plugin-packagejson": "^2.2.18",
+    "sortpack": "^2.3.0",
+    "typedoc": "^0.21.6",
+    "typedoc-plugin-sourcefile-url": "^1.0.6",
+    "typescript": "^4.7.4"
   },
   "importSort": {
     ".js, .jsx, .ts, .tsx": {
