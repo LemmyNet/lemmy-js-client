@@ -2,9 +2,9 @@
   "name": "lemmy-js-client",
   "version": "0.17.0-rc.56",
   "description": "A javascript / typescript client for Lemmy",
-  "author": "Dessalines <tyhou13@gmx.com>",
   "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "license": "AGPL-3.0",
+  "author": "Dessalines <tyhou13@gmx.com>",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [

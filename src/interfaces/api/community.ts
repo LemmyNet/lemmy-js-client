@@ -89,6 +89,7 @@ export class CreateCommunity {
 export class CommunityResponse {
   @Type(() => CommunityView)
   community_view: CommunityView;
+  discussion_languages: number[];
 }
 
 export class ListCommunities {
