@@ -1,6 +1,6 @@
 {
   "name": "lemmy-js-client",
-  "version": "0.17.0-rc.56",
+  "version": "0.17.0-rc.57",
   "description": "A javascript / typescript client for Lemmy",
   "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "license": "AGPL-3.0",
@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc",
     "docs": "typedoc src/index.ts --sourcefile-url-prefix 'https://github.com/LemmyNet/lemmy-js-client/tree/main/src/'",
-    "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src",
+    "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src && prettier --check src",
     "prepare": "yarn run build && husky install"
   },
   "lint-staged": {

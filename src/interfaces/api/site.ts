@@ -221,7 +221,6 @@ export class CreateSite {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   application_email_admins: Option<boolean>;
-  auth: string;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -318,6 +317,11 @@ export class CreateSite {
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
   blocked_instances: Option<string[]>;
+  @Transform(({ value }) => toOption(value), { toClassOnly: true })
+  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
+  @Expose()
+  taglines: Option<string[]>;
+  auth: string;
   constructor(init: CreateSite) {
     Object.assign(this, init);
   }
@@ -555,8 +559,7 @@ export class MyUserInfo {
   community_blocks: CommunityBlockView[];
   @Type(() => PersonBlockView)
   person_blocks: PersonBlockView[];
-  @Type(() => Language)
-  discussion_languages: Language[];
+  discussion_languages: number[];
 }
 
 export class LeaveAdmin {
