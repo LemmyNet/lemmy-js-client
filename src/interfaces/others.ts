@@ -1,6 +1,3 @@
-import { Option } from "@sniptt/monads";
-import { Expose, Transform } from "class-transformer";
-import { toOption, toUndefined } from "../utils";
 export const VERSION = "v3";
 
 /**
@@ -227,25 +224,9 @@ export enum PostFeatureType {
 /**
  * A holder for a site's metadata ( such as opengraph tags ), used for post links.
  */
-export class SiteMetadata {
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  title: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  description: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  image: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  html: Option<string>;
-
-  constructor(init: SiteMetadata) {
-    Object.assign(this, init);
-  }
+export interface SiteMetadata {
+  title?: string;
+  description?: string;
+  image?: string;
+  html?: string;
 }

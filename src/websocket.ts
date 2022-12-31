@@ -1,4 +1,3 @@
-import { ClassConstructor, deserialize, serialize } from "class-transformer";
 import {
   CreateComment,
   CreateCommentLike,
@@ -686,7 +685,7 @@ export class LemmyWebsocket {
 }
 
 function wrapper<MessageType>(op: UserOperation, data: MessageType) {
-  let send = serialize({ op: UserOperation[op], data });
+  let send = JSON.stringify({ op: UserOperation[op], data });
   return send;
 }
 
@@ -698,10 +697,8 @@ export function wsUserOp(msg: any): UserOperation {
 /**
  * Converts a websocket string response to a usable result
  */
-export function wsJsonToRes<ResponseType>(
-  msg: any,
-  responseClass: ClassConstructor<ResponseType>
-): ResponseType {
+// TODO is this still necessary?
+export function wsJsonToRes<ResponseType>(msg: any): ResponseType {
   // Have to deserialize the response again into the correct class
-  return deserialize(responseClass, serialize(msg.data));
+  return msg.data as ResponseType;
 }

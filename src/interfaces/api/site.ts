@@ -1,7 +1,3 @@
-import { Option } from "@sniptt/monads";
-import { Expose, Transform, Type } from "class-transformer";
-import "reflect-metadata";
-import { toOption, toUndefined } from "../../utils";
 import { ListingType, ModlogActionType, SearchType, SortType } from "../others";
 import { Language, Tagline } from "../source";
 import {
@@ -35,703 +31,264 @@ import {
 /**
  * Search lemmy for different types of data.
  */
-export class Search {
+export interface Search {
   /**
    * The search query string.
    */
   q: string;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  type_: Option<SearchType>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  community_id: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  community_name: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  creator_id: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  sort: Option<SortType>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  listing_type: Option<ListingType>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  page: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  limit: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  auth: Option<string>;
-
-  constructor(init: Search) {
-    Object.assign(this, init);
-  }
+  type_?: SearchType;
+  community_id?: number;
+  community_name?: string;
+  creator_id?: number;
+  sort?: SortType;
+  listing_type?: ListingType;
+  page?: number;
+  limit?: number;
+  auth?: string;
 }
 
-export class SearchResponse {
+export interface SearchResponse {
   /**
    * The [[SearchType]].
    */
   type_: string;
-  @Type(() => CommentView)
   comments: CommentView[];
-  @Type(() => PostView)
   posts: PostView[];
-  @Type(() => CommunityView)
   communities: CommunityView[];
-  @Type(() => PersonViewSafe)
   users: PersonViewSafe[];
 }
 
-export class GetModlog {
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  mod_person_id: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  community_id: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  page: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  limit: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  auth: Option<string>;
+export interface GetModlog {
+  mod_person_id?: number;
+  community_id?: number;
+  page?: number;
+  limit?: number;
+  auth?: string;
   type_: ModlogActionType;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  other_person_id: Option<number>;
-  constructor(init: GetModlog) {
-    Object.assign(this, init);
-  }
+  other_person_id?: number;
 }
 
-export class GetModlogResponse {
-  @Type(() => ModRemovePostView)
+export interface GetModlogResponse {
   removed_posts: ModRemovePostView[];
-  @Type(() => ModLockPostView)
   locked_posts: ModLockPostView[];
-  @Type(() => ModFeaturePostView)
   featured_posts: ModFeaturePostView[];
-  @Type(() => ModRemoveCommentView)
   removed_comments: ModRemoveCommentView[];
-  @Type(() => ModRemoveCommunityView)
   removed_communities: ModRemoveCommunityView[];
-  @Type(() => ModBanFromCommunityView)
   banned_from_community: ModBanFromCommunityView[];
-  @Type(() => ModBanView)
   banned: ModBanView[];
-  @Type(() => ModAddCommunityView)
   added_to_community: ModAddCommunityView[];
-  @Type(() => ModTransferCommunityView)
   transferred_to_community: ModTransferCommunityView[];
-  @Type(() => ModAddView)
   added: ModAddView[];
-  @Type(() => AdminPurgePersonView)
   admin_purged_persons: AdminPurgePersonView[];
-  @Type(() => AdminPurgeCommunityView)
   admin_purged_communities: AdminPurgeCommunityView[];
-  @Type(() => AdminPurgePostView)
   admin_purged_posts: AdminPurgePostView[];
-  @Type(() => AdminPurgeCommentView)
   admin_purged_comments: AdminPurgeCommentView[];
 }
 
-export class CreateSite {
+export interface CreateSite {
   name: string;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  sidebar: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  description: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  icon: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  banner: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  enable_downvotes: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  open_registration: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  enable_nsfw: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  community_creation_admin_only: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  require_email_verification: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  require_application: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  application_question: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  private_instance: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  default_theme: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  default_post_listing_type: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  application_email_admins: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  hide_modlog_mod_names: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  discussion_languages: Option<number[]>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  legal_information: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  slur_filter_regex: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  actor_name_max_length: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_message: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_message_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_post: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_post_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_register: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_register_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_image: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_image_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_comment: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_comment_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_search: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_search_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  federation_enabled: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  federation_debug: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  federation_worker_count: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  captcha_enabled: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  captcha_difficulty: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  allowed_instances: Option<string[]>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  blocked_instances: Option<string[]>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  taglines: Option<string[]>;
+  sidebar?: string;
+  description?: string;
+  icon?: string;
+  banner?: string;
+  enable_downvotes?: boolean;
+  open_registration?: boolean;
+  enable_nsfw?: boolean;
+  community_creation_admin_only?: boolean;
+  require_email_verification?: boolean;
+  require_application?: boolean;
+  application_question?: string;
+  private_instance?: boolean;
+  default_theme?: string;
+  default_post_listing_type?: string;
+  application_email_admins?: boolean;
+  hide_modlog_mod_names?: boolean;
+  discussion_languages?: number[];
+  legal_information?: string;
+  slur_filter_regex?: string;
+  actor_name_max_length?: number;
+  rate_limit_message?: number;
+  rate_limit_message_per_second?: number;
+  rate_limit_post?: number;
+  rate_limit_post_per_second?: number;
+  rate_limit_register?: number;
+  rate_limit_register_per_second?: number;
+  rate_limit_image?: number;
+  rate_limit_image_per_second?: number;
+  rate_limit_comment?: number;
+  rate_limit_comment_per_second?: number;
+  rate_limit_search?: number;
+  rate_limit_search_per_second?: number;
+  federation_enabled?: boolean;
+  federation_debug?: boolean;
+  federation_worker_count?: number;
+  captcha_enabled?: boolean;
+  captcha_difficulty?: string;
+  allowed_instances?: string[];
+  blocked_instances?: string[];
+  taglines?: string[];
   auth: string;
-  constructor(init: CreateSite) {
-    Object.assign(this, init);
-  }
 }
 
-export class EditSite {
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  name: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  sidebar: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  description: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  icon: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  banner: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  enable_downvotes: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  open_registration: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  enable_nsfw: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  community_creation_admin_only: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  require_email_verification: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  require_application: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  application_question: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  private_instance: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  default_theme: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  default_post_listing_type: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  legal_information: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  application_email_admins: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  hide_modlog_mod_names: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  discussion_languages: Option<number[]>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  slur_filter_regex: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  actor_name_max_length: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_message: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_message_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_post: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_post_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_register: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_register_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_image: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_image_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_comment: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_comment_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_search: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  rate_limit_search_per_second: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  federation_enabled: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  federation_debug: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  federation_worker_count: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  captcha_enabled: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  captcha_difficulty: Option<string>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  allowed_instances: Option<string[]>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  blocked_instances: Option<string[]>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  taglines: Option<string[]>;
+export interface EditSite {
+  name?: string;
+  sidebar?: string;
+  description?: string;
+  icon?: string;
+  banner?: string;
+  enable_downvotes?: boolean;
+  open_registration?: boolean;
+  enable_nsfw?: boolean;
+  community_creation_admin_only?: boolean;
+  require_email_verification?: boolean;
+  require_application?: boolean;
+  application_question?: string;
+  private_instance?: boolean;
+  default_theme?: string;
+  default_post_listing_type?: string;
+  legal_information?: string;
+  application_email_admins?: boolean;
+  hide_modlog_mod_names?: boolean;
+  discussion_languages?: number[];
+  slur_filter_regex?: string;
+  actor_name_max_length?: number;
+  rate_limit_message?: number;
+  rate_limit_message_per_second?: number;
+  rate_limit_post?: number;
+  rate_limit_post_per_second?: number;
+  rate_limit_register?: number;
+  rate_limit_register_per_second?: number;
+  rate_limit_image?: number;
+  rate_limit_image_per_second?: number;
+  rate_limit_comment?: number;
+  rate_limit_comment_per_second?: number;
+  rate_limit_search?: number;
+  rate_limit_search_per_second?: number;
+  federation_enabled?: boolean;
+  federation_debug?: boolean;
+  federation_worker_count?: number;
+  captcha_enabled?: boolean;
+  captcha_difficulty?: string;
+  allowed_instances?: string[];
+  blocked_instances?: string[];
+  taglines?: string[];
   auth: string;
-
-  constructor(init: EditSite) {
-    Object.assign(this, init);
-  }
 }
 
-export class GetSite {
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  auth: Option<string>;
-
-  constructor(init: GetSite) {
-    Object.assign(this, init);
-  }
+export interface GetSite {
+  auth?: string;
 }
 
-export class SiteResponse {
-  @Type(() => SiteView)
+export interface SiteResponse {
   site_view: SiteView;
 }
 
-export class GetSiteResponse {
-  @Type(() => SiteView)
+export interface GetSiteResponse {
   site_view: SiteView;
-  @Type(() => PersonViewSafe)
   admins: PersonViewSafe[];
   online: number;
   version: string;
   /**
    * If you're logged in, you'll get back extra user info.
    */
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => MyUserInfo)
-  my_user: Option<MyUserInfo>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => FederatedInstances)
-  federated_instances: Option<FederatedInstances>;
-  @Type(() => Language)
+  my_user?: MyUserInfo;
+  federated_instances?: FederatedInstances;
   all_languages: Language[];
   discussion_languages: number[];
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => Tagline)
-  taglines: Option<Tagline[]>;
+  taglines?: Tagline[];
 }
 
 /**
  * Your user info, such as blocks, follows, etc.
  */
-export class MyUserInfo {
-  @Type(() => LocalUserSettingsView)
+export interface MyUserInfo {
   local_user_view: LocalUserSettingsView;
-  @Type(() => CommunityFollowerView)
   follows: CommunityFollowerView[];
-  @Type(() => CommunityModeratorView)
   moderates: CommunityModeratorView[];
-  @Type(() => CommunityBlockView)
   community_blocks: CommunityBlockView[];
-  @Type(() => PersonBlockView)
   person_blocks: PersonBlockView[];
   discussion_languages: number[];
 }
 
-export class LeaveAdmin {
+export interface LeaveAdmin {
   auth: string;
-
-  constructor(init: LeaveAdmin) {
-    Object.assign(this, init);
-  }
 }
 
-export class FederatedInstances {
+export interface FederatedInstances {
   linked: string[];
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  allowed: Option<string[]>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  blocked: Option<string[]>;
-
-  constructor(init: FederatedInstances) {
-    Object.assign(this, init);
-  }
+  allowed?: string[];
+  blocked?: string[];
 }
 
-export class ResolveObject {
+export interface ResolveObject {
   q: string;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  auth: Option<string>;
-
-  constructor(init: ResolveObject) {
-    Object.assign(this, init);
-  }
+  auth?: string;
 }
 
-export class ResolveObjectResponse {
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => CommentView)
-  comment: Option<CommentView>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => PostView)
-  post: Option<PostView>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => CommunityView)
-  community: Option<CommunityView>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  @Type(() => PersonViewSafe)
-  person: Option<PersonViewSafe>;
+export interface ResolveObjectResponse {
+  comment?: CommentView;
+  post?: PostView;
+  community?: CommunityView;
+  person?: PersonViewSafe;
 }
 
-export class PurgePerson {
+export interface PurgePerson {
   person_id: number;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  reason: Option<string>;
+  reason?: string;
   auth: string;
-
-  constructor(init: PurgePerson) {
-    Object.assign(this, init);
-  }
 }
 
-export class PurgeCommunity {
+export interface PurgeCommunity {
   community_id: number;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  reason: Option<string>;
+  reason?: string;
   auth: string;
-
-  constructor(init: PurgeCommunity) {
-    Object.assign(this, init);
-  }
 }
 
-export class PurgePost {
+export interface PurgePost {
   post_id: number;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  reason: Option<string>;
+  reason?: string;
   auth: string;
-
-  constructor(init: PurgePost) {
-    Object.assign(this, init);
-  }
 }
 
-export class PurgeComment {
+export interface PurgeComment {
   comment_id: number;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  reason: Option<string>;
+  reason?: string;
   auth: string;
-
-  constructor(init: PurgeComment) {
-    Object.assign(this, init);
-  }
 }
 
-export class PurgeItemResponse {
+export interface PurgeItemResponse {
   success: boolean;
 }
 
-export class ListRegistrationApplications {
+export interface ListRegistrationApplications {
   /**
    * Only shows the unread applications (IE those without an admin actor)
    */
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  unread_only: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  page: Option<number>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  limit: Option<number>;
+  unread_only?: boolean;
+  page?: number;
+  limit?: number;
   auth: string;
-
-  constructor(init: ListRegistrationApplications) {
-    Object.assign(this, init);
-  }
 }
 
-export class ListRegistrationApplicationsResponse {
-  @Type(() => RegistrationApplicationView)
+export interface ListRegistrationApplicationsResponse {
   registration_applications: RegistrationApplicationView[];
 }
 
-export class ApproveRegistrationApplication {
+export interface ApproveRegistrationApplication {
   id: number;
   approve: boolean;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  deny_reason: Option<string>;
+  deny_reason?: string;
   auth: string;
-
-  constructor(init: ApproveRegistrationApplication) {
-    Object.assign(this, init);
-  }
 }
 
-export class RegistrationApplicationResponse {
-  @Type(() => RegistrationApplicationView)
+export interface RegistrationApplicationResponse {
   registration_application: RegistrationApplicationView;
 }
 
-export class GetUnreadRegistrationApplicationCount {
+export interface GetUnreadRegistrationApplicationCount {
   auth: string;
-
-  constructor(init: GetUnreadRegistrationApplicationCount) {
-    Object.assign(this, init);
-  }
 }
 
-export class GetUnreadRegistrationApplicationCountResponse {
+export interface GetUnreadRegistrationApplicationCountResponse {
   registration_applications: number;
 }

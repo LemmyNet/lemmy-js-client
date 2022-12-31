@@ -26,10 +26,7 @@
     ]
   },
   "dependencies": {
-    "@sniptt/monads": "^0.5.10",
-    "class-transformer": "^0.5.1",
-    "node-fetch": "2.6.6",
-    "reflect-metadata": "^0.1.13"
+    "node-fetch": "2.6.6"
   },
   "devDependencies": {
     "@types/node": "^18.6.2",
