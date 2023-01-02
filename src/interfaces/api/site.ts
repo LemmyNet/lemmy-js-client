@@ -3,7 +3,7 @@ import { Expose, Transform, Type } from "class-transformer";
 import "reflect-metadata";
 import { toOption, toUndefined } from "../../utils";
 import { ListingType, ModlogActionType, SearchType, SortType } from "../others";
-import { Language, Tagline } from "../source";
+import { Language, RegistrationMode, Tagline } from "../source";
 import {
   AdminPurgeCommentView,
   AdminPurgeCommunityView,
@@ -184,10 +184,6 @@ export class CreateSite {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  open_registration: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
   enable_nsfw: Option<boolean>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
@@ -200,7 +196,7 @@ export class CreateSite {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  require_application: Option<boolean>;
+  registration_mode: Option<RegistrationMode>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
@@ -355,10 +351,6 @@ export class EditSite {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  open_registration: Option<boolean>;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
   enable_nsfw: Option<boolean>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
@@ -371,7 +363,7 @@ export class EditSite {
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
-  require_application: Option<boolean>;
+  registration_mode: Option<RegistrationMode>;
   @Transform(({ value }) => toOption(value), { toClassOnly: true })
   @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
   @Expose()
