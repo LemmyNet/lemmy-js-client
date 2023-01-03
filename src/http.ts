@@ -1158,7 +1158,7 @@ export class LemmyHttp {
     return `${this.apiUrl}${endpoint}`;
   }
 
-  private async wrapper<BodyType, ResponseType>(
+  private async wrapper<BodyType extends object, ResponseType>(
     type_: HttpType,
     endpoint: string,
     form: BodyType
@@ -1182,8 +1182,8 @@ export class LemmyHttp {
   }
 }
 
-function encodeGetParams<BodyType>(p: BodyType): string {
-  return Object.entries(JSON.stringify(p))
+function encodeGetParams<BodyType extends object>(p: BodyType): string {
+  return Object.entries(p)
     .map(kv => kv.map(encodeURIComponent).join("="))
     .join("&");
 }
