@@ -1,5 +1,5 @@
 import { ListingType, ModlogActionType, SearchType, SortType } from "../others";
-import { Language, Tagline } from "../source";
+import { Language, RegistrationMode, Tagline } from "../source";
 import {
   AdminPurgeCommentView,
   AdminPurgeCommunityView,
@@ -92,11 +92,10 @@ export interface CreateSite {
   icon?: string;
   banner?: string;
   enable_downvotes?: boolean;
-  open_registration?: boolean;
   enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
   require_email_verification?: boolean;
-  require_application?: boolean;
+  registration_mode?: RegistrationMode;
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
@@ -137,11 +136,10 @@ export interface EditSite {
   icon?: string;
   banner?: string;
   enable_downvotes?: boolean;
-  open_registration?: boolean;
   enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
   require_email_verification?: boolean;
-  require_application?: boolean;
+  registration_mode?: RegistrationMode;
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
