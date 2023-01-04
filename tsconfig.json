@@ -8,6 +8,7 @@
     "outDir": "./dist",
     "target": "ES5",
     "experimentalDecorators": true,
+    "strictNullChecks": true,
     "moduleResolution": "Node"
   },
   "include": [
