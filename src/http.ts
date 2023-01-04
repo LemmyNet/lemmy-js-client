@@ -1184,6 +1184,7 @@ export class LemmyHttp {
 
 function encodeGetParams<BodyType extends object>(p: BodyType): string {
   return Object.entries(p)
+    .filter(kv => !!kv[1])
     .map(kv => kv.map(encodeURIComponent).join("="))
     .join("&");
 }
