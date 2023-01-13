@@ -1,4 +1,3 @@
-import "reflect-metadata";
 import { CustomEmojiView } from "../views";
 
 export class CreateCustomEmoji {

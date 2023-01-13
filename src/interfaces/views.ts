@@ -293,8 +293,6 @@ export interface PrivateMessageReportView {
 }
 
 export class CustomEmojiView {
-  @Type(() => CustomEmoji)
   custom_emoji: CustomEmoji;
-  @Type(() => CustomEmojiKeyword)
   keywords: CustomEmojiKeyword[];
 }

@@ -395,10 +395,7 @@ export class CustomEmoji {
   alt_text: string;
   category: string;
   published: string;
-  @Transform(({ value }) => toOption(value), { toClassOnly: true })
-  @Transform(({ value }) => toUndefined(value), { toPlainOnly: true })
-  @Expose()
-  updated: Option<string>;
+  updated: string;
 }
 
 export class CustomEmojiKeyword {

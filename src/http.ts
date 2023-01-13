@@ -36,9 +36,7 @@ import {
 } from "./interfaces/api/community";
 import {
   CreateCustomEmoji,
-  CustomEmojiResponse,
   DeleteCustomEmoji,
-  DeleteCustomEmojiResponse,
   EditCustomEmoji,
 } from "./interfaces/api/custom_emoji";
 import {
@@ -1167,12 +1165,7 @@ export class LemmyHttp {
    * `HTTP.POST /custom_emoji`
    */
   async createCustomEmoji(form: CreateCustomEmoji) {
-    return this.wrapper(
-      HttpType.Post,
-      "/custom_emoji",
-      form,
-      CustomEmojiResponse
-    );
+    return this.wrapper(HttpType.Post, "/custom_emoji", form);
   }
 
   /**
@@ -1181,12 +1174,7 @@ export class LemmyHttp {
    * `HTTP.PUT /custom_emoji`
    */
   async editCustomEmoji(form: EditCustomEmoji) {
-    return this.wrapper(
-      HttpType.Put,
-      "/custom_emoji",
-      form,
-      CustomEmojiResponse
-    );
+    return this.wrapper(HttpType.Put, "/custom_emoji", form);
   }
 
   /**
@@ -1195,12 +1183,7 @@ export class LemmyHttp {
    * `HTTP.Post /custom_emoji/delete`
    */
   async deleteCustomEmoji(form: DeleteCustomEmoji) {
-    return this.wrapper(
-      HttpType.Post,
-      "/custom_emoji/delete",
-      form,
-      DeleteCustomEmojiResponse
-    );
+    return this.wrapper(HttpType.Post, "/custom_emoji/delete", form);
   }
 
   private buildFullUrl(endpoint: string): string {
