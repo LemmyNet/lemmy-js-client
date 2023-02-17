@@ -101,6 +101,7 @@ export interface CreateSite {
   default_theme?: string;
   default_post_listing_type?: string;
   application_email_admins?: boolean;
+  reports_email_admins?: boolean;
   hide_modlog_mod_names?: boolean;
   discussion_languages?: number[];
   legal_information?: string;
@@ -146,6 +147,7 @@ export interface EditSite {
   default_post_listing_type?: string;
   legal_information?: string;
   application_email_admins?: boolean;
+  reports_email_admins?: boolean;
   hide_modlog_mod_names?: boolean;
   discussion_languages?: number[];
   slur_filter_regex?: string;
