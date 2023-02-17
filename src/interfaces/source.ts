@@ -79,6 +79,7 @@ export interface LocalSite {
   legal_information?: string;
   hide_modlog_mod_names: boolean;
   application_email_admins: boolean;
+  reports_email_admins: boolean;
   slur_filter_regex?: string;
   actor_name_max_length: number;
   federation_enabled: boolean;
