@@ -13,6 +13,7 @@ import {
 export interface Login {
   username_or_email: string;
   password: string;
+  totp_token?: string;
 }
 
 /**
@@ -103,6 +104,7 @@ export interface SaveUserSettings {
   show_read_posts?: boolean;
   show_new_post_notifs?: boolean;
   discussion_languages?: number[];
+  generate_totp?: boolean;
   auth: string;
 }
 
