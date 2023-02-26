@@ -16,7 +16,10 @@ export interface LocalUserSettings {
   show_new_post_notifs: boolean;
   email_verified: boolean;
   accepted_application: boolean;
-  totp_url?: string;
+  /**
+   * An installation url for your 2-factor authenticator app.
+   */
+  totp_2fa_url?: string;
 }
 
 export interface PersonSafe {

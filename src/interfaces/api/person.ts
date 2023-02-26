@@ -13,7 +13,10 @@ import {
 export interface Login {
   username_or_email: string;
   password: string;
-  totp_token?: string;
+  /**
+   * If your user has 2fa set up, they must provide the token, otherwise you will receive the error "missing_totp_token"
+   */
+  totp_2fa_token?: string;
 }
 
 /**
@@ -104,7 +107,15 @@ export interface SaveUserSettings {
   show_read_posts?: boolean;
   show_new_post_notifs?: boolean;
   discussion_languages?: number[];
-  generate_totp?: boolean;
+  /**
+   * If this is set to true, lemmy will generate or regenerate a 2-factor (totp) authentication secret.
+   * You can then use the `totp_2fa_url` from [[LocalUserSettings]] to set up your authenticator app.
+   *
+   * If this is set to false, it will remove 2-factor for your account.
+   *
+   * If this is undefined, it leaves your 2-factor setup as is.
+   */
+  generate_totp_2fa?: boolean;
   auth: string;
 }
 
