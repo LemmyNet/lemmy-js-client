@@ -1,4 +1,12 @@
-import fetch from "node-fetch";
+const fetch: typeof globalThis.fetch = async (...args) => {
+  if (globalThis?.fetch) {
+    return await globalThis.fetch(...args);
+  } else {
+    const nodeFetch = (await dynamicImport("node-fetch")).default;
+    return await nodeFetch(...args);
+  }
+};
+
 import {
   CommentReportResponse,
   CommentResponse,
@@ -131,7 +139,8 @@ import {
   SearchResponse,
   SiteResponse,
 } from "./interfaces/api/site";
-import { VERSION } from "./interfaces/others";
+import { UploadImage, UploadImageResponse, VERSION } from "./interfaces/others";
+import { dynamicImport } from "./utils";
 
 enum HttpType {
   Get = "GET",
@@ -145,6 +154,7 @@ enum HttpType {
 export class LemmyHttp {
   private apiUrl: string;
   private headers: { [key: string]: string } = {};
+  private pictrsUrl: string;
 
   /**
    * Generates a new instance of LemmyHttp.
@@ -153,6 +163,7 @@ export class LemmyHttp {
    */
   constructor(baseUrl: string, headers?: { [key: string]: string }) {
     this.apiUrl = `${baseUrl}/api/${VERSION}`;
+    this.pictrsUrl = `${baseUrl}/pictrs/image`;
 
     if (headers) {
       this.headers = headers;
@@ -165,7 +176,11 @@ export class LemmyHttp {
    * `HTTP.GET /site`
    */
   async getSite(form: GetSite) {
-    return this.wrapper<GetSite, GetSiteResponse>(HttpType.Get, "/site", form);
+    return await this.wrapper<GetSite, GetSiteResponse>(
+      HttpType.Get,
+      "/site",
+      form
+    );
   }
 
   /**
@@ -174,7 +189,11 @@ export class LemmyHttp {
    * `HTTP.POST /site`
    */
   async createSite(form: CreateSite) {
-    return this.wrapper<CreateSite, SiteResponse>(HttpType.Post, "/site", form);
+    return await this.wrapper<CreateSite, SiteResponse>(
+      HttpType.Post,
+      "/site",
+      form
+    );
   }
 
   /**
@@ -183,7 +202,11 @@ export class LemmyHttp {
    * `HTTP.PUT /site`
    */
   async editSite(form: EditSite) {
-    return this.wrapper<EditSite, SiteResponse>(HttpType.Put, "/site", form);
+    return await this.wrapper<EditSite, SiteResponse>(
+      HttpType.Put,
+      "/site",
+      form
+    );
   }
 
   /**
@@ -192,7 +215,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/leave_admin`
    */
   async leaveAdmin(form: LeaveAdmin) {
-    return this.wrapper<LeaveAdmin, GetSiteResponse>(
+    return await this.wrapper<LeaveAdmin, GetSiteResponse>(
       HttpType.Post,
       "/user/leave_admin",
       form
@@ -205,7 +228,7 @@ export class LemmyHttp {
    * `HTTP.GET /modlog`
    */
   async getModlog(form: GetModlog) {
-    return this.wrapper<GetModlog, GetModlogResponse>(
+    return await this.wrapper<GetModlog, GetModlogResponse>(
       HttpType.Get,
       "/modlog",
       form
@@ -218,7 +241,11 @@ export class LemmyHttp {
    * `HTTP.GET /search`
    */
   async search(form: Search) {
-    return this.wrapper<Search, SearchResponse>(HttpType.Get, "/search", form);
+    return await this.wrapper<Search, SearchResponse>(
+      HttpType.Get,
+      "/search",
+      form
+    );
   }
 
   /**
@@ -227,7 +254,7 @@ export class LemmyHttp {
    * `HTTP.GET /resolve_object`
    */
   async resolveObject(form: ResolveObject) {
-    return this.wrapper<ResolveObject, ResolveObjectResponse>(
+    return await this.wrapper<ResolveObject, ResolveObjectResponse>(
       HttpType.Get,
       "/resolve_object",
       form
@@ -240,7 +267,7 @@ export class LemmyHttp {
    * `HTTP.POST /community`
    */
   async createCommunity(form: CreateCommunity) {
-    return this.wrapper<CreateCommunity, CommunityResponse>(
+    return await this.wrapper<CreateCommunity, CommunityResponse>(
       HttpType.Post,
       "/community",
       form
@@ -253,7 +280,7 @@ export class LemmyHttp {
    * `HTTP.GET /community`
    */
   async getCommunity(form: GetCommunity) {
-    return this.wrapper<GetCommunity, GetCommunityResponse>(
+    return await this.wrapper<GetCommunity, GetCommunityResponse>(
       HttpType.Get,
       "/community",
       form
@@ -266,7 +293,7 @@ export class LemmyHttp {
    * `HTTP.PUT /community`
    */
   async editCommunity(form: EditCommunity) {
-    return this.wrapper<EditCommunity, CommunityResponse>(
+    return await this.wrapper<EditCommunity, CommunityResponse>(
       HttpType.Put,
       "/community",
       form
@@ -279,7 +306,7 @@ export class LemmyHttp {
    * `HTTP.GET /community/list`
    */
   async listCommunities(form: ListCommunities) {
-    return this.wrapper<ListCommunities, ListCommunitiesResponse>(
+    return await this.wrapper<ListCommunities, ListCommunitiesResponse>(
       HttpType.Get,
       "/community/list",
       form
@@ -292,7 +319,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/follow`
    */
   async followCommunity(form: FollowCommunity) {
-    return this.wrapper<FollowCommunity, CommunityResponse>(
+    return await this.wrapper<FollowCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/follow",
       form
@@ -305,7 +332,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/block`
    */
   async blockCommunity(form: BlockCommunity) {
-    return this.wrapper<BlockCommunity, BlockCommunityResponse>(
+    return await this.wrapper<BlockCommunity, BlockCommunityResponse>(
       HttpType.Post,
       "/community/block",
       form
@@ -318,7 +345,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/delete`
    */
   async deleteCommunity(form: DeleteCommunity) {
-    return this.wrapper<DeleteCommunity, CommunityResponse>(
+    return await this.wrapper<DeleteCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/delete",
       form
@@ -331,7 +358,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/remove`
    */
   async removeCommunity(form: RemoveCommunity) {
-    return this.wrapper<RemoveCommunity, CommunityResponse>(
+    return await this.wrapper<RemoveCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/remove",
       form
@@ -344,7 +371,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/transfer`
    */
   async transferCommunity(form: TransferCommunity) {
-    return this.wrapper<TransferCommunity, GetCommunityResponse>(
+    return await this.wrapper<TransferCommunity, GetCommunityResponse>(
       HttpType.Post,
       "/community/transfer",
       form
@@ -357,7 +384,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/ban_user`
    */
   async banFromCommunity(form: BanFromCommunity) {
-    return this.wrapper<BanFromCommunity, BanFromCommunityResponse>(
+    return await this.wrapper<BanFromCommunity, BanFromCommunityResponse>(
       HttpType.Post,
       "/community/ban_user",
       form
@@ -370,7 +397,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/mod`
    */
   async addModToCommunity(form: AddModToCommunity) {
-    return this.wrapper<AddModToCommunity, AddModToCommunityResponse>(
+    return await this.wrapper<AddModToCommunity, AddModToCommunityResponse>(
       HttpType.Post,
       "/community/mod",
       form
@@ -383,7 +410,11 @@ export class LemmyHttp {
    * `HTTP.POST /post`
    */
   async createPost(form: CreatePost) {
-    return this.wrapper<CreatePost, PostResponse>(HttpType.Post, "/post", form);
+    return await this.wrapper<CreatePost, PostResponse>(
+      HttpType.Post,
+      "/post",
+      form
+    );
   }
 
   /**
@@ -392,7 +423,11 @@ export class LemmyHttp {
    * `HTTP.GET /post`
    */
   async getPost(form: GetPost) {
-    return this.wrapper<GetPost, GetPostResponse>(HttpType.Get, "/post", form);
+    return await this.wrapper<GetPost, GetPostResponse>(
+      HttpType.Get,
+      "/post",
+      form
+    );
   }
 
   /**
@@ -401,7 +436,11 @@ export class LemmyHttp {
    * `HTTP.PUT /post`
    */
   async editPost(form: EditPost) {
-    return this.wrapper<EditPost, PostResponse>(HttpType.Put, "/post", form);
+    return await this.wrapper<EditPost, PostResponse>(
+      HttpType.Put,
+      "/post",
+      form
+    );
   }
 
   /**
@@ -410,7 +449,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/delete`
    */
   async deletePost(form: DeletePost) {
-    return this.wrapper<DeletePost, PostResponse>(
+    return await this.wrapper<DeletePost, PostResponse>(
       HttpType.Post,
       "/post/delete",
       form
@@ -423,7 +462,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/remove`
    */
   async removePost(form: RemovePost) {
-    return this.wrapper<RemovePost, PostResponse>(
+    return await this.wrapper<RemovePost, PostResponse>(
       HttpType.Post,
       "/post/remove",
       form
@@ -436,7 +475,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/mark_as_read`
    */
   async markPostAsRead(form: MarkPostAsRead) {
-    return this.wrapper<MarkPostAsRead, PostResponse>(
+    return await this.wrapper<MarkPostAsRead, PostResponse>(
       HttpType.Post,
       "/post/mark_as_read",
       form
@@ -449,7 +488,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/lock`
    */
   async lockPost(form: LockPost) {
-    return this.wrapper<LockPost, PostResponse>(
+    return await this.wrapper<LockPost, PostResponse>(
       HttpType.Post,
       "/post/lock",
       form
@@ -462,7 +501,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/feature`
    */
   async featurePost(form: FeaturePost) {
-    return this.wrapper<FeaturePost, PostResponse>(
+    return await this.wrapper<FeaturePost, PostResponse>(
       HttpType.Post,
       "/post/feature",
       form
@@ -475,7 +514,7 @@ export class LemmyHttp {
    * `HTTP.GET /post/list`
    */
   async getPosts(form: GetPosts) {
-    return this.wrapper<GetPosts, GetPostsResponse>(
+    return await this.wrapper<GetPosts, GetPostsResponse>(
       HttpType.Get,
       "/post/list",
       form
@@ -488,7 +527,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/like`
    */
   async likePost(form: CreatePostLike) {
-    return this.wrapper<CreatePostLike, PostResponse>(
+    return await this.wrapper<CreatePostLike, PostResponse>(
       HttpType.Post,
       "/post/like",
       form
@@ -501,7 +540,7 @@ export class LemmyHttp {
    * `HTTP.PUT /post/save`
    */
   async savePost(form: SavePost) {
-    return this.wrapper<SavePost, PostResponse>(
+    return await this.wrapper<SavePost, PostResponse>(
       HttpType.Put,
       "/post/save",
       form
@@ -514,7 +553,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/report`
    */
   async createPostReport(form: CreatePostReport) {
-    return this.wrapper<CreatePostReport, PostReportResponse>(
+    return await this.wrapper<CreatePostReport, PostReportResponse>(
       HttpType.Post,
       "/post/report",
       form
@@ -527,7 +566,7 @@ export class LemmyHttp {
    * `HTTP.PUT /post/report/resolve`
    */
   async resolvePostReport(form: ResolvePostReport) {
-    return this.wrapper<ResolvePostReport, PostReportResponse>(
+    return await this.wrapper<ResolvePostReport, PostReportResponse>(
       HttpType.Put,
       "/post/report/resolve",
       form
@@ -540,7 +579,7 @@ export class LemmyHttp {
    * `HTTP.GET /post/report/list`
    */
   async listPostReports(form: ListPostReports) {
-    return this.wrapper<ListPostReports, ListPostReportsResponse>(
+    return await this.wrapper<ListPostReports, ListPostReportsResponse>(
       HttpType.Get,
       "/post/report/list",
       form
@@ -553,7 +592,7 @@ export class LemmyHttp {
    * `HTTP.GET /post/site_metadata`
    */
   async getSiteMetadata(form: GetSiteMetadata) {
-    return this.wrapper<GetSiteMetadata, GetSiteMetadataResponse>(
+    return await this.wrapper<GetSiteMetadata, GetSiteMetadataResponse>(
       HttpType.Get,
       "/post/site_metadata",
       form
@@ -566,7 +605,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment`
    */
   async createComment(form: CreateComment) {
-    return this.wrapper<CreateComment, CommentResponse>(
+    return await this.wrapper<CreateComment, CommentResponse>(
       HttpType.Post,
       "/comment",
       form
@@ -579,7 +618,7 @@ export class LemmyHttp {
    * `HTTP.PUT /comment`
    */
   async editComment(form: EditComment) {
-    return this.wrapper<EditComment, CommentResponse>(
+    return await this.wrapper<EditComment, CommentResponse>(
       HttpType.Put,
       "/comment",
       form
@@ -592,7 +631,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment/delete`
    */
   async deleteComment(form: DeleteComment) {
-    return this.wrapper<DeleteComment, CommentResponse>(
+    return await this.wrapper<DeleteComment, CommentResponse>(
       HttpType.Post,
       "/comment/delete",
       form
@@ -605,7 +644,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment/remove`
    */
   async removeComment(form: RemoveComment) {
-    return this.wrapper<RemoveComment, CommentResponse>(
+    return await this.wrapper<RemoveComment, CommentResponse>(
       HttpType.Post,
       "/comment/remove",
       form
@@ -618,7 +657,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment/mark_as_read`
    */
   async markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
-    return this.wrapper<MarkCommentReplyAsRead, CommentResponse>(
+    return await this.wrapper<MarkCommentReplyAsRead, CommentResponse>(
       HttpType.Post,
       "/comment/mark_as_read",
       form
@@ -631,7 +670,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment/like`
    */
   async likeComment(form: CreateCommentLike) {
-    return this.wrapper<CreateCommentLike, CommentResponse>(
+    return await this.wrapper<CreateCommentLike, CommentResponse>(
       HttpType.Post,
       "/comment/like",
       form
@@ -644,7 +683,7 @@ export class LemmyHttp {
    * `HTTP.PUT /comment/save`
    */
   async saveComment(form: SaveComment) {
-    return this.wrapper<SaveComment, CommentResponse>(
+    return await this.wrapper<SaveComment, CommentResponse>(
       HttpType.Put,
       "/comment/save",
       form
@@ -657,7 +696,7 @@ export class LemmyHttp {
    * `HTTP.GET /comment/list`
    */
   async getComments(form: GetComments) {
-    return this.wrapper<GetComments, GetCommentsResponse>(
+    return await this.wrapper<GetComments, GetCommentsResponse>(
       HttpType.Get,
       "/comment/list",
       form
@@ -670,7 +709,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment/report`
    */
   async createCommentReport(form: CreateCommentReport) {
-    return this.wrapper<CreateCommentReport, CommentReportResponse>(
+    return await this.wrapper<CreateCommentReport, CommentReportResponse>(
       HttpType.Post,
       "/comment/report",
       form
@@ -683,7 +722,7 @@ export class LemmyHttp {
    * `HTTP.PUT /comment/report/resolve`
    */
   async resolveCommentReport(form: ResolveCommentReport) {
-    return this.wrapper<ResolveCommentReport, CommentReportResponse>(
+    return await this.wrapper<ResolveCommentReport, CommentReportResponse>(
       HttpType.Put,
       "/comment/report/resolve",
       form
@@ -696,7 +735,7 @@ export class LemmyHttp {
    * `HTTP.GET /comment/report/list`
    */
   async listCommentReports(form: ListCommentReports) {
-    return this.wrapper<ListCommentReports, ListCommentReportsResponse>(
+    return await this.wrapper<ListCommentReports, ListCommentReportsResponse>(
       HttpType.Get,
       "/comment/report/list",
       form
@@ -709,7 +748,7 @@ export class LemmyHttp {
    * `HTTP.GET /private_message/list`
    */
   async getPrivateMessages(form: GetPrivateMessages) {
-    return this.wrapper<GetPrivateMessages, PrivateMessagesResponse>(
+    return await this.wrapper<GetPrivateMessages, PrivateMessagesResponse>(
       HttpType.Get,
       "/private_message/list",
       form
@@ -722,7 +761,7 @@ export class LemmyHttp {
    * `HTTP.POST /private_message`
    */
   async createPrivateMessage(form: CreatePrivateMessage) {
-    return this.wrapper<CreatePrivateMessage, PrivateMessageResponse>(
+    return await this.wrapper<CreatePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message",
       form
@@ -735,7 +774,7 @@ export class LemmyHttp {
    * `HTTP.PUT /private_message`
    */
   async editPrivateMessage(form: EditPrivateMessage) {
-    return this.wrapper<EditPrivateMessage, PrivateMessageResponse>(
+    return await this.wrapper<EditPrivateMessage, PrivateMessageResponse>(
       HttpType.Put,
       "/private_message",
       form
@@ -748,7 +787,7 @@ export class LemmyHttp {
    * `HTTP.POST /private_message/delete`
    */
   async deletePrivateMessage(form: DeletePrivateMessage) {
-    return this.wrapper<DeletePrivateMessage, PrivateMessageResponse>(
+    return await this.wrapper<DeletePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/delete",
       form
@@ -761,7 +800,7 @@ export class LemmyHttp {
    * `HTTP.POST /private_message/mark_as_read`
    */
   async markPrivateMessageAsRead(form: MarkPrivateMessageAsRead) {
-    return this.wrapper<MarkPrivateMessageAsRead, PrivateMessageResponse>(
+    return await this.wrapper<MarkPrivateMessageAsRead, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/mark_as_read",
       form
@@ -774,7 +813,7 @@ export class LemmyHttp {
    * `HTTP.POST /private_message/report`
    */
   async createPrivateMessageReport(form: CreatePrivateMessageReport) {
-    return this.wrapper<
+    return await this.wrapper<
       CreatePrivateMessageReport,
       PrivateMessageReportResponse
     >(HttpType.Post, "/private_message/report", form);
@@ -786,7 +825,7 @@ export class LemmyHttp {
    * `HTTP.PUT /private_message/report/resolve`
    */
   async resolvePrivateMessageReport(form: ResolvePrivateMessageReport) {
-    return this.wrapper<
+    return await this.wrapper<
       ResolvePrivateMessageReport,
       PrivateMessageReportResponse
     >(HttpType.Put, "/private_message/report/resolve", form);
@@ -798,7 +837,7 @@ export class LemmyHttp {
    * `HTTP.GET /private_message/report/list`
    */
   async listPrivateMessageReports(form: ListPrivateMessageReports) {
-    return this.wrapper<
+    return await this.wrapper<
       ListPrivateMessageReports,
       ListPrivateMessageReportsResponse
     >(HttpType.Get, "/private_message/report/list", form);
@@ -810,7 +849,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/register`
    */
   async register(form: Register) {
-    return this.wrapper<Register, LoginResponse>(
+    return await this.wrapper<Register, LoginResponse>(
       HttpType.Post,
       "/user/register",
       form
@@ -823,7 +862,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/login`
    */
   async login(form: Login) {
-    return this.wrapper<Login, LoginResponse>(
+    return await this.wrapper<Login, LoginResponse>(
       HttpType.Post,
       "/user/login",
       form
@@ -836,7 +875,7 @@ export class LemmyHttp {
    * `HTTP.GET /user`
    */
   async getPersonDetails(form: GetPersonDetails) {
-    return this.wrapper<GetPersonDetails, GetPersonDetailsResponse>(
+    return await this.wrapper<GetPersonDetails, GetPersonDetailsResponse>(
       HttpType.Get,
       "/user",
       form
@@ -849,7 +888,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/mention`
    */
   async getPersonMentions(form: GetPersonMentions) {
-    return this.wrapper<GetPersonMentions, GetPersonMentionsResponse>(
+    return await this.wrapper<GetPersonMentions, GetPersonMentionsResponse>(
       HttpType.Get,
       "/user/mention",
       form
@@ -862,7 +901,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/mention/mark_as_read`
    */
   async markPersonMentionAsRead(form: MarkPersonMentionAsRead) {
-    return this.wrapper<MarkPersonMentionAsRead, PersonMentionResponse>(
+    return await this.wrapper<MarkPersonMentionAsRead, PersonMentionResponse>(
       HttpType.Post,
       "/user/mention/mark_as_read",
       form
@@ -875,7 +914,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/replies`
    */
   async getReplies(form: GetReplies) {
-    return this.wrapper<GetReplies, GetRepliesResponse>(
+    return await this.wrapper<GetReplies, GetRepliesResponse>(
       HttpType.Get,
       "/user/replies",
       form
@@ -888,7 +927,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/ban`
    */
   async banPerson(form: BanPerson) {
-    return this.wrapper<BanPerson, BanPersonResponse>(
+    return await this.wrapper<BanPerson, BanPersonResponse>(
       HttpType.Post,
       "/user/ban",
       form
@@ -901,7 +940,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/banned`
    */
   async getBannedPersons(form: GetBannedPersons) {
-    return this.wrapper<GetBannedPersons, BannedPersonsResponse>(
+    return await this.wrapper<GetBannedPersons, BannedPersonsResponse>(
       HttpType.Get,
       "/user/banned",
       form
@@ -914,7 +953,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/block`
    */
   async blockPerson(form: BlockPerson) {
-    return this.wrapper<BlockPerson, BlockPersonResponse>(
+    return await this.wrapper<BlockPerson, BlockPersonResponse>(
       HttpType.Post,
       "/user/block",
       form
@@ -927,7 +966,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/get_captcha`
    */
   async getCaptcha() {
-    return this.wrapper<any, GetCaptchaResponse>(
+    return await this.wrapper<any, GetCaptchaResponse>(
       HttpType.Get,
       "/user/get_captcha",
       {}
@@ -940,7 +979,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/delete_account`
    */
   async deleteAccount(form: DeleteAccount) {
-    return this.wrapper<DeleteAccount, DeleteAccountResponse>(
+    return await this.wrapper<DeleteAccount, DeleteAccountResponse>(
       HttpType.Post,
       "/user/delete_account",
       form
@@ -953,7 +992,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/password_reset`
    */
   async passwordReset(form: PasswordReset) {
-    return this.wrapper<PasswordReset, PasswordResetResponse>(
+    return await this.wrapper<PasswordReset, PasswordResetResponse>(
       HttpType.Post,
       "/user/password_reset",
       form
@@ -966,7 +1005,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/password_change`
    */
   async passwordChange(form: PasswordChange) {
-    return this.wrapper<PasswordChange, LoginResponse>(
+    return await this.wrapper<PasswordChange, LoginResponse>(
       HttpType.Post,
       "/user/password_change",
       form
@@ -979,7 +1018,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/mark_all_as_read`
    */
   async markAllAsRead(form: MarkAllAsRead) {
-    return this.wrapper<MarkAllAsRead, GetRepliesResponse>(
+    return await this.wrapper<MarkAllAsRead, GetRepliesResponse>(
       HttpType.Post,
       "/user/mark_all_as_read",
       form
@@ -992,7 +1031,7 @@ export class LemmyHttp {
    * `HTTP.PUT /user/save_user_settings`
    */
   async saveUserSettings(form: SaveUserSettings) {
-    return this.wrapper<SaveUserSettings, LoginResponse>(
+    return await this.wrapper<SaveUserSettings, LoginResponse>(
       HttpType.Put,
       "/user/save_user_settings",
       form
@@ -1005,7 +1044,7 @@ export class LemmyHttp {
    * `HTTP.PUT /user/change_password`
    */
   async changePassword(form: ChangePassword) {
-    return this.wrapper<ChangePassword, LoginResponse>(
+    return await this.wrapper<ChangePassword, LoginResponse>(
       HttpType.Put,
       "/user/change_password",
       form
@@ -1018,7 +1057,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/report_count`
    */
   async getReportCount(form: GetReportCount) {
-    return this.wrapper<GetReportCount, GetReportCountResponse>(
+    return await this.wrapper<GetReportCount, GetReportCountResponse>(
       HttpType.Get,
       "/user/report_count",
       form
@@ -1031,7 +1070,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/unread_count`
    */
   async getUnreadCount(form: GetUnreadCount) {
-    return this.wrapper<GetUnreadCount, GetUnreadCountResponse>(
+    return await this.wrapper<GetUnreadCount, GetUnreadCountResponse>(
       HttpType.Get,
       "/user/unread_count",
       form
@@ -1044,7 +1083,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/verify_email`
    */
   async verifyEmail(form: VerifyEmail) {
-    return this.wrapper<VerifyEmail, VerifyEmailResponse>(
+    return await this.wrapper<VerifyEmail, VerifyEmailResponse>(
       HttpType.Post,
       "/user/verify_email",
       form
@@ -1057,7 +1096,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/add`
    */
   async addAdmin(form: AddAdmin) {
-    return this.wrapper<AddAdmin, AddAdminResponse>(
+    return await this.wrapper<AddAdmin, AddAdminResponse>(
       HttpType.Post,
       "/admin/add",
       form
@@ -1072,7 +1111,7 @@ export class LemmyHttp {
   async getUnreadRegistrationApplicationCount(
     form: GetUnreadRegistrationApplicationCount
   ) {
-    return this.wrapper<
+    return await this.wrapper<
       GetUnreadRegistrationApplicationCount,
       GetUnreadRegistrationApplicationCountResponse
     >(HttpType.Get, "/admin/registration_application/count", form);
@@ -1084,7 +1123,7 @@ export class LemmyHttp {
    * `HTTP.GET /admin/registration_application/list`
    */
   async listRegistrationApplications(form: ListRegistrationApplications) {
-    return this.wrapper<
+    return await this.wrapper<
       ListRegistrationApplications,
       ListRegistrationApplicationsResponse
     >(HttpType.Get, "/admin/registration_application/list", form);
@@ -1096,7 +1135,7 @@ export class LemmyHttp {
    * `HTTP.PUT /admin/registration_application/approve`
    */
   async approveRegistrationApplication(form: ApproveRegistrationApplication) {
-    return this.wrapper<
+    return await this.wrapper<
       ApproveRegistrationApplication,
       RegistrationApplicationResponse
     >(HttpType.Put, "/admin/registration_application/approve", form);
@@ -1108,7 +1147,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/person`
    */
   async purgePerson(form: PurgePerson) {
-    return this.wrapper<PurgePerson, PurgeItemResponse>(
+    return await this.wrapper<PurgePerson, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/person",
       form
@@ -1121,7 +1160,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/community`
    */
   async purgeCommunity(form: PurgeCommunity) {
-    return this.wrapper<PurgeCommunity, PurgeItemResponse>(
+    return await this.wrapper<PurgeCommunity, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/community",
       form
@@ -1134,7 +1173,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/post`
    */
   async purgePost(form: PurgePost) {
-    return this.wrapper<PurgePost, PurgeItemResponse>(
+    return await this.wrapper<PurgePost, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/post",
       form
@@ -1147,14 +1186,52 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/comment`
    */
   async purgeComment(form: PurgeComment) {
-    return this.wrapper<PurgeComment, PurgeItemResponse>(
+    return await this.wrapper<PurgeComment, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/comment",
       form
     );
   }
 
-  private buildFullUrl(endpoint: string): string {
+  async uploadImage({
+    image,
+    auth,
+  }: UploadImage): Promise<UploadImageResponse> {
+    const formData = await createFormData(image);
+
+    // If jwt cookie not already set by browser, set it with passed in auth
+    let headers: Record<string, string> | undefined = undefined;
+    if (!globalThis?.document?.cookie?.includes("jwt=")) {
+      headers = {
+        Cookie: `jwt=${auth}`,
+      };
+    }
+
+    let url: string | undefined = undefined;
+    let delete_url: string | undefined = undefined;
+
+    const response = await fetch(this.pictrsUrl, {
+      method: HttpType.Post,
+      body: formData,
+      headers,
+    });
+
+    const responseJson = await response.json();
+
+    if (responseJson.msg == "ok") {
+      const { file: hash, delete_token: deleteToken } = responseJson.files[0];
+      delete_url = `${this.pictrsUrl}/delete/${deleteToken}/${hash}`;
+      url = `${this.pictrsUrl}/${hash}`;
+    }
+
+    return {
+      ...responseJson,
+      url,
+      delete_url,
+    };
+  }
+
+  private buildFullUrl(endpoint: string) {
     return `${this.apiUrl}${endpoint}`;
   }
 
@@ -1164,20 +1241,24 @@ export class LemmyHttp {
     form: BodyType
   ): Promise<ResponseType> {
     if (type_ == HttpType.Get) {
-      let getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
-      return fetch(getUrl, {
-        method: "GET",
+      const getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
+      const response = await fetch(getUrl, {
+        method: HttpType.Get,
         headers: this.headers,
-      }).then(d => d.json() as Promise<ResponseType>);
+      });
+
+      return await response.json();
     } else {
-      return fetch(this.buildFullUrl(endpoint), {
+      const response = await fetch(this.buildFullUrl(endpoint), {
         method: type_,
         headers: {
           "Content-Type": "application/json",
           ...this.headers,
         },
         body: JSON.stringify(form),
-      }).then(d => d.json() as Promise<ResponseType>);
+      });
+
+      return await response.json();
     }
   }
 }
@@ -1187,4 +1268,40 @@ function encodeGetParams<BodyType extends object>(p: BodyType): string {
     .filter(kv => !!kv[1])
     .map(kv => kv.map(encodeURIComponent).join("="))
     .join("&");
+}
+
+async function createFormData(image: Blob | Buffer) {
+  const file = await createFile(image);
+  let formData: FormData;
+
+  if (globalThis?.FormData) {
+    formData = new FormData();
+  } else {
+    const FormData = (await dynamicImport("node-fetch")).FormData;
+    formData = new FormData();
+  }
+
+  formData.append("images[]", file);
+
+  return formData;
+}
+
+// The File constructor needs a filename to make a new file, but it doesn't actually
+// effect the name or for a name and is smart enough to figure out the filetype without
+// looking at the file extension.
+const imageFileName = "image.jpg";
+
+async function createFile(image: Blob | Buffer) {
+  let file = image;
+
+  if (file.constructor.name !== "File") {
+    if (globalThis?.File) {
+      file = new File([image], imageFileName);
+    } else {
+      const File = (await dynamicImport("node-fetch")).File;
+      file = new File([image], imageFileName);
+    }
+  }
+
+  return file as File;
 }
