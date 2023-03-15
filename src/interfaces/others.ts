@@ -244,7 +244,7 @@ export interface UploadImageResponse {
    * Is "ok" if the upload was successful; is something else otherwise.
    */
   msg: string;
-  files: ImageFile[];
+  files?: ImageFile[];
   url?: string;
   delete_url?: string;
 }
