@@ -1287,8 +1287,8 @@ async function createFormData(image: Blob | Buffer) {
 }
 
 // The File constructor needs a filename to make a new file, but it doesn't actually
-// effect the name or for a name and is smart enough to figure out the filetype without
-// looking at the file extension.
+// effect the name or filetype: pictrs generates a random value for a name and is
+// smart enough to figure out the filetype without looking at the file extension.
 const imageFileName = "image.jpg";
 
 async function createFile(image: Blob | Buffer) {
