@@ -1218,7 +1218,7 @@ export class LemmyHttp {
 
     const responseJson = await response.json();
 
-    if (responseJson.msg == "ok") {
+    if (responseJson.msg === "ok") {
       const { file: hash, delete_token: deleteToken } = responseJson.files[0];
       delete_url = `${this.pictrsUrl}/delete/${deleteToken}/${hash}`;
       url = `${this.pictrsUrl}/${hash}`;
@@ -1240,7 +1240,7 @@ export class LemmyHttp {
     endpoint: string,
     form: BodyType
   ): Promise<ResponseType> {
-    if (type_ == HttpType.Get) {
+    if (type_ === HttpType.Get) {
       const getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
       const response = await fetch(getUrl, {
         method: HttpType.Get,
