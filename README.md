@@ -43,7 +43,7 @@ import { LemmyHttp } from 'lemmy-js-client';
 
 let baseUrl = 'https://lemmy.ml';
 let client: LemmyHttp = new LemmyHttp(baseUrl, headers?);
-let jwt = await client.httpLogin(loginForm).jwt;
+let jwt = await client.login(loginForm).jwt;
 ```
 
 ## Development
