@@ -232,7 +232,7 @@ export interface SiteMetadata {
 }
 
 export interface UploadImage {
-  image: Blob | Buffer;
+  image: File | Buffer;
   /**
    * Optional if cookie with jwt set is already present. Otherwise, auth is required.
    */
