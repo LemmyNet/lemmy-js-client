@@ -1242,7 +1242,7 @@ function encodeGetParams<BodyType extends object>(p: BodyType): string {
     .join("&");
 }
 
-async function createFormData(image: Blob | Buffer) {
+async function createFormData(image: Blob | Buffer): Promise<FormData> {
   const file = await createFile(image);
   let formData: FormData;
 
@@ -1263,7 +1263,7 @@ async function createFormData(image: Blob | Buffer) {
 // smart enough to figure out the filetype without looking at the file extension.
 const imageFileName = "image.jpg";
 
-async function createFile(image: Blob | Buffer) {
+async function createFile(image: Blob | Buffer): Promise<File> {
   let file = image;
 
   if (file.constructor.name !== "File") {
