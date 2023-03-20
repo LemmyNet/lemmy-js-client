@@ -1172,11 +1172,12 @@ export class LemmyHttp {
     const formData = await createFormData(image);
 
     // If jwt cookie not already set by browser, set it with passed in auth
-    let headers: Record<string, string> | undefined = undefined;
-    if (!globalThis?.document?.cookie?.includes("jwt=")) {
-      headers = {
-        Cookie: `jwt=${auth}`,
-      };
+    const headers = {} as any;
+    if (
+      !globalThis?.document?.cookie?.includes("jwt=") &&
+      !this.headers?.Cookie?.includes("jwt=")
+    ) {
+      headers.Cookie = `jwt=${auth}`;
     }
 
     let url: string | undefined = undefined;
@@ -1185,7 +1186,10 @@ export class LemmyHttp {
     const response = await fetch(this.pictrsUrl, {
       method: HttpType.Post,
       body: formData,
-      headers,
+      headers: {
+        ...this.headers,
+        ...headers,
+      },
     });
 
     const responseJson = await response.json();
