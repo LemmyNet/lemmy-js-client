@@ -1165,6 +1165,9 @@ export class LemmyHttp {
     );
   }
 
+  /**
+   * Upload an image to the server.
+   */
   async uploadImage({
     image,
     auth,
