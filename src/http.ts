@@ -1,11 +1,5 @@
-const fetch: typeof globalThis.fetch = async (...args) => {
-  if (globalThis?.fetch) {
-    return await globalThis.fetch(...args);
-  } else {
-    const nodeFetch = (await dynamicImport("node-fetch")).default;
-    return await nodeFetch(...args);
-  }
-};
+import fetch from "cross-fetch";
+import FormData from "form-data";
 
 import {
   CommentReportResponse,
@@ -140,7 +134,6 @@ import {
   SiteResponse,
 } from "./interfaces/api/site";
 import { UploadImage, UploadImageResponse, VERSION } from "./interfaces/others";
-import { dynamicImport } from "./utils";
 
 enum HttpType {
   Get = "GET",
@@ -1188,7 +1181,7 @@ export class LemmyHttp {
 
     const response = await fetch(this.pictrsUrl, {
       method: HttpType.Post,
-      body: formData,
+      body: formData as unknown as BodyInit,
       headers: {
         ...this.headers,
         ...headers,
@@ -1249,38 +1242,17 @@ function encodeGetParams<BodyType extends object>(p: BodyType): string {
     .join("&");
 }
 
-async function createFormData(image: File | Buffer): Promise<FormData> {
-  const file = await createFile(image);
-  let formData: FormData;
+async function createFormData(
+  image: globalThis.File | Buffer
+): Promise<FormData> {
+  let formData = new FormData();
 
-  if (globalThis?.FormData) {
-    formData = new FormData();
+  if (image.constructor.name === "File") {
+    formData.append("images[]", image);
   } else {
-    const FormData = (await dynamicImport("node-fetch")).FormData;
-    formData = new FormData();
+    // The filename doesn't affect the file type or file name that ends up in pictrs
+    formData.append("images[]", image, { filename: "image.jpg" });
   }
-
-  formData.append("images[]", file);
 
   return formData;
-}
-
-// The File constructor needs a filename to make a new file, but it doesn't actually
-// effect the name or filetype: pictrs generates a random value for a name and is
-// smart enough to figure out the filetype without looking at the file extension.
-const imageFileName = "image.jpg";
-
-async function createFile(image: File | Buffer): Promise<File> {
-  let file = image;
-
-  if (file.constructor.name !== "File") {
-    if (globalThis?.File) {
-      file = new File([image], imageFileName);
-    } else {
-      const File = (await dynamicImport("node-fetch")).File;
-      file = new File([image], imageFileName);
-    }
-  }
-
-  return file as File;
 }
