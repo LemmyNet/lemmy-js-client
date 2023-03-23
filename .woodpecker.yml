@@ -1,24 +1,15 @@
----
-kind: pipeline
-name: amd64
-
-platform:
-  os: linux
-  arch: amd64
-
-steps:
-
-  - name: yarn
+pipeline:
+  yarn:
     image: node:17-alpine
     commands:
       - yarn
 
-  - name: yarn lint
+  yarn_lint:
     image: node:17-alpine
     commands:
       - yarn lint
 
-  - name: npm publish
+  npm_publish:
     image: node:17-alpine
     commands:
       - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> .npmrc
@@ -29,5 +20,4 @@ steps:
         from_secret: npm_token
       NPM_EMAIL: tyhou13@gmx.com
     when:
-      ref:
-        - refs/tags/*
+      event: tag
