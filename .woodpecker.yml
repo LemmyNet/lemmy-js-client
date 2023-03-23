@@ -12,12 +12,9 @@ pipeline:
   npm_publish:
     image: node:17-alpine
     commands:
-      - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> .npmrc
-      - echo "email = $NPM_EMAIL" >> ~/.npmrc
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+      - echo "email = tyhou13@gmx.com" >> ~/.npmrc
       - npm publish
-    environment:
-      NPM_AUTH_TOKEN:
-        from_secret: npm_token
-      NPM_EMAIL: tyhou13@gmx.com
+    secrets: [npm_token]
     when:
       event: tag
