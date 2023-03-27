@@ -391,3 +391,20 @@ export interface Tagline {
   published: string;
   updated?: string;
 }
+
+export class CustomEmoji {
+  id: number;
+  local_site_id: number;
+  shortcode: string;
+  image_url: string;
+  alt_text: string;
+  category: string;
+  published: string;
+  updated: string;
+}
+
+export class CustomEmojiKeyword {
+  id: number;
+  custom_emoji_id: number;
+  keyword: string;
+}

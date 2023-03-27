@@ -24,6 +24,11 @@ import {
   TransferCommunity,
 } from "./interfaces/api/community";
 import {
+  CreateCustomEmoji,
+  DeleteCustomEmoji,
+  EditCustomEmoji,
+} from "./interfaces/api/custom_emoji";
+import {
   AddAdmin,
   BanPerson,
   BlockPerson,
@@ -681,6 +686,27 @@ export class LemmyWebsocket {
    */
   purgeComment(form: PurgeComment) {
     return wrapper(UserOperation.PurgeComment, form);
+  }
+
+  /**
+   * Create a custom emoji
+   */
+  createCustomEmoji(form: CreateCustomEmoji) {
+    return wrapper(UserOperation.CreateCustomEmoji, form);
+  }
+
+  /**
+   * Edit a custom emoji
+   */
+  editCustomEmoji(form: EditCustomEmoji) {
+    return wrapper(UserOperation.EditCustomEmoji, form);
+  }
+
+  /**
+   * Delete a custom emoji
+   */
+  deleteCustomEmoji(form: DeleteCustomEmoji) {
+    return wrapper(UserOperation.DeleteCustomEmoji, form);
   }
 }
 
