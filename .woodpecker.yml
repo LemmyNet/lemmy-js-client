@@ -1,0 +1,20 @@
+pipeline:
+  yarn:
+    image: node:17-alpine
+    commands:
+      - yarn
+
+  yarn_lint:
+    image: node:17-alpine
+    commands:
+      - yarn lint
+
+  npm_publish:
+    image: node:17-alpine
+    commands:
+      - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+      - echo "email = tyhou13@gmx.com" >> ~/.npmrc
+      - npm publish
+    secrets: [npm_token]
+    when:
+      event: tag
