@@ -92,6 +92,11 @@ export interface GetCommentsResponse {
   comments: CommentView[];
 }
 
+export interface GetComment {
+  id: number;
+  auth?: string;
+}
+
 export interface CreateCommentReport {
   comment_id: number;
   reason: string;

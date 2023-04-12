@@ -4,6 +4,7 @@ import {
   CreateCommentReport,
   DeleteComment,
   EditComment,
+  GetComment,
   GetComments,
   ListCommentReports,
   RemoveComment,
@@ -299,6 +300,13 @@ export class LemmyWebsocket {
    */
   getComments(form: GetComments) {
     return wrapper(UserOperation.GetComments, form);
+  }
+
+  /**
+   * Get / fetch comment.
+   */
+  getComment(form: GetComment) {
+    return wrapper(UserOperation.GetComment, form);
   }
 
   /**

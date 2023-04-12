@@ -9,6 +9,7 @@ import {
   CreateCommentReport,
   DeleteComment,
   EditComment,
+  GetComment,
   GetComments,
   GetCommentsResponse,
   ListCommentReports,
@@ -669,6 +670,19 @@ export class LemmyHttp {
     return this.wrapper<GetComments, GetCommentsResponse>(
       HttpType.Get,
       "/comment/list",
+      form
+    );
+  }
+
+  /**
+   * Get / fetch comment.
+   *
+   * `HTTP.GET /comment`
+   */
+  getComment(form: GetComment) {
+    return this.wrapper<GetComment, CommentResponse>(
+      HttpType.Get,
+      "/comment",
       form
     );
   }
