@@ -168,7 +168,6 @@ export enum CommentSortType {
  * The different listing types for post and comment fetches.
  */
 export enum ListingType {
-  // TODO do these need to be strings?
   All = "All",
   Local = "Local",
   Subscribed = "Subscribed",
