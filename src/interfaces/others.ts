@@ -175,6 +175,15 @@ export enum ListingType {
 }
 
 /**
+ * The different types of registration modes
+ */
+export enum RegistrationMode {
+  Closed = "Closed",
+  RequireApplication = "RequireApplication",
+  Open = "Open",
+}
+
+/**
  * Search types for lemmy's search.
  */
 export enum SearchType {

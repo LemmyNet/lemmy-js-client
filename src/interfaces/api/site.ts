@@ -1,5 +1,11 @@
-import { ListingType, ModlogActionType, SearchType, SortType } from "../others";
-import { Language, RegistrationMode, Tagline } from "../source";
+import {
+  ListingType,
+  ModlogActionType,
+  RegistrationMode,
+  SearchType,
+  SortType,
+} from "../others";
+import { Language, Tagline } from "../source";
 import {
   AdminPurgeCommentView,
   AdminPurgeCommunityView,
@@ -23,7 +29,7 @@ import {
   ModRemovePostView,
   ModTransferCommunityView,
   PersonBlockView,
-  PersonViewSafe,
+  PersonView,
   PostView,
   RegistrationApplicationView,
   SiteView,
@@ -56,7 +62,7 @@ export interface SearchResponse {
   comments: CommentView[];
   posts: PostView[];
   communities: CommunityView[];
-  users: PersonViewSafe[];
+  users: PersonView[];
 }
 
 export interface GetModlog {
@@ -100,7 +106,7 @@ export interface CreateSite {
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
-  default_post_listing_type?: string;
+  default_post_listing_type?: ListingType;
   application_email_admins?: boolean;
   reports_email_admins?: boolean;
   hide_modlog_mod_names?: boolean;
@@ -145,7 +151,7 @@ export interface EditSite {
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
-  default_post_listing_type?: string;
+  default_post_listing_type?: ListingType;
   legal_information?: string;
   application_email_admins?: boolean;
   reports_email_admins?: boolean;
@@ -186,7 +192,7 @@ export interface SiteResponse {
 
 export interface GetSiteResponse {
   site_view: SiteView;
-  admins: PersonViewSafe[];
+  admins: PersonView[];
   online: number;
   version: string;
   /**
@@ -231,7 +237,7 @@ export interface ResolveObjectResponse {
   comment?: CommentView;
   post?: PostView;
   community?: CommunityView;
-  person?: PersonViewSafe;
+  person?: PersonView;
 }
 
 export interface PurgePerson {

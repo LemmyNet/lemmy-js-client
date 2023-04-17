@@ -14,7 +14,7 @@ import {
   Comment,
   CommentReply,
   CommentReport,
-  CommunitySafe,
+  Community,
   CustomEmoji,
   CustomEmojiKeyword,
   LocalSite,
@@ -30,8 +30,8 @@ import {
   ModRemoveCommunity,
   ModRemovePost,
   ModTransferCommunity,
+  Person,
   PersonMention,
-  PersonSafe,
   Post,
   PostReport,
   PrivateMessage,
@@ -41,18 +41,18 @@ import {
   Tagline,
 } from "./source";
 
-export interface PersonViewSafe {
-  person: PersonSafe;
+export interface PersonView {
+  person: Person;
   counts: PersonAggregates;
 }
 
 export interface PersonMentionView {
   person_mention: PersonMention;
   comment: Comment;
-  creator: PersonSafe;
+  creator: Person;
   post: Post;
-  community: CommunitySafe;
-  recipient: PersonSafe;
+  community: Community;
+  recipient: Person;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   subscribed: SubscribedType;
@@ -63,7 +63,7 @@ export interface PersonMentionView {
 
 export interface LocalUserSettingsView {
   local_user: LocalUserSettings;
-  person: PersonSafe;
+  person: Person;
   counts: PersonAggregates;
 }
 
@@ -77,14 +77,14 @@ export interface SiteView {
 
 export interface PrivateMessageView {
   private_message: PrivateMessage;
-  creator: PersonSafe;
-  recipient: PersonSafe;
+  creator: Person;
+  recipient: Person;
 }
 
 export interface PostView {
   post: Post;
-  creator: PersonSafe;
-  community: CommunitySafe;
+  creator: Person;
+  community: Community;
   creator_banned_from_community: boolean;
   counts: PostAggregates;
   subscribed: SubscribedType;
@@ -98,20 +98,20 @@ export interface PostView {
 export interface PostReportView {
   post_report: PostReport;
   post: Post;
-  community: CommunitySafe;
-  creator: PersonSafe;
-  post_creator: PersonSafe;
+  community: Community;
+  creator: Person;
+  post_creator: Person;
   creator_banned_from_community: boolean;
   my_vote?: number;
   counts: PostAggregates;
-  resolver?: PersonSafe;
+  resolver?: Person;
 }
 
 export interface CommentView {
   comment: Comment;
-  creator: PersonSafe;
+  creator: Person;
   post: Post;
-  community: CommunitySafe;
+  community: Community;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   subscribed: SubscribedType;
@@ -123,10 +123,10 @@ export interface CommentView {
 export interface CommentReplyView {
   comment_reply: CommentReply;
   comment: Comment;
-  creator: PersonSafe;
+  creator: Person;
   post: Post;
-  community: CommunitySafe;
-  recipient: PersonSafe;
+  community: Community;
+  recipient: Person;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   subscribed: SubscribedType;
@@ -139,133 +139,133 @@ export interface CommentReportView {
   comment_report: CommentReport;
   comment: Comment;
   post: Post;
-  community: CommunitySafe;
-  creator: PersonSafe;
-  comment_creator: PersonSafe;
+  community: Community;
+  creator: Person;
+  comment_creator: Person;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   my_vote?: number;
-  resolver?: PersonSafe;
+  resolver?: Person;
 }
 
 export interface ModAddCommunityView {
   mod_add_community: ModAddCommunity;
-  moderator?: PersonSafe;
-  community: CommunitySafe;
-  modded_person: PersonSafe;
+  moderator?: Person;
+  community: Community;
+  modded_person: Person;
 }
 
 export interface ModTransferCommunityView {
   mod_transfer_community: ModTransferCommunity;
-  moderator?: PersonSafe;
-  community: CommunitySafe;
-  modded_person: PersonSafe;
+  moderator?: Person;
+  community: Community;
+  modded_person: Person;
 }
 
 export interface ModAddView {
   mod_add: ModAdd;
-  moderator?: PersonSafe;
-  modded_person: PersonSafe;
+  moderator?: Person;
+  modded_person: Person;
 }
 
 export interface ModBanFromCommunityView {
   mod_ban_from_community: ModBanFromCommunity;
-  moderator?: PersonSafe;
-  community: CommunitySafe;
-  banned_person: PersonSafe;
+  moderator?: Person;
+  community: Community;
+  banned_person: Person;
 }
 
 export interface ModBanView {
   mod_ban: ModBan;
-  moderator?: PersonSafe;
-  banned_person: PersonSafe;
+  moderator?: Person;
+  banned_person: Person;
 }
 
 export interface ModLockPostView {
   mod_lock_post: ModLockPost;
-  moderator?: PersonSafe;
+  moderator?: Person;
   post: Post;
-  community: CommunitySafe;
+  community: Community;
 }
 
 export interface ModRemoveCommentView {
   mod_remove_comment: ModRemoveComment;
-  moderator?: PersonSafe;
+  moderator?: Person;
   comment: Comment;
-  commenter: PersonSafe;
+  commenter: Person;
   post: Post;
-  community: CommunitySafe;
+  community: Community;
 }
 
 export interface ModRemoveCommunityView {
   mod_remove_community: ModRemoveCommunity;
-  moderator?: PersonSafe;
-  community: CommunitySafe;
+  moderator?: Person;
+  community: Community;
 }
 
 export interface ModRemovePostView {
   mod_remove_post: ModRemovePost;
-  moderator?: PersonSafe;
+  moderator?: Person;
   post: Post;
-  community: CommunitySafe;
+  community: Community;
 }
 
 export interface ModFeaturePostView {
   mod_feature_post: ModFeaturePost;
-  moderator?: PersonSafe;
+  moderator?: Person;
   post: Post;
-  community: CommunitySafe;
+  community: Community;
 }
 
 export interface AdminPurgeCommunityView {
   admin_purge_community: AdminPurgeCommunity;
-  admin?: PersonSafe;
+  admin?: Person;
 }
 
 export interface AdminPurgePersonView {
   admin_purge_person: AdminPurgePerson;
-  admin?: PersonSafe;
+  admin?: Person;
 }
 
 export interface AdminPurgePostView {
   admin_purge_post: AdminPurgePost;
-  admin?: PersonSafe;
-  community: CommunitySafe;
+  admin?: Person;
+  community: Community;
 }
 
 export interface AdminPurgeCommentView {
   admin_purge_comment: AdminPurgeComment;
-  admin?: PersonSafe;
+  admin?: Person;
   post: Post;
 }
 
 export interface CommunityFollowerView {
-  community: CommunitySafe;
-  follower: PersonSafe;
+  community: Community;
+  follower: Person;
 }
 
 export interface CommunityBlockView {
-  person: PersonSafe;
-  community: CommunitySafe;
+  person: Person;
+  community: Community;
 }
 
 export interface CommunityModeratorView {
-  community: CommunitySafe;
-  moderator: PersonSafe;
+  community: Community;
+  moderator: Person;
 }
 
 export interface CommunityPersonBanView {
-  community: CommunitySafe;
-  person: PersonSafe;
+  community: Community;
+  person: Person;
 }
 
 export interface PersonBlockView {
-  person: PersonSafe;
-  target: PersonSafe;
+  person: Person;
+  target: Person;
 }
 
 export interface CommunityView {
-  community: CommunitySafe;
+  community: Community;
   subscribed: SubscribedType;
   blocked: boolean;
   counts: CommunityAggregates;
@@ -274,8 +274,8 @@ export interface CommunityView {
 export interface RegistrationApplicationView {
   registration_application: RegistrationApplication;
   creator_local_user: LocalUserSettings;
-  creator: PersonSafe;
-  admin?: PersonSafe;
+  creator: Person;
+  admin?: Person;
 }
 
 export interface CommentNode {
@@ -287,9 +287,9 @@ export interface CommentNode {
 export interface PrivateMessageReportView {
   private_message_report: PrivateMessageReport;
   private_message: PrivateMessage;
-  private_message_creator: PersonSafe;
-  creator: PersonSafe;
-  resolver?: PersonSafe;
+  private_message_creator: Person;
+  creator: Person;
+  resolver?: Person;
 }
 
 export class CustomEmojiView {
