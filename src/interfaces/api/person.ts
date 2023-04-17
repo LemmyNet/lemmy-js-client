@@ -1,10 +1,10 @@
-import { CommentSortType, SortType } from "../others";
+import { CommentSortType, ListingType, SortType } from "../others";
 import {
   CommentReplyView,
   CommentView,
   CommunityModeratorView,
   PersonMentionView,
-  PersonViewSafe,
+  PersonView,
   PostView,
   PrivateMessageReportView,
   PrivateMessageView,
@@ -84,14 +84,14 @@ export interface SaveUserSettings {
    *
    * The Sort types from above, zero indexed as a number
    */
-  default_sort_type?: number;
+  default_sort_type?: SortType;
 
   /**
    * The [[ListingType]].
    *
    * Post listing types are `All, Subscribed, Community`
    */
-  default_listing_type?: number;
+  default_listing_type?: ListingType;
   interface_language?: string;
   avatar?: string;
   banner?: string;
@@ -153,7 +153,7 @@ export interface GetPersonDetails {
 }
 
 export interface GetPersonDetailsResponse {
-  person_view: PersonViewSafe;
+  person_view: PersonView;
   comments: CommentView[];
   posts: PostView[];
   moderates: CommunityModeratorView[];
@@ -178,7 +178,7 @@ export interface AddAdmin {
 }
 
 export interface AddAdminResponse {
-  admins: PersonViewSafe[];
+  admins: PersonView[];
 }
 
 export interface BanPerson {
@@ -198,7 +198,7 @@ export interface BanPerson {
 }
 
 export interface BanPersonResponse {
-  person_view: PersonViewSafe;
+  person_view: PersonView;
   banned: boolean;
 }
 
@@ -365,7 +365,7 @@ export interface BlockPerson {
 }
 
 export interface BlockPersonResponse {
-  person_view: PersonViewSafe;
+  person_view: PersonView;
   blocked: boolean;
 }
 
@@ -374,5 +374,5 @@ export interface GetBannedPersons {
 }
 
 export interface BannedPersonsResponse {
-  banned: PersonViewSafe[];
+  banned: PersonView[];
 }

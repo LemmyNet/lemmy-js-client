@@ -1,10 +1,6 @@
 import { ListingType, SortType } from "../others";
 import { Site } from "../source";
-import {
-  CommunityModeratorView,
-  CommunityView,
-  PersonViewSafe,
-} from "../views";
+import { CommunityModeratorView, CommunityView, PersonView } from "../views";
 
 /**
  * You can use either `id` or `name` as an id.
@@ -73,7 +69,7 @@ export interface BanFromCommunity {
 }
 
 export interface BanFromCommunityResponse {
-  person_view: PersonViewSafe;
+  person_view: PersonView;
   banned: boolean;
 }
 

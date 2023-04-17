@@ -1,11 +1,13 @@
+import { ListingType, RegistrationMode, SortType } from "./others";
+
 export interface LocalUserSettings {
   id: number;
   person_id: number;
   email?: string;
   show_nsfw: boolean;
   theme: string;
-  default_sort_type: number;
-  default_listing_type: number;
+  default_sort_type: SortType;
+  default_listing_type: ListingType;
   interface_language: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
@@ -22,7 +24,7 @@ export interface LocalUserSettings {
   totp_2fa_url?: string;
 }
 
-export interface PersonSafe {
+export interface Person {
   id: number;
   name: string;
   display_name?: string;
@@ -61,12 +63,6 @@ export interface Site {
   instance_id: number;
 }
 
-export enum RegistrationMode {
-  Closed = "closed",
-  RequireApplication = "requireapplication",
-  Open = "open",
-}
-
 export interface LocalSite {
   id: number;
   site_id: number;
@@ -79,7 +75,7 @@ export interface LocalSite {
   application_question?: string;
   private_instance: boolean;
   default_theme: string;
-  default_post_listing_type: string;
+  default_post_listing_type: ListingType;
   legal_information?: string;
   hide_modlog_mod_names: boolean;
   application_email_admins: boolean;
@@ -177,7 +173,7 @@ export interface ModRemovePost {
   mod_person_id: number;
   post_id: number;
   reason?: string;
-  removed?: boolean;
+  removed: boolean;
   when_: string;
 }
 
@@ -203,7 +199,7 @@ export interface ModRemoveComment {
   mod_person_id: number;
   comment_id: number;
   reason?: string;
-  removed?: boolean;
+  removed: boolean;
   when_: string;
 }
 
@@ -212,7 +208,7 @@ export interface ModRemoveCommunity {
   mod_person_id: number;
   community_id: number;
   reason?: string;
-  removed?: boolean;
+  removed: boolean;
   expires?: string;
   when_: string;
 }
@@ -243,7 +239,7 @@ export interface ModAddCommunity {
   mod_person_id: number;
   other_person_id: number;
   community_id: number;
-  removed?: boolean;
+  removed: boolean;
   when_: string;
 }
 
@@ -252,7 +248,6 @@ export interface ModTransferCommunity {
   mod_person_id: number;
   other_person_id: number;
   community_id: number;
-  removed?: boolean;
   when_: string;
 }
 
@@ -260,7 +255,7 @@ export interface ModAdd {
   id: number;
   mod_person_id: number;
   other_person_id: number;
-  removed?: boolean;
+  removed: boolean;
   when_: string;
 }
 
@@ -294,7 +289,7 @@ export interface AdminPurgeComment {
   when_: string;
 }
 
-export interface CommunitySafe {
+export interface Community {
   id: number;
   name: string;
   title: string;
