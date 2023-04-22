@@ -1,99 +1,89 @@
-import {
-  CreateComment,
-  CreateCommentLike,
-  CreateCommentReport,
-  DeleteComment,
-  EditComment,
-  GetComment,
-  GetComments,
-  ListCommentReports,
-  RemoveComment,
-  ResolveCommentReport,
-  SaveComment,
-} from "./interfaces/api/comment";
-import {
-  AddModToCommunity,
-  BanFromCommunity,
-  BlockCommunity,
-  CreateCommunity,
-  DeleteCommunity,
-  EditCommunity,
-  FollowCommunity,
-  GetCommunity,
-  ListCommunities,
-  RemoveCommunity,
-  TransferCommunity,
-} from "./interfaces/api/community";
-import {
-  CreateCustomEmoji,
-  DeleteCustomEmoji,
-  EditCustomEmoji,
-} from "./interfaces/api/custom_emoji";
-import {
-  AddAdmin,
-  BanPerson,
-  BlockPerson,
-  ChangePassword,
-  CreatePrivateMessage,
-  CreatePrivateMessageReport,
-  DeleteAccount,
-  DeletePrivateMessage,
-  EditPrivateMessage,
-  GetBannedPersons,
-  GetPersonDetails,
-  GetPersonMentions,
-  GetPrivateMessages,
-  GetReplies,
-  GetReportCount,
-  GetUnreadCount,
-  ListPrivateMessageReports,
-  Login,
-  MarkAllAsRead,
-  MarkCommentReplyAsRead,
-  MarkPersonMentionAsRead,
-  MarkPrivateMessageAsRead,
-  PasswordChange,
-  PasswordReset,
-  Register,
-  ResolvePrivateMessageReport,
-  SaveUserSettings,
-  VerifyEmail,
-} from "./interfaces/api/person";
-import {
-  CreatePost,
-  CreatePostLike,
-  CreatePostReport,
-  DeletePost,
-  EditPost,
-  FeaturePost,
-  GetPost,
-  GetPosts,
-  GetSiteMetadata,
-  ListPostReports,
-  LockPost,
-  MarkPostAsRead,
-  RemovePost,
-  ResolvePostReport,
-  SavePost,
-} from "./interfaces/api/post";
-import {
-  ApproveRegistrationApplication,
-  CreateSite,
-  EditSite,
-  GetModlog,
-  GetSite,
-  GetUnreadRegistrationApplicationCount,
-  LeaveAdmin,
-  ListRegistrationApplications,
-  PurgeComment,
-  PurgeCommunity,
-  PurgePerson,
-  PurgePost,
-  ResolveObject,
-  Search,
-} from "./interfaces/api/site";
-import { CommunityJoin, PostJoin, UserJoin } from "./interfaces/api/websocket";
-import { UserOperation } from "./interfaces/others";
+import { AddAdmin } from "./types/AddAdmin";
+import { AddModToCommunity } from "./types/AddModToCommunity";
+import { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
+import { BanFromCommunity } from "./types/BanFromCommunity";
+import { BanPerson } from "./types/BanPerson";
+import { BlockCommunity } from "./types/BlockCommunity";
+import { BlockPerson } from "./types/BlockPerson";
+import { ChangePassword } from "./types/ChangePassword";
+import { CommunityJoin } from "./types/CommunityJoin";
+import { CreateComment } from "./types/CreateComment";
+import { CreateCommentLike } from "./types/CreateCommentLike";
+import { CreateCommentReport } from "./types/CreateCommentReport";
+import { CreateCommunity } from "./types/CreateCommunity";
+import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
+import { CreatePost } from "./types/CreatePost";
+import { CreatePostLike } from "./types/CreatePostLike";
+import { CreatePostReport } from "./types/CreatePostReport";
+import { CreatePrivateMessage } from "./types/CreatePrivateMessage";
+import { CreatePrivateMessageReport } from "./types/CreatePrivateMessageReport";
+import { CreateSite } from "./types/CreateSite";
+import { DeleteAccount } from "./types/DeleteAccount";
+import { DeleteComment } from "./types/DeleteComment";
+import { DeleteCommunity } from "./types/DeleteCommunity";
+import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
+import { DeletePost } from "./types/DeletePost";
+import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
+import { EditComment } from "./types/EditComment";
+import { EditCommunity } from "./types/EditCommunity";
+import { EditCustomEmoji } from "./types/EditCustomEmoji";
+import { EditPost } from "./types/EditPost";
+import { EditPrivateMessage } from "./types/EditPrivateMessage";
+import { EditSite } from "./types/EditSite";
+import { FeaturePost } from "./types/FeaturePost";
+import { FollowCommunity } from "./types/FollowCommunity";
+import { GetBannedPersons } from "./types/GetBannedPersons";
+import { GetComment } from "./types/GetComment";
+import { GetComments } from "./types/GetComments";
+import { GetCommunity } from "./types/GetCommunity";
+import { GetModlog } from "./types/GetModlog";
+import { GetPersonDetails } from "./types/GetPersonDetails";
+import { GetPersonMentions } from "./types/GetPersonMentions";
+import { GetPost } from "./types/GetPost";
+import { GetPosts } from "./types/GetPosts";
+import { GetPrivateMessages } from "./types/GetPrivateMessages";
+import { GetReplies } from "./types/GetReplies";
+import { GetReportCount } from "./types/GetReportCount";
+import { GetSite } from "./types/GetSite";
+import { GetSiteMetadata } from "./types/GetSiteMetadata";
+import { GetUnreadCount } from "./types/GetUnreadCount";
+import { GetUnreadRegistrationApplicationCount } from "./types/GetUnreadRegistrationApplicationCount";
+import { LeaveAdmin } from "./types/LeaveAdmin";
+import { ListCommentReports } from "./types/ListCommentReports";
+import { ListCommunities } from "./types/ListCommunities";
+import { ListPostReports } from "./types/ListPostReports";
+import { ListPrivateMessageReports } from "./types/ListPrivateMessageReports";
+import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
+import { LockPost } from "./types/LockPost";
+import { Login } from "./types/Login";
+import { MarkAllAsRead } from "./types/MarkAllAsRead";
+import { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
+import { MarkPersonMentionAsRead } from "./types/MarkPersonMentionAsRead";
+import { MarkPostAsRead } from "./types/MarkPostAsRead";
+import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
+import { UserOperation } from "./types/others";
+import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
+import { PasswordReset } from "./types/PasswordReset";
+import { PostJoin } from "./types/PostJoin";
+import { PurgeComment } from "./types/PurgeComment";
+import { PurgeCommunity } from "./types/PurgeCommunity";
+import { PurgePerson } from "./types/PurgePerson";
+import { PurgePost } from "./types/PurgePost";
+import { Register } from "./types/Register";
+import { RemoveComment } from "./types/RemoveComment";
+import { RemoveCommunity } from "./types/RemoveCommunity";
+import { RemovePost } from "./types/RemovePost";
+import { ResolveCommentReport } from "./types/ResolveCommentReport";
+import { ResolveObject } from "./types/ResolveObject";
+import { ResolvePostReport } from "./types/ResolvePostReport";
+import { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport";
+import { SaveComment } from "./types/SaveComment";
+import { SavePost } from "./types/SavePost";
+import { SaveUserSettings } from "./types/SaveUserSettings";
+import { Search } from "./types/Search";
+import { TransferCommunity } from "./types/TransferCommunity";
+import { UserJoin } from "./types/UserJoin";
+import { VerifyEmail } from "./types/VerifyEmail";
 
 /**
  * Helps build lemmy websocket message requests, that you can use in your Websocket sends.
@@ -594,8 +584,8 @@ export class LemmyWebsocket {
   /**
    * Change your password from an email / token based reset.
    */
-  passwordChange(form: PasswordChange) {
-    return wrapper(UserOperation.PasswordChange, form);
+  passwordChange(form: PasswordChangeAfterReset) {
+    return wrapper(UserOperation.PasswordChangeAfterReset, form);
   }
 
   /**
