@@ -1269,21 +1269,10 @@ export class LemmyHttp {
 }
 
 function encodeGetParams<BodyType extends object>(p: BodyType): string {
-  // console.log(JSON.stringify(p));
-  // console.log(new URLSearchParams(JSON.stringify(p)).toString());
-  // return new URLSearchParams(JSON.stringify(p)).toString();
-  return (
-    Object.entries(p)
-      .filter(kv => !!kv[1])
-      .map(kv =>
-        kv
-          .map(e => JSON.stringify(e))
-          .map(encodeURIComponent)
-          .join("=")
-      )
-      // .map(kv => (kv.0 + '=' + JSON.stringify(kv.1)))
-      .join("&")
-  );
+  return Object.entries(p)
+    .filter(kv => !!kv[1])
+    .map(kv => kv.map(encodeURIComponent).join("="))
+    .join("&");
 }
 
 function createFormData(image: File | Buffer): FormData {
