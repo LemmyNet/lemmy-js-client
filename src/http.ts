@@ -1,145 +1,132 @@
 import fetch from "cross-fetch";
 import FormData from "form-data";
-
-import {
-  CommentReportResponse,
-  CommentResponse,
-  CreateComment,
-  CreateCommentLike,
-  CreateCommentReport,
-  DeleteComment,
-  EditComment,
-  GetComment,
-  GetComments,
-  GetCommentsResponse,
-  ListCommentReports,
-  ListCommentReportsResponse,
-  RemoveComment,
-  ResolveCommentReport,
-  SaveComment,
-} from "./interfaces/api/comment";
-import {
-  AddModToCommunity,
-  AddModToCommunityResponse,
-  BanFromCommunity,
-  BanFromCommunityResponse,
-  BlockCommunity,
-  BlockCommunityResponse,
-  CommunityResponse,
-  CreateCommunity,
-  DeleteCommunity,
-  EditCommunity,
-  FollowCommunity,
-  GetCommunity,
-  GetCommunityResponse,
-  ListCommunities,
-  ListCommunitiesResponse,
-  RemoveCommunity,
-  TransferCommunity,
-} from "./interfaces/api/community";
-import {
-  CreateCustomEmoji,
-  DeleteCustomEmoji,
-  EditCustomEmoji,
-} from "./interfaces/api/custom_emoji";
-import {
-  AddAdmin,
-  AddAdminResponse,
-  BannedPersonsResponse,
-  BanPerson,
-  BanPersonResponse,
-  BlockPerson,
-  BlockPersonResponse,
-  ChangePassword,
-  CreatePrivateMessage,
-  CreatePrivateMessageReport,
-  DeleteAccount,
-  DeleteAccountResponse,
-  DeletePrivateMessage,
-  EditPrivateMessage,
-  GetBannedPersons,
-  GetCaptchaResponse,
-  GetPersonDetails,
-  GetPersonDetailsResponse,
-  GetPersonMentions,
-  GetPersonMentionsResponse,
-  GetPrivateMessages,
-  GetReplies,
-  GetRepliesResponse,
-  GetReportCount,
-  GetReportCountResponse,
-  GetUnreadCount,
-  GetUnreadCountResponse,
-  ListPrivateMessageReports,
-  ListPrivateMessageReportsResponse,
-  Login,
-  LoginResponse,
-  MarkAllAsRead,
-  MarkCommentReplyAsRead,
-  MarkPersonMentionAsRead,
-  MarkPrivateMessageAsRead,
-  PasswordChange,
-  PasswordReset,
-  PasswordResetResponse,
-  PersonMentionResponse,
-  PrivateMessageReportResponse,
-  PrivateMessageResponse,
-  PrivateMessagesResponse,
-  Register,
-  ResolvePrivateMessageReport,
-  SaveUserSettings,
-  VerifyEmail,
-  VerifyEmailResponse,
-} from "./interfaces/api/person";
-import {
-  CreatePost,
-  CreatePostLike,
-  CreatePostReport,
-  DeletePost,
-  EditPost,
-  FeaturePost,
-  GetPost,
-  GetPostResponse,
-  GetPosts,
-  GetPostsResponse,
-  GetSiteMetadata,
-  GetSiteMetadataResponse,
-  ListPostReports,
-  ListPostReportsResponse,
-  LockPost,
-  MarkPostAsRead,
-  PostReportResponse,
-  PostResponse,
-  RemovePost,
-  ResolvePostReport,
-  SavePost,
-} from "./interfaces/api/post";
-import {
-  ApproveRegistrationApplication,
-  CreateSite,
-  EditSite,
-  GetModlog,
-  GetModlogResponse,
-  GetSite,
-  GetSiteResponse,
-  GetUnreadRegistrationApplicationCount,
-  GetUnreadRegistrationApplicationCountResponse,
-  LeaveAdmin,
-  ListRegistrationApplications,
-  ListRegistrationApplicationsResponse,
-  PurgeComment,
-  PurgeCommunity,
-  PurgeItemResponse,
-  PurgePerson,
-  PurgePost,
-  RegistrationApplicationResponse,
-  ResolveObject,
-  ResolveObjectResponse,
-  Search,
-  SearchResponse,
-  SiteResponse,
-} from "./interfaces/api/site";
-import { UploadImage, UploadImageResponse, VERSION } from "./interfaces/others";
+import { AddAdmin } from "./types/AddAdmin";
+import { AddAdminResponse } from "./types/AddAdminResponse";
+import { AddModToCommunity } from "./types/AddModToCommunity";
+import { AddModToCommunityResponse } from "./types/AddModToCommunityResponse";
+import { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
+import { BanFromCommunity } from "./types/BanFromCommunity";
+import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
+import { BannedPersonsResponse } from "./types/BannedPersonsResponse";
+import { BanPerson } from "./types/BanPerson";
+import { BanPersonResponse } from "./types/BanPersonResponse";
+import { BlockCommunity } from "./types/BlockCommunity";
+import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
+import { BlockPerson } from "./types/BlockPerson";
+import { BlockPersonResponse } from "./types/BlockPersonResponse";
+import { ChangePassword } from "./types/ChangePassword";
+import { CommentReportResponse } from "./types/CommentReportResponse";
+import { CommentResponse } from "./types/CommentResponse";
+import { CommunityResponse } from "./types/CommunityResponse";
+import { CreateComment } from "./types/CreateComment";
+import { CreateCommentLike } from "./types/CreateCommentLike";
+import { CreateCommentReport } from "./types/CreateCommentReport";
+import { CreateCommunity } from "./types/CreateCommunity";
+import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
+import { CreatePost } from "./types/CreatePost";
+import { CreatePostLike } from "./types/CreatePostLike";
+import { CreatePostReport } from "./types/CreatePostReport";
+import { CreatePrivateMessage } from "./types/CreatePrivateMessage";
+import { CreatePrivateMessageReport } from "./types/CreatePrivateMessageReport";
+import { CreateSite } from "./types/CreateSite";
+import { DeleteAccount } from "./types/DeleteAccount";
+import { DeleteAccountResponse } from "./types/DeleteAccountResponse";
+import { DeleteComment } from "./types/DeleteComment";
+import { DeleteCommunity } from "./types/DeleteCommunity";
+import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
+import { DeletePost } from "./types/DeletePost";
+import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
+import { EditComment } from "./types/EditComment";
+import { EditCommunity } from "./types/EditCommunity";
+import { EditCustomEmoji } from "./types/EditCustomEmoji";
+import { EditPost } from "./types/EditPost";
+import { EditPrivateMessage } from "./types/EditPrivateMessage";
+import { EditSite } from "./types/EditSite";
+import { FeaturePost } from "./types/FeaturePost";
+import { FollowCommunity } from "./types/FollowCommunity";
+import { GetBannedPersons } from "./types/GetBannedPersons";
+import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
+import { GetComment } from "./types/GetComment";
+import { GetComments } from "./types/GetComments";
+import { GetCommentsResponse } from "./types/GetCommentsResponse";
+import { GetCommunity } from "./types/GetCommunity";
+import { GetCommunityResponse } from "./types/GetCommunityResponse";
+import { GetModlog } from "./types/GetModlog";
+import { GetModlogResponse } from "./types/GetModlogResponse";
+import { GetPersonDetails } from "./types/GetPersonDetails";
+import { GetPersonDetailsResponse } from "./types/GetPersonDetailsResponse";
+import { GetPersonMentions } from "./types/GetPersonMentions";
+import { GetPersonMentionsResponse } from "./types/GetPersonMentionsResponse";
+import { GetPost } from "./types/GetPost";
+import { GetPostResponse } from "./types/GetPostResponse";
+import { GetPosts } from "./types/GetPosts";
+import { GetPostsResponse } from "./types/GetPostsResponse";
+import { GetPrivateMessages } from "./types/GetPrivateMessages";
+import { GetReplies } from "./types/GetReplies";
+import { GetRepliesResponse } from "./types/GetRepliesResponse";
+import { GetReportCount } from "./types/GetReportCount";
+import { GetReportCountResponse } from "./types/GetReportCountResponse";
+import { GetSite } from "./types/GetSite";
+import { GetSiteMetadata } from "./types/GetSiteMetadata";
+import { GetSiteMetadataResponse } from "./types/GetSiteMetadataResponse";
+import { GetSiteResponse } from "./types/GetSiteResponse";
+import { GetUnreadCount } from "./types/GetUnreadCount";
+import { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
+import { GetUnreadRegistrationApplicationCount } from "./types/GetUnreadRegistrationApplicationCount";
+import { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
+import { LeaveAdmin } from "./types/LeaveAdmin";
+import { ListCommentReports } from "./types/ListCommentReports";
+import { ListCommentReportsResponse } from "./types/ListCommentReportsResponse";
+import { ListCommunities } from "./types/ListCommunities";
+import { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
+import { ListPostReports } from "./types/ListPostReports";
+import { ListPostReportsResponse } from "./types/ListPostReportsResponse";
+import { ListPrivateMessageReports } from "./types/ListPrivateMessageReports";
+import { ListPrivateMessageReportsResponse } from "./types/ListPrivateMessageReportsResponse";
+import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
+import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
+import { LockPost } from "./types/LockPost";
+import { Login } from "./types/Login";
+import { LoginResponse } from "./types/LoginResponse";
+import { MarkAllAsRead } from "./types/MarkAllAsRead";
+import { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
+import { MarkPersonMentionAsRead } from "./types/MarkPersonMentionAsRead";
+import { MarkPostAsRead } from "./types/MarkPostAsRead";
+import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
+import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
+import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
+import { PasswordReset } from "./types/PasswordReset";
+import { PasswordResetResponse } from "./types/PasswordResetResponse";
+import { PersonMentionResponse } from "./types/PersonMentionResponse";
+import { PostReportResponse } from "./types/PostReportResponse";
+import { PostResponse } from "./types/PostResponse";
+import { PrivateMessageReportResponse } from "./types/PrivateMessageReportResponse";
+import { PrivateMessageResponse } from "./types/PrivateMessageResponse";
+import { PrivateMessagesResponse } from "./types/PrivateMessagesResponse";
+import { PurgeComment } from "./types/PurgeComment";
+import { PurgeCommunity } from "./types/PurgeCommunity";
+import { PurgeItemResponse } from "./types/PurgeItemResponse";
+import { PurgePerson } from "./types/PurgePerson";
+import { PurgePost } from "./types/PurgePost";
+import { Register } from "./types/Register";
+import { RegistrationApplicationResponse } from "./types/RegistrationApplicationResponse";
+import { RemoveComment } from "./types/RemoveComment";
+import { RemoveCommunity } from "./types/RemoveCommunity";
+import { RemovePost } from "./types/RemovePost";
+import { ResolveCommentReport } from "./types/ResolveCommentReport";
+import { ResolveObject } from "./types/ResolveObject";
+import { ResolveObjectResponse } from "./types/ResolveObjectResponse";
+import { ResolvePostReport } from "./types/ResolvePostReport";
+import { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport";
+import { SaveComment } from "./types/SaveComment";
+import { SavePost } from "./types/SavePost";
+import { SaveUserSettings } from "./types/SaveUserSettings";
+import { Search } from "./types/Search";
+import { SearchResponse } from "./types/SearchResponse";
+import { SiteResponse } from "./types/SiteResponse";
+import { TransferCommunity } from "./types/TransferCommunity";
+import { VerifyEmail } from "./types/VerifyEmail";
+import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 
 enum HttpType {
   Get = "GET",
@@ -988,8 +975,8 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/password_change`
    */
-  passwordChange(form: PasswordChange) {
-    return this.wrapper<PasswordChange, LoginResponse>(
+  passwordChangeAfterReset(form: PasswordChangeAfterReset) {
+    return this.wrapper<PasswordChangeAfterReset, LoginResponse>(
       HttpType.Post,
       "/user/password_change",
       form
