@@ -7,9 +7,9 @@ import { AddModToCommunityResponse } from "./types/AddModToCommunityResponse";
 import { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 import { BanFromCommunity } from "./types/BanFromCommunity";
 import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
-import { BannedPersonsResponse } from "./types/BannedPersonsResponse";
 import { BanPerson } from "./types/BanPerson";
 import { BanPersonResponse } from "./types/BanPersonResponse";
+import { BannedPersonsResponse } from "./types/BannedPersonsResponse";
 import { BlockCommunity } from "./types/BlockCommunity";
 import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
 import { BlockPerson } from "./types/BlockPerson";
@@ -95,7 +95,6 @@ import { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
 import { MarkPersonMentionAsRead } from "./types/MarkPersonMentionAsRead";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
 import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
-import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 import { PasswordReset } from "./types/PasswordReset";
 import { PasswordResetResponse } from "./types/PasswordResetResponse";
@@ -129,6 +128,7 @@ import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
+import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 
 enum HttpType {
   Get = "GET",

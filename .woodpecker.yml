@@ -1,16 +1,16 @@
 pipeline:
   yarn:
-    image: node:17-alpine
+    image: node:alpine
     commands:
       - yarn
 
   yarn_lint:
-    image: node:17-alpine
+    image: node:alpine
     commands:
       - yarn lint
 
   npm_publish:
-    image: node:17-alpine
+    image: node:alpine
     commands:
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - echo "email = tyhou13@gmx.com" >> ~/.npmrc
