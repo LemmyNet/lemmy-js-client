@@ -33,9 +33,11 @@ import { EditSite } from "./types/EditSite";
 import { FeaturePost } from "./types/FeaturePost";
 import { FollowCommunity } from "./types/FollowCommunity";
 import { GetBannedPersons } from "./types/GetBannedPersons";
+import { GetCaptcha } from "./types/GetCaptcha";
 import { GetComment } from "./types/GetComment";
 import { GetComments } from "./types/GetComments";
 import { GetCommunity } from "./types/GetCommunity";
+import { GetFederatedInstances } from "./types/GetFederatedInstances";
 import { GetModlog } from "./types/GetModlog";
 import { GetPersonDetails } from "./types/GetPersonDetails";
 import { GetPersonMentions } from "./types/GetPersonMentions";
@@ -141,8 +143,8 @@ export class LemmyWebsocket {
   /**
    * Fetch a Captcha.
    */
-  getCaptcha() {
-    return wrapper(UserOperation.GetCaptcha, {});
+  getCaptcha(form: GetCaptcha) {
+    return wrapper(UserOperation.GetCaptcha, form);
   }
 
   /**
@@ -705,6 +707,13 @@ export class LemmyWebsocket {
    */
   deleteCustomEmoji(form: DeleteCustomEmoji) {
     return wrapper(UserOperation.DeleteCustomEmoji, form);
+  }
+
+  /**
+   * Fetch federated instances.
+   */
+  getFederatedInstances(form: GetFederatedInstances) {
+    return wrapper(UserOperation.GetFederatedInstances, form);
   }
 }
 
