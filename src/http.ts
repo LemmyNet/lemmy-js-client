@@ -45,12 +45,14 @@ import { EditSite } from "./types/EditSite";
 import { FeaturePost } from "./types/FeaturePost";
 import { FollowCommunity } from "./types/FollowCommunity";
 import { GetBannedPersons } from "./types/GetBannedPersons";
+import { GetCaptcha } from "./types/GetCaptcha";
 import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
 import { GetComment } from "./types/GetComment";
 import { GetComments } from "./types/GetComments";
 import { GetCommentsResponse } from "./types/GetCommentsResponse";
 import { GetCommunity } from "./types/GetCommunity";
 import { GetCommunityResponse } from "./types/GetCommunityResponse";
+import { GetFederatedInstances } from "./types/GetFederatedInstances";
 import { GetModlog } from "./types/GetModlog";
 import { GetModlogResponse } from "./types/GetModlogResponse";
 import { GetPersonDetails } from "./types/GetPersonDetails";
@@ -936,11 +938,11 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/get_captcha`
    */
-  getCaptcha() {
-    return this.wrapper<any, GetCaptchaResponse>(
+  getCaptcha(form: GetCaptcha) {
+    return this.wrapper<GetCaptcha, GetCaptchaResponse>(
       HttpType.Get,
       "/user/get_captcha",
-      {}
+      form
     );
   }
 
@@ -1189,6 +1191,15 @@ export class LemmyHttp {
    */
   async deleteCustomEmoji(form: DeleteCustomEmoji) {
     return this.wrapper(HttpType.Post, "/custom_emoji/delete", form);
+  }
+
+  /**
+   * Fetch federated instances.
+   *
+   * `HTTP.Get /federated_instances`
+   */
+  async getFederatedInstances(form: GetFederatedInstances) {
+    return this.wrapper(HttpType.Get, "/federated_instances", form);
   }
 
   /**
