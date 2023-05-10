@@ -90,6 +90,7 @@ export enum UserOperation {
   CreateCustomEmoji,
   EditCustomEmoji,
   DeleteCustomEmoji,
+  GetFederatedInstances,
 }
 
 export interface UploadImage {
