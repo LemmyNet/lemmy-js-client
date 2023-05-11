@@ -1271,7 +1271,9 @@ export class LemmyHttp {
           "Content-Type": "application/json",
           ...this.headers,
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify(form, (_, val) =>
+          typeof val === "bigint" ? val.toString() : val
+        ),
       });
 
       return await response.json();

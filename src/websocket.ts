@@ -718,7 +718,9 @@ export class LemmyWebsocket {
 }
 
 function wrapper<MessageType>(op: UserOperation, data: MessageType) {
-  let send = JSON.stringify({ op: UserOperation[op], data });
+  let send = JSON.stringify({ op: UserOperation[op], data }, (_, val) =>
+    typeof val === "bigint" ? val.toString() : val
+  );
   return send;
 }
 
