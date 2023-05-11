@@ -24,7 +24,7 @@ async function putTypesInIndex() {
     exports.push(
       `export {${spacer}${localExports.join(
         ",\n"
-      )}${spacer}} from "./types/${filename.replace(/\..+/, "")}"`
+      )}${spacer}} from "./types/${filename.replace(/\..+/, "")}";`
     );
   }
 
