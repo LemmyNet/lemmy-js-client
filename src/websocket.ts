@@ -87,6 +87,11 @@ import { TransferCommunity } from "./types/TransferCommunity";
 import { UserJoin } from "./types/UserJoin";
 import { VerifyEmail } from "./types/VerifyEmail";
 
+// @ts-ignore
+BigInt.prototype["toJSON"] = function () {
+  return this.toString();
+};
+
 /**
  * Helps build lemmy websocket message requests, that you can use in your Websocket sends.
  *
