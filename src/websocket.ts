@@ -87,6 +87,11 @@ import { TransferCommunity } from "./types/TransferCommunity";
 import { UserJoin } from "./types/UserJoin";
 import { VerifyEmail } from "./types/VerifyEmail";
 
+// @ts-ignore
+BigInt.prototype["toJSON"] = function () {
+  return this.toString();
+};
+
 /**
  * Helps build lemmy websocket message requests, that you can use in your Websocket sends.
  *
@@ -718,9 +723,7 @@ export class LemmyWebsocket {
 }
 
 function wrapper<MessageType>(op: UserOperation, data: MessageType) {
-  let send = JSON.stringify({ op: UserOperation[op], data }, (_, val) =>
-    typeof val === "bigint" ? val.toString() : val
-  );
+  let send = JSON.stringify({ op: UserOperation[op], data });
   return send;
 }
 

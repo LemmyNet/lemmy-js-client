@@ -130,6 +130,11 @@ import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 
+// @ts-ignore
+BigInt.prototype["toJSON"] = function () {
+  return this.toString();
+};
+
 enum HttpType {
   Get = "GET",
   Post = "POST",
@@ -1271,9 +1276,7 @@ export class LemmyHttp {
           "Content-Type": "application/json",
           ...this.headers,
         },
-        body: JSON.stringify(form, (_, val) =>
-          typeof val === "bigint" ? val.toString() : val
-        ),
+        body: JSON.stringify(form),
       });
 
       return await response.json();
