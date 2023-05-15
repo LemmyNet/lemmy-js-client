@@ -132,7 +132,7 @@ import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 
 // @ts-ignore
 BigInt.prototype["toJSON"] = function () {
-  return this.toString();
+  return parseInt(this.toString());
 };
 
 enum HttpType {
