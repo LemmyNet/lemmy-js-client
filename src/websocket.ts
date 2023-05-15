@@ -89,7 +89,7 @@ import { VerifyEmail } from "./types/VerifyEmail";
 
 // @ts-ignore
 BigInt.prototype["toJSON"] = function () {
-  return this.toString();
+  return parseInt(this.toString());
 };
 
 /**
