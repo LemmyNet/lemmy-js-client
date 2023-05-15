@@ -4,9 +4,9 @@ import type { CommentId } from "./CommentId";
 export interface CommentAggregates {
   id: number;
   comment_id: CommentId;
-  score: bigint;
-  upvotes: bigint;
-  downvotes: bigint;
+  score: number;
+  upvotes: number;
+  downvotes: number;
   published: string;
   child_count: number;
 }

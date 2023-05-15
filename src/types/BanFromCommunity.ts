@@ -8,6 +8,6 @@ export interface BanFromCommunity {
   ban: boolean;
   remove_data?: boolean;
   reason?: string;
-  expires?: bigint;
+  expires?: number;
   auth: string;
 }

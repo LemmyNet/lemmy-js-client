@@ -2,7 +2,7 @@
 
 export interface ListRegistrationApplications {
   unread_only?: boolean;
-  page?: bigint;
-  limit?: bigint;
+  page?: number;
+  limit?: number;
   auth: string;
 }

@@ -4,12 +4,12 @@ import type { CommunityId } from "./CommunityId";
 export interface CommunityAggregates {
   id: number;
   community_id: CommunityId;
-  subscribers: bigint;
-  posts: bigint;
-  comments: bigint;
+  subscribers: number;
+  posts: number;
+  comments: number;
   published: string;
-  users_active_day: bigint;
-  users_active_week: bigint;
-  users_active_month: bigint;
-  users_active_half_year: bigint;
+  users_active_day: number;
+  users_active_week: number;
+  users_active_month: number;
+  users_active_half_year: number;
 }

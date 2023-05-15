@@ -7,8 +7,8 @@ export interface GetPersonDetails {
   person_id?: PersonId;
   username?: string;
   sort?: SortType;
-  page?: bigint;
-  limit?: bigint;
+  page?: number;
+  limit?: number;
   community_id?: CommunityId;
   saved_only?: boolean;
   auth?: string;
