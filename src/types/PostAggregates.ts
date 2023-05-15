@@ -4,10 +4,10 @@ import type { PostId } from "./PostId";
 export interface PostAggregates {
   id: number;
   post_id: PostId;
-  comments: bigint;
-  score: bigint;
-  upvotes: bigint;
-  downvotes: bigint;
+  comments: number;
+  score: number;
+  upvotes: number;
+  downvotes: number;
   published: string;
   newest_comment_time_necro: string;
   newest_comment_time: string;

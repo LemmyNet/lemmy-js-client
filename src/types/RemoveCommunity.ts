@@ -5,6 +5,6 @@ export interface RemoveCommunity {
   community_id: CommunityId;
   removed: boolean;
   reason?: string;
-  expires?: bigint;
+  expires?: number;
   auth: string;
 }

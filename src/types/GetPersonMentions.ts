@@ -3,8 +3,8 @@ import type { CommentSortType } from "./CommentSortType";
 
 export interface GetPersonMentions {
   sort?: CommentSortType;
-  page?: bigint;
-  limit?: bigint;
+  page?: number;
+  limit?: number;
   unread_only?: boolean;
   auth: string;
 }

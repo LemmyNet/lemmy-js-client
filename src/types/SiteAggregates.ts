@@ -4,12 +4,12 @@ import type { SiteId } from "./SiteId";
 export interface SiteAggregates {
   id: number;
   site_id: SiteId;
-  users: bigint;
-  posts: bigint;
-  comments: bigint;
-  communities: bigint;
-  users_active_day: bigint;
-  users_active_week: bigint;
-  users_active_month: bigint;
-  users_active_half_year: bigint;
+  users: number;
+  posts: number;
+  comments: number;
+  communities: number;
+  users_active_day: number;
+  users_active_week: number;
+  users_active_month: number;
+  users_active_half_year: number;
 }

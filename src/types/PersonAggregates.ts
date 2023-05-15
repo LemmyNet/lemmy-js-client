@@ -4,8 +4,8 @@ import type { PersonId } from "./PersonId";
 export interface PersonAggregates {
   id: number;
   person_id: PersonId;
-  post_count: bigint;
-  post_score: bigint;
-  comment_count: bigint;
-  comment_score: bigint;
+  post_count: number;
+  post_score: number;
+  comment_count: number;
+  comment_score: number;
 }

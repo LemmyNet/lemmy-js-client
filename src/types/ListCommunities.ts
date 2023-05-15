@@ -5,7 +5,7 @@ import type { SortType } from "./SortType";
 export interface ListCommunities {
   type_?: ListingType;
   sort?: SortType;
-  page?: bigint;
-  limit?: bigint;
+  page?: number;
+  limit?: number;
   auth?: string;
 }

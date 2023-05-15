@@ -6,8 +6,8 @@ import type { PersonId } from "./PersonId";
 export interface GetModlog {
   mod_person_id?: PersonId;
   community_id?: CommunityId;
-  page?: bigint;
-  limit?: bigint;
+  page?: number;
+  limit?: number;
   type_?: ModlogActionType;
   other_person_id?: PersonId;
   auth?: string;
