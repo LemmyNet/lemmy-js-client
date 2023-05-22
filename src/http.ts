@@ -1289,8 +1289,8 @@ export class LemmyHttp {
 
   private async checkandThrowError(response: Response) {
     if (!response.ok) {
-      let errJson = await response.json();
-      let errString: string = errJson["error"] ?? response.statusText;
+      const errJson = await response.json();
+      const errString: string = errJson["error"] ?? response.statusText;
       throw new Error(errString);
     }
   }
