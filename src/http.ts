@@ -1282,6 +1282,8 @@ export class LemmyHttp {
         headers: this.headers,
       });
 
+      await this.checkandThrowError(response);
+
       return await response.json();
     } else {
       const response = await fetch(this.buildFullUrl(endpoint), {
@@ -1293,7 +1295,17 @@ export class LemmyHttp {
         body: JSON.stringify(form),
       });
 
+      await this.checkandThrowError(response);
+
       return await response.json();
+    }
+  }
+
+  private async checkandThrowError(response: Response) {
+    if (!response.ok) {
+      const errJson = await response.json();
+      const errString: string = errJson["error"] ?? response.statusText;
+      throw new Error(errString);
     }
   }
 }
