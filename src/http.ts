@@ -36,6 +36,7 @@ import { DeleteCommunity } from "./types/DeleteCommunity";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
 import { DeletePost } from "./types/DeletePost";
 import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
+import { DistinguishComment } from "./types/DistinguishComment";
 import { EditComment } from "./types/EditComment";
 import { EditCommunity } from "./types/EditCommunity";
 import { EditCustomEmoji } from "./types/EditCustomEmoji";
@@ -651,6 +652,19 @@ export class LemmyHttp {
     return this.wrapper<SaveComment, CommentResponse>(
       HttpType.Put,
       "/comment/save",
+      form
+    );
+  }
+
+  /**
+   * Distinguishes a comment (speak as moderator)
+   *
+   * `HTTP.POST /comment/distinguish`
+   */
+  distinguishComment(form: DistinguishComment) {
+    return this.wrapper<DistinguishComment, CommentResponse>(
+      HttpType.Post,
+      "/comment/distinguish",
       form
     );
   }
