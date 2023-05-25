@@ -29,11 +29,13 @@ import { CreatePostReport } from "./types/CreatePostReport";
 import { CreatePrivateMessage } from "./types/CreatePrivateMessage";
 import { CreatePrivateMessageReport } from "./types/CreatePrivateMessageReport";
 import { CreateSite } from "./types/CreateSite";
+import { CustomEmojiResponse } from "./types/CustomEmojiResponse";
 import { DeleteAccount } from "./types/DeleteAccount";
 import { DeleteAccountResponse } from "./types/DeleteAccountResponse";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
+import { DeleteCustomEmojiResponse } from "./types/DeleteCustomEmojiResponse";
 import { DeletePost } from "./types/DeletePost";
 import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 import { DistinguishComment } from "./types/DistinguishComment";
@@ -54,6 +56,7 @@ import { GetCommentsResponse } from "./types/GetCommentsResponse";
 import { GetCommunity } from "./types/GetCommunity";
 import { GetCommunityResponse } from "./types/GetCommunityResponse";
 import { GetFederatedInstances } from "./types/GetFederatedInstances";
+import { GetFederatedInstancesResponse } from "./types/GetFederatedInstancesResponse";
 import { GetModlog } from "./types/GetModlog";
 import { GetModlogResponse } from "./types/GetModlogResponse";
 import { GetPersonDetails } from "./types/GetPersonDetails";
@@ -1191,7 +1194,11 @@ export class LemmyHttp {
    * `HTTP.POST /custom_emoji`
    */
   async createCustomEmoji(form: CreateCustomEmoji) {
-    return this.wrapper(HttpType.Post, "/custom_emoji", form);
+    return this.wrapper<CreateCustomEmoji, CustomEmojiResponse>(
+      HttpType.Post,
+      "/custom_emoji",
+      form
+    );
   }
 
   /**
@@ -1200,7 +1207,11 @@ export class LemmyHttp {
    * `HTTP.PUT /custom_emoji`
    */
   async editCustomEmoji(form: EditCustomEmoji) {
-    return this.wrapper(HttpType.Put, "/custom_emoji", form);
+    return this.wrapper<EditCustomEmoji, CustomEmojiResponse>(
+      HttpType.Put,
+      "/custom_emoji",
+      form
+    );
   }
 
   /**
@@ -1209,7 +1220,11 @@ export class LemmyHttp {
    * `HTTP.Post /custom_emoji/delete`
    */
   async deleteCustomEmoji(form: DeleteCustomEmoji) {
-    return this.wrapper(HttpType.Post, "/custom_emoji/delete", form);
+    return this.wrapper<DeleteCustomEmoji, DeleteCustomEmojiResponse>(
+      HttpType.Post,
+      "/custom_emoji/delete",
+      form
+    );
   }
 
   /**
@@ -1218,7 +1233,11 @@ export class LemmyHttp {
    * `HTTP.Get /federated_instances`
    */
   async getFederatedInstances(form: GetFederatedInstances) {
-    return this.wrapper(HttpType.Get, "/federated_instances", form);
+    return this.wrapper<GetFederatedInstances, GetFederatedInstancesResponse>(
+      HttpType.Get,
+      "/federated_instances",
+      form
+    );
   }
 
   /**
