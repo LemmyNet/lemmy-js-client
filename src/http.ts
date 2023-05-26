@@ -15,6 +15,7 @@ import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
 import { BlockPerson } from "./types/BlockPerson";
 import { BlockPersonResponse } from "./types/BlockPersonResponse";
 import { ChangePassword } from "./types/ChangePassword";
+import { CommentReplyResponse } from "./types/CommentReplyResponse";
 import { CommentReportResponse } from "./types/CommentReportResponse";
 import { CommentResponse } from "./types/CommentResponse";
 import { CommunityResponse } from "./types/CommunityResponse";
@@ -626,7 +627,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment/mark_as_read`
    */
   markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
-    return this.wrapper<MarkCommentReplyAsRead, CommentResponse>(
+    return this.wrapper<MarkCommentReplyAsRead, CommentReplyResponse>(
       HttpType.Post,
       "/comment/mark_as_read",
       form
