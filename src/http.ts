@@ -1316,8 +1316,9 @@ export class LemmyHttp {
 
     if (!response.ok) {
       throw json["error"] ?? response.statusText;
+    } else {
+      return json;
     }
-    return json;
   }
 }
 
