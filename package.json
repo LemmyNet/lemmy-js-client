@@ -7,9 +7,7 @@
   "author": "Dessalines <tyhou13@gmx.com>",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "files": [
-    "/dist"
-  ],
+  "files": ["/dist"],
   "scripts": {
     "build": "tsc",
     "docs": "typedoc src/index.ts",
@@ -17,13 +15,8 @@
     "prepare": "yarn run build && husky install"
   },
   "lint-staged": {
-    "*.{ts,tsx,js}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "package.json": [
-      "sortpack"
-    ]
+    "*.{ts,tsx,js}": ["prettier --write", "eslint --fix"],
+    "package.json": ["sortpack"]
   },
   "dependencies": {
     "cross-fetch": "^3.1.5",

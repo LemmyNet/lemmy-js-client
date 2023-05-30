@@ -1295,18 +1295,15 @@ export class LemmyHttp {
     endpoint: string,
     form: BodyType
   ): Promise<ResponseType> {
+    let response: Response;
     if (type_ === HttpType.Get) {
       const getUrl = `${this.buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
-      const response = await fetch(getUrl, {
+      response = await fetch(getUrl, {
         method: HttpType.Get,
         headers: this.headers,
       });
-
-      await this.checkandThrowError(response);
-
-      return await response.json();
     } else {
-      const response = await fetch(this.buildFullUrl(endpoint), {
+      response = await fetch(this.buildFullUrl(endpoint), {
         method: type_,
         headers: {
           "Content-Type": "application/json",
@@ -1314,18 +1311,13 @@ export class LemmyHttp {
         },
         body: JSON.stringify(form),
       });
-
-      await this.checkandThrowError(response);
-
-      return await response.json();
     }
-  }
+    const json = await response.json();
 
-  private async checkandThrowError(response: Response) {
     if (!response.ok) {
-      const errJson = await response.json();
-      const errString: string = errJson["error"] ?? response.statusText;
-      throw new Error(errString);
+      throw json["error"] ?? response.statusText;
+    } else {
+      return json;
     }
   }
 }
