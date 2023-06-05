@@ -135,11 +135,6 @@ import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 
-// @ts-ignore
-BigInt.prototype["toJSON"] = function () {
-  return parseInt(this.toString());
-};
-
 enum HttpType {
   Get = "GET",
   Post = "POST",
