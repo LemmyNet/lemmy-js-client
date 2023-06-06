@@ -252,4 +252,3 @@ export {
   UploadImageResponse,
   UserOperation,
 } from "./types/others";
-export * from "./websocket";

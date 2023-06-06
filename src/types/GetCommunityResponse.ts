@@ -10,5 +10,4 @@ export interface GetCommunityResponse {
   moderators: Array<CommunityModeratorView>;
   online: number;
   discussion_languages: Array<LanguageId>;
-  default_post_language?: LanguageId;
 }
