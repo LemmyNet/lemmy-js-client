@@ -3,7 +3,7 @@ const path = require("path");
 
 const exportRegex = /export\s+(?:enum|interface|type)\s+([A-Za-z0-9_]+)/g;
 
-const baseExports = ['export * from "./http";', 'export * from "./websocket";'];
+const baseExports = ['export * from "./http";'];
 
 async function putTypesInIndex() {
   const typeFiles = await fs.readdir(path.resolve("./src/types"));
