@@ -1,4 +1,5 @@
 export * from "./http";
+export * from "./websocket";
 export { AddAdmin } from "./types/AddAdmin";
 export { AddAdminResponse } from "./types/AddAdminResponse";
 export { AddModToCommunity } from "./types/AddModToCommunity";
