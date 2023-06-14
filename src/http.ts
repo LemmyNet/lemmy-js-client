@@ -1,4 +1,4 @@
-import fetch from "cross-fetch";
+import CrossFetch from "cross-fetch";
 import FormData from "form-data";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -141,6 +141,11 @@ enum HttpType {
   Put = "PUT",
 }
 
+type Fetch = (
+  input: RequestInfo | URL,
+  init?: RequestInit | undefined
+) => Promise<Response>;
+
 /**
  * Helps build lemmy HTTP requests.
  */
@@ -148,18 +153,30 @@ export class LemmyHttp {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
   #pictrsUrl: string;
+  #fetch: Fetch;
 
   /**
    * Generates a new instance of LemmyHttp.
    * @param baseUrl the base url, without the vX version: https://lemmy.ml -> goes to https://lemmy.ml/api/vX
    * @param headers optional headers. Should contain `x-real-ip` and `x-forwarded-for` .
+   * @param fetch optional fetch function to use.
    */
-  constructor(baseUrl: string, headers?: { [key: string]: string }) {
+  constructor(
+    baseUrl: string,
+    headers?: { [key: string]: string },
+    fetch?: Fetch
+  ) {
     this.#apiUrl = `${baseUrl}/api/${VERSION}`;
     this.#pictrsUrl = `${baseUrl}/pictrs/image`;
 
     if (headers) {
       this.#headers = headers;
+    }
+
+    if (fetch) {
+      this.#fetch = fetch;
+    } else {
+      this.#fetch = CrossFetch;
     }
   }
 
@@ -1265,7 +1282,7 @@ export class LemmyHttp {
     let url: string | undefined = undefined;
     let delete_url: string | undefined = undefined;
 
-    const response = await fetch(this.#pictrsUrl, {
+    const response = await this.#fetch(this.#pictrsUrl, {
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
       headers: {
@@ -1301,12 +1318,12 @@ export class LemmyHttp {
     let response: Response;
     if (type_ === HttpType.Get) {
       const getUrl = `${this.#buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
-      response = await fetch(getUrl, {
+      response = await this.#fetch(getUrl, {
         method: HttpType.Get,
         headers: this.#headers,
       });
     } else {
-      response = await fetch(this.#buildFullUrl(endpoint), {
+      response = await this.#fetch(this.#buildFullUrl(endpoint), {
         method: type_,
         headers: {
           "Content-Type": "application/json",
