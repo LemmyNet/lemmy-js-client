@@ -155,7 +155,7 @@ export class LemmyHttp {
    * @param headers optional headers. Should contain `x-real-ip` and `x-forwarded-for` .
    */
   constructor(baseUrl: string, headers?: { [key: string]: string }) {
-    this.#apiUrl = `${baseUrl}/api/${VERSION}`;
+    this.#apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/${VERSION}`;
     this.#pictrsUrl = `${baseUrl}/pictrs/image`;
 
     if (headers) {
