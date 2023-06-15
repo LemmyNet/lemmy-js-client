@@ -162,7 +162,7 @@ export class LemmyHttp {
       headers?: { [key: string]: string };
     }
   ) {
-    this.#apiUrl = `${baseUrl}/api/${VERSION}`;
+    this.#apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/${VERSION}`;
     this.#pictrsUrl = `${baseUrl}/pictrs/image`;
 
     if (options?.headers) {
