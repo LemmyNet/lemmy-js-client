@@ -168,6 +168,9 @@ export class LemmyHttp {
     if (options?.headers) {
       this.#headers = options.headers;
     }
+    if (options?.fetchFunction) {
+      this.#fetchFunction = options.fetchFunction;
+    }
   }
 
   /**
