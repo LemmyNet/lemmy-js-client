@@ -12,4 +12,5 @@ export interface CommunityAggregates {
   users_active_week: number;
   users_active_month: number;
   users_active_half_year: number;
+  hot_rank: number;
 }

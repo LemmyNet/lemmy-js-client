@@ -8,5 +8,4 @@ export interface GetPostResponse {
   community_view: CommunityView;
   moderators: Array<CommunityModeratorView>;
   cross_posts: Array<PostView>;
-  online: number;
 }

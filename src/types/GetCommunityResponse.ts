@@ -8,6 +8,5 @@ export interface GetCommunityResponse {
   community_view: CommunityView;
   site?: Site;
   moderators: Array<CommunityModeratorView>;
-  online: number;
   discussion_languages: Array<LanguageId>;
 }
