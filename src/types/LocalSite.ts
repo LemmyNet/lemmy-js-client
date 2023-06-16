@@ -22,7 +22,6 @@ export interface LocalSite {
   slur_filter_regex?: string;
   actor_name_max_length: number;
   federation_enabled: boolean;
-  federation_debug: boolean;
   federation_worker_count: number;
   captcha_enabled: boolean;
   captcha_difficulty: string;

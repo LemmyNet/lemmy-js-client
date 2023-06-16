@@ -10,7 +10,6 @@ import type { Tagline } from "./Tagline";
 export interface GetSiteResponse {
   site_view: SiteView;
   admins: Array<PersonView>;
-  online: number;
   version: string;
   my_user?: MyUserInfo;
   all_languages: Array<Language>;
