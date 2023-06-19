@@ -1315,13 +1315,21 @@ export class LemmyHttp {
         body: JSON.stringify(form),
       });
     }
-    const json = await response.json();
 
     if (!response.ok) {
-      throw json["error"] ?? response.statusText;
-    } else {
-      return json;
+      let error: string | undefined = undefined;
+      if (response.headers.get("content-type")?.includes("application/json")) {
+        error = await response
+          .json()
+          .then(json => json["error"])
+          .catch(() => undefined);
+      } else {
+        error = await response.text();
+      }
+      throw error || response.statusText;
     }
+
+    return await response.json();
   }
 }
 
