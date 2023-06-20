@@ -13,4 +13,6 @@ export interface PostAggregates {
   newest_comment_time: string;
   featured_community: boolean;
   featured_local: boolean;
+  hot_rank: number;
+  hot_rank_active: number;
 }

@@ -9,4 +9,5 @@ export interface CommentAggregates {
   downvotes: number;
   published: string;
   child_count: number;
+  hot_rank: number;
 }
