@@ -11,4 +11,7 @@ export type SortType =
   | "TopYear"
   | "TopAll"
   | "MostComments"
-  | "NewComments";
+  | "NewComments"
+  | "TopHour"
+  | "TopSixHour"
+  | "TopTwelveHour";
