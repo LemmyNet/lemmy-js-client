@@ -9,7 +9,7 @@
 
 # lemmy-js-client
 
-A javascript / typescript http and websocket client and type system for [Lemmy](https://github.com/LemmyNet/lemmy).
+A javascript / typescript http client and type system for [Lemmy](https://github.com/LemmyNet/lemmy).
 
 ## Installation
 
@@ -17,32 +17,19 @@ A javascript / typescript http and websocket client and type system for [Lemmy](
 
 ## Usage
 
-### Websocket Client
-
-[LemmyWebsocket docs](https://join-lemmy.org/api/classes/LemmyWebsocket.html)
-
-```ts
-import { Login, LemmyWebsocket } from "lemmy-js-client";
-
-let client: LemmyWebsocket = new LemmyWebsocket();
-
-let form: Login = {
-  username_or_email: "my_email@email.tld",
-  password: "my_pass",
-};
-
-this.ws.send(client.login(form));
-```
-
 ### HTTP Client
 
 [LemmyHttp docs](https://join-lemmy.org/api/classes/LemmyHttp.html)
 
 ```ts
-import { LemmyHttp } from 'lemmy-js-client';
+import { LemmyHttp, Login } from 'lemmy-js-client';
 
 let baseUrl = 'https://lemmy.ml';
 let client: LemmyHttp = new LemmyHttp(baseUrl, headers?);
+let loginForm: Login = {
+  username_or_email: "my_name",
+  password: "my_pass",
+};
 let jwt = await client.login(loginForm).jwt;
 ```
 
