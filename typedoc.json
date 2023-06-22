@@ -1,0 +1,30 @@
+{
+  "sort": ["kind", "alphabetical"],
+  "kindSortOrder": [
+    "Reference",
+    "Project",
+    "Module",
+    "Namespace",
+    "Class",
+    "TypeAlias",
+    "Constructor",
+    "Method",
+    "Function",
+    "Interface",
+    "Property",
+    "Variable",
+    "Enum",
+    "EnumMember",
+    "Accessor",
+    "ObjectLiteral",
+    "Parameter",
+    "TypeParameter",
+    "TypeLiteral",
+    "CallSignature",
+    "ConstructorSignature",
+    "IndexSignature",
+    "GetSignature",
+    "SetSignature"
+  ],
+  "groupOrder": ["Functions", "Variables", "*"]
+}
