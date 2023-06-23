@@ -178,7 +178,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /site`
    */
-  getSite(form: GetSite) {
+  getSite(form: GetSite = {}) {
     return this.#wrapper<GetSite, GetSiteResponse>(HttpType.Get, "/site", form);
   }
 
@@ -222,7 +222,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /modlog`
    */
-  getModlog(form: GetModlog) {
+  getModlog(form: GetModlog = {}) {
     return this.#wrapper<GetModlog, GetModlogResponse>(
       HttpType.Get,
       "/modlog",
@@ -270,7 +270,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /community`
    */
-  getCommunity(form: GetCommunity) {
+  getCommunity(form: GetCommunity = {}) {
     return this.#wrapper<GetCommunity, GetCommunityResponse>(
       HttpType.Get,
       "/community",
@@ -296,7 +296,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /community/list`
    */
-  listCommunities(form: ListCommunities) {
+  listCommunities(form: ListCommunities = {}) {
     return this.#wrapper<ListCommunities, ListCommunitiesResponse>(
       HttpType.Get,
       "/community/list",
@@ -413,7 +413,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /post`
    */
-  getPost(form: GetPost) {
+  getPost(form: GetPost = {}) {
     return this.#wrapper<GetPost, GetPostResponse>(HttpType.Get, "/post", form);
   }
 
@@ -496,7 +496,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /post/list`
    */
-  getPosts(form: GetPosts) {
+  getPosts(form: GetPosts = {}) {
     return this.#wrapper<GetPosts, GetPostsResponse>(
       HttpType.Get,
       "/post/list",
@@ -691,7 +691,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /comment/list`
    */
-  getComments(form: GetComments) {
+  getComments(form: GetComments = {}) {
     return this.#wrapper<GetComments, GetCommentsResponse>(
       HttpType.Get,
       "/comment/list",
@@ -883,7 +883,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user`
    */
-  getPersonDetails(form: GetPersonDetails) {
+  getPersonDetails(form: GetPersonDetails = {}) {
     return this.#wrapper<GetPersonDetails, GetPersonDetailsResponse>(
       HttpType.Get,
       "/user",
@@ -974,7 +974,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/get_captcha`
    */
-  getCaptcha(form: GetCaptcha) {
+  getCaptcha(form: GetCaptcha = {}) {
     return this.#wrapper<GetCaptcha, GetCaptchaResponse>(
       HttpType.Get,
       "/user/get_captcha",
@@ -1246,7 +1246,7 @@ export class LemmyHttp {
    *
    * `HTTP.Get /federated_instances`
    */
-  async getFederatedInstances(form: GetFederatedInstances) {
+  async getFederatedInstances(form: GetFederatedInstances = {}) {
     return this.#wrapper<GetFederatedInstances, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
