@@ -22,6 +22,7 @@ export interface SaveUserSettings {
   show_bot_accounts?: boolean;
   show_read_posts?: boolean;
   show_new_post_notifs?: boolean;
+  open_links_in_new_tab?: boolean;
   discussion_languages?: Array<LanguageId>;
   generate_totp_2fa?: boolean;
   auth: string;

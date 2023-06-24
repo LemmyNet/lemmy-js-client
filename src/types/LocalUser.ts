@@ -20,6 +20,7 @@ export interface LocalUser {
   show_bot_accounts: boolean;
   show_read_posts: boolean;
   show_new_post_notifs: boolean;
+  open_links_in_new_tab: boolean;
   email_verified: boolean;
   accepted_application: boolean;
   totp_2fa_url?: string;
