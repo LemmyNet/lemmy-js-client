@@ -158,7 +158,7 @@ export class LemmyHttp {
   constructor(
     baseUrl: string,
     options?: {
-      fetchFunction: typeof fetch;
+      fetchFunction?: typeof fetch;
       headers?: { [key: string]: string };
     }
   ) {
