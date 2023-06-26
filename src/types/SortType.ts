@@ -14,4 +14,7 @@ export type SortType =
   | "NewComments"
   | "TopHour"
   | "TopSixHour"
-  | "TopTwelveHour";
+  | "TopTwelveHour"
+  | "TopThreeMonths"
+  | "TopSixMonths"
+  | "TopNineMonths";
