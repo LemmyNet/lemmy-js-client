@@ -15,6 +15,7 @@ export interface Person {
   local: boolean;
   banner?: string;
   deleted: boolean;
+  inbox_url: string;
   matrix_user_id?: string;
   admin: boolean;
   bot_account: boolean;

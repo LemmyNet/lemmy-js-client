@@ -25,4 +25,5 @@ export interface SaveUserSettings {
   discussion_languages?: Array<LanguageId>;
   generate_totp_2fa?: boolean;
   auth: string;
+  open_links_in_new_tab?: boolean;
 }

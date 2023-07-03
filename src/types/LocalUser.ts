@@ -23,4 +23,5 @@ export interface LocalUser {
   email_verified: boolean;
   accepted_application: boolean;
   totp_2fa_url?: string;
+  open_links_in_new_tab: boolean;
 }

@@ -16,6 +16,8 @@ export interface Community {
   local: boolean;
   icon?: string;
   banner?: string;
+  followers_url: string;
+  inbox_url: string;
   hidden: boolean;
   posting_restricted_to_mods: boolean;
   instance_id: InstanceId;
