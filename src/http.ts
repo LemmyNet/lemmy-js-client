@@ -1284,6 +1284,10 @@ export class LemmyHttp {
       },
     });
 
+    if (response.status === 413) {
+      return { msg: "too_large" };
+    }
+
     const responseJson = await response.json();
 
     if (responseJson.msg === "ok") {
