@@ -1329,7 +1329,14 @@ export class LemmyHttp {
         body: JSON.stringify(form),
       });
     }
-    const json = await response.json();
+
+    let json: any | undefined = undefined;
+
+    try {
+      json = await response.json();
+    } catch (error) {
+      throw response.statusText;
+    }
 
     if (!response.ok) {
       throw json["error"] ?? response.statusText;
