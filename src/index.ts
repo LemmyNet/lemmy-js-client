@@ -121,6 +121,7 @@ export { InstanceId } from "./types/InstanceId";
 export { Language } from "./types/Language";
 export { LanguageId } from "./types/LanguageId";
 export { LeaveAdmin } from "./types/LeaveAdmin";
+export { LemmyErrorType } from "./types/LemmyErrorType";
 export { ListCommentReports } from "./types/ListCommentReports";
 export { ListCommentReportsResponse } from "./types/ListCommentReportsResponse";
 export { ListCommunities } from "./types/ListCommunities";
