@@ -24,4 +24,5 @@ export interface LocalUser {
   accepted_application: boolean;
   totp_2fa_url?: string;
   open_links_in_new_tab: boolean;
+  enable_keyboard_navigation: boolean;
 }
