@@ -246,4 +246,4 @@ export { UserJoin } from "./types/UserJoin";
 export { UserJoinResponse } from "./types/UserJoinResponse";
 export { VerifyEmail } from "./types/VerifyEmail";
 export { VerifyEmailResponse } from "./types/VerifyEmailResponse";
-export { ImageFile, UploadImage, UploadImageResponse } from "./types/others";
+export { UploadImage, UploadImageResponse, ImageFile } from "./types/others";

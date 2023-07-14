@@ -160,7 +160,7 @@ export class LemmyHttp {
     options?: {
       fetchFunction?: typeof fetch;
       headers?: { [key: string]: string };
-    }
+    },
   ) {
     this.#apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/${VERSION}`;
     this.#pictrsUrl = `${baseUrl}/pictrs/image`;
@@ -191,7 +191,7 @@ export class LemmyHttp {
     return this.#wrapper<CreateSite, SiteResponse>(
       HttpType.Post,
       "/site",
-      form
+      form,
     );
   }
 
@@ -213,7 +213,7 @@ export class LemmyHttp {
     return this.#wrapper<LeaveAdmin, GetSiteResponse>(
       HttpType.Post,
       "/user/leave_admin",
-      form
+      form,
     );
   }
 
@@ -226,7 +226,7 @@ export class LemmyHttp {
     return this.#wrapper<GetModlog, GetModlogResponse>(
       HttpType.Get,
       "/modlog",
-      form
+      form,
     );
   }
 
@@ -248,7 +248,7 @@ export class LemmyHttp {
     return this.#wrapper<ResolveObject, ResolveObjectResponse>(
       HttpType.Get,
       "/resolve_object",
-      form
+      form,
     );
   }
 
@@ -261,7 +261,7 @@ export class LemmyHttp {
     return this.#wrapper<CreateCommunity, CommunityResponse>(
       HttpType.Post,
       "/community",
-      form
+      form,
     );
   }
 
@@ -274,7 +274,7 @@ export class LemmyHttp {
     return this.#wrapper<GetCommunity, GetCommunityResponse>(
       HttpType.Get,
       "/community",
-      form
+      form,
     );
   }
 
@@ -287,7 +287,7 @@ export class LemmyHttp {
     return this.#wrapper<EditCommunity, CommunityResponse>(
       HttpType.Put,
       "/community",
-      form
+      form,
     );
   }
 
@@ -300,7 +300,7 @@ export class LemmyHttp {
     return this.#wrapper<ListCommunities, ListCommunitiesResponse>(
       HttpType.Get,
       "/community/list",
-      form
+      form,
     );
   }
 
@@ -313,7 +313,7 @@ export class LemmyHttp {
     return this.#wrapper<FollowCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/follow",
-      form
+      form,
     );
   }
 
@@ -326,7 +326,7 @@ export class LemmyHttp {
     return this.#wrapper<BlockCommunity, BlockCommunityResponse>(
       HttpType.Post,
       "/community/block",
-      form
+      form,
     );
   }
 
@@ -339,7 +339,7 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/delete",
-      form
+      form,
     );
   }
 
@@ -352,7 +352,7 @@ export class LemmyHttp {
     return this.#wrapper<RemoveCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/remove",
-      form
+      form,
     );
   }
 
@@ -365,7 +365,7 @@ export class LemmyHttp {
     return this.#wrapper<TransferCommunity, GetCommunityResponse>(
       HttpType.Post,
       "/community/transfer",
-      form
+      form,
     );
   }
 
@@ -378,7 +378,7 @@ export class LemmyHttp {
     return this.#wrapper<BanFromCommunity, BanFromCommunityResponse>(
       HttpType.Post,
       "/community/ban_user",
-      form
+      form,
     );
   }
 
@@ -391,7 +391,7 @@ export class LemmyHttp {
     return this.#wrapper<AddModToCommunity, AddModToCommunityResponse>(
       HttpType.Post,
       "/community/mod",
-      form
+      form,
     );
   }
 
@@ -404,7 +404,7 @@ export class LemmyHttp {
     return this.#wrapper<CreatePost, PostResponse>(
       HttpType.Post,
       "/post",
-      form
+      form,
     );
   }
 
@@ -435,7 +435,7 @@ export class LemmyHttp {
     return this.#wrapper<DeletePost, PostResponse>(
       HttpType.Post,
       "/post/delete",
-      form
+      form,
     );
   }
 
@@ -448,7 +448,7 @@ export class LemmyHttp {
     return this.#wrapper<RemovePost, PostResponse>(
       HttpType.Post,
       "/post/remove",
-      form
+      form,
     );
   }
 
@@ -461,7 +461,7 @@ export class LemmyHttp {
     return this.#wrapper<MarkPostAsRead, PostResponse>(
       HttpType.Post,
       "/post/mark_as_read",
-      form
+      form,
     );
   }
 
@@ -474,7 +474,7 @@ export class LemmyHttp {
     return this.#wrapper<LockPost, PostResponse>(
       HttpType.Post,
       "/post/lock",
-      form
+      form,
     );
   }
 
@@ -487,7 +487,7 @@ export class LemmyHttp {
     return this.#wrapper<FeaturePost, PostResponse>(
       HttpType.Post,
       "/post/feature",
-      form
+      form,
     );
   }
 
@@ -500,7 +500,7 @@ export class LemmyHttp {
     return this.#wrapper<GetPosts, GetPostsResponse>(
       HttpType.Get,
       "/post/list",
-      form
+      form,
     );
   }
 
@@ -513,7 +513,7 @@ export class LemmyHttp {
     return this.#wrapper<CreatePostLike, PostResponse>(
       HttpType.Post,
       "/post/like",
-      form
+      form,
     );
   }
 
@@ -526,7 +526,7 @@ export class LemmyHttp {
     return this.#wrapper<SavePost, PostResponse>(
       HttpType.Put,
       "/post/save",
-      form
+      form,
     );
   }
 
@@ -539,7 +539,7 @@ export class LemmyHttp {
     return this.#wrapper<CreatePostReport, PostReportResponse>(
       HttpType.Post,
       "/post/report",
-      form
+      form,
     );
   }
 
@@ -552,7 +552,7 @@ export class LemmyHttp {
     return this.#wrapper<ResolvePostReport, PostReportResponse>(
       HttpType.Put,
       "/post/report/resolve",
-      form
+      form,
     );
   }
 
@@ -565,7 +565,7 @@ export class LemmyHttp {
     return this.#wrapper<ListPostReports, ListPostReportsResponse>(
       HttpType.Get,
       "/post/report/list",
-      form
+      form,
     );
   }
 
@@ -578,7 +578,7 @@ export class LemmyHttp {
     return this.#wrapper<GetSiteMetadata, GetSiteMetadataResponse>(
       HttpType.Get,
       "/post/site_metadata",
-      form
+      form,
     );
   }
 
@@ -591,7 +591,7 @@ export class LemmyHttp {
     return this.#wrapper<CreateComment, CommentResponse>(
       HttpType.Post,
       "/comment",
-      form
+      form,
     );
   }
 
@@ -604,7 +604,7 @@ export class LemmyHttp {
     return this.#wrapper<EditComment, CommentResponse>(
       HttpType.Put,
       "/comment",
-      form
+      form,
     );
   }
 
@@ -617,7 +617,7 @@ export class LemmyHttp {
     return this.#wrapper<DeleteComment, CommentResponse>(
       HttpType.Post,
       "/comment/delete",
-      form
+      form,
     );
   }
 
@@ -630,7 +630,7 @@ export class LemmyHttp {
     return this.#wrapper<RemoveComment, CommentResponse>(
       HttpType.Post,
       "/comment/remove",
-      form
+      form,
     );
   }
 
@@ -643,7 +643,7 @@ export class LemmyHttp {
     return this.#wrapper<MarkCommentReplyAsRead, CommentReplyResponse>(
       HttpType.Post,
       "/comment/mark_as_read",
-      form
+      form,
     );
   }
 
@@ -656,7 +656,7 @@ export class LemmyHttp {
     return this.#wrapper<CreateCommentLike, CommentResponse>(
       HttpType.Post,
       "/comment/like",
-      form
+      form,
     );
   }
 
@@ -669,7 +669,7 @@ export class LemmyHttp {
     return this.#wrapper<SaveComment, CommentResponse>(
       HttpType.Put,
       "/comment/save",
-      form
+      form,
     );
   }
 
@@ -682,7 +682,7 @@ export class LemmyHttp {
     return this.#wrapper<DistinguishComment, CommentResponse>(
       HttpType.Post,
       "/comment/distinguish",
-      form
+      form,
     );
   }
 
@@ -695,7 +695,7 @@ export class LemmyHttp {
     return this.#wrapper<GetComments, GetCommentsResponse>(
       HttpType.Get,
       "/comment/list",
-      form
+      form,
     );
   }
 
@@ -708,7 +708,7 @@ export class LemmyHttp {
     return this.#wrapper<GetComment, CommentResponse>(
       HttpType.Get,
       "/comment",
-      form
+      form,
     );
   }
 
@@ -721,7 +721,7 @@ export class LemmyHttp {
     return this.#wrapper<CreateCommentReport, CommentReportResponse>(
       HttpType.Post,
       "/comment/report",
-      form
+      form,
     );
   }
 
@@ -734,7 +734,7 @@ export class LemmyHttp {
     return this.#wrapper<ResolveCommentReport, CommentReportResponse>(
       HttpType.Put,
       "/comment/report/resolve",
-      form
+      form,
     );
   }
 
@@ -747,7 +747,7 @@ export class LemmyHttp {
     return this.#wrapper<ListCommentReports, ListCommentReportsResponse>(
       HttpType.Get,
       "/comment/report/list",
-      form
+      form,
     );
   }
 
@@ -760,7 +760,7 @@ export class LemmyHttp {
     return this.#wrapper<GetPrivateMessages, PrivateMessagesResponse>(
       HttpType.Get,
       "/private_message/list",
-      form
+      form,
     );
   }
 
@@ -773,7 +773,7 @@ export class LemmyHttp {
     return this.#wrapper<CreatePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message",
-      form
+      form,
     );
   }
 
@@ -786,7 +786,7 @@ export class LemmyHttp {
     return this.#wrapper<EditPrivateMessage, PrivateMessageResponse>(
       HttpType.Put,
       "/private_message",
-      form
+      form,
     );
   }
 
@@ -799,7 +799,7 @@ export class LemmyHttp {
     return this.#wrapper<DeletePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/delete",
-      form
+      form,
     );
   }
 
@@ -812,7 +812,7 @@ export class LemmyHttp {
     return this.#wrapper<MarkPrivateMessageAsRead, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/mark_as_read",
-      form
+      form,
     );
   }
 
@@ -861,7 +861,7 @@ export class LemmyHttp {
     return this.#wrapper<Register, LoginResponse>(
       HttpType.Post,
       "/user/register",
-      form
+      form,
     );
   }
 
@@ -874,7 +874,7 @@ export class LemmyHttp {
     return this.#wrapper<Login, LoginResponse>(
       HttpType.Post,
       "/user/login",
-      form
+      form,
     );
   }
 
@@ -887,7 +887,7 @@ export class LemmyHttp {
     return this.#wrapper<GetPersonDetails, GetPersonDetailsResponse>(
       HttpType.Get,
       "/user",
-      form
+      form,
     );
   }
 
@@ -900,7 +900,7 @@ export class LemmyHttp {
     return this.#wrapper<GetPersonMentions, GetPersonMentionsResponse>(
       HttpType.Get,
       "/user/mention",
-      form
+      form,
     );
   }
 
@@ -913,7 +913,7 @@ export class LemmyHttp {
     return this.#wrapper<MarkPersonMentionAsRead, PersonMentionResponse>(
       HttpType.Post,
       "/user/mention/mark_as_read",
-      form
+      form,
     );
   }
 
@@ -926,7 +926,7 @@ export class LemmyHttp {
     return this.#wrapper<GetReplies, GetRepliesResponse>(
       HttpType.Get,
       "/user/replies",
-      form
+      form,
     );
   }
 
@@ -939,7 +939,7 @@ export class LemmyHttp {
     return this.#wrapper<BanPerson, BanPersonResponse>(
       HttpType.Post,
       "/user/ban",
-      form
+      form,
     );
   }
 
@@ -952,7 +952,7 @@ export class LemmyHttp {
     return this.#wrapper<GetBannedPersons, BannedPersonsResponse>(
       HttpType.Get,
       "/user/banned",
-      form
+      form,
     );
   }
 
@@ -965,7 +965,7 @@ export class LemmyHttp {
     return this.#wrapper<BlockPerson, BlockPersonResponse>(
       HttpType.Post,
       "/user/block",
-      form
+      form,
     );
   }
 
@@ -978,7 +978,7 @@ export class LemmyHttp {
     return this.#wrapper<GetCaptcha, GetCaptchaResponse>(
       HttpType.Get,
       "/user/get_captcha",
-      form
+      form,
     );
   }
 
@@ -991,7 +991,7 @@ export class LemmyHttp {
     return this.#wrapper<DeleteAccount, DeleteAccountResponse>(
       HttpType.Post,
       "/user/delete_account",
-      form
+      form,
     );
   }
 
@@ -1004,7 +1004,7 @@ export class LemmyHttp {
     return this.#wrapper<PasswordReset, PasswordResetResponse>(
       HttpType.Post,
       "/user/password_reset",
-      form
+      form,
     );
   }
 
@@ -1017,7 +1017,7 @@ export class LemmyHttp {
     return this.#wrapper<PasswordChangeAfterReset, LoginResponse>(
       HttpType.Post,
       "/user/password_change",
-      form
+      form,
     );
   }
 
@@ -1030,7 +1030,7 @@ export class LemmyHttp {
     return this.#wrapper<MarkAllAsRead, GetRepliesResponse>(
       HttpType.Post,
       "/user/mark_all_as_read",
-      form
+      form,
     );
   }
 
@@ -1043,7 +1043,7 @@ export class LemmyHttp {
     return this.#wrapper<SaveUserSettings, LoginResponse>(
       HttpType.Put,
       "/user/save_user_settings",
-      form
+      form,
     );
   }
 
@@ -1056,7 +1056,7 @@ export class LemmyHttp {
     return this.#wrapper<ChangePassword, LoginResponse>(
       HttpType.Put,
       "/user/change_password",
-      form
+      form,
     );
   }
 
@@ -1069,7 +1069,7 @@ export class LemmyHttp {
     return this.#wrapper<GetReportCount, GetReportCountResponse>(
       HttpType.Get,
       "/user/report_count",
-      form
+      form,
     );
   }
 
@@ -1082,7 +1082,7 @@ export class LemmyHttp {
     return this.#wrapper<GetUnreadCount, GetUnreadCountResponse>(
       HttpType.Get,
       "/user/unread_count",
-      form
+      form,
     );
   }
 
@@ -1095,7 +1095,7 @@ export class LemmyHttp {
     return this.#wrapper<VerifyEmail, VerifyEmailResponse>(
       HttpType.Post,
       "/user/verify_email",
-      form
+      form,
     );
   }
 
@@ -1108,7 +1108,7 @@ export class LemmyHttp {
     return this.#wrapper<AddAdmin, AddAdminResponse>(
       HttpType.Post,
       "/admin/add",
-      form
+      form,
     );
   }
 
@@ -1118,7 +1118,7 @@ export class LemmyHttp {
    * `HTTP.GET /admin/registration_application/count`
    */
   getUnreadRegistrationApplicationCount(
-    form: GetUnreadRegistrationApplicationCount
+    form: GetUnreadRegistrationApplicationCount,
   ) {
     return this.#wrapper<
       GetUnreadRegistrationApplicationCount,
@@ -1159,7 +1159,7 @@ export class LemmyHttp {
     return this.#wrapper<PurgePerson, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/person",
-      form
+      form,
     );
   }
 
@@ -1172,7 +1172,7 @@ export class LemmyHttp {
     return this.#wrapper<PurgeCommunity, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/community",
-      form
+      form,
     );
   }
 
@@ -1185,7 +1185,7 @@ export class LemmyHttp {
     return this.#wrapper<PurgePost, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/post",
-      form
+      form,
     );
   }
 
@@ -1198,7 +1198,7 @@ export class LemmyHttp {
     return this.#wrapper<PurgeComment, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/comment",
-      form
+      form,
     );
   }
 
@@ -1211,7 +1211,7 @@ export class LemmyHttp {
     return this.#wrapper<CreateCustomEmoji, CustomEmojiResponse>(
       HttpType.Post,
       "/custom_emoji",
-      form
+      form,
     );
   }
 
@@ -1224,7 +1224,7 @@ export class LemmyHttp {
     return this.#wrapper<EditCustomEmoji, CustomEmojiResponse>(
       HttpType.Put,
       "/custom_emoji",
-      form
+      form,
     );
   }
 
@@ -1237,7 +1237,7 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCustomEmoji, DeleteCustomEmojiResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
-      form
+      form,
     );
   }
 
@@ -1250,7 +1250,7 @@ export class LemmyHttp {
     return this.#wrapper<GetFederatedInstances, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
-      form
+      form,
     );
   }
 
@@ -1310,7 +1310,7 @@ export class LemmyHttp {
   async #wrapper<BodyType extends object, ResponseType>(
     type_: HttpType,
     endpoint: string,
-    form: BodyType
+    form: BodyType,
   ): Promise<ResponseType> {
     let response: Response;
     if (type_ === HttpType.Get) {
