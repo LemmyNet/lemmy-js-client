@@ -12,6 +12,7 @@ cp db_schema/bindings/* ../../lemmy-js-client/src/types/
 cp db_views/bindings/* ../../lemmy-js-client/src/types/
 cp db_views_actor/bindings/* ../../lemmy-js-client/src/types/
 cp db_views_moderator/bindings/* ../../lemmy-js-client/src/types/
+cp utils/bindings/* ../../lemmy-js-client/src/types/
 
 popd
 
