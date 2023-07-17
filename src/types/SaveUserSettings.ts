@@ -5,6 +5,8 @@ import type { SortType } from "./SortType";
 
 export interface SaveUserSettings {
   show_nsfw?: boolean;
+  blur_nsfw?: boolean;
+  auto_expand?: boolean;
   show_scores?: boolean;
   theme?: string;
   default_sort_type?: SortType;

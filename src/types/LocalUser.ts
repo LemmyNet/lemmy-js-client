@@ -9,6 +9,8 @@ export interface LocalUser {
   person_id: PersonId;
   email?: string;
   show_nsfw: boolean;
+  blur_nsfw: boolean;
+  auto_expand: boolean;
   theme: string;
   default_sort_type: SortType;
   default_listing_type: ListingType;
