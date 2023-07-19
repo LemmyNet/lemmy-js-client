@@ -5,6 +5,8 @@ import type { SortType } from "./SortType";
 
 export interface SaveUserSettings {
   show_nsfw?: boolean;
+  blur_nsfw?: boolean;
+  auto_expand?: boolean;
   show_scores?: boolean;
   theme?: string;
   default_sort_type?: SortType;
@@ -26,5 +28,4 @@ export interface SaveUserSettings {
   generate_totp_2fa?: boolean;
   auth: string;
   open_links_in_new_tab?: boolean;
-  infinite_scroll_enabled?: boolean;
 }

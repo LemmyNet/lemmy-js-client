@@ -9,6 +9,8 @@ export interface LocalUser {
   person_id: PersonId;
   email?: string;
   show_nsfw: boolean;
+  blur_nsfw: boolean;
+  auto_expand: boolean;
   theme: string;
   default_sort_type: SortType;
   default_listing_type: ListingType;
@@ -24,5 +26,4 @@ export interface LocalUser {
   accepted_application: boolean;
   totp_2fa_url?: string;
   open_links_in_new_tab: boolean;
-  infinite_scroll_enabled: boolean;
 }
