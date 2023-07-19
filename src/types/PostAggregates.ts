@@ -15,4 +15,5 @@ export interface PostAggregates {
   featured_local: boolean;
   hot_rank: number;
   hot_rank_active: number;
+  controversy_rank: number;
 }
