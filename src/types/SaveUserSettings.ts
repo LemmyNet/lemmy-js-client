@@ -28,4 +28,5 @@ export interface SaveUserSettings {
   generate_totp_2fa?: boolean;
   auth: string;
   open_links_in_new_tab?: boolean;
+  infinite_scroll_enabled?: boolean;
 }
