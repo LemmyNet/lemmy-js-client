@@ -23,6 +23,7 @@ export interface LocalUser {
   email_verified: boolean;
   accepted_application: boolean;
   totp_2fa_url?: string;
+  admin: boolean;
   open_links_in_new_tab: boolean;
   blur_nsfw: boolean;
   auto_expand: boolean;
