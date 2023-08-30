@@ -6,6 +6,5 @@ export interface EditComment {
   comment_id: CommentId;
   content?: string;
   language_id?: LanguageId;
-  form_id?: string;
   auth: string;
 }

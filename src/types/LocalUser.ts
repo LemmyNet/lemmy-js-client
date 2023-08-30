@@ -27,4 +27,5 @@ export interface LocalUser {
   blur_nsfw: boolean;
   auto_expand: boolean;
   infinite_scroll_enabled: boolean;
+  admin: boolean;
 }

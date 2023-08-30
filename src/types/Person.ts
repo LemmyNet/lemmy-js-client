@@ -17,7 +17,6 @@ export interface Person {
   deleted: boolean;
   inbox_url: string;
   matrix_user_id?: string;
-  admin: boolean;
   bot_account: boolean;
   ban_expires?: string;
   instance_id: InstanceId;
