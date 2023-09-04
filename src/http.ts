@@ -134,6 +134,8 @@ import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
+import { BlockInstance } from "./types/BlockInstance";
+import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1207,7 +1209,7 @@ export class LemmyHttp {
    *
    * `HTTP.POST /custom_emoji`
    */
-  async createCustomEmoji(form: CreateCustomEmoji) {
+  createCustomEmoji(form: CreateCustomEmoji) {
     return this.#wrapper<CreateCustomEmoji, CustomEmojiResponse>(
       HttpType.Post,
       "/custom_emoji",
@@ -1220,7 +1222,7 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /custom_emoji`
    */
-  async editCustomEmoji(form: EditCustomEmoji) {
+  editCustomEmoji(form: EditCustomEmoji) {
     return this.#wrapper<EditCustomEmoji, CustomEmojiResponse>(
       HttpType.Put,
       "/custom_emoji",
@@ -1233,7 +1235,7 @@ export class LemmyHttp {
    *
    * `HTTP.Post /custom_emoji/delete`
    */
-  async deleteCustomEmoji(form: DeleteCustomEmoji) {
+  deleteCustomEmoji(form: DeleteCustomEmoji) {
     return this.#wrapper<DeleteCustomEmoji, DeleteCustomEmojiResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
@@ -1246,10 +1248,23 @@ export class LemmyHttp {
    *
    * `HTTP.Get /federated_instances`
    */
-  async getFederatedInstances(form: GetFederatedInstances = {}) {
+  getFederatedInstances(form: GetFederatedInstances = {}) {
     return this.#wrapper<GetFederatedInstances, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
+      form,
+    );
+  }
+
+  /**
+   * Block an instance
+   *
+   * `HTTP.POST /site/block`
+   */
+  blockInstance(form: BlockInstance) {
+    return this.#wrapper<BlockInstance, BlockInstanceResponse>(
+      HttpType.Post,
+      "/site/block",
       form,
     );
   }
