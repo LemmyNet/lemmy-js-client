@@ -2,6 +2,7 @@
 import type { ListingType } from "./ListingType";
 import type { LocalUserId } from "./LocalUserId";
 import type { PersonId } from "./PersonId";
+import type { PostListingMode } from "./PostListingMode";
 import type { SortType } from "./SortType";
 
 export interface LocalUser {
@@ -28,4 +29,5 @@ export interface LocalUser {
   auto_expand: boolean;
   infinite_scroll_enabled: boolean;
   admin: boolean;
+  post_listing_mode: PostListingMode;
 }
