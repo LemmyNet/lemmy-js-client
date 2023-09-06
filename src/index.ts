@@ -194,6 +194,7 @@ export { PostFeatureType } from "./types/PostFeatureType";
 export { PostId } from "./types/PostId";
 export { PostJoin } from "./types/PostJoin";
 export { PostJoinResponse } from "./types/PostJoinResponse";
+export { PostListingMode } from "./types/PostListingMode";
 export { PostOrCommentId } from "./types/PostOrCommentId";
 export { PostReport } from "./types/PostReport";
 export { PostReportId } from "./types/PostReportId";
