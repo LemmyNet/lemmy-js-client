@@ -19,6 +19,8 @@ export { BanPersonResponse } from "./types/BanPersonResponse";
 export { BannedPersonsResponse } from "./types/BannedPersonsResponse";
 export { BlockCommunity } from "./types/BlockCommunity";
 export { BlockCommunityResponse } from "./types/BlockCommunityResponse";
+export { BlockInstance } from "./types/BlockInstance";
+export { BlockInstanceResponse } from "./types/BlockInstanceResponse";
 export { BlockPerson } from "./types/BlockPerson";
 export { BlockPersonResponse } from "./types/BlockPersonResponse";
 export { CaptchaResponse } from "./types/CaptchaResponse";
@@ -117,6 +119,7 @@ export { GetUnreadRegistrationApplicationCount } from "./types/GetUnreadRegistra
 export { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
 export { HideCommunity } from "./types/HideCommunity";
 export { Instance } from "./types/Instance";
+export { InstanceBlockView } from "./types/InstanceBlockView";
 export { InstanceId } from "./types/InstanceId";
 export { Language } from "./types/Language";
 export { LanguageId } from "./types/LanguageId";
