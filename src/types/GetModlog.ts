@@ -10,5 +10,4 @@ export interface GetModlog {
   limit?: number;
   type_?: ModlogActionType;
   other_person_id?: PersonId;
-  auth?: string;
 }

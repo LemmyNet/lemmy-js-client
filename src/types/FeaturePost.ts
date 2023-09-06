@@ -6,5 +6,4 @@ export interface FeaturePost {
   post_id: PostId;
   featured: boolean;
   feature_type: PostFeatureType;
-  auth: string;
 }

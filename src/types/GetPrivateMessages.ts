@@ -6,5 +6,4 @@ export interface GetPrivateMessages {
   page?: number;
   limit?: number;
   creator_id?: PersonId;
-  auth: string;
 }

@@ -4,5 +4,4 @@ export interface ListPrivateMessageReports {
   page?: number;
   limit?: number;
   unresolved_only?: boolean;
-  auth: string;
 }

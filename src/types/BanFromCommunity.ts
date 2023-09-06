@@ -9,5 +9,4 @@ export interface BanFromCommunity {
   remove_data?: boolean;
   reason?: string;
   expires?: number;
-  auth: string;
 }

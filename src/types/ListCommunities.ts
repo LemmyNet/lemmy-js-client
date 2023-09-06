@@ -8,5 +8,4 @@ export interface ListCommunities {
   show_nsfw?: boolean;
   page?: number;
   limit?: number;
-  auth?: string;
 }

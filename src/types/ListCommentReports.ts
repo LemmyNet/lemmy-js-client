@@ -6,5 +6,4 @@ export interface ListCommentReports {
   limit?: number;
   unresolved_only?: boolean;
   community_id?: CommunityId;
-  auth: string;
 }

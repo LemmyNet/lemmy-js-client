@@ -5,5 +5,4 @@ export interface HideCommunity {
   community_id: CommunityId;
   hidden: boolean;
   reason?: string;
-  auth: string;
 }

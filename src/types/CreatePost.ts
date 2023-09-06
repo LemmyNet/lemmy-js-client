@@ -10,5 +10,4 @@ export interface CreatePost {
   honeypot?: string;
   nsfw?: boolean;
   language_id?: LanguageId;
-  auth: string;
 }

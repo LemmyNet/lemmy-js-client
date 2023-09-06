@@ -18,5 +18,4 @@ export interface GetComments {
   saved_only?: boolean;
   liked_only?: boolean;
   disliked_only?: boolean;
-  auth?: string;
 }

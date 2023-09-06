@@ -5,5 +5,4 @@ export interface RemovePost {
   post_id: PostId;
   removed: boolean;
   reason?: string;
-  auth: string;
 }

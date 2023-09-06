@@ -5,5 +5,4 @@ export interface RemoveComment {
   comment_id: CommentId;
   removed: boolean;
   reason?: string;
-  auth: string;
 }
