@@ -6,5 +6,5 @@ import type { Site } from "./Site";
 export interface InstanceBlockView {
   person: Person;
   instance: Instance;
-  site: Site | null;
+  site?: Site;
 }
