@@ -1359,6 +1359,13 @@ export class LemmyHttp {
       return json;
     }
   }
+
+  /**
+   * Set the headers (can be used to set the auth header)
+   */
+  setHeaders(headers: { [key: string]: string }) {
+    this.#headers = headers;
+  }
 }
 
 function encodeGetParams<BodyType extends object>(p: BodyType): string {
