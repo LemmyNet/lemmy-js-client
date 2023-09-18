@@ -136,6 +136,7 @@ import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 import { BlockInstance } from "./types/BlockInstance";
 import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
+import { HideCommunity } from "./types/HideCommunity";
 
 enum HttpType {
   Get = "GET",
@@ -341,6 +342,19 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/delete",
+      form,
+    );
+  }
+
+  /**
+   * Hide a community from public view.
+   *
+   * `HTTP.PUT /community/hide`
+   */
+  hideCommunity(form: HideCommunity) {
+    return this.#wrapper<HideCommunity, CommunityResponse>(
+      HttpType.Put,
+      "/community/hide",
       form,
     );
   }
