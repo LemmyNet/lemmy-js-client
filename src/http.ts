@@ -1268,13 +1268,13 @@ export class LemmyHttp {
   }: UploadImage): Promise<UploadImageResponse> {
     const formData = createFormData(image);
 
-    // If jwt cookie not already set by browser, set it with passed in auth
+    // If auth cookie not already set by browser, set it with passed in auth
     const headers = {} as any;
     if (
-      !globalThis?.document?.cookie?.includes("jwt=") &&
-      !this.#headers?.Cookie?.includes("jwt=")
+      !globalThis?.document?.cookie?.includes("auth=") &&
+      !this.#headers?.Cookie?.includes("auth=")
     ) {
-      headers.Cookie = `jwt=${auth}`;
+      headers.Cookie = `auth=${auth}`;
     }
 
     let url: string | undefined = undefined;
