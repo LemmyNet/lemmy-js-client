@@ -126,6 +126,7 @@ import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
+import { HideCommunity } from "./types/HideCommunity";
 
 enum HttpType {
   Get = "GET",
@@ -331,6 +332,19 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/delete",
+      form,
+    );
+  }
+
+  /**
+   * Hide a community from public view.
+   *
+   * `HTTP.PUT /community/hide`
+   */
+  hideCommunity(form: HideCommunity) {
+    return this.#wrapper<HideCommunity, CommunityResponse>(
+      HttpType.Put,
+      "/community/hide",
       form,
     );
   }
@@ -1334,6 +1348,13 @@ export class LemmyHttp {
     } else {
       return json;
     }
+  }
+
+  /**
+   * Set the headers (can be used to set the auth header)
+   */
+  setHeaders(headers: { [key: string]: string }) {
+    this.#headers = headers;
   }
 }
 
