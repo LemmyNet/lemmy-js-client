@@ -127,6 +127,8 @@ import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 import { HideCommunity } from "./types/HideCommunity";
+import { BlockInstance } from "./types/BlockInstance";
+import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1256,6 +1258,19 @@ export class LemmyHttp {
       HttpType.Get,
       "/federated_instances",
       {},
+    );
+  }
+
+  /**
+   * Block an instance.
+   *
+   * `HTTP.Post /site/block`
+   */
+  blockInstance(form: BlockInstance) {
+    return this.#wrapper<BlockInstance, BlockInstanceResponse>(
+      HttpType.Post,
+      "/site/block",
+      form,
     );
   }
 
