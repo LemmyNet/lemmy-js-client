@@ -18,4 +18,5 @@ export type SortType =
   | "TopThreeMonths"
   | "TopSixMonths"
   | "TopNineMonths"
-  | "Controversial";
+  | "Controversial"
+  | "Scaled";
