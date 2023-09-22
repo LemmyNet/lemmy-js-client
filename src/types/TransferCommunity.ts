@@ -5,5 +5,4 @@ import type { PersonId } from "./PersonId";
 export interface TransferCommunity {
   community_id: CommunityId;
   person_id: PersonId;
-  auth: string;
 }

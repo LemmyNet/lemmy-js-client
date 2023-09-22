@@ -8,5 +8,4 @@ export interface CreateComment {
   post_id: PostId;
   parent_id?: CommentId;
   language_id?: LanguageId;
-  auth: string;
 }

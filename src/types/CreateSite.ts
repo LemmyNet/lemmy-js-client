@@ -43,5 +43,4 @@ export interface CreateSite {
   blocked_instances?: Array<string>;
   taglines?: Array<string>;
   registration_mode?: RegistrationMode;
-  auth: string;
 }

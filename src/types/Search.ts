@@ -13,7 +13,6 @@ export interface Search {
   type_?: SearchType;
   sort?: SortType;
   listing_type?: ListingType;
-  page?: number;
-  limit?: number;
-  auth?: string;
+  page?: /* integer */ number;
+  limit?: /* integer */ number;
 }
