@@ -2,7 +2,7 @@
 
 # First re-generate the types by running cargo test on lemmy
 pushd ../lemmy/scripts
-#./test.sh
+./test.sh
 
 cd ../crates
 
