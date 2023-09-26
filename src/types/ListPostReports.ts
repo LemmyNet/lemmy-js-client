@@ -2,8 +2,8 @@
 import type { CommunityId } from "./CommunityId";
 
 export interface ListPostReports {
-  page?: number;
-  limit?: number;
+  page?: /* integer */ number;
+  limit?: /* integer */ number;
   unresolved_only?: boolean;
   community_id?: CommunityId;
 }

@@ -23,11 +23,11 @@ export interface LocalUser {
   show_new_post_notifs: boolean;
   email_verified: boolean;
   accepted_application: boolean;
-  totp_2fa_url?: string;
   open_links_in_new_tab: boolean;
   blur_nsfw: boolean;
   auto_expand: boolean;
   infinite_scroll_enabled: boolean;
   admin: boolean;
   post_listing_mode: PostListingMode;
+  totp_2fa_enabled: boolean;
 }

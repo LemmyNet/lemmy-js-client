@@ -6,6 +6,6 @@ export interface ListCommunities {
   type_?: ListingType;
   sort?: SortType;
   show_nsfw?: boolean;
-  page?: number;
-  limit?: number;
+  page?: /* integer */ number;
+  limit?: /* integer */ number;
 }

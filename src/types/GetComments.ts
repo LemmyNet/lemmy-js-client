@@ -9,8 +9,8 @@ export interface GetComments {
   type_?: ListingType;
   sort?: CommentSortType;
   max_depth?: number;
-  page?: number;
-  limit?: number;
+  page?: /* integer */ number;
+  limit?: /* integer */ number;
   community_id?: CommunityId;
   community_name?: string;
   post_id?: PostId;

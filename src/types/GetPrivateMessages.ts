@@ -3,7 +3,7 @@ import type { PersonId } from "./PersonId";
 
 export interface GetPrivateMessages {
   unread_only?: boolean;
-  page?: number;
-  limit?: number;
+  page?: /* integer */ number;
+  limit?: /* integer */ number;
   creator_id?: PersonId;
 }

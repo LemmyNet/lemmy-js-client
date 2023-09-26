@@ -6,5 +6,5 @@ export interface BanPerson {
   ban: boolean;
   remove_data?: boolean;
   reason?: string;
-  expires?: number;
+  expires?: /* integer */ number;
 }

@@ -2,6 +2,6 @@
 
 export interface ListRegistrationApplications {
   unread_only?: boolean;
-  page?: number;
-  limit?: number;
+  page?: /* integer */ number;
+  limit?: /* integer */ number;
 }

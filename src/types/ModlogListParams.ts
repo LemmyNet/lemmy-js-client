@@ -6,7 +6,7 @@ export interface ModlogListParams {
   community_id?: CommunityId;
   mod_person_id?: PersonId;
   other_person_id?: PersonId;
-  page?: number;
-  limit?: number;
+  page?: /* integer */ number;
+  limit?: /* integer */ number;
   hide_modlog_names: boolean;
 }
