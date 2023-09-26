@@ -1,6 +1,6 @@
 {
   "name": "lemmy-js-client",
-  "version": "0.19.0-rc.9",
+  "version": "0.19.0-rc.12",
   "description": "A javascript / typescript client for Lemmy",
   "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "license": "AGPL-3.0",

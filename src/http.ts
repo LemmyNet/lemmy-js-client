@@ -48,15 +48,12 @@ import { EditPrivateMessage } from "./types/EditPrivateMessage";
 import { EditSite } from "./types/EditSite";
 import { FeaturePost } from "./types/FeaturePost";
 import { FollowCommunity } from "./types/FollowCommunity";
-import { GetBannedPersons } from "./types/GetBannedPersons";
-import { GetCaptcha } from "./types/GetCaptcha";
 import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
 import { GetComment } from "./types/GetComment";
 import { GetComments } from "./types/GetComments";
 import { GetCommentsResponse } from "./types/GetCommentsResponse";
 import { GetCommunity } from "./types/GetCommunity";
 import { GetCommunityResponse } from "./types/GetCommunityResponse";
-import { GetFederatedInstances } from "./types/GetFederatedInstances";
 import { GetFederatedInstancesResponse } from "./types/GetFederatedInstancesResponse";
 import { GetModlog } from "./types/GetModlog";
 import { GetModlogResponse } from "./types/GetModlogResponse";
@@ -73,15 +70,11 @@ import { GetReplies } from "./types/GetReplies";
 import { GetRepliesResponse } from "./types/GetRepliesResponse";
 import { GetReportCount } from "./types/GetReportCount";
 import { GetReportCountResponse } from "./types/GetReportCountResponse";
-import { GetSite } from "./types/GetSite";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
 import { GetSiteMetadataResponse } from "./types/GetSiteMetadataResponse";
 import { GetSiteResponse } from "./types/GetSiteResponse";
-import { GetUnreadCount } from "./types/GetUnreadCount";
 import { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
-import { GetUnreadRegistrationApplicationCount } from "./types/GetUnreadRegistrationApplicationCount";
 import { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
-import { LeaveAdmin } from "./types/LeaveAdmin";
 import { ListCommentReports } from "./types/ListCommentReports";
 import { ListCommentReportsResponse } from "./types/ListCommentReportsResponse";
 import { ListCommunities } from "./types/ListCommunities";
@@ -95,7 +88,6 @@ import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationAp
 import { LockPost } from "./types/LockPost";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
-import { MarkAllAsRead } from "./types/MarkAllAsRead";
 import { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
 import { MarkPersonMentionAsRead } from "./types/MarkPersonMentionAsRead";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
@@ -134,9 +126,9 @@ import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
+import { HideCommunity } from "./types/HideCommunity";
 import { BlockInstance } from "./types/BlockInstance";
 import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
-import { HideCommunity } from "./types/HideCommunity";
 
 enum HttpType {
   Get = "GET",
@@ -181,8 +173,8 @@ export class LemmyHttp {
    *
    * `HTTP.GET /site`
    */
-  getSite(form: GetSite = {}) {
-    return this.#wrapper<GetSite, GetSiteResponse>(HttpType.Get, "/site", form);
+  getSite() {
+    return this.#wrapper<object, GetSiteResponse>(HttpType.Get, "/site", {});
   }
 
   /**
@@ -212,11 +204,11 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/leave_admin`
    */
-  leaveAdmin(form: LeaveAdmin) {
-    return this.#wrapper<LeaveAdmin, GetSiteResponse>(
+  leaveAdmin() {
+    return this.#wrapper<object, GetSiteResponse>(
       HttpType.Post,
       "/user/leave_admin",
-      form,
+      {},
     );
   }
 
@@ -964,11 +956,11 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/banned`
    */
-  getBannedPersons(form: GetBannedPersons) {
-    return this.#wrapper<GetBannedPersons, BannedPersonsResponse>(
+  getBannedPersons() {
+    return this.#wrapper<object, BannedPersonsResponse>(
       HttpType.Get,
       "/user/banned",
-      form,
+      {},
     );
   }
 
@@ -990,11 +982,11 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/get_captcha`
    */
-  getCaptcha(form: GetCaptcha = {}) {
-    return this.#wrapper<GetCaptcha, GetCaptchaResponse>(
+  getCaptcha() {
+    return this.#wrapper<object, GetCaptchaResponse>(
       HttpType.Get,
       "/user/get_captcha",
-      form,
+      {},
     );
   }
 
@@ -1042,11 +1034,11 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/mark_all_as_read`
    */
-  markAllAsRead(form: MarkAllAsRead) {
-    return this.#wrapper<MarkAllAsRead, GetRepliesResponse>(
+  markAllAsRead() {
+    return this.#wrapper<object, GetRepliesResponse>(
       HttpType.Post,
       "/user/mark_all_as_read",
-      form,
+      {},
     );
   }
 
@@ -1094,11 +1086,11 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/unread_count`
    */
-  getUnreadCount(form: GetUnreadCount) {
-    return this.#wrapper<GetUnreadCount, GetUnreadCountResponse>(
+  getUnreadCount() {
+    return this.#wrapper<object, GetUnreadCountResponse>(
       HttpType.Get,
       "/user/unread_count",
-      form,
+      {},
     );
   }
 
@@ -1133,13 +1125,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /admin/registration_application/count`
    */
-  getUnreadRegistrationApplicationCount(
-    form: GetUnreadRegistrationApplicationCount,
-  ) {
-    return this.#wrapper<
-      GetUnreadRegistrationApplicationCount,
-      GetUnreadRegistrationApplicationCountResponse
-    >(HttpType.Get, "/admin/registration_application/count", form);
+  getUnreadRegistrationApplicationCount() {
+    return this.#wrapper<object, GetUnreadRegistrationApplicationCountResponse>(
+      HttpType.Get,
+      "/admin/registration_application/count",
+      {},
+    );
   }
 
   /**
@@ -1262,18 +1253,18 @@ export class LemmyHttp {
    *
    * `HTTP.Get /federated_instances`
    */
-  getFederatedInstances(form: GetFederatedInstances = {}) {
-    return this.#wrapper<GetFederatedInstances, GetFederatedInstancesResponse>(
+  getFederatedInstances() {
+    return this.#wrapper<object, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
-      form,
+      {},
     );
   }
 
   /**
-   * Block an instance
+   * Block an instance.
    *
-   * `HTTP.POST /site/block`
+   * `HTTP.Post /site/block`
    */
   blockInstance(form: BlockInstance) {
     return this.#wrapper<BlockInstance, BlockInstanceResponse>(
@@ -1292,13 +1283,13 @@ export class LemmyHttp {
   }: UploadImage): Promise<UploadImageResponse> {
     const formData = createFormData(image);
 
-    // If jwt cookie not already set by browser, set it with passed in auth
+    // If auth cookie not already set by browser, set it with passed in auth
     const headers = {} as any;
     if (
-      !globalThis?.document?.cookie?.includes("jwt=") &&
-      !this.#headers?.Cookie?.includes("jwt=")
+      !globalThis?.document?.cookie?.includes("auth=") &&
+      !this.#headers?.Cookie?.includes("auth=")
     ) {
-      headers.Cookie = `jwt=${auth}`;
+      headers.Cookie = `auth=${auth}`;
     }
 
     let url: string | undefined = undefined;
