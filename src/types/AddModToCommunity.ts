@@ -6,5 +6,4 @@ export interface AddModToCommunity {
   community_id: CommunityId;
   person_id: PersonId;
   added: boolean;
-  auth: string;
 }

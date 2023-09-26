@@ -9,5 +9,4 @@ export interface EditPost {
   body?: string;
   nsfw?: boolean;
   language_id?: LanguageId;
-  auth: string;
 }

@@ -4,5 +4,4 @@ export interface ListRegistrationApplications {
   unread_only?: boolean;
   page?: number;
   limit?: number;
-  auth: string;
 }

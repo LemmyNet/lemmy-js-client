@@ -15,5 +15,4 @@ export interface Search {
   listing_type?: ListingType;
   page?: number;
   limit?: number;
-  auth?: string;
 }

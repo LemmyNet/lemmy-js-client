@@ -11,5 +11,4 @@ export interface GetPersonDetails {
   limit?: number;
   community_id?: CommunityId;
   saved_only?: boolean;
-  auth?: string;
 }

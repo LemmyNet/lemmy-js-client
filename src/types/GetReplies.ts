@@ -6,5 +6,4 @@ export interface GetReplies {
   page?: number;
   limit?: number;
   unread_only?: boolean;
-  auth: string;
 }

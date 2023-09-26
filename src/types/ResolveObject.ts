@@ -2,5 +2,4 @@
 
 export interface ResolveObject {
   q: string;
-  auth: string | null;
 }

@@ -22,4 +22,5 @@ export interface PostAggregates {
   creator_id: PersonId;
   controversy_rank: number;
   instance_id: InstanceId;
+  scaled_rank: number;
 }

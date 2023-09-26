@@ -6,5 +6,4 @@ export interface ListPostReports {
   limit?: number;
   unresolved_only?: boolean;
   community_id?: CommunityId;
-  auth: string;
 }

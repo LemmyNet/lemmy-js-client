@@ -6,5 +6,4 @@ export interface GetPersonMentions {
   page?: number;
   limit?: number;
   unread_only?: boolean;
-  auth: string;
 }

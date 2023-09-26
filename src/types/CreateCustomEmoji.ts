@@ -6,5 +6,4 @@ export interface CreateCustomEmoji {
   image_url: string;
   alt_text: string;
   keywords: Array<string>;
-  auth: string;
 }
