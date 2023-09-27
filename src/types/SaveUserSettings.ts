@@ -25,7 +25,6 @@ export interface SaveUserSettings {
   show_read_posts?: boolean;
   show_new_post_notifs?: boolean;
   discussion_languages?: Array<LanguageId>;
-  generate_totp_2fa?: boolean;
   open_links_in_new_tab?: boolean;
   infinite_scroll_enabled?: boolean;
 }

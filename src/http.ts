@@ -129,6 +129,9 @@ import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
 import { HideCommunity } from "./types/HideCommunity";
 import { BlockInstance } from "./types/BlockInstance";
 import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
+import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
+import { UpdateTotp } from "./types/UpdateTotp";
+import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 
 enum HttpType {
   Get = "GET",
@@ -209,6 +212,38 @@ export class LemmyHttp {
       HttpType.Post,
       "/user/leave_admin",
       {},
+    );
+  }
+
+  /**
+   * Generate a TOTP / two-factor secret.
+   *
+   * Afterwards you need to call `/user/totp/update` with a valid token to enable it.
+   *
+   * `HTTP.POST /user/totp/generate`
+   */
+  generateTotpSecret() {
+    return this.#wrapper<object, GenerateTotpSecretResponse>(
+      HttpType.Post,
+      "/user/totp/generate",
+      {},
+    );
+  }
+
+  /**
+   * Enable / Disable TOTP / two-factor authentication.
+   *
+   * To enable, you need to first call `/user/totp/generate` and then pass a valid token to this.
+   *
+   * Disabling is only possible if 2FA was previously enabled. Again it is necessary to pass a valid token.
+   *
+   * `HTTP.POST /user/totp/update`
+   */
+  updateTotp(form: UpdateTotp) {
+    return this.#wrapper<object, UpdateTotpResponse>(
+      HttpType.Post,
+      "/user/totp/update",
+      form,
     );
   }
 

@@ -241,4 +241,4 @@ export { UpdateTotp } from "./types/UpdateTotp";
 export { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 export { VerifyEmail } from "./types/VerifyEmail";
 export { VerifyEmailResponse } from "./types/VerifyEmailResponse";
-export { ImageFile, UploadImage, UploadImageResponse } from "./types/others";
+export { UploadImage, UploadImageResponse, ImageFile } from "./types/others";
