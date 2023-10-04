@@ -22,3 +22,12 @@ export interface ImageFile {
   file: string;
   delete_token: string;
 }
+
+export interface DeleteImage {
+  token: string;
+  filename: string;
+  /**
+   * Optional if cookie with jwt set is already present. Otherwise, auth is required.
+   */
+  auth?: string;
+}
