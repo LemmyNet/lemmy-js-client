@@ -125,7 +125,12 @@ import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
-import { UploadImage, UploadImageResponse, VERSION } from "./types/others";
+import {
+  DeleteImage,
+  UploadImage,
+  UploadImageResponse,
+  VERSION,
+} from "./types/others";
 import { HideCommunity } from "./types/HideCommunity";
 import { BlockInstance } from "./types/BlockInstance";
 import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
@@ -1356,6 +1361,32 @@ export class LemmyHttp {
       url,
       delete_url,
     };
+  }
+
+  /**
+   * Delete a pictrs image
+   */
+  async deleteImage({ token, filename, auth }: DeleteImage): Promise<any> {
+    // If auth cookie not already set by browser, set it with passed in auth
+    const headers = {} as any;
+    if (
+      !globalThis?.document?.cookie?.includes("auth=") &&
+      !this.#headers?.Cookie?.includes("auth=")
+    ) {
+      headers.Cookie = `auth=${auth}`;
+    }
+
+    const deleteUrl = `${this.#pictrsUrl}/delete/${token}/${filename}`;
+
+    const response = await this.#fetchFunction(deleteUrl, {
+      method: HttpType.Get,
+      headers: {
+        ...this.#headers,
+        ...headers,
+      },
+    });
+
+    return await response.json();
   }
 
   #buildFullUrl(endpoint: string) {
