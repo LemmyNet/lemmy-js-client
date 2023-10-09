@@ -235,10 +235,16 @@ export { SiteResponse } from "./types/SiteResponse";
 export { SiteView } from "./types/SiteView";
 export { SortType } from "./types/SortType";
 export { SubscribedType } from "./types/SubscribedType";
+export { SuccessResponse } from "./types/SuccessResponse";
 export { Tagline } from "./types/Tagline";
 export { TransferCommunity } from "./types/TransferCommunity";
 export { UpdateTotp } from "./types/UpdateTotp";
 export { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 export { VerifyEmail } from "./types/VerifyEmail";
 export { VerifyEmailResponse } from "./types/VerifyEmailResponse";
-export { UploadImage, UploadImageResponse, ImageFile } from "./types/others";
+export {
+  UploadImage,
+  UploadImageResponse,
+  ImageFile,
+  DeleteImage,
+} from "./types/others";
