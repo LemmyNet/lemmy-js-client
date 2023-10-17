@@ -18,4 +18,6 @@ export interface LocalSiteRateLimit {
   search_per_second: number;
   published: string;
   updated?: string;
+  import_user_settings: number;
+  import_user_settings_per_second: number;
 }

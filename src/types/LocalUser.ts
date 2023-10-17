@@ -19,7 +19,6 @@ export interface LocalUser {
   show_scores: boolean;
   show_bot_accounts: boolean;
   show_read_posts: boolean;
-  show_new_post_notifs: boolean;
   email_verified: boolean;
   accepted_application: boolean;
   open_links_in_new_tab: boolean;
@@ -29,4 +28,5 @@ export interface LocalUser {
   admin: boolean;
   post_listing_mode: PostListingMode;
   totp_2fa_enabled: boolean;
+  enable_keyboard_navigation: boolean;
 }

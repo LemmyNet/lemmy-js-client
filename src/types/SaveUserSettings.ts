@@ -27,4 +27,5 @@ export interface SaveUserSettings {
   discussion_languages?: Array<LanguageId>;
   open_links_in_new_tab?: boolean;
   infinite_scroll_enabled?: boolean;
+  enable_keyboard_navigation?: boolean;
 }
