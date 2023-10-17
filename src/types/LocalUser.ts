@@ -29,4 +29,5 @@ export interface LocalUser {
   post_listing_mode: PostListingMode;
   totp_2fa_enabled: boolean;
   enable_keyboard_navigation: boolean;
+  enable_animated_images: boolean;
 }

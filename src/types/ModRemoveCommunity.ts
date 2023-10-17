@@ -8,6 +8,5 @@ export interface ModRemoveCommunity {
   community_id: CommunityId;
   reason?: string;
   removed: boolean;
-  expires?: string;
   when_: string;
 }
