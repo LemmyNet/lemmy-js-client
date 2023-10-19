@@ -129,6 +129,7 @@ export { LocalUserView } from "./types/LocalUserView";
 export { LockPost } from "./types/LockPost";
 export { Login } from "./types/Login";
 export { LoginResponse } from "./types/LoginResponse";
+export { LoginToken } from "./types/LoginToken";
 export { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
 export { MarkPersonMentionAsRead } from "./types/MarkPersonMentionAsRead";
 export { MarkPostAsRead } from "./types/MarkPostAsRead";

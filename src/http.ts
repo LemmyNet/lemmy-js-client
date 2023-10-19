@@ -125,6 +125,7 @@ import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
 import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 import { SuccessResponse } from "./types/SuccessResponse";
+import { LoginToken } from "./types/LoginToken";
 
 enum HttpType {
   Get = "GET",
@@ -219,6 +220,59 @@ export class LemmyHttp {
     return this.#wrapper<object, GenerateTotpSecretResponse>(
       HttpType.Post,
       "/user/totp/generate",
+      {},
+    );
+  }
+
+  /**
+   * Export a backup of your user settings, including your saved content,
+   * followed communities, and blocks.
+   *
+   * `HTTP.GET /user/export_settings`
+   */
+  exportSettings() {
+    return this.#wrapper<object, any>(
+      HttpType.Get,
+      "/user/export_settings",
+      {},
+    );
+  }
+
+  /**
+   * Import a backup of your user settings.
+   *
+   * `HTTP.POST /user/import_settings`
+   */
+  importSettings(form: any) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/user/import_settings",
+      form,
+    );
+  }
+
+  /**
+   * List login tokens for your user
+   *
+   * `HTTP.GET /user/list_logins`
+   */
+  listLogins() {
+    return this.#wrapper<object, LoginToken[]>(
+      HttpType.Get,
+      "/user/list_logins",
+      {},
+    );
+  }
+
+  /**
+   * Returns an error message if your auth token is invalid
+   *
+   * `HTTP.GET /user/validate_auth`
+   */
+  validateAuth() {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Get,
+      "/user/validate_auth",
       {},
     );
   }
@@ -367,7 +421,7 @@ export class LemmyHttp {
   }
 
   /**
-   * Hide a community from public view.
+   * Hide a community from public / "All" view. Admins only.
    *
    * `HTTP.PUT /community/hide`
    */
