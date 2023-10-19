@@ -1,14 +1,21 @@
 import fetch from "cross-fetch";
 import FormData from "form-data";
 import { AddAdmin } from "./types/AddAdmin";
+import { AddAdminResponse } from "./types/AddAdminResponse";
 import { AddModToCommunity } from "./types/AddModToCommunity";
+import { AddModToCommunityResponse } from "./types/AddModToCommunityResponse";
 import { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 import { BanFromCommunity } from "./types/BanFromCommunity";
+import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
 import { BanPerson } from "./types/BanPerson";
+import { BanPersonResponse } from "./types/BanPersonResponse";
 import { BannedPersonsResponse } from "./types/BannedPersonsResponse";
 import { BlockCommunity } from "./types/BlockCommunity";
+import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
 import { BlockPerson } from "./types/BlockPerson";
+import { BlockPersonResponse } from "./types/BlockPersonResponse";
 import { ChangePassword } from "./types/ChangePassword";
+import { CommentReplyResponse } from "./types/CommentReplyResponse";
 import { CommentReportResponse } from "./types/CommentReportResponse";
 import { CommentResponse } from "./types/CommentResponse";
 import { CommunityResponse } from "./types/CommunityResponse";
@@ -25,9 +32,11 @@ import { CreatePrivateMessageReport } from "./types/CreatePrivateMessageReport";
 import { CreateSite } from "./types/CreateSite";
 import { CustomEmojiResponse } from "./types/CustomEmojiResponse";
 import { DeleteAccount } from "./types/DeleteAccount";
+import { DeleteAccountResponse } from "./types/DeleteAccountResponse";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
+import { DeleteCustomEmojiResponse } from "./types/DeleteCustomEmojiResponse";
 import { DeletePost } from "./types/DeletePost";
 import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 import { DistinguishComment } from "./types/DistinguishComment";
@@ -85,6 +94,7 @@ import { MarkPostAsRead } from "./types/MarkPostAsRead";
 import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 import { PasswordReset } from "./types/PasswordReset";
+import { PasswordResetResponse } from "./types/PasswordResetResponse";
 import { PersonMentionResponse } from "./types/PersonMentionResponse";
 import { PostReportResponse } from "./types/PostReportResponse";
 import { PostResponse } from "./types/PostResponse";
@@ -93,6 +103,7 @@ import { PrivateMessageResponse } from "./types/PrivateMessageResponse";
 import { PrivateMessagesResponse } from "./types/PrivateMessagesResponse";
 import { PurgeComment } from "./types/PurgeComment";
 import { PurgeCommunity } from "./types/PurgeCommunity";
+import { PurgeItemResponse } from "./types/PurgeItemResponse";
 import { PurgePerson } from "./types/PurgePerson";
 import { PurgePost } from "./types/PurgePost";
 import { Register } from "./types/Register";
@@ -113,6 +124,7 @@ import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
+import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import {
   DeleteImage,
   UploadImage,
@@ -121,6 +133,7 @@ import {
 } from "./types/others";
 import { HideCommunity } from "./types/HideCommunity";
 import { BlockInstance } from "./types/BlockInstance";
+import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
 import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
@@ -400,7 +413,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/block`
    */
   blockCommunity(form: BlockCommunity) {
-    return this.#wrapper<BlockCommunity, SuccessResponse>(
+    return this.#wrapper<BlockCommunity, BlockCommunityResponse>(
       HttpType.Post,
       "/community/block",
       form,
@@ -465,7 +478,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/ban_user`
    */
   banFromCommunity(form: BanFromCommunity) {
-    return this.#wrapper<BanFromCommunity, SuccessResponse>(
+    return this.#wrapper<BanFromCommunity, BanFromCommunityResponse>(
       HttpType.Post,
       "/community/ban_user",
       form,
@@ -478,7 +491,7 @@ export class LemmyHttp {
    * `HTTP.POST /community/mod`
    */
   addModToCommunity(form: AddModToCommunity) {
-    return this.#wrapper<AddModToCommunity, SuccessResponse>(
+    return this.#wrapper<AddModToCommunity, AddModToCommunityResponse>(
       HttpType.Post,
       "/community/mod",
       form,
@@ -730,7 +743,7 @@ export class LemmyHttp {
    * `HTTP.POST /comment/mark_as_read`
    */
   markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
-    return this.#wrapper<MarkCommentReplyAsRead, SuccessResponse>(
+    return this.#wrapper<MarkCommentReplyAsRead, CommentReplyResponse>(
       HttpType.Post,
       "/comment/mark_as_read",
       form,
@@ -1026,7 +1039,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/ban`
    */
   banPerson(form: BanPerson) {
-    return this.#wrapper<BanPerson, SuccessResponse>(
+    return this.#wrapper<BanPerson, BanPersonResponse>(
       HttpType.Post,
       "/user/ban",
       form,
@@ -1052,7 +1065,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/block`
    */
   blockPerson(form: BlockPerson) {
-    return this.#wrapper<BlockPerson, SuccessResponse>(
+    return this.#wrapper<BlockPerson, BlockPersonResponse>(
       HttpType.Post,
       "/user/block",
       form,
@@ -1078,7 +1091,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/delete_account`
    */
   deleteAccount(form: DeleteAccount) {
-    return this.#wrapper<DeleteAccount, SuccessResponse>(
+    return this.#wrapper<DeleteAccount, DeleteAccountResponse>(
       HttpType.Post,
       "/user/delete_account",
       form,
@@ -1091,7 +1104,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/password_reset`
    */
   passwordReset(form: PasswordReset) {
-    return this.#wrapper<PasswordReset, SuccessResponse>(
+    return this.#wrapper<PasswordReset, PasswordResetResponse>(
       HttpType.Post,
       "/user/password_reset",
       form,
@@ -1182,7 +1195,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/verify_email`
    */
   verifyEmail(form: VerifyEmail) {
-    return this.#wrapper<VerifyEmail, SuccessResponse>(
+    return this.#wrapper<VerifyEmail, VerifyEmailResponse>(
       HttpType.Post,
       "/user/verify_email",
       form,
@@ -1195,7 +1208,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/add`
    */
   addAdmin(form: AddAdmin) {
-    return this.#wrapper<AddAdmin, SuccessResponse>(
+    return this.#wrapper<AddAdmin, AddAdminResponse>(
       HttpType.Post,
       "/admin/add",
       form,
@@ -1245,7 +1258,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/person`
    */
   purgePerson(form: PurgePerson) {
-    return this.#wrapper<PurgePerson, SuccessResponse>(
+    return this.#wrapper<PurgePerson, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/person",
       form,
@@ -1258,7 +1271,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/community`
    */
   purgeCommunity(form: PurgeCommunity) {
-    return this.#wrapper<PurgeCommunity, SuccessResponse>(
+    return this.#wrapper<PurgeCommunity, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/community",
       form,
@@ -1271,7 +1284,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/post`
    */
   purgePost(form: PurgePost) {
-    return this.#wrapper<PurgePost, SuccessResponse>(
+    return this.#wrapper<PurgePost, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/post",
       form,
@@ -1284,7 +1297,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/comment`
    */
   purgeComment(form: PurgeComment) {
-    return this.#wrapper<PurgeComment, SuccessResponse>(
+    return this.#wrapper<PurgeComment, PurgeItemResponse>(
       HttpType.Post,
       "/admin/purge/comment",
       form,
@@ -1323,7 +1336,7 @@ export class LemmyHttp {
    * `HTTP.Post /custom_emoji/delete`
    */
   deleteCustomEmoji(form: DeleteCustomEmoji) {
-    return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
+    return this.#wrapper<DeleteCustomEmoji, DeleteCustomEmojiResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
       form,
@@ -1349,7 +1362,7 @@ export class LemmyHttp {
    * `HTTP.Post /site/block`
    */
   blockInstance(form: BlockInstance) {
-    return this.#wrapper<BlockInstance, SuccessResponse>(
+    return this.#wrapper<BlockInstance, BlockInstanceResponse>(
       HttpType.Post,
       "/site/block",
       form,
