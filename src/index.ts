@@ -65,11 +65,9 @@ export { CustomEmojiKeyword } from "./types/CustomEmojiKeyword";
 export { CustomEmojiResponse } from "./types/CustomEmojiResponse";
 export { CustomEmojiView } from "./types/CustomEmojiView";
 export { DeleteAccount } from "./types/DeleteAccount";
-export { DeleteAccountResponse } from "./types/DeleteAccountResponse";
 export { DeleteComment } from "./types/DeleteComment";
 export { DeleteCommunity } from "./types/DeleteCommunity";
 export { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
-export { DeleteCustomEmojiResponse } from "./types/DeleteCustomEmojiResponse";
 export { DeletePost } from "./types/DeletePost";
 export { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 export { DistinguishComment } from "./types/DistinguishComment";
@@ -172,7 +170,6 @@ export { MyUserInfo } from "./types/MyUserInfo";
 export { PaginationCursor } from "./types/PaginationCursor";
 export { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 export { PasswordReset } from "./types/PasswordReset";
-export { PasswordResetResponse } from "./types/PasswordResetResponse";
 export { Person } from "./types/Person";
 export { PersonAggregates } from "./types/PersonAggregates";
 export { PersonBlockId } from "./types/PersonBlockId";
@@ -206,7 +203,6 @@ export { PrivateMessageView } from "./types/PrivateMessageView";
 export { PrivateMessagesResponse } from "./types/PrivateMessagesResponse";
 export { PurgeComment } from "./types/PurgeComment";
 export { PurgeCommunity } from "./types/PurgeCommunity";
-export { PurgeItemResponse } from "./types/PurgeItemResponse";
 export { PurgePerson } from "./types/PurgePerson";
 export { PurgePost } from "./types/PurgePost";
 export { Register } from "./types/Register";
@@ -242,7 +238,6 @@ export { TransferCommunity } from "./types/TransferCommunity";
 export { UpdateTotp } from "./types/UpdateTotp";
 export { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 export { VerifyEmail } from "./types/VerifyEmail";
-export { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 export {
   UploadImage,
   UploadImageResponse,
