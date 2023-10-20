@@ -556,7 +556,7 @@ export class LemmyHttp {
    * `HTTP.POST /post/mark_as_read`
    */
   markPostAsRead(form: MarkPostAsRead) {
-    return this.#wrapper<MarkPostAsRead, PostResponse>(
+    return this.#wrapper<MarkPostAsRead, SuccessResponse>(
       HttpType.Post,
       "/post/mark_as_read",
       form,
