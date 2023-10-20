@@ -2,6 +2,7 @@
 import type { PostId } from "./PostId";
 
 export interface MarkPostAsRead {
-  post_id: PostId;
+  post_id?: PostId;
+  post_ids?: Array<PostId>;
   read: boolean;
 }
