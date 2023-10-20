@@ -32,11 +32,9 @@ import { CreatePrivateMessageReport } from "./types/CreatePrivateMessageReport";
 import { CreateSite } from "./types/CreateSite";
 import { CustomEmojiResponse } from "./types/CustomEmojiResponse";
 import { DeleteAccount } from "./types/DeleteAccount";
-import { DeleteAccountResponse } from "./types/DeleteAccountResponse";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
-import { DeleteCustomEmojiResponse } from "./types/DeleteCustomEmojiResponse";
 import { DeletePost } from "./types/DeletePost";
 import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 import { DistinguishComment } from "./types/DistinguishComment";
@@ -94,7 +92,6 @@ import { MarkPostAsRead } from "./types/MarkPostAsRead";
 import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 import { PasswordReset } from "./types/PasswordReset";
-import { PasswordResetResponse } from "./types/PasswordResetResponse";
 import { PersonMentionResponse } from "./types/PersonMentionResponse";
 import { PostReportResponse } from "./types/PostReportResponse";
 import { PostResponse } from "./types/PostResponse";
@@ -103,7 +100,6 @@ import { PrivateMessageResponse } from "./types/PrivateMessageResponse";
 import { PrivateMessagesResponse } from "./types/PrivateMessagesResponse";
 import { PurgeComment } from "./types/PurgeComment";
 import { PurgeCommunity } from "./types/PurgeCommunity";
-import { PurgeItemResponse } from "./types/PurgeItemResponse";
 import { PurgePerson } from "./types/PurgePerson";
 import { PurgePost } from "./types/PurgePost";
 import { Register } from "./types/Register";
@@ -124,7 +120,6 @@ import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
-import { VerifyEmailResponse } from "./types/VerifyEmailResponse";
 import {
   DeleteImage,
   UploadImage,
@@ -439,7 +434,7 @@ export class LemmyHttp {
    * `HTTP.PUT /community/hide`
    */
   hideCommunity(form: HideCommunity) {
-    return this.#wrapper<HideCommunity, CommunityResponse>(
+    return this.#wrapper<HideCommunity, SuccessResponse>(
       HttpType.Put,
       "/community/hide",
       form,
@@ -1091,7 +1086,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/delete_account`
    */
   deleteAccount(form: DeleteAccount) {
-    return this.#wrapper<DeleteAccount, DeleteAccountResponse>(
+    return this.#wrapper<DeleteAccount, SuccessResponse>(
       HttpType.Post,
       "/user/delete_account",
       form,
@@ -1104,7 +1099,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/password_reset`
    */
   passwordReset(form: PasswordReset) {
-    return this.#wrapper<PasswordReset, PasswordResetResponse>(
+    return this.#wrapper<PasswordReset, SuccessResponse>(
       HttpType.Post,
       "/user/password_reset",
       form,
@@ -1117,7 +1112,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/password_change`
    */
   passwordChangeAfterReset(form: PasswordChangeAfterReset) {
-    return this.#wrapper<PasswordChangeAfterReset, LoginResponse>(
+    return this.#wrapper<PasswordChangeAfterReset, SuccessResponse>(
       HttpType.Post,
       "/user/password_change",
       form,
@@ -1143,7 +1138,7 @@ export class LemmyHttp {
    * `HTTP.PUT /user/save_user_settings`
    */
   saveUserSettings(form: SaveUserSettings) {
-    return this.#wrapper<SaveUserSettings, LoginResponse>(
+    return this.#wrapper<SaveUserSettings, SuccessResponse>(
       HttpType.Put,
       "/user/save_user_settings",
       form,
@@ -1195,7 +1190,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/verify_email`
    */
   verifyEmail(form: VerifyEmail) {
-    return this.#wrapper<VerifyEmail, VerifyEmailResponse>(
+    return this.#wrapper<VerifyEmail, SuccessResponse>(
       HttpType.Post,
       "/user/verify_email",
       form,
@@ -1258,7 +1253,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/person`
    */
   purgePerson(form: PurgePerson) {
-    return this.#wrapper<PurgePerson, PurgeItemResponse>(
+    return this.#wrapper<PurgePerson, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/person",
       form,
@@ -1271,7 +1266,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/community`
    */
   purgeCommunity(form: PurgeCommunity) {
-    return this.#wrapper<PurgeCommunity, PurgeItemResponse>(
+    return this.#wrapper<PurgeCommunity, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/community",
       form,
@@ -1284,7 +1279,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/post`
    */
   purgePost(form: PurgePost) {
-    return this.#wrapper<PurgePost, PurgeItemResponse>(
+    return this.#wrapper<PurgePost, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/post",
       form,
@@ -1297,7 +1292,7 @@ export class LemmyHttp {
    * `HTTP.POST /admin/purge/comment`
    */
   purgeComment(form: PurgeComment) {
-    return this.#wrapper<PurgeComment, PurgeItemResponse>(
+    return this.#wrapper<PurgeComment, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/comment",
       form,
@@ -1336,7 +1331,7 @@ export class LemmyHttp {
    * `HTTP.Post /custom_emoji/delete`
    */
   deleteCustomEmoji(form: DeleteCustomEmoji) {
-    return this.#wrapper<DeleteCustomEmoji, DeleteCustomEmojiResponse>(
+    return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
       form,
