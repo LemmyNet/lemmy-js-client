@@ -300,7 +300,7 @@ export class LemmyHttp {
    * `HTTP.POST /user/totp/update`
    */
   updateTotp(form: UpdateTotp) {
-    return this.#wrapper<object, UpdateTotpResponse>(
+    return this.#wrapper<UpdateTotp, UpdateTotpResponse>(
       HttpType.Post,
       "/user/totp/update",
       form,
