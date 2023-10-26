@@ -30,7 +30,7 @@
     "no-duplicate-imports": 0,
     "no-extra-parens": 0,
     "no-return-assign": 0,
-    "no-throw-literal": 0,
+    "no-throw-literal": 1,
     "no-trailing-spaces": 0,
     "no-unused-expressions": 0,
     "no-useless-constructor": 0,

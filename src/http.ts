@@ -1471,11 +1471,11 @@ export class LemmyHttp {
     try {
       json = await response.json();
     } catch (error) {
-      throw response.statusText;
+      throw new Error(response.statusText);
     }
 
     if (!response.ok) {
-      throw json["error"] ?? response.statusText;
+      throw new Error(json["error"] ?? response.statusText);
     } else {
       return json;
     }
