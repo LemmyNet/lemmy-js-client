@@ -976,6 +976,14 @@ export class LemmyHttp {
     );
   }
 
+  logout() {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/user/logout",
+      {},
+    );
+  }
+
   /**
    * Get the details for a person.
    *
