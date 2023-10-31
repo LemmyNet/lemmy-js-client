@@ -179,7 +179,6 @@ export { PersonMention } from "./types/PersonMention";
 export { PersonMentionId } from "./types/PersonMentionId";
 export { PersonMentionResponse } from "./types/PersonMentionResponse";
 export { PersonMentionView } from "./types/PersonMentionView";
-export { PersonSortType } from "./types/PersonSortType";
 export { PersonView } from "./types/PersonView";
 export { Post } from "./types/Post";
 export { PostAggregates } from "./types/PostAggregates";
@@ -243,4 +242,4 @@ export {
   UploadImageResponse,
   ImageFile,
   DeleteImage,
-} from "./types/others";
+} from "./other_types";

@@ -125,7 +125,7 @@ import {
   UploadImage,
   UploadImageResponse,
   VERSION,
-} from "./types/others";
+} from "./other_types";
 import { HideCommunity } from "./types/HideCommunity";
 import { BlockInstance } from "./types/BlockInstance";
 import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
