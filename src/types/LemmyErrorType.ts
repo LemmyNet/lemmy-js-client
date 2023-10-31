@@ -148,4 +148,5 @@ export type LemmyErrorType =
   | { error: "community_has_no_followers" }
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }
+  | { error: "invalid_bot_action" }
   | { error: "unknown"; message: string };

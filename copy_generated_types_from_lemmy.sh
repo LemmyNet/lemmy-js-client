@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Remove the old types
+rm -rf src/types/*
+
 # Remove the old bindings
 pushd ../lemmy/crates
 rm -rf **/bindings
@@ -29,5 +32,5 @@ find src/types -type f -name '*.ts' -exec sed -i 's/bigint/\/* integer *\/ numbe
 
 node putTypesInIndex.js
 
-prettier -w src/types src/index.ts
+prettier -w src
 

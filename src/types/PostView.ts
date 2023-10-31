@@ -10,6 +10,7 @@ export interface PostView {
   creator: Person;
   community: Community;
   creator_banned_from_community: boolean;
+  creator_is_moderator: boolean;
   counts: PostAggregates;
   subscribed: SubscribedType;
   saved: boolean;

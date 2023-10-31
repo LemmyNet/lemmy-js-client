@@ -5,7 +5,5 @@ export interface PersonAggregates {
   id: number;
   person_id: PersonId;
   post_count: /* integer */ number;
-  post_score: /* integer */ number;
   comment_count: /* integer */ number;
-  comment_score: /* integer */ number;
 }
