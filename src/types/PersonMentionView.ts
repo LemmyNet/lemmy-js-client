@@ -16,6 +16,7 @@ export interface PersonMentionView {
   recipient: Person;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
+  creator_is_moderator: boolean;
   subscribed: SubscribedType;
   saved: boolean;
   creator_blocked: boolean;
