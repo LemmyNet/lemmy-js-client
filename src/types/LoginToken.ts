@@ -2,7 +2,6 @@
 import type { LocalUserId } from "./LocalUserId";
 
 export interface LoginToken {
-  id: number;
   user_id: LocalUserId;
   published: string;
   ip?: string;

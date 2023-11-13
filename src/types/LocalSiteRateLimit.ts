@@ -2,7 +2,6 @@
 import type { LocalSiteId } from "./LocalSiteId";
 
 export interface LocalSiteRateLimit {
-  id: number;
   local_site_id: LocalSiteId;
   message: number;
   message_per_second: number;

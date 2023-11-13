@@ -35,6 +35,8 @@ export type LemmyErrorType =
   | { error: "couldnt_find_community" }
   | { error: "couldnt_find_person" }
   | { error: "person_is_blocked" }
+  | { error: "community_is_blocked" }
+  | { error: "instance_is_blocked" }
   | { error: "downvotes_are_disabled" }
   | { error: "instance_is_private" }
   | { error: "invalid_password" }

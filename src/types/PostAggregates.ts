@@ -2,7 +2,6 @@
 import type { PostId } from "./PostId";
 
 export interface PostAggregates {
-  id: number;
   post_id: PostId;
   comments: /* integer */ number;
   score: /* integer */ number;
