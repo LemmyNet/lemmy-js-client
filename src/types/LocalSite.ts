@@ -28,4 +28,5 @@ export interface LocalSite {
   updated?: string;
   registration_mode: RegistrationMode;
   reports_email_admins: boolean;
+  federation_signed_fetch: boolean;
 }

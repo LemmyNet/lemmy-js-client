@@ -2,7 +2,6 @@
 import type { CustomEmojiId } from "./CustomEmojiId";
 
 export interface CustomEmojiKeyword {
-  id: number;
   custom_emoji_id: CustomEmojiId;
   keyword: string;
 }

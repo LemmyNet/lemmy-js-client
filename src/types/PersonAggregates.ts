@@ -2,7 +2,6 @@
 import type { PersonId } from "./PersonId";
 
 export interface PersonAggregates {
-  id: number;
   person_id: PersonId;
   post_count: /* integer */ number;
   comment_count: /* integer */ number;

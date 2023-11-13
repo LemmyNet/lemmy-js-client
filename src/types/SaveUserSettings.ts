@@ -31,4 +31,5 @@ export interface SaveUserSettings {
   post_listing_mode?: PostListingMode;
   enable_keyboard_navigation?: boolean;
   enable_animated_images?: boolean;
+  collapse_bot_comments?: boolean;
 }

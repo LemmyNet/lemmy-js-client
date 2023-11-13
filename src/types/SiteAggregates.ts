@@ -2,7 +2,6 @@
 import type { SiteId } from "./SiteId";
 
 export interface SiteAggregates {
-  id: number;
   site_id: SiteId;
   users: /* integer */ number;
   posts: /* integer */ number;

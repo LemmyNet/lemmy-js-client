@@ -30,4 +30,5 @@ export interface LocalUser {
   totp_2fa_enabled: boolean;
   enable_keyboard_navigation: boolean;
   enable_animated_images: boolean;
+  collapse_bot_comments: boolean;
 }
