@@ -1375,20 +1375,8 @@ export class LemmyHttp {
   /**
    * Upload an image to the server.
    */
-  async uploadImage({
-    image,
-    auth,
-  }: UploadImage): Promise<UploadImageResponse> {
+  async uploadImage({ image }: UploadImage): Promise<UploadImageResponse> {
     const formData = createFormData(image);
-
-    // If auth cookie not already set by browser, set it with passed in auth
-    const headers = {} as any;
-    if (
-      !globalThis?.document?.cookie?.includes("auth=") &&
-      !this.#headers?.Cookie?.includes("auth=")
-    ) {
-      headers.Cookie = `auth=${auth}`;
-    }
 
     let url: string | undefined = undefined;
     let delete_url: string | undefined = undefined;
@@ -1396,10 +1384,7 @@ export class LemmyHttp {
     const response = await this.#fetchFunction(this.#pictrsUrl, {
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
-      headers: {
-        ...this.#headers,
-        ...headers,
-      },
+      headers: this.#headers,
     });
 
     if (response.status === 413) {
@@ -1424,24 +1409,12 @@ export class LemmyHttp {
   /**
    * Delete a pictrs image
    */
-  async deleteImage({ token, filename, auth }: DeleteImage): Promise<any> {
-    // If auth cookie not already set by browser, set it with passed in auth
-    const headers = {} as any;
-    if (
-      !globalThis?.document?.cookie?.includes("auth=") &&
-      !this.#headers?.Cookie?.includes("auth=")
-    ) {
-      headers.Cookie = `auth=${auth}`;
-    }
-
+  async deleteImage({ token, filename }: DeleteImage): Promise<any> {
     const deleteUrl = `${this.#pictrsUrl}/delete/${token}/${filename}`;
 
     const response = await this.#fetchFunction(deleteUrl, {
       method: HttpType.Get,
-      headers: {
-        ...this.#headers,
-        ...headers,
-      },
+      headers: this.#headers,
     });
 
     return await response.json();

@@ -2,10 +2,6 @@ export const VERSION = "v3";
 
 export interface UploadImage {
   image: File | Buffer;
-  /**
-   * Optional if cookie with jwt set is already present. Otherwise, auth is required.
-   */
-  auth?: string;
 }
 
 export interface UploadImageResponse {
@@ -26,8 +22,4 @@ export interface ImageFile {
 export interface DeleteImage {
   token: string;
   filename: string;
-  /**
-   * Optional if cookie with jwt set is already present. Otherwise, auth is required.
-   */
-  auth?: string;
 }
