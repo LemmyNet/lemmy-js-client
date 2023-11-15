@@ -14,6 +14,7 @@ export interface CommentView {
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
   creator_is_moderator: boolean;
+  creator_is_admin: boolean;
   subscribed: SubscribedType;
   saved: boolean;
   creator_blocked: boolean;
