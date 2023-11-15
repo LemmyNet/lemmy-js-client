@@ -1409,7 +1409,7 @@ export class LemmyHttp {
   /**
    * Delete a pictrs image
    */
-  async deleteImage({ token, filename }: DeleteImage): Promise<any> {
+  async deleteImage({ token, filename }: DeleteImage): Promise<boolean> {
     const deleteUrl = `${this.#pictrsUrl}/delete/${token}/${filename}`;
 
     const response = await this.#fetchFunction(deleteUrl, {
@@ -1417,7 +1417,7 @@ export class LemmyHttp {
       headers: this.#headers,
     });
 
-    return await response.json();
+    return (await response.status) == 204;
   }
 
   #buildFullUrl(endpoint: string) {
