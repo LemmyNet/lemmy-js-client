@@ -11,6 +11,7 @@ export interface PostView {
   community: Community;
   creator_banned_from_community: boolean;
   creator_is_moderator: boolean;
+  creator_is_admin: boolean;
   counts: PostAggregates;
   subscribed: SubscribedType;
   saved: boolean;
