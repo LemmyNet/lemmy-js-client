@@ -1,4 +1,3 @@
-import fetch from "cross-fetch";
 import FormData from "form-data";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -1417,7 +1416,7 @@ export class LemmyHttp {
       headers: this.#headers,
     });
 
-    return (await response.status) == 204;
+    return response.status == 204;
   }
 
   #buildFullUrl(endpoint: string) {
