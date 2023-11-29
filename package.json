@@ -26,6 +26,7 @@
     ]
   },
   "dependencies": {
+    "cross-fetch": "^4.0.0",
     "form-data": "^4.0.0"
   },
   "devDependencies": {
