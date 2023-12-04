@@ -24,6 +24,7 @@ import { CreateCommentLike } from "./types/CreateCommentLike";
 import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
+import { CreateExternalAuth } from "./types/CreateExternalAuth";
 import { CreatePost } from "./types/CreatePost";
 import { CreatePostLike } from "./types/CreatePostLike";
 import { CreatePostReport } from "./types/CreatePostReport";
@@ -35,15 +36,20 @@ import { DeleteAccount } from "./types/DeleteAccount";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
+import { DeleteCustomEmojiResponse } from "./types/DeleteCustomEmojiResponse";
+import { DeleteExternalAuth } from "./types/DeleteExternalAuth";
+import { DeleteExternalAuthResponse } from "./types/DeleteExternalAuthResponse";
 import { DeletePost } from "./types/DeletePost";
 import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 import { DistinguishComment } from "./types/DistinguishComment";
 import { EditComment } from "./types/EditComment";
 import { EditCommunity } from "./types/EditCommunity";
 import { EditCustomEmoji } from "./types/EditCustomEmoji";
+import { EditExternalAuth } from "./types/EditExternalAuth";
 import { EditPost } from "./types/EditPost";
 import { EditPrivateMessage } from "./types/EditPrivateMessage";
 import { EditSite } from "./types/EditSite";
+import { ExternalAuthResponse } from "./types/ExternalAuthResponse";
 import { FeaturePost } from "./types/FeaturePost";
 import { FollowCommunity } from "./types/FollowCommunity";
 import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
@@ -1342,6 +1348,45 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
+      form,
+    );
+  }
+
+  /**
+   * Create a new external auth method
+   *
+   * `HTTP.POST /external_auth`
+   */
+  createExternalAuth(form: CreateExternalAuth) {
+    return this.#wrapper<CreateExternalAuth, ExternalAuthResponse>(
+      HttpType.Post,
+      "/external_auth",
+      form,
+    );
+  }
+
+  /**
+   * Edit an existing external auth method
+   *
+   * `HTTP.PUT /external_auth`
+   */
+  editExternalAuth(form: EditExternalAuth) {
+    return this.#wrapper<EditExternalAuth, ExternalAuthResponse>(
+      HttpType.Put,
+      "/external_auth",
+      form,
+    );
+  }
+
+  /**
+   * Delete an external auth method
+   *
+   * `HTTP.Post /external_auth/delete`
+   */
+  deleteExternalAuth(form: DeleteExternalAuth) {
+    return this.#wrapper<DeleteExternalAuth, DeleteExternalAuthResponse>(
+      HttpType.Post,
+      "/external_auth/delete",
       form,
     );
   }
