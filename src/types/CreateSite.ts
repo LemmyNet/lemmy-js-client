@@ -48,4 +48,5 @@ export interface CreateSite {
   registration_mode?: RegistrationMode;
   content_warning?: string;
   default_post_listing_mode?: PostListingMode;
+  oauth_registration?: boolean;
 }

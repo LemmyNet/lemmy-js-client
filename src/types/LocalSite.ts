@@ -29,6 +29,7 @@ export interface LocalSite {
   published: string;
   updated?: string;
   registration_mode: RegistrationMode;
+  oauth_registration: boolean;
   reports_email_admins: boolean;
   federation_signed_fetch: boolean;
   default_post_listing_mode: PostListingMode;
