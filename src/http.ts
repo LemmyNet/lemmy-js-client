@@ -36,9 +36,7 @@ import { DeleteAccount } from "./types/DeleteAccount";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
-import { DeleteCustomEmojiResponse } from "./types/DeleteCustomEmojiResponse";
 import { DeleteExternalAuth } from "./types/DeleteExternalAuth";
-import { DeleteExternalAuthResponse } from "./types/DeleteExternalAuthResponse";
 import { DeletePost } from "./types/DeletePost";
 import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 import { DistinguishComment } from "./types/DistinguishComment";
@@ -1384,7 +1382,7 @@ export class LemmyHttp {
    * `HTTP.Post /external_auth/delete`
    */
   deleteExternalAuth(form: DeleteExternalAuth) {
-    return this.#wrapper<DeleteExternalAuth, DeleteExternalAuthResponse>(
+    return this.#wrapper<DeleteExternalAuth, SuccessResponse>(
       HttpType.Post,
       "/external_auth/delete",
       form,
