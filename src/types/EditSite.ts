@@ -43,5 +43,6 @@ export interface EditSite {
   blocked_instances?: Array<string>;
   taglines?: Array<string>;
   registration_mode?: RegistrationMode;
+  oauth_registration?: boolean;
   reports_email_admins?: boolean;
 }
