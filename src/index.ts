@@ -69,7 +69,6 @@ export { DeleteAccount } from "./types/DeleteAccount";
 export { DeleteComment } from "./types/DeleteComment";
 export { DeleteCommunity } from "./types/DeleteCommunity";
 export { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
-export { DeleteCustomEmojiResponse } from "./types/DeleteCustomEmojiResponse";
 export { DeleteExternalAuth } from "./types/DeleteExternalAuth";
 export { DeletePost } from "./types/DeletePost";
 export { DeletePrivateMessage } from "./types/DeletePrivateMessage";
