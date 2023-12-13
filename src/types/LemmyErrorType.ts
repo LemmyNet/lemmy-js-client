@@ -145,10 +145,10 @@ export type LemmyErrorType =
   | { error: "couldnt_send_webmention" }
   | { error: "contradicting_filters" }
   | { error: "instance_block_already_exists" }
-  | { error: "auth_cookie_insecure" }
   | { error: "too_many_items" }
   | { error: "community_has_no_followers" }
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }
+  | { error: "cant_block_local_instance" }
   | { error: "unknown"; message: string };
