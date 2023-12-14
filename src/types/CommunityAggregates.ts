@@ -4,6 +4,7 @@ import type { CommunityId } from "./CommunityId";
 export interface CommunityAggregates {
   community_id: CommunityId;
   subscribers: /* integer */ number;
+  local_subscribers: /* integer */ number;
   posts: /* integer */ number;
   comments: /* integer */ number;
   published: string;
