@@ -243,7 +243,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/export_settings`
    */
   exportSettings() {
-    return this.#wrapper<object, any>(
+    return this.#wrapper<object, string>(
       HttpType.Get,
       "/user/export_settings",
       {},
