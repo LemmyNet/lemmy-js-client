@@ -8,4 +8,5 @@ export interface PostAggregates {
   upvotes: /* integer */ number;
   downvotes: /* integer */ number;
   published: string;
+  newest_comment_time: string;
 }
