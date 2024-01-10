@@ -134,6 +134,10 @@ import { UpdateTotp } from "./types/UpdateTotp";
 import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 import { SuccessResponse } from "./types/SuccessResponse";
 import { LoginToken } from "./types/LoginToken";
+import { ListPostLikes } from "./types/ListPostLikes";
+import { ListPostLikesResponse } from "./types/ListPostLikesResponse";
+import { ListCommentLikes } from "./types/ListCommentLikes";
+import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
 
 enum HttpType {
   Get = "GET",
@@ -239,7 +243,7 @@ export class LemmyHttp {
    * `HTTP.GET /user/export_settings`
    */
   exportSettings() {
-    return this.#wrapper<object, any>(
+    return this.#wrapper<object, string>(
       HttpType.Get,
       "/user/export_settings",
       {},
@@ -616,6 +620,19 @@ export class LemmyHttp {
   }
 
   /**
+   * List a post's likes. Admin-only.
+   *
+   * `HTTP.GET /post/like`
+   */
+  listPostLikes(form: ListPostLikes) {
+    return this.#wrapper<ListPostLikes, ListPostLikesResponse>(
+      HttpType.Get,
+      "/post/like/list",
+      form,
+    );
+  }
+
+  /**
    * Save a post.
    *
    * `HTTP.PUT /post/save`
@@ -754,6 +771,19 @@ export class LemmyHttp {
     return this.#wrapper<CreateCommentLike, CommentResponse>(
       HttpType.Post,
       "/comment/like",
+      form,
+    );
+  }
+
+  /**
+   * List a comment's likes. Admin-only.
+   *
+   * `HTTP.GET //like`
+   */
+  listCommentLikes(form: ListCommentLikes) {
+    return this.#wrapper<ListCommentLikes, ListCommentLikesResponse>(
+      HttpType.Get,
+      "/comment/like/list",
       form,
     );
   }
