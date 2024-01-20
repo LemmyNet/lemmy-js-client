@@ -4,7 +4,6 @@ import type { LocalSiteId } from "./LocalSiteId";
 
 export interface ExternalAuth {
   id: ExternalAuthId;
-  local_site_id: LocalSiteId;
   display_name: string;
   auth_type: string;
   auth_endpoint: string;

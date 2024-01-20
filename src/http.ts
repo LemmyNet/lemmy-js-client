@@ -47,7 +47,7 @@ import { EditExternalAuth } from "./types/EditExternalAuth";
 import { EditPost } from "./types/EditPost";
 import { EditPrivateMessage } from "./types/EditPrivateMessage";
 import { EditSite } from "./types/EditSite";
-import { ExternalAuthResponse } from "./types/ExternalAuthResponse";
+import { ExternalAuth } from "./types/ExternalAuth";
 import { FeaturePost } from "./types/FeaturePost";
 import { FollowCommunity } from "./types/FollowCommunity";
 import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
@@ -1356,7 +1356,7 @@ export class LemmyHttp {
    * `HTTP.POST /external_auth`
    */
   createExternalAuth(form: CreateExternalAuth) {
-    return this.#wrapper<CreateExternalAuth, ExternalAuthResponse>(
+    return this.#wrapper<CreateExternalAuth, ExternalAuth>(
       HttpType.Post,
       "/external_auth",
       form,
@@ -1369,7 +1369,7 @@ export class LemmyHttp {
    * `HTTP.PUT /external_auth`
    */
   editExternalAuth(form: EditExternalAuth) {
-    return this.#wrapper<EditExternalAuth, ExternalAuthResponse>(
+    return this.#wrapper<EditExternalAuth, ExternalAuth>(
       HttpType.Put,
       "/external_auth",
       form,
