@@ -622,7 +622,7 @@ export class LemmyHttp {
   /**
    * List a post's likes. Admin-only.
    *
-   * `HTTP.GET /post/like`
+   * `HTTP.GET /post/like/list`
    */
   listPostLikes(form: ListPostLikes) {
     return this.#wrapper<ListPostLikes, ListPostLikesResponse>(
