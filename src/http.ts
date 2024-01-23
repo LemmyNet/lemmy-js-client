@@ -622,7 +622,7 @@ export class LemmyHttp {
   /**
    * List a post's likes. Admin-only.
    *
-   * `HTTP.GET /post/like`
+   * `HTTP.GET /post/like/list`
    */
   listPostLikes(form: ListPostLikes) {
     return this.#wrapper<ListPostLikes, ListPostLikesResponse>(
@@ -778,7 +778,7 @@ export class LemmyHttp {
   /**
    * List a comment's likes. Admin-only.
    *
-   * `HTTP.GET //like`
+   * `HTTP.GET /comment/like/list`
    */
   listCommentLikes(form: ListCommentLikes) {
     return this.#wrapper<ListCommentLikes, ListCommentLikesResponse>(
