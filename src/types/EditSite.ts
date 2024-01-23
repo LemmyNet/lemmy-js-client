@@ -44,4 +44,6 @@ export interface EditSite {
   taglines?: Array<string>;
   registration_mode?: RegistrationMode;
   reports_email_admins?: boolean;
+  content_warning?: string;
+  auto_expand_images?: boolean;
 }
