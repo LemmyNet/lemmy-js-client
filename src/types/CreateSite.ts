@@ -43,4 +43,6 @@ export interface CreateSite {
   blocked_instances?: Array<string>;
   taglines?: Array<string>;
   registration_mode?: RegistrationMode;
+  content_warning?: string;
+  auto_expand_images?: boolean;
 }
