@@ -24,13 +24,9 @@ cp utils/bindings/* ../../lemmy-js-client/src/types/
 
 popd
 
-# Remove the Sensitive type
-rm src/types/Sensitive.ts
-
 # Change all the bigints to numbers
 find src/types -type f -name '*.ts' -exec sed -i 's/bigint/\/* integer *\/ number/g' {} +
 
 node putTypesInIndex.js
 
 prettier -w src
-

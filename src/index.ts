@@ -48,6 +48,7 @@ export { CommunityId } from "./types/CommunityId";
 export { CommunityModeratorView } from "./types/CommunityModeratorView";
 export { CommunityResponse } from "./types/CommunityResponse";
 export { CommunityView } from "./types/CommunityView";
+export { CommunityVisibility } from "./types/CommunityVisibility";
 export { CreateComment } from "./types/CreateComment";
 export { CreateCommentLike } from "./types/CreateCommentLike";
 export { CreateCommentReport } from "./types/CreateCommentReport";
