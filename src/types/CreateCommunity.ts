@@ -10,6 +10,4 @@ export interface CreateCommunity {
   nsfw?: boolean;
   posting_restricted_to_mods?: boolean;
   discussion_languages?: Array<LanguageId>;
-  local_only?: boolean;
-  only_followers_can_vote?: boolean;
 }
