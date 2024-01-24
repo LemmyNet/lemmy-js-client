@@ -19,5 +19,4 @@ export interface Community {
   hidden: boolean;
   posting_restricted_to_mods: boolean;
   instance_id: InstanceId;
-  only_followers_can_vote: boolean;
 }

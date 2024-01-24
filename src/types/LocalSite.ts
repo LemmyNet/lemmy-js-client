@@ -29,6 +29,4 @@ export interface LocalSite {
   registration_mode: RegistrationMode;
   reports_email_admins: boolean;
   federation_signed_fetch: boolean;
-  content_warning?: string;
-  auto_expand_images: boolean;
 }
