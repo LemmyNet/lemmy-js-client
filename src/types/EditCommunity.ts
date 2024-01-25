@@ -12,6 +12,5 @@ export interface EditCommunity {
   nsfw?: boolean;
   posting_restricted_to_mods?: boolean;
   discussion_languages?: Array<LanguageId>;
-  only_followers_can_vote?: boolean;
   visibility?: CommunityVisibility;
 }
