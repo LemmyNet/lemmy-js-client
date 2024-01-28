@@ -1,12 +1,10 @@
 {
   "name": "lemmy-js-client",
-  "version": "0.19.2-alpha.3",
   "description": "A javascript / typescript client for Lemmy",
-  "repository": "https://github.com/LemmyNet/lemmy-js-client",
-  "license": "AGPL-3.0",
+  "version": "0.19.2-alpha.3",
   "author": "Dessalines <tyhou13@gmx.com>",
+  "license": "AGPL-3.0",
   "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
   "files": [
     "/dist"
   ],
@@ -14,17 +12,9 @@
     "build": "tsc",
     "docs": "typedoc src/index.ts",
     "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src && prettier --check src",
-    "prepare": "yarn run build && husky install"
+    "prepare": "pnpm run build && husky install"
   },
-  "lint-staged": {
-    "*.{ts,tsx,js}": [
-      "prettier --write",
-      "eslint --fix"
-    ],
-    "package.json": [
-      "sortpack"
-    ]
-  },
+  "repository": "https://github.com/LemmyNet/lemmy-js-client",
   "dependencies": {
     "cross-fetch": "^3.1.5",
     "form-data": "^4.0.0"
@@ -44,6 +34,16 @@
     "sortpack": "^2.3.5",
     "typedoc": "^0.24.7",
     "typescript": "^5.3.2"
+  },
+  "types": "./dist/index.d.ts",
+  "lint-staged": {
+    "*.{ts,tsx,js}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "package.json": [
+      "sortpack"
+    ]
   },
   "importSort": {
     ".js, .jsx, .ts, .tsx": {
