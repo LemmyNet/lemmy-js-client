@@ -13,7 +13,7 @@ A javascript / typescript http client and type system for [Lemmy](https://github
 
 ## Installation
 
-`yarn add lemmy-js-client`
+`pnpm install lemmy-js-client`
 
 ## Usage
 
@@ -38,7 +38,7 @@ let jwt = await client.login(loginForm).jwt;
 You can use [yalc](https://github.com/wclr/yalc) to develop and test changes locally:
 
 ```
-yarn global add yalc
+pnpm i --global add yalc
 
 # Go to lemmy-js-client dir
 yalc publish --push
