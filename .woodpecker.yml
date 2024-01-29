@@ -1,13 +1,18 @@
-steps:
-  yarn:
-    image: node:alpine
-    commands:
-      - yarn
+variables:
+  - &install_pnpm "corepack enable pnpm"
 
-  yarn_lint:
+steps:
+  install:
     image: node:alpine
     commands:
-      - yarn lint
+      - *install_pnpm
+      - pnpm i
+
+  lint:
+    image: node:alpine
+    commands:
+      - *install_pnpm
+      - pnpm lint
 
   npm_publish:
     image: node:alpine
