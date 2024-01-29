@@ -12,9 +12,12 @@
     "build": "tsc",
     "docs": "typedoc src/index.ts",
     "lint": "tsc --noEmit && eslint --report-unused-disable-directives --ext .js,.ts,.tsx src && prettier --check src",
-    "prepare": "husky"
+    "prepare": "pnpm run build && husky"
   },
-  "repository": "https://github.com/LemmyNet/lemmy-js-client",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LemmyNet/lemmy-js-client.git"
+  },
   "dependencies": {
     "cross-fetch": "^3.1.5",
     "form-data": "^4.0.0"
