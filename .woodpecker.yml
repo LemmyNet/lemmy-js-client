@@ -17,6 +17,7 @@ steps:
   npm_publish:
     image: node:alpine
     commands:
+      - *install_pnpm
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - echo "email = tyhou13@gmx.com" >> ~/.npmrc
       - npm publish
