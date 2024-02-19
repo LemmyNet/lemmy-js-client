@@ -17,4 +17,5 @@ export interface Site {
   private_key?: string;
   public_key: string;
   instance_id: InstanceId;
+  content_warning?: string;
 }
