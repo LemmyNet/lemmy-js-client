@@ -10,4 +10,5 @@ export interface CreatePost {
   honeypot?: string;
   nsfw?: boolean;
   language_id?: LanguageId;
+  custom_thumbnail?: string;
 }
