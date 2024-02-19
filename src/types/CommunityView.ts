@@ -8,4 +8,5 @@ export interface CommunityView {
   subscribed: SubscribedType;
   blocked: boolean;
   counts: CommunityAggregates;
+  banned_from_community: boolean;
 }

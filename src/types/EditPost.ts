@@ -9,4 +9,5 @@ export interface EditPost {
   body?: string;
   nsfw?: boolean;
   language_id?: LanguageId;
+  custom_thumbnail?: string;
 }
