@@ -120,10 +120,14 @@ export { InstanceWithFederationState } from "./types/InstanceWithFederationState
 export { Language } from "./types/Language";
 export { LanguageId } from "./types/LanguageId";
 export { LemmyErrorType } from "./types/LemmyErrorType";
+export { ListCommentLikes } from "./types/ListCommentLikes";
+export { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
 export { ListCommentReports } from "./types/ListCommentReports";
 export { ListCommentReportsResponse } from "./types/ListCommentReportsResponse";
 export { ListCommunities } from "./types/ListCommunities";
 export { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
+export { ListPostLikes } from "./types/ListPostLikes";
+export { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 export { ListPostReports } from "./types/ListPostReports";
 export { ListPostReportsResponse } from "./types/ListPostReportsResponse";
 export { ListPrivateMessageReports } from "./types/ListPrivateMessageReports";
@@ -241,6 +245,7 @@ export { TransferCommunity } from "./types/TransferCommunity";
 export { UpdateTotp } from "./types/UpdateTotp";
 export { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 export { VerifyEmail } from "./types/VerifyEmail";
+export { VoteView } from "./types/VoteView";
 export {
   UploadImage,
   UploadImageResponse,
