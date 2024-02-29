@@ -7,6 +7,7 @@ export interface EditPost {
   name?: string;
   url?: string;
   body?: string;
+  alt_text?: string;
   nsfw?: boolean;
   language_id?: LanguageId;
   custom_thumbnail?: string;
