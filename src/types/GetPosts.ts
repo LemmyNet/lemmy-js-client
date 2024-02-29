@@ -14,5 +14,6 @@ export interface GetPosts {
   saved_only?: boolean;
   liked_only?: boolean;
   disliked_only?: boolean;
+  show_hidden?: boolean;
   page_cursor?: PaginationCursor;
 }

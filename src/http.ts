@@ -138,6 +138,7 @@ import { ListPostLikes } from "./types/ListPostLikes";
 import { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 import { ListCommentLikes } from "./types/ListCommentLikes";
 import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
+import { HidePost } from "./types/HidePost";
 
 enum HttpType {
   Get = "GET",
@@ -563,6 +564,19 @@ export class LemmyHttp {
     return this.#wrapper<MarkPostAsRead, SuccessResponse>(
       HttpType.Post,
       "/post/mark_as_read",
+      form,
+    );
+  }
+
+  /**
+   * Hide a post from list views.
+   *
+   * `HTTP.POST /post/hide`
+   */
+  hidePost(form: HidePost) {
+    return this.#wrapper<HidePost, SuccessResponse>(
+      HttpType.Post,
+      "/post/hide",
       form,
     );
   }

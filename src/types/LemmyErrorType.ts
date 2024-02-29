@@ -112,6 +112,7 @@ export type LemmyErrorType =
   | { error: "couldnt_like_post" }
   | { error: "couldnt_save_post" }
   | { error: "couldnt_mark_post_as_read" }
+  | { error: "couldnt_hide_post" }
   | { error: "couldnt_update_community" }
   | { error: "couldnt_update_replies" }
   | { error: "couldnt_update_person_mentions" }
