@@ -110,6 +110,7 @@ export { GetSiteResponse } from "./types/GetSiteResponse";
 export { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
 export { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
 export { HideCommunity } from "./types/HideCommunity";
+export { HidePost } from "./types/HidePost";
 export { Instance } from "./types/Instance";
 export { InstanceBlockView } from "./types/InstanceBlockView";
 export { InstanceId } from "./types/InstanceId";

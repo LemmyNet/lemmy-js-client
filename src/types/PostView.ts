@@ -16,6 +16,7 @@ export interface PostView {
   subscribed: SubscribedType;
   saved: boolean;
   read: boolean;
+  hidden: boolean;
   creator_blocked: boolean;
   my_vote?: number;
   unread_comments: /* integer */ number;
