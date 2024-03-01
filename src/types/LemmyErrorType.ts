@@ -91,6 +91,7 @@ export type LemmyErrorType =
   | { error: "invalid_post_title" }
   | { error: "invalid_body_field" }
   | { error: "bio_length_overflow" }
+  | { error: "alt_text_length_overflow" }
   | { error: "missing_totp_token" }
   | { error: "missing_totp_secret" }
   | { error: "incorrect_totp_token" }
