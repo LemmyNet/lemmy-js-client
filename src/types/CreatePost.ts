@@ -7,6 +7,7 @@ export interface CreatePost {
   community_id: CommunityId;
   url?: string;
   body?: string;
+  alt_text?: string;
   honeypot?: string;
   nsfw?: boolean;
   language_id?: LanguageId;

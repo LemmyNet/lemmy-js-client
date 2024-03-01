@@ -27,4 +27,5 @@ export interface Post {
   featured_community: boolean;
   featured_local: boolean;
   url_content_type?: string;
+  alt_text?: string;
 }
