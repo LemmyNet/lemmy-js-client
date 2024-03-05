@@ -125,6 +125,8 @@ export { ListCommentReports } from "./types/ListCommentReports";
 export { ListCommentReportsResponse } from "./types/ListCommentReportsResponse";
 export { ListCommunities } from "./types/ListCommunities";
 export { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
+export { ListMedia } from "./types/ListMedia";
+export { ListMediaResponse } from "./types/ListMediaResponse";
 export { ListPostLikes } from "./types/ListPostLikes";
 export { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 export { ListPostReports } from "./types/ListPostReports";
@@ -134,6 +136,7 @@ export { ListPrivateMessageReportsResponse } from "./types/ListPrivateMessageRep
 export { ListRegistrationApplications } from "./types/ListRegistrationApplications";
 export { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
 export { ListingType } from "./types/ListingType";
+export { LocalImage } from "./types/LocalImage";
 export { LocalSite } from "./types/LocalSite";
 export { LocalSiteId } from "./types/LocalSiteId";
 export { LocalSiteRateLimit } from "./types/LocalSiteRateLimit";

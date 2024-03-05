@@ -139,6 +139,8 @@ import { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 import { ListCommentLikes } from "./types/ListCommentLikes";
 import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
 import { HidePost } from "./types/HidePost";
+import { ListMedia } from "./types/ListMedia";
+import { ListMediaResponse } from "./types/ListMediaResponse";
 
 enum HttpType {
   Get = "GET",
@@ -287,6 +289,19 @@ export class LemmyHttp {
       HttpType.Get,
       "/user/validate_auth",
       {},
+    );
+  }
+
+  /**
+   * List all the media for your user
+   *
+   * `HTTP.GET /user/list_media`
+   */
+  listMedia(form: ListMedia) {
+    return this.#wrapper<ListMedia, ListMediaResponse>(
+      HttpType.Get,
+      "/user/list_media",
+      form,
     );
   }
 
