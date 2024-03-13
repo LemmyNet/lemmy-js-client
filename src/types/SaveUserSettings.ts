@@ -8,7 +8,6 @@ export interface SaveUserSettings {
   show_nsfw?: boolean;
   blur_nsfw?: boolean;
   auto_expand?: boolean;
-  show_scores?: boolean;
   theme?: string;
   default_sort_type?: SortType;
   default_listing_type?: ListingType;
@@ -31,4 +30,8 @@ export interface SaveUserSettings {
   enable_keyboard_navigation?: boolean;
   enable_animated_images?: boolean;
   collapse_bot_comments?: boolean;
+  show_scores?: boolean;
+  show_upvotes?: boolean;
+  show_downvotes?: boolean;
+  show_upvote_percentage?: boolean;
 }
