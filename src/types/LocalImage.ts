@@ -2,7 +2,7 @@
 import type { LocalUserId } from "./LocalUserId";
 
 export interface LocalImage {
-  local_user_id: LocalUserId;
+  local_user_id?: LocalUserId;
   pictrs_alias: string;
   pictrs_delete_token: string;
   published: string;
