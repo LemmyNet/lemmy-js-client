@@ -4,5 +4,5 @@ export interface LocalSiteUrlBlocklist {
   id: number;
   url: string;
   published: string;
-  updated: string | null;
+  updated?: string;
 }
