@@ -297,7 +297,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/list_media`
    */
-  listMedia(form: ListMedia) {
+  listMedia(form: ListMedia = {}) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
       "/user/list_media",
@@ -310,7 +310,7 @@ export class LemmyHttp {
    *
    * `HTTP.GET /admin/list_all_media`
    */
-  listAllMedia(form: ListMedia) {
+  listAllMedia(form: ListMedia = {}) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
       "/admin/list_all_media",
