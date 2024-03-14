@@ -2,7 +2,6 @@
 import type { CustomEmojiView } from "./CustomEmojiView";
 import type { Language } from "./Language";
 import type { LanguageId } from "./LanguageId";
-import type { LocalSiteUrlBlocklist } from "./LocalSiteUrlBlocklist";
 import type { MyUserInfo } from "./MyUserInfo";
 import type { PersonView } from "./PersonView";
 import type { SiteView } from "./SiteView";
@@ -17,5 +16,4 @@ export interface GetSiteResponse {
   discussion_languages: Array<LanguageId>;
   taglines: Array<Tagline>;
   custom_emojis: Array<CustomEmojiView>;
-  blocked_urls: Array<LocalSiteUrlBlocklist>;
 }
