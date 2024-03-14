@@ -140,7 +140,6 @@ export { LocalImage } from "./types/LocalImage";
 export { LocalSite } from "./types/LocalSite";
 export { LocalSiteId } from "./types/LocalSiteId";
 export { LocalSiteRateLimit } from "./types/LocalSiteRateLimit";
-export { LocalSiteUrlBlocklist } from "./types/LocalSiteUrlBlocklist";
 export { LocalUser } from "./types/LocalUser";
 export { LocalUserId } from "./types/LocalUserId";
 export { LocalUserView } from "./types/LocalUserView";

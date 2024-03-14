@@ -44,7 +44,6 @@ export interface EditSite {
   captcha_difficulty?: string;
   allowed_instances?: Array<string>;
   blocked_instances?: Array<string>;
-  blocked_urls?: Array<string>;
   taglines?: Array<string>;
   registration_mode?: RegistrationMode;
   reports_email_admins?: boolean;
