@@ -306,6 +306,19 @@ export class LemmyHttp {
   }
 
   /**
+   * List all the media known to your instance.
+   *
+   * `HTTP.GET /admin/list_all_media`
+   */
+  listAllMedia(form: ListMedia) {
+    return this.#wrapper<ListMedia, ListMediaResponse>(
+      HttpType.Get,
+      "/admin/list_all_media",
+      form,
+    );
+  }
+
+  /**
    * Enable / Disable TOTP / two-factor authentication.
    *
    * To enable, you need to first call `/user/totp/generate` and then pass a valid token to this.
