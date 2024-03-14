@@ -125,7 +125,6 @@ export type LemmyErrorType =
   | { error: "couldnt_set_all_registrations_accepted" }
   | { error: "couldnt_set_all_email_verified" }
   | { error: "banned" }
-  | { error: "blocked_url" }
   | { error: "couldnt_get_comments" }
   | { error: "couldnt_get_posts" }
   | { error: "invalid_url" }
