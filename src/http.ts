@@ -1,5 +1,3 @@
-import fetch from "cross-fetch";
-import FormData from "form-data";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
 import { AddModToCommunity } from "./types/AddModToCommunity";
@@ -153,7 +151,7 @@ export class LemmyHttp {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
   #pictrsUrl: string;
-  #fetchFunction = fetch;
+  #fetchFunction = fetch.bind(globalThis);
 
   /**
    * Generates a new instance of LemmyHttp.
@@ -1524,11 +1522,15 @@ function encodeGetParams<BodyType extends object>(p: BodyType): string {
 function createFormData(image: File | Buffer): FormData {
   let formData = new FormData();
 
-  if (image.constructor.name === "File") {
+  if (image instanceof File) {
     formData.append("images[]", image);
   } else {
     // The filename doesn't affect the file type or file name that ends up in pictrs
-    formData.append("images[]", image, { filename: "image.jpg" });
+    formData.append(
+      "images[]",
+      new Blob([image], { type: "image/jpeg" }),
+      "image.jpg",
+    );
   }
 
   return formData;
