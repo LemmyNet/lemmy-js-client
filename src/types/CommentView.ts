@@ -13,6 +13,7 @@ export interface CommentView {
   community: Community;
   counts: CommentAggregates;
   creator_banned_from_community: boolean;
+  banned_from_community: boolean;
   creator_is_moderator: boolean;
   creator_is_admin: boolean;
   subscribed: SubscribedType;
