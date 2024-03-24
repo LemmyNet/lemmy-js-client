@@ -50,5 +50,6 @@
       "style": "module",
       "parser": "typescript"
     }
-  }
+  },
+  "packageManager": "pnpm@8.15.5"
 }
