@@ -293,12 +293,12 @@ export class LemmyHttp {
   /**
    * List all the media for your user
    *
-   * `HTTP.GET /user/list_media`
+   * `HTTP.GET /account/list_media`
    */
   listMedia(form: ListMedia = {}) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
-      "/user/list_media",
+      "/account/list_media",
       form,
     );
   }
