@@ -3,5 +3,6 @@ import type { Person } from "./Person";
 
 export interface VoteView {
   creator: Person;
+  creator_banned_from_community: boolean;
   score: number;
 }
