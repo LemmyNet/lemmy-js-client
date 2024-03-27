@@ -7,12 +7,16 @@ steps:
     commands:
       - *install_pnpm
       - pnpm i
+    when:
+      - event: pull_request
 
   lint:
     image: node:alpine
     commands:
       - *install_pnpm
       - pnpm lint
+    when:
+      - event: pull_request
 
   npm_publish:
     image: node:alpine
@@ -23,4 +27,4 @@ steps:
       - npm publish
     secrets: [npm_token]
     when:
-      event: tag
+      - event: tag
