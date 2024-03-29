@@ -1046,6 +1046,11 @@ export class LemmyHttp {
     );
   }
 
+  /**
+   * Invalidate the currently used auth token.
+   *
+   * `HTTP.POST /user/logout`
+   */
   logout() {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
