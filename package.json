@@ -35,6 +35,7 @@
     "typedoc": "^0.25.8",
     "typescript": "^5.3.3"
   },
+  "packageManager": "pnpm@9.0.1+sha256.46d50ee2afecb42b185ebbd662dc7bdd52ef5be56bf035bb615cab81a75345df",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
@@ -50,6 +51,5 @@
       "style": "module",
       "parser": "typescript"
     }
-  },
-  "packageManager": "pnpm@8.15.5"
+  }
 }
