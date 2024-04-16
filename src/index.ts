@@ -137,6 +137,7 @@ export { ListRegistrationApplications } from "./types/ListRegistrationApplicatio
 export { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
 export { ListingType } from "./types/ListingType";
 export { LocalImage } from "./types/LocalImage";
+export { LocalImageView } from "./types/LocalImageView";
 export { LocalSite } from "./types/LocalSite";
 export { LocalSiteId } from "./types/LocalSiteId";
 export { LocalSiteRateLimit } from "./types/LocalSiteRateLimit";

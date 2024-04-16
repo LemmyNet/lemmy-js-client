@@ -34,6 +34,16 @@ export type LemmyErrorType =
   | { error: "banned_from_community" }
   | { error: "couldnt_find_community" }
   | { error: "couldnt_find_person" }
+  | { error: "couldnt_find_comment" }
+  | { error: "couldnt_find_comment_report" }
+  | { error: "couldnt_find_post_report" }
+  | { error: "couldnt_find_private_message_report" }
+  | { error: "couldnt_find_local_user" }
+  | { error: "couldnt_find_person_mention" }
+  | { error: "couldnt_find_registration_application" }
+  | { error: "couldnt_find_comment_reply" }
+  | { error: "couldnt_find_private_message" }
+  | { error: "couldnt_find_activity" }
   | { error: "person_is_blocked" }
   | { error: "community_is_blocked" }
   | { error: "instance_is_blocked" }
@@ -82,6 +92,7 @@ export type LemmyErrorType =
   | { error: "page_does_not_specify_group" }
   | { error: "no_community_found_in_cc" }
   | { error: "no_email_setup" }
+  | { error: "local_site_not_setup" }
   | { error: "email_smtp_server_needs_a_port" }
   | { error: "missing_an_email" }
   | { error: "rate_limit_error" }
