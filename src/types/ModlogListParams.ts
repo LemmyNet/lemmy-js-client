@@ -10,7 +10,7 @@ export interface ModlogListParams {
   other_person_id?: PersonId;
   post_id?: PostId;
   comment_id?: CommentId;
-  page?: /* integer */ number;
-  limit?: /* integer */ number;
+  page?: number;
+  limit?: number;
   hide_modlog_names: boolean;
 }

@@ -8,8 +8,8 @@ import type { PostId } from "./PostId";
 export interface GetModlog {
   mod_person_id?: PersonId;
   community_id?: CommunityId;
-  page?: /* integer */ number;
-  limit?: /* integer */ number;
+  page?: number;
+  limit?: number;
   type_?: ModlogActionType;
   other_person_id?: PersonId;
   post_id?: PostId;
