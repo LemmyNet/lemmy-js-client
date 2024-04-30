@@ -3,13 +3,13 @@ import type { CommunityId } from "./CommunityId";
 
 export interface CommunityAggregates {
   community_id: CommunityId;
-  subscribers: /* integer */ number;
-  posts: /* integer */ number;
-  comments: /* integer */ number;
+  subscribers: number;
+  posts: number;
+  comments: number;
   published: string;
-  users_active_day: /* integer */ number;
-  users_active_week: /* integer */ number;
-  users_active_month: /* integer */ number;
-  users_active_half_year: /* integer */ number;
-  subscribers_local: /* integer */ number;
+  users_active_day: number;
+  users_active_week: number;
+  users_active_month: number;
+  users_active_half_year: number;
+  subscribers_local: number;
 }

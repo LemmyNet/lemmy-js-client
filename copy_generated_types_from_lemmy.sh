@@ -28,7 +28,7 @@ popd
 rm src/types/Sensitive.ts
 
 # Change all the bigints to numbers
-find src/types -type f -name '*.ts' -exec sed -i 's/bigint/\/* integer *\/ number/g' {} +
+find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
 
 node putTypesInIndex.js
 

@@ -20,5 +20,5 @@ export interface PostView {
   hidden: boolean;
   creator_blocked: boolean;
   my_vote?: number;
-  unread_comments: /* integer */ number;
+  unread_comments: number;
 }

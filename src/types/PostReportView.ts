@@ -21,7 +21,7 @@ export interface PostReportView {
   hidden: boolean;
   creator_blocked: boolean;
   my_vote?: number;
-  unread_comments: /* integer */ number;
+  unread_comments: number;
   counts: PostAggregates;
   resolver?: Person;
 }
