@@ -22,15 +22,28 @@ A javascript / typescript http client and type system for [Lemmy](https://github
 [LemmyHttp docs](https://join-lemmy.org/api/classes/LemmyHttp.html)
 
 ```ts
-import { LemmyHttp, Login } from 'lemmy-js-client';
+import { LemmyHttp, Login } from "lemmy-js-client";
 
-let baseUrl = 'https://lemmy.ml';
-let client: LemmyHttp = new LemmyHttp(baseUrl, headers?);
-let loginForm: Login = {
+// Build the client
+const baseUrl = "https://lemmy.ml";
+const client: LemmyHttp = new LemmyHttp(baseUrl);
+
+// Build the login form
+const loginForm: Login = {
   username_or_email: "my_name",
   password: "my_pass",
 };
-let jwt = await client.login(loginForm).jwt;
+
+// Login and set the client headers with your jwt
+const jwt = await client.login(loginForm).jwt;
+client.setHeaders({ Authorization: `Bearer ${jwt.jwt}` });
+
+// Fetch top posts for the day
+const getPostsForm: GetPosts = {
+  sort: "TopDay",
+  type_: "Local",
+};
+const posts = await client.getPosts(getPostsForm);
 ```
 
 ## Development
