@@ -35,8 +35,8 @@ const loginForm: Login = {
 };
 
 // Login and set the client headers with your jwt
-const jwt = await client.login(loginForm).jwt;
-client.setHeaders({ Authorization: `Bearer ${jwt.jwt}` });
+const { jwt } = await client.login(loginForm);
+client.setHeaders({ Authorization: `Bearer ${jwt}` });
 
 // Fetch top posts for the day
 const getPostsForm: GetPosts = {
