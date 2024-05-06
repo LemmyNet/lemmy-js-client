@@ -224,7 +224,6 @@ export { RegistrationApplication } from "./types/RegistrationApplication";
 export { RegistrationApplicationResponse } from "./types/RegistrationApplicationResponse";
 export { RegistrationApplicationView } from "./types/RegistrationApplicationView";
 export { RegistrationMode } from "./types/RegistrationMode";
-export { RemoteImage } from "./types/RemoteImage";
 export { RemoveComment } from "./types/RemoveComment";
 export { RemoveCommunity } from "./types/RemoveCommunity";
 export { RemovePost } from "./types/RemovePost";
