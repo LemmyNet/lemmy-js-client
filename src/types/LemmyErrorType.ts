@@ -165,4 +165,5 @@ export type LemmyErrorType =
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }
   | { error: "cant_block_local_instance" }
+  | { error: "url_without_domain" }
   | { error: "unknown"; message: string };
