@@ -1,4 +1,3 @@
-import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 
@@ -7,7 +6,6 @@ export default [
   ...tseslint.configs.recommended,
   {
     languageOptions: {
-      globals: { ...globals.browser, ...globals.node },
       parser: tseslint.parser,
     },
   },
