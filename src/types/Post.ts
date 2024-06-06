@@ -26,4 +26,6 @@ export interface Post {
   language_id: LanguageId;
   featured_community: boolean;
   featured_local: boolean;
+  url_content_type?: string;
+  alt_text?: string;
 }

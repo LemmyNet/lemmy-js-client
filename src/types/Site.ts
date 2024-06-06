@@ -14,7 +14,7 @@ export interface Site {
   actor_id: string;
   last_refreshed_at: string;
   inbox_url: string;
-  private_key?: string;
   public_key: string;
   instance_id: InstanceId;
+  content_warning?: string;
 }

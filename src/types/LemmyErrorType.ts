@@ -34,6 +34,16 @@ export type LemmyErrorType =
   | { error: "banned_from_community" }
   | { error: "couldnt_find_community" }
   | { error: "couldnt_find_person" }
+  | { error: "couldnt_find_comment" }
+  | { error: "couldnt_find_comment_report" }
+  | { error: "couldnt_find_post_report" }
+  | { error: "couldnt_find_private_message_report" }
+  | { error: "couldnt_find_local_user" }
+  | { error: "couldnt_find_person_mention" }
+  | { error: "couldnt_find_registration_application" }
+  | { error: "couldnt_find_comment_reply" }
+  | { error: "couldnt_find_private_message" }
+  | { error: "couldnt_find_activity" }
   | { error: "person_is_blocked" }
   | { error: "community_is_blocked" }
   | { error: "instance_is_blocked" }
@@ -79,9 +89,8 @@ export type LemmyErrorType =
   | { error: "person_is_banned_from_site"; message: string }
   | { error: "invalid_vote_value" }
   | { error: "page_does_not_specify_creator" }
-  | { error: "page_does_not_specify_group" }
-  | { error: "no_community_found_in_cc" }
   | { error: "no_email_setup" }
+  | { error: "local_site_not_setup" }
   | { error: "email_smtp_server_needs_a_port" }
   | { error: "missing_an_email" }
   | { error: "rate_limit_error" }
@@ -91,6 +100,7 @@ export type LemmyErrorType =
   | { error: "invalid_post_title" }
   | { error: "invalid_body_field" }
   | { error: "bio_length_overflow" }
+  | { error: "alt_text_length_overflow" }
   | { error: "missing_totp_token" }
   | { error: "missing_totp_secret" }
   | { error: "incorrect_totp_token" }
@@ -112,6 +122,7 @@ export type LemmyErrorType =
   | { error: "couldnt_like_post" }
   | { error: "couldnt_save_post" }
   | { error: "couldnt_mark_post_as_read" }
+  | { error: "couldnt_hide_post" }
   | { error: "couldnt_update_community" }
   | { error: "couldnt_update_replies" }
   | { error: "couldnt_update_person_mentions" }
@@ -123,6 +134,7 @@ export type LemmyErrorType =
   | { error: "couldnt_set_all_registrations_accepted" }
   | { error: "couldnt_set_all_email_verified" }
   | { error: "banned" }
+  | { error: "blocked_url" }
   | { error: "couldnt_get_comments" }
   | { error: "couldnt_get_posts" }
   | { error: "invalid_url" }
@@ -139,7 +151,6 @@ export type LemmyErrorType =
   | { error: "permissive_regex" }
   | { error: "invalid_regex" }
   | { error: "captcha_incorrect" }
-  | { error: "password_reset_limit_reached" }
   | { error: "couldnt_create_audio_captcha" }
   | { error: "invalid_url_scheme" }
   | { error: "couldnt_send_webmention" }
@@ -151,4 +162,6 @@ export type LemmyErrorType =
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }
   | { error: "cant_block_local_instance" }
+  | { error: "url_without_domain" }
+  | { error: "inbox_timeout" }
   | { error: "unknown"; message: string };

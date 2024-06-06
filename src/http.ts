@@ -1,5 +1,3 @@
-import fetch from "cross-fetch";
-import FormData from "form-data";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
 import { AddModToCommunity } from "./types/AddModToCommunity";
@@ -138,6 +136,9 @@ import { ListPostLikes } from "./types/ListPostLikes";
 import { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 import { ListCommentLikes } from "./types/ListCommentLikes";
 import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
+import { HidePost } from "./types/HidePost";
+import { ListMedia } from "./types/ListMedia";
+import { ListMediaResponse } from "./types/ListMediaResponse";
 
 enum HttpType {
   Get = "GET",
@@ -152,7 +153,7 @@ export class LemmyHttp {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
   #pictrsUrl: string;
-  #fetchFunction = fetch;
+  #fetchFunction = fetch.bind(globalThis);
 
   /**
    * Generates a new instance of LemmyHttp.
@@ -286,6 +287,32 @@ export class LemmyHttp {
       HttpType.Get,
       "/user/validate_auth",
       {},
+    );
+  }
+
+  /**
+   * List all the media for your user
+   *
+   * `HTTP.GET /account/list_media`
+   */
+  listMedia(form: ListMedia = {}) {
+    return this.#wrapper<ListMedia, ListMediaResponse>(
+      HttpType.Get,
+      "/account/list_media",
+      form,
+    );
+  }
+
+  /**
+   * List all the media known to your instance.
+   *
+   * `HTTP.GET /admin/list_all_media`
+   */
+  listAllMedia(form: ListMedia = {}) {
+    return this.#wrapper<ListMedia, ListMediaResponse>(
+      HttpType.Get,
+      "/admin/list_all_media",
+      form,
     );
   }
 
@@ -568,6 +595,19 @@ export class LemmyHttp {
   }
 
   /**
+   * Hide a post from list views.
+   *
+   * `HTTP.POST /post/hide`
+   */
+  hidePost(form: HidePost) {
+    return this.#wrapper<HidePost, SuccessResponse>(
+      HttpType.Post,
+      "/post/hide",
+      form,
+    );
+  }
+
+  /**
    * A moderator can lock a post ( IE disable new comments ).
    *
    * `HTTP.POST /post/lock`
@@ -622,7 +662,7 @@ export class LemmyHttp {
   /**
    * List a post's likes. Admin-only.
    *
-   * `HTTP.GET /post/like`
+   * `HTTP.GET /post/like/list`
    */
   listPostLikes(form: ListPostLikes) {
     return this.#wrapper<ListPostLikes, ListPostLikesResponse>(
@@ -778,7 +818,7 @@ export class LemmyHttp {
   /**
    * List a comment's likes. Admin-only.
    *
-   * `HTTP.GET //like`
+   * `HTTP.GET /comment/like/list`
    */
   listCommentLikes(form: ListCommentLikes) {
     return this.#wrapper<ListCommentLikes, ListCommentLikesResponse>(
@@ -1006,6 +1046,11 @@ export class LemmyHttp {
     );
   }
 
+  /**
+   * Invalidate the currently used auth token.
+   *
+   * `HTTP.POST /user/logout`
+   */
   logout() {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
@@ -1502,7 +1547,7 @@ export class LemmyHttp {
 
 function encodeGetParams<BodyType extends object>(p: BodyType): string {
   return Object.entries(p)
-    .filter(kv => !!kv[1])
+    .filter(kv => kv[1] !== undefined && kv[1] !== null)
     .map(kv => kv.map(encodeURIComponent).join("="))
     .join("&");
 }
@@ -1510,11 +1555,15 @@ function encodeGetParams<BodyType extends object>(p: BodyType): string {
 function createFormData(image: File | Buffer): FormData {
   let formData = new FormData();
 
-  if (image.constructor.name === "File") {
+  if (image instanceof File) {
     formData.append("images[]", image);
   } else {
     // The filename doesn't affect the file type or file name that ends up in pictrs
-    formData.append("images[]", image, { filename: "image.jpg" });
+    formData.append(
+      "images[]",
+      new Blob([image], { type: "image/jpeg" }),
+      "image.jpg",
+    );
   }
 
   return formData;
