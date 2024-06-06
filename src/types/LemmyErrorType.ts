@@ -89,8 +89,6 @@ export type LemmyErrorType =
   | { error: "person_is_banned_from_site"; message: string }
   | { error: "invalid_vote_value" }
   | { error: "page_does_not_specify_creator" }
-  | { error: "page_does_not_specify_group" }
-  | { error: "no_community_found_in_cc" }
   | { error: "no_email_setup" }
   | { error: "local_site_not_setup" }
   | { error: "email_smtp_server_needs_a_port" }
@@ -153,7 +151,6 @@ export type LemmyErrorType =
   | { error: "permissive_regex" }
   | { error: "invalid_regex" }
   | { error: "captcha_incorrect" }
-  | { error: "password_reset_limit_reached" }
   | { error: "couldnt_create_audio_captcha" }
   | { error: "invalid_url_scheme" }
   | { error: "couldnt_send_webmention" }
@@ -165,4 +162,6 @@ export type LemmyErrorType =
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }
   | { error: "cant_block_local_instance" }
+  | { error: "url_without_domain" }
+  | { error: "inbox_timeout" }
   | { error: "unknown"; message: string };
