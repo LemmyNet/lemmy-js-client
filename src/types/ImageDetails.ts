@@ -5,5 +5,4 @@ export interface ImageDetails {
   width: number;
   height: number;
   content_type: string;
-  published: string;
 }
