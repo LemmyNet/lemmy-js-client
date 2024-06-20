@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@types/node':
         specifier: ^20.11.19
-        version: 20.14.6
+        version: 20.14.7
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.1
         version: 7.13.1(@typescript-eslint/parser@7.13.1(eslint@9.5.0)(typescript@5.5.2))(eslint@9.5.0)(typescript@5.5.2)
@@ -215,8 +215,8 @@ packages:
     resolution: {integrity: sha512-cq8o4cWH0ibXh9VGi5P20Tu9XF/0fFXl9EUinr9QfTM7a7p0oTA4iJRCQWppXR1Pg8dSM0UCItCkPwsk9qWWYA==}
     engines: {node: ^12.20.0 || ^14.18.0 || >=16.0.0}
 
-  '@types/node@20.14.6':
-    resolution: {integrity: sha512-JbA0XIJPL1IiNnU7PFxDXyfAwcwVVrOoqyzzyQTyMeVhBzkJVMSkC1LlVsRQ2lpqiY4n6Bb9oCS6lzDKVQxbZw==}
+  '@types/node@20.14.7':
+    resolution: {integrity: sha512-uTr2m2IbJJucF3KUxgnGOZvYbN0QgkGyWxG6973HCpMYFy2KfcgYuIwkJQMQkt1VbBMlvWRbpshFTLxnxCZjKQ==}
 
   '@typescript-eslint/eslint-plugin@7.13.1':
     resolution: {integrity: sha512-kZqi+WZQaZfPKnsflLJQCz6Ze9FFSMfXrrIOcyargekQxG37ES7DJNpJUE9Q/X5n3yTIP/WPutVNzgknQ7biLg==}
@@ -1380,7 +1380,7 @@ snapshots:
 
   '@pkgr/core@0.1.1': {}
 
-  '@types/node@20.14.6':
+  '@types/node@20.14.7':
     dependencies:
       undici-types: 5.26.5
 
