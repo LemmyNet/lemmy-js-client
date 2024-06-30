@@ -164,4 +164,7 @@ export type LemmyErrorType =
   | { error: "cant_block_local_instance" }
   | { error: "url_without_domain" }
   | { error: "inbox_timeout" }
+  | { error: "oauth_authorization_invalid" }
+  | { error: "oauth_login_failed" }
+  | { error: "oauth_registration_closed" }
   | { error: "unknown"; message: string };

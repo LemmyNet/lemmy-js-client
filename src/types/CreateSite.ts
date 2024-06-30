@@ -46,7 +46,7 @@ export interface CreateSite {
   blocked_instances?: Array<string>;
   taglines?: Array<string>;
   registration_mode?: RegistrationMode;
+  oauth_registration?: boolean;
   content_warning?: string;
   default_post_listing_mode?: PostListingMode;
-  oauth_registration?: boolean;
 }
