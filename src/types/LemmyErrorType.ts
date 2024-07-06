@@ -44,6 +44,7 @@ export type LemmyErrorType =
   | { error: "couldnt_find_comment_reply" }
   | { error: "couldnt_find_private_message" }
   | { error: "couldnt_find_activity" }
+  | { error: "couldnt_find_oauth_provider" }
   | { error: "person_is_blocked" }
   | { error: "community_is_blocked" }
   | { error: "instance_is_blocked" }

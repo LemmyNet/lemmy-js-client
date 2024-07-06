@@ -18,6 +18,6 @@ export interface GetSiteResponse {
   discussion_languages: Array<LanguageId>;
   taglines: Array<Tagline>;
   custom_emojis: Array<CustomEmojiView>;
-  oauth_providers: Array<OAuthProvider | null>;
+  oauth_providers: Array<OAuthProvider>;
   blocked_urls: Array<LocalSiteUrlBlocklist>;
 }

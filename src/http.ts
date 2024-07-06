@@ -143,7 +143,7 @@ import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
 import { HidePost } from "./types/HidePost";
 import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
-import { OAuth } from "./types/OAuth";
+import { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 
 enum HttpType {
   Get = "GET",
@@ -1466,14 +1466,14 @@ export class LemmyHttp {
   }
 
   /**
-   * Register user with OAuth
+   * Authenticate with OAuth
    *
-   * `HTTP.Post /oauth/register`
+   * `HTTP.Post /oauth/authenticate`
    */
-  registerWithOAuth(form: OAuth) {
-    return this.#wrapper<OAuth, LoginResponse>(
+  authenticateWithOAuth(form: AuthenticateWithOauth) {
+    return this.#wrapper<AuthenticateWithOauth, LoginResponse>(
       HttpType.Post,
-      "/oauth/register",
+      "/oauth/authenticate",
       form,
     );
   }
