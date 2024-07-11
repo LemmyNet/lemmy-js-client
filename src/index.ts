@@ -185,7 +185,6 @@ export { ModlogActionType } from "./types/ModlogActionType";
 export { ModlogListParams } from "./types/ModlogListParams";
 export { MyUserInfo } from "./types/MyUserInfo";
 export { OAuthAccount } from "./types/OAuthAccount";
-export { OAuthAccountId } from "./types/OAuthAccountId";
 export { OAuthProvider } from "./types/OAuthProvider";
 export { OAuthProviderId } from "./types/OAuthProviderId";
 export { OAuthProviderInsertForm } from "./types/OAuthProviderInsertForm";

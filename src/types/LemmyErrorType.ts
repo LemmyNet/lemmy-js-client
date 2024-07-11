@@ -168,4 +168,5 @@ export type LemmyErrorType =
   | { error: "oauth_authorization_invalid" }
   | { error: "oauth_login_failed" }
   | { error: "oauth_registration_closed" }
+  | { error: "couldnt_delete_oauth_provider" }
   | { error: "unknown"; message: string };
