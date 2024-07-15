@@ -13,7 +13,6 @@ export interface OAuthProvider {
   client_id: string;
   scopes: string;
   auto_verify_email?: boolean;
-  auto_approve_application?: boolean;
   account_linking_enabled?: boolean;
   enabled?: boolean;
   published?: string;

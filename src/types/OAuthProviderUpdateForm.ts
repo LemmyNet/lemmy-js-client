@@ -10,7 +10,6 @@ export interface OAuthProviderUpdateForm {
   client_secret: string | null;
   scopes: string | null;
   auto_verify_email: boolean | null;
-  auto_approve_application: boolean | null;
   account_linking_enabled: boolean | null;
   enabled: boolean | null;
   updated: string;

@@ -12,7 +12,6 @@ export interface OAuthProviderInsertForm {
   client_secret: string;
   scopes: string;
   auto_verify_email: boolean;
-  auto_approve_application: boolean;
   account_linking_enabled: boolean;
   enabled: boolean;
 }
