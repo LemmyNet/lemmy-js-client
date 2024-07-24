@@ -72,7 +72,9 @@ export type LemmyErrorType =
   | { error: "invalid_default_post_listing_type" }
   | { error: "registration_closed" }
   | { error: "registration_application_answer_required" }
+  | { error: "registration_username_required" }
   | { error: "email_already_exists" }
+  | { error: "username_already_exists" }
   | { error: "federation_forbidden_by_strict_allow_list" }
   | { error: "person_is_banned_from_community" }
   | { error: "object_is_not_public" }

@@ -7,7 +7,6 @@ export interface CreateOAuthProvider {
   token_endpoint: string;
   userinfo_endpoint: string;
   id_claim: string;
-  name_claim: string;
   client_id: string;
   client_secret: string;
   scopes: string;

@@ -6,7 +6,6 @@ export interface OAuthProviderUpdateForm {
   token_endpoint: string;
   userinfo_endpoint: string;
   id_claim: string | null;
-  name_claim: string | null;
   client_secret: string | null;
   scopes: string | null;
   auto_verify_email: boolean | null;

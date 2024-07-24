@@ -4,17 +4,16 @@ import type { OAuthProviderId } from "./OAuthProviderId";
 export interface OAuthProvider {
   id: OAuthProviderId;
   display_name: string;
-  issuer?: string;
+  issuer: string;
   authorization_endpoint: string;
-  token_endpoint?: string;
-  userinfo_endpoint?: string;
-  id_claim?: string;
-  name_claim?: string;
+  token_endpoint: string;
+  userinfo_endpoint: string;
+  id_claim: string;
   client_id: string;
   scopes: string;
-  auto_verify_email?: boolean;
-  account_linking_enabled?: boolean;
-  enabled?: boolean;
-  published?: string;
+  auto_verify_email: boolean;
+  account_linking_enabled: boolean;
+  enabled: boolean;
+  published: string;
   updated?: string;
 }

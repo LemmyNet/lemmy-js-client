@@ -8,7 +8,6 @@ export interface EditOAuthProvider {
   token_endpoint: string | null;
   userinfo_endpoint: string | null;
   id_claim: string | null;
-  name_claim: string | null;
   client_secret: string | null;
   scopes: string | null;
   auto_verify_email: boolean | null;

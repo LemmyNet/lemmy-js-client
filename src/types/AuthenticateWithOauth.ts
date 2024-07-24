@@ -5,5 +5,6 @@ export interface AuthenticateWithOauth {
   oauth_provider_id: string;
   redirect_uri: string;
   show_nsfw?: boolean;
+  username?: string;
   answer?: string;
 }
