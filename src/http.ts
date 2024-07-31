@@ -1526,7 +1526,7 @@ export class LemmyHttp {
 
     try {
       json = await response.json();
-    } catch (error) {
+    } catch (_) {
       throw new Error(response.statusText);
     }
 
