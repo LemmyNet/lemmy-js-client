@@ -33,4 +33,5 @@ export interface LocalSite {
   federation_signed_fetch: boolean;
   default_post_listing_mode: PostListingMode;
   default_sort_type: SortType;
+  oauth_registration: boolean;
 }

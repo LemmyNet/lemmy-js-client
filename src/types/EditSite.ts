@@ -47,6 +47,7 @@ export interface EditSite {
   blocked_urls?: Array<string>;
   taglines?: Array<string>;
   registration_mode?: RegistrationMode;
+  oauth_registration?: boolean;
   reports_email_admins?: boolean;
   content_warning?: string;
   default_post_listing_mode?: PostListingMode;

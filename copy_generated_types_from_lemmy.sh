@@ -30,6 +30,9 @@ rm src/types/Sensitive.ts
 # Change all the bigints to numbers
 find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
 
+# on MacOS:
+# find src/types -type f -name '*.ts' -exec sed -i '' -e 's/bigint/number/g' {} \;
+
 node putTypesInIndex.js
 
 prettier -w src
