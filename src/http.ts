@@ -139,6 +139,7 @@ import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
 import { HidePost } from "./types/HidePost";
 import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
+import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 
 enum HttpType {
   Get = "GET",
@@ -1328,6 +1329,18 @@ export class LemmyHttp {
       ApproveRegistrationApplication,
       RegistrationApplicationResponse
     >(HttpType.Put, "/admin/registration_application/approve", form);
+  }
+
+  /**
+   * Get the application a user submitted when they first registered their account
+   *
+   * `HTTP.GET /admin/registration_application`
+   */
+  getRegistrationApplication(form: GetRegistrationApplication) {
+    return this.#wrapper<
+      GetRegistrationApplication,
+      RegistrationApplicationResponse
+    >(HttpType.Get, "/admin/registration_application", form);
   }
 
   /**
