@@ -167,4 +167,5 @@ export type LemmyErrorType =
   | { error: "url_without_domain" }
   | { error: "inbox_timeout" }
   | { error: "unknown"; message: string }
-  | { error: "cant_delete_site" };
+  | { error: "cant_delete_site" }
+  | { error: "post_schedule_time_must_be_in_future" };
