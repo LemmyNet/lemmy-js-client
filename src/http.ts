@@ -22,6 +22,7 @@ import { CreateCommentLike } from "./types/CreateCommentLike";
 import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
+import { CreateOAuthProvider } from "./types/CreateOAuthProvider";
 import { CreatePost } from "./types/CreatePost";
 import { CreatePostLike } from "./types/CreatePostLike";
 import { CreatePostReport } from "./types/CreatePostReport";
@@ -33,15 +34,18 @@ import { DeleteAccount } from "./types/DeleteAccount";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
+import { DeleteOAuthProvider } from "./types/DeleteOAuthProvider";
 import { DeletePost } from "./types/DeletePost";
 import { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 import { DistinguishComment } from "./types/DistinguishComment";
 import { EditComment } from "./types/EditComment";
 import { EditCommunity } from "./types/EditCommunity";
 import { EditCustomEmoji } from "./types/EditCustomEmoji";
+import { EditOAuthProvider } from "./types/EditOAuthProvider";
 import { EditPost } from "./types/EditPost";
 import { EditPrivateMessage } from "./types/EditPrivateMessage";
 import { EditSite } from "./types/EditSite";
+import { OAuthProvider } from "./types/OAuthProvider";
 import { FeaturePost } from "./types/FeaturePost";
 import { FollowCommunity } from "./types/FollowCommunity";
 import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
@@ -139,6 +143,7 @@ import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
 import { HidePost } from "./types/HidePost";
 import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
+import { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 
 enum HttpType {
@@ -1430,6 +1435,58 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
+      form,
+    );
+  }
+
+  /**
+   * Create a new oauth provider method
+   *
+   * `HTTP.POST /oauth_provider`
+   */
+  createOAuthProvider(form: CreateOAuthProvider) {
+    return this.#wrapper<CreateOAuthProvider, OAuthProvider>(
+      HttpType.Post,
+      "/oauth_provider",
+      form,
+    );
+  }
+
+  /**
+   * Edit an existing oauth provider method
+   *
+   * `HTTP.PUT /oauth_provider`
+   */
+  editOAuthProvider(form: EditOAuthProvider) {
+    return this.#wrapper<EditOAuthProvider, OAuthProvider>(
+      HttpType.Put,
+      "/oauth_provider",
+      form,
+    );
+  }
+
+  /**
+   * Delete an oauth provider method
+   *
+   * `HTTP.Post /oauth_provider/delete`
+   */
+  deleteOAuthProvider(form: DeleteOAuthProvider) {
+    return this.#wrapper<DeleteOAuthProvider, SuccessResponse>(
+      HttpType.Post,
+      "/oauth_provider/delete",
+      form,
+    );
+  }
+
+  /**
+   * Authenticate with OAuth
+   *
+   * `HTTP.Post /oauth/authenticate`
+   */
+  authenticateWithOAuth(form: AuthenticateWithOauth) {
+    return this.#wrapper<AuthenticateWithOauth, LoginResponse>(
+      HttpType.Post,
+      "/oauth/authenticate",
       form,
     );
   }

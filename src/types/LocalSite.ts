@@ -11,7 +11,6 @@ export interface LocalSite {
   site_id: SiteId;
   site_setup: boolean;
   enable_downvotes: boolean;
-  enable_nsfw: boolean;
   community_creation_admin_only: boolean;
   require_email_verification: boolean;
   application_question?: string;
@@ -33,4 +32,5 @@ export interface LocalSite {
   federation_signed_fetch: boolean;
   default_post_listing_mode: PostListingMode;
   default_sort_type: SortType;
+  oauth_registration: boolean;
 }

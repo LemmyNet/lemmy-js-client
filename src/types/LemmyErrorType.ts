@@ -46,6 +46,7 @@ export type LemmyErrorType =
   | { error: "couldnt_find_comment_reply" }
   | { error: "couldnt_find_private_message" }
   | { error: "couldnt_find_activity" }
+  | { error: "couldnt_find_oauth_provider" }
   | { error: "person_is_blocked" }
   | { error: "community_is_blocked" }
   | { error: "instance_is_blocked" }
@@ -73,7 +74,9 @@ export type LemmyErrorType =
   | { error: "invalid_default_post_listing_type" }
   | { error: "registration_closed" }
   | { error: "registration_application_answer_required" }
+  | { error: "registration_username_required" }
   | { error: "email_already_exists" }
+  | { error: "username_already_exists" }
   | { error: "federation_forbidden_by_strict_allow_list" }
   | { error: "person_is_banned_from_community" }
   | { error: "object_is_not_public" }
@@ -166,5 +169,11 @@ export type LemmyErrorType =
   | { error: "cant_block_local_instance" }
   | { error: "url_without_domain" }
   | { error: "inbox_timeout" }
+  | { error: "oauth_authorization_invalid" }
+  | { error: "oauth_login_failed" }
+  | { error: "oauth_registration_closed" }
+  | { error: "couldnt_delete_oauth_provider" }
   | { error: "unknown"; message: string }
+  | { error: "cant_delete_site" }
+  | { error: "url_length_overflow" }
   | { error: "cant_delete_site" };

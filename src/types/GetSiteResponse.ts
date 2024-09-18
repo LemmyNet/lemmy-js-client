@@ -4,7 +4,9 @@ import type { Language } from "./Language";
 import type { LanguageId } from "./LanguageId";
 import type { LocalSiteUrlBlocklist } from "./LocalSiteUrlBlocklist";
 import type { MyUserInfo } from "./MyUserInfo";
+import type { OAuthProvider } from "./OAuthProvider";
 import type { PersonView } from "./PersonView";
+import type { PublicOAuthProvider } from "./PublicOAuthProvider";
 import type { SiteView } from "./SiteView";
 import type { Tagline } from "./Tagline";
 
@@ -17,5 +19,7 @@ export interface GetSiteResponse {
   discussion_languages: Array<LanguageId>;
   taglines: Array<Tagline>;
   custom_emojis: Array<CustomEmojiView>;
+  oauth_providers?: Array<PublicOAuthProvider>;
+  admin_oauth_providers?: Array<OAuthProvider>;
   blocked_urls: Array<LocalSiteUrlBlocklist>;
 }
