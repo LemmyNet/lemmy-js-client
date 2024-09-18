@@ -144,6 +144,7 @@ import { HidePost } from "./types/HidePost";
 import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
 import { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
+import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 
 enum HttpType {
   Get = "GET",
@@ -1336,6 +1337,18 @@ export class LemmyHttp {
   }
 
   /**
+   * Get the application a user submitted when they first registered their account
+   *
+   * `HTTP.GET /admin/registration_application`
+   */
+  getRegistrationApplication(form: GetRegistrationApplication) {
+    return this.#wrapper<
+      GetRegistrationApplication,
+      RegistrationApplicationResponse
+    >(HttpType.Get, "/admin/registration_application", form);
+  }
+
+  /**
    * Purge / Delete a person from the database.
    *
    * `HTTP.POST /admin/purge/person`
@@ -1583,7 +1596,7 @@ export class LemmyHttp {
 
     try {
       json = await response.json();
-    } catch (error) {
+    } catch {
       throw new Error(response.statusText);
     }
 

@@ -175,4 +175,5 @@ export type LemmyErrorType =
   | { error: "couldnt_delete_oauth_provider" }
   | { error: "unknown"; message: string }
   | { error: "cant_delete_site" }
-  | { error: "url_length_overflow" };
+  | { error: "url_length_overflow" }
+  | { error: "cant_delete_site" };
