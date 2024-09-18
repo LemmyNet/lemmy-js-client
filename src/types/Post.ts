@@ -28,5 +28,5 @@ export interface Post {
   featured_local: boolean;
   url_content_type?: string;
   alt_text?: string;
-  scheduled_publish_time?: string;
+  scheduled_publish_time?: number;
 }
