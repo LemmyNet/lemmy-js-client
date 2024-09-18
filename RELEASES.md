@@ -1,3 +1,7 @@
+## What's Changed
+
+- Adding git cliff, a RELEASES.md file, and a generate_changelog file.
+
 ## What's Changed in v0.19.4
 
 - 0.19.4 by @dessalines
@@ -13,8 +17,6 @@
 - @matc-pub made their first contribution in [#257](https://github.com/LemmyNet/lemmy-js-client/pull/257)
 - @Nothing4You made their first contribution in [#256](https://github.com/LemmyNet/lemmy-js-client/pull/256)
 
-**Full Changelog**: https://github.com/LemmyNet/lemmy-js-client/compare/v0.19.0...v0.19.4
-
 ## What's Changed in v0.19.0
 
 - v0.19.0 by @dessalines
@@ -28,6 +30,8 @@
 - Upgrading deps, removing cross_fetch. by @dessalines in [#216](https://github.com/LemmyNet/lemmy-js-client/pull/216)
 - v0.19.0-rc.15 by @dessalines
 - Adding `creator_is_admin` to various views. by @dessalines in [#215](https://github.com/LemmyNet/lemmy-js-client/pull/215)
+
+**Full Changelog**: https://github.com/LemmyNet/lemmy-js-client/compare/v0.18.1...v0.19.0
 
 ## What's Changed in v0.18.1
 
@@ -50,8 +54,6 @@
 
 - @sunaurus made their first contribution in [#154](https://github.com/LemmyNet/lemmy-js-client/pull/154)
 - @cavanaugh-richards made their first contribution
-
-**Full Changelog**: https://github.com/LemmyNet/lemmy-js-client/compare/v0.18.0...v0.18.1
 
 ## What's Changed in v0.18.0
 
