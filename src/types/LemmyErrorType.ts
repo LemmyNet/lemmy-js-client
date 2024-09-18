@@ -29,6 +29,8 @@ export type LemmyErrorType =
   | { error: "not_top_admin" }
   | { error: "not_top_mod" }
   | { error: "not_logged_in" }
+  | { error: "not_higher_mod" }
+  | { error: "not_higher_admin" }
   | { error: "site_ban" }
   | { error: "deleted" }
   | { error: "banned_from_community" }
@@ -171,4 +173,6 @@ export type LemmyErrorType =
   | { error: "oauth_login_failed" }
   | { error: "oauth_registration_closed" }
   | { error: "couldnt_delete_oauth_provider" }
-  | { error: "unknown"; message: string };
+  | { error: "unknown"; message: string }
+  | { error: "cant_delete_site" }
+  | { error: "url_length_overflow" };

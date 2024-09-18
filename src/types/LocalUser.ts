@@ -16,7 +16,6 @@ export interface LocalUser {
   interface_language: string;
   show_avatars: boolean;
   send_notifications_to_email: boolean;
-  show_scores: boolean;
   show_bot_accounts: boolean;
   show_read_posts: boolean;
   email_verified: boolean;

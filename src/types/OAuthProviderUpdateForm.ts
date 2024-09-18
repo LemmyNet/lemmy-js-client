@@ -11,5 +11,5 @@ export interface OAuthProviderUpdateForm {
   auto_verify_email: boolean | null;
   account_linking_enabled: boolean | null;
   enabled: boolean | null;
-  updated: string;
+  updated: string | null | null;
 }
