@@ -11,4 +11,5 @@ export interface EditPost {
   nsfw?: boolean;
   language_id?: LanguageId;
   custom_thumbnail?: string;
+  scheduled_publish_time?: number;
 }
