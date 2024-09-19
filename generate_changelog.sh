@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
 
-# Adding to RELEASES.md
-git cliff --output RELEASES.md
-prettier -w RELEASES.md
+# Adding to CHANGELOG.md
+git cliff --output CHANGELOG.md
+prettier -w CHANGELOG.md

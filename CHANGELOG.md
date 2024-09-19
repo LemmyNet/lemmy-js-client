@@ -1,5 +1,6 @@
 ## What's Changed
 
+- Updating.
 - Adding git cliff, a RELEASES.md file, and a generate_changelog file.
 
 ## What's Changed in v0.19.4
