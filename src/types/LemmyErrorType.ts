@@ -34,19 +34,6 @@ export type LemmyErrorType =
   | { error: "site_ban" }
   | { error: "deleted" }
   | { error: "banned_from_community" }
-  | { error: "couldnt_find_community" }
-  | { error: "couldnt_find_person" }
-  | { error: "couldnt_find_comment" }
-  | { error: "couldnt_find_comment_report" }
-  | { error: "couldnt_find_post_report" }
-  | { error: "couldnt_find_private_message_report" }
-  | { error: "couldnt_find_local_user" }
-  | { error: "couldnt_find_person_mention" }
-  | { error: "couldnt_find_registration_application" }
-  | { error: "couldnt_find_comment_reply" }
-  | { error: "couldnt_find_private_message" }
-  | { error: "couldnt_find_activity" }
-  | { error: "couldnt_find_oauth_provider" }
   | { error: "person_is_blocked" }
   | { error: "community_is_blocked" }
   | { error: "instance_is_blocked" }
@@ -67,7 +54,6 @@ export type LemmyErrorType =
   | { error: "only_mods_can_post_in_community" }
   | { error: "couldnt_update_post" }
   | { error: "no_post_edit_allowed" }
-  | { error: "couldnt_find_post" }
   | { error: "edit_private_message_not_allowed" }
   | { error: "site_already_exists" }
   | { error: "application_question_required" }
@@ -123,7 +109,6 @@ export type LemmyErrorType =
   | { error: "couldnt_update_community_hidden_status" }
   | { error: "person_block_already_exists" }
   | { error: "user_already_exists" }
-  | { error: "token_not_found" }
   | { error: "couldnt_like_post" }
   | { error: "couldnt_save_post" }
   | { error: "couldnt_mark_post_as_read" }
@@ -145,7 +130,6 @@ export type LemmyErrorType =
   | { error: "invalid_url" }
   | { error: "email_send_failed" }
   | { error: "slurs" }
-  | { error: "couldnt_find_object" }
   | { error: "registration_denied"; message: string | null }
   | { error: "federation_disabled" }
   | { error: "domain_blocked"; message: string }
@@ -175,4 +159,5 @@ export type LemmyErrorType =
   | { error: "couldnt_delete_oauth_provider" }
   | { error: "unknown"; message: string }
   | { error: "cant_delete_site" }
-  | { error: "url_length_overflow" };
+  | { error: "url_length_overflow" }
+  | { error: "not_found" };
