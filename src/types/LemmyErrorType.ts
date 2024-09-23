@@ -29,21 +29,11 @@ export type LemmyErrorType =
   | { error: "not_top_admin" }
   | { error: "not_top_mod" }
   | { error: "not_logged_in" }
+  | { error: "not_higher_mod" }
+  | { error: "not_higher_admin" }
   | { error: "site_ban" }
   | { error: "deleted" }
   | { error: "banned_from_community" }
-  | { error: "couldnt_find_community" }
-  | { error: "couldnt_find_person" }
-  | { error: "couldnt_find_comment" }
-  | { error: "couldnt_find_comment_report" }
-  | { error: "couldnt_find_post_report" }
-  | { error: "couldnt_find_private_message_report" }
-  | { error: "couldnt_find_local_user" }
-  | { error: "couldnt_find_person_mention" }
-  | { error: "couldnt_find_registration_application" }
-  | { error: "couldnt_find_comment_reply" }
-  | { error: "couldnt_find_private_message" }
-  | { error: "couldnt_find_activity" }
   | { error: "person_is_blocked" }
   | { error: "community_is_blocked" }
   | { error: "instance_is_blocked" }
@@ -64,14 +54,15 @@ export type LemmyErrorType =
   | { error: "only_mods_can_post_in_community" }
   | { error: "couldnt_update_post" }
   | { error: "no_post_edit_allowed" }
-  | { error: "couldnt_find_post" }
   | { error: "edit_private_message_not_allowed" }
   | { error: "site_already_exists" }
   | { error: "application_question_required" }
   | { error: "invalid_default_post_listing_type" }
   | { error: "registration_closed" }
   | { error: "registration_application_answer_required" }
+  | { error: "registration_username_required" }
   | { error: "email_already_exists" }
+  | { error: "username_already_exists" }
   | { error: "federation_forbidden_by_strict_allow_list" }
   | { error: "person_is_banned_from_community" }
   | { error: "object_is_not_public" }
@@ -118,7 +109,6 @@ export type LemmyErrorType =
   | { error: "couldnt_update_community_hidden_status" }
   | { error: "person_block_already_exists" }
   | { error: "user_already_exists" }
-  | { error: "token_not_found" }
   | { error: "couldnt_like_post" }
   | { error: "couldnt_save_post" }
   | { error: "couldnt_mark_post_as_read" }
@@ -140,7 +130,6 @@ export type LemmyErrorType =
   | { error: "invalid_url" }
   | { error: "email_send_failed" }
   | { error: "slurs" }
-  | { error: "couldnt_find_object" }
   | { error: "registration_denied"; message: string | null }
   | { error: "federation_disabled" }
   | { error: "domain_blocked"; message: string }
@@ -164,4 +153,11 @@ export type LemmyErrorType =
   | { error: "cant_block_local_instance" }
   | { error: "url_without_domain" }
   | { error: "inbox_timeout" }
-  | { error: "unknown"; message: string };
+  | { error: "oauth_authorization_invalid" }
+  | { error: "oauth_login_failed" }
+  | { error: "oauth_registration_closed" }
+  | { error: "couldnt_delete_oauth_provider" }
+  | { error: "unknown"; message: string }
+  | { error: "cant_delete_site" }
+  | { error: "url_length_overflow" }
+  | { error: "not_found" };

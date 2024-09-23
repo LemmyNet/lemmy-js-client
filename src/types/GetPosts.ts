@@ -2,11 +2,11 @@
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { PaginationCursor } from "./PaginationCursor";
-import type { SortType } from "./SortType";
+import type { PostSortType } from "./PostSortType";
 
 export interface GetPosts {
   type_?: ListingType;
-  sort?: SortType;
+  sort?: PostSortType;
   page?: number;
   limit?: number;
   community_id?: CommunityId;
@@ -15,5 +15,7 @@ export interface GetPosts {
   liked_only?: boolean;
   disliked_only?: boolean;
   show_hidden?: boolean;
+  show_read?: boolean;
+  show_nsfw?: boolean;
   page_cursor?: PaginationCursor;
 }

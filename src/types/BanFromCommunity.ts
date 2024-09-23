@@ -6,7 +6,7 @@ export interface BanFromCommunity {
   community_id: CommunityId;
   person_id: PersonId;
   ban: boolean;
-  remove_data?: boolean;
+  remove_or_restore_data?: boolean;
   reason?: string;
   expires?: number;
 }
