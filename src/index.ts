@@ -270,3 +270,9 @@ export { UpdateTotp } from "./types/UpdateTotp";
 export { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 export { VerifyEmail } from "./types/VerifyEmail";
 export { VoteView } from "./types/VoteView";
+export {
+  UploadImage,
+  UploadImageResponse,
+  ImageFile,
+  DeleteImage,
+} from "./other_types";
