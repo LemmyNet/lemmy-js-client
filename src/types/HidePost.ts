@@ -2,6 +2,6 @@
 import type { PostId } from "./PostId";
 
 export interface HidePost {
-  post_ids: Array<PostId>;
+  post_id: PostId;
   hide: boolean;
 }
