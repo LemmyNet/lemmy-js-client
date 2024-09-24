@@ -160,5 +160,6 @@ export type LemmyErrorType =
   | { error: "unknown"; message: string }
   | { error: "cant_delete_site" }
   | { error: "post_schedule_time_must_be_in_future" }
+  | { error: "too_many_scheduled_posts" }
   | { error: "url_length_overflow" }
   | { error: "not_found" };
