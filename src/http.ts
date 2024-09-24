@@ -145,6 +145,12 @@ import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
 import { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
+import { CreateTagline } from "./types/CreateTagline";
+import { TaglineResponse } from "./types/TaglineResponse";
+import { UpdateTagline } from "./types/UpdateTagline";
+import { DeleteTagline } from "./types/DeleteTagline";
+import { ListTaglines } from "./types/ListTaglines";
+import { ListTaglinesResponse } from "./types/ListTaglinesResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1435,6 +1441,58 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
+      form,
+    );
+  }
+
+  /**
+   * Create a new tagline
+   *
+   * `HTTP.POST /tagline`
+   */
+  createTagline(form: CreateTagline) {
+    return this.#wrapper<CreateTagline, TaglineResponse>(
+      HttpType.Post,
+      "/tagline",
+      form,
+    );
+  }
+
+  /**
+   * Edit an existing tagline
+   *
+   * `HTTP.PUT /tagline`
+   */
+  editTagline(form: UpdateTagline) {
+    return this.#wrapper<UpdateTagline, TaglineResponse>(
+      HttpType.Put,
+      "/tagline",
+      form,
+    );
+  }
+
+  /**
+   * Delete a tagline
+   *
+   * `HTTP.Post /tagline/delete`
+   */
+  deleteTagline(form: DeleteTagline) {
+    return this.#wrapper<DeleteTagline, SuccessResponse>(
+      HttpType.Post,
+      "/tagline/delete",
+      form,
+    );
+  }
+
+  /**
+   * List taglines
+   *
+   * `HTTP.GET /tagline/list`
+   */
+  listTaglines(form: ListTaglines) {
+    return this.#wrapper<ListTaglines, ListTaglinesResponse>(
+      HttpType.Get,
+      "/tagline/list",
       form,
     );
   }
