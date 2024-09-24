@@ -16,4 +16,8 @@ export interface Search {
   page?: number;
   limit?: number;
   post_title_only?: boolean;
+  post_url_only?: boolean;
+  saved_only?: boolean;
+  liked_only?: boolean;
+  disliked_only?: boolean;
 }
