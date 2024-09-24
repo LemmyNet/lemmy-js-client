@@ -2,8 +2,8 @@
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { PersonId } from "./PersonId";
+import type { PostSortType } from "./PostSortType";
 import type { SearchType } from "./SearchType";
-import type { SortType } from "./SortType";
 
 export interface Search {
   q: string;
@@ -11,8 +11,9 @@ export interface Search {
   community_name?: string;
   creator_id?: PersonId;
   type_?: SearchType;
-  sort?: SortType;
+  sort?: PostSortType;
   listing_type?: ListingType;
   page?: number;
   limit?: number;
+  post_title_only?: boolean;
 }

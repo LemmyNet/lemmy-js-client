@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "0.19.6-alpha.1",
+  "version": "0.20.0-alpha.10",
   "author": "Dessalines <tyhou13@gmx.com>",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
@@ -35,7 +35,7 @@
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.0.0"
   },
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.11.0",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
