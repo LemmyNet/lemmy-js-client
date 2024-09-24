@@ -23,7 +23,6 @@ export interface LocalUser {
   accepted_application: boolean;
   open_links_in_new_tab: boolean;
   blur_nsfw: boolean;
-  auto_expand: boolean;
   infinite_scroll_enabled: boolean;
   admin: boolean;
   post_listing_mode: PostListingMode;

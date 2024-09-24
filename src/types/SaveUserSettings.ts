@@ -8,7 +8,6 @@ import type { PostSortType } from "./PostSortType";
 export interface SaveUserSettings {
   show_nsfw?: boolean;
   blur_nsfw?: boolean;
-  auto_expand?: boolean;
   theme?: string;
   default_listing_type?: ListingType;
   post_listing_mode?: PostListingMode;
