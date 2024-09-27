@@ -1,4 +1,10 @@
 export * from "./http";
+export {
+  UploadImage,
+  UploadImageResponse,
+  ImageFile,
+  DeleteImage,
+} from "./other_types";
 export { ActivityId } from "./types/ActivityId";
 export { AddAdmin } from "./types/AddAdmin";
 export { AddAdminResponse } from "./types/AddAdminResponse";
@@ -193,8 +199,6 @@ export { MyUserInfo } from "./types/MyUserInfo";
 export { OAuthAccount } from "./types/OAuthAccount";
 export { OAuthProvider } from "./types/OAuthProvider";
 export { OAuthProviderId } from "./types/OAuthProviderId";
-export { OAuthProviderInsertForm } from "./types/OAuthProviderInsertForm";
-export { OAuthProviderUpdateForm } from "./types/OAuthProviderUpdateForm";
 export { OpenGraphData } from "./types/OpenGraphData";
 export { PaginationCursor } from "./types/PaginationCursor";
 export { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
@@ -270,9 +274,3 @@ export { UpdateTotp } from "./types/UpdateTotp";
 export { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 export { VerifyEmail } from "./types/VerifyEmail";
 export { VoteView } from "./types/VoteView";
-export {
-  UploadImage,
-  UploadImageResponse,
-  ImageFile,
-  DeleteImage,
-} from "./other_types";

@@ -1448,12 +1448,12 @@ export class LemmyHttp {
   /**
    * Create a new tagline
    *
-   * `HTTP.POST /tagline`
+   * `HTTP.POST /admin/tagline`
    */
   createTagline(form: CreateTagline) {
     return this.#wrapper<CreateTagline, TaglineResponse>(
       HttpType.Post,
-      "/tagline",
+      "/admin/tagline",
       form,
     );
   }
@@ -1461,12 +1461,12 @@ export class LemmyHttp {
   /**
    * Edit an existing tagline
    *
-   * `HTTP.PUT /tagline`
+   * `HTTP.PUT /admin/tagline`
    */
   editTagline(form: UpdateTagline) {
     return this.#wrapper<UpdateTagline, TaglineResponse>(
       HttpType.Put,
-      "/tagline",
+      "/admin/tagline",
       form,
     );
   }
@@ -1474,12 +1474,12 @@ export class LemmyHttp {
   /**
    * Delete a tagline
    *
-   * `HTTP.Post /tagline/delete`
+   * `HTTP.Post /admin/tagline/delete`
    */
   deleteTagline(form: DeleteTagline) {
     return this.#wrapper<DeleteTagline, SuccessResponse>(
       HttpType.Post,
-      "/tagline/delete",
+      "/admin/tagline/delete",
       form,
     );
   }
@@ -1487,12 +1487,12 @@ export class LemmyHttp {
   /**
    * List taglines
    *
-   * `HTTP.GET /tagline/list`
+   * `HTTP.GET /admin/tagline/list`
    */
   listTaglines(form: ListTaglines) {
     return this.#wrapper<ListTaglines, ListTaglinesResponse>(
       HttpType.Get,
-      "/tagline/list",
+      "/admin/tagline/list",
       form,
     );
   }

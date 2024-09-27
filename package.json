@@ -19,10 +19,10 @@
     "url": "git+https://github.com/LemmyNet/lemmy-js-client.git"
   },
   "devDependencies": {
-    "@types/node": "^22.1.0",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "eslint": "^9.8.0",
+    "@types/node": "^22.7.3",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
+    "eslint": "^9.11.1",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
@@ -33,7 +33,7 @@
     "sortpack": "^2.4.0",
     "typedoc": "^0.26.5",
     "typescript": "^5.5.4",
-    "typescript-eslint": "^8.0.0"
+    "typescript-eslint": "^8.7.0"
   },
   "packageManager": "pnpm@9.11.0",
   "types": "./dist/index.d.ts",

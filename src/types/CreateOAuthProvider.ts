@@ -10,7 +10,7 @@ export interface CreateOAuthProvider {
   client_id: string;
   client_secret: string;
   scopes: string;
-  auto_verify_email: boolean;
-  account_linking_enabled: boolean;
-  enabled: boolean;
+  auto_verify_email?: boolean;
+  account_linking_enabled?: boolean;
+  enabled?: boolean;
 }
