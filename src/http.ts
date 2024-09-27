@@ -151,6 +151,8 @@ import { UpdateTagline } from "./types/UpdateTagline";
 import { DeleteTagline } from "./types/DeleteTagline";
 import { ListTaglines } from "./types/ListTaglines";
 import { ListTaglinesResponse } from "./types/ListTaglinesResponse";
+import { ListCustomEmojis } from "./types/ListCustomEmojis";
+import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1441,6 +1443,19 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
+      form,
+    );
+  }
+
+  /**
+   * List custom emojis
+   *
+   * `HTTP.GET /custom_emoji/list`
+   */
+  listCustomEmojis(form: ListCustomEmojis) {
+    return this.#wrapper<ListCustomEmojis, ListCustomEmojisResponse>(
+      HttpType.Get,
+      "/custom_emoji/list",
       form,
     );
   }
