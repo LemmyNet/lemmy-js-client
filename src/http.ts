@@ -145,6 +145,14 @@ import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
 import { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
+import { CreateTagline } from "./types/CreateTagline";
+import { TaglineResponse } from "./types/TaglineResponse";
+import { UpdateTagline } from "./types/UpdateTagline";
+import { DeleteTagline } from "./types/DeleteTagline";
+import { ListTaglines } from "./types/ListTaglines";
+import { ListTaglinesResponse } from "./types/ListTaglinesResponse";
+import { ListCustomEmojis } from "./types/ListCustomEmojis";
+import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1435,6 +1443,71 @@ export class LemmyHttp {
     return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
+      form,
+    );
+  }
+
+  /**
+   * List custom emojis
+   *
+   * `HTTP.GET /custom_emoji/list`
+   */
+  listCustomEmojis(form: ListCustomEmojis) {
+    return this.#wrapper<ListCustomEmojis, ListCustomEmojisResponse>(
+      HttpType.Get,
+      "/custom_emoji/list",
+      form,
+    );
+  }
+
+  /**
+   * Create a new tagline
+   *
+   * `HTTP.POST /admin/tagline`
+   */
+  createTagline(form: CreateTagline) {
+    return this.#wrapper<CreateTagline, TaglineResponse>(
+      HttpType.Post,
+      "/admin/tagline",
+      form,
+    );
+  }
+
+  /**
+   * Edit an existing tagline
+   *
+   * `HTTP.PUT /admin/tagline`
+   */
+  editTagline(form: UpdateTagline) {
+    return this.#wrapper<UpdateTagline, TaglineResponse>(
+      HttpType.Put,
+      "/admin/tagline",
+      form,
+    );
+  }
+
+  /**
+   * Delete a tagline
+   *
+   * `HTTP.Post /admin/tagline/delete`
+   */
+  deleteTagline(form: DeleteTagline) {
+    return this.#wrapper<DeleteTagline, SuccessResponse>(
+      HttpType.Post,
+      "/admin/tagline/delete",
+      form,
+    );
+  }
+
+  /**
+   * List taglines
+   *
+   * `HTTP.GET /admin/tagline/list`
+   */
+  listTaglines(form: ListTaglines) {
+    return this.#wrapper<ListTaglines, ListTaglinesResponse>(
+      HttpType.Get,
+      "/admin/tagline/list",
       form,
     );
   }
