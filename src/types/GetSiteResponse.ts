@@ -16,6 +16,8 @@ export interface GetSiteResponse {
   my_user?: MyUserInfo;
   all_languages: Array<Language>;
   discussion_languages: Array<LanguageId>;
+  taglines: Array<null>;
+  custom_emojis: Array<null>;
   tagline?: Tagline;
   oauth_providers?: Array<PublicOAuthProvider>;
   admin_oauth_providers?: Array<OAuthProvider>;

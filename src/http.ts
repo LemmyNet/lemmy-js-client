@@ -153,6 +153,7 @@ import { ListTaglines } from "./types/ListTaglines";
 import { ListTaglinesResponse } from "./types/ListTaglinesResponse";
 import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
+import { GetRandomCommunity } from "./types/GetRandomCommunity";
 
 enum HttpType {
   Get = "GET",
@@ -534,6 +535,19 @@ export class LemmyHttp {
     return this.#wrapper<AddModToCommunity, AddModToCommunityResponse>(
       HttpType.Post,
       "/community/mod",
+      form,
+    );
+  }
+
+  /**
+   * Get a random community.
+   *
+   * `HTTP.GET /community/random`
+   */
+  getRandomCommunity(form: GetRandomCommunity) {
+    return this.#wrapper<GetRandomCommunity, CommunityResponse>(
+      HttpType.Get,
+      "/community/random",
       form,
     );
   }
