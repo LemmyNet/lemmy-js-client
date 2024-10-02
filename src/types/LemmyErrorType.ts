@@ -37,7 +37,7 @@ export type LemmyErrorType =
   | { error: "person_is_blocked" }
   | { error: "community_is_blocked" }
   | { error: "instance_is_blocked" }
-  | { error: "downvotes_are_disabled" }
+  | { error: "vote_not_allowed" }
   | { error: "instance_is_private" }
   | { error: "invalid_password" }
   | { error: "site_description_length_overflow" }

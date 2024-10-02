@@ -3,4 +3,5 @@ import type { SiteView } from "./SiteView";
 
 export interface SiteResponse {
   site_view: SiteView;
+  taglines: Array<null>;
 }
