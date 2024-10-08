@@ -154,6 +154,12 @@ import { ListTaglinesResponse } from "./types/ListTaglinesResponse";
 import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
+import { ApproveCommunityPendingFollows } from "./types/ApproveCommunityPendingFollows";
+import { GetCommunityPendingFollowsCount } from "./types/GetCommunityPendingFollowsCount";
+import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPendingFollowsCountResponse";
+import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendingFollowsResponse";
+import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
+import { CommunityId } from "./types/CommunityId";
 
 enum HttpType {
   Get = "GET",
@@ -444,6 +450,29 @@ export class LemmyHttp {
     return this.#wrapper<FollowCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/follow",
+      form,
+    );
+  }
+
+  getCommunityPendingFollowsCount(community_id: CommunityId) {
+    const form: GetCommunityPendingFollowsCount = { community_id };
+    return this.#wrapper<
+      GetCommunityPendingFollowsCount,
+      GetCommunityPendingFollowsCountResponse
+    >(HttpType.Get, "/community/pending_follows/count", form);
+  }
+
+  listCommunityPendingFollows(form: ListCommunityPendingFollows) {
+    return this.#wrapper<
+      ListCommunityPendingFollows,
+      ListCommunityPendingFollowsResponse
+    >(HttpType.Get, "/community/pending_follows/list", form);
+  }
+
+  approveCommunityPendingFollow(form: ApproveCommunityPendingFollows) {
+    return this.#wrapper<ApproveCommunityPendingFollows, SuccessResponse>(
+      HttpType.Post,
+      "/community/pending_follows/approve",
       form,
     );
   }
