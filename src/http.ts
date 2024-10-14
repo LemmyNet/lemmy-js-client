@@ -154,7 +154,7 @@ import { ListTaglinesResponse } from "./types/ListTaglinesResponse";
 import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
-import { ApproveCommunityPendingFollows } from "./types/ApproveCommunityPendingFollows";
+import { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
 import { GetCommunityPendingFollowsCount } from "./types/GetCommunityPendingFollowsCount";
 import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPendingFollowsCountResponse";
 import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendingFollowsResponse";
@@ -469,8 +469,8 @@ export class LemmyHttp {
     >(HttpType.Get, "/community/pending_follows/list", form);
   }
 
-  approveCommunityPendingFollow(form: ApproveCommunityPendingFollows) {
-    return this.#wrapper<ApproveCommunityPendingFollows, SuccessResponse>(
+  approveCommunityPendingFollow(form: ApproveCommunityPendingFollower) {
+    return this.#wrapper<ApproveCommunityPendingFollower, SuccessResponse>(
       HttpType.Post,
       "/community/pending_follows/approve",
       form,

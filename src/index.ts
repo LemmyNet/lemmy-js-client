@@ -18,7 +18,7 @@ export { AdminPurgePerson } from "./types/AdminPurgePerson";
 export { AdminPurgePersonView } from "./types/AdminPurgePersonView";
 export { AdminPurgePost } from "./types/AdminPurgePost";
 export { AdminPurgePostView } from "./types/AdminPurgePostView";
-export { ApproveCommunityPendingFollows } from "./types/ApproveCommunityPendingFollows";
+export { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
 export { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 export { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 export { BanFromCommunity } from "./types/BanFromCommunity";
