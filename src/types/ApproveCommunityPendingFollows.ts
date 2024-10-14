@@ -5,4 +5,5 @@ import type { PersonId } from "./PersonId";
 export interface ApproveCommunityPendingFollows {
   community_id: CommunityId;
   follower_id: PersonId;
+  approve: boolean;
 }
