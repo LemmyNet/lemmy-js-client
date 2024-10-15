@@ -211,6 +211,7 @@ export { OpenGraphData } from "./types/OpenGraphData";
 export { PaginationCursor } from "./types/PaginationCursor";
 export { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 export { PasswordReset } from "./types/PasswordReset";
+export { PendingFollow } from "./types/PendingFollow";
 export { Person } from "./types/Person";
 export { PersonAggregates } from "./types/PersonAggregates";
 export { PersonId } from "./types/PersonId";
