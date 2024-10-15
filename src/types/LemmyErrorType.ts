@@ -66,6 +66,7 @@ export type LemmyErrorType =
   | { error: "federation_forbidden_by_strict_allow_list" }
   | { error: "person_is_banned_from_community" }
   | { error: "object_is_not_public" }
+  | { error: "object_is_not_private" }
   | { error: "invalid_community" }
   | { error: "cannot_create_post_or_comment_in_deleted_or_removed_community" }
   | { error: "cannot_receive_page" }
