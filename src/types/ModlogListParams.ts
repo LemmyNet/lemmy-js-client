@@ -4,7 +4,10 @@ import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 import type { PostId } from "./PostId";
 
-export interface ModlogListParams {
+/**
+ * Querying / filtering the modlog.
+ */
+export type ModlogListParams = {
   community_id?: CommunityId;
   mod_person_id?: PersonId;
   other_person_id?: PersonId;
@@ -13,4 +16,4 @@ export interface ModlogListParams {
   page?: number;
   limit?: number;
   hide_modlog_names: boolean;
-}
+};

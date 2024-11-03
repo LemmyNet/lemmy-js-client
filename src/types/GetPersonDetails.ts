@@ -3,12 +3,20 @@ import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 import type { PostSortType } from "./PostSortType";
 
-export interface GetPersonDetails {
+/**
+ * Gets a person's details.
+ *
+ * Either person_id, or username are required.
+ */
+export type GetPersonDetails = {
   person_id?: PersonId;
+  /**
+   * Example: dessalines , or dessalines@xyz.tld
+   */
   username?: string;
   sort?: PostSortType;
   page?: number;
   limit?: number;
   community_id?: CommunityId;
   saved_only?: boolean;
-}
+};

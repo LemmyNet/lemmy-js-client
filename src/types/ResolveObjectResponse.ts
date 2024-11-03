@@ -4,9 +4,12 @@ import type { CommunityView } from "./CommunityView";
 import type { PersonView } from "./PersonView";
 import type { PostView } from "./PostView";
 
-export interface ResolveObjectResponse {
+/**
+ * The response of an apub object fetch.
+ */
+export type ResolveObjectResponse = {
   comment?: CommentView;
   post?: PostView;
   community?: CommunityView;
   person?: PersonView;
-}
+};

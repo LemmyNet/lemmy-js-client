@@ -4,9 +4,12 @@ import type { ModFeaturePost } from "./ModFeaturePost";
 import type { Person } from "./Person";
 import type { Post } from "./Post";
 
-export interface ModFeaturePostView {
+/**
+ * When a moderator features a post on a community (pins it to the top).
+ */
+export type ModFeaturePostView = {
   mod_feature_post: ModFeaturePost;
   moderator?: Person;
   post: Post;
   community: Community;
-}
+};

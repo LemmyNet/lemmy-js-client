@@ -2,8 +2,11 @@
 import type { PostFeatureType } from "./PostFeatureType";
 import type { PostId } from "./PostId";
 
-export interface FeaturePost {
+/**
+ * Feature a post (stickies / pins to the top).
+ */
+export type FeaturePost = {
   post_id: PostId;
   featured: boolean;
   feature_type: PostFeatureType;
-}
+};

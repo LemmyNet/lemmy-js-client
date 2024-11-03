@@ -3,8 +3,11 @@ import type { Community } from "./Community";
 import type { ModHideCommunity } from "./ModHideCommunity";
 import type { Person } from "./Person";
 
-export interface ModHideCommunityView {
+/**
+ * When a community is hidden from public view.
+ */
+export type ModHideCommunityView = {
   mod_hide_community: ModHideCommunity;
   admin?: Person;
   community: Community;
-}
+};

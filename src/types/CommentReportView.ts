@@ -7,7 +7,10 @@ import type { Person } from "./Person";
 import type { Post } from "./Post";
 import type { SubscribedType } from "./SubscribedType";
 
-export interface CommentReportView {
+/**
+ * A comment report view.
+ */
+export type CommentReportView = {
   comment_report: CommentReport;
   comment: Comment;
   post: Post;
@@ -23,4 +26,4 @@ export interface CommentReportView {
   saved: boolean;
   my_vote?: number;
   resolver?: Person;
-}
+};

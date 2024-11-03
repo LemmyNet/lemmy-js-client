@@ -2,7 +2,10 @@
 import type { CustomEmoji } from "./CustomEmoji";
 import type { CustomEmojiKeyword } from "./CustomEmojiKeyword";
 
-export interface CustomEmojiView {
+/**
+ * A custom emoji view.
+ */
+export type CustomEmojiView = {
   custom_emoji: CustomEmoji;
   keywords: Array<CustomEmojiKeyword>;
-}
+};

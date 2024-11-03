@@ -2,7 +2,10 @@
 import type { Community } from "./Community";
 import type { Person } from "./Person";
 
-export interface CommunityModeratorView {
+/**
+ * A community moderator.
+ */
+export type CommunityModeratorView = {
   community: Community;
   moderator: Person;
-}
+};

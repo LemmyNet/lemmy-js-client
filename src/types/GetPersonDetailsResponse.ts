@@ -5,10 +5,13 @@ import type { PersonView } from "./PersonView";
 import type { PostView } from "./PostView";
 import type { Site } from "./Site";
 
-export interface GetPersonDetailsResponse {
+/**
+ * A person's details response.
+ */
+export type GetPersonDetailsResponse = {
   person_view: PersonView;
   site?: Site;
   comments: Array<CommentView>;
   posts: Array<PostView>;
   moderates: Array<CommunityModeratorView>;
-}
+};

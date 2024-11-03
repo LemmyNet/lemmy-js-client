@@ -2,10 +2,13 @@
 import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 
-export interface ModTransferCommunity {
+/**
+ * When a moderator transfers a community to a new owner.
+ */
+export type ModTransferCommunity = {
   id: number;
   mod_person_id: PersonId;
   other_person_id: PersonId;
   community_id: CommunityId;
   when_: string;
-}
+};

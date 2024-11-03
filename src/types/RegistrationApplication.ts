@@ -3,11 +3,14 @@ import type { LocalUserId } from "./LocalUserId";
 import type { PersonId } from "./PersonId";
 import type { RegistrationApplicationId } from "./RegistrationApplicationId";
 
-export interface RegistrationApplication {
+/**
+ * A registration application.
+ */
+export type RegistrationApplication = {
   id: RegistrationApplicationId;
   local_user_id: LocalUserId;
   answer: string;
   admin_id?: PersonId;
   deny_reason?: string;
   published: string;
-}
+};

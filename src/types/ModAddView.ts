@@ -2,8 +2,11 @@
 import type { ModAdd } from "./ModAdd";
 import type { Person } from "./Person";
 
-export interface ModAddView {
+/**
+ * When someone is added as a site moderator.
+ */
+export type ModAddView = {
   mod_add: ModAdd;
   moderator?: Person;
   modded_person: Person;
-}
+};

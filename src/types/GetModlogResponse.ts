@@ -15,7 +15,10 @@ import type { ModRemoveCommunityView } from "./ModRemoveCommunityView";
 import type { ModRemovePostView } from "./ModRemovePostView";
 import type { ModTransferCommunityView } from "./ModTransferCommunityView";
 
-export interface GetModlogResponse {
+/**
+ * The modlog fetch response.
+ */
+export type GetModlogResponse = {
   removed_posts: Array<ModRemovePostView>;
   locked_posts: Array<ModLockPostView>;
   featured_posts: Array<ModFeaturePostView>;
@@ -31,4 +34,4 @@ export interface GetModlogResponse {
   admin_purged_posts: Array<AdminPurgePostView>;
   admin_purged_comments: Array<AdminPurgeCommentView>;
   hidden_communities: Array<ModHideCommunityView>;
-}
+};

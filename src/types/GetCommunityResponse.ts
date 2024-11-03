@@ -4,9 +4,12 @@ import type { CommunityView } from "./CommunityView";
 import type { LanguageId } from "./LanguageId";
 import type { Site } from "./Site";
 
-export interface GetCommunityResponse {
+/**
+ * The community response.
+ */
+export type GetCommunityResponse = {
   community_view: CommunityView;
   site?: Site;
   moderators: Array<CommunityModeratorView>;
   discussion_languages: Array<LanguageId>;
-}
+};
