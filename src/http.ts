@@ -488,26 +488,36 @@ export class LemmyHttp {
     );
   }
 
-  getCommunityPendingFollowsCount(community_id: CommunityId) {
+  getCommunityPendingFollowsCount(
+    community_id: CommunityId,
+    options?: RequestOptions,
+  ) {
     const form: GetCommunityPendingFollowsCount = { community_id };
     return this.#wrapper<
       GetCommunityPendingFollowsCount,
       GetCommunityPendingFollowsCountResponse
-    >(HttpType.Get, "/community/pending_follows/count", form);
+    >(HttpType.Get, "/community/pending_follows/count", form, options);
   }
 
-  listCommunityPendingFollows(form: ListCommunityPendingFollows) {
+  listCommunityPendingFollows(
+    form: ListCommunityPendingFollows,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<
       ListCommunityPendingFollows,
       ListCommunityPendingFollowsResponse
-    >(HttpType.Get, "/community/pending_follows/list", form);
+    >(HttpType.Get, "/community/pending_follows/list", form, options);
   }
 
-  approveCommunityPendingFollow(form: ApproveCommunityPendingFollower) {
+  approveCommunityPendingFollow(
+    form: ApproveCommunityPendingFollower,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<ApproveCommunityPendingFollower, SuccessResponse>(
       HttpType.Post,
       "/community/pending_follows/approve",
       form,
+      options,
     );
   }
 
