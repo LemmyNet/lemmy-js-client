@@ -29,5 +29,9 @@ export type GetPosts = {
    * If true, then show the nsfw posts (even if your user setting is to hide them)
    */
   show_nsfw?: boolean;
+  /**
+   * If true, then only show posts with no comments
+   */
+  no_comments_only?: boolean;
   page_cursor?: PaginationCursor;
 };
