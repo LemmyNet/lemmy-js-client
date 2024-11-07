@@ -2,10 +2,13 @@
 import type { LocalUserId } from "./LocalUserId";
 import type { OAuthProviderId } from "./OAuthProviderId";
 
-export interface OAuthAccount {
+/**
+ * An auth account method.
+ */
+export type OAuthAccount = {
   local_user_id: LocalUserId;
   oauth_provider_id: OAuthProviderId;
   oauth_user_id: string;
   published: string;
   updated?: string;
-}
+};

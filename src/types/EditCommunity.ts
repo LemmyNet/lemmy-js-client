@@ -3,14 +3,39 @@ import type { CommunityId } from "./CommunityId";
 import type { CommunityVisibility } from "./CommunityVisibility";
 import type { LanguageId } from "./LanguageId";
 
-export interface EditCommunity {
+/**
+ * Edit a community.
+ */
+export type EditCommunity = {
   community_id: CommunityId;
+  /**
+   * A longer title.
+   */
   title?: string;
+  /**
+   * A sidebar for the community in markdown.
+   */
+  sidebar?: string;
+  /**
+   * A shorter, one line description of your community.
+   */
   description?: string;
+  /**
+   * An icon URL.
+   */
   icon?: string;
+  /**
+   * A banner URL.
+   */
   banner?: string;
+  /**
+   * Whether its an NSFW community.
+   */
   nsfw?: boolean;
+  /**
+   * Whether to restrict posting only to moderators.
+   */
   posting_restricted_to_mods?: boolean;
   discussion_languages?: Array<LanguageId>;
   visibility?: CommunityVisibility;
-}
+};

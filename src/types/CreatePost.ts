@@ -2,15 +2,33 @@
 import type { CommunityId } from "./CommunityId";
 import type { LanguageId } from "./LanguageId";
 
-export interface CreatePost {
+/**
+ * Create a post.
+ */
+export type CreatePost = {
   name: string;
   community_id: CommunityId;
   url?: string;
+  /**
+   * An optional body for the post in markdown.
+   */
   body?: string;
+  /**
+   * An optional alt_text, usable for image posts.
+   */
   alt_text?: string;
+  /**
+   * A honeypot to catch bots. Should be None.
+   */
   honeypot?: string;
   nsfw?: boolean;
   language_id?: LanguageId;
+  /**
+   * Instead of fetching a thumbnail, use a custom one.
+   */
   custom_thumbnail?: string;
+  /**
+   * Time when this post should be scheduled. Null means publish immediately.
+   */
   scheduled_publish_time?: number;
-}
+};

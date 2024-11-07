@@ -5,10 +5,13 @@ import type { PersonView } from "./PersonView";
 import type { PostView } from "./PostView";
 import type { SearchType } from "./SearchType";
 
-export interface SearchResponse {
+/**
+ * The search response, containing lists of the return type possibilities
+ */
+export type SearchResponse = {
   type_: SearchType;
   comments: Array<CommentView>;
   posts: Array<PostView>;
   communities: Array<CommunityView>;
   users: Array<PersonView>;
-}
+};

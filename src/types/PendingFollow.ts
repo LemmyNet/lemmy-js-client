@@ -3,9 +3,9 @@ import type { Community } from "./Community";
 import type { Person } from "./Person";
 import type { SubscribedType } from "./SubscribedType";
 
-export interface PendingFollow {
+export type PendingFollow = {
   person: Person;
   community: Community;
   is_new_instance: boolean;
   subscribed: SubscribedType;
-}
+};

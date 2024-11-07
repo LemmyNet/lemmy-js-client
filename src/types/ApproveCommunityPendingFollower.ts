@@ -2,8 +2,8 @@
 import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 
-export interface ApproveCommunityPendingFollower {
+export type ApproveCommunityPendingFollower = {
   community_id: CommunityId;
   follower_id: PersonId;
   approve: boolean;
-}
+};

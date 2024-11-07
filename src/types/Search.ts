@@ -5,7 +5,10 @@ import type { PersonId } from "./PersonId";
 import type { PostSortType } from "./PostSortType";
 import type { SearchType } from "./SearchType";
 
-export interface Search {
+/**
+ * Searches the site, given a query string, and some optional filters.
+ */
+export type Search = {
   q: string;
   community_id?: CommunityId;
   community_name?: string;
@@ -20,4 +23,4 @@ export interface Search {
   saved_only?: boolean;
   liked_only?: boolean;
   disliked_only?: boolean;
-}
+};

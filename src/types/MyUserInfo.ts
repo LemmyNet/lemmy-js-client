@@ -7,7 +7,10 @@ import type { LanguageId } from "./LanguageId";
 import type { LocalUserView } from "./LocalUserView";
 import type { Person } from "./Person";
 
-export interface MyUserInfo {
+/**
+ * Your user info.
+ */
+export type MyUserInfo = {
   local_user_view: LocalUserView;
   follows: Array<CommunityFollowerView>;
   moderates: Array<CommunityModeratorView>;
@@ -15,4 +18,4 @@ export interface MyUserInfo {
   instance_blocks: Array<Instance>;
   person_blocks: Array<Person>;
   discussion_languages: Array<LanguageId>;
-}
+};

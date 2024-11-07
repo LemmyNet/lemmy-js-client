@@ -2,10 +2,19 @@
 import type { CommunityId } from "./CommunityId";
 import type { PostId } from "./PostId";
 
-export interface ListPostReports {
+/**
+ * List post reports.
+ */
+export type ListPostReports = {
   page?: number;
   limit?: number;
+  /**
+   * Only shows the unresolved reports
+   */
   unresolved_only?: boolean;
+  /**
+   * if no community is given, it returns reports for all communities moderated by the auth user
+   */
   community_id?: CommunityId;
   post_id?: PostId;
-}
+};

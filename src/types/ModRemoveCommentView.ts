@@ -5,11 +5,14 @@ import type { ModRemoveComment } from "./ModRemoveComment";
 import type { Person } from "./Person";
 import type { Post } from "./Post";
 
-export interface ModRemoveCommentView {
+/**
+ * When a moderator removes a comment.
+ */
+export type ModRemoveCommentView = {
   mod_remove_comment: ModRemoveComment;
   moderator?: Person;
   comment: Comment;
   commenter: Person;
   post: Post;
   community: Community;
-}
+};

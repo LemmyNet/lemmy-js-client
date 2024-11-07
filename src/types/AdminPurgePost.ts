@@ -2,10 +2,13 @@
 import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 
-export interface AdminPurgePost {
+/**
+ * When an admin purges a post.
+ */
+export type AdminPurgePost = {
   id: number;
   admin_person_id: PersonId;
   community_id: CommunityId;
   reason?: string;
   when_: string;
-}
+};

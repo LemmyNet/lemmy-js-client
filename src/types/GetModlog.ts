@@ -5,7 +5,10 @@ import type { ModlogActionType } from "./ModlogActionType";
 import type { PersonId } from "./PersonId";
 import type { PostId } from "./PostId";
 
-export interface GetModlog {
+/**
+ * Fetches the modlog.
+ */
+export type GetModlog = {
   mod_person_id?: PersonId;
   community_id?: CommunityId;
   page?: number;
@@ -14,4 +17,4 @@ export interface GetModlog {
   other_person_id?: PersonId;
   post_id?: PostId;
   comment_id?: CommentId;
-}
+};

@@ -7,7 +7,10 @@ import type { PersonMention } from "./PersonMention";
 import type { Post } from "./Post";
 import type { SubscribedType } from "./SubscribedType";
 
-export interface PersonMentionView {
+/**
+ * A person mention view.
+ */
+export type PersonMentionView = {
   person_mention: PersonMention;
   comment: Comment;
   creator: Person;
@@ -23,4 +26,4 @@ export interface PersonMentionView {
   saved: boolean;
   creator_blocked: boolean;
   my_vote?: number;
-}
+};

@@ -2,7 +2,10 @@
 import type { AdminPurgePerson } from "./AdminPurgePerson";
 import type { Person } from "./Person";
 
-export interface AdminPurgePersonView {
+/**
+ * When an admin purges a person.
+ */
+export type AdminPurgePersonView = {
   admin_purge_person: AdminPurgePerson;
   admin?: Person;
-}
+};

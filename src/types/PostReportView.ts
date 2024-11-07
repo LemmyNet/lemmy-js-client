@@ -6,7 +6,10 @@ import type { PostAggregates } from "./PostAggregates";
 import type { PostReport } from "./PostReport";
 import type { SubscribedType } from "./SubscribedType";
 
-export interface PostReportView {
+/**
+ * A post report view.
+ */
+export type PostReportView = {
   post_report: PostReport;
   post: Post;
   community: Community;
@@ -24,4 +27,4 @@ export interface PostReportView {
   unread_comments: number;
   counts: PostAggregates;
   resolver?: Person;
-}
+};

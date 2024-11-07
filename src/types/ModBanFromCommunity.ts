@@ -2,7 +2,10 @@
 import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 
-export interface ModBanFromCommunity {
+/**
+ * When someone is banned from a community.
+ */
+export type ModBanFromCommunity = {
   id: number;
   mod_person_id: PersonId;
   other_person_id: PersonId;
@@ -11,4 +14,4 @@ export interface ModBanFromCommunity {
   banned: boolean;
   expires?: string;
   when_: string;
-}
+};
