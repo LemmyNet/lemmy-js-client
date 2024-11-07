@@ -4,9 +4,12 @@ import type { ModLockPost } from "./ModLockPost";
 import type { Person } from "./Person";
 import type { Post } from "./Post";
 
-export interface ModLockPostView {
+/**
+ * When a moderator locks a post (prevents new comments being made).
+ */
+export type ModLockPostView = {
   mod_lock_post: ModLockPost;
   moderator?: Person;
   post: Post;
   community: Community;
-}
+};

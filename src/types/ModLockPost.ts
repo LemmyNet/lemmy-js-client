@@ -2,10 +2,13 @@
 import type { PersonId } from "./PersonId";
 import type { PostId } from "./PostId";
 
-export interface ModLockPost {
+/**
+ * When a moderator locks a post (prevents new comments being made).
+ */
+export type ModLockPost = {
   id: number;
   mod_person_id: PersonId;
   post_id: PostId;
   locked: boolean;
   when_: string;
-}
+};

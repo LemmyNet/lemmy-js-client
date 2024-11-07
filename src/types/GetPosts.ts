@@ -4,9 +4,15 @@ import type { ListingType } from "./ListingType";
 import type { PaginationCursor } from "./PaginationCursor";
 import type { PostSortType } from "./PostSortType";
 
-export interface GetPosts {
+/**
+ * Get a list of posts.
+ */
+export type GetPosts = {
   type_?: ListingType;
   sort?: PostSortType;
+  /**
+   * DEPRECATED, use page_cursor
+   */
   page?: number;
   limit?: number;
   community_id?: CommunityId;
@@ -15,7 +21,17 @@ export interface GetPosts {
   liked_only?: boolean;
   disliked_only?: boolean;
   show_hidden?: boolean;
+  /**
+   * If true, then show the read posts (even if your user setting is to hide them)
+   */
   show_read?: boolean;
+  /**
+   * If true, then show the nsfw posts (even if your user setting is to hide them)
+   */
   show_nsfw?: boolean;
+  /**
+   * If true, then only show posts with no comments
+   */
+  no_comments_only?: boolean;
   page_cursor?: PaginationCursor;
-}
+};

@@ -2,8 +2,11 @@
 import type { ModBan } from "./ModBan";
 import type { Person } from "./Person";
 
-export interface ModBanView {
+/**
+ * When someone is banned from the site.
+ */
+export type ModBanView = {
   mod_ban: ModBan;
   moderator?: Person;
   banned_person: Person;
-}
+};

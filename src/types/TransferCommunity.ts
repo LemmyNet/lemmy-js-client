@@ -2,7 +2,10 @@
 import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 
-export interface TransferCommunity {
+/**
+ * Transfer a community to a new owner.
+ */
+export type TransferCommunity = {
   community_id: CommunityId;
   person_id: PersonId;
-}
+};

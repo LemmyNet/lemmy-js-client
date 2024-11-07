@@ -2,7 +2,10 @@
 import type { CommunityView } from "./CommunityView";
 import type { LanguageId } from "./LanguageId";
 
-export interface CommunityResponse {
+/**
+ * A simple community response.
+ */
+export type CommunityResponse = {
   community_view: CommunityView;
   discussion_languages: Array<LanguageId>;
-}
+};

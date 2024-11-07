@@ -7,7 +7,10 @@ import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { RegistrationMode } from "./RegistrationMode";
 
-export interface CreateSite {
+/**
+ * Creates a site. Should be done after first running lemmy.
+ */
+export type CreateSite = {
   name: string;
   sidebar?: string;
   description?: string;
@@ -54,4 +57,4 @@ export interface CreateSite {
   post_downvotes?: FederationMode;
   comment_upvotes?: FederationMode;
   comment_downvotes?: FederationMode;
-}
+};

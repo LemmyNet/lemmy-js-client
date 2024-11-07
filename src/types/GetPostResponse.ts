@@ -3,9 +3,15 @@ import type { CommunityModeratorView } from "./CommunityModeratorView";
 import type { CommunityView } from "./CommunityView";
 import type { PostView } from "./PostView";
 
-export interface GetPostResponse {
+/**
+ * The post response.
+ */
+export type GetPostResponse = {
   post_view: PostView;
   community_view: CommunityView;
   moderators: Array<CommunityModeratorView>;
+  /**
+   * A list of cross-posts, or other times / communities this link has been posted to.
+   */
   cross_posts: Array<PostView>;
-}
+};

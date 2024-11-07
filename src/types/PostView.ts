@@ -6,7 +6,10 @@ import type { Post } from "./Post";
 import type { PostAggregates } from "./PostAggregates";
 import type { SubscribedType } from "./SubscribedType";
 
-export interface PostView {
+/**
+ * A post view.
+ */
+export type PostView = {
   post: Post;
   creator: Person;
   community: Community;
@@ -23,4 +26,4 @@ export interface PostView {
   creator_blocked: boolean;
   my_vote?: number;
   unread_comments: number;
-}
+};

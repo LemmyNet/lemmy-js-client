@@ -5,7 +5,10 @@ import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { PostId } from "./PostId";
 
-export interface GetComments {
+/**
+ * Get a list of comments.
+ */
+export type GetComments = {
   type_?: ListingType;
   sort?: CommentSortType;
   max_depth?: number;
@@ -18,4 +21,4 @@ export interface GetComments {
   saved_only?: boolean;
   liked_only?: boolean;
   disliked_only?: boolean;
-}
+};

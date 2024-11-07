@@ -2,11 +2,14 @@
 import type { CommunityId } from "./CommunityId";
 import type { PersonId } from "./PersonId";
 
-export interface ModHideCommunity {
+/**
+ * When a community is hidden from public view.
+ */
+export type ModHideCommunity = {
   id: number;
   community_id: CommunityId;
   mod_person_id: PersonId;
   when_: string;
   reason?: string;
   hidden: boolean;
-}
+};

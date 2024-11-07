@@ -7,53 +7,177 @@ import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { RegistrationMode } from "./RegistrationMode";
 
-export interface EditSite {
+/**
+ * Edits a site.
+ */
+export type EditSite = {
   name?: string;
+  /**
+   * A sidebar for the site, in markdown.
+   */
   sidebar?: string;
+  /**
+   * A shorter, one line description of your site.
+   */
   description?: string;
+  /**
+   * A url for your site's icon.
+   */
   icon?: string;
+  /**
+   * A url for your site's banner.
+   */
   banner?: string;
+  /**
+   * Whether to enable NSFW.
+   */
   enable_nsfw?: boolean;
+  /**
+   * Limits community creation to admins only.
+   */
   community_creation_admin_only?: boolean;
+  /**
+   * Whether to require email verification.
+   */
   require_email_verification?: boolean;
+  /**
+   * Your application question form. This is in markdown, and can be many questions.
+   */
   application_question?: string;
+  /**
+   * Whether your instance is public, or private.
+   */
   private_instance?: boolean;
+  /**
+   * The default theme. Usually "browser"
+   */
   default_theme?: string;
+  /**
+   * The default post listing type, usually "local"
+   */
   default_post_listing_type?: ListingType;
+  /**
+   * Default value for listing mode, usually "list"
+   */
   default_post_listing_mode?: PostListingMode;
+  /**
+   * The default post sort, usually "active"
+   */
   default_post_sort_type?: PostSortType;
+  /**
+   * The default comment sort, usually "hot"
+   */
   default_comment_sort_type?: CommentSortType;
+  /**
+   * An optional page of legal information
+   */
   legal_information?: string;
+  /**
+   * Whether to email admins when receiving a new application.
+   */
   application_email_admins?: boolean;
+  /**
+   * Whether to hide moderator names from the modlog.
+   */
   hide_modlog_mod_names?: boolean;
+  /**
+   * A list of allowed discussion languages.
+   */
   discussion_languages?: Array<LanguageId>;
+  /**
+   * A regex string of items to filter.
+   */
   slur_filter_regex?: string;
+  /**
+   * The max length of actor names.
+   */
   actor_name_max_length?: number;
+  /**
+   * The number of messages allowed in a given time frame.
+   */
   rate_limit_message?: number;
   rate_limit_message_per_second?: number;
+  /**
+   * The number of posts allowed in a given time frame.
+   */
   rate_limit_post?: number;
   rate_limit_post_per_second?: number;
+  /**
+   * The number of registrations allowed in a given time frame.
+   */
   rate_limit_register?: number;
   rate_limit_register_per_second?: number;
+  /**
+   * The number of image uploads allowed in a given time frame.
+   */
   rate_limit_image?: number;
   rate_limit_image_per_second?: number;
+  /**
+   * The number of comments allowed in a given time frame.
+   */
   rate_limit_comment?: number;
   rate_limit_comment_per_second?: number;
+  /**
+   * The number of searches allowed in a given time frame.
+   */
   rate_limit_search?: number;
   rate_limit_search_per_second?: number;
+  /**
+   * Whether to enable federation.
+   */
   federation_enabled?: boolean;
+  /**
+   * Enables federation debugging.
+   */
   federation_debug?: boolean;
+  /**
+   * Whether to enable captchas for signups.
+   */
   captcha_enabled?: boolean;
+  /**
+   * The captcha difficulty. Can be easy, medium, or hard
+   */
   captcha_difficulty?: string;
+  /**
+   * A list of allowed instances. If none are set, federation is open.
+   */
   allowed_instances?: Array<string>;
+  /**
+   * A list of blocked instances.
+   */
   blocked_instances?: Array<string>;
+  /**
+   * A list of blocked URLs
+   */
   blocked_urls?: Array<string>;
   registration_mode?: RegistrationMode;
+  /**
+   * Whether to email admins for new reports.
+   */
   reports_email_admins?: boolean;
+  /**
+   * If present, nsfw content is visible by default. Should be displayed by frontends/clients
+   * when the site is first opened by a user.
+   */
   content_warning?: string;
+  /**
+   * Whether or not external auth methods can auto-register users.
+   */
   oauth_registration?: boolean;
+  /**
+   * What kind of post upvotes your site allows.
+   */
   post_upvotes?: FederationMode;
+  /**
+   * What kind of post downvotes your site allows.
+   */
   post_downvotes?: FederationMode;
+  /**
+   * What kind of comment upvotes your site allows.
+   */
   comment_upvotes?: FederationMode;
+  /**
+   * What kind of comment downvotes your site allows.
+   */
   comment_downvotes?: FederationMode;
-}
+};

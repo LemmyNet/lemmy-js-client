@@ -3,7 +3,10 @@ import type { CommentId } from "./CommentId";
 import type { CommentReportId } from "./CommentReportId";
 import type { PersonId } from "./PersonId";
 
-export interface CommentReport {
+/**
+ * A comment report.
+ */
+export type CommentReport = {
   id: CommentReportId;
   creator_id: PersonId;
   comment_id: CommentId;
@@ -13,4 +16,4 @@ export interface CommentReport {
   resolver_id?: PersonId;
   published: string;
   updated?: string;
-}
+};

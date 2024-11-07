@@ -5,30 +5,77 @@ import type { LocalUserId } from "./LocalUserId";
 import type { PersonId } from "./PersonId";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
+import type { SensitiveString } from "./SensitiveString";
 
-export interface LocalUser {
+/**
+ * A local user.
+ */
+export type LocalUser = {
   id: LocalUserId;
+  /**
+   * The person_id for the local user.
+   */
   person_id: PersonId;
-  email?: string;
+  email?: SensitiveString;
+  /**
+   * Whether to show NSFW content.
+   */
   show_nsfw: boolean;
   theme: string;
   default_post_sort_type: PostSortType;
   default_listing_type: ListingType;
   interface_language: string;
+  /**
+   * Whether to show avatars.
+   */
   show_avatars: boolean;
   send_notifications_to_email: boolean;
+  /**
+   * Whether to show bot accounts.
+   */
   show_bot_accounts: boolean;
+  /**
+   * Whether to show read posts.
+   */
   show_read_posts: boolean;
+  /**
+   * Whether their email has been verified.
+   */
   email_verified: boolean;
+  /**
+   * Whether their registration application has been accepted.
+   */
   accepted_application: boolean;
+  /**
+   * Open links in a new tab.
+   */
   open_links_in_new_tab: boolean;
   blur_nsfw: boolean;
+  /**
+   * Whether infinite scroll is enabled.
+   */
   infinite_scroll_enabled: boolean;
+  /**
+   * Whether the person is an admin.
+   */
   admin: boolean;
+  /**
+   * A post-view mode that changes how multiple post listings look.
+   */
   post_listing_mode: PostListingMode;
   totp_2fa_enabled: boolean;
+  /**
+   * Whether to allow keyboard navigation (for browsing and interacting with posts and comments).
+   */
   enable_keyboard_navigation: boolean;
+  /**
+   * Whether user avatars and inline images in the UI that are gifs should be allowed to play or
+   * should be paused
+   */
   enable_animated_images: boolean;
+  /**
+   * Whether to auto-collapse bot comments.
+   */
   collapse_bot_comments: boolean;
   default_comment_sort_type: CommentSortType;
-}
+};

@@ -9,10 +9,10 @@ rm -rf **/bindings
 popd
 
 # First re-generate the types by running cargo test on lemmy
-pushd ../lemmy/scripts
-./test.sh
+pushd ../lemmy
+cargo test --workspace export_bindings
 
-cd ../crates
+cd crates
 
 # Copy them over to the types folder
 cp api_common/bindings/* ../../lemmy-js-client/src/types/

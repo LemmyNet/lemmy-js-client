@@ -2,10 +2,19 @@
 import type { CommentId } from "./CommentId";
 import type { CommunityId } from "./CommunityId";
 
-export interface ListCommentReports {
+/**
+ * List comment reports.
+ */
+export type ListCommentReports = {
   comment_id?: CommentId;
   page?: number;
   limit?: number;
+  /**
+   * Only shows the unresolved reports
+   */
   unresolved_only?: boolean;
+  /**
+   * if no community is given, it returns reports for all communities moderated by the auth user
+   */
   community_id?: CommunityId;
-}
+};
