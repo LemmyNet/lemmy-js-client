@@ -24,4 +24,5 @@ export type FederationError =
   | "UrlWithoutDomain"
   | "InboxTimeout"
   | "CantDeleteSite"
-  | "ObjectIsNotPublic";
+  | "ObjectIsNotPublic"
+  | "ObjectIsNotPrivate";

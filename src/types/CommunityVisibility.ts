@@ -2,7 +2,5 @@
 
 /**
  * Defines who can browse and interact with content in a community.
- *
- * TODO: Also use this to define private communities
  */
-export type CommunityVisibility = "Public" | "LocalOnly";
+export type CommunityVisibility = "Public" | "LocalOnly" | "Private";
