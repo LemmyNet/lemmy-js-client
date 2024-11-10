@@ -29,6 +29,8 @@ export type LemmyErrorType =
   | { error: "not_top_admin" }
   | { error: "not_top_mod" }
   | { error: "not_logged_in" }
+  | { error: "not_higher_mod" }
+  | { error: "not_higher_admin" }
   | { error: "site_ban" }
   | { error: "deleted" }
   | { error: "banned_from_community" }
@@ -164,4 +166,6 @@ export type LemmyErrorType =
   | { error: "cant_block_local_instance" }
   | { error: "url_without_domain" }
   | { error: "inbox_timeout" }
-  | { error: "unknown"; message: string };
+  | { error: "unknown"; message: string }
+  | { error: "cant_delete_site" }
+  | { error: "url_length_overflow" };

@@ -15,4 +15,5 @@ export interface Search {
   listing_type?: ListingType;
   page?: number;
   limit?: number;
+  post_title_only?: boolean;
 }
