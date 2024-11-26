@@ -160,6 +160,7 @@ import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPen
 import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendingFollowsResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { CommunityId } from "./types/CommunityId";
+import { MyUserInfo } from "./types/MyUserInfo";
 
 enum HttpType {
   Get = "GET",
@@ -246,12 +247,12 @@ export class LemmyHttp {
   /**
    * Leave the Site admins.
    *
-   * `HTTP.POST /user/leave_admin`
+   * `HTTP.POST /admin/leave`
    */
   leaveAdmin(options?: RequestOptions) {
     return this.#wrapper<object, GetSiteResponse>(
       HttpType.Post,
-      "/user/leave_admin",
+      "/admin/leave",
       {},
       options,
     );
@@ -262,13 +263,27 @@ export class LemmyHttp {
    *
    * Afterwards you need to call `/user/totp/update` with a valid token to enable it.
    *
-   * `HTTP.POST /user/totp/generate`
+   * `HTTP.POST /account/auth/totp/generate`
    */
   generateTotpSecret(options?: RequestOptions) {
     return this.#wrapper<object, GenerateTotpSecretResponse>(
       HttpType.Post,
-      "/user/totp/generate",
+      "/account/auth/totp/generate",
       {},
+      options,
+    );
+  }
+
+  /**
+   * Get data of current user.
+   *
+   * `HTTP.GET /account/settings`
+   */
+  myUser(form: any, options?: RequestOptions) {
+    return this.#wrapper<object, MyUserInfo>(
+      HttpType.Get,
+      "/account/settings",
+      form,
       options,
     );
   }
@@ -277,12 +292,12 @@ export class LemmyHttp {
    * Export a backup of your user settings, including your saved content,
    * followed communities, and blocks.
    *
-   * `HTTP.GET /user/export_settings`
+   * `HTTP.GET /account/settings/export`
    */
   exportSettings(options?: RequestOptions) {
     return this.#wrapper<object, string>(
       HttpType.Get,
-      "/user/export_settings",
+      "/account/settings/export",
       {},
       options,
     );
@@ -291,12 +306,12 @@ export class LemmyHttp {
   /**
    * Import a backup of your user settings.
    *
-   * `HTTP.POST /user/import_settings`
+   * `HTTP.POST /account/settings/import`
    */
   importSettings(form: any, options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
-      "/user/import_settings",
+      "/account/settings/import",
       form,
       options,
     );
@@ -365,12 +380,12 @@ export class LemmyHttp {
    *
    * Disabling is only possible if 2FA was previously enabled. Again it is necessary to pass a valid token.
    *
-   * `HTTP.POST /user/totp/update`
+   * `HTTP.POST /account/auth/totp/update`
    */
   updateTotp(form: UpdateTotp, options?: RequestOptions) {
     return this.#wrapper<UpdateTotp, UpdateTotpResponse>(
       HttpType.Post,
-      "/user/totp/update",
+      "/account/auth/totp/update",
       form,
       options,
     );
@@ -1191,12 +1206,12 @@ export class LemmyHttp {
   /**
    * Register a new user.
    *
-   * `HTTP.POST /user/register`
+   * `HTTP.POST /account/auth/register`
    */
   register(form: Register, options?: RequestOptions) {
     return this.#wrapper<Register, LoginResponse>(
       HttpType.Post,
-      "/user/register",
+      "/account/auth/register",
       form,
       options,
     );
@@ -1205,12 +1220,12 @@ export class LemmyHttp {
   /**
    * Log into lemmy.
    *
-   * `HTTP.POST /user/login`
+   * `HTTP.POST /account/auth/login`
    */
   login(form: Login, options?: RequestOptions) {
     return this.#wrapper<Login, LoginResponse>(
       HttpType.Post,
-      "/user/login",
+      "/account/auth/login",
       form,
       options,
     );
@@ -1219,12 +1234,12 @@ export class LemmyHttp {
   /**
    * Invalidate the currently used auth token.
    *
-   * `HTTP.POST /user/logout`
+   * `HTTP.POST /account/auth/logout`
    */
   logout(options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
-      "/user/logout",
+      "/account/auth/logout",
       {},
       options,
     );
@@ -1233,12 +1248,12 @@ export class LemmyHttp {
   /**
    * Get the details for a person.
    *
-   * `HTTP.GET /user`
+   * `HTTP.GET /person`
    */
   getPersonDetails(form: GetPersonDetails = {}, options?: RequestOptions) {
     return this.#wrapper<GetPersonDetails, GetPersonDetailsResponse>(
       HttpType.Get,
-      "/user",
+      "/person",
       form,
       options,
     );
@@ -1261,7 +1276,7 @@ export class LemmyHttp {
   /**
    * Mark a person mention as read.
    *
-   * `HTTP.POST /user/mention/mark_as_read`
+   * `HTTP.POST /account/mention/mark_as_read`
    */
   markPersonMentionAsRead(
     form: MarkPersonMentionAsRead,
@@ -1269,8 +1284,22 @@ export class LemmyHttp {
   ) {
     return this.#wrapper<MarkPersonMentionAsRead, PersonMentionResponse>(
       HttpType.Post,
-      "/user/mention/mark_as_read",
+      "/account/mention/mark_as_read",
       form,
+      options,
+    );
+  }
+
+  /**
+   * Mark a person mention as read.
+   *
+   * `HTTP.POST /account/mention/mark_as_read`
+   */
+  markPersonAllMentionAsRead(options?: RequestOptions) {
+    return this.#wrapper<object, PersonMentionResponse>(
+      HttpType.Post,
+      "/account/mention/mark_as_read",
+      {},
       options,
     );
   }
@@ -1292,12 +1321,12 @@ export class LemmyHttp {
   /**
    * Ban a person from your site.
    *
-   * `HTTP.POST /user/ban`
+   * `HTTP.POST /admin/ban`
    */
   banPerson(form: BanPerson, options?: RequestOptions) {
     return this.#wrapper<BanPerson, BanPersonResponse>(
       HttpType.Post,
-      "/user/ban",
+      "/admin/ban",
       form,
       options,
     );
@@ -1306,12 +1335,12 @@ export class LemmyHttp {
   /**
    * Get a list of banned users
    *
-   * `HTTP.GET /user/banned`
+   * `HTTP.GET /admin/banned`
    */
   getBannedPersons(options?: RequestOptions) {
     return this.#wrapper<object, BannedPersonsResponse>(
       HttpType.Get,
-      "/user/banned",
+      "/admin/banned",
       {},
       options,
     );
@@ -1334,12 +1363,12 @@ export class LemmyHttp {
   /**
    * Fetch a Captcha.
    *
-   * `HTTP.GET /user/get_captcha`
+   * `HTTP.GET /account/auth/get_captcha`
    */
   getCaptcha(options?: RequestOptions) {
     return this.#wrapper<object, GetCaptchaResponse>(
       HttpType.Get,
-      "/user/get_captcha",
+      "/account/auth/get_captcha",
       {},
       options,
     );
@@ -1348,12 +1377,12 @@ export class LemmyHttp {
   /**
    * Delete your account.
    *
-   * `HTTP.POST /user/delete_account`
+   * `HTTP.POST /account/delete`
    */
   deleteAccount(form: DeleteAccount, options?: RequestOptions) {
     return this.#wrapper<DeleteAccount, SuccessResponse>(
       HttpType.Post,
-      "/user/delete_account",
+      "/account/delete",
       form,
       options,
     );
@@ -1362,12 +1391,12 @@ export class LemmyHttp {
   /**
    * Reset your password.
    *
-   * `HTTP.POST /user/password_reset`
+   * `HTTP.POST /account/auth/password_reset`
    */
   passwordReset(form: PasswordReset, options?: RequestOptions) {
     return this.#wrapper<PasswordReset, SuccessResponse>(
       HttpType.Post,
-      "/user/password_reset",
+      "/account/auth/password_reset",
       form,
       options,
     );
@@ -1376,7 +1405,7 @@ export class LemmyHttp {
   /**
    * Change your password from an email / token based reset.
    *
-   * `HTTP.POST /user/password_change`
+   * `HTTP.POST /account/auth/password_change`
    */
   passwordChangeAfterReset(
     form: PasswordChangeAfterReset,
@@ -1384,7 +1413,7 @@ export class LemmyHttp {
   ) {
     return this.#wrapper<PasswordChangeAfterReset, SuccessResponse>(
       HttpType.Post,
-      "/user/password_change",
+      "/account/auth/password_change",
       form,
       options,
     );
@@ -1407,12 +1436,12 @@ export class LemmyHttp {
   /**
    * Save your user settings.
    *
-   * `HTTP.PUT /user/save_user_settings`
+   * `HTTP.PUT /account/settings`
    */
   saveUserSettings(form: SaveUserSettings, options?: RequestOptions) {
     return this.#wrapper<SaveUserSettings, SuccessResponse>(
       HttpType.Put,
-      "/user/save_user_settings",
+      "/account/settings",
       form,
       options,
     );
@@ -1463,12 +1492,12 @@ export class LemmyHttp {
   /**
    * Verify your email
    *
-   * `HTTP.POST /user/verify_email`
+   * `HTTP.POST /account/auth/verify_email`
    */
   verifyEmail(form: VerifyEmail, options?: RequestOptions) {
     return this.#wrapper<VerifyEmail, SuccessResponse>(
       HttpType.Post,
-      "/user/verify_email",
+      "/account/auth/verify_email",
       form,
       options,
     );
