@@ -140,6 +140,7 @@ export { HidePost } from "./types/HidePost";
 export { ImageDetails } from "./types/ImageDetails";
 export { Instance } from "./types/Instance";
 export { InstanceId } from "./types/InstanceId";
+export { InstanceIdOrDomain } from "./types/InstanceIdOrDomain";
 export { InstanceWithFederationState } from "./types/InstanceWithFederationState";
 export { Language } from "./types/Language";
 export { LanguageId } from "./types/LanguageId";
