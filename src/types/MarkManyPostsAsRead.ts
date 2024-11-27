@@ -2,6 +2,6 @@
 import type { PostId } from "./PostId";
 
 /**
- * Hide a post from list views
+ * Mark several posts as read.
  */
-export type HidePost = { post_id: PostId; hide: boolean };
+export type MarkManyPostsAsRead = { post_ids: Array<PostId> };

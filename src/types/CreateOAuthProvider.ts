@@ -15,5 +15,6 @@ export type CreateOAuthProvider = {
   scopes: string;
   auto_verify_email?: boolean;
   account_linking_enabled?: boolean;
+  use_pkce?: boolean;
   enabled?: boolean;
 };

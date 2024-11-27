@@ -15,4 +15,6 @@ export type PostAggregates = {
    * The time of the newest comment in the post.
    */
   newest_comment_time: string;
+  report_count: number;
+  unresolved_report_count: number;
 };

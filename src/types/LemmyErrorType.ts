@@ -63,9 +63,10 @@ export type LemmyErrorType =
   | { error: "no_email_setup" }
   | { error: "local_site_not_setup" }
   | { error: "email_smtp_server_needs_a_port" }
-  | { error: "missing_an_email" }
+  | { error: "invalid_email_address"; message: string }
   | { error: "rate_limit_error" }
   | { error: "invalid_name" }
+  | { error: "invalid_code_verifier" }
   | { error: "invalid_display_name" }
   | { error: "invalid_matrix_id" }
   | { error: "invalid_post_title" }
@@ -116,6 +117,7 @@ export type LemmyErrorType =
   | { error: "invalid_regex" }
   | { error: "captcha_incorrect" }
   | { error: "couldnt_create_audio_captcha" }
+  | { error: "couldnt_create_image_captcha" }
   | { error: "invalid_url_scheme" }
   | { error: "couldnt_send_webmention" }
   | { error: "contradicting_filters" }
