@@ -279,11 +279,11 @@ export class LemmyHttp {
    *
    * `HTTP.GET /account/settings`
    */
-  myUser(form: any, options?: RequestOptions) {
+  getMyUser(options?: RequestOptions) {
     return this.#wrapper<object, MyUserInfo>(
       HttpType.Get,
       "/account/settings",
-      form,
+      {},
       options,
     );
   }
