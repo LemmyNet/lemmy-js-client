@@ -282,7 +282,7 @@ export class LemmyHttp {
   getMyUser(options?: RequestOptions) {
     return this.#wrapper<object, MyUserInfo>(
       HttpType.Get,
-      "/account/settings",
+      "/account/my_user",
       {},
       options,
     );
