@@ -277,7 +277,7 @@ export class LemmyHttp {
   /**
    * Get data of current user.
    *
-   * `HTTP.GET /account/settings`
+   * `HTTP.GET /account/my_user`
    */
   getMyUser(options?: RequestOptions) {
     return this.#wrapper<object, MyUserInfo>(
@@ -1436,12 +1436,12 @@ export class LemmyHttp {
   /**
    * Save your user settings.
    *
-   * `HTTP.PUT /account/settings`
+   * `HTTP.PUT /account/settings/save`
    */
   saveUserSettings(form: SaveUserSettings, options?: RequestOptions) {
     return this.#wrapper<SaveUserSettings, SuccessResponse>(
       HttpType.Put,
-      "/account/settings",
+      "/account/settings/save",
       form,
       options,
     );
