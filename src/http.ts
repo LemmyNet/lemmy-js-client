@@ -1818,12 +1818,12 @@ export class LemmyHttp {
   /**
    * Block an instance as user.
    *
-   * `HTTP.Post /account/block_instance`
+   * `HTTP.Post /account/block/instance`
    */
   userBlockInstance(form: UserBlockInstanceParams, options?: RequestOptions) {
     return this.#wrapper<UserBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
-      "/account/block_instance",
+      "/account/block/instance",
       form,
       options,
     );
