@@ -1832,12 +1832,12 @@ export class LemmyHttp {
   /**
    * Globally block an instance as admin.
    *
-   * `HTTP.Post /admin/block_instance`
+   * `HTTP.Post /admin/instance/block`
    */
   adminBlockInstance(form: AdminBlockInstanceParams, options?: RequestOptions) {
     return this.#wrapper<AdminBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
-      "/admin/block_instance",
+      "/admin/instance/block",
       form,
       options,
     );
@@ -1846,12 +1846,12 @@ export class LemmyHttp {
   /**
    * Globally allow an instance as admin.
    *
-   * `HTTP.Post /admin/allow_instance`
+   * `HTTP.Post /admin/instance/allow`
    */
   adminAllowInstance(form: AdminAllowInstanceParams, options?: RequestOptions) {
     return this.#wrapper<AdminAllowInstanceParams, SuccessResponse>(
       HttpType.Post,
-      "/admin/allow_instance",
+      "/admin/instance/allow",
       form,
       options,
     );
