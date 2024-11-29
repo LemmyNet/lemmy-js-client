@@ -1423,12 +1423,12 @@ export class LemmyHttp {
   /**
    * Mark all replies as read.
    *
-   * `HTTP.POST /user/mark_all_as_read`
+   * `HTTP.POST /account/mention/mark_all_as_read`
    */
   markAllAsRead(options?: RequestOptions) {
     return this.#wrapper<object, GetRepliesResponse>(
       HttpType.Post,
-      "/user/mark_all_as_read",
+      "/account/mention/mark_all_as_read",
       {},
       options,
     );
