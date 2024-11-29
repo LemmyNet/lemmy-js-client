@@ -1832,12 +1832,12 @@ export class LemmyHttp {
   /**
    * Globally block an instance as admin.
    *
-   * `HTTP.Post /admin/block/instance`
+   * `HTTP.Post /admin/block_instance`
    */
   adminBlockInstance(form: AdminBlockInstanceParams, options?: RequestOptions) {
     return this.#wrapper<AdminBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
-      "/admin/block/instance",
+      "/admin/block_instance",
       form,
       options,
     );
