@@ -540,12 +540,12 @@ export class LemmyHttp {
   /**
    * Block a community.
    *
-   * `HTTP.POST /community/block`
+   * `HTTP.POST /account/block/community`
    */
   blockCommunity(form: BlockCommunity, options?: RequestOptions) {
     return this.#wrapper<BlockCommunity, BlockCommunityResponse>(
       HttpType.Post,
-      "/community/block",
+      "/account/block/community",
       form,
       options,
     );
@@ -1350,12 +1350,12 @@ export class LemmyHttp {
   /**
    * Block a person.
    *
-   * `HTTP.POST /user/block`
+   * `HTTP.POST /account/block/person`
    */
   blockPerson(form: BlockPerson, options?: RequestOptions) {
     return this.#wrapper<BlockPerson, BlockPersonResponse>(
       HttpType.Post,
-      "/user/block",
+      "/account/block/person",
       form,
       options,
     );
@@ -1818,12 +1818,12 @@ export class LemmyHttp {
   /**
    * Block an instance as user.
    *
-   * `HTTP.Post /site/block`
+   * `HTTP.Post /account/block_instance`
    */
   userBlockInstance(form: UserBlockInstanceParams, options?: RequestOptions) {
     return this.#wrapper<UserBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
-      "/site/block",
+      "/account/block_instance",
       form,
       options,
     );
@@ -1832,12 +1832,12 @@ export class LemmyHttp {
   /**
    * Globally block an instance as admin.
    *
-   * `HTTP.Post /admin/block_instance`
+   * `HTTP.Post /admin/block/instance`
    */
   adminBlockInstance(form: AdminBlockInstanceParams, options?: RequestOptions) {
     return this.#wrapper<AdminBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
-      "/admin/block_instance",
+      "/admin/block/instance",
       form,
       options,
     );
