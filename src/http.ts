@@ -262,7 +262,7 @@ export class LemmyHttp {
   /**
    * Generate a TOTP / two-factor secret.
    *
-   * Afterwards you need to call `/user/totp/update` with a valid token to enable it.
+   * Afterwards you need to call `/account/auth/totp/update` with a valid token to enable it.
    *
    * `HTTP.POST /account/auth/totp/generate`
    */
@@ -321,12 +321,12 @@ export class LemmyHttp {
   /**
    * List login tokens for your user
    *
-   * `HTTP.GET /user/list_logins`
+   * `HTTP.GET /account/list_logins`
    */
   listLogins(options?: RequestOptions) {
     return this.#wrapper<object, LoginToken[]>(
       HttpType.Get,
-      "/user/list_logins",
+      "/account/list_logins",
       {},
       options,
     );
@@ -335,12 +335,12 @@ export class LemmyHttp {
   /**
    * Returns an error message if your auth token is invalid
    *
-   * `HTTP.GET /user/validate_auth`
+   * `HTTP.GET /account/validate_auth`
    */
   validateAuth(options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Get,
-      "/user/validate_auth",
+      "/account/validate_auth",
       {},
       options,
     );
@@ -377,7 +377,7 @@ export class LemmyHttp {
   /**
    * Enable / Disable TOTP / two-factor authentication.
    *
-   * To enable, you need to first call `/user/totp/generate` and then pass a valid token to this.
+   * To enable, you need to first call `/account/auth/totp/generate` and then pass a valid token to this.
    *
    * Disabling is only possible if 2FA was previously enabled. Again it is necessary to pass a valid token.
    *
@@ -1263,12 +1263,12 @@ export class LemmyHttp {
   /**
    * Get mentions for your user.
    *
-   * `HTTP.GET /user/mention`
+   * `HTTP.GET /account/mention`
    */
   getPersonMentions(form: GetPersonMentions, options?: RequestOptions) {
     return this.#wrapper<GetPersonMentions, GetPersonMentionsResponse>(
       HttpType.Get,
-      "/user/mention",
+      "/account/mention",
       form,
       options,
     );
@@ -1308,12 +1308,12 @@ export class LemmyHttp {
   /**
    * Get comment replies.
    *
-   * `HTTP.GET /user/replies`
+   * `HTTP.GET /account/replies`
    */
   getReplies(form: GetReplies, options?: RequestOptions) {
     return this.#wrapper<GetReplies, GetRepliesResponse>(
       HttpType.Get,
-      "/user/replies",
+      "/account/replies",
       form,
       options,
     );
@@ -1451,12 +1451,12 @@ export class LemmyHttp {
   /**
    * Change your user password.
    *
-   * `HTTP.PUT /user/change_password`
+   * `HTTP.PUT /account/auth/change_password`
    */
   changePassword(form: ChangePassword, options?: RequestOptions) {
     return this.#wrapper<ChangePassword, LoginResponse>(
       HttpType.Put,
-      "/user/change_password",
+      "/account/auth/change_password",
       form,
       options,
     );
@@ -1465,12 +1465,12 @@ export class LemmyHttp {
   /**
    * Get counts for your reports
    *
-   * `HTTP.GET /user/report_count`
+   * `HTTP.GET /account/report_count`
    */
   getReportCount(form: GetReportCount, options?: RequestOptions) {
     return this.#wrapper<GetReportCount, GetReportCountResponse>(
       HttpType.Get,
-      "/user/report_count",
+      "/account/report_count",
       form,
       options,
     );
@@ -1479,12 +1479,12 @@ export class LemmyHttp {
   /**
    * Get your unread counts
    *
-   * `HTTP.GET /user/unread_count`
+   * `HTTP.GET /account/unread_count`
    */
   getUnreadCount(options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadCountResponse>(
       HttpType.Get,
-      "/user/unread_count",
+      "/account/unread_count",
       {},
       options,
     );
