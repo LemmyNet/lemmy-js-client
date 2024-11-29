@@ -4,4 +4,4 @@ import type { PostId } from "./PostId";
 /**
  * Mark a post as read.
  */
-export type MarkPostAsRead = { post_ids: Array<PostId>; read: boolean };
+export type MarkPostAsRead = { post_id: PostId; read: boolean };

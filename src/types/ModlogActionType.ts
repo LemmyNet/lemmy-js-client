@@ -19,4 +19,6 @@ export type ModlogActionType =
   | "AdminPurgePerson"
   | "AdminPurgeCommunity"
   | "AdminPurgePost"
-  | "AdminPurgeComment";
+  | "AdminPurgeComment"
+  | "AdminBlockInstance"
+  | "AdminAllowInstance";

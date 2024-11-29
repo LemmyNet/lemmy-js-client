@@ -129,8 +129,6 @@ import {
   VERSION,
 } from "./other_types";
 import { HideCommunity } from "./types/HideCommunity";
-import { BlockInstance } from "./types/BlockInstance";
-import { BlockInstanceResponse } from "./types/BlockInstanceResponse";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
 import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
@@ -161,6 +159,9 @@ import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendin
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { CommunityId } from "./types/CommunityId";
 import { MyUserInfo } from "./types/MyUserInfo";
+import { UserBlockInstanceParams } from "./types/UserBlockInstanceParams";
+import { AdminAllowInstanceParams } from "./types/AdminAllowInstanceParams";
+import { AdminBlockInstanceParams } from "./types/AdminBlockInstanceParams";
 
 enum HttpType {
   Get = "GET",
@@ -1815,14 +1816,42 @@ export class LemmyHttp {
   }
 
   /**
-   * Block an instance.
+   * Block an instance as user.
    *
    * `HTTP.Post /site/block`
    */
-  blockInstance(form: BlockInstance, options?: RequestOptions) {
-    return this.#wrapper<BlockInstance, BlockInstanceResponse>(
+  userBlockInstance(form: UserBlockInstanceParams, options?: RequestOptions) {
+    return this.#wrapper<UserBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
       "/site/block",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Globally block an instance as admin.
+   *
+   * `HTTP.Post /admin/block_instance`
+   */
+  adminBlockInstance(form: AdminBlockInstanceParams, options?: RequestOptions) {
+    return this.#wrapper<AdminBlockInstanceParams, SuccessResponse>(
+      HttpType.Post,
+      "/admin/block_instance",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Globally allow an instance as admin.
+   *
+   * `HTTP.Post /admin/allow_instance`
+   */
+  adminAllowInstance(form: AdminAllowInstanceParams, options?: RequestOptions) {
+    return this.#wrapper<AdminAllowInstanceParams, SuccessResponse>(
+      HttpType.Post,
+      "/admin/allow_instance",
       form,
       options,
     );
