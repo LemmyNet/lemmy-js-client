@@ -30,8 +30,13 @@ export type GetPosts = {
    */
   show_nsfw?: boolean;
   /**
+   * Whether to automatically mark fetched posts as read.
+   */
+  mark_as_read?: boolean;
+  /**
    * If true, then only show posts with no comments
    */
   no_comments_only?: boolean;
   page_cursor?: PaginationCursor;
+  page_back?: boolean;
 };

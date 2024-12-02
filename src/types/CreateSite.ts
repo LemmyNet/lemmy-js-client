@@ -48,8 +48,6 @@ export type CreateSite = {
   federation_debug?: boolean;
   captcha_enabled?: boolean;
   captcha_difficulty?: string;
-  allowed_instances?: Array<string>;
-  blocked_instances?: Array<string>;
   registration_mode?: RegistrationMode;
   oauth_registration?: boolean;
   content_warning?: string;

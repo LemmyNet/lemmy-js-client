@@ -17,4 +17,5 @@ export type AuthenticateWithOauth = {
    * An answer is mandatory if require application is enabled on the server
    */
   answer?: string;
+  pkce_code_verifier?: string;
 };
