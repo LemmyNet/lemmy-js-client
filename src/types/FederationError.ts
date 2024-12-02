@@ -25,4 +25,5 @@ export type FederationError =
   | "InboxTimeout"
   | "CantDeleteSite"
   | "ObjectIsNotPublic"
-  | "ObjectIsNotPrivate";
+  | "ObjectIsNotPrivate"
+  | "Unreachable";

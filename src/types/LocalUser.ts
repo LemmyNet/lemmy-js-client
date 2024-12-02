@@ -74,8 +74,16 @@ export type LocalUser = {
    */
   enable_animated_images: boolean;
   /**
+   * Whether a user can send / receive private messages
+   */
+  enable_private_messages: boolean;
+  /**
    * Whether to auto-collapse bot comments.
    */
   collapse_bot_comments: boolean;
   default_comment_sort_type: CommentSortType;
+  /**
+   * Whether to automatically mark fetched posts as read.
+   */
+  auto_mark_fetched_posts_as_read: boolean;
 };
