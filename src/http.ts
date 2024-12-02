@@ -1740,7 +1740,7 @@ export class LemmyHttp {
   }
 
   /**
-   * List post reports.
+   * List user reports.
    *
    * `HTTP.GET /report/list`
    */
