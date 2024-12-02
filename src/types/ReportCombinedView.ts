@@ -4,6 +4,6 @@ import type { PostReportView } from "./PostReportView";
 import type { PrivateMessageReportView } from "./PrivateMessageReportView";
 
 export type ReportCombinedView =
-  | { Post: PostReportView }
-  | { Comment: CommentReportView }
-  | { PrivateMessage: PrivateMessageReportView };
+  | ({ type_: "Post" } & PostReportView)
+  | ({ type_: "Comment" } & CommentReportView)
+  | ({ type_: "PrivateMessage" } & PrivateMessageReportView);
