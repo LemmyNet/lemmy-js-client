@@ -58,4 +58,8 @@ export type OAuthProvider = {
   enabled: boolean;
   published: string;
   updated?: string;
+  /**
+   * switch to enable or disable PKCE
+   */
+  use_pkce: boolean;
 };

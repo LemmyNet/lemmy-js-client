@@ -14,4 +14,6 @@ export type CommentAggregates = {
    * The total number of children in this comment branch.
    */
   child_count: number;
+  report_count: number;
+  unresolved_report_count: number;
 };
