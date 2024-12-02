@@ -154,6 +154,9 @@ import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows
 import { CommunityId } from "./types/CommunityId";
 import { ListReports } from "./types/ListReports";
 import { ListReportsResponse } from "./types/ListReportsResponse";
+import { UserBlockInstanceParams } from "./types/UserBlockInstanceParams";
+import { AdminAllowInstanceParams } from "./types/AdminAllowInstanceParams";
+import { AdminBlockInstanceParams } from "./types/AdminBlockInstanceParams";
 
 enum HttpType {
   Get = "GET",
@@ -1739,12 +1742,54 @@ export class LemmyHttp {
   /**
    * List post reports.
    *
-   * `HTTP.GET //report/list`
+   * `HTTP.GET /report/list`
    */
   listReports(form: ListReports, options?: RequestOptions) {
     return this.#wrapper<ListReports, ListReportsResponse>(
       HttpType.Get,
       "/report/list",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Block an instance as user.
+   *
+   * `HTTP.Post /site/block`
+   */
+  userBlockInstance(form: UserBlockInstanceParams, options?: RequestOptions) {
+    return this.#wrapper<UserBlockInstanceParams, SuccessResponse>(
+      HttpType.Post,
+      "/site/block",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Globally block an instance as admin.
+   *
+   * `HTTP.Post /admin/block_instance`
+   */
+  adminBlockInstance(form: AdminBlockInstanceParams, options?: RequestOptions) {
+    return this.#wrapper<AdminBlockInstanceParams, SuccessResponse>(
+      HttpType.Post,
+      "/admin/block_instance",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Globally allow an instance as admin.
+   *
+   * `HTTP.Post /admin/allow_instance`
+   */
+  adminAllowInstance(form: AdminAllowInstanceParams, options?: RequestOptions) {
+    return this.#wrapper<AdminAllowInstanceParams, SuccessResponse>(
+      HttpType.Post,
+      "/admin/allow_instance",
       form,
       options,
     );
