@@ -137,4 +137,5 @@ export type LemmyErrorType =
   | { error: "community_has_no_followers" }
   | { error: "post_schedule_time_must_be_in_future" }
   | { error: "too_many_scheduled_posts" }
+  | { error: "cannot_combine_federation_blocklist_and_allowlist" }
   | { error: "federation_error"; message: { error?: FederationError } };

@@ -4,4 +4,7 @@ import type { InstanceId } from "./InstanceId";
 /**
  * Block an instance as user
  */
-export type BlockInstance = { instance_id: InstanceId; block: boolean };
+export type UserBlockInstanceParams = {
+  instance_id: InstanceId;
+  block: boolean;
+};

@@ -139,14 +139,6 @@ export type EditSite = {
    */
   captcha_difficulty?: string;
   /**
-   * A list of allowed instances. If none are set, federation is open.
-   */
-  allowed_instances?: Array<string>;
-  /**
-   * A list of blocked instances.
-   */
-  blocked_instances?: Array<string>;
-  /**
    * A list of blocked URLs
    */
   blocked_urls?: Array<string>;
