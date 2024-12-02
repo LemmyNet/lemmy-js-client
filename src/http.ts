@@ -5,6 +5,7 @@ import { AddModToCommunityResponse } from "./types/AddModToCommunityResponse";
 import { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 import { BanFromCommunity } from "./types/BanFromCommunity";
 import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
+import { MarkManyPostsAsRead } from "./types/MarkManyPostsAsRead";
 import { BanPerson } from "./types/BanPerson";
 import { BanPersonResponse } from "./types/BanPersonResponse";
 import { BannedPersonsResponse } from "./types/BannedPersonsResponse";
@@ -728,6 +729,20 @@ export class LemmyHttp {
     return this.#wrapper<MarkPostAsRead, SuccessResponse>(
       HttpType.Post,
       "/post/mark_as_read",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Mark multiple posts as read.
+   *
+   * `HTTP.POST /post/mark_as_read/many`
+   */
+  markManyPostAsRead(form: MarkManyPostsAsRead, options?: RequestOptions) {
+    return this.#wrapper<MarkManyPostsAsRead, SuccessResponse>(
+      HttpType.Post,
+      "/post/mark_as_read/many",
       form,
       options,
     );
