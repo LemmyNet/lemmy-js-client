@@ -20,12 +20,14 @@ steps:
 
   npm_publish:
     image: node:alpine
+    environment:
+      NPM_TOKEN:
+        from_secret: npm_token
     commands:
       - *install_pnpm
       - pnpm i
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - echo "email = tyhou13@gmx.com" >> ~/.npmrc
       - npm publish
-    secrets: [npm_token]
     when:
       - event: tag
