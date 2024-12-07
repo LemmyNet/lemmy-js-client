@@ -6,6 +6,7 @@ import type { OAuthProviderId } from "./OAuthProviderId";
  */
 export type AuthenticateWithOauth = {
   code: string;
+  pkce_code_verifier?: string;
   oauth_provider_id: OAuthProviderId;
   redirect_uri: string;
   show_nsfw?: boolean;

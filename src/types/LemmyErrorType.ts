@@ -66,6 +66,7 @@ export type LemmyErrorType =
   | { error: "invalid_email_address"; message: string }
   | { error: "rate_limit_error" }
   | { error: "invalid_name" }
+  | { error: "invalid_code_verifier" }
   | { error: "invalid_display_name" }
   | { error: "invalid_matrix_id" }
   | { error: "invalid_post_title" }

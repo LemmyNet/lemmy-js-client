@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "0.20.0-api-v4.16",
+  "version": "0.20.0-pkce.1",
   "author": "Dessalines <tyhou13@gmx.com>",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
@@ -31,11 +31,11 @@
     "prettier-plugin-organize-imports": "^4.0.0",
     "prettier-plugin-packagejson": "^2.5.1",
     "sortpack": "^2.4.0",
-    "typedoc": "^0.26.5",
+    "typedoc": "^0.27.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.7.0"
   },
-  "packageManager": "pnpm@9.14.2",
+  "packageManager": "pnpm@9.15.0",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
