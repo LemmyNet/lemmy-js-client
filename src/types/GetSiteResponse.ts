@@ -2,7 +2,6 @@
 import type { Language } from "./Language";
 import type { LanguageId } from "./LanguageId";
 import type { LocalSiteUrlBlocklist } from "./LocalSiteUrlBlocklist";
-import type { MyUserInfo } from "./MyUserInfo";
 import type { OAuthProvider } from "./OAuthProvider";
 import type { PersonView } from "./PersonView";
 import type { PublicOAuthProvider } from "./PublicOAuthProvider";
@@ -16,7 +15,6 @@ export type GetSiteResponse = {
   site_view: SiteView;
   admins: Array<PersonView>;
   version: string;
-  my_user?: MyUserInfo;
   all_languages: Array<Language>;
   discussion_languages: Array<LanguageId>;
   /**
