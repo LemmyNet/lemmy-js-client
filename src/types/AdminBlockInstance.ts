@@ -9,5 +9,5 @@ export type AdminBlockInstance = {
   blocked: boolean;
   reason?: string;
   expires?: string;
-  published: string;
+  when_: string;
 };
