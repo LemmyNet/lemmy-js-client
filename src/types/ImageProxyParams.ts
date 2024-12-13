@@ -2,6 +2,6 @@
 
 export type ImageProxyParams = {
   url: string;
-  format: string | null;
-  thumbnail: number | null;
+  file_type: string | null;
+  max_size: number | null;
 };
