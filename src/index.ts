@@ -1,10 +1,5 @@
 export * from "./http";
-export {
-  UploadImage,
-  UploadImageResponse,
-  ImageFile,
-  DeleteImage,
-} from "./other_types";
+export { UploadImage } from "./other_types";
 export { ActivityId } from "./types/ActivityId";
 export { AddAdmin } from "./types/AddAdmin";
 export { AddAdminResponse } from "./types/AddAdminResponse";
