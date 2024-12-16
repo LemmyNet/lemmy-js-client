@@ -43,10 +43,6 @@ export type SaveUserSettings = {
    */
   interface_language?: string;
   /**
-   * A URL for your avatar.
-   */
-  avatar?: string;
-  /**
    * A URL for your banner.
    */
   banner?: string;

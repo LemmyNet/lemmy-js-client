@@ -22,6 +22,7 @@ export type LemmyErrorType =
   | { error: "pictrs_api_key_not_provided" }
   | { error: "no_content_type_header" }
   | { error: "not_an_image_type" }
+  | { error: "invalid_image_upload" }
   | { error: "not_a_mod_or_admin" }
   | { error: "not_top_mod" }
   | { error: "not_logged_in" }
