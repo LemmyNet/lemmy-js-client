@@ -1879,7 +1879,7 @@ export class LemmyHttp {
   ): Promise<UploadImageResponse> {
     const formData = createFormData(image);
 
-    const response = await this.#fetchFunction("/api/v4/image", {
+    const response = await this.#fetchFunction(this.#buildFullUrl("/image"), {
       ...options,
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
@@ -1899,12 +1899,15 @@ export class LemmyHttp {
   ): Promise<SuccessResponse> {
     const formData = createFormData(image);
 
-    const response = await this.#fetchFunction("/api/v4/account/avatar", {
-      ...options,
-      method: HttpType.Post,
-      body: formData as unknown as BodyInit,
-      headers: this.#headers,
-    });
+    const response = await this.#fetchFunction(
+      this.#buildFullUrl("/account/avatar"),
+      {
+        ...options,
+        method: HttpType.Post,
+        body: formData as unknown as BodyInit,
+        headers: this.#headers,
+      },
+    );
     return response.json();
   }
 
