@@ -176,7 +176,6 @@ type RequestOptions = Pick<RequestInit, "signal">;
 export class LemmyHttp {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
-  #pictrsUrl: string;
   #fetchFunction: typeof fetch = fetch.bind(globalThis);
 
   /**
@@ -192,7 +191,6 @@ export class LemmyHttp {
     },
   ) {
     this.#apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/${VERSION}`;
-    this.#pictrsUrl = `${baseUrl}/pictrs/image`;
 
     if (options?.headers) {
       this.#headers = options.headers;
@@ -1881,7 +1879,7 @@ export class LemmyHttp {
   ): Promise<UploadImageResponse> {
     const formData = createFormData(image);
 
-    const response = await this.#fetchFunction(this.#pictrsUrl, {
+    const response = await this.#fetchFunction("/api/v4/image", {
       ...options,
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
@@ -1901,7 +1899,7 @@ export class LemmyHttp {
   ): Promise<SuccessResponse> {
     const formData = createFormData(image);
 
-    const response = await this.#fetchFunction(this.#pictrsUrl, {
+    const response = await this.#fetchFunction("/api/v4/account/avatar", {
       ...options,
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
