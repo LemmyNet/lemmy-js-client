@@ -35,4 +35,5 @@ export type GetSiteResponse = {
   oauth_providers?: Array<PublicOAuthProvider>;
   admin_oauth_providers?: Array<OAuthProvider>;
   blocked_urls: Array<LocalSiteUrlBlocklist>;
+  image_upload_disabled: boolean;
 };

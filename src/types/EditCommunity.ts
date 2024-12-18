@@ -21,14 +21,6 @@ export type EditCommunity = {
    */
   description?: string;
   /**
-   * An icon URL.
-   */
-  icon?: string;
-  /**
-   * A banner URL.
-   */
-  banner?: string;
-  /**
    * Whether its an NSFW community.
    */
   nsfw?: boolean;

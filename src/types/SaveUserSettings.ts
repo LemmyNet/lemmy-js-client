@@ -43,10 +43,6 @@ export type SaveUserSettings = {
    */
   interface_language?: string;
   /**
-   * A URL for your banner.
-   */
-  banner?: string;
-  /**
    * Your display name, which can contain strange characters, and does not need to be unique.
    */
   display_name?: string;
