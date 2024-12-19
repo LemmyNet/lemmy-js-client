@@ -123,12 +123,7 @@ import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
-import {
-  DeleteImage,
-  UploadImage,
-  UploadImageResponse,
-  VERSION,
-} from "./other_types";
+import { UploadImage, VERSION } from "./other_types";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
@@ -163,11 +158,14 @@ import { MyUserInfo } from "./types/MyUserInfo";
 import { UserBlockInstanceParams } from "./types/UserBlockInstanceParams";
 import { AdminAllowInstanceParams } from "./types/AdminAllowInstanceParams";
 import { AdminBlockInstanceParams } from "./types/AdminBlockInstanceParams";
+import { DeleteImageParams } from "./types/DeleteImageParams";
+import { UploadImageResponse } from "./types/UploadImageResponse";
 
 enum HttpType {
   Get = "GET",
   Post = "POST",
   Put = "PUT",
+  Delete = "DELETE",
 }
 
 type RequestOptions = Pick<RequestInit, "signal">;
@@ -178,7 +176,6 @@ type RequestOptions = Pick<RequestInit, "signal">;
 export class LemmyHttp {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
-  #pictrsUrl: string;
   #fetchFunction: typeof fetch = fetch.bind(globalThis);
 
   /**
@@ -194,7 +191,6 @@ export class LemmyHttp {
     },
   ) {
     this.#apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/${VERSION}`;
-    this.#pictrsUrl = `${baseUrl}/pictrs/image`;
 
     if (options?.headers) {
       this.#headers = options.headers;
@@ -1874,6 +1870,8 @@ export class LemmyHttp {
 
   /**
    * Upload an image to the server.
+   *
+   * `HTTP.Post /image`
    */
   async uploadImage(
     { image }: UploadImage,
@@ -1881,51 +1879,64 @@ export class LemmyHttp {
   ): Promise<UploadImageResponse> {
     const formData = createFormData(image);
 
-    let url: string | undefined = undefined;
-    let delete_url: string | undefined = undefined;
-
-    const response = await this.#fetchFunction(this.#pictrsUrl, {
+    const response = await this.#fetchFunction(this.#buildFullUrl("/image"), {
       ...options,
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
       headers: this.#headers,
     });
+    return response.json();
+  }
 
-    if (response.status === 413) {
-      return { msg: "too_large" };
-    }
+  /**
+   * Upload new user avatar.
+   *
+   * `HTTP.Post /account/avatar`
+   */
+  async userUploadAvatar(
+    { image }: UploadImage,
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    const formData = createFormData(image);
 
-    const responseJson = await response.json();
-
-    if (responseJson.msg === "ok") {
-      const { file: hash, delete_token: deleteToken } = responseJson.files[0];
-      delete_url = `${this.#pictrsUrl}/delete/${deleteToken}/${hash}`;
-      url = `${this.#pictrsUrl}/${hash}`;
-    }
-
-    return {
-      ...responseJson,
-      url,
-      delete_url,
-    };
+    const response = await this.#fetchFunction(
+      this.#buildFullUrl("/account/avatar"),
+      {
+        ...options,
+        method: HttpType.Post,
+        body: formData as unknown as BodyInit,
+        headers: this.#headers,
+      },
+    );
+    return response.json();
   }
 
   /**
    * Delete a pictrs image
+   *
+   * `HTTP.Delete /image`
    */
-  async deleteImage(
-    { token, filename }: DeleteImage,
-    options?: RequestOptions,
-  ): Promise<boolean> {
-    const deleteUrl = `${this.#pictrsUrl}/delete/${token}/${filename}`;
+  async deleteImage(form: DeleteImageParams, options?: RequestOptions) {
+    return this.#wrapper<DeleteImageParams, SuccessResponse>(
+      HttpType.Delete,
+      "/image",
+      form,
+      options,
+    );
+  }
 
-    const response = await this.#fetchFunction(deleteUrl, {
-      ...options,
-      method: HttpType.Get,
-      headers: this.#headers,
-    });
-
-    return response.status == 204;
+  /**
+   * Health check for image functionality
+   *
+   * `HTTP.Get /image/health`
+   */
+  async imageHealth(options?: RequestOptions) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Get,
+      "/image/health",
+      {},
+      options,
+    );
   }
 
   #buildFullUrl(endpoint: string) {

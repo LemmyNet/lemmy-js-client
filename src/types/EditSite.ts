@@ -21,14 +21,6 @@ export type EditSite = {
    */
   description?: string;
   /**
-   * A url for your site's icon.
-   */
-  icon?: string;
-  /**
-   * A url for your site's banner.
-   */
-  banner?: string;
-  /**
    * Whether to enable NSFW.
    */
   enable_nsfw?: boolean;
