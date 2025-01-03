@@ -7,7 +7,7 @@ import type { SiteView } from "./SiteView";
 export type SiteResponse = {
   site_view: SiteView;
   /**
-   * deprecated, use field `tagline` or /api/v3/tagline/list
+   * deprecated, use field `tagline` or /api/v4/tagline/list
    */
   taglines: Array<null>;
 };
