@@ -76,14 +76,8 @@ import { GetSiteMetadataResponse } from "./types/GetSiteMetadataResponse";
 import { GetSiteResponse } from "./types/GetSiteResponse";
 import { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
 import { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
-import { ListCommentReports } from "./types/ListCommentReports";
-import { ListCommentReportsResponse } from "./types/ListCommentReportsResponse";
 import { ListCommunities } from "./types/ListCommunities";
 import { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
-import { ListPostReports } from "./types/ListPostReports";
-import { ListPostReportsResponse } from "./types/ListPostReportsResponse";
-import { ListPrivateMessageReports } from "./types/ListPrivateMessageReports";
-import { ListPrivateMessageReportsResponse } from "./types/ListPrivateMessageReportsResponse";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
 import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
 import { LockPost } from "./types/LockPost";
@@ -154,6 +148,8 @@ import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPen
 import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendingFollowsResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { CommunityId } from "./types/CommunityId";
+import { ListReports } from "./types/ListReports";
+import { ListReportsResponse } from "./types/ListReportsResponse";
 import { MyUserInfo } from "./types/MyUserInfo";
 import { UserBlockInstanceParams } from "./types/UserBlockInstanceParams";
 import { AdminAllowInstanceParams } from "./types/AdminAllowInstanceParams";
@@ -871,20 +867,6 @@ export class LemmyHttp {
   }
 
   /**
-   * List post reports.
-   *
-   * `HTTP.GET /post/report/list`
-   */
-  listPostReports(form: ListPostReports, options?: RequestOptions) {
-    return this.#wrapper<ListPostReports, ListPostReportsResponse>(
-      HttpType.Get,
-      "/post/report/list",
-      form,
-      options,
-    );
-  }
-
-  /**
    * Fetch metadata for any given site.
    *
    * `HTTP.GET /post/site_metadata`
@@ -1084,20 +1066,6 @@ export class LemmyHttp {
   }
 
   /**
-   * List comment reports.
-   *
-   * `HTTP.GET /comment/report/list`
-   */
-  listCommentReports(form: ListCommentReports, options?: RequestOptions) {
-    return this.#wrapper<ListCommentReports, ListCommentReportsResponse>(
-      HttpType.Get,
-      "/comment/report/list",
-      form,
-      options,
-    );
-  }
-
-  /**
    * Get / fetch private messages.
    *
    * `HTTP.GET /private_message/list`
@@ -1198,21 +1166,6 @@ export class LemmyHttp {
       ResolvePrivateMessageReport,
       PrivateMessageReportResponse
     >(HttpType.Put, "/private_message/report/resolve", form, options);
-  }
-
-  /**
-   * List private message reports.
-   *
-   * `HTTP.GET /private_message/report/list`
-   */
-  listPrivateMessageReports(
-    form: ListPrivateMessageReports,
-    options?: RequestOptions,
-  ) {
-    return this.#wrapper<
-      ListPrivateMessageReports,
-      ListPrivateMessageReportsResponse
-    >(HttpType.Get, "/private_message/report/list", form, options);
   }
 
   /**
@@ -1822,6 +1775,20 @@ export class LemmyHttp {
       HttpType.Get,
       "/federated_instances",
       {},
+      options,
+    );
+  }
+
+  /**
+   * List user reports.
+   *
+   * `HTTP.GET /report/list`
+   */
+  listReports(form: ListReports, options?: RequestOptions) {
+    return this.#wrapper<ListReports, ListReportsResponse>(
+      HttpType.Get,
+      "/report/list",
+      form,
       options,
     );
   }
