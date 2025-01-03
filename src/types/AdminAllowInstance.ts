@@ -8,5 +8,5 @@ export type AdminAllowInstance = {
   admin_person_id: PersonId;
   allowed: boolean;
   reason?: string;
-  published: string;
+  when_: string;
 };
