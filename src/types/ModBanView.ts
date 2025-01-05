@@ -8,5 +8,5 @@ import type { Person } from "./Person";
 export type ModBanView = {
   mod_ban: ModBan;
   moderator?: Person;
-  banned_person: Person;
+  modded_person: Person;
 };

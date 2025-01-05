@@ -159,6 +159,10 @@ import { MyUserInfo } from "./types/MyUserInfo";
 import { UserBlockInstanceParams } from "./types/UserBlockInstanceParams";
 import { AdminAllowInstanceParams } from "./types/AdminAllowInstanceParams";
 import { AdminBlockInstanceParams } from "./types/AdminBlockInstanceParams";
+import { ListPersonContent } from "./types/ListPersonContent";
+import { ListPersonContentResponse } from "./types/ListPersonContentResponse";
+import { ListPersonSaved } from "./types/ListPersonSaved";
+import { ListPersonSavedResponse } from "./types/ListPersonSavedResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1229,6 +1233,20 @@ export class LemmyHttp {
   }
 
   /**
+   * List the content for a person.
+   *
+   * `HTTP.GET /person/content`
+   */
+  listPersonContent(form: ListPersonContent = {}, options?: RequestOptions) {
+    return this.#wrapper<ListPersonContent, ListPersonContentResponse>(
+      HttpType.Get,
+      "/person/content",
+      form,
+      options,
+    );
+  }
+
+  /**
    * Get mentions for your user.
    *
    * `HTTP.GET /account/mention`
@@ -1467,6 +1485,20 @@ export class LemmyHttp {
     return this.#wrapper<VerifyEmail, SuccessResponse>(
       HttpType.Post,
       "/account/auth/verify_email",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * List your saved content.
+   *
+   * `HTTP.GET /account/auth/saved`
+   */
+  listPersonSaved(form: ListPersonSaved, options?: RequestOptions) {
+    return this.#wrapper<ListPersonSaved, ListPersonSavedResponse>(
+      HttpType.Post,
+      "/account/auth/saved",
       form,
       options,
     );

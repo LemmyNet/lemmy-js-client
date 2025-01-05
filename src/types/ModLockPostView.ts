@@ -10,6 +10,7 @@ import type { Post } from "./Post";
 export type ModLockPostView = {
   mod_lock_post: ModLockPost;
   moderator?: Person;
+  modded_person: Person;
   post: Post;
   community: Community;
 };

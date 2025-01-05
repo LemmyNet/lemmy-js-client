@@ -10,6 +10,7 @@ import type { Post } from "./Post";
 export type ModRemovePostView = {
   mod_remove_post: ModRemovePost;
   moderator?: Person;
+  modded_person: Person;
   post: Post;
   community: Community;
 };

@@ -18,14 +18,6 @@ export type GetSiteResponse = {
   all_languages: Array<Language>;
   discussion_languages: Array<LanguageId>;
   /**
-   * deprecated, use field `tagline` or /api/v3/tagline/list
-   */
-  taglines: Array<null>;
-  /**
-   * deprecated, use /api/v3/custom_emoji/list
-   */
-  custom_emojis: Array<null>;
-  /**
    * If the site has any taglines, a random one is included here for displaying
    */
   tagline?: Tagline;

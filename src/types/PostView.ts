@@ -4,6 +4,7 @@ import type { ImageDetails } from "./ImageDetails";
 import type { Person } from "./Person";
 import type { Post } from "./Post";
 import type { PostAggregates } from "./PostAggregates";
+import type { PostTags } from "./PostTags";
 import type { SubscribedType } from "./SubscribedType";
 
 /**
@@ -26,4 +27,5 @@ export type PostView = {
   creator_blocked: boolean;
   my_vote?: number;
   unread_comments: number;
+  tags: PostTags;
 };
