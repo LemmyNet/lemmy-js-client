@@ -27,4 +27,6 @@ export type CommunityAggregates = {
    */
   users_active_half_year: number;
   subscribers_local: number;
+  report_count: number;
+  unresolved_report_count: number;
 };

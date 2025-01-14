@@ -10,5 +10,5 @@ export type ModTransferCommunityView = {
   mod_transfer_community: ModTransferCommunity;
   moderator?: Person;
   community: Community;
-  modded_person: Person;
+  other_person: Person;
 };
