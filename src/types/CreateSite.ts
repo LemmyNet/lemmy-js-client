@@ -14,8 +14,6 @@ export type CreateSite = {
   name: string;
   sidebar?: string;
   description?: string;
-  icon?: string;
-  banner?: string;
   enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
   require_email_verification?: boolean;
