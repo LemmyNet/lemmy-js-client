@@ -98,7 +98,7 @@ export type LemmyErrorType =
   | { error: "couldnt_hide_post" }
   | { error: "couldnt_update_community" }
   | { error: "couldnt_update_replies" }
-  | { error: "couldnt_update_person_mentions" }
+  | { error: "couldnt_update_person_comment_mentions" }
   | { error: "couldnt_create_post" }
   | { error: "couldnt_create_private_message" }
   | { error: "couldnt_update_private" }

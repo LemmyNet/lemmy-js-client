@@ -3,15 +3,15 @@ import type { Comment } from "./Comment";
 import type { CommentAggregates } from "./CommentAggregates";
 import type { Community } from "./Community";
 import type { Person } from "./Person";
-import type { PersonMention } from "./PersonMention";
+import type { PersonCommentMention } from "./PersonCommentMention";
 import type { Post } from "./Post";
 import type { SubscribedType } from "./SubscribedType";
 
 /**
- * A person mention view.
+ * A person comment mention view.
  */
-export type PersonMentionView = {
-  person_mention: PersonMention;
+export type PersonCommentMentionView = {
+  person_comment_mention: PersonCommentMention;
   comment: Comment;
   creator: Person;
   post: Post;
