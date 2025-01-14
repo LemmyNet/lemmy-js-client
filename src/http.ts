@@ -117,12 +117,7 @@ import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
-import {
-  DeleteImage,
-  UploadImage,
-  UploadImageResponse,
-  VERSION,
-} from "./other_types";
+import { UploadImage, VERSION } from "./other_types";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
@@ -163,11 +158,14 @@ import { ListPersonContent } from "./types/ListPersonContent";
 import { ListPersonContentResponse } from "./types/ListPersonContentResponse";
 import { ListPersonSaved } from "./types/ListPersonSaved";
 import { ListPersonSavedResponse } from "./types/ListPersonSavedResponse";
+import { DeleteImageParams } from "./types/DeleteImageParams";
+import { UploadImageResponse } from "./types/UploadImageResponse";
 
 enum HttpType {
   Get = "GET",
   Post = "POST",
   Put = "PUT",
+  Delete = "DELETE",
 }
 
 type RequestOptions = Pick<RequestInit, "signal">;
@@ -178,7 +176,6 @@ type RequestOptions = Pick<RequestInit, "signal">;
 export class LemmyHttp {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
-  #pictrsUrl: string;
   #fetchFunction: typeof fetch = fetch.bind(globalThis);
 
   /**
@@ -194,7 +191,6 @@ export class LemmyHttp {
     },
   ) {
     this.#apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/${VERSION}`;
-    this.#pictrsUrl = `${baseUrl}/pictrs/image`;
 
     if (options?.headers) {
       this.#headers = options.headers;
@@ -1872,63 +1868,223 @@ export class LemmyHttp {
   }
 
   /**
+   * Upload new user avatar.
+   *
+   * `HTTP.Post /account/avatar`
+   */
+  async uploadUserAvatar(
+    image: UploadImage,
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#upload("/account/avatar", image, options);
+  }
+
+  /**
+   * Delete the user avatar.
+   *
+   * `HTTP.Delete /account/avatar`
+   */
+  async deleteUserAvatar(options?: RequestOptions): Promise<SuccessResponse> {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/account/avatar",
+      {},
+      options,
+    );
+  }
+
+  /**
+   * Upload new user banner.
+   *
+   * `HTTP.Post /account/banner`
+   */
+  async uploadUserBanner(
+    image: UploadImage,
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#upload("/account/banner", image, options);
+  }
+
+  /**
+   * Delete the user banner.
+   *
+   * `HTTP.Delete /account/banner`
+   */
+  async deleteUserBanner(options?: RequestOptions): Promise<SuccessResponse> {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/account/banner",
+      {},
+      options,
+    );
+  }
+
+  /**
+   * Upload new community icon.
+   *
+   * `HTTP.Post /community/icon`
+   */
+  async uploadCommunityIcon(
+    image: UploadImage,
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#upload("/community/icon", image, options);
+  }
+
+  /**
+   * Delete the community icon.
+   *
+   * `HTTP.Delete /community/icon`
+   */
+  async deleteCommunityIcon(
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/community/icon",
+      {},
+      options,
+    );
+  }
+
+  /**
+   * Upload new community banner.
+   *
+   * `HTTP.Post /community/banner`
+   */
+  async uploadCommunityBanner(
+    image: UploadImage,
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#upload("/community/banner", image, options);
+  }
+
+  /**
+   * Delete the community banner.
+   *
+   * `HTTP.Delete /community/banner`
+   */
+  async deleteCommunityBanner(
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/community/banner",
+      {},
+      options,
+    );
+  }
+
+  /**
+   * Upload new site icon.
+   *
+   * `HTTP.Post /site/icon`
+   */
+  async uploadSiteIcon(
+    image: UploadImage,
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#upload("/site/icon", image, options);
+  }
+
+  /**
+   * Delete the site icon.
+   *
+   * `HTTP.Delete /site/icon`
+   */
+  async deleteSiteIcon(options?: RequestOptions): Promise<SuccessResponse> {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/site/icon",
+      {},
+      options,
+    );
+  }
+
+  /**
+   * Upload new site banner.
+   *
+   * `HTTP.Post /site/banner`
+   */
+  async uploadSiteBanner(
+    image: UploadImage,
+    options?: RequestOptions,
+  ): Promise<SuccessResponse> {
+    return this.#upload("/site/banner", image, options);
+  }
+
+  /**
+   * Delete the site banner.
+   *
+   * `HTTP.Delete /site/banner`
+   */
+  async deleteSiteBanner(options?: RequestOptions): Promise<SuccessResponse> {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/site/banner",
+      {},
+      options,
+    );
+  }
+
+  /**
    * Upload an image to the server.
+   *
+   * `HTTP.Post /image`
    */
   async uploadImage(
-    { image }: UploadImage,
+    image: UploadImage,
     options?: RequestOptions,
   ): Promise<UploadImageResponse> {
+    return this.#upload("/image", image, options);
+  }
+
+  /**
+   * Delete a pictrs image
+   *
+   * `HTTP.Delete /image`
+   */
+  async deleteImage(form: DeleteImageParams, options?: RequestOptions) {
+    return this.#wrapper<DeleteImageParams, SuccessResponse>(
+      HttpType.Delete,
+      "/image",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Health check for image functionality
+   *
+   * `HTTP.Get /image/health`
+   */
+  async imageHealth(options?: RequestOptions) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Get,
+      "/image/health",
+      {},
+      options,
+    );
+  }
+
+  #buildFullUrl(endpoint: string) {
+    return `${this.#apiUrl}${endpoint}`;
+  }
+
+  async #upload<ResponseType>(
+    path: string,
+    { image }: UploadImage,
+    options?: RequestOptions,
+  ): Promise<ResponseType> {
     const formData = createFormData(image);
 
-    let url: string | undefined = undefined;
-    let delete_url: string | undefined = undefined;
-
-    const response = await this.#fetchFunction(this.#pictrsUrl, {
+    const response = await this.#fetchFunction(this.#buildFullUrl(path), {
       ...options,
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
       headers: this.#headers,
     });
-
-    if (response.status === 413) {
-      return { msg: "too_large" };
-    }
-
-    const responseJson = await response.json();
-
-    if (responseJson.msg === "ok") {
-      const { file: hash, delete_token: deleteToken } = responseJson.files[0];
-      delete_url = `${this.#pictrsUrl}/delete/${deleteToken}/${hash}`;
-      url = `${this.#pictrsUrl}/${hash}`;
-    }
-
-    return {
-      ...responseJson,
-      url,
-      delete_url,
-    };
-  }
-
-  /**
-   * Delete a pictrs image
-   */
-  async deleteImage(
-    { token, filename }: DeleteImage,
-    options?: RequestOptions,
-  ): Promise<boolean> {
-    const deleteUrl = `${this.#pictrsUrl}/delete/${token}/${filename}`;
-
-    const response = await this.#fetchFunction(deleteUrl, {
-      ...options,
-      method: HttpType.Get,
-      headers: this.#headers,
-    });
-
-    return response.status == 204;
-  }
-
-  #buildFullUrl(endpoint: string) {
-    return `${this.#apiUrl}${endpoint}`;
+    return response.json();
   }
 
   async #wrapper<BodyType extends object, ResponseType>(
