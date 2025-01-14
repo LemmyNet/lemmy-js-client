@@ -12,5 +12,5 @@ export type ModRemoveCommunity = {
   community_id: CommunityId;
   reason?: string;
   removed: boolean;
-  when_: string;
+  published: string;
 };

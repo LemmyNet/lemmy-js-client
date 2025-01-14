@@ -14,7 +14,6 @@ export type CreateSite = {
   name: string;
   sidebar?: string;
   description?: string;
-  enable_nsfw?: boolean;
   community_creation_admin_only?: boolean;
   require_email_verification?: boolean;
   application_question?: string;
@@ -43,7 +42,6 @@ export type CreateSite = {
   rate_limit_search?: number;
   rate_limit_search_per_second?: number;
   federation_enabled?: boolean;
-  federation_debug?: boolean;
   captcha_enabled?: boolean;
   captcha_difficulty?: string;
   registration_mode?: RegistrationMode;

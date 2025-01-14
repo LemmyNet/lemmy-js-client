@@ -12,5 +12,5 @@ export type ModRemovePost = {
   post_id: PostId;
   reason?: string;
   removed: boolean;
-  when_: string;
+  published: string;
 };

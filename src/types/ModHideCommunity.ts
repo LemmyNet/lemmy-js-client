@@ -10,7 +10,7 @@ export type ModHideCommunity = {
   id: ModHideCommunityId;
   community_id: CommunityId;
   mod_person_id: PersonId;
-  when_: string;
+  published: string;
   reason?: string;
   hidden: boolean;
 };

@@ -4,7 +4,6 @@
  * Federation related errors, these dont need to be translated.
  */
 export type FederationError =
-  | "CouldntFindActivity"
   | "InvalidCommunity"
   | "CannotCreatePostOrCommentInDeletedOrRemovedCommunity"
   | "CannotReceivePage"

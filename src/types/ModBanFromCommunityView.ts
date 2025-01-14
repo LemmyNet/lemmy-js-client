@@ -10,5 +10,5 @@ export type ModBanFromCommunityView = {
   mod_ban_from_community: ModBanFromCommunity;
   moderator?: Person;
   community: Community;
-  modded_person: Person;
+  other_person: Person;
 };

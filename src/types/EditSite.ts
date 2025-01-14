@@ -21,10 +21,6 @@ export type EditSite = {
    */
   description?: string;
   /**
-   * Whether to enable NSFW.
-   */
-  enable_nsfw?: boolean;
-  /**
    * Limits community creation to admins only.
    */
   community_creation_admin_only?: boolean;
@@ -118,10 +114,6 @@ export type EditSite = {
    * Whether to enable federation.
    */
   federation_enabled?: boolean;
-  /**
-   * Enables federation debugging.
-   */
-  federation_debug?: boolean;
   /**
    * Whether to enable captchas for signups.
    */

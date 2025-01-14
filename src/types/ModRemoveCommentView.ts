@@ -11,7 +11,7 @@ import type { Post } from "./Post";
 export type ModRemoveCommentView = {
   mod_remove_comment: ModRemoveComment;
   moderator?: Person;
-  modded_person: Person;
+  other_person: Person;
   comment: Comment;
   post: Post;
   community: Community;

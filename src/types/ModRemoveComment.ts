@@ -12,5 +12,5 @@ export type ModRemoveComment = {
   comment_id: CommentId;
   reason?: string;
   removed: boolean;
-  when_: string;
+  published: string;
 };

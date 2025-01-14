@@ -14,5 +14,5 @@ export type ModBanFromCommunity = {
   reason?: string;
   banned: boolean;
   expires?: string;
-  when_: string;
+  published: string;
 };

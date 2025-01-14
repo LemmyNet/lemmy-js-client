@@ -11,6 +11,6 @@ export type ModFeaturePost = {
   mod_person_id: PersonId;
   post_id: PostId;
   featured: boolean;
-  when_: string;
+  published: string;
   is_featured_community: boolean;
 };

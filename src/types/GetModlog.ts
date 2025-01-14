@@ -13,7 +13,7 @@ export type GetModlog = {
   mod_person_id?: PersonId;
   community_id?: CommunityId;
   type_?: ModlogActionType;
-  modded_person_id?: PersonId;
+  other_person_id?: PersonId;
   post_id?: PostId;
   comment_id?: CommentId;
   page_cursor?: ModlogCombinedPaginationCursor;

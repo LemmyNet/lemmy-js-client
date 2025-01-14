@@ -12,5 +12,5 @@ export type ModAddCommunity = {
   other_person_id: PersonId;
   community_id: CommunityId;
   removed: boolean;
-  when_: string;
+  published: string;
 };

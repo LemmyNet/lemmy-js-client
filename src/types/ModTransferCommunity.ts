@@ -11,5 +11,5 @@ export type ModTransferCommunity = {
   mod_person_id: PersonId;
   other_person_id: PersonId;
   community_id: CommunityId;
-  when_: string;
+  published: string;
 };

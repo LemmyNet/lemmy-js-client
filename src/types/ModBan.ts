@@ -12,5 +12,5 @@ export type ModBan = {
   reason?: string;
   banned: boolean;
   expires?: string;
-  when_: string;
+  published: string;
 };
