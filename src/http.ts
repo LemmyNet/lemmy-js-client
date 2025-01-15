@@ -14,7 +14,6 @@ import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
 import { BlockPerson } from "./types/BlockPerson";
 import { BlockPersonResponse } from "./types/BlockPersonResponse";
 import { ChangePassword } from "./types/ChangePassword";
-import { CommentReplyResponse } from "./types/CommentReplyResponse";
 import { CommentReportResponse } from "./types/CommentReportResponse";
 import { CommentResponse } from "./types/CommentResponse";
 import { CommunityResponse } from "./types/CommunityResponse";
@@ -60,15 +59,10 @@ import { GetModlog } from "./types/GetModlog";
 import { GetModlogResponse } from "./types/GetModlogResponse";
 import { GetPersonDetails } from "./types/GetPersonDetails";
 import { GetPersonDetailsResponse } from "./types/GetPersonDetailsResponse";
-import { GetPersonMentions } from "./types/GetPersonMentions";
-import { GetPersonMentionsResponse } from "./types/GetPersonMentionsResponse";
 import { GetPost } from "./types/GetPost";
 import { GetPostResponse } from "./types/GetPostResponse";
 import { GetPosts } from "./types/GetPosts";
 import { GetPostsResponse } from "./types/GetPostsResponse";
-import { GetPrivateMessages } from "./types/GetPrivateMessages";
-import { GetReplies } from "./types/GetReplies";
-import { GetRepliesResponse } from "./types/GetRepliesResponse";
 import { GetReportCount } from "./types/GetReportCount";
 import { GetReportCountResponse } from "./types/GetReportCountResponse";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
@@ -84,17 +78,14 @@ import { LockPost } from "./types/LockPost";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
 import { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
-import { MarkPersonMentionAsRead } from "./types/MarkPersonMentionAsRead";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
 import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 import { PasswordReset } from "./types/PasswordReset";
-import { PersonMentionResponse } from "./types/PersonMentionResponse";
 import { PostReportResponse } from "./types/PostReportResponse";
 import { PostResponse } from "./types/PostResponse";
 import { PrivateMessageReportResponse } from "./types/PrivateMessageReportResponse";
 import { PrivateMessageResponse } from "./types/PrivateMessageResponse";
-import { PrivateMessagesResponse } from "./types/PrivateMessagesResponse";
 import { PurgeComment } from "./types/PurgeComment";
 import { PurgeCommunity } from "./types/PurgeCommunity";
 import { PurgePerson } from "./types/PurgePerson";
@@ -160,6 +151,10 @@ import { ListPersonSaved } from "./types/ListPersonSaved";
 import { ListPersonSavedResponse } from "./types/ListPersonSavedResponse";
 import { DeleteImageParams } from "./types/DeleteImageParams";
 import { UploadImageResponse } from "./types/UploadImageResponse";
+import { ListInboxResponse } from "./types/ListInboxResponse";
+import { ListInbox } from "./types/ListInbox";
+import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
+import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
 
 enum HttpType {
   Get = "GET",
@@ -949,7 +944,7 @@ export class LemmyHttp {
     form: MarkCommentReplyAsRead,
     options?: RequestOptions,
   ) {
-    return this.#wrapper<MarkCommentReplyAsRead, CommentReplyResponse>(
+    return this.#wrapper<MarkCommentReplyAsRead, SuccessResponse>(
       HttpType.Post,
       "/comment/mark_as_read",
       form,
@@ -1064,20 +1059,6 @@ export class LemmyHttp {
     return this.#wrapper<ResolveCommentReport, CommentReportResponse>(
       HttpType.Put,
       "/comment/report/resolve",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * Get / fetch private messages.
-   *
-   * `HTTP.GET /private_message/list`
-   */
-  getPrivateMessages(form: GetPrivateMessages, options?: RequestOptions) {
-    return this.#wrapper<GetPrivateMessages, PrivateMessagesResponse>(
-      HttpType.Get,
-      "/private_message/list",
       form,
       options,
     );
@@ -1243,59 +1224,34 @@ export class LemmyHttp {
   }
 
   /**
-   * Get mentions for your user.
-   *
-   * `HTTP.GET /account/mention`
-   */
-  getPersonMentions(form: GetPersonMentions, options?: RequestOptions) {
-    return this.#wrapper<GetPersonMentions, GetPersonMentionsResponse>(
-      HttpType.Get,
-      "/account/mention",
-      form,
-      options,
-    );
-  }
-
-  /**
    * Mark a person mention as read.
    *
-   * `HTTP.POST /account/mention/mark_as_read`
+   * `HTTP.POST /account/mention/comment/mark_as_read`
    */
-  markPersonMentionAsRead(
-    form: MarkPersonMentionAsRead,
+  markCommentMentionAsRead(
+    form: MarkPersonCommentMentionAsRead,
     options?: RequestOptions,
   ) {
-    return this.#wrapper<MarkPersonMentionAsRead, PersonMentionResponse>(
+    return this.#wrapper<MarkPersonCommentMentionAsRead, SuccessResponse>(
       HttpType.Post,
-      "/account/mention/mark_as_read",
+      "/account/mention/comment/mark_as_read",
       form,
       options,
     );
   }
 
   /**
-   * Mark a person mention as read.
+   * Mark a person post body mention as read.
    *
-   * `HTTP.POST /account/mention/mark_as_read`
+   * `HTTP.POST /account/mention/post/mark_as_read`
    */
-  markPersonAllMentionAsRead(options?: RequestOptions) {
-    return this.#wrapper<object, PersonMentionResponse>(
+  markPostMentionAsRead(
+    form: MarkPersonPostMentionAsRead,
+    options?: RequestOptions,
+  ) {
+    return this.#wrapper<MarkPersonPostMentionAsRead, SuccessResponse>(
       HttpType.Post,
-      "/account/mention/mark_as_read",
-      {},
-      options,
-    );
-  }
-
-  /**
-   * Get comment replies.
-   *
-   * `HTTP.GET /account/replies`
-   */
-  getReplies(form: GetReplies, options?: RequestOptions) {
-    return this.#wrapper<GetReplies, GetRepliesResponse>(
-      HttpType.Get,
-      "/account/replies",
+      "/account/mention/post/mark_as_read",
       form,
       options,
     );
@@ -1405,12 +1361,12 @@ export class LemmyHttp {
   /**
    * Mark all replies as read.
    *
-   * `HTTP.POST /account/mention/mark_as_read/all`
+   * `HTTP.POST /account/mark_as_read/all`
    */
-  markAllAsRead(options?: RequestOptions) {
-    return this.#wrapper<object, GetRepliesResponse>(
+  markAllNotificationsAsRead(options?: RequestOptions) {
+    return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
-      "/account/mention/mark_as_read/all",
+      "/account/mark_as_read/all",
       {},
       options,
     );
@@ -1468,6 +1424,20 @@ export class LemmyHttp {
       HttpType.Get,
       "/account/unread_count",
       {},
+      options,
+    );
+  }
+
+  /**
+   * Get your inbox (replies, comment mentions, post mentions, and messages)
+   *
+   * `HTTP.GET /account/inbox`
+   */
+  listInbox(form: ListInbox, options?: RequestOptions) {
+    return this.#wrapper<ListInbox, ListInboxResponse>(
+      HttpType.Get,
+      "/account/inbox",
+      form,
       options,
     );
   }
