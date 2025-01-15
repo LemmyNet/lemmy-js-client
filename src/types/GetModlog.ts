@@ -2,6 +2,7 @@
 import type { CommentId } from "./CommentId";
 import type { CommunityId } from "./CommunityId";
 import type { ModlogActionType } from "./ModlogActionType";
+import type { ModlogCombinedPaginationCursor } from "./ModlogCombinedPaginationCursor";
 import type { PersonId } from "./PersonId";
 import type { PostId } from "./PostId";
 
@@ -11,10 +12,10 @@ import type { PostId } from "./PostId";
 export type GetModlog = {
   mod_person_id?: PersonId;
   community_id?: CommunityId;
-  page?: number;
-  limit?: number;
   type_?: ModlogActionType;
   other_person_id?: PersonId;
   post_id?: PostId;
   comment_id?: CommentId;
+  page_cursor?: ModlogCombinedPaginationCursor;
+  page_back?: boolean;
 };

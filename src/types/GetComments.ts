@@ -18,7 +18,6 @@ export type GetComments = {
   community_name?: string;
   post_id?: PostId;
   parent_id?: CommentId;
-  saved_only?: boolean;
   liked_only?: boolean;
   disliked_only?: boolean;
 };

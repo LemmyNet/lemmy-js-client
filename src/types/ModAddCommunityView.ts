@@ -10,5 +10,5 @@ export type ModAddCommunityView = {
   mod_add_community: ModAddCommunity;
   moderator?: Person;
   community: Community;
-  modded_person: Person;
+  other_person: Person;
 };

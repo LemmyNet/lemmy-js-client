@@ -10,6 +10,7 @@ import type { Post } from "./Post";
 export type ModFeaturePostView = {
   mod_feature_post: ModFeaturePost;
   moderator?: Person;
+  other_person: Person;
   post: Post;
   community: Community;
 };

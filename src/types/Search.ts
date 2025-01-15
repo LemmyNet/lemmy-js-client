@@ -20,7 +20,6 @@ export type Search = {
   limit?: number;
   title_only?: boolean;
   post_url_only?: boolean;
-  saved_only?: boolean;
   liked_only?: boolean;
   disliked_only?: boolean;
 };
