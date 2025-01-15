@@ -3,5 +3,4 @@
 export type UploadImageResponse = {
   image_url: string;
   filename: string;
-  delete_token: string;
 };
