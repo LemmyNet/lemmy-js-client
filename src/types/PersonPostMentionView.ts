@@ -5,6 +5,7 @@ import type { Person } from "./Person";
 import type { PersonPostMention } from "./PersonPostMention";
 import type { Post } from "./Post";
 import type { PostAggregates } from "./PostAggregates";
+import type { PostTags } from "./PostTags";
 import type { SubscribedType } from "./SubscribedType";
 
 /**
@@ -29,4 +30,5 @@ export type PersonPostMentionView = {
   creator_blocked: boolean;
   my_vote?: number;
   unread_comments: number;
+  post_tags: PostTags;
 };

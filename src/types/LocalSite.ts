@@ -115,4 +115,9 @@ export type LocalSite = {
    * What kind of comment downvotes your site allows.
    */
   comment_downvotes: FederationMode;
+  /**
+   * If this is true, users will never see the dialog asking to support Lemmy development with
+   * donations.
+   */
+  disable_donation_dialog: boolean;
 };

@@ -31,6 +31,10 @@ export type GetPosts = {
    */
   show_nsfw?: boolean;
   /**
+   * If false, then show posts with media attached (even if your user setting is to hide them)
+   */
+  hide_media?: boolean;
+  /**
    * Whether to automatically mark fetched posts as read.
    */
   mark_as_read?: boolean;

@@ -51,4 +51,5 @@ export type CreateSite = {
   post_downvotes?: FederationMode;
   comment_upvotes?: FederationMode;
   comment_downvotes?: FederationMode;
+  disable_donation_dialog?: boolean;
 };

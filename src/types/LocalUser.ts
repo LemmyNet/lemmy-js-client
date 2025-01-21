@@ -86,4 +86,13 @@ export type LocalUser = {
    * Whether to automatically mark fetched posts as read.
    */
   auto_mark_fetched_posts_as_read: boolean;
+  /**
+   * The last time a donation request was shown to this user. If this is more than a year ago,
+   * a new notification request should be shown.
+   */
+  last_donation_notification: string;
+  /**
+   * Whether to hide posts containing images/videos
+   */
+  hide_media: boolean;
 };
