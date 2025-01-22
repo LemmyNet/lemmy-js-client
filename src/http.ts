@@ -109,6 +109,7 @@ import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
 import {
+  DeleteImageParamsI,
   GetCommentI,
   GetCommentsI,
   GetCommunityI,
@@ -2128,7 +2129,7 @@ export class LemmyHttp extends Controller {
    */
   @Delete("/image")
   async deleteImage(
-    @Body() form: DeleteImageParams,
+    @Queries() form: DeleteImageParamsI,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteImageParams, SuccessResponse>(

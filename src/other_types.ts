@@ -1,3 +1,4 @@
+import { DeleteImageParams } from "./types/DeleteImageParams";
 import { GetComment } from "./types/GetComment";
 import { GetComments } from "./types/GetComments";
 import { GetCommunity } from "./types/GetCommunity";
@@ -63,3 +64,4 @@ export interface GetRegistrationApplicationI
 export interface ListCustomEmojisI extends ListCustomEmojis {}
 export interface ListTaglinesI extends ListTaglines {}
 export interface ListReportsI extends ListReports {}
+export interface DeleteImageParamsI extends DeleteImageParams {}
