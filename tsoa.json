@@ -1,0 +1,12 @@
+{
+  "entryFile": "src/http.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "controllerPathGlobs": ["src/http.ts"],
+  "spec": {
+    "outputDirectory": "tsoa_build",
+    "specVersion": 3
+  },
+  "routes": {
+    "routesDir": "tsoa_build"
+  }
+}
