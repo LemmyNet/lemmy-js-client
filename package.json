@@ -13,13 +13,14 @@
     "docs": "typedoc src/index.ts",
     "lint": "tsc --noEmit && eslint --report-unused-disable-directives && prettier --check src",
     "prepare": "pnpm run build && husky",
-    "tsoa": "tsoa spec-and-routes && tsc"
+    "tsoa": "tsoa spec-and-routes && tsc && redocly build-docs tsoa_build/swagger.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/LemmyNet/lemmy-js-client.git"
   },
   "devDependencies": {
+    "@redocly/cli": "^1.27.2",
     "@types/joi": "^17.2.3",
     "@types/node": "^22.7.4",
     "@typescript-eslint/eslint-plugin": "^8.7.0",
