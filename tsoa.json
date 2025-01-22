@@ -4,7 +4,14 @@
   "controllerPathGlobs": ["src/http.ts"],
   "spec": {
     "outputDirectory": "tsoa_build",
-    "specVersion": 3
+    "specVersion": 3,
+    "securityDefinitions": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
   },
   "routes": {
     "routesDir": "tsoa_build"
