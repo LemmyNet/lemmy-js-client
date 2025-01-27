@@ -21,6 +21,7 @@ export default [
       "@typescript-eslint/ban-ts-comment": 0,
       "@typescript-eslint/no-explicit-any": 0,
       "@typescript-eslint/explicit-module-boundary-types": 0,
+      "@typescript-eslint/no-empty-object-type": 0,
       "arrow-body-style": 0,
       curly: 0,
       "eol-last": 0,

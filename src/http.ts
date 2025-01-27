@@ -108,7 +108,37 @@ import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
-import { UploadImage, VERSION } from "./other_types";
+import {
+  DeleteImageParamsI,
+  GetCommentI,
+  GetCommentsI,
+  GetCommunityI,
+  GetCommunityPendingFollowsCountI,
+  GetModlogI,
+  GetPersonDetailsI,
+  GetPostI,
+  GetPostsI,
+  GetRandomCommunityI,
+  GetRegistrationApplicationI,
+  GetReportCountI,
+  GetSiteMetadataI,
+  ListCommentLikesI,
+  ListCommunitiesI,
+  ListCommunityPendingFollowsI,
+  ListCustomEmojisI,
+  ListInboxI,
+  ListMediaI,
+  ListPersonContentI,
+  ListPersonSavedI,
+  ListPostLikesI,
+  ListRegistrationApplicationsI,
+  ListReportsI,
+  ListTaglinesI,
+  ResolveObjectI,
+  SearchI,
+  UploadImage,
+  VERSION,
+} from "./other_types";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
@@ -138,7 +168,6 @@ import { GetCommunityPendingFollowsCount } from "./types/GetCommunityPendingFoll
 import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPendingFollowsCountResponse";
 import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendingFollowsResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
-import { CommunityId } from "./types/CommunityId";
 import { ListReports } from "./types/ListReports";
 import { ListReportsResponse } from "./types/ListReportsResponse";
 import { MyUserInfo } from "./types/MyUserInfo";
@@ -155,6 +184,19 @@ import { ListInboxResponse } from "./types/ListInboxResponse";
 import { ListInbox } from "./types/ListInbox";
 import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
 import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Queries,
+  Route,
+  Inject,
+  UploadedFile,
+  Delete,
+  Security,
+} from "tsoa";
 
 enum HttpType {
   Get = "GET",
@@ -168,7 +210,8 @@ type RequestOptions = Pick<RequestInit, "signal">;
 /**
  * Helps build lemmy HTTP requests.
  */
-export class LemmyHttp {
+@Route("api/v4")
+export class LemmyHttp extends Controller {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
   #fetchFunction: typeof fetch = fetch.bind(globalThis);
@@ -185,6 +228,7 @@ export class LemmyHttp {
       headers?: { [key: string]: string };
     },
   ) {
+    super();
     this.#apiUrl = `${baseUrl.replace(/\/+$/, "")}/api/${VERSION}`;
 
     if (options?.headers) {
@@ -197,10 +241,9 @@ export class LemmyHttp {
 
   /**
    * Gets the site, and your user data.
-   *
-   * `HTTP.GET /site`
    */
-  getSite(options?: RequestOptions) {
+  @Get("/site")
+  getSite(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetSiteResponse>(
       HttpType.Get,
       "/site",
@@ -211,10 +254,10 @@ export class LemmyHttp {
 
   /**
    * Create your site.
-   *
-   * `HTTP.POST /site`
    */
-  createSite(form: CreateSite, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/site")
+  createSite(@Body() form: CreateSite, @Inject() options?: RequestOptions) {
     return this.#wrapper<CreateSite, SiteResponse>(
       HttpType.Post,
       "/site",
@@ -225,10 +268,10 @@ export class LemmyHttp {
 
   /**
    * Edit your site.
-   *
-   * `HTTP.PUT /site`
    */
-  editSite(form: EditSite, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/site")
+  editSite(@Body() form: EditSite, @Inject() options?: RequestOptions) {
     return this.#wrapper<EditSite, SiteResponse>(
       HttpType.Put,
       "/site",
@@ -239,10 +282,10 @@ export class LemmyHttp {
 
   /**
    * Leave the Site admins.
-   *
-   * `HTTP.POST /admin/leave`
    */
-  leaveAdmin(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/leave")
+  leaveAdmin(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetSiteResponse>(
       HttpType.Post,
       "/admin/leave",
@@ -255,10 +298,10 @@ export class LemmyHttp {
    * Generate a TOTP / two-factor secret.
    *
    * Afterwards you need to call `/account/auth/totp/update` with a valid token to enable it.
-   *
-   * `HTTP.POST /account/auth/totp/generate`
    */
-  generateTotpSecret(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/auth/totp/generate")
+  generateTotpSecret(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GenerateTotpSecretResponse>(
       HttpType.Post,
       "/account/auth/totp/generate",
@@ -269,10 +312,10 @@ export class LemmyHttp {
 
   /**
    * Get data of current user.
-   *
-   * `HTTP.GET /account`
    */
-  getMyUser(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account")
+  getMyUser(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, MyUserInfo>(
       HttpType.Get,
       "/account",
@@ -284,10 +327,10 @@ export class LemmyHttp {
   /**
    * Export a backup of your user settings, including your saved content,
    * followed communities, and blocks.
-   *
-   * `HTTP.GET /account/settings/export`
    */
-  exportSettings(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/settings/export")
+  exportSettings(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, string>(
       HttpType.Get,
       "/account/settings/export",
@@ -298,10 +341,10 @@ export class LemmyHttp {
 
   /**
    * Import a backup of your user settings.
-   *
-   * `HTTP.POST /account/settings/import`
    */
-  importSettings(form: any, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/settings/import")
+  importSettings(@Body() form: any, @Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/settings/import",
@@ -312,10 +355,10 @@ export class LemmyHttp {
 
   /**
    * List login tokens for your user
-   *
-   * `HTTP.GET /account/list_logins`
    */
-  listLogins(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/list_logins")
+  listLogins(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, LoginToken[]>(
       HttpType.Get,
       "/account/list_logins",
@@ -326,10 +369,10 @@ export class LemmyHttp {
 
   /**
    * Returns an error message if your auth token is invalid
-   *
-   * `HTTP.GET /account/validate_auth`
    */
-  validateAuth(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/validate_auth")
+  validateAuth(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Get,
       "/account/validate_auth",
@@ -340,10 +383,13 @@ export class LemmyHttp {
 
   /**
    * List all the media for your user
-   *
-   * `HTTP.GET /account/list_media`
    */
-  listMedia(form: ListMedia = {}, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/list_media")
+  listMedia(
+    @Queries() form: ListMediaI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
       "/account/list_media",
@@ -354,10 +400,13 @@ export class LemmyHttp {
 
   /**
    * List all the media known to your instance.
-   *
-   * `HTTP.GET /admin/list_all_media`
    */
-  listAllMedia(form: ListMedia = {}, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/admin/list_all_media")
+  listAllMedia(
+    @Queries() form: ListMediaI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
       "/admin/list_all_media",
@@ -372,10 +421,11 @@ export class LemmyHttp {
    * To enable, you need to first call `/account/auth/totp/generate` and then pass a valid token to this.
    *
    * Disabling is only possible if 2FA was previously enabled. Again it is necessary to pass a valid token.
-   *
-   * `HTTP.POST /account/auth/totp/update`
    */
-  updateTotp(form: UpdateTotp, options?: RequestOptions) {
+
+  @Security("bearerAuth")
+  @Post("/account/auth/totp/update")
+  updateTotp(@Body() form: UpdateTotp, @Inject() options?: RequestOptions) {
     return this.#wrapper<UpdateTotp, UpdateTotpResponse>(
       HttpType.Post,
       "/account/auth/totp/update",
@@ -386,10 +436,12 @@ export class LemmyHttp {
 
   /**
    * Get the modlog.
-   *
-   * `HTTP.GET /modlog`
    */
-  getModlog(form: GetModlog = {}, options?: RequestOptions) {
+  @Get("/modlog")
+  getModlog(
+    @Queries() form: GetModlogI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetModlog, GetModlogResponse>(
       HttpType.Get,
       "/modlog",
@@ -400,10 +452,9 @@ export class LemmyHttp {
 
   /**
    * Search lemmy.
-   *
-   * `HTTP.GET /search`
    */
-  search(form: Search, options?: RequestOptions) {
+  @Get("/search")
+  search(@Queries() form: SearchI, @Inject() options?: RequestOptions) {
     return this.#wrapper<Search, SearchResponse>(
       HttpType.Get,
       "/search",
@@ -414,10 +465,12 @@ export class LemmyHttp {
 
   /**
    * Fetch a non-local / federated object.
-   *
-   * `HTTP.GET /resolve_object`
    */
-  resolveObject(form: ResolveObject, options?: RequestOptions) {
+  @Get("/resolve_object")
+  resolveObject(
+    @Queries() form: ResolveObjectI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ResolveObject, ResolveObjectResponse>(
       HttpType.Get,
       "/resolve_object",
@@ -428,10 +481,13 @@ export class LemmyHttp {
 
   /**
    * Create a new community.
-   *
-   * `HTTP.POST /community`
    */
-  createCommunity(form: CreateCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/community")
+  createCommunity(
+    @Body() form: CreateCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateCommunity, CommunityResponse>(
       HttpType.Post,
       "/community",
@@ -442,10 +498,12 @@ export class LemmyHttp {
 
   /**
    * Get / fetch a community.
-   *
-   * `HTTP.GET /community`
    */
-  getCommunity(form: GetCommunity = {}, options?: RequestOptions) {
+  @Get("/community")
+  getCommunity(
+    @Queries() form: GetCommunityI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetCommunity, GetCommunityResponse>(
       HttpType.Get,
       "/community",
@@ -456,10 +514,13 @@ export class LemmyHttp {
 
   /**
    * Edit a community.
-   *
-   * `HTTP.PUT /community`
    */
-  editCommunity(form: EditCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/community")
+  editCommunity(
+    @Body() form: EditCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<EditCommunity, CommunityResponse>(
       HttpType.Put,
       "/community",
@@ -470,10 +531,12 @@ export class LemmyHttp {
 
   /**
    * List communities, with various filters.
-   *
-   * `HTTP.GET /community/list`
    */
-  listCommunities(form: ListCommunities = {}, options?: RequestOptions) {
+  @Get("/community/list")
+  listCommunities(
+    @Queries() form: ListCommunitiesI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListCommunities, ListCommunitiesResponse>(
       HttpType.Get,
       "/community/list",
@@ -484,10 +547,13 @@ export class LemmyHttp {
 
   /**
    * Follow / subscribe to a community.
-   *
-   * `HTTP.POST /community/follow`
    */
-  followCommunity(form: FollowCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/community/follow")
+  followCommunity(
+    @Body() form: FollowCommunity,
+    @Inject() @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<FollowCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/follow",
@@ -496,20 +562,29 @@ export class LemmyHttp {
     );
   }
 
+  /**
+   * Get a community's pending follows count.
+   */
+  @Security("bearerAuth")
+  @Get("/community/pending_follows/count")
   getCommunityPendingFollowsCount(
-    community_id: CommunityId,
-    options?: RequestOptions,
+    @Queries() form: GetCommunityPendingFollowsCountI,
+    @Inject() options?: RequestOptions,
   ) {
-    const form: GetCommunityPendingFollowsCount = { community_id };
     return this.#wrapper<
       GetCommunityPendingFollowsCount,
       GetCommunityPendingFollowsCountResponse
     >(HttpType.Get, "/community/pending_follows/count", form, options);
   }
 
+  /**
+   * Get a community's pending followers.
+   */
+  @Security("bearerAuth")
+  @Get("/community/pending_follows/list")
   listCommunityPendingFollows(
-    form: ListCommunityPendingFollows,
-    options?: RequestOptions,
+    @Queries() form: ListCommunityPendingFollowsI,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<
       ListCommunityPendingFollows,
@@ -517,9 +592,14 @@ export class LemmyHttp {
     >(HttpType.Get, "/community/pending_follows/list", form, options);
   }
 
+  /**
+   * Approve a community pending follow request.
+   */
+  @Security("bearerAuth")
+  @Post("/community/pending_follows/approve")
   approveCommunityPendingFollow(
-    form: ApproveCommunityPendingFollower,
-    options?: RequestOptions,
+    @Body() form: ApproveCommunityPendingFollower,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<ApproveCommunityPendingFollower, SuccessResponse>(
       HttpType.Post,
@@ -531,10 +611,13 @@ export class LemmyHttp {
 
   /**
    * Block a community.
-   *
-   * `HTTP.POST /account/block/community`
    */
-  blockCommunity(form: BlockCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/block/community")
+  blockCommunity(
+    @Body() form: BlockCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<BlockCommunity, BlockCommunityResponse>(
       HttpType.Post,
       "/account/block/community",
@@ -545,10 +628,13 @@ export class LemmyHttp {
 
   /**
    * Delete a community.
-   *
-   * `HTTP.POST /community/delete`
    */
-  deleteCommunity(form: DeleteCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/community/delete")
+  deleteCommunity(
+    @Body() form: DeleteCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeleteCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/delete",
@@ -559,10 +645,13 @@ export class LemmyHttp {
 
   /**
    * Hide a community from public / "All" view. Admins only.
-   *
-   * `HTTP.PUT /community/hide`
    */
-  hideCommunity(form: HideCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/community/hide")
+  hideCommunity(
+    @Body() form: HideCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<HideCommunity, SuccessResponse>(
       HttpType.Put,
       "/community/hide",
@@ -573,10 +662,13 @@ export class LemmyHttp {
 
   /**
    * A moderator remove for a community.
-   *
-   * `HTTP.POST /community/remove`
    */
-  removeCommunity(form: RemoveCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/community/remove")
+  removeCommunity(
+    @Body() form: RemoveCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<RemoveCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/remove",
@@ -587,10 +679,13 @@ export class LemmyHttp {
 
   /**
    * Transfer your community to an existing moderator.
-   *
-   * `HTTP.POST /community/transfer`
    */
-  transferCommunity(form: TransferCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/community/transfer")
+  transferCommunity(
+    @Body() form: TransferCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<TransferCommunity, GetCommunityResponse>(
       HttpType.Post,
       "/community/transfer",
@@ -601,10 +696,13 @@ export class LemmyHttp {
 
   /**
    * Ban a user from a community.
-   *
-   * `HTTP.POST /community/ban_user`
    */
-  banFromCommunity(form: BanFromCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/community/ban_user")
+  banFromCommunity(
+    @Body() form: BanFromCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<BanFromCommunity, BanFromCommunityResponse>(
       HttpType.Post,
       "/community/ban_user",
@@ -615,10 +713,13 @@ export class LemmyHttp {
 
   /**
    * Add a moderator to your community.
-   *
-   * `HTTP.POST /community/mod`
    */
-  addModToCommunity(form: AddModToCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/community/mod")
+  addModToCommunity(
+    @Body() form: AddModToCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<AddModToCommunity, AddModToCommunityResponse>(
       HttpType.Post,
       "/community/mod",
@@ -629,10 +730,12 @@ export class LemmyHttp {
 
   /**
    * Get a random community.
-   *
-   * `HTTP.GET /community/random`
    */
-  getRandomCommunity(form: GetRandomCommunity, options?: RequestOptions) {
+  @Get("/community/random")
+  getRandomCommunity(
+    @Queries() form: GetRandomCommunityI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetRandomCommunity, CommunityResponse>(
       HttpType.Get,
       "/community/random",
@@ -643,10 +746,10 @@ export class LemmyHttp {
 
   /**
    * Create a post.
-   *
-   * `HTTP.POST /post`
    */
-  createPost(form: CreatePost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post")
+  createPost(@Body() form: CreatePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<CreatePost, PostResponse>(
       HttpType.Post,
       "/post",
@@ -657,10 +760,9 @@ export class LemmyHttp {
 
   /**
    * Get / fetch a post.
-   *
-   * `HTTP.GET /post`
    */
-  getPost(form: GetPost = {}, options?: RequestOptions) {
+  @Get("/post")
+  getPost(@Queries() form: GetPostI = {}, @Inject() options?: RequestOptions) {
     return this.#wrapper<GetPost, GetPostResponse>(
       HttpType.Get,
       "/post",
@@ -671,10 +773,10 @@ export class LemmyHttp {
 
   /**
    * Edit a post.
-   *
-   * `HTTP.PUT /post`
    */
-  editPost(form: EditPost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/post")
+  editPost(@Body() form: EditPost, @Inject() options?: RequestOptions) {
     return this.#wrapper<EditPost, PostResponse>(
       HttpType.Put,
       "/post",
@@ -685,10 +787,10 @@ export class LemmyHttp {
 
   /**
    * Delete a post.
-   *
-   * `HTTP.POST /post/delete`
    */
-  deletePost(form: DeletePost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/delete")
+  deletePost(@Body() form: DeletePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<DeletePost, PostResponse>(
       HttpType.Post,
       "/post/delete",
@@ -699,10 +801,10 @@ export class LemmyHttp {
 
   /**
    * A moderator remove for a post.
-   *
-   * `HTTP.POST /post/remove`
    */
-  removePost(form: RemovePost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/remove")
+  removePost(@Body() form: RemovePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<RemovePost, PostResponse>(
       HttpType.Post,
       "/post/remove",
@@ -713,10 +815,13 @@ export class LemmyHttp {
 
   /**
    * Mark a post as read.
-   *
-   * `HTTP.POST /post/mark_as_read`
    */
-  markPostAsRead(form: MarkPostAsRead, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/mark_as_read")
+  markPostAsRead(
+    @Body() form: MarkPostAsRead,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<MarkPostAsRead, SuccessResponse>(
       HttpType.Post,
       "/post/mark_as_read",
@@ -727,10 +832,13 @@ export class LemmyHttp {
 
   /**
    * Mark multiple posts as read.
-   *
-   * `HTTP.POST /post/mark_as_read/many`
    */
-  markManyPostAsRead(form: MarkManyPostsAsRead, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/mark_as_read/many")
+  markManyPostAsRead(
+    @Body() form: MarkManyPostsAsRead,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<MarkManyPostsAsRead, SuccessResponse>(
       HttpType.Post,
       "/post/mark_as_read/many",
@@ -741,10 +849,10 @@ export class LemmyHttp {
 
   /**
    * Hide a post from list views.
-   *
-   * `HTTP.POST /post/hide`
    */
-  hidePost(form: HidePost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/hide")
+  hidePost(@Body() form: HidePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<HidePost, SuccessResponse>(
       HttpType.Post,
       "/post/hide",
@@ -755,10 +863,10 @@ export class LemmyHttp {
 
   /**
    * A moderator can lock a post ( IE disable new comments ).
-   *
-   * `HTTP.POST /post/lock`
    */
-  lockPost(form: LockPost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/lock")
+  lockPost(@Body() form: LockPost, @Inject() options?: RequestOptions) {
     return this.#wrapper<LockPost, PostResponse>(
       HttpType.Post,
       "/post/lock",
@@ -769,10 +877,10 @@ export class LemmyHttp {
 
   /**
    * A moderator can feature a community post ( IE stick it to the top of a community ).
-   *
-   * `HTTP.POST /post/feature`
    */
-  featurePost(form: FeaturePost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/feature")
+  featurePost(@Body() form: FeaturePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<FeaturePost, PostResponse>(
       HttpType.Post,
       "/post/feature",
@@ -783,10 +891,12 @@ export class LemmyHttp {
 
   /**
    * Get / fetch posts, with various filters.
-   *
-   * `HTTP.GET /post/list`
    */
-  getPosts(form: GetPosts = {}, options?: RequestOptions) {
+  @Get("/post/list")
+  getPosts(
+    @Queries() form: GetPostsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetPosts, GetPostsResponse>(
       HttpType.Get,
       "/post/list",
@@ -797,10 +907,10 @@ export class LemmyHttp {
 
   /**
    * Like / vote on a post.
-   *
-   * `HTTP.POST /post/like`
    */
-  likePost(form: CreatePostLike, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/like")
+  likePost(@Body() form: CreatePostLike, @Inject() options?: RequestOptions) {
     return this.#wrapper<CreatePostLike, PostResponse>(
       HttpType.Post,
       "/post/like",
@@ -811,10 +921,13 @@ export class LemmyHttp {
 
   /**
    * List a post's likes. Admin-only.
-   *
-   * `HTTP.GET /post/like/list`
    */
-  listPostLikes(form: ListPostLikes, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/post/like/list")
+  listPostLikes(
+    @Queries() form: ListPostLikesI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListPostLikes, ListPostLikesResponse>(
       HttpType.Get,
       "/post/like/list",
@@ -825,10 +938,10 @@ export class LemmyHttp {
 
   /**
    * Save a post.
-   *
-   * `HTTP.PUT /post/save`
    */
-  savePost(form: SavePost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/post/save")
+  savePost(@Body() form: SavePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<SavePost, PostResponse>(
       HttpType.Put,
       "/post/save",
@@ -839,10 +952,13 @@ export class LemmyHttp {
 
   /**
    * Report a post.
-   *
-   * `HTTP.POST /post/report`
    */
-  createPostReport(form: CreatePostReport, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/post/report")
+  createPostReport(
+    @Body() form: CreatePostReport,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreatePostReport, PostReportResponse>(
       HttpType.Post,
       "/post/report",
@@ -853,10 +969,13 @@ export class LemmyHttp {
 
   /**
    * Resolve a post report. Only a mod can do this.
-   *
-   * `HTTP.PUT /post/report/resolve`
    */
-  resolvePostReport(form: ResolvePostReport, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/post/report/resolve")
+  resolvePostReport(
+    @Body() form: ResolvePostReport,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ResolvePostReport, PostReportResponse>(
       HttpType.Put,
       "/post/report/resolve",
@@ -867,10 +986,13 @@ export class LemmyHttp {
 
   /**
    * Fetch metadata for any given site.
-   *
-   * `HTTP.GET /post/site_metadata`
    */
-  getSiteMetadata(form: GetSiteMetadata, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/post/site_metadata")
+  getSiteMetadata(
+    @Queries() form: GetSiteMetadataI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetSiteMetadata, GetSiteMetadataResponse>(
       HttpType.Get,
       "/post/site_metadata",
@@ -881,10 +1003,13 @@ export class LemmyHttp {
 
   /**
    * Create a comment.
-   *
-   * `HTTP.POST /comment`
    */
-  createComment(form: CreateComment, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/comment")
+  createComment(
+    @Body() form: CreateComment,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateComment, CommentResponse>(
       HttpType.Post,
       "/comment",
@@ -895,10 +1020,10 @@ export class LemmyHttp {
 
   /**
    * Edit a comment.
-   *
-   * `HTTP.PUT /comment`
    */
-  editComment(form: EditComment, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/comment")
+  editComment(@Body() form: EditComment, @Inject() options?: RequestOptions) {
     return this.#wrapper<EditComment, CommentResponse>(
       HttpType.Put,
       "/comment",
@@ -909,10 +1034,13 @@ export class LemmyHttp {
 
   /**
    * Delete a comment.
-   *
-   * `HTTP.POST /comment/delete`
    */
-  deleteComment(form: DeleteComment, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/comment/delete")
+  deleteComment(
+    @Body() form: DeleteComment,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeleteComment, CommentResponse>(
       HttpType.Post,
       "/comment/delete",
@@ -923,10 +1051,13 @@ export class LemmyHttp {
 
   /**
    * A moderator remove for a comment.
-   *
-   * `HTTP.POST /comment/remove`
    */
-  removeComment(form: RemoveComment, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/comment/remove")
+  removeComment(
+    @Body() form: RemoveComment,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<RemoveComment, CommentResponse>(
       HttpType.Post,
       "/comment/remove",
@@ -937,12 +1068,12 @@ export class LemmyHttp {
 
   /**
    * Mark a comment as read.
-   *
-   * `HTTP.POST /comment/mark_as_read`
    */
+  @Security("bearerAuth")
+  @Post("/comment/mark_as_read")
   markCommentReplyAsRead(
-    form: MarkCommentReplyAsRead,
-    options?: RequestOptions,
+    @Body() form: MarkCommentReplyAsRead,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<MarkCommentReplyAsRead, SuccessResponse>(
       HttpType.Post,
@@ -954,10 +1085,13 @@ export class LemmyHttp {
 
   /**
    * Like / vote on a comment.
-   *
-   * `HTTP.POST /comment/like`
    */
-  likeComment(form: CreateCommentLike, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/comment/like")
+  likeComment(
+    @Body() form: CreateCommentLike,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateCommentLike, CommentResponse>(
       HttpType.Post,
       "/comment/like",
@@ -968,10 +1102,13 @@ export class LemmyHttp {
 
   /**
    * List a comment's likes. Admin-only.
-   *
-   * `HTTP.GET /comment/like/list`
    */
-  listCommentLikes(form: ListCommentLikes, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/comment/like/list")
+  listCommentLikes(
+    @Queries() form: ListCommentLikesI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListCommentLikes, ListCommentLikesResponse>(
       HttpType.Get,
       "/comment/like/list",
@@ -982,10 +1119,10 @@ export class LemmyHttp {
 
   /**
    * Save a comment.
-   *
-   * `HTTP.PUT /comment/save`
    */
-  saveComment(form: SaveComment, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/comment/save")
+  saveComment(@Body() form: SaveComment, @Inject() options?: RequestOptions) {
     return this.#wrapper<SaveComment, CommentResponse>(
       HttpType.Put,
       "/comment/save",
@@ -996,10 +1133,13 @@ export class LemmyHttp {
 
   /**
    * Distinguishes a comment (speak as moderator)
-   *
-   * `HTTP.POST /comment/distinguish`
    */
-  distinguishComment(form: DistinguishComment, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/comment/distinguish")
+  distinguishComment(
+    @Body() form: DistinguishComment,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DistinguishComment, CommentResponse>(
       HttpType.Post,
       "/comment/distinguish",
@@ -1010,10 +1150,12 @@ export class LemmyHttp {
 
   /**
    * Get / fetch comments.
-   *
-   * `HTTP.GET /comment/list`
    */
-  getComments(form: GetComments = {}, options?: RequestOptions) {
+  @Get("/comment/list")
+  getComments(
+    @Queries() form: GetCommentsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetComments, GetCommentsResponse>(
       HttpType.Get,
       "/comment/list",
@@ -1024,10 +1166,9 @@ export class LemmyHttp {
 
   /**
    * Get / fetch comment.
-   *
-   * `HTTP.GET /comment`
    */
-  getComment(form: GetComment, options?: RequestOptions) {
+  @Get("/comment")
+  getComment(@Queries() form: GetCommentI, @Inject() options?: RequestOptions) {
     return this.#wrapper<GetComment, CommentResponse>(
       HttpType.Get,
       "/comment",
@@ -1038,10 +1179,13 @@ export class LemmyHttp {
 
   /**
    * Report a comment.
-   *
-   * `HTTP.POST /comment/report`
    */
-  createCommentReport(form: CreateCommentReport, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/comment/report")
+  createCommentReport(
+    @Body() form: CreateCommentReport,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateCommentReport, CommentReportResponse>(
       HttpType.Post,
       "/comment/report",
@@ -1052,10 +1196,13 @@ export class LemmyHttp {
 
   /**
    * Resolve a comment report. Only a mod can do this.
-   *
-   * `HTTP.PUT /comment/report/resolve`
    */
-  resolveCommentReport(form: ResolveCommentReport, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/comment/report/resolve")
+  resolveCommentReport(
+    @Body() form: ResolveCommentReport,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ResolveCommentReport, CommentReportResponse>(
       HttpType.Put,
       "/comment/report/resolve",
@@ -1066,10 +1213,13 @@ export class LemmyHttp {
 
   /**
    * Create a private message.
-   *
-   * `HTTP.POST /private_message`
    */
-  createPrivateMessage(form: CreatePrivateMessage, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/private_message")
+  createPrivateMessage(
+    @Body() form: CreatePrivateMessage,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreatePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message",
@@ -1080,10 +1230,13 @@ export class LemmyHttp {
 
   /**
    * Edit a private message.
-   *
-   * `HTTP.PUT /private_message`
    */
-  editPrivateMessage(form: EditPrivateMessage, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/private_message")
+  editPrivateMessage(
+    @Body() form: EditPrivateMessage,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<EditPrivateMessage, PrivateMessageResponse>(
       HttpType.Put,
       "/private_message",
@@ -1094,10 +1247,13 @@ export class LemmyHttp {
 
   /**
    * Delete a private message.
-   *
-   * `HTTP.POST /private_message/delete`
    */
-  deletePrivateMessage(form: DeletePrivateMessage, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/private_message/delete")
+  deletePrivateMessage(
+    @Body() form: DeletePrivateMessage,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeletePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/delete",
@@ -1108,12 +1264,12 @@ export class LemmyHttp {
 
   /**
    * Mark a private message as read.
-   *
-   * `HTTP.POST /private_message/mark_as_read`
    */
+  @Security("bearerAuth")
+  @Post("/private_message/mark_as_read")
   markPrivateMessageAsRead(
-    form: MarkPrivateMessageAsRead,
-    options?: RequestOptions,
+    @Body() form: MarkPrivateMessageAsRead,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<MarkPrivateMessageAsRead, PrivateMessageResponse>(
       HttpType.Post,
@@ -1125,12 +1281,12 @@ export class LemmyHttp {
 
   /**
    * Create a report for a private message.
-   *
-   * `HTTP.POST /private_message/report`
    */
+  @Security("bearerAuth")
+  @Post("/private_message/report")
   createPrivateMessageReport(
-    form: CreatePrivateMessageReport,
-    options?: RequestOptions,
+    @Body() form: CreatePrivateMessageReport,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<
       CreatePrivateMessageReport,
@@ -1140,12 +1296,12 @@ export class LemmyHttp {
 
   /**
    * Resolve a report for a private message.
-   *
-   * `HTTP.PUT /private_message/report/resolve`
    */
+  @Security("bearerAuth")
+  @Put("/private_message/report/resolve")
   resolvePrivateMessageReport(
-    form: ResolvePrivateMessageReport,
-    options?: RequestOptions,
+    @Body() form: ResolvePrivateMessageReport,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<
       ResolvePrivateMessageReport,
@@ -1155,10 +1311,9 @@ export class LemmyHttp {
 
   /**
    * Register a new user.
-   *
-   * `HTTP.POST /account/auth/register`
    */
-  register(form: Register, options?: RequestOptions) {
+  @Post("/account/auth/register")
+  register(@Body() form: Register, @Inject() options?: RequestOptions) {
     return this.#wrapper<Register, LoginResponse>(
       HttpType.Post,
       "/account/auth/register",
@@ -1169,10 +1324,9 @@ export class LemmyHttp {
 
   /**
    * Log into lemmy.
-   *
-   * `HTTP.POST /account/auth/login`
    */
-  login(form: Login, options?: RequestOptions) {
+  @Post("/account/auth/login")
+  login(@Body() form: Login, @Inject() options?: RequestOptions) {
     return this.#wrapper<Login, LoginResponse>(
       HttpType.Post,
       "/account/auth/login",
@@ -1183,10 +1337,10 @@ export class LemmyHttp {
 
   /**
    * Invalidate the currently used auth token.
-   *
-   * `HTTP.POST /account/auth/logout`
    */
-  logout(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/auth/logout")
+  logout(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/auth/logout",
@@ -1197,10 +1351,12 @@ export class LemmyHttp {
 
   /**
    * Get the details for a person.
-   *
-   * `HTTP.GET /person`
    */
-  getPersonDetails(form: GetPersonDetails = {}, options?: RequestOptions) {
+  @Get("/person")
+  getPersonDetails(
+    @Queries() form: GetPersonDetailsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetPersonDetails, GetPersonDetailsResponse>(
       HttpType.Get,
       "/person",
@@ -1211,10 +1367,12 @@ export class LemmyHttp {
 
   /**
    * List the content for a person.
-   *
-   * `HTTP.GET /person/content`
    */
-  listPersonContent(form: ListPersonContent = {}, options?: RequestOptions) {
+  @Get("/person/content")
+  listPersonContent(
+    @Queries() form: ListPersonContentI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListPersonContent, ListPersonContentResponse>(
       HttpType.Get,
       "/person/content",
@@ -1225,12 +1383,12 @@ export class LemmyHttp {
 
   /**
    * Mark a person mention as read.
-   *
-   * `HTTP.POST /account/mention/comment/mark_as_read`
    */
+  @Security("bearerAuth")
+  @Post("/account/mention/comment/mark_as_read")
   markCommentMentionAsRead(
-    form: MarkPersonCommentMentionAsRead,
-    options?: RequestOptions,
+    @Body() form: MarkPersonCommentMentionAsRead,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<MarkPersonCommentMentionAsRead, SuccessResponse>(
       HttpType.Post,
@@ -1242,12 +1400,12 @@ export class LemmyHttp {
 
   /**
    * Mark a person post body mention as read.
-   *
-   * `HTTP.POST /account/mention/post/mark_as_read`
    */
+  @Security("bearerAuth")
+  @Post("/account/mention/post/mark_as_read")
   markPostMentionAsRead(
-    form: MarkPersonPostMentionAsRead,
-    options?: RequestOptions,
+    @Body() form: MarkPersonPostMentionAsRead,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<MarkPersonPostMentionAsRead, SuccessResponse>(
       HttpType.Post,
@@ -1259,10 +1417,10 @@ export class LemmyHttp {
 
   /**
    * Ban a person from your site.
-   *
-   * `HTTP.POST /admin/ban`
    */
-  banPerson(form: BanPerson, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/ban")
+  banPerson(@Body() form: BanPerson, @Inject() options?: RequestOptions) {
     return this.#wrapper<BanPerson, BanPersonResponse>(
       HttpType.Post,
       "/admin/ban",
@@ -1272,11 +1430,11 @@ export class LemmyHttp {
   }
 
   /**
-   * Get a list of banned users
-   *
-   * `HTTP.GET /admin/banned`
+   * Get a list of banned users.
    */
-  getBannedPersons(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/admin/banned")
+  getBannedPersons(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, BannedPersonsResponse>(
       HttpType.Get,
       "/admin/banned",
@@ -1287,10 +1445,10 @@ export class LemmyHttp {
 
   /**
    * Block a person.
-   *
-   * `HTTP.POST /account/block/person`
    */
-  blockPerson(form: BlockPerson, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/block/person")
+  blockPerson(@Body() form: BlockPerson, @Inject() options?: RequestOptions) {
     return this.#wrapper<BlockPerson, BlockPersonResponse>(
       HttpType.Post,
       "/account/block/person",
@@ -1301,10 +1459,9 @@ export class LemmyHttp {
 
   /**
    * Fetch a Captcha.
-   *
-   * `HTTP.GET /account/auth/get_captcha`
    */
-  getCaptcha(options?: RequestOptions) {
+  @Get("/account/auth/get_captcha")
+  getCaptcha(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetCaptchaResponse>(
       HttpType.Get,
       "/account/auth/get_captcha",
@@ -1315,10 +1472,13 @@ export class LemmyHttp {
 
   /**
    * Delete your account.
-   *
-   * `HTTP.POST /account/delete`
    */
-  deleteAccount(form: DeleteAccount, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/delete")
+  deleteAccount(
+    @Body() form: DeleteAccount,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeleteAccount, SuccessResponse>(
       HttpType.Post,
       "/account/delete",
@@ -1329,10 +1489,13 @@ export class LemmyHttp {
 
   /**
    * Reset your password.
-   *
-   * `HTTP.POST /account/auth/password_reset`
    */
-  passwordReset(form: PasswordReset, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/auth/password_reset")
+  passwordReset(
+    @Body() form: PasswordReset,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<PasswordReset, SuccessResponse>(
       HttpType.Post,
       "/account/auth/password_reset",
@@ -1343,12 +1506,12 @@ export class LemmyHttp {
 
   /**
    * Change your password from an email / token based reset.
-   *
-   * `HTTP.POST /account/auth/password_change`
    */
+  @Security("bearerAuth")
+  @Post("/account/auth/password_change")
   passwordChangeAfterReset(
-    form: PasswordChangeAfterReset,
-    options?: RequestOptions,
+    @Body() form: PasswordChangeAfterReset,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<PasswordChangeAfterReset, SuccessResponse>(
       HttpType.Post,
@@ -1360,10 +1523,10 @@ export class LemmyHttp {
 
   /**
    * Mark all replies as read.
-   *
-   * `HTTP.POST /account/mark_as_read/all`
    */
-  markAllNotificationsAsRead(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/mark_as_read/all")
+  markAllNotificationsAsRead(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/mark_as_read/all",
@@ -1374,10 +1537,13 @@ export class LemmyHttp {
 
   /**
    * Save your user settings.
-   *
-   * `HTTP.PUT /account/settings/save`
    */
-  saveUserSettings(form: SaveUserSettings, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/account/settings/save")
+  saveUserSettings(
+    @Body() form: SaveUserSettings,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<SaveUserSettings, SuccessResponse>(
       HttpType.Put,
       "/account/settings/save",
@@ -1388,10 +1554,13 @@ export class LemmyHttp {
 
   /**
    * Change your user password.
-   *
-   * `HTTP.PUT /account/auth/change_password`
    */
-  changePassword(form: ChangePassword, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/account/auth/change_password")
+  changePassword(
+    @Body() form: ChangePassword,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ChangePassword, LoginResponse>(
       HttpType.Put,
       "/account/auth/change_password",
@@ -1401,11 +1570,14 @@ export class LemmyHttp {
   }
 
   /**
-   * Get counts for your reports
-   *
-   * `HTTP.GET /account/report_count`
+   * Get counts for your reports.
    */
-  getReportCount(form: GetReportCount, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/report_count")
+  getReportCount(
+    @Queries() form: GetReportCountI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetReportCount, GetReportCountResponse>(
       HttpType.Get,
       "/account/report_count",
@@ -1415,11 +1587,11 @@ export class LemmyHttp {
   }
 
   /**
-   * Get your unread counts
-   *
-   * `HTTP.GET /account/unread_count`
+   * Get your unread counts.
    */
-  getUnreadCount(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/unread_count")
+  getUnreadCount(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadCountResponse>(
       HttpType.Get,
       "/account/unread_count",
@@ -1430,10 +1602,10 @@ export class LemmyHttp {
 
   /**
    * Get your inbox (replies, comment mentions, post mentions, and messages)
-   *
-   * `HTTP.GET /account/inbox`
    */
-  listInbox(form: ListInbox, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/inbox")
+  listInbox(@Queries() form: ListInboxI, @Inject() options?: RequestOptions) {
     return this.#wrapper<ListInbox, ListInboxResponse>(
       HttpType.Get,
       "/account/inbox",
@@ -1444,10 +1616,9 @@ export class LemmyHttp {
 
   /**
    * Verify your email
-   *
-   * `HTTP.POST /account/auth/verify_email`
    */
-  verifyEmail(form: VerifyEmail, options?: RequestOptions) {
+  @Post("/account/auth/verify_email")
+  verifyEmail(@Body() form: VerifyEmail, @Inject() options?: RequestOptions) {
     return this.#wrapper<VerifyEmail, SuccessResponse>(
       HttpType.Post,
       "/account/auth/verify_email",
@@ -1458,12 +1629,15 @@ export class LemmyHttp {
 
   /**
    * List your saved content.
-   *
-   * `HTTP.GET /account/auth/saved`
    */
-  listPersonSaved(form: ListPersonSaved, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/account/auth/saved")
+  listPersonSaved(
+    @Queries() form: ListPersonSavedI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListPersonSaved, ListPersonSavedResponse>(
-      HttpType.Post,
+      HttpType.Get,
       "/account/auth/saved",
       form,
       options,
@@ -1472,10 +1646,10 @@ export class LemmyHttp {
 
   /**
    * Add an admin to your site.
-   *
-   * `HTTP.POST /admin/add`
    */
-  addAdmin(form: AddAdmin, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/add")
+  addAdmin(@Body() form: AddAdmin, @Inject() options?: RequestOptions) {
     return this.#wrapper<AddAdmin, AddAdminResponse>(
       HttpType.Post,
       "/admin/add",
@@ -1486,10 +1660,10 @@ export class LemmyHttp {
 
   /**
    * Get the unread registration applications count.
-   *
-   * `HTTP.GET /admin/registration_application/count`
    */
-  getUnreadRegistrationApplicationCount(options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/admin/registration_application/count")
+  getUnreadRegistrationApplicationCount(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadRegistrationApplicationCountResponse>(
       HttpType.Get,
       "/admin/registration_application/count",
@@ -1500,12 +1674,12 @@ export class LemmyHttp {
 
   /**
    * List the registration applications.
-   *
-   * `HTTP.GET /admin/registration_application/list`
    */
+  @Security("bearerAuth")
+  @Get("/admin/registration_application/list")
   listRegistrationApplications(
-    form: ListRegistrationApplications,
-    options?: RequestOptions,
+    @Queries() form: ListRegistrationApplicationsI,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<
       ListRegistrationApplications,
@@ -1515,12 +1689,12 @@ export class LemmyHttp {
 
   /**
    * Approve a registration application
-   *
-   * `HTTP.PUT /admin/registration_application/approve`
    */
+  @Security("bearerAuth")
+  @Put("/admin/registration_application/approve")
   approveRegistrationApplication(
-    form: ApproveRegistrationApplication,
-    options?: RequestOptions,
+    @Body() form: ApproveRegistrationApplication,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<
       ApproveRegistrationApplication,
@@ -1530,12 +1704,12 @@ export class LemmyHttp {
 
   /**
    * Get the application a user submitted when they first registered their account
-   *
-   * `HTTP.GET /admin/registration_application`
    */
+  @Security("bearerAuth")
+  @Get("/admin/registration_application")
   getRegistrationApplication(
-    form: GetRegistrationApplication,
-    options?: RequestOptions,
+    @Queries() form: GetRegistrationApplicationI,
+    @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<
       GetRegistrationApplication,
@@ -1545,10 +1719,10 @@ export class LemmyHttp {
 
   /**
    * Purge / Delete a person from the database.
-   *
-   * `HTTP.POST /admin/purge/person`
    */
-  purgePerson(form: PurgePerson, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/purge/person")
+  purgePerson(@Body() form: PurgePerson, @Inject() options?: RequestOptions) {
     return this.#wrapper<PurgePerson, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/person",
@@ -1559,10 +1733,13 @@ export class LemmyHttp {
 
   /**
    * Purge / Delete a community from the database.
-   *
-   * `HTTP.POST /admin/purge/community`
    */
-  purgeCommunity(form: PurgeCommunity, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/purge/community")
+  purgeCommunity(
+    @Body() form: PurgeCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<PurgeCommunity, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/community",
@@ -1573,10 +1750,10 @@ export class LemmyHttp {
 
   /**
    * Purge / Delete a post from the database.
-   *
-   * `HTTP.POST /admin/purge/post`
    */
-  purgePost(form: PurgePost, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/purge/post")
+  purgePost(@Body() form: PurgePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<PurgePost, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/post",
@@ -1587,10 +1764,10 @@ export class LemmyHttp {
 
   /**
    * Purge / Delete a comment from the database.
-   *
-   * `HTTP.POST /admin/purge/comment`
    */
-  purgeComment(form: PurgeComment, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/purge/comment")
+  purgeComment(@Body() form: PurgeComment, @Inject() options?: RequestOptions) {
     return this.#wrapper<PurgeComment, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/comment",
@@ -1600,11 +1777,14 @@ export class LemmyHttp {
   }
 
   /**
-   * Create a new custom emoji
-   *
-   * `HTTP.POST /custom_emoji`
+   * Create a new custom emoji.
    */
-  createCustomEmoji(form: CreateCustomEmoji, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/custom_emoji")
+  createCustomEmoji(
+    @Body() form: CreateCustomEmoji,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateCustomEmoji, CustomEmojiResponse>(
       HttpType.Post,
       "/custom_emoji",
@@ -1614,11 +1794,14 @@ export class LemmyHttp {
   }
 
   /**
-   * Edit an existing custom emoji
-   *
-   * `HTTP.PUT /custom_emoji`
+   * Edit an existing custom emoji.
    */
-  editCustomEmoji(form: EditCustomEmoji, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/custom_emoji")
+  editCustomEmoji(
+    @Body() form: EditCustomEmoji,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<EditCustomEmoji, CustomEmojiResponse>(
       HttpType.Put,
       "/custom_emoji",
@@ -1628,11 +1811,14 @@ export class LemmyHttp {
   }
 
   /**
-   * Delete a custom emoji
-   *
-   * `HTTP.Post /custom_emoji/delete`
+   * Delete a custom emoji.
    */
-  deleteCustomEmoji(form: DeleteCustomEmoji, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/custom_emoji/delete")
+  deleteCustomEmoji(
+    @Body() form: DeleteCustomEmoji,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
@@ -1643,10 +1829,12 @@ export class LemmyHttp {
 
   /**
    * List custom emojis
-   *
-   * `HTTP.GET /custom_emoji/list`
    */
-  listCustomEmojis(form: ListCustomEmojis, options?: RequestOptions) {
+  @Get("/custom_emoji/list")
+  listCustomEmojis(
+    @Queries() form: ListCustomEmojisI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListCustomEmojis, ListCustomEmojisResponse>(
       HttpType.Get,
       "/custom_emoji/list",
@@ -1657,10 +1845,13 @@ export class LemmyHttp {
 
   /**
    * Create a new tagline
-   *
-   * `HTTP.POST /admin/tagline`
    */
-  createTagline(form: CreateTagline, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/tagline")
+  createTagline(
+    @Body() form: CreateTagline,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateTagline, TaglineResponse>(
       HttpType.Post,
       "/admin/tagline",
@@ -1671,10 +1862,10 @@ export class LemmyHttp {
 
   /**
    * Edit an existing tagline
-   *
-   * `HTTP.PUT /admin/tagline`
    */
-  editTagline(form: UpdateTagline, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/admin/tagline")
+  editTagline(@Body() form: UpdateTagline, @Inject() options?: RequestOptions) {
     return this.#wrapper<UpdateTagline, TaglineResponse>(
       HttpType.Put,
       "/admin/tagline",
@@ -1685,10 +1876,13 @@ export class LemmyHttp {
 
   /**
    * Delete a tagline
-   *
-   * `HTTP.Post /admin/tagline/delete`
    */
-  deleteTagline(form: DeleteTagline, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/tagline/delete")
+  deleteTagline(
+    @Body() form: DeleteTagline,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeleteTagline, SuccessResponse>(
       HttpType.Post,
       "/admin/tagline/delete",
@@ -1698,11 +1892,14 @@ export class LemmyHttp {
   }
 
   /**
-   * List taglines
-   *
-   * `HTTP.GET /admin/tagline/list`
+   * List taglines.
    */
-  listTaglines(form: ListTaglines, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/admin/tagline/list")
+  listTaglines(
+    @Queries() form: ListTaglinesI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListTaglines, ListTaglinesResponse>(
       HttpType.Get,
       "/admin/tagline/list",
@@ -1713,10 +1910,13 @@ export class LemmyHttp {
 
   /**
    * Create a new oauth provider method
-   *
-   * `HTTP.POST /oauth_provider`
    */
-  createOAuthProvider(form: CreateOAuthProvider, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/oauth_provider")
+  createOAuthProvider(
+    @Body() form: CreateOAuthProvider,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateOAuthProvider, OAuthProvider>(
       HttpType.Post,
       "/oauth_provider",
@@ -1727,10 +1927,13 @@ export class LemmyHttp {
 
   /**
    * Edit an existing oauth provider method
-   *
-   * `HTTP.PUT /oauth_provider`
    */
-  editOAuthProvider(form: EditOAuthProvider, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Put("/oauth_provider")
+  editOAuthProvider(
+    @Body() form: EditOAuthProvider,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<EditOAuthProvider, OAuthProvider>(
       HttpType.Put,
       "/oauth_provider",
@@ -1741,10 +1944,13 @@ export class LemmyHttp {
 
   /**
    * Delete an oauth provider method
-   *
-   * `HTTP.Post /oauth_provider/delete`
    */
-  deleteOAuthProvider(form: DeleteOAuthProvider, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/oauth_provider/delete")
+  deleteOAuthProvider(
+    @Body() form: DeleteOAuthProvider,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeleteOAuthProvider, SuccessResponse>(
       HttpType.Post,
       "/oauth_provider/delete",
@@ -1755,10 +1961,13 @@ export class LemmyHttp {
 
   /**
    * Authenticate with OAuth
-   *
-   * `HTTP.Post /oauth/authenticate`
    */
-  authenticateWithOAuth(form: AuthenticateWithOauth, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/oauth/authenticate")
+  authenticateWithOAuth(
+    @Body() form: AuthenticateWithOauth,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<AuthenticateWithOauth, LoginResponse>(
       HttpType.Post,
       "/oauth/authenticate",
@@ -1769,10 +1978,9 @@ export class LemmyHttp {
 
   /**
    * Fetch federated instances.
-   *
-   * `HTTP.Get /federated_instances`
    */
-  getFederatedInstances(options?: RequestOptions) {
+  @Get("/federated_instances")
+  getFederatedInstances(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
@@ -1783,10 +1991,13 @@ export class LemmyHttp {
 
   /**
    * List user reports.
-   *
-   * `HTTP.GET /report/list`
    */
-  listReports(form: ListReports, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Get("/report/list")
+  listReports(
+    @Queries() form: ListReportsI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListReports, ListReportsResponse>(
       HttpType.Get,
       "/report/list",
@@ -1797,10 +2008,13 @@ export class LemmyHttp {
 
   /**
    * Block an instance as user.
-   *
-   * `HTTP.Post /account/block/instance`
    */
-  userBlockInstance(form: UserBlockInstanceParams, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/account/block/instance")
+  userBlockInstance(
+    @Body() form: UserBlockInstanceParams,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<UserBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
       "/account/block/instance",
@@ -1811,10 +2025,13 @@ export class LemmyHttp {
 
   /**
    * Globally block an instance as admin.
-   *
-   * `HTTP.Post /admin/instance/block`
    */
-  adminBlockInstance(form: AdminBlockInstanceParams, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/instance/block")
+  adminBlockInstance(
+    @Body() form: AdminBlockInstanceParams,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<AdminBlockInstanceParams, SuccessResponse>(
       HttpType.Post,
       "/admin/instance/block",
@@ -1825,10 +2042,13 @@ export class LemmyHttp {
 
   /**
    * Globally allow an instance as admin.
-   *
-   * `HTTP.Post /admin/instance/allow`
    */
-  adminAllowInstance(form: AdminAllowInstanceParams, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/admin/instance/allow")
+  adminAllowInstance(
+    @Body() form: AdminAllowInstanceParams,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<AdminAllowInstanceParams, SuccessResponse>(
       HttpType.Post,
       "/admin/instance/allow",
@@ -1839,22 +2059,24 @@ export class LemmyHttp {
 
   /**
    * Upload new user avatar.
-   *
-   * `HTTP.Post /account/avatar`
    */
+  @Security("bearerAuth")
+  @Post("/account/avatar")
   async uploadUserAvatar(
-    image: UploadImage,
-    options?: RequestOptions,
+    @UploadedFile() image: UploadImage,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#upload("/account/avatar", image, options);
   }
 
   /**
    * Delete the user avatar.
-   *
-   * `HTTP.Delete /account/avatar`
    */
-  async deleteUserAvatar(options?: RequestOptions): Promise<SuccessResponse> {
+  @Security("bearerAuth")
+  @Delete("/account/avatar")
+  async deleteUserAvatar(
+    @Inject() options?: RequestOptions,
+  ): Promise<SuccessResponse> {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Delete,
       "/account/avatar",
@@ -1865,22 +2087,22 @@ export class LemmyHttp {
 
   /**
    * Upload new user banner.
-   *
-   * `HTTP.Post /account/banner`
    */
+  @Security("bearerAuth")
+  @Post("/account/banner")
   async uploadUserBanner(
-    image: UploadImage,
-    options?: RequestOptions,
+    @UploadedFile() image: UploadImage,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#upload("/account/banner", image, options);
   }
 
   /**
    * Delete the user banner.
-   *
-   * `HTTP.Delete /account/banner`
    */
-  async deleteUserBanner(options?: RequestOptions): Promise<SuccessResponse> {
+  @Security("bearerAuth")
+  @Delete("/account/banner")
+  async deleteUserBanner(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Delete,
       "/account/banner",
@@ -1891,23 +2113,23 @@ export class LemmyHttp {
 
   /**
    * Upload new community icon.
-   *
-   * `HTTP.Post /community/icon`
    */
+  @Security("bearerAuth")
+  @Post("/community/icon")
   async uploadCommunityIcon(
-    image: UploadImage,
-    options?: RequestOptions,
+    @UploadedFile() image: UploadImage,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#upload("/community/icon", image, options);
   }
 
   /**
    * Delete the community icon.
-   *
-   * `HTTP.Delete /community/icon`
    */
+  @Security("bearerAuth")
+  @Delete("/community/icon")
   async deleteCommunityIcon(
-    options?: RequestOptions,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Delete,
@@ -1919,23 +2141,23 @@ export class LemmyHttp {
 
   /**
    * Upload new community banner.
-   *
-   * `HTTP.Post /community/banner`
    */
+  @Security("bearerAuth")
+  @Post("/community/banner")
   async uploadCommunityBanner(
-    image: UploadImage,
-    options?: RequestOptions,
+    @UploadedFile() image: UploadImage,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#upload("/community/banner", image, options);
   }
 
   /**
    * Delete the community banner.
-   *
-   * `HTTP.Delete /community/banner`
    */
+  @Security("bearerAuth")
+  @Delete("/community/banner")
   async deleteCommunityBanner(
-    options?: RequestOptions,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Delete,
@@ -1947,22 +2169,24 @@ export class LemmyHttp {
 
   /**
    * Upload new site icon.
-   *
-   * `HTTP.Post /site/icon`
    */
+  @Security("bearerAuth")
+  @Post("/site/icon")
   async uploadSiteIcon(
-    image: UploadImage,
-    options?: RequestOptions,
+    @UploadedFile() image: UploadImage,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#upload("/site/icon", image, options);
   }
 
   /**
    * Delete the site icon.
-   *
-   * `HTTP.Delete /site/icon`
    */
-  async deleteSiteIcon(options?: RequestOptions): Promise<SuccessResponse> {
+  @Security("bearerAuth")
+  @Delete("/site/icon")
+  async deleteSiteIcon(
+    @Inject() options?: RequestOptions,
+  ): Promise<SuccessResponse> {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Delete,
       "/site/icon",
@@ -1973,22 +2197,24 @@ export class LemmyHttp {
 
   /**
    * Upload new site banner.
-   *
-   * `HTTP.Post /site/banner`
    */
+  @Security("bearerAuth")
+  @Post("/site/banner")
   async uploadSiteBanner(
-    image: UploadImage,
-    options?: RequestOptions,
+    @UploadedFile() image: UploadImage,
+    @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
     return this.#upload("/site/banner", image, options);
   }
 
   /**
    * Delete the site banner.
-   *
-   * `HTTP.Delete /site/banner`
    */
-  async deleteSiteBanner(options?: RequestOptions): Promise<SuccessResponse> {
+  @Security("bearerAuth")
+  @Delete("/site/banner")
+  async deleteSiteBanner(
+    @Inject() options?: RequestOptions,
+  ): Promise<SuccessResponse> {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Delete,
       "/site/banner",
@@ -1999,22 +2225,25 @@ export class LemmyHttp {
 
   /**
    * Upload an image to the server.
-   *
-   * `HTTP.Post /image`
    */
+  @Security("bearerAuth")
+  @Post("/image")
   async uploadImage(
-    image: UploadImage,
-    options?: RequestOptions,
+    @UploadedFile() image: UploadImage,
+    @Inject() options?: RequestOptions,
   ): Promise<UploadImageResponse> {
     return this.#upload("/image", image, options);
   }
 
   /**
    * Delete a pictrs image
-   *
-   * `HTTP.Delete /image`
    */
-  async deleteImage(form: DeleteImageParams, options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Delete("/image")
+  async deleteImage(
+    @Queries() form: DeleteImageParamsI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeleteImageParams, SuccessResponse>(
       HttpType.Delete,
       "/image",
@@ -2025,10 +2254,9 @@ export class LemmyHttp {
 
   /**
    * Health check for image functionality
-   *
-   * `HTTP.Get /image/health`
    */
-  async imageHealth(options?: RequestOptions) {
+  @Get("image/health")
+  async imageHealth(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Get,
       "/image/health",
