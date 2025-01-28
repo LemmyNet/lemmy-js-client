@@ -242,6 +242,8 @@ export class LemmyHttp extends Controller {
   /**
    * Gets the site, and your user data.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/site")
   getSite(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetSiteResponse>(
@@ -437,6 +439,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get the modlog.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/modlog")
   getModlog(
     @Queries() form: GetModlogI = {},
@@ -453,6 +457,8 @@ export class LemmyHttp extends Controller {
   /**
    * Search lemmy.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/search")
   search(@Queries() form: SearchI, @Inject() options?: RequestOptions) {
     return this.#wrapper<Search, SearchResponse>(
@@ -466,6 +472,8 @@ export class LemmyHttp extends Controller {
   /**
    * Fetch a non-local / federated object.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/resolve_object")
   resolveObject(
     @Queries() form: ResolveObjectI,
@@ -499,6 +507,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get / fetch a community.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/community")
   getCommunity(
     @Queries() form: GetCommunityI = {},
@@ -532,6 +542,8 @@ export class LemmyHttp extends Controller {
   /**
    * List communities, with various filters.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/community/list")
   listCommunities(
     @Queries() form: ListCommunitiesI = {},
@@ -731,6 +743,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get a random community.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/community/random")
   getRandomCommunity(
     @Queries() form: GetRandomCommunityI,
@@ -761,6 +775,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get / fetch a post.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/post")
   getPost(@Queries() form: GetPostI = {}, @Inject() options?: RequestOptions) {
     return this.#wrapper<GetPost, GetPostResponse>(
@@ -892,6 +908,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get / fetch posts, with various filters.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/post/list")
   getPosts(
     @Queries() form: GetPostsI = {},
@@ -1151,6 +1169,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get / fetch comments.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/comment/list")
   getComments(
     @Queries() form: GetCommentsI = {},
@@ -1167,6 +1187,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get / fetch comment.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/comment")
   getComment(@Queries() form: GetCommentI, @Inject() options?: RequestOptions) {
     return this.#wrapper<GetComment, CommentResponse>(
@@ -1352,6 +1374,8 @@ export class LemmyHttp extends Controller {
   /**
    * Get the details for a person.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/person")
   getPersonDetails(
     @Queries() form: GetPersonDetailsI = {},
@@ -1368,6 +1392,8 @@ export class LemmyHttp extends Controller {
   /**
    * List the content for a person.
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/person/content")
   listPersonContent(
     @Queries() form: ListPersonContentI = {},
@@ -1830,6 +1856,8 @@ export class LemmyHttp extends Controller {
   /**
    * List custom emojis
    */
+  @Security("bearerAuth")
+  @Security({})
   @Get("/custom_emoji/list")
   listCustomEmojis(
     @Queries() form: ListCustomEmojisI,
@@ -1895,6 +1923,7 @@ export class LemmyHttp extends Controller {
    * List taglines.
    */
   @Security("bearerAuth")
+  @Security({})
   @Get("/admin/tagline/list")
   listTaglines(
     @Queries() form: ListTaglinesI,
