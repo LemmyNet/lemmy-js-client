@@ -184,6 +184,7 @@ import { ListInboxResponse } from "./types/ListInboxResponse";
 import { ListInbox } from "./types/ListInbox";
 import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
 import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
+import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import {
   Body,
   Controller,
@@ -1239,6 +1240,25 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<GetComments, GetCommentsResponse>(
       HttpType.Get,
       "/comment/list",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * Get / fetch comments, but without the post or community.
+   */
+  @Security("bearerAuth")
+  @Security({})
+  @Get("/comment/list/slim")
+  @Tags("Comment")
+  getCommentsSlim(
+    @Queries() form: GetCommentsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<GetComments, GetCommentsSlimResponse>(
+      HttpType.Get,
+      "/comment/list/slim",
       form,
       options,
     );

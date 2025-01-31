@@ -118,4 +118,8 @@ export type SaveUserSettings = {
    * Whether to automatically mark fetched posts as read.
    */
   auto_mark_fetched_posts_as_read?: boolean;
+  /**
+   * Whether to hide posts containing images/videos.
+   */
+  hide_media?: boolean;
 };

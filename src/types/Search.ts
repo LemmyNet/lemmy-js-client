@@ -2,24 +2,25 @@
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { PersonId } from "./PersonId";
-import type { PostSortType } from "./PostSortType";
+import type { SearchCombinedPaginationCursor } from "./SearchCombinedPaginationCursor";
+import type { SearchSortType } from "./SearchSortType";
 import type { SearchType } from "./SearchType";
 
 /**
- * Searches the site, given a query string, and some optional filters.
+ * Searches the site, given a search term, and some optional filters.
  */
 export type Search = {
-  q: string;
+  search_term?: string;
   community_id?: CommunityId;
   community_name?: string;
   creator_id?: PersonId;
   type_?: SearchType;
-  sort?: PostSortType;
+  sort?: SearchSortType;
   listing_type?: ListingType;
-  page?: number;
-  limit?: number;
   title_only?: boolean;
   post_url_only?: boolean;
   liked_only?: boolean;
   disliked_only?: boolean;
+  page_cursor?: SearchCombinedPaginationCursor;
+  page_back?: boolean;
 };
