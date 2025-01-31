@@ -2,3 +2,5 @@ dist
 package
 node_modules
 docs
+tsoa_build
+redoc-static.html
