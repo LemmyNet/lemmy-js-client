@@ -1,7 +1,9 @@
 {
   "entryFile": "src/http.ts",
   "noImplicitAdditionalProperties": "throw-on-extras",
-  "controllerPathGlobs": ["src/http.ts"],
+  "controllerPathGlobs": [
+    "src/http.ts"
+  ],
   "spec": {
     "outputDirectory": "tsoa_build",
     "specVersion": 3,
@@ -11,6 +13,34 @@
         "scheme": "bearer",
         "bearerFormat": "JWT"
       }
+    },
+    "spec": {
+      "servers": [
+        {
+          "url": "https://voyager.lemmy.ml",
+          "description": "Lemmy Voyager: Testing environment"
+        },
+        {
+          "url": "https://ds9.lemmy.ml",
+          "description": "Lemmy ds9: Testing environment"
+        },
+        {
+          "url": "https://enterprise.lemmy.ml",
+          "description": "Lemmy Enterprise: Testing environment"
+        },
+        {
+          "url": "http://localhost:8888",
+          "description": "Local testing environment"
+        },
+        {
+          "url": "https://lemmy.ml",
+          "description": "Lemmy.ml"
+        },
+        {
+          "url": "https://lemmy.world",
+          "description": "Lemmy.world"
+        }
+      ]
     }
   },
   "routes": {
