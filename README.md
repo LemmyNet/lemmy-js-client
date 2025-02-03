@@ -19,7 +19,7 @@ A javascript / typescript http client and type system for [Lemmy](https://github
 
 ### HTTP Client
 
-[LemmyHttp docs](https://join-lemmy.org/api/classes/LemmyHttp.html)
+[LemmyHttp docs](https://join-lemmy.org/docs/contributors/04-api.html)
 
 ```ts
 import { LemmyHttp, Login } from "lemmy-js-client";
