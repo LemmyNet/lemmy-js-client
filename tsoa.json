@@ -29,7 +29,7 @@
           "description": "Lemmy Enterprise: Testing environment"
         },
         {
-          "url": "http://localhost:8888",
+          "url": "http://localhost:8536",
           "description": "Local testing environment"
         },
         {
