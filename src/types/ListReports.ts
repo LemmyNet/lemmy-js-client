@@ -26,4 +26,8 @@ export type ListReports = {
   community_id?: CommunityId;
   page_cursor?: ReportCombinedPaginationCursor;
   page_back?: boolean;
+  /**
+   * Only for admins: also show reports destined to community mods
+   */
+  show_mod_reports?: boolean;
 };
