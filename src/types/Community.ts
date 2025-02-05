@@ -33,9 +33,9 @@ export type Community = {
    */
   nsfw: boolean;
   /**
-   * The federated actor_id.
+   * The federated ap_id.
    */
-  actor_id: DbUrl;
+  ap_id: DbUrl;
   /**
    * Whether the community is local.
    */

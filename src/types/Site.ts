@@ -28,9 +28,9 @@ export type Site = {
    */
   description?: string;
   /**
-   * The federated actor_id.
+   * The federated ap_id.
    */
-  actor_id: DbUrl;
+  ap_id: DbUrl;
   /**
    * The time the site was last refreshed.
    */
