@@ -35,5 +35,5 @@ find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
 
 node putTypesInIndex.js
 
-prettier -w src
+pnpm prettier -w src
 

@@ -4,4 +4,4 @@ import type { Tag } from "./Tag";
 /**
  * we wrap this in a struct so we can implement FromSqlRow<Json> for it
  */
-export type PostTags = { tags: Array<Tag> };
+export type PostTags = Array<Tag>;

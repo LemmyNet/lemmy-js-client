@@ -21,6 +21,7 @@ import { CreateComment } from "./types/CreateComment";
 import { CreateCommentLike } from "./types/CreateCommentLike";
 import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
+import { CreateCommunityTag } from "./types/CreateCommunityTag";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
 import { CreateOAuthProvider } from "./types/CreateOAuthProvider";
 import { CreatePost } from "./types/CreatePost";
@@ -33,6 +34,7 @@ import { CustomEmojiResponse } from "./types/CustomEmojiResponse";
 import { DeleteAccount } from "./types/DeleteAccount";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
+import { DeleteCommunityTag } from "./types/DeleteCommunityTag";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
 import { DeleteOAuthProvider } from "./types/DeleteOAuthProvider";
 import { DeletePost } from "./types/DeletePost";
@@ -72,6 +74,8 @@ import { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
 import { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
 import { ListCommunities } from "./types/ListCommunities";
 import { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
+import { ListCommunityTags } from "./types/ListCommunityTags";
+import { ListCommunityTagsResponse } from "./types/ListCommunityTagsResponse";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
 import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
 import { LockPost } from "./types/LockPost";
@@ -107,6 +111,8 @@ import { Search } from "./types/Search";
 import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
+import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
+import { UpdatePostTags } from "./types/UpdatePostTags";
 import { VerifyEmail } from "./types/VerifyEmail";
 import {
   DeleteImageParamsI,
@@ -199,6 +205,7 @@ import {
   Security,
   Tags,
 } from "tsoa";
+import { CommunityTagResponse } from "./types/CommunityTagResponse";
 
 enum HttpType {
   Get = "GET",
@@ -2063,6 +2070,97 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ListTaglines, ListTaglinesResponse>(
       HttpType.Get,
       "/admin/tagline/list",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Create a community tag.
+   */
+  @Security("bearerAuth")
+  @Post("/community/post_tag")
+  @Tags("Community")
+  createCommunityTag(
+    @Body() form: CreateCommunityTag,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<CreateCommunityTag, CommunityTagResponse>(
+      HttpType.Post,
+      "/community/post_tag",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Update a community tag.
+   */
+  @Security("bearerAuth")
+  @Put("/community/post_tag")
+  @Tags("Community")
+  updateCommunityTag(
+    @Body() form: UpdateCommunityTag,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdateCommunityTag, CommunityTagResponse>(
+      HttpType.Put,
+      "/community/post_tag",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List community tags.
+   */
+  @Security("bearerAuth")
+  @Security({})
+  @Get("/community/post_tag/list")
+  @Tags("Community")
+  listCommunityTags(
+    @Queries() form: ListCommunityTags,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListCommunityTags, ListCommunityTagsResponse>(
+      HttpType.Get,
+      "/community/post_tag/list",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Delete a community tag.
+   */
+  @Security("bearerAuth")
+  @Post("/community/post_tag")
+  @Tags("Community")
+  deleteCommunityTag(
+    @Body() form: DeleteCommunityTag,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<DeleteCommunityTag, CommunityTagResponse>(
+      HttpType.Delete,
+      "/community/post_tag",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Update post tags.
+   */
+  @Security("bearerAuth")
+  @Put("/post/tags")
+  @Tags("Post")
+  updatePostTags(
+    @Body() form: UpdatePostTags,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdatePostTags, PostResponse>(
+      HttpType.Put,
+      "/post/tags",
       form,
       options,
     );
