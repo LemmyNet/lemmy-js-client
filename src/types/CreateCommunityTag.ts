@@ -4,8 +4,4 @@ import type { CommunityId } from "./CommunityId";
 /**
  * Create a tag for a community.
  */
-export type CreateCommunityTag = {
-  community_id: CommunityId;
-  id_slug: string;
-  name: string;
-};
+export type CreateCommunityTag = { community_id: CommunityId; name: string };

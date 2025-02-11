@@ -74,8 +74,6 @@ import { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
 import { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
 import { ListCommunities } from "./types/ListCommunities";
 import { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
-import { ListCommunityTags } from "./types/ListCommunityTags";
-import { ListCommunityTagsResponse } from "./types/ListCommunityTagsResponse";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
 import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
 import { LockPost } from "./types/LockPost";
@@ -112,7 +110,6 @@ import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
-import { UpdatePostTags } from "./types/UpdatePostTags";
 import { VerifyEmail } from "./types/VerifyEmail";
 import {
   DeleteImageParamsI,
@@ -205,7 +202,7 @@ import {
   Security,
   Tags,
 } from "tsoa";
-import { CommunityTagResponse } from "./types/CommunityTagResponse";
+import { Tag } from "./types/Tag";
 
 enum HttpType {
   Get = "GET",
@@ -2076,7 +2073,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Create a community tag.
+   * @summary Create a community post tag.
    */
   @Security("bearerAuth")
   @Post("/community/post_tag")
@@ -2085,7 +2082,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<CreateCommunityTag, CommunityTagResponse>(
+    return this.#wrapper<CreateCommunityTag, Tag>(
       HttpType.Post,
       "/community/post_tag",
       form,
@@ -2094,7 +2091,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Update a community tag.
+   * @summary Update a community post tag.
    */
   @Security("bearerAuth")
   @Put("/community/post_tag")
@@ -2103,7 +2100,7 @@ export class LemmyHttp extends Controller {
     @Body() form: UpdateCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<UpdateCommunityTag, CommunityTagResponse>(
+    return this.#wrapper<UpdateCommunityTag, Tag>(
       HttpType.Put,
       "/community/post_tag",
       form,
@@ -2112,26 +2109,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary List community tags.
-   */
-  @Security("bearerAuth")
-  @Security({})
-  @Get("/community/post_tag/list")
-  @Tags("Community")
-  listCommunityTags(
-    @Queries() form: ListCommunityTags,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<ListCommunityTags, ListCommunityTagsResponse>(
-      HttpType.Get,
-      "/community/post_tag/list",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Delete a community tag.
+   * @summary Delete a post tag in a community.
    */
   @Security("bearerAuth")
   @Post("/community/post_tag")
@@ -2140,27 +2118,9 @@ export class LemmyHttp extends Controller {
     @Body() form: DeleteCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<DeleteCommunityTag, CommunityTagResponse>(
+    return this.#wrapper<DeleteCommunityTag, Tag>(
       HttpType.Delete,
       "/community/post_tag",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Update post tags.
-   */
-  @Security("bearerAuth")
-  @Put("/post/tags")
-  @Tags("Post")
-  updatePostTags(
-    @Body() form: UpdatePostTags,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<UpdatePostTags, PostResponse>(
-      HttpType.Put,
-      "/post/tags",
       form,
       options,
     );

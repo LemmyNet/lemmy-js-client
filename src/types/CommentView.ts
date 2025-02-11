@@ -20,7 +20,7 @@ export type CommentView = {
   creator_is_moderator: boolean;
   creator_is_admin: boolean;
   subscribed: SubscribedType;
-  saved: boolean;
+  saved?: string;
   creator_blocked: boolean;
   my_vote?: number;
 };
