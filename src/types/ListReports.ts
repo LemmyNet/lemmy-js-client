@@ -27,7 +27,7 @@ export type ListReports = {
   page_cursor?: ReportCombinedPaginationCursor;
   page_back?: boolean;
   /**
-   * Only for admins: also show reports destined to community mods
+   * Only for admins: also show reports with `violates_instance_rules=false`
    */
-  show_mod_reports?: boolean;
+  show_community_rule_violations?: boolean;
 };
