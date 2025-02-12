@@ -307,7 +307,6 @@ export { SearchSortType } from "./types/SearchSortType";
 export { SearchType } from "./types/SearchType";
 export { SensitiveString } from "./types/SensitiveString";
 export { Site } from "./types/Site";
-export { SiteAggregates } from "./types/SiteAggregates";
 export { SiteId } from "./types/SiteId";
 export { SiteResponse } from "./types/SiteResponse";
 export { SiteView } from "./types/SiteView";
