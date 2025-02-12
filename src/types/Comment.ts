@@ -41,7 +41,6 @@ export type Comment = {
    */
   distinguished: boolean;
   language_id: LanguageId;
-  comment_id: CommentId;
   score: number;
   upvotes: number;
   downvotes: number;
