@@ -4,7 +4,6 @@ import type { ImageDetails } from "./ImageDetails";
 import type { Person } from "./Person";
 import type { PersonPostMention } from "./PersonPostMention";
 import type { Post } from "./Post";
-import type { PostAggregates } from "./PostAggregates";
 import type { PostTags } from "./PostTags";
 import type { SubscribedType } from "./SubscribedType";
 
@@ -18,7 +17,6 @@ export type PersonPostMentionView = {
   community: Community;
   image_details?: ImageDetails;
   recipient: Person;
-  counts: PostAggregates;
   creator_banned_from_community: boolean;
   banned_from_community: boolean;
   creator_is_moderator: boolean;
