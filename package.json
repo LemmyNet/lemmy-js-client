@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "0.20.0-remove-aggregate-tables.1",
+  "version": "0.20.0-remove-aggregate-tables.2",
   "author": "Dessalines",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
