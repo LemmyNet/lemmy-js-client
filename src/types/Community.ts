@@ -62,4 +62,26 @@ export type Community = {
    * A shorter, one-line description of the site.
    */
   description?: string;
+  subscribers: number;
+  posts: number;
+  comments: number;
+  /**
+   * The number of users with any activity in the last day.
+   */
+  users_active_day: number;
+  /**
+   * The number of users with any activity in the last week.
+   */
+  users_active_week: number;
+  /**
+   * The number of users with any activity in the last month.
+   */
+  users_active_month: number;
+  /**
+   * The number of users with any activity in the last year.
+   */
+  users_active_half_year: number;
+  subscribers_local: number;
+  report_count: number;
+  unresolved_report_count: number;
 };
