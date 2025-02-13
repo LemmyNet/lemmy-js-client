@@ -184,7 +184,6 @@ export { LocalSiteUrlBlocklist } from "./types/LocalSiteUrlBlocklist";
 export { LocalUser } from "./types/LocalUser";
 export { LocalUserId } from "./types/LocalUserId";
 export { LocalUserView } from "./types/LocalUserView";
-export { LocalUserVoteDisplayMode } from "./types/LocalUserVoteDisplayMode";
 export { LockPost } from "./types/LockPost";
 export { Login } from "./types/Login";
 export { LoginResponse } from "./types/LoginResponse";

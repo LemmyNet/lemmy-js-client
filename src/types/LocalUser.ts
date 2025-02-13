@@ -95,4 +95,8 @@ export type LocalUser = {
    * Whether to hide posts containing images/videos
    */
   hide_media: boolean;
+  show_score: boolean;
+  show_upvotes: boolean;
+  show_downvotes: boolean;
+  show_upvote_percentage: boolean;
 };
