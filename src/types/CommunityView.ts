@@ -2,6 +2,7 @@
 import type { Community } from "./Community";
 import type { CommunityAggregates } from "./CommunityAggregates";
 import type { SubscribedType } from "./SubscribedType";
+import type { TagsView } from "./TagsView";
 
 /**
  * A community view.
@@ -12,4 +13,5 @@ export type CommunityView = {
   blocked: boolean;
   counts: CommunityAggregates;
   banned_from_community: boolean;
+  post_tags: TagsView;
 };
