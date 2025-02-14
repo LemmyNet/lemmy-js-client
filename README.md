@@ -50,6 +50,15 @@ const posts = await client.getPosts(getPostsForm);
 
 Use `pnpm add` to develop and test changes locally:
 
-```
-pnpm add path/to/lemmy-js-client
-```
+`pnpm add path/to/lemmy-js-client`
+
+## OpenAPI
+
+To generate OpenAPI docs, run `pnpm tsoa`
+
+This creates two files:
+
+- `redoc-static.html` - A static html rendering of the OpenAPI docs.
+- `tsoa_build/swagger.json` - An OpenAPI / Swagger json file.
+
+To contribute, check out the [tsoa docs](https://tsoa-community.github.io/docs/).
