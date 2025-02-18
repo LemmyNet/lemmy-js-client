@@ -1,3 +1,48 @@
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Queries,
+  Route,
+  Inject,
+  UploadedFile,
+  Delete,
+  Security,
+  Tags,
+} from "tsoa";
+import {
+  DeleteImageParamsI,
+  GetCommentI,
+  GetCommentsI,
+  GetCommunityI,
+  GetCommunityPendingFollowsCountI,
+  GetModlogI,
+  GetPersonDetailsI,
+  GetPostI,
+  GetPostsI,
+  GetRandomCommunityI,
+  GetRegistrationApplicationI,
+  GetReportCountI,
+  GetSiteMetadataI,
+  ListCommentLikesI,
+  ListCommunitiesI,
+  ListCommunityPendingFollowsI,
+  ListCustomEmojisI,
+  ListInboxI,
+  ListMediaI,
+  ListPersonContentI,
+  ListPersonSavedI,
+  ListPostLikesI,
+  ListRegistrationApplicationsI,
+  ListReportsI,
+  ListTaglinesI,
+  ResolveObjectI,
+  SearchI,
+  UploadImage,
+  VERSION,
+} from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
 import { AddModToCommunity } from "./types/AddModToCommunity";
@@ -108,37 +153,6 @@ import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
-import {
-  DeleteImageParamsI,
-  GetCommentI,
-  GetCommentsI,
-  GetCommunityI,
-  GetCommunityPendingFollowsCountI,
-  GetModlogI,
-  GetPersonDetailsI,
-  GetPostI,
-  GetPostsI,
-  GetRandomCommunityI,
-  GetRegistrationApplicationI,
-  GetReportCountI,
-  GetSiteMetadataI,
-  ListCommentLikesI,
-  ListCommunitiesI,
-  ListCommunityPendingFollowsI,
-  ListCustomEmojisI,
-  ListInboxI,
-  ListMediaI,
-  ListPersonContentI,
-  ListPersonSavedI,
-  ListPostLikesI,
-  ListRegistrationApplicationsI,
-  ListReportsI,
-  ListTaglinesI,
-  ResolveObjectI,
-  SearchI,
-  UploadImage,
-  VERSION,
-} from "./other_types";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
@@ -185,20 +199,7 @@ import { ListInbox } from "./types/ListInbox";
 import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
 import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Put,
-  Queries,
-  Route,
-  Inject,
-  UploadedFile,
-  Delete,
-  Security,
-  Tags,
-} from "tsoa";
+import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 
 enum HttpType {
   Get = "GET",
@@ -1761,6 +1762,23 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<VerifyEmail, SuccessResponse>(
       HttpType.Post,
       "/account/auth/verify_email",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Resend a verification email.
+   */
+  @Post("/account/auth/resend_verification_email")
+  @Tags("Account")
+  resendVerificationEmail(
+    @Body() form: ResendVerificationEmail,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ResendVerificationEmail, SuccessResponse>(
+      HttpType.Post,
+      "/account/auth/resend_verification_email",
       form,
       options,
     );

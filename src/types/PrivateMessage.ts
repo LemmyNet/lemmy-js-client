@@ -17,4 +17,5 @@ export type PrivateMessage = {
   updated?: string;
   ap_id: DbUrl;
   local: boolean;
+  removed: boolean;
 };

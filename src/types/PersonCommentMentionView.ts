@@ -23,7 +23,11 @@ export type PersonCommentMentionView = {
   creator_is_moderator: boolean;
   creator_is_admin: boolean;
   subscribed: SubscribedType;
-  saved: boolean;
+  /**
+   * The time when the comment was saved.
+   */
+  saved?: string;
   creator_blocked: boolean;
   my_vote?: number;
+  can_mod: boolean;
 };
