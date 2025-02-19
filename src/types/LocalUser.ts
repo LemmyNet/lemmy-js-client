@@ -95,4 +95,8 @@ export type LocalUser = {
    * Whether to hide posts containing images/videos
    */
   hide_media: boolean;
+  /**
+   * A default time range limit to apply to post sorts, in seconds.
+   */
+  default_post_time_range_seconds?: number;
 };

@@ -11,6 +11,11 @@ import type { PostId } from "./PostId";
 export type GetComments = {
   type_?: ListingType;
   sort?: CommentSortType;
+  /**
+   * Filter to within a given time range, in seconds.
+   * IE 60 would give results for the past minute.
+   */
+  time_range_seconds?: number;
   max_depth?: number;
   page?: number;
   limit?: number;

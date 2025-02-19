@@ -8,4 +8,5 @@ export type PersonAggregates = {
   person_id: PersonId;
   post_count: number;
   comment_count: number;
+  published: string;
 };

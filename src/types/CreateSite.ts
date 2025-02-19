@@ -22,6 +22,7 @@ export type CreateSite = {
   default_post_listing_type?: ListingType;
   default_post_listing_mode?: PostListingMode;
   default_post_sort_type?: PostSortType;
+  default_post_time_range_seconds?: number;
   default_comment_sort_type?: CommentSortType;
   legal_information?: string;
   application_email_admins?: boolean;

@@ -124,4 +124,7 @@ export type LocalSite = {
    * Block NSFW content being created
    */
   disallow_nsfw_content: boolean;
+   * A default time range limit to apply to post sorts, in seconds.
+   */
+  default_post_time_range_seconds?: number;
 };
