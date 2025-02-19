@@ -161,4 +161,8 @@ export type EditSite = {
    * donations.
    */
   disable_donation_dialog?: boolean;
+  /**
+   * Block NSFW content being created
+   */
+  disallow_nsfw_content?: boolean;
 };
