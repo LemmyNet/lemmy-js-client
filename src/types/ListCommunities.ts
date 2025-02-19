@@ -8,6 +8,11 @@ import type { ListingType } from "./ListingType";
 export type ListCommunities = {
   type_?: ListingType;
   sort?: CommunitySortType;
+  /**
+   * Filter to within a given time range, in seconds.
+   * IE 60 would give results for the past minute.
+   */
+  time_range_seconds?: number;
   show_nsfw?: boolean;
   page?: number;
   limit?: number;

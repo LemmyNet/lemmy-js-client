@@ -11,6 +11,12 @@ export type GetPosts = {
   type_?: ListingType;
   sort?: PostSortType;
   /**
+   * Filter to within a given time range, in seconds.
+   * IE 60 would give results for the past minute.
+   * Use Zero to override the local_site and local_user time_range.
+   */
+  time_range_seconds?: number;
+  /**
    * DEPRECATED, use page_cursor
    */
   page?: number;

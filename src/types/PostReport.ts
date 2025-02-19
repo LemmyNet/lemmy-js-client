@@ -28,4 +28,5 @@ export type PostReport = {
   resolver_id?: PersonId;
   published: string;
   updated?: string;
+  violates_instance_rules: boolean;
 };

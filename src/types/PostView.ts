@@ -21,11 +21,15 @@ export type PostView = {
   creator_is_admin: boolean;
   counts: PostAggregates;
   subscribed: SubscribedType;
-  saved: boolean;
+  /**
+   * The time when the post was saved.
+   */
+  saved?: string;
   read: boolean;
   hidden: boolean;
   creator_blocked: boolean;
   my_vote?: number;
   unread_comments: number;
   tags: PostTags;
+  can_mod: boolean;
 };
