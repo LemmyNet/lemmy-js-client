@@ -26,4 +26,12 @@ export type ListReports = {
   community_id?: CommunityId;
   page_cursor?: ReportCombinedPaginationCursor;
   page_back?: boolean;
+  /**
+   * Only for admins: also show reports with `violates_instance_rules=false`
+   */
+  show_community_rule_violations?: boolean;
+  /**
+   * If true, view all your created reports. Works for non-admins/mods also.
+   */
+  my_reports_only?: boolean;
 };

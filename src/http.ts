@@ -1,3 +1,48 @@
+import {
+  Body,
+  Controller,
+  Get,
+  Post,
+  Put,
+  Queries,
+  Route,
+  Inject,
+  UploadedFile,
+  Delete,
+  Security,
+  Tags,
+} from "tsoa";
+import {
+  DeleteImageParamsI,
+  GetCommentI,
+  GetCommentsI,
+  GetCommunityI,
+  GetCommunityPendingFollowsCountI,
+  GetModlogI,
+  GetPersonDetailsI,
+  GetPostI,
+  GetPostsI,
+  GetRandomCommunityI,
+  GetRegistrationApplicationI,
+  GetReportCountI,
+  GetSiteMetadataI,
+  ListCommentLikesI,
+  ListCommunitiesI,
+  ListCommunityPendingFollowsI,
+  ListCustomEmojisI,
+  ListInboxI,
+  ListMediaI,
+  ListPersonContentI,
+  ListPersonSavedI,
+  ListPostLikesI,
+  ListRegistrationApplicationsI,
+  ListReportsI,
+  ListTaglinesI,
+  ResolveObjectI,
+  SearchI,
+  UploadImage,
+  VERSION,
+} from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
 import { AddModToCommunity } from "./types/AddModToCommunity";
@@ -111,37 +156,6 @@ import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 import { VerifyEmail } from "./types/VerifyEmail";
-import {
-  DeleteImageParamsI,
-  GetCommentI,
-  GetCommentsI,
-  GetCommunityI,
-  GetCommunityPendingFollowsCountI,
-  GetModlogI,
-  GetPersonDetailsI,
-  GetPostI,
-  GetPostsI,
-  GetRandomCommunityI,
-  GetRegistrationApplicationI,
-  GetReportCountI,
-  GetSiteMetadataI,
-  ListCommentLikesI,
-  ListCommunitiesI,
-  ListCommunityPendingFollowsI,
-  ListCustomEmojisI,
-  ListInboxI,
-  ListMediaI,
-  ListPersonContentI,
-  ListPersonSavedI,
-  ListPostLikesI,
-  ListRegistrationApplicationsI,
-  ListReportsI,
-  ListTaglinesI,
-  ResolveObjectI,
-  SearchI,
-  UploadImage,
-  VERSION,
-} from "./other_types";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
@@ -188,21 +202,8 @@ import { ListInbox } from "./types/ListInbox";
 import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
 import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
-import {
-  Body,
-  Controller,
-  Get,
-  Post,
-  Put,
-  Queries,
-  Route,
-  Inject,
-  UploadedFile,
-  Delete,
-  Security,
-  Tags,
-} from "tsoa";
 import { Tag } from "./types/Tag";
+import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 
 enum HttpType {
   Get = "GET",
@@ -1771,6 +1772,23 @@ export class LemmyHttp extends Controller {
   }
 
   /**
+   * @summary Resend a verification email.
+   */
+  @Post("/account/auth/resend_verification_email")
+  @Tags("Account")
+  resendVerificationEmail(
+    @Body() form: ResendVerificationEmail,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ResendVerificationEmail, SuccessResponse>(
+      HttpType.Post,
+      "/account/auth/resend_verification_email",
+      form,
+      options,
+    );
+  }
+
+  /**
    * @summary List your saved content.
    */
   @Security("bearerAuth")
@@ -2076,7 +2094,7 @@ export class LemmyHttp extends Controller {
    * @summary Create a community post tag.
    */
   @Security("bearerAuth")
-  @Post("/community/post_tag")
+  @Post("/community/tag")
   @Tags("Community")
   createCommunityTag(
     @Body() form: CreateCommunityTag,
@@ -2084,7 +2102,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<CreateCommunityTag, Tag>(
       HttpType.Post,
-      "/community/post_tag",
+      "/community/tag",
       form,
       options,
     );
@@ -2094,7 +2112,7 @@ export class LemmyHttp extends Controller {
    * @summary Update a community post tag.
    */
   @Security("bearerAuth")
-  @Put("/community/post_tag")
+  @Put("/community/tag")
   @Tags("Community")
   updateCommunityTag(
     @Body() form: UpdateCommunityTag,
@@ -2102,7 +2120,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<UpdateCommunityTag, Tag>(
       HttpType.Put,
-      "/community/post_tag",
+      "/community/tag",
       form,
       options,
     );
@@ -2112,7 +2130,7 @@ export class LemmyHttp extends Controller {
    * @summary Delete a post tag in a community.
    */
   @Security("bearerAuth")
-  @Post("/community/post_tag")
+  @Post("/community/tag")
   @Tags("Community")
   deleteCommunityTag(
     @Body() form: DeleteCommunityTag,
@@ -2120,7 +2138,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<DeleteCommunityTag, Tag>(
       HttpType.Delete,
-      "/community/post_tag",
+      "/community/tag",
       form,
       options,
     );

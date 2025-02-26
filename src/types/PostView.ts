@@ -21,6 +21,9 @@ export type PostView = {
   creator_is_admin: boolean;
   counts: PostAggregates;
   subscribed: SubscribedType;
+  /**
+   * The time when the post was saved.
+   */
   saved?: string;
   read: boolean;
   hidden: boolean;
@@ -28,4 +31,5 @@ export type PostView = {
   my_vote?: number;
   unread_comments: number;
   tags: TagsView;
+  can_mod: boolean;
 };

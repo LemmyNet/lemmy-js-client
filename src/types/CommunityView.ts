@@ -13,5 +13,6 @@ export type CommunityView = {
   blocked: boolean;
   counts: CommunityAggregates;
   banned_from_community: boolean;
+  can_mod: boolean;
   post_tags: TagsView;
 };

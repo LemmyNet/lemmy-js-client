@@ -296,6 +296,7 @@ export { RemovePost } from "./types/RemovePost";
 export { ReportCombinedPaginationCursor } from "./types/ReportCombinedPaginationCursor";
 export { ReportCombinedView } from "./types/ReportCombinedView";
 export { ReportType } from "./types/ReportType";
+export { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 export { ResolveCommentReport } from "./types/ResolveCommentReport";
 export { ResolveObject } from "./types/ResolveObject";
 export { ResolveObjectResponse } from "./types/ResolveObjectResponse";

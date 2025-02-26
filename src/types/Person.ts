@@ -24,9 +24,9 @@ export type Person = {
   published: string;
   updated?: string;
   /**
-   * The federated actor_id.
+   * The federated ap_id.
    */
-  actor_id: DbUrl;
+  ap_id: DbUrl;
   /**
    * An optional bio, in markdown.
    */

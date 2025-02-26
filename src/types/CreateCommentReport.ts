@@ -4,4 +4,8 @@ import type { CommentId } from "./CommentId";
 /**
  * Report a comment.
  */
-export type CreateCommentReport = { comment_id: CommentId; reason: string };
+export type CreateCommentReport = {
+  comment_id: CommentId;
+  reason: string;
+  violates_instance_rules?: boolean;
+};

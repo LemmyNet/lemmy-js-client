@@ -1,7 +1,7 @@
 {
   "name": "@phiresky/lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "1.0.0-post-tags.2",
+  "version": "1.0.0-post-tags.3",
   "private": false,
   "author": "Dessalines",
   "license": "AGPL-3.0",
@@ -44,7 +44,7 @@
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.7.0"
   },
-  "packageManager": "pnpm@10.2.1",
+  "packageManager": "pnpm@10.4.1",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
