@@ -24,7 +24,7 @@ export type EditPost = {
    * Instead of fetching a thumbnail, use a custom one.
    */
   custom_thumbnail?: string;
-  tags?: Array<TagId>;
+  tags: Array<TagId>;
   /**
    * Time when this post should be scheduled. Null means publish immediately.
    */

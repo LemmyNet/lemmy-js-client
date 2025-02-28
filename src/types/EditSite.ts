@@ -75,7 +75,7 @@ export type EditSite = {
   /**
    * A list of allowed discussion languages.
    */
-  discussion_languages?: Array<LanguageId>;
+  discussion_languages: Array<LanguageId>;
   /**
    * A regex string of items to filter.
    */
@@ -129,7 +129,7 @@ export type EditSite = {
   /**
    * A list of blocked URLs
    */
-  blocked_urls?: Array<string>;
+  blocked_urls: Array<string>;
   registration_mode?: RegistrationMode;
   /**
    * Whether to email admins for new reports.

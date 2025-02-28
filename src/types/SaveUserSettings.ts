@@ -85,7 +85,7 @@ export type SaveUserSettings = {
   /**
    * A list of languages you are able to see discussion in.
    */
-  discussion_languages?: Array<LanguageId>;
+  discussion_languages: Array<LanguageId>;
   /**
    * Open links in a new tab
    */

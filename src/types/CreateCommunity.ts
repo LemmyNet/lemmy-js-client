@@ -38,6 +38,6 @@ export type CreateCommunity = {
    * Whether to restrict posting only to moderators.
    */
   posting_restricted_to_mods?: boolean;
-  discussion_languages?: Array<LanguageId>;
+  discussion_languages: Array<LanguageId>;
   visibility?: CommunityVisibility;
 };
