@@ -27,7 +27,7 @@ export type CreateSite = {
   legal_information?: string;
   application_email_admins?: boolean;
   hide_modlog_mod_names?: boolean;
-  discussion_languages: Array<LanguageId>;
+  discussion_languages?: Array<LanguageId>;
   slur_filter_regex?: string;
   actor_name_max_length?: number;
   rate_limit_message?: number;
