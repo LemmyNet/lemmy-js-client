@@ -24,8 +24,8 @@ export type GetSiteResponse = {
   /**
    * A list of external auth methods your site supports.
    */
-  oauth_providers?: Array<PublicOAuthProvider>;
-  admin_oauth_providers?: Array<OAuthProvider>;
+  oauth_providers: Array<PublicOAuthProvider>;
+  admin_oauth_providers: Array<OAuthProvider>;
   blocked_urls: Array<LocalSiteUrlBlocklist>;
   image_upload_disabled: boolean;
 };
