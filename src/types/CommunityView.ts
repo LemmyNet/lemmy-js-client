@@ -10,4 +10,5 @@ export type CommunityView = {
   subscribed: SubscribedType;
   blocked: boolean;
   banned_from_community: boolean;
+  can_mod: boolean;
 };

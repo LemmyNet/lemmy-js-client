@@ -21,7 +21,10 @@ export type CommentReportView = {
   creator_is_admin: boolean;
   creator_blocked: boolean;
   subscribed: SubscribedType;
-  saved: boolean;
+  /**
+   * The time when the comment was saved.
+   */
+  saved?: string;
   my_vote?: number;
   resolver?: Person;
 };

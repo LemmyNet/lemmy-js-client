@@ -53,6 +53,10 @@ export type EditSite = {
    */
   default_post_sort_type?: PostSortType;
   /**
+   * A default time range limit to apply to post sorts, in seconds. 0 means none.
+   */
+  default_post_time_range_seconds?: number;
+  /**
    * The default comment sort, usually "hot"
    */
   default_comment_sort_type?: CommentSortType;
@@ -161,4 +165,8 @@ export type EditSite = {
    * donations.
    */
   disable_donation_dialog?: boolean;
+  /**
+   * Block NSFW content being created
+   */
+  disallow_nsfw_content?: boolean;
 };

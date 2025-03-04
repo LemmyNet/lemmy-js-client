@@ -16,6 +16,11 @@ export type Search = {
   creator_id?: PersonId;
   type_?: SearchType;
   sort?: SearchSortType;
+  /**
+   * Filter to within a given time range, in seconds.
+   * IE 60 would give results for the past minute.
+   */
+  time_range_seconds?: number;
   listing_type?: ListingType;
   title_only?: boolean;
   post_url_only?: boolean;

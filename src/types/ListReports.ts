@@ -30,4 +30,8 @@ export type ListReports = {
    * Only for admins: also show reports with `violates_instance_rules=false`
    */
   show_community_rule_violations?: boolean;
+  /**
+   * If true, view all your created reports. Works for non-admins/mods also.
+   */
+  my_reports_only?: boolean;
 };

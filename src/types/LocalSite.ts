@@ -140,4 +140,12 @@ export type LocalSite = {
    * The number of users with any activity in the last half year.
    */
   users_active_half_year: number;
+  /**
+   * A default time range limit to apply to post sorts, in seconds.
+   */
+  default_post_time_range_seconds?: number;
+  /**
+   * Block NSFW content being created
+   */
+  disallow_nsfw_content: boolean;
 };
