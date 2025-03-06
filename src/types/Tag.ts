@@ -18,7 +18,7 @@ import type { TagId } from "./TagId";
 export type Tag = {
   id: TagId;
   ap_id: DbUrl;
-  name: string;
+  display_name: string;
   /**
    * the community that owns this tag
    */

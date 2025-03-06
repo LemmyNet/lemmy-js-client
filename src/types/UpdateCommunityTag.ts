@@ -4,4 +4,4 @@ import type { TagId } from "./TagId";
 /**
  * Update a community tag.
  */
-export type UpdateCommunityTag = { tag_id: TagId; name: string };
+export type UpdateCommunityTag = { tag_id: TagId; display_name: string };

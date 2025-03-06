@@ -1,7 +1,7 @@
 {
   "name": "@phiresky/lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "1.0.0-post-tags.3",
+  "version": "1.0.0-post-tags.4",
   "private": false,
   "author": "Dessalines",
   "license": "AGPL-3.0",
