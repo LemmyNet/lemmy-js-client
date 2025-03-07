@@ -56,4 +56,6 @@ export type Person = {
    */
   ban_expires?: string;
   instance_id: InstanceId;
+  post_count: number;
+  comment_count: number;
 };
