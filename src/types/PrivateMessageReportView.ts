@@ -9,7 +9,7 @@ import type { PrivateMessageReport } from "./PrivateMessageReport";
 export type PrivateMessageReportView = {
   private_message_report: PrivateMessageReport;
   private_message: PrivateMessage;
-  private_message_creator: Person;
   creator: Person;
+  private_message_creator: Person;
   resolver?: Person;
 };

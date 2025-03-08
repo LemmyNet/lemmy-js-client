@@ -53,4 +53,5 @@ export type CreateSite = {
   comment_upvotes?: FederationMode;
   comment_downvotes?: FederationMode;
   disable_donation_dialog?: boolean;
+  disallow_nsfw_content?: boolean;
 };

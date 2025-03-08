@@ -3,7 +3,7 @@ import type { CommentId } from "./CommentId";
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { ModlogActionType } from "./ModlogActionType";
-import type { ModlogCombinedPaginationCursor } from "./ModlogCombinedPaginationCursor";
+import type { PaginationCursor } from "./PaginationCursor";
 import type { PersonId } from "./PersonId";
 import type { PostId } from "./PostId";
 
@@ -40,6 +40,6 @@ export type GetModlog = {
    * Filter by comment.
    */
   comment_id?: CommentId;
-  page_cursor?: ModlogCombinedPaginationCursor;
+  page_cursor?: PaginationCursor;
   page_back?: boolean;
 };
