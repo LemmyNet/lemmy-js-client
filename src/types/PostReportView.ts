@@ -2,7 +2,6 @@
 import type { Community } from "./Community";
 import type { Person } from "./Person";
 import type { Post } from "./Post";
-import type { PostAggregates } from "./PostAggregates";
 import type { PostReport } from "./PostReport";
 import type { SubscribedType } from "./SubscribedType";
 
@@ -28,6 +27,5 @@ export type PostReportView = {
   creator_blocked: boolean;
   my_vote?: number;
   unread_comments: number;
-  counts: PostAggregates;
   resolver?: Person;
 };
