@@ -4,7 +4,16 @@ import type { PersonId } from "./PersonId";
 export type PersonActions = {
   target_id: PersonId;
   person_id: PersonId;
+  /**
+   * When the person was followed.
+   */
   followed?: string;
+  /**
+   * Whether the follow is pending.
+   */
   follow_pending?: boolean;
+  /**
+   * When the person was blocked.
+   */
   blocked?: string;
 };

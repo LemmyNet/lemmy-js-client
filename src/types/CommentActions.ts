@@ -5,7 +5,16 @@ import type { PersonId } from "./PersonId";
 export type CommentActions = {
   person_id: PersonId;
   comment_id: CommentId;
+  /**
+   * The like / score for the comment.
+   */
   like_score?: number;
+  /**
+   * When the comment was liked.
+   */
   liked?: string;
+  /**
+   * When the comment was saved.
+   */
   saved?: string;
 };

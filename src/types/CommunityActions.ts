@@ -6,11 +6,32 @@ import type { PersonId } from "./PersonId";
 export type CommunityActions = {
   community_id: CommunityId;
   person_id: PersonId;
+  /**
+   * When the community was followed.
+   */
   followed?: string;
+  /**
+   * The state of the community follow.
+   */
   follow_state?: CommunityFollowerState;
+  /**
+   * The approver of the community follow.
+   */
   follow_approver_id?: PersonId;
+  /**
+   * When the community was blocked.
+   */
   blocked?: string;
+  /**
+   * When this user became a moderator.
+   */
   became_moderator?: string;
+  /**
+   * When this user received a ban.
+   */
   received_ban?: string;
+  /**
+   * When their ban expires.
+   */
   ban_expires?: string;
 };

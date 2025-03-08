@@ -5,5 +5,8 @@ import type { PersonId } from "./PersonId";
 export type InstanceActions = {
   person_id: PersonId;
   instance_id: InstanceId;
+  /**
+   * When the instance was blocked.
+   */
   blocked?: string;
 };

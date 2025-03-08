@@ -5,11 +5,33 @@ import type { PostId } from "./PostId";
 export type PostActions = {
   post_id: PostId;
   person_id: PersonId;
+  /**
+   * When the post was read.
+   */
   read?: string;
+  /**
+   * When was the last time you read the comments.
+   */
   read_comments?: string;
+  /**
+   * The number of comments you read last. Subtract this from total comments to get an unread
+   * count.
+   */
   read_comments_amount?: number;
+  /**
+   * When the post was saved.
+   */
   saved?: string;
+  /**
+   * When the post was liked.
+   */
   liked?: string;
+  /**
+   * The like / score of the post.
+   */
   like_score?: number;
+  /**
+   * When the post was hidden.
+   */
   hidden?: string;
 };
