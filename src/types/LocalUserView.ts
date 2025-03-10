@@ -5,4 +5,7 @@ import type { Person } from "./Person";
 /**
  * A local user view.
  */
-export type LocalUserView = { local_user: LocalUser; person: Person };
+export type LocalUserView = {
+  local_user: LocalUser;
+  person: Person;
+};

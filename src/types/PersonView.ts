@@ -4,4 +4,7 @@ import type { Person } from "./Person";
 /**
  * A person view.
  */
-export type PersonView = { person: Person; is_admin: boolean };
+export type PersonView = {
+  person: Person;
+  is_admin: boolean;
+};

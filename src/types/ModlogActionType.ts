@@ -15,7 +15,7 @@ export type ModlogActionType =
   | "ModTransferCommunity"
   | "ModAdd"
   | "ModBan"
-  | "ModChangeCommunityVisibility"
+  | "ModHideCommunity"
   | "AdminPurgePerson"
   | "AdminPurgeCommunity"
   | "AdminPurgePost"

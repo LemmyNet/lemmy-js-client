@@ -49,6 +49,10 @@ export type Community = {
    */
   banner?: DbUrl;
   /**
+   * Whether the community is hidden.
+   */
+  hidden: boolean;
+  /**
    * Whether posting is restricted to mods only.
    */
   posting_restricted_to_mods: boolean;
