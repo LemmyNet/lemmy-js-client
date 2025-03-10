@@ -49,6 +49,7 @@ export type LemmyErrorType =
   | { error: "language_not_allowed" }
   | { error: "couldnt_update_post" }
   | { error: "no_post_edit_allowed" }
+  | { error: "nsfw_not_allowed" }
   | { error: "edit_private_message_not_allowed" }
   | { error: "site_already_exists" }
   | { error: "application_question_required" }
@@ -64,7 +65,6 @@ export type LemmyErrorType =
   | { error: "object_not_local" }
   | { error: "no_email_setup" }
   | { error: "local_site_not_setup" }
-  | { error: "email_smtp_server_needs_a_port" }
   | { error: "invalid_email_address"; message: string }
   | { error: "rate_limit_error" }
   | { error: "invalid_name" }
@@ -89,7 +89,6 @@ export type LemmyErrorType =
   | { error: "community_user_already_banned" }
   | { error: "community_block_already_exists" }
   | { error: "community_follower_already_exists" }
-  | { error: "couldnt_update_community_hidden_status" }
   | { error: "person_block_already_exists" }
   | { error: "user_already_exists" }
   | { error: "couldnt_like_post" }
@@ -139,4 +138,5 @@ export type LemmyErrorType =
   | { error: "post_schedule_time_must_be_in_future" }
   | { error: "too_many_scheduled_posts" }
   | { error: "cannot_combine_federation_blocklist_and_allowlist" }
-  | { error: "federation_error"; message: { error?: FederationError } };
+  | { error: "federation_error"; message: { error?: FederationError } }
+  | { error: "couldnt_parse_pagination_token" };
