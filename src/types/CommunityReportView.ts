@@ -2,7 +2,6 @@
 import type { Community } from "./Community";
 import type { CommunityReport } from "./CommunityReport";
 import type { Person } from "./Person";
-import type { SubscribedType } from "./SubscribedType";
 
 /**
  * A community report view.
@@ -11,6 +10,5 @@ export type CommunityReportView = {
   community_report: CommunityReport;
   community: Community;
   creator: Person;
-  subscribed: SubscribedType;
   resolver?: Person;
 };

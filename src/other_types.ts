@@ -11,6 +11,7 @@ import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 import { GetReportCount } from "./types/GetReportCount";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
+import { ListBannedPersons } from "./types/ListBannedPersons";
 import { ListCommentLikes } from "./types/ListCommentLikes";
 import { ListCommunities } from "./types/ListCommunities";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
@@ -65,3 +66,4 @@ export interface ListCustomEmojisI extends ListCustomEmojis {}
 export interface ListTaglinesI extends ListTaglines {}
 export interface ListReportsI extends ListReports {}
 export interface DeleteImageParamsI extends DeleteImageParams {}
+export interface ListBannedPersonsI extends ListBannedPersons {}

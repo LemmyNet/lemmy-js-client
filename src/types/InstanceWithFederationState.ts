@@ -11,7 +11,16 @@ export type InstanceWithFederationState = {
   id: InstanceId;
   domain: string;
   published: string;
+  /**
+   * When the instance was updated.
+   */
   updated?: string;
+  /**
+   * The software of the instance.
+   */
   software?: string;
+  /**
+   * The version of the instance's software.
+   */
   version?: string;
 };

@@ -26,6 +26,7 @@ import {
   GetRegistrationApplicationI,
   GetReportCountI,
   GetSiteMetadataI,
+  ListBannedPersonsI,
   ListCommentLikesI,
   ListCommunitiesI,
   ListCommunityPendingFollowsI,
@@ -200,6 +201,7 @@ import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMention
 import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
+import { ListBannedPersons } from "./types/ListBannedPersons";
 
 enum HttpType {
   Get = "GET",
@@ -1562,11 +1564,14 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/admin/banned")
   @Tags("Admin", "Miscellaneous")
-  getBannedPersons(@Inject() options?: RequestOptions) {
-    return this.#wrapper<object, BannedPersonsResponse>(
+  listBannedPersons(
+    @Queries() form: ListBannedPersonsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListBannedPersons, BannedPersonsResponse>(
       HttpType.Get,
       "/admin/banned",
-      {},
+      form,
       options,
     );
   }
