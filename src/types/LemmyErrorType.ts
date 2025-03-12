@@ -89,7 +89,6 @@ export type LemmyErrorType =
   | { error: "community_user_already_banned" }
   | { error: "community_block_already_exists" }
   | { error: "community_follower_already_exists" }
-  | { error: "couldnt_update_community_hidden_status" }
   | { error: "person_block_already_exists" }
   | { error: "user_already_exists" }
   | { error: "couldnt_like_post" }
