@@ -9,4 +9,12 @@ export type InstanceActions = {
    * When the instance was blocked.
    */
   blocked?: string;
+  /**
+   * When this user received a site ban.
+   */
+  received_ban?: string;
+  /**
+   * When their ban expires.
+   */
+  ban_expires?: string;
 };
