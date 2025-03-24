@@ -1386,7 +1386,7 @@ export class LemmyHttp extends Controller {
     @Body() form: MarkPrivateMessageAsRead,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<MarkPrivateMessageAsRead, PrivateMessageResponse>(
+    return this.#wrapper<MarkPrivateMessageAsRead, SuccessResponse>(
       HttpType.Post,
       "/private_message/mark_as_read",
       form,
@@ -1793,7 +1793,7 @@ export class LemmyHttp extends Controller {
    * @summary List your saved content.
    */
   @Security("bearerAuth")
-  @Get("/account/auth/saved")
+  @Get("/account/saved")
   @Tags("Account")
   listPersonSaved(
     @Queries() form: ListPersonSavedI,
@@ -1801,7 +1801,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<ListPersonSaved, ListPersonSavedResponse>(
       HttpType.Get,
-      "/account/auth/saved",
+      "/account/saved",
       form,
       options,
     );
@@ -2258,7 +2258,7 @@ export class LemmyHttp extends Controller {
   async uploadUserAvatar(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ): Promise<UploadImageResponse> {
     return this.#upload("/account/avatar", image, options);
   }
 
@@ -2288,7 +2288,7 @@ export class LemmyHttp extends Controller {
   async uploadUserBanner(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ): Promise<UploadImageResponse> {
     return this.#upload("/account/banner", image, options);
   }
 
@@ -2316,7 +2316,7 @@ export class LemmyHttp extends Controller {
   async uploadCommunityIcon(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ): Promise<UploadImageResponse> {
     return this.#upload("/community/icon", image, options);
   }
 
@@ -2346,7 +2346,7 @@ export class LemmyHttp extends Controller {
   async uploadCommunityBanner(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ): Promise<UploadImageResponse> {
     return this.#upload("/community/banner", image, options);
   }
 
@@ -2376,7 +2376,7 @@ export class LemmyHttp extends Controller {
   async uploadSiteIcon(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ): Promise<UploadImageResponse> {
     return this.#upload("/site/icon", image, options);
   }
 
@@ -2406,7 +2406,7 @@ export class LemmyHttp extends Controller {
   async uploadSiteBanner(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ): Promise<UploadImageResponse> {
     return this.#upload("/site/banner", image, options);
   }
 
