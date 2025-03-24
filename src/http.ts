@@ -1386,7 +1386,7 @@ export class LemmyHttp extends Controller {
     @Body() form: MarkPrivateMessageAsRead,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<MarkPrivateMessageAsRead, PrivateMessageResponse>(
+    return this.#wrapper<MarkPrivateMessageAsRead, SuccessResponse>(
       HttpType.Post,
       "/private_message/mark_as_read",
       form,
