@@ -11,7 +11,7 @@ import {
   Delete,
   Security,
   Tags,
-} from "tsoa";
+} from "@tsoa/runtime";
 import {
   DeleteImageParamsI,
   GetCommentI,
