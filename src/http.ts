@@ -1793,7 +1793,7 @@ export class LemmyHttp extends Controller {
    * @summary List your saved content.
    */
   @Security("bearerAuth")
-  @Get("/account/auth/saved")
+  @Get("/account/saved")
   @Tags("Account")
   listPersonSaved(
     @Queries() form: ListPersonSavedI,
@@ -1801,7 +1801,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<ListPersonSaved, ListPersonSavedResponse>(
       HttpType.Get,
-      "/account/auth/saved",
+      "/account/saved",
       form,
       options,
     );
