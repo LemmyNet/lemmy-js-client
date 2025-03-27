@@ -9,4 +9,5 @@ export type PersonView = {
   person: Person;
   is_admin: boolean;
   instance_actions?: InstanceActions;
+  home_instance_actions?: InstanceActions;
 };
