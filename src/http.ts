@@ -140,6 +140,7 @@ import { HidePost } from "./types/HidePost";
 import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
+import { DonationDialogShown } from "./types/DonationDialogShown";
 
 enum HttpType {
   Get = "GET",
@@ -1506,6 +1507,20 @@ export class LemmyHttp {
     });
 
     return response.status == 204;
+  }
+
+  /**
+   * Mark donation dialog as shown, so it isn't displayed anymore.
+   *
+   * `HTTP.POST /user/donation_dialog_shown`
+   */
+  donation_dialog_shown(hide_permanently: boolean) {
+    const form: DonationDialogShown = { hide_permanently };
+    return this.#wrapper<DonationDialogShown, SuccessResponse>(
+      HttpType.Post,
+      "/user/donation_dialog_shown",
+      form,
+    );
   }
 
   #buildFullUrl(endpoint: string) {
