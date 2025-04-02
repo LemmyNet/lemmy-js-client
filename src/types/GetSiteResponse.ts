@@ -4,6 +4,7 @@ import type { LanguageId } from "./LanguageId";
 import type { LocalSiteUrlBlocklist } from "./LocalSiteUrlBlocklist";
 import type { OAuthProvider } from "./OAuthProvider";
 import type { PersonView } from "./PersonView";
+import type { PluginMetadata } from "./PluginMetadata";
 import type { PublicOAuthProvider } from "./PublicOAuthProvider";
 import type { SiteView } from "./SiteView";
 import type { Tagline } from "./Tagline";
@@ -24,8 +25,9 @@ export type GetSiteResponse = {
   /**
    * A list of external auth methods your site supports.
    */
-  oauth_providers?: Array<PublicOAuthProvider>;
-  admin_oauth_providers?: Array<OAuthProvider>;
+  oauth_providers: Array<PublicOAuthProvider>;
+  admin_oauth_providers: Array<OAuthProvider>;
   blocked_urls: Array<LocalSiteUrlBlocklist>;
   image_upload_disabled: boolean;
+  active_plugins: Array<PluginMetadata>;
 };

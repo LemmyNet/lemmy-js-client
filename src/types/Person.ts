@@ -17,10 +17,6 @@ export type Person = {
    * A URL for an avatar.
    */
   avatar?: DbUrl;
-  /**
-   * Whether the person is banned.
-   */
-  banned: boolean;
   published: string;
   updated?: string;
   /**
@@ -51,9 +47,7 @@ export type Person = {
    * Whether the person is a bot account.
    */
   bot_account: boolean;
-  /**
-   * When their ban, if it exists, expires, if at all.
-   */
-  ban_expires?: string;
   instance_id: InstanceId;
+  post_count: number;
+  comment_count: number;
 };

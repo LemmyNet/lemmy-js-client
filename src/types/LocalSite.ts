@@ -116,12 +116,31 @@ export type LocalSite = {
    */
   comment_downvotes: FederationMode;
   /**
-   * If this is true, users will never see the dialog asking to support Lemmy development with
-   * donations.
-   */
-  disable_donation_dialog: boolean;
-  /**
    * A default time range limit to apply to post sorts, in seconds.
    */
   default_post_time_range_seconds?: number;
+  /**
+   * Block NSFW content being created
+   */
+  disallow_nsfw_content: boolean;
+  users: number;
+  posts: number;
+  comments: number;
+  communities: number;
+  /**
+   * The number of users with any activity in the last day.
+   */
+  users_active_day: number;
+  /**
+   * The number of users with any activity in the last week.
+   */
+  users_active_week: number;
+  /**
+   * The number of users with any activity in the last month.
+   */
+  users_active_month: number;
+  /**
+   * The number of users with any activity in the last half year.
+   */
+  users_active_half_year: number;
 };

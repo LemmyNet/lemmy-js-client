@@ -99,4 +99,8 @@ export type LocalUser = {
    * A default time range limit to apply to post sorts, in seconds.
    */
   default_post_time_range_seconds?: number;
+  show_score: boolean;
+  show_upvotes: boolean;
+  show_downvotes: boolean;
+  show_upvote_percentage: boolean;
 };

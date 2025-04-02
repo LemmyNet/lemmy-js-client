@@ -161,8 +161,7 @@ export type EditSite = {
    */
   comment_downvotes?: FederationMode;
   /**
-   * If this is true, users will never see the dialog asking to support Lemmy development with
-   * donations.
+   * Block NSFW content being created
    */
-  disable_donation_dialog?: boolean;
+  disallow_nsfw_content?: boolean;
 };

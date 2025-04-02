@@ -81,4 +81,19 @@ export type Post = {
    * Time at which the post will be published. None means publish immediately.
    */
   scheduled_publish_time?: string;
+  comments: number;
+  score: number;
+  upvotes: number;
+  downvotes: number;
+  /**
+   * The time of the newest comment in the post.
+   */
+  newest_comment_time: string;
+  report_count: number;
+  unresolved_report_count: number;
+  /**
+   * If a local user posts in a remote community, the comment is hidden until it is confirmed
+   * accepted by the community (by receiving it back via federation).
+   */
+  federation_pending: boolean;
 };
