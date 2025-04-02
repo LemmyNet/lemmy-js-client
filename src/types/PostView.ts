@@ -24,6 +24,6 @@ export type PostView = {
   home_instance_actions?: InstanceActions;
   creator_community_actions?: CommunityActions;
   creator_is_admin: boolean;
-  post_tags: TagsView;
+  tags: TagsView;
   can_mod: boolean;
 };
