@@ -1508,6 +1508,19 @@ export class LemmyHttp {
     return response.status == 204;
   }
 
+  /**
+   * Mark donation dialog as shown, so it isn't displayed anymore.
+   *
+   * `HTTP.POST /user/donation_dialog_shown`
+   */
+  donation_dialog_shown() {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/user/donation_dialog_shown",
+      {},
+    );
+  }
+
   #buildFullUrl(endpoint: string) {
     return `${this.#apiUrl}${endpoint}`;
   }
