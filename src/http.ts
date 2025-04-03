@@ -140,7 +140,6 @@ import { HidePost } from "./types/HidePost";
 import { ListMedia } from "./types/ListMedia";
 import { ListMediaResponse } from "./types/ListMediaResponse";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
-import { DonationDialogShown } from "./types/DonationDialogShown";
 
 enum HttpType {
   Get = "GET",
@@ -1514,12 +1513,11 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/donation_dialog_shown`
    */
-  donation_dialog_shown(hide_permanently: boolean) {
-    const form: DonationDialogShown = { hide_permanently };
-    return this.#wrapper<DonationDialogShown, SuccessResponse>(
+  donation_dialog_shown() {
+    return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/donation_dialog_shown",
-      form,
+      {},
     );
   }
 

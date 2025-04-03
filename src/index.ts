@@ -72,7 +72,6 @@ export { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
 export { DeletePost } from "./types/DeletePost";
 export { DeletePrivateMessage } from "./types/DeletePrivateMessage";
 export { DistinguishComment } from "./types/DistinguishComment";
-export { DonationDialogShown } from "./types/DonationDialogShown";
 export { EditComment } from "./types/EditComment";
 export { EditCommunity } from "./types/EditCommunity";
 export { EditCustomEmoji } from "./types/EditCustomEmoji";
