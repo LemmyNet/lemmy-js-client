@@ -256,6 +256,7 @@ export { PersonPostMentionId } from "./types/PersonPostMentionId";
 export { PersonPostMentionView } from "./types/PersonPostMentionView";
 export { PersonSavedCombinedView } from "./types/PersonSavedCombinedView";
 export { PersonView } from "./types/PersonView";
+export { PluginMetadata } from "./types/PluginMetadata";
 export { Post } from "./types/Post";
 export { PostActions } from "./types/PostActions";
 export { PostFeatureType } from "./types/PostFeatureType";

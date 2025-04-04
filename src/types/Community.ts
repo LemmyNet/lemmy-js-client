@@ -80,4 +80,5 @@ export type Community = {
   subscribers_local: number;
   report_count: number;
   unresolved_report_count: number;
+  local_removed: boolean;
 };

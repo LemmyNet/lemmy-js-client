@@ -50,4 +50,9 @@ export type Comment = {
   child_count: number;
   report_count: number;
   unresolved_report_count: number;
+  /**
+   * If a local user comments in a remote community, the comment is hidden until it is confirmed
+   * accepted by the community (by receiving it back via federation).
+   */
+  federation_pending: boolean;
 };
