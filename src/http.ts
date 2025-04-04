@@ -2530,6 +2530,20 @@ export class LemmyHttp extends Controller {
     );
   }
 
+  /**
+   * Mark donation dialog as shown, so it isn't displayed anymore.
+   *
+   * `HTTP.POST /user/donation_dialog_shown`
+   */
+  donation_dialog_shown(@Inject() options?: RequestOptions) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/user/donation_dialog_shown",
+      {},
+      options,
+    );
+  }
+
   #buildFullUrl(endpoint: string) {
     return `${this.#apiUrl}${endpoint}`;
   }
