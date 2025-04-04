@@ -16,6 +16,9 @@ export type CommentSlimView = {
   person_actions?: PersonActions;
   creator_community_actions?: CommunityActions;
   instance_actions?: InstanceActions;
+  creator_home_instance_actions?: InstanceActions;
+  creator_local_instance_actions?: InstanceActions;
   creator_is_admin: boolean;
   can_mod: boolean;
+  creator_banned: boolean;
 };

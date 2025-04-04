@@ -251,7 +251,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/site")
   @Tags("Site")
-  getSite(@Inject() options?: RequestOptions) {
+  async getSite(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetSiteResponse>(
       HttpType.Get,
       "/site",
@@ -266,7 +266,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/site")
   @Tags("Site")
-  createSite(@Body() form: CreateSite, @Inject() options?: RequestOptions) {
+  async createSite(
+    @Body() form: CreateSite,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreateSite, SiteResponse>(
       HttpType.Post,
       "/site",
@@ -281,7 +284,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/site")
   @Tags("Site")
-  editSite(@Body() form: EditSite, @Inject() options?: RequestOptions) {
+  async editSite(@Body() form: EditSite, @Inject() options?: RequestOptions) {
     return this.#wrapper<EditSite, SiteResponse>(
       HttpType.Put,
       "/site",
@@ -296,7 +299,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/leave")
   @Tags("Admin")
-  leaveAdmin(@Inject() options?: RequestOptions) {
+  async leaveAdmin(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetSiteResponse>(
       HttpType.Post,
       "/admin/leave",
@@ -314,7 +317,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/auth/totp/generate")
   @Tags("Account")
-  generateTotpSecret(@Inject() options?: RequestOptions) {
+  async generateTotpSecret(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GenerateTotpSecretResponse>(
       HttpType.Post,
       "/account/auth/totp/generate",
@@ -329,7 +332,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account")
   @Tags("Account")
-  getMyUser(@Inject() options?: RequestOptions) {
+  async getMyUser(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, MyUserInfo>(
       HttpType.Get,
       "/account",
@@ -347,7 +350,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/settings/export")
   @Tags("Account")
-  exportSettings(@Inject() options?: RequestOptions) {
+  async exportSettings(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, string>(
       HttpType.Get,
       "/account/settings/export",
@@ -362,7 +365,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/settings/import")
   @Tags("Account")
-  importSettings(@Body() form: any, @Inject() options?: RequestOptions) {
+  async importSettings(@Body() form: any, @Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/settings/import",
@@ -377,7 +380,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/list_logins")
   @Tags("Account")
-  listLogins(@Inject() options?: RequestOptions) {
+  async listLogins(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, LoginToken[]>(
       HttpType.Get,
       "/account/list_logins",
@@ -392,7 +395,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/validate_auth")
   @Tags("Account")
-  validateAuth(@Inject() options?: RequestOptions) {
+  async validateAuth(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Get,
       "/account/validate_auth",
@@ -402,18 +405,54 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary List all the media for your user
+   * @summary List all the media for your account.
    */
   @Security("bearerAuth")
-  @Get("/account/list_media")
+  @Get("/account/media/list")
   @Tags("Account", "Media")
-  listMedia(
+  async listMedia(
     @Queries() form: ListMediaI = {},
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
-      "/account/list_media",
+      "/account/media/list",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Delete media for your account.
+   */
+  @Security("bearerAuth")
+  @Delete("/account/media")
+  @Tags("Account", "Media")
+  async deleteMedia(
+    @Queries() form: DeleteImageParamsI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<DeleteImageParams, SuccessResponse>(
+      HttpType.Delete,
+      "/account/media",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Delete any media. (Admin only)
+   */
+  @Security("bearerAuth")
+  @Delete("/image")
+  @Tags("Admin", "Media")
+  async deleteMediaAdmin(
+    @Queries() form: DeleteImageParamsI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<DeleteImageParams, SuccessResponse>(
+      HttpType.Delete,
+      "/image",
       form,
       options,
     );
@@ -423,15 +462,15 @@ export class LemmyHttp extends Controller {
    * @summary List all the media known to your instance.
    */
   @Security("bearerAuth")
-  @Get("/admin/list_all_media")
+  @Get("/image/list")
   @Tags("Admin", "Media")
-  listAllMedia(
+  async listMediaAdmin(
     @Queries() form: ListMediaI = {},
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
-      "/admin/list_all_media",
+      "/image/list",
       form,
       options,
     );
@@ -448,7 +487,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/auth/totp/update")
   @Tags("Account")
-  updateTotp(@Body() form: UpdateTotp, @Inject() options?: RequestOptions) {
+  async updateTotp(
+    @Body() form: UpdateTotp,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<UpdateTotp, UpdateTotpResponse>(
       HttpType.Post,
       "/account/auth/totp/update",
@@ -464,7 +506,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/modlog")
   @Tags("Miscellaneous")
-  getModlog(
+  async getModlog(
     @Queries() form: GetModlogI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -483,7 +525,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/search")
   @Tags("Miscellaneous")
-  search(@Queries() form: SearchI, @Inject() options?: RequestOptions) {
+  async search(@Queries() form: SearchI, @Inject() options?: RequestOptions) {
     return this.#wrapper<Search, SearchResponse>(
       HttpType.Get,
       "/search",
@@ -499,7 +541,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/resolve_object")
   @Tags("Miscellaneous")
-  resolveObject(
+  async resolveObject(
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
@@ -517,7 +559,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community")
   @Tags("Community")
-  createCommunity(
+  async createCommunity(
     @Body() form: CreateCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -536,7 +578,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/community")
   @Tags("Community")
-  getCommunity(
+  async getCommunity(
     @Queries() form: GetCommunityI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -554,7 +596,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community")
   @Tags("Community")
-  editCommunity(
+  async editCommunity(
     @Body() form: EditCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -573,7 +615,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/community/list")
   @Tags("Community")
-  listCommunities(
+  async listCommunities(
     @Queries() form: ListCommunitiesI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -591,7 +633,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/follow")
   @Tags("Community")
-  followCommunity(
+  async followCommunity(
     @Body() form: FollowCommunity,
     @Inject() @Inject() options?: RequestOptions,
   ) {
@@ -609,7 +651,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/community/pending_follows/count")
   @Tags("Community")
-  getCommunityPendingFollowsCount(
+  async getCommunityPendingFollowsCount(
     @Queries() form: GetCommunityPendingFollowsCountI,
     @Inject() options?: RequestOptions,
   ) {
@@ -625,7 +667,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/community/pending_follows/list")
   @Tags("Community")
-  listCommunityPendingFollows(
+  async listCommunityPendingFollows(
     @Queries() form: ListCommunityPendingFollowsI,
     @Inject() options?: RequestOptions,
   ) {
@@ -641,7 +683,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/pending_follows/approve")
   @Tags("Community")
-  approveCommunityPendingFollow(
+  async approveCommunityPendingFollow(
     @Body() form: ApproveCommunityPendingFollower,
     @Inject() options?: RequestOptions,
   ) {
@@ -659,7 +701,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/block/community")
   @Tags("Account", "Community")
-  blockCommunity(
+  async blockCommunity(
     @Body() form: BlockCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -677,7 +719,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/delete")
   @Tags("Community")
-  deleteCommunity(
+  async deleteCommunity(
     @Body() form: DeleteCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -695,7 +737,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community/hide")
   @Tags("Community", "Admin")
-  hideCommunity(
+  async hideCommunity(
     @Body() form: HideCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -713,7 +755,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/remove")
   @Tags("Community", "Moderator")
-  removeCommunity(
+  async removeCommunity(
     @Body() form: RemoveCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -731,7 +773,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/transfer")
   @Tags("Community", "Moderator")
-  transferCommunity(
+  async transferCommunity(
     @Body() form: TransferCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -749,7 +791,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/ban_user")
   @Tags("Community", "Moderator")
-  banFromCommunity(
+  async banFromCommunity(
     @Body() form: BanFromCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -767,7 +809,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/mod")
   @Tags("Community", "Moderator")
-  addModToCommunity(
+  async addModToCommunity(
     @Body() form: AddModToCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -786,7 +828,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/community/random")
   @Tags("Community")
-  getRandomCommunity(
+  async getRandomCommunity(
     @Queries() form: GetRandomCommunityI,
     @Inject() options?: RequestOptions,
   ) {
@@ -804,7 +846,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post")
   @Tags("Post")
-  createPost(@Body() form: CreatePost, @Inject() options?: RequestOptions) {
+  async createPost(
+    @Body() form: CreatePost,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreatePost, PostResponse>(
       HttpType.Post,
       "/post",
@@ -820,7 +865,10 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/post")
   @Tags("Post")
-  getPost(@Queries() form: GetPostI = {}, @Inject() options?: RequestOptions) {
+  async getPost(
+    @Queries() form: GetPostI = {},
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetPost, GetPostResponse>(
       HttpType.Get,
       "/post",
@@ -835,7 +883,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/post")
   @Tags("Post")
-  editPost(@Body() form: EditPost, @Inject() options?: RequestOptions) {
+  async editPost(@Body() form: EditPost, @Inject() options?: RequestOptions) {
     return this.#wrapper<EditPost, PostResponse>(
       HttpType.Put,
       "/post",
@@ -850,7 +898,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/delete")
   @Tags("Post")
-  deletePost(@Body() form: DeletePost, @Inject() options?: RequestOptions) {
+  async deletePost(
+    @Body() form: DeletePost,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<DeletePost, PostResponse>(
       HttpType.Post,
       "/post/delete",
@@ -865,7 +916,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/remove")
   @Tags("Post", "Moderator")
-  removePost(@Body() form: RemovePost, @Inject() options?: RequestOptions) {
+  async removePost(
+    @Body() form: RemovePost,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<RemovePost, PostResponse>(
       HttpType.Post,
       "/post/remove",
@@ -880,7 +934,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/mark_as_read")
   @Tags("Post")
-  markPostAsRead(
+  async markPostAsRead(
     @Body() form: MarkPostAsRead,
     @Inject() options?: RequestOptions,
   ) {
@@ -898,7 +952,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/mark_as_read/many")
   @Tags("Post")
-  markManyPostAsRead(
+  async markManyPostAsRead(
     @Body() form: MarkManyPostsAsRead,
     @Inject() options?: RequestOptions,
   ) {
@@ -916,7 +970,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/hide")
   @Tags("Post")
-  hidePost(@Body() form: HidePost, @Inject() options?: RequestOptions) {
+  async hidePost(@Body() form: HidePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<HidePost, SuccessResponse>(
       HttpType.Post,
       "/post/hide",
@@ -931,7 +985,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/lock")
   @Tags("Post")
-  lockPost(@Body() form: LockPost, @Inject() options?: RequestOptions) {
+  async lockPost(@Body() form: LockPost, @Inject() options?: RequestOptions) {
     return this.#wrapper<LockPost, PostResponse>(
       HttpType.Post,
       "/post/lock",
@@ -946,7 +1000,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/feature")
   @Tags("Post", "Moderator")
-  featurePost(@Body() form: FeaturePost, @Inject() options?: RequestOptions) {
+  async featurePost(
+    @Body() form: FeaturePost,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<FeaturePost, PostResponse>(
       HttpType.Post,
       "/post/feature",
@@ -962,7 +1019,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/post/list")
   @Tags("Post")
-  getPosts(
+  async getPosts(
     @Queries() form: GetPostsI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -980,7 +1037,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/like")
   @Tags("Post")
-  likePost(@Body() form: CreatePostLike, @Inject() options?: RequestOptions) {
+  async likePost(
+    @Body() form: CreatePostLike,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<CreatePostLike, PostResponse>(
       HttpType.Post,
       "/post/like",
@@ -995,7 +1055,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/post/like/list")
   @Tags("Post", "Admin")
-  listPostLikes(
+  async listPostLikes(
     @Queries() form: ListPostLikesI,
     @Inject() options?: RequestOptions,
   ) {
@@ -1013,7 +1073,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/post/save")
   @Tags("Post")
-  savePost(@Body() form: SavePost, @Inject() options?: RequestOptions) {
+  async savePost(@Body() form: SavePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<SavePost, PostResponse>(
       HttpType.Put,
       "/post/save",
@@ -1028,7 +1088,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/post/report")
   @Tags("Post")
-  createPostReport(
+  async createPostReport(
     @Body() form: CreatePostReport,
     @Inject() options?: RequestOptions,
   ) {
@@ -1046,7 +1106,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/post/report/resolve")
   @Tags("Post", "Moderator")
-  resolvePostReport(
+  async resolvePostReport(
     @Body() form: ResolvePostReport,
     @Inject() options?: RequestOptions,
   ) {
@@ -1064,7 +1124,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/post/site_metadata")
   @Tags("Miscellaneous", "Post")
-  getSiteMetadata(
+  async getSiteMetadata(
     @Queries() form: GetSiteMetadataI,
     @Inject() options?: RequestOptions,
   ) {
@@ -1082,7 +1142,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/comment")
   @Tags("Comment")
-  createComment(
+  async createComment(
     @Body() form: CreateComment,
     @Inject() options?: RequestOptions,
   ) {
@@ -1100,7 +1160,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/comment")
   @Tags("Comment")
-  editComment(@Body() form: EditComment, @Inject() options?: RequestOptions) {
+  async editComment(
+    @Body() form: EditComment,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<EditComment, CommentResponse>(
       HttpType.Put,
       "/comment",
@@ -1115,7 +1178,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/comment/delete")
   @Tags("Comment")
-  deleteComment(
+  async deleteComment(
     @Body() form: DeleteComment,
     @Inject() options?: RequestOptions,
   ) {
@@ -1133,7 +1196,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/comment/remove")
   @Tags("Comment", "Moderator")
-  removeComment(
+  async removeComment(
     @Body() form: RemoveComment,
     @Inject() options?: RequestOptions,
   ) {
@@ -1151,7 +1214,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/comment/mark_as_read")
   @Tags("Comment")
-  markCommentReplyAsRead(
+  async markCommentReplyAsRead(
     @Body() form: MarkCommentReplyAsRead,
     @Inject() options?: RequestOptions,
   ) {
@@ -1169,7 +1232,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/comment/like")
   @Tags("Comment")
-  likeComment(
+  async likeComment(
     @Body() form: CreateCommentLike,
     @Inject() options?: RequestOptions,
   ) {
@@ -1187,7 +1250,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/comment/like/list")
   @Tags("Comment", "Admin")
-  listCommentLikes(
+  async listCommentLikes(
     @Queries() form: ListCommentLikesI,
     @Inject() options?: RequestOptions,
   ) {
@@ -1205,7 +1268,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/comment/save")
   @Tags("Comment")
-  saveComment(@Body() form: SaveComment, @Inject() options?: RequestOptions) {
+  async saveComment(
+    @Body() form: SaveComment,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<SaveComment, CommentResponse>(
       HttpType.Put,
       "/comment/save",
@@ -1220,7 +1286,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/comment/distinguish")
   @Tags("Comment", "Moderator")
-  distinguishComment(
+  async distinguishComment(
     @Body() form: DistinguishComment,
     @Inject() options?: RequestOptions,
   ) {
@@ -1239,7 +1305,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/comment/list")
   @Tags("Comment")
-  getComments(
+  async getComments(
     @Queries() form: GetCommentsI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -1258,7 +1324,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/comment/list/slim")
   @Tags("Comment")
-  getCommentsSlim(
+  async getCommentsSlim(
     @Queries() form: GetCommentsI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -1277,7 +1343,10 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/comment")
   @Tags("Comment")
-  getComment(@Queries() form: GetCommentI, @Inject() options?: RequestOptions) {
+  async getComment(
+    @Queries() form: GetCommentI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<GetComment, CommentResponse>(
       HttpType.Get,
       "/comment",
@@ -1292,7 +1361,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/comment/report")
   @Tags("Comment")
-  createCommentReport(
+  async createCommentReport(
     @Body() form: CreateCommentReport,
     @Inject() options?: RequestOptions,
   ) {
@@ -1310,7 +1379,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/comment/report/resolve")
   @Tags("Comment", "Moderator")
-  resolveCommentReport(
+  async resolveCommentReport(
     @Body() form: ResolveCommentReport,
     @Inject() options?: RequestOptions,
   ) {
@@ -1328,7 +1397,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/private_message")
   @Tags("PrivateMessage")
-  createPrivateMessage(
+  async createPrivateMessage(
     @Body() form: CreatePrivateMessage,
     @Inject() options?: RequestOptions,
   ) {
@@ -1346,7 +1415,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/private_message")
   @Tags("PrivateMessage")
-  editPrivateMessage(
+  async editPrivateMessage(
     @Body() form: EditPrivateMessage,
     @Inject() options?: RequestOptions,
   ) {
@@ -1364,7 +1433,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/private_message/delete")
   @Tags("PrivateMessage")
-  deletePrivateMessage(
+  async deletePrivateMessage(
     @Body() form: DeletePrivateMessage,
     @Inject() options?: RequestOptions,
   ) {
@@ -1382,7 +1451,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/private_message/mark_as_read")
   @Tags("PrivateMessage")
-  markPrivateMessageAsRead(
+  async markPrivateMessageAsRead(
     @Body() form: MarkPrivateMessageAsRead,
     @Inject() options?: RequestOptions,
   ) {
@@ -1400,7 +1469,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/private_message/report")
   @Tags("PrivateMessage")
-  createPrivateMessageReport(
+  async createPrivateMessageReport(
     @Body() form: CreatePrivateMessageReport,
     @Inject() options?: RequestOptions,
   ) {
@@ -1416,7 +1485,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/private_message/report/resolve")
   @Tags("PrivateMessage", "Admin")
-  resolvePrivateMessageReport(
+  async resolvePrivateMessageReport(
     @Body() form: ResolvePrivateMessageReport,
     @Inject() options?: RequestOptions,
   ) {
@@ -1431,7 +1500,7 @@ export class LemmyHttp extends Controller {
    */
   @Post("/account/auth/register")
   @Tags("Account")
-  register(@Body() form: Register, @Inject() options?: RequestOptions) {
+  async register(@Body() form: Register, @Inject() options?: RequestOptions) {
     return this.#wrapper<Register, LoginResponse>(
       HttpType.Post,
       "/account/auth/register",
@@ -1445,7 +1514,7 @@ export class LemmyHttp extends Controller {
    */
   @Post("/account/auth/login")
   @Tags("Account")
-  login(@Body() form: Login, @Inject() options?: RequestOptions) {
+  async login(@Body() form: Login, @Inject() options?: RequestOptions) {
     return this.#wrapper<Login, LoginResponse>(
       HttpType.Post,
       "/account/auth/login",
@@ -1460,7 +1529,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/auth/logout")
   @Tags("Account")
-  logout(@Inject() options?: RequestOptions) {
+  async logout(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/auth/logout",
@@ -1476,7 +1545,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/person")
   @Tags("Person")
-  getPersonDetails(
+  async getPersonDetails(
     @Queries() form: GetPersonDetailsI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -1495,7 +1564,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/person/content")
   @Tags("Person")
-  listPersonContent(
+  async listPersonContent(
     @Queries() form: ListPersonContentI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -1513,7 +1582,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/mention/comment/mark_as_read")
   @Tags("Account", "Person")
-  markCommentMentionAsRead(
+  async markCommentMentionAsRead(
     @Body() form: MarkPersonCommentMentionAsRead,
     @Inject() options?: RequestOptions,
   ) {
@@ -1531,7 +1600,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/mention/post/mark_as_read")
   @Tags("Account", "Post")
-  markPostMentionAsRead(
+  async markPostMentionAsRead(
     @Body() form: MarkPersonPostMentionAsRead,
     @Inject() options?: RequestOptions,
   ) {
@@ -1549,7 +1618,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/ban")
   @Tags("Admin")
-  banPerson(@Body() form: BanPerson, @Inject() options?: RequestOptions) {
+  async banPerson(@Body() form: BanPerson, @Inject() options?: RequestOptions) {
     return this.#wrapper<BanPerson, BanPersonResponse>(
       HttpType.Post,
       "/admin/ban",
@@ -1564,7 +1633,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/admin/banned")
   @Tags("Admin", "Miscellaneous")
-  listBannedPersons(
+  async listBannedPersons(
     @Queries() form: ListBannedPersonsI = {},
     @Inject() options?: RequestOptions,
   ) {
@@ -1582,7 +1651,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/block/person")
   @Tags("Account")
-  blockPerson(@Body() form: BlockPerson, @Inject() options?: RequestOptions) {
+  async blockPerson(
+    @Body() form: BlockPerson,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<BlockPerson, BlockPersonResponse>(
       HttpType.Post,
       "/account/block/person",
@@ -1596,7 +1668,7 @@ export class LemmyHttp extends Controller {
    */
   @Get("/account/auth/get_captcha")
   @Tags("Account")
-  getCaptcha(@Inject() options?: RequestOptions) {
+  async getCaptcha(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetCaptchaResponse>(
       HttpType.Get,
       "/account/auth/get_captcha",
@@ -1611,7 +1683,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/delete")
   @Tags("Account")
-  deleteAccount(
+  async deleteAccount(
     @Body() form: DeleteAccount,
     @Inject() options?: RequestOptions,
   ) {
@@ -1629,7 +1701,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/auth/password_reset")
   @Tags("Account")
-  passwordReset(
+  async passwordReset(
     @Body() form: PasswordReset,
     @Inject() options?: RequestOptions,
   ) {
@@ -1647,7 +1719,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/auth/password_change")
   @Tags("Account")
-  passwordChangeAfterReset(
+  async passwordChangeAfterReset(
     @Body() form: PasswordChangeAfterReset,
     @Inject() options?: RequestOptions,
   ) {
@@ -1665,7 +1737,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/mark_as_read/all")
   @Tags("Account")
-  markAllNotificationsAsRead(@Inject() options?: RequestOptions) {
+  async markAllNotificationsAsRead(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/mark_as_read/all",
@@ -1680,7 +1752,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/account/settings/save")
   @Tags("Account")
-  saveUserSettings(
+  async saveUserSettings(
     @Body() form: SaveUserSettings,
     @Inject() options?: RequestOptions,
   ) {
@@ -1698,7 +1770,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/account/auth/change_password")
   @Tags("Account")
-  changePassword(
+  async changePassword(
     @Body() form: ChangePassword,
     @Inject() options?: RequestOptions,
   ) {
@@ -1716,7 +1788,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/report_count")
   @Tags("Account")
-  getReportCount(
+  async getReportCount(
     @Queries() form: GetReportCountI,
     @Inject() options?: RequestOptions,
   ) {
@@ -1734,7 +1806,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/unread_count")
   @Tags("Account")
-  getUnreadCount(@Inject() options?: RequestOptions) {
+  async getUnreadCount(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadCountResponse>(
       HttpType.Get,
       "/account/unread_count",
@@ -1749,7 +1821,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/inbox")
   @Tags("Account")
-  listInbox(@Queries() form: ListInboxI, @Inject() options?: RequestOptions) {
+  async listInbox(
+    @Queries() form: ListInboxI,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<ListInbox, ListInboxResponse>(
       HttpType.Get,
       "/account/inbox",
@@ -1763,7 +1838,10 @@ export class LemmyHttp extends Controller {
    */
   @Post("/account/auth/verify_email")
   @Tags("Account")
-  verifyEmail(@Body() form: VerifyEmail, @Inject() options?: RequestOptions) {
+  async verifyEmail(
+    @Body() form: VerifyEmail,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<VerifyEmail, SuccessResponse>(
       HttpType.Post,
       "/account/auth/verify_email",
@@ -1777,7 +1855,7 @@ export class LemmyHttp extends Controller {
    */
   @Post("/account/auth/resend_verification_email")
   @Tags("Account")
-  resendVerificationEmail(
+  async resendVerificationEmail(
     @Body() form: ResendVerificationEmail,
     @Inject() options?: RequestOptions,
   ) {
@@ -1795,7 +1873,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/saved")
   @Tags("Account")
-  listPersonSaved(
+  async listPersonSaved(
     @Queries() form: ListPersonSavedI,
     @Inject() options?: RequestOptions,
   ) {
@@ -1813,7 +1891,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/add")
   @Tags("Admin")
-  addAdmin(@Body() form: AddAdmin, @Inject() options?: RequestOptions) {
+  async addAdmin(@Body() form: AddAdmin, @Inject() options?: RequestOptions) {
     return this.#wrapper<AddAdmin, AddAdminResponse>(
       HttpType.Post,
       "/admin/add",
@@ -1828,7 +1906,9 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/admin/registration_application/count")
   @Tags("Admin")
-  getUnreadRegistrationApplicationCount(@Inject() options?: RequestOptions) {
+  async getUnreadRegistrationApplicationCount(
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<object, GetUnreadRegistrationApplicationCountResponse>(
       HttpType.Get,
       "/admin/registration_application/count",
@@ -1843,7 +1923,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/admin/registration_application/list")
   @Tags("Admin")
-  listRegistrationApplications(
+  async listRegistrationApplications(
     @Queries() form: ListRegistrationApplicationsI,
     @Inject() options?: RequestOptions,
   ) {
@@ -1859,7 +1939,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/admin/registration_application/approve")
   @Tags("Admin")
-  approveRegistrationApplication(
+  async approveRegistrationApplication(
     @Body() form: ApproveRegistrationApplication,
     @Inject() options?: RequestOptions,
   ) {
@@ -1875,7 +1955,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/admin/registration_application")
   @Tags("Admin")
-  getRegistrationApplication(
+  async getRegistrationApplication(
     @Queries() form: GetRegistrationApplicationI,
     @Inject() options?: RequestOptions,
   ) {
@@ -1891,7 +1971,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/purge/person")
   @Tags("Admin")
-  purgePerson(@Body() form: PurgePerson, @Inject() options?: RequestOptions) {
+  async purgePerson(
+    @Body() form: PurgePerson,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<PurgePerson, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/person",
@@ -1906,7 +1989,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/purge/community")
   @Tags("Admin")
-  purgeCommunity(
+  async purgeCommunity(
     @Body() form: PurgeCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -1924,7 +2007,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/purge/post")
   @Tags("Admin")
-  purgePost(@Body() form: PurgePost, @Inject() options?: RequestOptions) {
+  async purgePost(@Body() form: PurgePost, @Inject() options?: RequestOptions) {
     return this.#wrapper<PurgePost, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/post",
@@ -1939,7 +2022,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/purge/comment")
   @Tags("Admin")
-  purgeComment(@Body() form: PurgeComment, @Inject() options?: RequestOptions) {
+  async purgeComment(
+    @Body() form: PurgeComment,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<PurgeComment, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/comment",
@@ -1954,7 +2040,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/custom_emoji")
   @Tags("CustomEmoji")
-  createCustomEmoji(
+  async createCustomEmoji(
     @Body() form: CreateCustomEmoji,
     @Inject() options?: RequestOptions,
   ) {
@@ -1972,7 +2058,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/custom_emoji")
   @Tags("CustomEmoji")
-  editCustomEmoji(
+  async editCustomEmoji(
     @Body() form: EditCustomEmoji,
     @Inject() options?: RequestOptions,
   ) {
@@ -1990,7 +2076,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/custom_emoji/delete")
   @Tags("CustomEmoji")
-  deleteCustomEmoji(
+  async deleteCustomEmoji(
     @Body() form: DeleteCustomEmoji,
     @Inject() options?: RequestOptions,
   ) {
@@ -2009,7 +2095,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/custom_emoji/list")
   @Tags("CustomEmoji")
-  listCustomEmojis(
+  async listCustomEmojis(
     @Queries() form: ListCustomEmojisI,
     @Inject() options?: RequestOptions,
   ) {
@@ -2027,7 +2113,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/tagline")
   @Tags("Admin", "Tagline")
-  createTagline(
+  async createTagline(
     @Body() form: CreateTagline,
     @Inject() options?: RequestOptions,
   ) {
@@ -2045,7 +2131,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/admin/tagline")
   @Tags("Admin", "Tagline")
-  editTagline(@Body() form: UpdateTagline, @Inject() options?: RequestOptions) {
+  async editTagline(
+    @Body() form: UpdateTagline,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<UpdateTagline, TaglineResponse>(
       HttpType.Put,
       "/admin/tagline",
@@ -2060,7 +2149,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/tagline/delete")
   @Tags("Admin", "Tagline")
-  deleteTagline(
+  async deleteTagline(
     @Body() form: DeleteTagline,
     @Inject() options?: RequestOptions,
   ) {
@@ -2079,7 +2168,7 @@ export class LemmyHttp extends Controller {
   @Security({})
   @Get("/admin/tagline/list")
   @Tags("Admin", "Tagline")
-  listTaglines(
+  async listTaglines(
     @Queries() form: ListTaglinesI,
     @Inject() options?: RequestOptions,
   ) {
@@ -2097,7 +2186,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/oauth_provider")
   @Tags("Miscellaneous", "OAuth")
-  createOAuthProvider(
+  async createOAuthProvider(
     @Body() form: CreateOAuthProvider,
     @Inject() options?: RequestOptions,
   ) {
@@ -2115,7 +2204,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/oauth_provider")
   @Tags("Miscellaneous", "OAuth")
-  editOAuthProvider(
+  async editOAuthProvider(
     @Body() form: EditOAuthProvider,
     @Inject() options?: RequestOptions,
   ) {
@@ -2133,7 +2222,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/oauth_provider/delete")
   @Tags("Miscellaneous", "OAuth")
-  deleteOAuthProvider(
+  async deleteOAuthProvider(
     @Body() form: DeleteOAuthProvider,
     @Inject() options?: RequestOptions,
   ) {
@@ -2151,7 +2240,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/oauth/authenticate")
   @Tags("Miscellaneous", "OAuth")
-  authenticateWithOAuth(
+  async authenticateWithOAuth(
     @Body() form: AuthenticateWithOauth,
     @Inject() options?: RequestOptions,
   ) {
@@ -2168,7 +2257,7 @@ export class LemmyHttp extends Controller {
    */
   @Get("/federated_instances")
   @Tags("Miscellaneous")
-  getFederatedInstances(@Inject() options?: RequestOptions) {
+  async getFederatedInstances(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
@@ -2183,7 +2272,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/report/list")
   @Tags("Admin")
-  listReports(
+  async listReports(
     @Queries() form: ListReportsI,
     @Inject() options?: RequestOptions,
   ) {
@@ -2201,7 +2290,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/block/instance")
   @Tags("Account")
-  userBlockInstance(
+  async userBlockInstance(
     @Body() form: UserBlockInstanceParams,
     @Inject() options?: RequestOptions,
   ) {
@@ -2219,7 +2308,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/instance/block")
   @Tags("Admin")
-  adminBlockInstance(
+  async adminBlockInstance(
     @Body() form: AdminBlockInstanceParams,
     @Inject() options?: RequestOptions,
   ) {
@@ -2237,7 +2326,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/admin/instance/allow")
   @Tags("Admin")
-  adminAllowInstance(
+  async adminAllowInstance(
     @Body() form: AdminAllowInstanceParams,
     @Inject() options?: RequestOptions,
   ) {
@@ -2441,27 +2530,9 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Delete a pictrs image
-   */
-  @Security("bearerAuth")
-  @Delete("/image")
-  @Tags("Media")
-  async deleteImage(
-    @Queries() form: DeleteImageParamsI,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<DeleteImageParams, SuccessResponse>(
-      HttpType.Delete,
-      "/image",
-      form,
-      options,
-    );
-  }
-
-  /**
    * @summary Health check for image functionality
    */
-  @Get("image/health")
+  @Get("/image/health")
   @Tags("Media")
   async imageHealth(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
