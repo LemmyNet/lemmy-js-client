@@ -39,7 +39,6 @@ export type LemmyErrorType =
   | { error: "site_description_length_overflow" }
   | { error: "honeypot_failed" }
   | { error: "registration_application_is_pending" }
-  | { error: "cant_enable_private_instance_and_federation_together" }
   | { error: "locked" }
   | { error: "couldnt_create_comment" }
   | { error: "max_comment_depth_reached" }
@@ -127,6 +126,8 @@ export type LemmyErrorType =
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }
+  | { error: "invalid_tag_name" }
+  | { error: "tag_not_in_community" }
   | { error: "cant_block_local_instance" }
   | { error: "unknown"; message: string }
   | { error: "url_length_overflow" }
@@ -140,4 +141,5 @@ export type LemmyErrorType =
   | { error: "too_many_scheduled_posts" }
   | { error: "cannot_combine_federation_blocklist_and_allowlist" }
   | { error: "federation_error"; message: { error?: FederationError } }
-  | { error: "couldnt_parse_pagination_token" };
+  | { error: "couldnt_parse_pagination_token" }
+  | { error: "plugin_error"; message: string };

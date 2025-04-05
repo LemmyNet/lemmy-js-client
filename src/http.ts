@@ -67,6 +67,7 @@ import { CreateComment } from "./types/CreateComment";
 import { CreateCommentLike } from "./types/CreateCommentLike";
 import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
+import { CreateCommunityTag } from "./types/CreateCommunityTag";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
 import { CreateOAuthProvider } from "./types/CreateOAuthProvider";
 import { CreatePost } from "./types/CreatePost";
@@ -79,6 +80,7 @@ import { CustomEmojiResponse } from "./types/CustomEmojiResponse";
 import { DeleteAccount } from "./types/DeleteAccount";
 import { DeleteComment } from "./types/DeleteComment";
 import { DeleteCommunity } from "./types/DeleteCommunity";
+import { DeleteCommunityTag } from "./types/DeleteCommunityTag";
 import { DeleteCustomEmoji } from "./types/DeleteCustomEmoji";
 import { DeleteOAuthProvider } from "./types/DeleteOAuthProvider";
 import { DeletePost } from "./types/DeletePost";
@@ -153,6 +155,7 @@ import { Search } from "./types/Search";
 import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
+import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
@@ -200,6 +203,7 @@ import { ListInbox } from "./types/ListInbox";
 import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
 import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
+import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 import { ListBannedPersons } from "./types/ListBannedPersons";
 
@@ -2086,6 +2090,60 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ListTaglines, ListTaglinesResponse>(
       HttpType.Get,
       "/admin/tagline/list",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Create a community post tag.
+   */
+  @Security("bearerAuth")
+  @Post("/community/tag")
+  @Tags("Community")
+  createCommunityTag(
+    @Body() form: CreateCommunityTag,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<CreateCommunityTag, Tag>(
+      HttpType.Post,
+      "/community/tag",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Update a community post tag.
+   */
+  @Security("bearerAuth")
+  @Put("/community/tag")
+  @Tags("Community")
+  updateCommunityTag(
+    @Body() form: UpdateCommunityTag,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdateCommunityTag, Tag>(
+      HttpType.Put,
+      "/community/tag",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Delete a post tag in a community.
+   */
+  @Security("bearerAuth")
+  @Post("/community/tag")
+  @Tags("Community")
+  deleteCommunityTag(
+    @Body() form: DeleteCommunityTag,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<DeleteCommunityTag, Tag>(
+      HttpType.Delete,
+      "/community/tag",
       form,
       options,
     );

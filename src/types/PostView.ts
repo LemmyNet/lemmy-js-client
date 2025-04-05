@@ -7,6 +7,7 @@ import type { Person } from "./Person";
 import type { PersonActions } from "./PersonActions";
 import type { Post } from "./Post";
 import type { PostActions } from "./PostActions";
+import type { TagsView } from "./TagsView";
 
 /**
  * A post view.
@@ -20,7 +21,9 @@ export type PostView = {
   person_actions?: PersonActions;
   post_actions?: PostActions;
   instance_actions?: InstanceActions;
+  home_instance_actions?: InstanceActions;
   creator_community_actions?: CommunityActions;
   creator_is_admin: boolean;
+  tags: TagsView;
   can_mod: boolean;
 };

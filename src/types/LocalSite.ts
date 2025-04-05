@@ -116,11 +116,6 @@ export type LocalSite = {
    */
   comment_downvotes: FederationMode;
   /**
-   * If this is true, users will never see the dialog asking to support Lemmy development with
-   * donations.
-   */
-  disable_donation_dialog: boolean;
-  /**
    * A default time range limit to apply to post sorts, in seconds.
    */
   default_post_time_range_seconds?: number;
