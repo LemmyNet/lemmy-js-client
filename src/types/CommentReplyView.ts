@@ -8,6 +8,7 @@ import type { InstanceActions } from "./InstanceActions";
 import type { Person } from "./Person";
 import type { PersonActions } from "./PersonActions";
 import type { Post } from "./Post";
+import type { TagsView } from "./TagsView";
 
 /**
  * A comment reply view.
@@ -27,6 +28,7 @@ export type CommentReplyView = {
   creator_local_instance_actions?: InstanceActions;
   creator_community_actions?: CommunityActions;
   creator_is_admin: boolean;
+  post_tags: TagsView;
   can_mod: boolean;
   creator_banned: boolean;
 };

@@ -8,6 +8,7 @@ import type { PersonActions } from "./PersonActions";
 import type { PersonPostMention } from "./PersonPostMention";
 import type { Post } from "./Post";
 import type { PostActions } from "./PostActions";
+import type { TagsView } from "./TagsView";
 
 /**
  * A person post mention view.
@@ -26,6 +27,7 @@ export type PersonPostMentionView = {
   creator_home_instance_actions?: InstanceActions;
   creator_local_instance_actions?: InstanceActions;
   creator_community_actions?: CommunityActions;
+  post_tags: TagsView;
   creator_is_admin: boolean;
   can_mod: boolean;
   creator_banned: boolean;

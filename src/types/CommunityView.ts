@@ -2,6 +2,7 @@
 import type { Community } from "./Community";
 import type { CommunityActions } from "./CommunityActions";
 import type { InstanceActions } from "./InstanceActions";
+import type { TagsView } from "./TagsView";
 
 /**
  * A community view.
@@ -11,4 +12,5 @@ export type CommunityView = {
   community_actions?: CommunityActions;
   instance_actions?: InstanceActions;
   can_mod: boolean;
+  post_tags: TagsView;
 };

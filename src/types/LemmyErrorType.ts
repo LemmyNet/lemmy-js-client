@@ -126,6 +126,8 @@ export type LemmyErrorType =
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }
+  | { error: "invalid_tag_name" }
+  | { error: "tag_not_in_community" }
   | { error: "cant_block_local_instance" }
   | { error: "unknown"; message: string }
   | { error: "url_length_overflow" }
