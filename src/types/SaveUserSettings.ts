@@ -86,6 +86,7 @@ export type SaveUserSettings = {
    * A list of languages you are able to see discussion in.
    */
   discussion_languages?: Array<LanguageId>;
+  blocking_keywords?: Array<string>;
   /**
    * Open links in a new tab
    */
