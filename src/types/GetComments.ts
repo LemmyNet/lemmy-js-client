@@ -3,6 +3,7 @@ import type { CommentId } from "./CommentId";
 import type { CommentSortType } from "./CommentSortType";
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
+import type { PaginationCursor } from "./PaginationCursor";
 import type { PostId } from "./PostId";
 
 /**
@@ -17,7 +18,8 @@ export type GetComments = {
    */
   time_range_seconds?: number;
   max_depth?: number;
-  page?: number;
+  page_cursor?: PaginationCursor;
+  page_back?: boolean;
   limit?: number;
   community_id?: CommunityId;
   community_name?: string;

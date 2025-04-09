@@ -17,5 +17,6 @@ export type MyUserInfo = {
   community_blocks: Array<Community>;
   instance_blocks: Array<Instance>;
   person_blocks: Array<Person>;
+  keyword_blocks: Array<string>;
   discussion_languages: Array<LanguageId>;
 };
