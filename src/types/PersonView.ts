@@ -8,6 +8,7 @@ import type { Person } from "./Person";
 export type PersonView = {
   person: Person;
   is_admin: boolean;
-  instance_actions?: InstanceActions;
   home_instance_actions?: InstanceActions;
+  local_instance_actions?: InstanceActions;
+  creator_banned: boolean;
 };
