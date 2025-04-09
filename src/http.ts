@@ -2224,7 +2224,7 @@ export class LemmyHttp extends Controller {
    * @summary Delete a post tag in a community.
    */
   @Security("bearerAuth")
-  @Post("/community/tag")
+  @Delete("/community/tag")
   @Tags("Community")
   deleteCommunityTag(
     @Body() form: DeleteCommunityTag,

@@ -10,6 +10,14 @@ steps:
     when:
       - event: pull_request
 
+  tsoa:
+    image: node:alpine
+    commands:
+      - *install_pnpm
+      - pnpm tsoa
+    when:
+      - event: pull_request
+
   lint:
     image: node:alpine
     commands:
