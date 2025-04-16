@@ -104,7 +104,6 @@ export type LemmyErrorType =
   | { error: "couldnt_create_post" }
   | { error: "couldnt_create_private_message" }
   | { error: "couldnt_update_private_message" }
-  | { error: "system_err_login" }
   | { error: "blocked_url" }
   | { error: "invalid_url" }
   | { error: "email_send_failed" }
@@ -174,4 +173,5 @@ export type LemmyErrorType =
   | { error: "couldnt_create_password_reset_request" }
   | { error: "couldnt_create_login_token" }
   | { error: "couldnt_update_local_site_url_blocklist" }
-  | { error: "couldnt_create_email_verification" };
+  | { error: "couldnt_create_email_verification" }
+  | { error: "email_notifications_disabled" };

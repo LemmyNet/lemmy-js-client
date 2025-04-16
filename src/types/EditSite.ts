@@ -164,4 +164,8 @@ export type EditSite = {
    * Block NSFW content being created
    */
   disallow_nsfw_content?: boolean;
+  /**
+   * Dont send email notifications to users for new replies, mentions etc
+   */
+  disable_email_notifications?: boolean;
 };

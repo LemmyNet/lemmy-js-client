@@ -143,4 +143,8 @@ export type LocalSite = {
    * The number of users with any activity in the last half year.
    */
   users_active_half_year: number;
+  /**
+   * Dont send email notifications to users for new replies, mentions etc
+   */
+  disable_email_notifications: boolean;
 };
