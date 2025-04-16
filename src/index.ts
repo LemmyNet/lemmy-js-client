@@ -264,7 +264,6 @@ export { PostActions } from "./types/PostActions";
 export { PostFeatureType } from "./types/PostFeatureType";
 export { PostId } from "./types/PostId";
 export { PostListingMode } from "./types/PostListingMode";
-export { PostPaginationCursor } from "./types/PostPaginationCursor";
 export { PostReport } from "./types/PostReport";
 export { PostReportId } from "./types/PostReportId";
 export { PostReportResponse } from "./types/PostReportResponse";

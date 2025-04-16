@@ -3,9 +3,4 @@
 /**
  * Fetches a list of custom emojis.
  */
-export type ListCustomEmojis = {
-  page?: number;
-  limit?: number;
-  category?: string;
-  ignore_page_limits?: boolean;
-};
+export type ListCustomEmojis = { category?: string };

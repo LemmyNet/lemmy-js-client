@@ -28,4 +28,5 @@ export type Search = {
   disliked_only?: boolean;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
+  limit?: number;
 };

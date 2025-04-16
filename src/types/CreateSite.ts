@@ -53,4 +53,5 @@ export type CreateSite = {
   comment_upvotes?: FederationMode;
   comment_downvotes?: FederationMode;
   disallow_nsfw_content?: boolean;
+  disable_email_notifications?: boolean;
 };

@@ -2,6 +2,9 @@
 import type { FederationError } from "./FederationError";
 
 export type LemmyErrorType =
+  | { error: "block_keyword_too_short" }
+  | { error: "block_keyword_too_long" }
+  | { error: "couldnt_update_keywords" }
   | { error: "report_reason_required" }
   | { error: "report_too_long" }
   | { error: "not_a_moderator" }
@@ -13,7 +16,6 @@ export type LemmyErrorType =
   | { error: "email_not_verified" }
   | { error: "email_required" }
   | { error: "couldnt_update_comment" }
-  | { error: "couldnt_update_private_message" }
   | { error: "cannot_leave_admin" }
   | { error: "pictrs_response_error"; message: string }
   | { error: "pictrs_purge_response_error"; message: string }
@@ -46,6 +48,7 @@ export type LemmyErrorType =
   | { error: "only_admins_can_create_communities" }
   | { error: "community_already_exists" }
   | { error: "language_not_allowed" }
+  | { error: "couldnt_update_languages" }
   | { error: "couldnt_update_post" }
   | { error: "no_post_edit_allowed" }
   | { error: "nsfw_not_allowed" }
@@ -61,7 +64,6 @@ export type LemmyErrorType =
   | { error: "person_is_banned_from_community" }
   | { error: "no_id_given" }
   | { error: "incorrect_login" }
-  | { error: "object_not_local" }
   | { error: "no_email_setup" }
   | { error: "local_site_not_setup" }
   | { error: "invalid_email_address"; message: string }
@@ -89,24 +91,20 @@ export type LemmyErrorType =
   | { error: "community_block_already_exists" }
   | { error: "community_follower_already_exists" }
   | { error: "person_block_already_exists" }
-  | { error: "user_already_exists" }
   | { error: "couldnt_like_post" }
   | { error: "couldnt_save_post" }
   | { error: "couldnt_mark_post_as_read" }
   | { error: "couldnt_update_read_comments" }
   | { error: "couldnt_hide_post" }
   | { error: "couldnt_update_community" }
-  | { error: "couldnt_update_replies" }
-  | { error: "couldnt_update_person_comment_mentions" }
+  | { error: "couldnt_create_person_comment_mention" }
+  | { error: "couldnt_update_person_comment_mention" }
+  | { error: "couldnt_create_person_post_mention" }
+  | { error: "couldnt_update_person_post_mention" }
   | { error: "couldnt_create_post" }
   | { error: "couldnt_create_private_message" }
-  | { error: "couldnt_update_private" }
-  | { error: "system_err_login" }
-  | { error: "couldnt_set_all_registrations_accepted" }
-  | { error: "couldnt_set_all_email_verified" }
+  | { error: "couldnt_update_private_message" }
   | { error: "blocked_url" }
-  | { error: "couldnt_get_comments" }
-  | { error: "couldnt_get_posts" }
   | { error: "invalid_url" }
   | { error: "email_send_failed" }
   | { error: "slurs" }
@@ -134,7 +132,8 @@ export type LemmyErrorType =
   | { error: "oauth_authorization_invalid" }
   | { error: "oauth_login_failed" }
   | { error: "oauth_registration_closed" }
-  | { error: "couldnt_delete_oauth_provider" }
+  | { error: "couldnt_create_oauth_provider" }
+  | { error: "couldnt_update_oauth_provider" }
   | { error: "not_found" }
   | { error: "community_has_no_followers" }
   | { error: "post_schedule_time_must_be_in_future" }
@@ -142,4 +141,37 @@ export type LemmyErrorType =
   | { error: "cannot_combine_federation_blocklist_and_allowlist" }
   | { error: "federation_error"; message: { error?: FederationError } }
   | { error: "couldnt_parse_pagination_token" }
-  | { error: "plugin_error"; message: string };
+  | { error: "plugin_error"; message: string }
+  | { error: "invalid_fetch_limit" }
+  | { error: "couldnt_create_comment_reply" }
+  | { error: "couldnt_update_comment_reply" }
+  | { error: "couldnt_mark_comment_reply_as_read" }
+  | { error: "couldnt_create_emoji" }
+  | { error: "couldnt_update_emoji" }
+  | { error: "couldnt_create_person" }
+  | { error: "couldnt_update_person" }
+  | { error: "couldnt_create_modlog" }
+  | { error: "couldnt_update_modlog" }
+  | { error: "couldnt_create_site" }
+  | { error: "couldnt_update_site" }
+  | { error: "couldnt_create_registration_application" }
+  | { error: "couldnt_update_registration_application" }
+  | { error: "couldnt_create_tag" }
+  | { error: "couldnt_update_tag" }
+  | { error: "couldnt_create_post_tag" }
+  | { error: "couldnt_update_post_tag" }
+  | { error: "couldnt_create_tagline" }
+  | { error: "couldnt_update_tagline" }
+  | { error: "couldnt_create_image" }
+  | { error: "couldnt_allow_instance" }
+  | { error: "couldnt_block_instance" }
+  | { error: "couldnt_insert_activity" }
+  | { error: "couldnt_create_rate_limit" }
+  | { error: "couldnt_create_captcha_answer" }
+  | { error: "couldnt_update_federation_queue_state" }
+  | { error: "couldnt_create_oauth_account" }
+  | { error: "couldnt_create_password_reset_request" }
+  | { error: "couldnt_create_login_token" }
+  | { error: "couldnt_update_local_site_url_blocklist" }
+  | { error: "couldnt_create_email_verification" }
+  | { error: "email_notifications_disabled" };
