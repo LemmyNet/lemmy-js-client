@@ -857,10 +857,12 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateCommunityReport,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<
-      CreateCommunityReport,
-      CommunityReportResponse
-    >(HttpType.Post, "/community/report", form, options);
+    return this.#wrapper<CreateCommunityReport, CommunityReportResponse>(
+      HttpType.Post,
+      "/community/report",
+      form,
+      options,
+    );
   }
 
   /**
@@ -873,10 +875,12 @@ export class LemmyHttp extends Controller {
     @Body() form: ResolveCommunityReport,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<
-      ResolveCommunityReport,
-      CommunityReportResponse
-    >(HttpType.Put, "/community/report/resolve", form, options);
+    return this.#wrapper<ResolveCommunityReport, CommunityReportResponse>(
+      HttpType.Put,
+      "/community/report/resolve",
+      form,
+      options,
+    );
   }
 
   /**
