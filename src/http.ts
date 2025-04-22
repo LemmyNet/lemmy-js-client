@@ -62,11 +62,13 @@ import { BlockPersonResponse } from "./types/BlockPersonResponse";
 import { ChangePassword } from "./types/ChangePassword";
 import { CommentReportResponse } from "./types/CommentReportResponse";
 import { CommentResponse } from "./types/CommentResponse";
+import { CommunityReportResponse } from "./types/CommunityReportResponse";
 import { CommunityResponse } from "./types/CommunityResponse";
 import { CreateComment } from "./types/CreateComment";
 import { CreateCommentLike } from "./types/CreateCommentLike";
 import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
+import { CreateCommunityReport } from "./types/CreateCommunityReport";
 import { CreateCommunityTag } from "./types/CreateCommunityTag";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
 import { CreateOAuthProvider } from "./types/CreateOAuthProvider";
@@ -144,6 +146,7 @@ import { RemoveComment } from "./types/RemoveComment";
 import { RemoveCommunity } from "./types/RemoveCommunity";
 import { RemovePost } from "./types/RemovePost";
 import { ResolveCommentReport } from "./types/ResolveCommentReport";
+import { ResolveCommunityReport } from "./types/ResolveCommunityReport";
 import { ResolveObject } from "./types/ResolveObject";
 import { ResolveObjectResponse } from "./types/ResolveObjectResponse";
 import { ResolvePostReport } from "./types/ResolvePostReport";
@@ -842,6 +845,38 @@ export class LemmyHttp extends Controller {
       form,
       options,
     );
+  }
+
+  /**
+   * @summary Create a report for a community.
+   */
+  @Security("bearerAuth")
+  @Post("/community/report")
+  @Tags("Community")
+  async createCommunityReport(
+    @Body() form: CreateCommunityReport,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<
+      CreateCommunityReport,
+      CommunityReportResponse
+    >(HttpType.Post, "/community/report", form, options);
+  }
+
+  /**
+   * @summary Resolve a report for a private message.
+   */
+  @Security("bearerAuth")
+  @Put("/community/report/resolve")
+  @Tags("Community", "Admin")
+  async resolveCommunityReport(
+    @Body() form: ResolveCommunityReport,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<
+      ResolveCommunityReport,
+      CommunityReportResponse
+    >(HttpType.Put, "/community/report/resolve", form, options);
   }
 
   /**
