@@ -15,7 +15,7 @@ cargo test --workspace export_bindings
 cd crates
 
 # Copy them over to the types folder
-cp **/bindings/* ../../lemmy-js-client/src/types/
+find . -type f -name "*.ts" -exec cp {} ../../lemmy-js-client/src/types/ \;
 
 popd
 
