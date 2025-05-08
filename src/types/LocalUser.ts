@@ -6,6 +6,7 @@ import type { PersonId } from "./PersonId";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { SensitiveString } from "./SensitiveString";
+import type { VoteShow } from "./VoteShow";
 
 /**
  * A local user.
@@ -101,6 +102,6 @@ export type LocalUser = {
   default_post_time_range_seconds?: number;
   show_score: boolean;
   show_upvotes: boolean;
-  show_downvotes: boolean;
+  show_downvotes: VoteShow;
   show_upvote_percentage: boolean;
 };

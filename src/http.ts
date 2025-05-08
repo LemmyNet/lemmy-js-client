@@ -34,6 +34,8 @@ import {
   ListInboxI,
   ListMediaI,
   ListPersonContentI,
+  ListPersonHiddenI,
+  ListPersonReadI,
   ListPersonSavedI,
   ListPostLikesI,
   ListRegistrationApplicationsI,
@@ -209,6 +211,10 @@ import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 import { ListBannedPersons } from "./types/ListBannedPersons";
+import { ListPersonRead } from "./types/ListPersonRead";
+import { ListPersonReadResponse } from "./types/ListPersonReadResponse";
+import { ListPersonHidden } from "./types/ListPersonHidden";
+import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1923,6 +1929,42 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ListPersonSaved, ListPersonSavedResponse>(
       HttpType.Get,
       "/account/saved",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List your read content.
+   */
+  @Security("bearerAuth")
+  @Get("/account/read")
+  @Tags("Account")
+  async listPersonRead(
+    @Queries() form: ListPersonReadI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListPersonRead, ListPersonReadResponse>(
+      HttpType.Get,
+      "/account/read",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List your hidden content.
+   */
+  @Security("bearerAuth")
+  @Get("/account/hidden")
+  @Tags("Account")
+  async listPersonHidden(
+    @Queries() form: ListPersonHiddenI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListPersonHidden, ListPersonHiddenResponse>(
+      HttpType.Get,
+      "/account/hidden",
       form,
       options,
     );

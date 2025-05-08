@@ -19,6 +19,8 @@ import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListInbox } from "./types/ListInbox";
 import { ListMedia } from "./types/ListMedia";
 import { ListPersonContent } from "./types/ListPersonContent";
+import { ListPersonHidden } from "./types/ListPersonHidden";
+import { ListPersonRead } from "./types/ListPersonRead";
 import { ListPersonSaved } from "./types/ListPersonSaved";
 import { ListPostLikes } from "./types/ListPostLikes";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
@@ -58,6 +60,8 @@ export interface ListPersonContentI extends ListPersonContent {}
 export interface GetReportCountI extends GetReportCount {}
 export interface ListInboxI extends ListInbox {}
 export interface ListPersonSavedI extends ListPersonSaved {}
+export interface ListPersonReadI extends ListPersonRead {}
+export interface ListPersonHiddenI extends ListPersonHidden {}
 export interface ListRegistrationApplicationsI
   extends ListRegistrationApplications {}
 export interface GetRegistrationApplicationI

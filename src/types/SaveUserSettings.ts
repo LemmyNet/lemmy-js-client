@@ -5,6 +5,7 @@ import type { ListingType } from "./ListingType";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { SensitiveString } from "./SensitiveString";
+import type { VoteShow } from "./VoteShow";
 
 /**
  * Saves settings for your user.
@@ -117,7 +118,7 @@ export type SaveUserSettings = {
    */
   show_scores?: boolean;
   show_upvotes?: boolean;
-  show_downvotes?: boolean;
+  show_downvotes?: VoteShow;
   show_upvote_percentage?: boolean;
   /**
    * Whether to automatically mark fetched posts as read.
