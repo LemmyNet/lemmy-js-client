@@ -1,3 +1,4 @@
+import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { DeleteImageParams } from "./types/DeleteImageParams";
 import { GetComment } from "./types/GetComment";
 import { GetComments } from "./types/GetComments";
@@ -67,3 +68,4 @@ export interface ListTaglinesI extends ListTaglines {}
 export interface ListReportsI extends ListReports {}
 export interface DeleteImageParamsI extends DeleteImageParams {}
 export interface ListBannedPersonsI extends ListBannedPersons {}
+export interface CommunityIdQueryI extends CommunityIdQuery {}
