@@ -58,6 +58,7 @@ export { CommunityActions } from "./types/CommunityActions";
 export { CommunityFollowerState } from "./types/CommunityFollowerState";
 export { CommunityFollowerView } from "./types/CommunityFollowerView";
 export { CommunityId } from "./types/CommunityId";
+export { CommunityIdQuery } from "./types/CommunityIdQuery";
 export { CommunityModeratorView } from "./types/CommunityModeratorView";
 export { CommunityReport } from "./types/CommunityReport";
 export { CommunityReportId } from "./types/CommunityReportId";
