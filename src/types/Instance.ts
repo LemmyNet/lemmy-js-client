@@ -2,7 +2,8 @@
 import type { InstanceId } from "./InstanceId";
 
 /**
- * A federated instance / site.
+ * Basic data about a Fediverse instance which is available for every known domain. Additional
+ * data may be available in [[Site]].
  */
 export type Instance = {
   id: InstanceId;

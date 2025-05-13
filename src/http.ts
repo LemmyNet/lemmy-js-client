@@ -13,6 +13,8 @@ import {
   Tags,
 } from "@tsoa/runtime";
 import {
+  AdminListUsersI,
+  CommunityIdQueryI,
   DeleteImageParamsI,
   GetCommentI,
   GetCommentsI,
@@ -26,7 +28,6 @@ import {
   GetRegistrationApplicationI,
   GetReportCountI,
   GetSiteMetadataI,
-  ListBannedPersonsI,
   ListCommentLikesI,
   ListCommunitiesI,
   ListCommunityPendingFollowsI,
@@ -56,7 +57,6 @@ import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
 import { MarkManyPostsAsRead } from "./types/MarkManyPostsAsRead";
 import { BanPerson } from "./types/BanPerson";
 import { BanPersonResponse } from "./types/BanPersonResponse";
-import { BannedPersonsResponse } from "./types/BannedPersonsResponse";
 import { BlockCommunity } from "./types/BlockCommunity";
 import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
 import { BlockPerson } from "./types/BlockPerson";
@@ -210,11 +210,13 @@ import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
-import { ListBannedPersons } from "./types/ListBannedPersons";
 import { ListPersonRead } from "./types/ListPersonRead";
 import { ListPersonReadResponse } from "./types/ListPersonReadResponse";
 import { ListPersonHidden } from "./types/ListPersonHidden";
 import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
+import { CommunityIdQuery } from "./types/CommunityIdQuery";
+import { AdminListUsers } from "./types/AdminListUsers";
+import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1677,18 +1679,18 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Get a list of banned users.
+   * @summary Get a list of users.
    */
   @Security("bearerAuth")
-  @Get("/admin/banned")
+  @Get("/admin/users")
   @Tags("Admin", "Miscellaneous")
-  async listBannedPersons(
-    @Queries() form: ListBannedPersonsI = {},
+  async listUsers(
+    @Queries() form: AdminListUsersI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListBannedPersons, BannedPersonsResponse>(
+    return this.#wrapper<AdminListUsers, AdminListUsersResponse>(
       HttpType.Get,
-      "/admin/banned",
+      "/admin/users",
       form,
       options,
     );
@@ -2542,10 +2544,11 @@ export class LemmyHttp extends Controller {
   @Post("/community/icon")
   @Tags("Community", "Media")
   async uploadCommunityIcon(
+    @Queries() query: CommunityIdQueryI,
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
   ): Promise<UploadImageResponse> {
-    return this.#upload("/community/icon", image, options);
+    return this.#uploadWithQuery("/community/icon", query, image, options);
   }
 
   /**
@@ -2555,12 +2558,13 @@ export class LemmyHttp extends Controller {
   @Delete("/community/icon")
   @Tags("Community", "Media")
   async deleteCommunityIcon(
+    @Body() form: CommunityIdQuery,
     @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
-    return this.#wrapper<object, SuccessResponse>(
+    return this.#wrapper<CommunityIdQuery, SuccessResponse>(
       HttpType.Delete,
       "/community/icon",
-      {},
+      form,
       options,
     );
   }
@@ -2572,10 +2576,11 @@ export class LemmyHttp extends Controller {
   @Post("/community/banner")
   @Tags("Community", "Media")
   async uploadCommunityBanner(
+    @Queries() query: CommunityIdQueryI,
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
   ): Promise<UploadImageResponse> {
-    return this.#upload("/community/banner", image, options);
+    return this.#uploadWithQuery("/community/banner", query, image, options);
   }
 
   /**
@@ -2585,12 +2590,13 @@ export class LemmyHttp extends Controller {
   @Delete("/community/banner")
   @Tags("Community", "Media")
   async deleteCommunityBanner(
+    @Body() form: CommunityIdQuery,
     @Inject() options?: RequestOptions,
   ): Promise<SuccessResponse> {
-    return this.#wrapper<object, SuccessResponse>(
+    return this.#wrapper<CommunityIdQuery, SuccessResponse>(
       HttpType.Delete,
       "/community/banner",
-      {},
+      form,
       options,
     );
   }
@@ -2714,6 +2720,19 @@ export class LemmyHttp extends Controller {
       headers: this.#headers,
     });
     return response.json();
+  }
+
+  async #uploadWithQuery<QueryType extends object, ResponseType>(
+    path: string,
+    query: QueryType,
+    { image }: UploadImage,
+    options?: RequestOptions,
+  ): Promise<ResponseType> {
+    return this.#upload<ResponseType>(
+      `${path}?${encodeGetParams(query)}`,
+      { image },
+      options,
+    );
   }
 
   async #wrapper<BodyType extends object, ResponseType>(
