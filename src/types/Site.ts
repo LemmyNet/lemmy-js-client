@@ -4,7 +4,8 @@ import type { InstanceId } from "./InstanceId";
 import type { SiteId } from "./SiteId";
 
 /**
- * The site.
+ * Additional data for federated instances. This may be missing for other platforms which are not
+ * fully compatible. Basic data is guaranteed to be available via [[Instance]].
  */
 export type Site = {
   id: SiteId;

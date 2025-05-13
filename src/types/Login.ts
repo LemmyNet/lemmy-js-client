@@ -3,6 +3,9 @@ import type { SensitiveString } from "./SensitiveString";
 
 /**
  * Logging into lemmy.
+ *
+ * Note: Banned users can still log in, to be able to do certain things like delete
+ * their account.
  */
 export type Login = {
   username_or_email: SensitiveString;

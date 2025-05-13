@@ -13,6 +13,7 @@ import {
   Tags,
 } from "@tsoa/runtime";
 import {
+  AdminListUsersI,
   CommunityIdQueryI,
   DeleteImageParamsI,
   GetCommentI,
@@ -27,7 +28,6 @@ import {
   GetRegistrationApplicationI,
   GetReportCountI,
   GetSiteMetadataI,
-  ListBannedPersonsI,
   ListCommentLikesI,
   ListCommunitiesI,
   ListCommunityPendingFollowsI,
@@ -35,6 +35,8 @@ import {
   ListInboxI,
   ListMediaI,
   ListPersonContentI,
+  ListPersonHiddenI,
+  ListPersonReadI,
   ListPersonSavedI,
   ListPostLikesI,
   ListRegistrationApplicationsI,
@@ -55,7 +57,6 @@ import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
 import { MarkManyPostsAsRead } from "./types/MarkManyPostsAsRead";
 import { BanPerson } from "./types/BanPerson";
 import { BanPersonResponse } from "./types/BanPersonResponse";
-import { BannedPersonsResponse } from "./types/BannedPersonsResponse";
 import { BlockCommunity } from "./types/BlockCommunity";
 import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
 import { BlockPerson } from "./types/BlockPerson";
@@ -209,8 +210,13 @@ import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
-import { ListBannedPersons } from "./types/ListBannedPersons";
+import { ListPersonRead } from "./types/ListPersonRead";
+import { ListPersonReadResponse } from "./types/ListPersonReadResponse";
+import { ListPersonHidden } from "./types/ListPersonHidden";
+import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
+import { AdminListUsers } from "./types/AdminListUsers";
+import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1673,18 +1679,18 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Get a list of banned users.
+   * @summary Get a list of users.
    */
   @Security("bearerAuth")
-  @Get("/admin/banned")
+  @Get("/admin/users")
   @Tags("Admin", "Miscellaneous")
-  async listBannedPersons(
-    @Queries() form: ListBannedPersonsI = {},
+  async listUsers(
+    @Queries() form: AdminListUsersI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListBannedPersons, BannedPersonsResponse>(
+    return this.#wrapper<AdminListUsers, AdminListUsersResponse>(
       HttpType.Get,
-      "/admin/banned",
+      "/admin/users",
       form,
       options,
     );
@@ -1925,6 +1931,42 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ListPersonSaved, ListPersonSavedResponse>(
       HttpType.Get,
       "/account/saved",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List your read content.
+   */
+  @Security("bearerAuth")
+  @Get("/account/read")
+  @Tags("Account")
+  async listPersonRead(
+    @Queries() form: ListPersonReadI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListPersonRead, ListPersonReadResponse>(
+      HttpType.Get,
+      "/account/read",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List your hidden content.
+   */
+  @Security("bearerAuth")
+  @Get("/account/hidden")
+  @Tags("Account")
+  async listPersonHidden(
+    @Queries() form: ListPersonHiddenI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListPersonHidden, ListPersonHiddenResponse>(
+      HttpType.Get,
+      "/account/hidden",
       form,
       options,
     );
