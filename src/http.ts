@@ -2656,7 +2656,7 @@ export class LemmyHttp extends Controller {
    */
   @Security("bearerAuth")
   @Post("/user/donation_dialog_shown")
-  donation_dialog_shown(@Inject() options?: RequestOptions) {
+  donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/donation_dialog_shown",
@@ -2667,7 +2667,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Post("/multi_community")
-  create_multi_community(
+  createMultiCommunity(
     @Body() form: CreateMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -2681,7 +2681,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Put("/multi_community")
-  update_multi_community(
+  updateMultiCommunity(
     @Body() form: UpdateMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -2694,7 +2694,7 @@ export class LemmyHttp extends Controller {
   }
 
   @Put("/multi_community/list")
-  list_multi_communities(
+  listMultiCommunities(
     @Body() form: ListMultiCommunities,
     @Inject() options?: RequestOptions,
   ) {
