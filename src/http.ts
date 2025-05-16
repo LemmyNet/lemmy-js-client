@@ -2693,7 +2693,7 @@ export class LemmyHttp extends Controller {
     );
   }
 
-  @Put("/multi_community/list")
+  @Get("/multi_community/list")
   listMultiCommunities(
     @Body() form: ListMultiCommunities,
     @Inject() options?: RequestOptions,
