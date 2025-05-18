@@ -211,6 +211,11 @@ import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 import { ListBannedPersons } from "./types/ListBannedPersons";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
+import { CreateMultiCommunity } from "./types/CreateMultiCommunity";
+import { MultiCommunity } from "./types/MultiCommunity";
+import { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
+import { ListMultiCommunities } from "./types/ListMultiCommunities";
+import { ListMultiCommunitiesResponse } from "./types/ListMultiCommunitiesResponse";
 
 enum HttpType {
   Get = "GET",
@@ -2648,14 +2653,55 @@ export class LemmyHttp extends Controller {
 
   /**
    * Mark donation dialog as shown, so it isn't displayed anymore.
-   *
-   * `HTTP.POST /user/donation_dialog_shown`
    */
-  donation_dialog_shown(@Inject() options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/user/donation_dialog_shown")
+  donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/donation_dialog_shown",
       {},
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Post("/multi_community")
+  createMultiCommunity(
+    @Body() form: CreateMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, MultiCommunity>(
+      HttpType.Post,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Put("/multi_community")
+  updateMultiCommunity(
+    @Body() form: UpdateMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Put,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Get("/multi_community/list")
+  listMultiCommunities(
+    @Body() form: ListMultiCommunities,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, ListMultiCommunitiesResponse>(
+      HttpType.Get,
+      "/multi_community/list",
+      form,
       options,
     );
   }
