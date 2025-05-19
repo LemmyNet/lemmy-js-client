@@ -2,9 +2,9 @@
 import type { PaginationCursor } from "./PaginationCursor";
 
 /**
- * List the banned persons.
+ * Gets your read posts.
  */
-export type ListBannedPersons = {
+export type ListPersonRead = {
   page_cursor?: PaginationCursor;
   page_back?: boolean;
   limit?: number;
