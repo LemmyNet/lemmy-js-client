@@ -1,3 +1,4 @@
+import { AdminListUsers } from "./types/AdminListUsers";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { DeleteImageParams } from "./types/DeleteImageParams";
 import { GetComment } from "./types/GetComment";
@@ -12,7 +13,6 @@ import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 import { GetReportCount } from "./types/GetReportCount";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
-import { ListBannedPersons } from "./types/ListBannedPersons";
 import { ListCommentLikes } from "./types/ListCommentLikes";
 import { ListCommunities } from "./types/ListCommunities";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
@@ -20,6 +20,8 @@ import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListInbox } from "./types/ListInbox";
 import { ListMedia } from "./types/ListMedia";
 import { ListPersonContent } from "./types/ListPersonContent";
+import { ListPersonHidden } from "./types/ListPersonHidden";
+import { ListPersonRead } from "./types/ListPersonRead";
 import { ListPersonSaved } from "./types/ListPersonSaved";
 import { ListPostLikes } from "./types/ListPostLikes";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
@@ -59,6 +61,8 @@ export interface ListPersonContentI extends ListPersonContent {}
 export interface GetReportCountI extends GetReportCount {}
 export interface ListInboxI extends ListInbox {}
 export interface ListPersonSavedI extends ListPersonSaved {}
+export interface ListPersonReadI extends ListPersonRead {}
+export interface ListPersonHiddenI extends ListPersonHidden {}
 export interface ListRegistrationApplicationsI
   extends ListRegistrationApplications {}
 export interface GetRegistrationApplicationI
@@ -67,5 +71,5 @@ export interface ListCustomEmojisI extends ListCustomEmojis {}
 export interface ListTaglinesI extends ListTaglines {}
 export interface ListReportsI extends ListReports {}
 export interface DeleteImageParamsI extends DeleteImageParams {}
-export interface ListBannedPersonsI extends ListBannedPersons {}
+export interface AdminListUsersI extends AdminListUsers {}
 export interface CommunityIdQueryI extends CommunityIdQuery {}
