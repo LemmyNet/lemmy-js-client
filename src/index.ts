@@ -129,6 +129,7 @@ export { GetCommunityResponse } from "./types/GetCommunityResponse";
 export { GetFederatedInstancesResponse } from "./types/GetFederatedInstancesResponse";
 export { GetModlog } from "./types/GetModlog";
 export { GetModlogResponse } from "./types/GetModlogResponse";
+export { GetMultiCommunity } from "./types/GetMultiCommunity";
 export { GetPersonDetails } from "./types/GetPersonDetails";
 export { GetPersonDetailsResponse } from "./types/GetPersonDetailsResponse";
 export { GetPost } from "./types/GetPost";

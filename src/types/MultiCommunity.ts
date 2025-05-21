@@ -7,10 +7,10 @@ export type MultiCommunity = {
   id: MultiCommunityId;
   creator_id: PersonId;
   name: string;
-  title: string | null;
-  description: string | null;
+  title?: string;
+  description?: string;
   deleted: boolean;
   ap_id: DbUrl;
   published: string;
-  updated: string | null;
+  updated?: string;
 };
