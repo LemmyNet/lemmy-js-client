@@ -3,7 +3,7 @@ import type { MultiCommunityId } from "./MultiCommunityId";
 
 export type UpdateMultiCommunity = {
   id: MultiCommunityId;
-  title: string | null;
-  description: string | null;
-  deleted: boolean | null;
+  title?: string;
+  description?: string;
+  deleted?: boolean;
 };

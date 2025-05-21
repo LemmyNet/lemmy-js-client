@@ -2,6 +2,6 @@
 
 export type CreateMultiCommunity = {
   name: string;
-  title: string | null;
-  description: string | null;
+  title?: string;
+  description?: string;
 };
