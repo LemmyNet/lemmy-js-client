@@ -174,4 +174,6 @@ export type LemmyErrorType =
   | { error: "couldnt_create_login_token" }
   | { error: "couldnt_update_local_site_url_blocklist" }
   | { error: "couldnt_create_email_verification" }
-  | { error: "email_notifications_disabled" };
+  | { error: "email_notifications_disabled" }
+  | { error: "invalid_community_id" }
+  | { error: "multi_community_update_wrong_user" };

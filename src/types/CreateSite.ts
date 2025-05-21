@@ -3,6 +3,7 @@ import type { CommentSortType } from "./CommentSortType";
 import type { FederationMode } from "./FederationMode";
 import type { LanguageId } from "./LanguageId";
 import type { ListingType } from "./ListingType";
+import type { MultiCommunityId } from "./MultiCommunityId";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { RegistrationMode } from "./RegistrationMode";
@@ -54,4 +55,5 @@ export type CreateSite = {
   comment_downvotes?: FederationMode;
   disallow_nsfw_content?: boolean;
   disable_email_notifications?: boolean;
+  suggested_communities?: MultiCommunityId;
 };

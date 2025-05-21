@@ -3,6 +3,7 @@ import type { CommentSortType } from "./CommentSortType";
 import type { FederationMode } from "./FederationMode";
 import type { LanguageId } from "./LanguageId";
 import type { ListingType } from "./ListingType";
+import type { MultiCommunityId } from "./MultiCommunityId";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { RegistrationMode } from "./RegistrationMode";
@@ -168,4 +169,8 @@ export type EditSite = {
    * Dont send email notifications to users for new replies, mentions etc
    */
   disable_email_notifications?: boolean;
+  /**
+   * A multicommunity with suggested communities which is shown on the homepage
+   */
+  suggested_communities?: MultiCommunityId;
 };

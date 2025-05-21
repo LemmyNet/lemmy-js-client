@@ -222,6 +222,7 @@ import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { ListMultiCommunitiesResponse } from "./types/ListMultiCommunitiesResponse";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
+import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCommunityEntry";
 
 enum HttpType {
   Get = "GET",
@@ -2730,6 +2731,34 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Put,
       "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Put("/multi_community/entry")
+  createMultiCommunityEntry(
+    @Body() form: CreateOrDeleteMultiCommunityEntry,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/multi_community/entry",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Put("/multi_community/entry")
+  deleteMultiCommunityEntry(
+    @Body() form: CreateOrDeleteMultiCommunityEntry,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/multi_community/entry",
       form,
       options,
     );

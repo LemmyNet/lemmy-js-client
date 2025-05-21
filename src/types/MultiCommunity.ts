@@ -5,7 +5,12 @@ import type { PersonId } from "./PersonId";
 
 export type MultiCommunity = {
   id: MultiCommunityId;
-  owner_id: PersonId;
+  creator_id: PersonId;
   name: string;
+  title: string | null;
+  description: string | null;
+  deleted: boolean;
   ap_id: DbUrl;
+  published: string;
+  updated: string | null;
 };
