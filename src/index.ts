@@ -130,6 +130,7 @@ export { GetFederatedInstancesResponse } from "./types/GetFederatedInstancesResp
 export { GetModlog } from "./types/GetModlog";
 export { GetModlogResponse } from "./types/GetModlogResponse";
 export { GetMultiCommunity } from "./types/GetMultiCommunity";
+export { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
 export { GetPersonDetails } from "./types/GetPersonDetails";
 export { GetPersonDetailsResponse } from "./types/GetPersonDetailsResponse";
 export { GetPost } from "./types/GetPost";
@@ -248,7 +249,6 @@ export { ModlogActionType } from "./types/ModlogActionType";
 export { ModlogCombinedView } from "./types/ModlogCombinedView";
 export { MultiCommunity } from "./types/MultiCommunity";
 export { MultiCommunityId } from "./types/MultiCommunityId";
-export { MultiCommunityView } from "./types/MultiCommunityView";
 export { MyUserInfo } from "./types/MyUserInfo";
 export { OAuthAccount } from "./types/OAuthAccount";
 export { OAuthProvider } from "./types/OAuthProvider";

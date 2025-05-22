@@ -224,7 +224,7 @@ import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCommunityEntry";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
-import { MultiCommunityView } from "./types/MultiCommunityView";
+import { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
 
 enum HttpType {
   Get = "GET",
@@ -2743,7 +2743,7 @@ export class LemmyHttp extends Controller {
     @Body() form: GetMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, MultiCommunityView>(
+    return this.#wrapper<object, GetMultiCommunityResponse>(
       HttpType.Get,
       "/multi_community",
       form,
