@@ -167,7 +167,6 @@ import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
 import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 import { SuccessResponse } from "./types/SuccessResponse";
-import { LoginToken } from "./types/LoginToken";
 import { ListPostLikes } from "./types/ListPostLikes";
 import { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 import { ListCommentLikes } from "./types/ListCommentLikes";
@@ -217,6 +216,7 @@ import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
+import { ListLoginsResponse } from "./types/ListLoginsResponse";
 
 enum HttpType {
   Get = "GET",
@@ -396,7 +396,7 @@ export class LemmyHttp extends Controller {
   @Get("/account/list_logins")
   @Tags("Account")
   async listLogins(@Inject() options?: RequestOptions) {
-    return this.#wrapper<object, LoginToken[]>(
+    return this.#wrapper<object, ListLoginsResponse>(
       HttpType.Get,
       "/account/list_logins",
       {},
@@ -989,7 +989,7 @@ export class LemmyHttp extends Controller {
     @Body() form: MarkPostAsRead,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<MarkPostAsRead, SuccessResponse>(
+    return this.#wrapper<MarkPostAsRead, PostResponse>(
       HttpType.Post,
       "/post/mark_as_read",
       form,
