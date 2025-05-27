@@ -9,6 +9,7 @@ export type MultiCommunity = {
   name: string;
   title?: string;
   description?: string;
+  local: boolean;
   deleted: boolean;
   ap_id: DbUrl;
   published: string;
