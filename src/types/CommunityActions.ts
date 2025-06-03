@@ -38,5 +38,5 @@ export type CommunityActions = {
    * True indicates that user is following this community as part of multi-comm (not part of
    * subscribed feed)
    */
-  is_multi_community_follow: boolean | null;
+  is_multi_community_follow?: boolean;
 };
