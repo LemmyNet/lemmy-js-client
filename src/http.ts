@@ -150,7 +150,6 @@ import { RemovePost } from "./types/RemovePost";
 import { ResolveCommentReport } from "./types/ResolveCommentReport";
 import { ResolveCommunityReport } from "./types/ResolveCommunityReport";
 import { ResolveObject } from "./types/ResolveObject";
-import { ResolveObjectResponse } from "./types/ResolveObjectResponse";
 import { ResolvePostReport } from "./types/ResolvePostReport";
 import { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport";
 import { SaveComment } from "./types/SaveComment";
@@ -534,7 +533,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Search lemmy.
+   * @summary Search lemmy. If `search_term` is a url it also attempts to fetch it, just like `resolve_object`.
    */
   @Security("bearerAuth")
   @Security({})
@@ -560,7 +559,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ResolveObject, ResolveObjectResponse>(
+    return this.#wrapper<ResolveObject, SearchResponse>(
       HttpType.Get,
       "/resolve_object",
       form,
