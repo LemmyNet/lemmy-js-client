@@ -28,6 +28,6 @@ steps:
       - pnpm i
       - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - echo "email = tyhou13@gmx.com" >> ~/.npmrc
-      - npm publish
+      - npm publish --tag latest
     when:
       - event: tag
