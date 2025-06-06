@@ -2770,7 +2770,12 @@ export class LemmyHttp extends Controller {
     }
 
     if (!response.ok) {
-      throw new Error(json["error"] ?? response.statusText);
+      let err: Error = {
+        name: json.error ?? response.statusText,
+        // Leave an empty error message if undefined
+        message: json.message ?? "",
+      };
+      throw err;
     } else {
       return json;
     }
