@@ -36,6 +36,7 @@ import {
   ListMediaI,
   ListPersonContentI,
   ListPersonHiddenI,
+  ListPersonLikedI,
   ListPersonReadI,
   ListPersonSavedI,
   ListPostLikesI,
@@ -216,6 +217,8 @@ import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
+import { ListPersonLiked } from "./types/ListPersonLiked";
+import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1966,6 +1969,24 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ListPersonHidden, ListPersonHiddenResponse>(
       HttpType.Get,
       "/account/hidden",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List your liked content.
+   */
+  @Security("bearerAuth")
+  @Get("/account/liked")
+  @Tags("Account")
+  async listPersonLiked(
+    @Queries() form: ListPersonLikedI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListPersonLiked, ListPersonLikedResponse>(
+      HttpType.Get,
+      "/account/liked",
       form,
       options,
     );

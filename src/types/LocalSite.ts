@@ -44,10 +44,6 @@ export type LocalSite = {
    */
   legal_information?: string;
   /**
-   * Whether to hide mod names on the modlog.
-   */
-  hide_modlog_mod_names: boolean;
-  /**
    * Whether new applications email admins.
    */
   application_email_admins: boolean;
