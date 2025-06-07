@@ -21,6 +21,7 @@ import { ListInbox } from "./types/ListInbox";
 import { ListMedia } from "./types/ListMedia";
 import { ListPersonContent } from "./types/ListPersonContent";
 import { ListPersonHidden } from "./types/ListPersonHidden";
+import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonRead } from "./types/ListPersonRead";
 import { ListPersonSaved } from "./types/ListPersonSaved";
 import { ListPostLikes } from "./types/ListPostLikes";
@@ -63,6 +64,7 @@ export interface ListInboxI extends ListInbox {}
 export interface ListPersonSavedI extends ListPersonSaved {}
 export interface ListPersonReadI extends ListPersonRead {}
 export interface ListPersonHiddenI extends ListPersonHidden {}
+export interface ListPersonLikedI extends ListPersonLiked {}
 export interface ListRegistrationApplicationsI
   extends ListRegistrationApplications {}
 export interface GetRegistrationApplicationI
