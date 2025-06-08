@@ -22,8 +22,8 @@ export type Community = {
    * Whether the community is removed by a mod.
    */
   removed: boolean;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   /**
    * Whether the community has been deleted by its creator.
    */

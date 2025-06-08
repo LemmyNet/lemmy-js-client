@@ -11,5 +11,5 @@ export type PersonCommentMention = {
   recipient_id: PersonId;
   comment_id: CommentId;
   read: boolean;
-  published: string;
+  published_at: string;
 };

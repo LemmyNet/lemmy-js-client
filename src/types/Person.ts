@@ -17,8 +17,8 @@ export type Person = {
    * A URL for an avatar.
    */
   avatar?: DbUrl;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   /**
    * The federated ap_id.
    */

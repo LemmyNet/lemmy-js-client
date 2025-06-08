@@ -7,6 +7,6 @@ import type { TaglineId } from "./TaglineId";
 export type Tagline = {
   id: TaglineId;
   content: string;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
 };

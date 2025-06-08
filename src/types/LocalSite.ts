@@ -67,8 +67,8 @@ export type LocalSite = {
    * The captcha difficulty.
    */
   captcha_difficulty: string;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   registration_mode: RegistrationMode;
   /**
    * Whether to email admins on new reports.
