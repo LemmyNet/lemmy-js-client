@@ -9,6 +9,5 @@ export type ModChangeCommunityVisibility = {
   community_id: CommunityId;
   mod_person_id: PersonId;
   published: string;
-  reason?: string;
   visibility: CommunityVisibility;
 };
