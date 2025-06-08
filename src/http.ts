@@ -219,6 +219,7 @@ import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
+import { ResolveObjectResponse } from "./types/ResolveObjectResponse";
 
 enum HttpType {
   Get = "GET",
@@ -562,7 +563,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ResolveObject, SearchResponse>(
+    return this.#wrapper<ResolveObject, ResolveObjectResponse>(
       HttpType.Get,
       "/resolve_object",
       form,
