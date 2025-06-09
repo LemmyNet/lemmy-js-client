@@ -36,6 +36,7 @@ import {
   ListMediaI,
   ListPersonContentI,
   ListPersonHiddenI,
+  ListPersonLikedI,
   ListPersonReadI,
   ListPersonSavedI,
   ListPostLikesI,
@@ -150,7 +151,6 @@ import { RemovePost } from "./types/RemovePost";
 import { ResolveCommentReport } from "./types/ResolveCommentReport";
 import { ResolveCommunityReport } from "./types/ResolveCommunityReport";
 import { ResolveObject } from "./types/ResolveObject";
-import { ResolveObjectResponse } from "./types/ResolveObjectResponse";
 import { ResolvePostReport } from "./types/ResolvePostReport";
 import { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport";
 import { SaveComment } from "./types/SaveComment";
@@ -217,6 +217,8 @@ import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
+import { ListPersonLiked } from "./types/ListPersonLiked";
+import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
 
 enum HttpType {
   Get = "GET",
@@ -534,7 +536,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Search lemmy.
+   * @summary Search lemmy. If `search_term` is a url it also attempts to fetch it, just like `resolve_object`.
    */
   @Security("bearerAuth")
   @Security({})
@@ -560,7 +562,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ResolveObject, ResolveObjectResponse>(
+    return this.#wrapper<ResolveObject, SearchResponse>(
       HttpType.Get,
       "/resolve_object",
       form,
@@ -1967,6 +1969,24 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ListPersonHidden, ListPersonHiddenResponse>(
       HttpType.Get,
       "/account/hidden",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List your liked content.
+   */
+  @Security("bearerAuth")
+  @Get("/account/liked")
+  @Tags("Account")
+  async listPersonLiked(
+    @Queries() form: ListPersonLikedI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListPersonLiked, ListPersonLikedResponse>(
+      HttpType.Get,
+      "/account/liked",
       form,
       options,
     );
