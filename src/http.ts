@@ -219,7 +219,6 @@ import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
-import { ResolveObjectResponse } from "./types/ResolveObjectResponse";
 
 enum HttpType {
   Get = "GET",
@@ -563,7 +562,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ResolveObject, ResolveObjectResponse>(
+    return this.#wrapper<ResolveObject, SearchResponse>(
       HttpType.Get,
       "/resolve_object",
       form,
@@ -2791,7 +2790,12 @@ export class LemmyHttp extends Controller {
     }
 
     if (!response.ok) {
-      throw new Error(json["error"] ?? response.statusText);
+      let err: Error = {
+        name: json.error ?? response.statusText,
+        // Leave an empty error message if undefined
+        message: json.message ?? "",
+      };
+      throw err;
     } else {
       return json;
     }
