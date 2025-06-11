@@ -10,7 +10,7 @@ popd
 
 # First re-generate the types by running cargo test on lemmy
 pushd ../lemmy
-cargo test --workspace export_bindings
+cargo test --workspace export_bindings --features ts-rs
 
 cd crates
 

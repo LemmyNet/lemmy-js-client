@@ -113,6 +113,7 @@ export { FederatedInstances } from "./types/FederatedInstances";
 export { FederationBlockList } from "./types/FederationBlockList";
 export { FederationError } from "./types/FederationError";
 export { FederationMode } from "./types/FederationMode";
+export { FederationQueueState } from "./types/FederationQueueState";
 export { FollowCommunity } from "./types/FollowCommunity";
 export { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 export { GetCaptchaResponse } from "./types/GetCaptchaResponse";
