@@ -11,5 +11,5 @@ export type AdminPurgeComment = {
   admin_person_id: PersonId;
   post_id: PostId;
   reason?: string;
-  published: string;
+  published_at: string;
 };

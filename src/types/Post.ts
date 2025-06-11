@@ -29,8 +29,8 @@ export type Post = {
    * Whether the post is locked.
    */
   locked: boolean;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   /**
    * Whether the post is deleted.
    */
@@ -80,7 +80,7 @@ export type Post = {
   /**
    * Time at which the post will be published. None means publish immediately.
    */
-  scheduled_publish_time?: string;
+  scheduled_publish_time_at?: string;
   comments: number;
   score: number;
   upvotes: number;
@@ -88,7 +88,7 @@ export type Post = {
   /**
    * The time of the newest comment in the post.
    */
-  newest_comment_time: string;
+  newest_comment_time_at: string;
   report_count: number;
   unresolved_report_count: number;
   /**

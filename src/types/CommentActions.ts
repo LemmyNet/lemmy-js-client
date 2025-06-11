@@ -8,9 +8,9 @@ export type CommentActions = {
   /**
    * When the comment was liked.
    */
-  liked?: string;
+  liked_at?: string;
   /**
    * When the comment was saved.
    */
-  saved?: string;
+  saved_at?: string;
 };

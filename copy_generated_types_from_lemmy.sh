@@ -5,7 +5,7 @@ rm -rf src/types/*
 
 # Remove the old bindings
 pushd ../lemmy/crates
-rm -rf **/bindings
+rm -rf */**/bindings
 popd
 
 # First re-generate the types by running cargo test on lemmy

@@ -11,5 +11,5 @@ export type PersonPostMention = {
   recipient_id: PersonId;
   post_id: PostId;
   read: boolean;
-  published: string;
+  published_at: string;
 };

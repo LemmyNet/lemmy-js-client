@@ -18,8 +18,8 @@ export type LocalSiteRateLimit = {
   comment_per_second: number;
   search: number;
   search_per_second: number;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   import_user_settings: number;
   import_user_settings_per_second: number;
 };

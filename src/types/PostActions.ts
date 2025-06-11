@@ -4,11 +4,11 @@ export type PostActions = {
   /**
    * When the post was read.
    */
-  read?: string;
+  read_at?: string;
   /**
    * When was the last time you read the comments.
    */
-  read_comments?: string;
+  read_comments_at?: string;
   /**
    * The number of comments you read last. Subtract this from total comments to get an unread
    * count.
@@ -17,11 +17,11 @@ export type PostActions = {
   /**
    * When the post was saved.
    */
-  saved?: string;
+  saved_at?: string;
   /**
    * When the post was liked.
    */
-  liked?: string;
+  liked_at?: string;
   /**
    * The like / score of the post.
    */
@@ -29,5 +29,5 @@ export type PostActions = {
   /**
    * When the post was hidden.
    */
-  hidden?: string;
+  hidden_at?: string;
 };

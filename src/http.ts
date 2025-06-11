@@ -214,8 +214,17 @@ import { ListPersonReadResponse } from "./types/ListPersonReadResponse";
 import { ListPersonHidden } from "./types/ListPersonHidden";
 import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
+import { CreateMultiCommunity } from "./types/CreateMultiCommunity";
+import { MultiCommunity } from "./types/MultiCommunity";
+import { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
+import { ListMultiCommunities } from "./types/ListMultiCommunities";
+import { ListMultiCommunitiesResponse } from "./types/ListMultiCommunitiesResponse";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
+import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCommunityEntry";
+import { GetMultiCommunity } from "./types/GetMultiCommunity";
+import { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
+import { FollowMultiCommunity } from "./types/FollowMultiCommunity";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
@@ -2710,14 +2719,109 @@ export class LemmyHttp extends Controller {
 
   /**
    * Mark donation dialog as shown, so it isn't displayed anymore.
-   *
-   * `HTTP.POST /user/donation_dialog_shown`
    */
-  donation_dialog_shown(@Inject() options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/user/donation_dialog_shown")
+  donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/donation_dialog_shown",
       {},
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Post("/multi_community")
+  createMultiCommunity(
+    @Body() form: CreateMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, MultiCommunity>(
+      HttpType.Post,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Put("/multi_community")
+  updateMultiCommunity(
+    @Body() form: UpdateMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Put,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Get("/multi_community")
+  getMultiCommunity(
+    @Body() form: GetMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, GetMultiCommunityResponse>(
+      HttpType.Get,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Post("/multi_community/entry")
+  createMultiCommunityEntry(
+    @Body() form: CreateOrDeleteMultiCommunityEntry,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/multi_community/entry",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Delete("/multi_community/entry")
+  deleteMultiCommunityEntry(
+    @Body() form: CreateOrDeleteMultiCommunityEntry,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/multi_community/entry",
+      form,
+      options,
+    );
+  }
+
+  @Get("/multi_community/list")
+  listMultiCommunities(
+    @Body() form: ListMultiCommunities,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, ListMultiCommunitiesResponse>(
+      HttpType.Get,
+      "/multi_community/list",
+      form,
+      options,
+    );
+  }
+
+  @Post("/multi_community/follow")
+  followMultiCommunity(
+    @Body() form: FollowMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/multi_community/follow",
+      form,
       options,
     );
   }
@@ -2786,15 +2890,11 @@ export class LemmyHttp extends Controller {
     try {
       json = await response.json();
     } catch {
-      throw new Error(response.statusText);
+      throw new LemmyError(response.statusText);
     }
 
     if (!response.ok) {
-      let err: Error = {
-        name: json.error ?? response.statusText,
-        // Leave an empty error message if undefined
-        message: json.message ?? "",
-      };
+      let err = new LemmyError(json.error ?? response.statusText, json.message);
       throw err;
     } else {
       return json;
@@ -2831,4 +2931,20 @@ function createFormData(image: File | Buffer): FormData {
   }
 
   return formData;
+}
+
+/**
+ * A Lemmy error type.
+ *
+ * The name is the i18n translatable error code.
+ * The msg is either an empty string, or extra non-translatable info.
+ */
+export class LemmyError extends Error {
+  constructor(name: string, msg?: string) {
+    super(msg ?? "");
+    this.name = name;
+
+    // Set the prototype explicitly.
+    Object.setPrototypeOf(this, LemmyError.prototype);
+  }
 }

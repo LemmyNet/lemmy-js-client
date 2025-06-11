@@ -3,6 +3,6 @@
 export type LocalSiteUrlBlocklist = {
   id: number;
   url: string;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
 };

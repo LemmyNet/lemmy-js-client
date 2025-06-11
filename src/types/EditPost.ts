@@ -27,6 +27,6 @@ export type EditPost = {
   /**
    * Time when this post should be scheduled. Null means publish immediately.
    */
-  scheduled_publish_time?: number;
+  scheduled_publish_time_at?: number;
   tags?: Array<TagId>;
 };

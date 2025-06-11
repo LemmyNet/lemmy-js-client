@@ -3,6 +3,8 @@ import type { CommentSortType } from "./CommentSortType";
 import type { FederationMode } from "./FederationMode";
 import type { ListingType } from "./ListingType";
 import type { LocalSiteId } from "./LocalSiteId";
+import type { MultiCommunityId } from "./MultiCommunityId";
+import type { PersonId } from "./PersonId";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { RegistrationMode } from "./RegistrationMode";
@@ -67,8 +69,8 @@ export type LocalSite = {
    * The captcha difficulty.
    */
   captcha_difficulty: string;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   registration_mode: RegistrationMode;
   /**
    * Whether to email admins on new reports.
@@ -143,4 +145,6 @@ export type LocalSite = {
    * Dont send email notifications to users for new replies, mentions etc
    */
   disable_email_notifications: boolean;
+  suggested_communities?: MultiCommunityId;
+  multi_comm_follower: PersonId;
 };

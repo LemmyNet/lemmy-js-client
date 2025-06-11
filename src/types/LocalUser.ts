@@ -91,7 +91,7 @@ export type LocalUser = {
    * The last time a donation request was shown to this user. If this is more than a year ago,
    * a new notification request should be shown.
    */
-  last_donation_notification: string;
+  last_donation_notification_at: string;
   /**
    * Whether to hide posts containing images/videos
    */

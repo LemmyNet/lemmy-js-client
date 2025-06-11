@@ -9,5 +9,5 @@ export type AdminPurgeCommunity = {
   id: AdminPurgeCommunityId;
   admin_person_id: PersonId;
   reason?: string;
-  published: string;
+  published_at: string;
 };

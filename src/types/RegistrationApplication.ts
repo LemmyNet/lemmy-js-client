@@ -12,5 +12,5 @@ export type RegistrationApplication = {
   answer: string;
   admin_id?: PersonId;
   deny_reason?: string;
-  published: string;
+  published_at: string;
 };
