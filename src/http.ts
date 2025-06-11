@@ -21,6 +21,7 @@ import {
   GetCommunityI,
   GetCommunityPendingFollowsCountI,
   GetModlogI,
+  GetMultiCommunityI,
   GetPersonDetailsI,
   GetPostI,
   GetPostsI,
@@ -34,6 +35,7 @@ import {
   ListCustomEmojisI,
   ListInboxI,
   ListMediaI,
+  ListMultiCommunitiesI,
   ListPersonContentI,
   ListPersonHiddenI,
   ListPersonLikedI,
@@ -217,12 +219,10 @@ import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { CreateMultiCommunity } from "./types/CreateMultiCommunity";
 import { MultiCommunity } from "./types/MultiCommunity";
 import { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
-import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { ListMultiCommunitiesResponse } from "./types/ListMultiCommunitiesResponse";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCommunityEntry";
-import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
 import { FollowMultiCommunity } from "./types/FollowMultiCommunity";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
@@ -2761,7 +2761,7 @@ export class LemmyHttp extends Controller {
 
   @Get("/multi_community")
   getMultiCommunity(
-    @Body() form: GetMultiCommunity,
+    @Queries() form: GetMultiCommunityI,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<object, GetMultiCommunityResponse>(
@@ -2802,7 +2802,7 @@ export class LemmyHttp extends Controller {
 
   @Get("/multi_community/list")
   listMultiCommunities(
-    @Body() form: ListMultiCommunities,
+    @Queries() form: ListMultiCommunitiesI,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<object, ListMultiCommunitiesResponse>(
