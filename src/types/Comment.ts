@@ -17,8 +17,8 @@ export type Comment = {
    * Whether the comment has been removed.
    */
   removed: boolean;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   /**
    * Whether the comment has been deleted by its creator.
    */

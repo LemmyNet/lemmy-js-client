@@ -25,7 +25,7 @@ export type Tag = {
    * the community that owns this tag
    */
   community_id: CommunityId;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   deleted: boolean;
 };

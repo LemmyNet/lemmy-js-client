@@ -11,6 +11,6 @@ export type CustomEmoji = {
   image_url: DbUrl;
   alt_text: string;
   category: string;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
 };

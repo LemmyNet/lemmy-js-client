@@ -17,6 +17,6 @@ export type PrivateMessageReport = {
   reason: string;
   resolved: boolean;
   resolver_id?: PersonId;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
 };

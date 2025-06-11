@@ -11,5 +11,5 @@ export type AdminPurgePost = {
   admin_person_id: PersonId;
   community_id: CommunityId;
   reason?: string;
-  published: string;
+  published_at: string;
 };

@@ -56,8 +56,8 @@ export type OAuthProvider = {
    * switch to enable or disable an oauth provider
    */
   enabled: boolean;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   /**
    * switch to enable or disable PKCE
    */

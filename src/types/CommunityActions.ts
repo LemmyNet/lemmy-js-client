@@ -5,7 +5,7 @@ export type CommunityActions = {
   /**
    * When the community was followed.
    */
-  followed?: string;
+  followed_at?: string;
   /**
    * The state of the community follow.
    */
@@ -13,17 +13,17 @@ export type CommunityActions = {
   /**
    * When the community was blocked.
    */
-  blocked?: string;
+  blocked_at?: string;
   /**
    * When this user became a moderator.
    */
-  became_moderator?: string;
+  became_moderator_at?: string;
   /**
    * When this user received a ban.
    */
-  received_ban?: string;
+  received_ban_at?: string;
   /**
    * When their ban expires.
    */
-  ban_expires?: string;
+  ban_expires_at?: string;
 };
