@@ -36,6 +36,7 @@ import {
   ListMediaI,
   ListPersonContentI,
   ListPersonHiddenI,
+  ListPersonLikedI,
   ListPersonReadI,
   ListPersonSavedI,
   ListPostLikesI,
@@ -150,7 +151,6 @@ import { RemovePost } from "./types/RemovePost";
 import { ResolveCommentReport } from "./types/ResolveCommentReport";
 import { ResolveCommunityReport } from "./types/ResolveCommunityReport";
 import { ResolveObject } from "./types/ResolveObject";
-import { ResolveObjectResponse } from "./types/ResolveObjectResponse";
 import { ResolvePostReport } from "./types/ResolvePostReport";
 import { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport";
 import { SaveComment } from "./types/SaveComment";
@@ -167,7 +167,6 @@ import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { UpdateTotp } from "./types/UpdateTotp";
 import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 import { SuccessResponse } from "./types/SuccessResponse";
-import { LoginToken } from "./types/LoginToken";
 import { ListPostLikes } from "./types/ListPostLikes";
 import { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 import { ListCommentLikes } from "./types/ListCommentLikes";
@@ -226,6 +225,9 @@ import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCo
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
 import { FollowMultiCommunity } from "./types/FollowMultiCommunity";
+import { ListLoginsResponse } from "./types/ListLoginsResponse";
+import { ListPersonLiked } from "./types/ListPersonLiked";
+import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
 
 enum HttpType {
   Get = "GET",
@@ -405,7 +407,7 @@ export class LemmyHttp extends Controller {
   @Get("/account/list_logins")
   @Tags("Account")
   async listLogins(@Inject() options?: RequestOptions) {
-    return this.#wrapper<object, LoginToken[]>(
+    return this.#wrapper<object, ListLoginsResponse>(
       HttpType.Get,
       "/account/list_logins",
       {},
@@ -543,7 +545,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Search lemmy.
+   * @summary Search lemmy. If `search_term` is a url it also attempts to fetch it, just like `resolve_object`.
    */
   @Security("bearerAuth")
   @Security({})
@@ -569,7 +571,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ResolveObject, ResolveObjectResponse>(
+    return this.#wrapper<ResolveObject, SearchResponse>(
       HttpType.Get,
       "/resolve_object",
       form,
@@ -998,7 +1000,7 @@ export class LemmyHttp extends Controller {
     @Body() form: MarkPostAsRead,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<MarkPostAsRead, SuccessResponse>(
+    return this.#wrapper<MarkPostAsRead, PostResponse>(
       HttpType.Post,
       "/post/mark_as_read",
       form,
@@ -1982,6 +1984,24 @@ export class LemmyHttp extends Controller {
   }
 
   /**
+   * @summary List your liked content.
+   */
+  @Security("bearerAuth")
+  @Get("/account/liked")
+  @Tags("Account")
+  async listPersonLiked(
+    @Queries() form: ListPersonLikedI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListPersonLiked, ListPersonLikedResponse>(
+      HttpType.Get,
+      "/account/liked",
+      form,
+      options,
+    );
+  }
+
+  /**
    * @summary Add an admin to your site.
    */
   @Security("bearerAuth")
@@ -2870,11 +2890,12 @@ export class LemmyHttp extends Controller {
     try {
       json = await response.json();
     } catch {
-      throw new Error(response.statusText);
+      throw new LemmyError(response.statusText);
     }
 
     if (!response.ok) {
-      throw new Error(json["error"] ?? response.statusText);
+      let err = new LemmyError(json.error ?? response.statusText, json.message);
+      throw err;
     } else {
       return json;
     }
@@ -2910,4 +2931,20 @@ function createFormData(image: File | Buffer): FormData {
   }
 
   return formData;
+}
+
+/**
+ * A Lemmy error type.
+ *
+ * The name is the i18n translatable error code.
+ * The msg is either an empty string, or extra non-translatable info.
+ */
+export class LemmyError extends Error {
+  constructor(name: string, msg?: string) {
+    super(msg ?? "");
+    this.name = name;
+
+    // Set the prototype explicitly.
+    Object.setPrototypeOf(this, LemmyError.prototype);
+  }
 }

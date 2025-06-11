@@ -14,8 +14,8 @@ export type Site = {
    * A sidebar for the site in markdown.
    */
   sidebar?: string;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   /**
    * An icon URL.
    */

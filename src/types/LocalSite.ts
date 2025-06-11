@@ -45,10 +45,6 @@ export type LocalSite = {
    */
   legal_information?: string;
   /**
-   * Whether to hide mod names on the modlog.
-   */
-  hide_modlog_mod_names: boolean;
-  /**
    * Whether new applications email admins.
    */
   application_email_admins: boolean;
@@ -72,8 +68,8 @@ export type LocalSite = {
    * The captcha difficulty.
    */
   captcha_difficulty: string;
-  published: string;
-  updated?: string;
+  published_at: string;
+  updated_at?: string;
   registration_mode: RegistrationMode;
   /**
    * Whether to email admins on new reports.

@@ -4,10 +4,4 @@ import type { SiteView } from "./SiteView";
 /**
  * The response for a site.
  */
-export type SiteResponse = {
-  site_view: SiteView;
-  /**
-   * deprecated, use field `tagline` or /api/v4/tagline/list
-   */
-  taglines: Array<null>;
-};
+export type SiteResponse = { site_view: SiteView };

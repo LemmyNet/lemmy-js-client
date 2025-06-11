@@ -70,10 +70,6 @@ export type EditSite = {
    */
   application_email_admins?: boolean;
   /**
-   * Whether to hide moderator names from the modlog.
-   */
-  hide_modlog_mod_names?: boolean;
-  /**
    * A list of allowed discussion languages.
    */
   discussion_languages?: Array<LanguageId>;

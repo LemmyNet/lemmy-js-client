@@ -11,6 +11,6 @@ export type ModLockPost = {
   mod_person_id: PersonId;
   post_id: PostId;
   locked: boolean;
-  published: string;
+  published_at: string;
   reason?: string;
 };

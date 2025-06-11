@@ -20,8 +20,6 @@ export type GetPosts = {
   community_id?: CommunityId;
   community_name?: string;
   multi_community_id?: MultiCommunityId;
-  liked_only?: boolean;
-  disliked_only?: boolean;
   show_hidden?: boolean;
   /**
    * If true, then show the read posts (even if your user setting is to hide them)
