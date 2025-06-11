@@ -4,5 +4,5 @@ export type PersonActions = {
   /**
    * When the person was blocked.
    */
-  blocked?: string;
+  blocked_at?: string;
 };

@@ -309,7 +309,6 @@ export { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 export { ResolveCommentReport } from "./types/ResolveCommentReport";
 export { ResolveCommunityReport } from "./types/ResolveCommunityReport";
 export { ResolveObject } from "./types/ResolveObject";
-export { ResolveObjectResponse } from "./types/ResolveObjectResponse";
 export { ResolvePostReport } from "./types/ResolvePostReport";
 export { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport";
 export { SaveComment } from "./types/SaveComment";

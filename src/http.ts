@@ -2786,15 +2786,11 @@ export class LemmyHttp extends Controller {
     try {
       json = await response.json();
     } catch {
-      throw new Error(response.statusText);
+      throw new LemmyError(response.statusText);
     }
 
     if (!response.ok) {
-      let err: Error = {
-        name: json.error ?? response.statusText,
-        // Leave an empty error message if undefined
-        message: json.message ?? "",
-      };
+      let err = new LemmyError(json.error ?? response.statusText, json.message);
       throw err;
     } else {
       return json;
@@ -2831,4 +2827,20 @@ function createFormData(image: File | Buffer): FormData {
   }
 
   return formData;
+}
+
+/**
+ * A Lemmy error type.
+ *
+ * The name is the i18n translatable error code.
+ * The msg is either an empty string, or extra non-translatable info.
+ */
+export class LemmyError extends Error {
+  constructor(name: string, msg?: string) {
+    super(msg ?? "");
+    this.name = name;
+
+    // Set the prototype explicitly.
+    Object.setPrototypeOf(this, LemmyError.prototype);
+  }
 }

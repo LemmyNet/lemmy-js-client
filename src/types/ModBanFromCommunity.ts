@@ -13,6 +13,6 @@ export type ModBanFromCommunity = {
   community_id: CommunityId;
   reason?: string;
   banned: boolean;
-  expires?: string;
-  published: string;
+  expires_at?: string;
+  published_at: string;
 };
