@@ -10,7 +10,7 @@ import type { SearchType } from "./SearchType";
  * Searches the site, given a search term, and some optional filters.
  */
 export type Search = {
-  search_term?: string;
+  q: string;
   community_id?: CommunityId;
   community_name?: string;
   creator_id?: PersonId;
