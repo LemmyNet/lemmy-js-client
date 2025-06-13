@@ -193,7 +193,6 @@ import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows
 import { ListReports } from "./types/ListReports";
 import { ListReportsResponse } from "./types/ListReportsResponse";
 import { MyUserInfo } from "./types/MyUserInfo";
-import { UserBlockInstanceParams } from "./types/UserBlockInstanceParams";
 import { AdminAllowInstanceParams } from "./types/AdminAllowInstanceParams";
 import { AdminBlockInstanceParams } from "./types/AdminBlockInstanceParams";
 import { ListPersonContent } from "./types/ListPersonContent";
@@ -219,6 +218,9 @@ import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
+import { NotePerson } from "./types/NotePerson";
+import { UserBlockInstanceCommunitiesParams } from "./types/UserBlockInstanceCommunitiesParams";
+import { UserBlockInstancePersonsParams } from "./types/UserBlockInstancePersonsParams";
 
 enum HttpType {
   Get = "GET",
@@ -1630,6 +1632,24 @@ export class LemmyHttp extends Controller {
   }
 
   /**
+   * @summary Make a note for a person.
+   */
+  @Security("bearerAuth")
+  @Post("/person/note")
+  @Tags("Person")
+  async notePerson(
+    @Body() form: NotePerson,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<NotePerson, SuccessResponse>(
+      HttpType.Post,
+      "/person/note",
+      form,
+      options,
+    );
+  }
+
+  /**
    * @summary Mark a person mention as read.
    */
   @Security("bearerAuth")
@@ -2446,18 +2466,36 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Block an instance as user.
+   * @summary Block an instance's communities as a user.
    */
   @Security("bearerAuth")
-  @Post("/account/block/instance")
-  @Tags("Account")
-  async userBlockInstance(
-    @Body() form: UserBlockInstanceParams,
+  @Post("/account/block/instance/communities")
+  @Tags("Account", "Community")
+  async userBlockInstanceCommunities(
+    @Body() form: UserBlockInstanceCommunitiesParams,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<UserBlockInstanceParams, SuccessResponse>(
+    return this.#wrapper<UserBlockInstanceCommunitiesParams, SuccessResponse>(
       HttpType.Post,
-      "/account/block/instance",
+      "/account/block/instance/communities",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Block an instance's persons as a user.
+   */
+  @Security("bearerAuth")
+  @Post("/account/block/instance/persons")
+  @Tags("Account", "Person")
+  async userBlockInstancePersons(
+    @Body() form: UserBlockInstancePersonsParams,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UserBlockInstancePersonsParams, SuccessResponse>(
+      HttpType.Post,
+      "/account/block/instance/persons",
       form,
       options,
     );
