@@ -10,6 +10,7 @@ export type LemmyErrorType =
   | { error: "not_a_moderator" }
   | { error: "not_an_admin" }
   | { error: "cant_block_yourself" }
+  | { error: "cant_note_yourself" }
   | { error: "cant_block_admin" }
   | { error: "couldnt_update_user" }
   | { error: "passwords_do_not_match" }

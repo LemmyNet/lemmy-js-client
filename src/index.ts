@@ -254,6 +254,7 @@ export { ModlogCombinedView } from "./types/ModlogCombinedView";
 export { MultiCommunity } from "./types/MultiCommunity";
 export { MultiCommunityFollow } from "./types/MultiCommunityFollow";
 export { MultiCommunityId } from "./types/MultiCommunityId";
+export { MultiCommunityView } from "./types/MultiCommunityView";
 export { MyUserInfo } from "./types/MyUserInfo";
 export { OAuthAccount } from "./types/OAuthAccount";
 export { OAuthProvider } from "./types/OAuthProvider";

@@ -217,7 +217,6 @@ import { ListPersonHidden } from "./types/ListPersonHidden";
 import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { CreateMultiCommunity } from "./types/CreateMultiCommunity";
-import { MultiCommunity } from "./types/MultiCommunity";
 import { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
 import { ListMultiCommunitiesResponse } from "./types/ListMultiCommunitiesResponse";
 import { AdminListUsers } from "./types/AdminListUsers";
@@ -2737,7 +2736,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, MultiCommunity>(
+    return this.#wrapper<object, GetMultiCommunityResponse>(
       HttpType.Post,
       "/multi_community",
       form,
