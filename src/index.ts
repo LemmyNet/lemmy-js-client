@@ -245,6 +245,7 @@ export { ModTransferCommunityView } from "./types/ModTransferCommunityView";
 export { ModlogActionType } from "./types/ModlogActionType";
 export { ModlogCombinedView } from "./types/ModlogCombinedView";
 export { MyUserInfo } from "./types/MyUserInfo";
+export { NotePerson } from "./types/NotePerson";
 export { OAuthAccount } from "./types/OAuthAccount";
 export { OAuthProvider } from "./types/OAuthProvider";
 export { OAuthProviderId } from "./types/OAuthProviderId";
