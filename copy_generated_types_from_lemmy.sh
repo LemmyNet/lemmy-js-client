@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Remove the old types
 rm -rf src/types/*
@@ -10,6 +11,7 @@ popd
 
 # First re-generate the types by running cargo test on lemmy
 pushd ../lemmy
+./scripts/ts_bindings_check.sh
 cargo test --workspace export_bindings --features ts-rs
 
 cd crates
@@ -20,10 +22,10 @@ find . -type f -name "*.ts" -exec cp {} ../../lemmy-js-client/src/types/ \;
 popd
 
 # Remove the Sensitive type
-rm src/types/Sensitive.ts
+rm src/types/Sensitive.ts || true
 
 # Remove the federation queue state since it gets flattened and isnt used.
-rm src/types/FederationQueueState.ts
+rm src/types/FederationQueueState.ts || true
 
 # Change all the bigints to numbers
 find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
