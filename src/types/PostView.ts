@@ -20,7 +20,8 @@ export type PostView = {
   community_actions?: CommunityActions;
   person_actions?: PersonActions;
   post_actions?: PostActions;
-  instance_actions?: InstanceActions;
+  instance_communities_actions?: InstanceActions;
+  instance_persons_actions?: InstanceActions;
   creator_home_instance_actions?: InstanceActions;
   creator_local_instance_actions?: InstanceActions;
   creator_community_actions?: CommunityActions;

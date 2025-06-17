@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+CWD="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+
+cd "$CWD/../"
+
 # Remove the old types
 rm -rf src/types/*
 
@@ -10,11 +14,9 @@ rm -rf */**/bindings
 popd
 
 # First re-generate the types by running cargo test on lemmy
-pushd ../lemmy
-./scripts/ts_bindings_check.sh
-cargo test --workspace export_bindings --features ts-rs
+./scripts/ts_bindings_export.sh
 
-cd crates
+pushd ../lemmy/crates
 
 # Copy them over to the types folder
 find . -type f -name "*.ts" -exec cp {} ../../lemmy-js-client/src/types/ \;
