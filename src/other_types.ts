@@ -6,6 +6,7 @@ import { GetComments } from "./types/GetComments";
 import { GetCommunity } from "./types/GetCommunity";
 import { GetCommunityPendingFollowsCount } from "./types/GetCommunityPendingFollowsCount";
 import { GetModlog } from "./types/GetModlog";
+import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { GetPersonDetails } from "./types/GetPersonDetails";
 import { GetPost } from "./types/GetPost";
 import { GetPosts } from "./types/GetPosts";
@@ -19,6 +20,7 @@ import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows
 import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListInbox } from "./types/ListInbox";
 import { ListMedia } from "./types/ListMedia";
+import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { ListPersonContent } from "./types/ListPersonContent";
 import { ListPersonHidden } from "./types/ListPersonHidden";
 import { ListPersonLiked } from "./types/ListPersonLiked";
@@ -75,3 +77,5 @@ export interface ListReportsI extends ListReports {}
 export interface DeleteImageParamsI extends DeleteImageParams {}
 export interface AdminListUsersI extends AdminListUsers {}
 export interface CommunityIdQueryI extends CommunityIdQuery {}
+export interface ListMultiCommunitiesI extends ListMultiCommunities {}
+export interface GetMultiCommunityI extends GetMultiCommunity {}
