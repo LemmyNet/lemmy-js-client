@@ -21,6 +21,7 @@ import {
   GetCommunityI,
   GetCommunityPendingFollowsCountI,
   GetModlogI,
+  GetMultiCommunityI,
   GetPersonDetailsI,
   GetPostI,
   GetPostsI,
@@ -34,6 +35,7 @@ import {
   ListCustomEmojisI,
   ListInboxI,
   ListMediaI,
+  ListMultiCommunitiesI,
   ListPersonContentI,
   ListPersonHiddenI,
   ListPersonLikedI,
@@ -213,8 +215,14 @@ import { ListPersonReadResponse } from "./types/ListPersonReadResponse";
 import { ListPersonHidden } from "./types/ListPersonHidden";
 import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
+import { CreateMultiCommunity } from "./types/CreateMultiCommunity";
+import { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
+import { ListMultiCommunitiesResponse } from "./types/ListMultiCommunitiesResponse";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
+import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCommunityEntry";
+import { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
+import { FollowMultiCommunity } from "./types/FollowMultiCommunity";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
@@ -2748,14 +2756,109 @@ export class LemmyHttp extends Controller {
 
   /**
    * Mark donation dialog as shown, so it isn't displayed anymore.
-   *
-   * `HTTP.POST /user/donation_dialog_shown`
    */
-  donation_dialog_shown(@Inject() options?: RequestOptions) {
+  @Security("bearerAuth")
+  @Post("/user/donation_dialog_shown")
+  donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/donation_dialog_shown",
       {},
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Post("/multi_community")
+  createMultiCommunity(
+    @Body() form: CreateMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, GetMultiCommunityResponse>(
+      HttpType.Post,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Put("/multi_community")
+  updateMultiCommunity(
+    @Body() form: UpdateMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Put,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Get("/multi_community")
+  getMultiCommunity(
+    @Queries() form: GetMultiCommunityI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, GetMultiCommunityResponse>(
+      HttpType.Get,
+      "/multi_community",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Post("/multi_community/entry")
+  createMultiCommunityEntry(
+    @Body() form: CreateOrDeleteMultiCommunityEntry,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/multi_community/entry",
+      form,
+      options,
+    );
+  }
+
+  @Security("bearerAuth")
+  @Delete("/multi_community/entry")
+  deleteMultiCommunityEntry(
+    @Body() form: CreateOrDeleteMultiCommunityEntry,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Delete,
+      "/multi_community/entry",
+      form,
+      options,
+    );
+  }
+
+  @Get("/multi_community/list")
+  listMultiCommunities(
+    @Queries() form: ListMultiCommunitiesI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, ListMultiCommunitiesResponse>(
+      HttpType.Get,
+      "/multi_community/list",
+      form,
+      options,
+    );
+  }
+
+  @Post("/multi_community/follow")
+  followMultiCommunity(
+    @Body() form: FollowMultiCommunity,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<object, SuccessResponse>(
+      HttpType.Post,
+      "/multi_community/follow",
+      form,
       options,
     );
   }
