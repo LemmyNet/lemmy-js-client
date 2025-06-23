@@ -68,7 +68,6 @@ export type LemmyErrorType =
   | { error: "no_email_setup" }
   | { error: "local_site_not_setup" }
   | { error: "invalid_email_address"; message: string }
-  | { error: "rate_limit_error" }
   | { error: "invalid_name" }
   | { error: "invalid_code_verifier" }
   | { error: "invalid_display_name" }
@@ -120,8 +119,8 @@ export type LemmyErrorType =
   | { error: "invalid_url_scheme" }
   | { error: "couldnt_send_webmention" }
   | { error: "contradicting_filters" }
-  | { error: "instance_block_communities_already_exists" }
-  | { error: "instance_block_persons_already_exists" }
+  | { error: "instance_communities_block_error" }
+  | { error: "instance_persons_block_error" }
   | { error: "too_many_items" }
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }

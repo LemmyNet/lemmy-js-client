@@ -22,11 +22,10 @@ export type PostView = {
   post_actions?: PostActions;
   instance_communities_actions?: InstanceActions;
   instance_persons_actions?: InstanceActions;
-  creator_home_instance_actions?: InstanceActions;
-  creator_local_instance_actions?: InstanceActions;
-  creator_community_actions?: CommunityActions;
   creator_is_admin: boolean;
   tags: TagsView;
   can_mod: boolean;
   creator_banned: boolean;
+  creator_is_moderator: boolean;
+  creator_banned_from_community: boolean;
 };

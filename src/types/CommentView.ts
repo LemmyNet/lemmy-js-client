@@ -22,11 +22,10 @@ export type CommentView = {
   person_actions?: PersonActions;
   instance_communities_actions?: InstanceActions;
   instance_persons_actions?: InstanceActions;
-  creator_home_instance_actions?: InstanceActions;
-  creator_local_instance_actions?: InstanceActions;
-  creator_community_actions?: CommunityActions;
   creator_is_admin: boolean;
   post_tags: TagsView;
   can_mod: boolean;
   creator_banned: boolean;
+  creator_is_moderator: boolean;
+  creator_banned_from_community: boolean;
 };

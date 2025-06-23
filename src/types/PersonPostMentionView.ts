@@ -24,11 +24,10 @@ export type PersonPostMentionView = {
   person_actions?: PersonActions;
   post_actions?: PostActions;
   instance_actions?: InstanceActions;
-  creator_home_instance_actions?: InstanceActions;
-  creator_local_instance_actions?: InstanceActions;
-  creator_community_actions?: CommunityActions;
   post_tags: TagsView;
   creator_is_admin: boolean;
   can_mod: boolean;
   creator_banned: boolean;
+  creator_is_moderator: boolean;
+  creator_banned_from_community: boolean;
 };
