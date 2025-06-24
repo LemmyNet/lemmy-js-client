@@ -14,7 +14,10 @@ rm -rf */**/bindings
 popd
 
 # First re-generate the types by running cargo test on lemmy
-./scripts/ts_bindings_export.sh
+pushd ../lemmy
+pwd
+../lemmy-js-client/scripts/ts_bindings_check.sh
+cargo test --workspace export_bindings --features ts-rs
 
 pushd ../lemmy/crates
 
