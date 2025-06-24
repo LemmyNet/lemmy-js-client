@@ -11,7 +11,8 @@ popd
 
 # First re-generate the types by running cargo test on lemmy
 pushd ../lemmy
-./scripts/ts_bindings_check.sh
+pwd
+../lemmy-js-client/scripts/ts_bindings_check.sh
 cargo test --workspace export_bindings --features ts-rs
 
 cd crates
