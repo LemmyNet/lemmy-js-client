@@ -20,7 +20,8 @@ export type CommentView = {
   community_actions?: CommunityActions;
   comment_actions?: CommentActions;
   person_actions?: PersonActions;
-  instance_actions?: InstanceActions;
+  instance_communities_actions?: InstanceActions;
+  instance_persons_actions?: InstanceActions;
   creator_is_admin: boolean;
   post_tags: TagsView;
   can_mod: boolean;
