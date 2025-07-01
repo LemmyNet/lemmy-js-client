@@ -84,33 +84,38 @@ export type EditSite = {
   /**
    * The number of messages allowed in a given time frame.
    */
-  rate_limit_message?: number;
-  rate_limit_message_per_second?: number;
+  rate_limit_message_max_requests?: number;
+  rate_limit_message_interval_seconds?: number;
   /**
    * The number of posts allowed in a given time frame.
    */
-  rate_limit_post?: number;
-  rate_limit_post_per_second?: number;
+  rate_limit_post_max_requests?: number;
+  rate_limit_post_interval_seconds?: number;
   /**
    * The number of registrations allowed in a given time frame.
    */
-  rate_limit_register?: number;
-  rate_limit_register_per_second?: number;
+  rate_limit_register_max_requests?: number;
+  rate_limit_register_interval_seconds?: number;
   /**
    * The number of image uploads allowed in a given time frame.
    */
-  rate_limit_image?: number;
-  rate_limit_image_per_second?: number;
+  rate_limit_image_max_requests?: number;
+  rate_limit_image_interval_seconds?: number;
   /**
    * The number of comments allowed in a given time frame.
    */
-  rate_limit_comment?: number;
-  rate_limit_comment_per_second?: number;
+  rate_limit_comment_max_requests?: number;
+  rate_limit_comment_interval_seconds?: number;
   /**
    * The number of searches allowed in a given time frame.
    */
-  rate_limit_search?: number;
-  rate_limit_search_per_second?: number;
+  rate_limit_search_max_requests?: number;
+  rate_limit_search_interval_seconds?: number;
+  /**
+   * The number of settings imports or exports allowed in a given time frame.
+   */
+  rate_limit_import_user_settings_max_requests?: number;
+  rate_limit_import_user_settings_interval_seconds?: number;
   /**
    * Whether to enable federation.
    */
