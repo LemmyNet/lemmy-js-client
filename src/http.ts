@@ -132,7 +132,6 @@ import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationAp
 import { LockPost } from "./types/LockPost";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
-import { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
 import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
@@ -206,8 +205,6 @@ import { DeleteImageParams } from "./types/DeleteImageParams";
 import { UploadImageResponse } from "./types/UploadImageResponse";
 import { ListInboxResponse } from "./types/ListInboxResponse";
 import { ListInbox } from "./types/ListInbox";
-import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
-import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
@@ -227,6 +224,7 @@ import { FollowMultiCommunity } from "./types/FollowMultiCommunity";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
+import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 
 enum HttpType {
   Get = "GET",
@@ -1270,24 +1268,6 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Mark a comment as read.
-   */
-  @Security("bearerAuth")
-  @Post("/comment/mark_as_read")
-  @Tags("Comment")
-  async markCommentReplyAsRead(
-    @Body() form: MarkCommentReplyAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkCommentReplyAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/comment/mark_as_read",
-      form,
-      options,
-    );
-  }
-
-  /**
    * @summary Like / vote on a comment.
    */
   @Security("bearerAuth")
@@ -1638,42 +1618,6 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Mark a person mention as read.
-   */
-  @Security("bearerAuth")
-  @Post("/account/mention/comment/mark_as_read")
-  @Tags("Account", "Person")
-  async markCommentMentionAsRead(
-    @Body() form: MarkPersonCommentMentionAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkPersonCommentMentionAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/account/mention/comment/mark_as_read",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Mark a person post body mention as read.
-   */
-  @Security("bearerAuth")
-  @Post("/account/mention/post/mark_as_read")
-  @Tags("Account", "Post")
-  async markPostMentionAsRead(
-    @Body() form: MarkPersonPostMentionAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkPersonPostMentionAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/account/mention/post/mark_as_read",
-      form,
-      options,
-    );
-  }
-
-  /**
    * @summary Ban a person from your site.
    */
   @Security("bearerAuth")
@@ -1803,6 +1747,24 @@ export class LemmyHttp extends Controller {
       HttpType.Post,
       "/account/mark_as_read/all",
       {},
+      options,
+    );
+  }
+
+  /**
+   * @summary Mark a comment as read.
+   */
+  @Security("bearerAuth")
+  @Post("/account/mark_as_read")
+  @Tags("Account")
+  async markNotificationAsRead(
+    @Body() form: MarkNotificationAsRead,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<MarkNotificationAsRead, SuccessResponse>(
+      HttpType.Post,
+      "/account/mark_as_read",
+      form,
       options,
     );
   }
