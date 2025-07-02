@@ -2721,6 +2721,7 @@ export class LemmyHttp extends Controller {
    */
   @Security("bearerAuth")
   @Post("/user/donation_dialog_shown")
+  @Tags("Miscellaneous")
   donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
@@ -2732,6 +2733,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Post("/multi_community")
+  @Tags("Multicommunity")
   createMultiCommunity(
     @Body() form: CreateMultiCommunity,
     @Inject() options?: RequestOptions,
@@ -2746,6 +2748,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Put("/multi_community")
+  @Tags("Multicommunity")
   updateMultiCommunity(
     @Body() form: UpdateMultiCommunity,
     @Inject() options?: RequestOptions,
@@ -2759,6 +2762,7 @@ export class LemmyHttp extends Controller {
   }
 
   @Get("/multi_community")
+  @Tags("Multicommunity")
   getMultiCommunity(
     @Queries() form: GetMultiCommunityI,
     @Inject() options?: RequestOptions,
@@ -2773,6 +2777,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Post("/multi_community/entry")
+  @Tags("Multicommunity")
   createMultiCommunityEntry(
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
@@ -2787,6 +2792,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Delete("/multi_community/entry")
+  @Tags("Multicommunity")
   deleteMultiCommunityEntry(
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
@@ -2800,6 +2806,7 @@ export class LemmyHttp extends Controller {
   }
 
   @Get("/multi_community/list")
+  @Tags("Multicommunity")
   listMultiCommunities(
     @Queries() form: ListMultiCommunitiesI,
     @Inject() options?: RequestOptions,
@@ -2813,6 +2820,7 @@ export class LemmyHttp extends Controller {
   }
 
   @Post("/multi_community/follow")
+  @Tags("Multicommunity")
   followMultiCommunity(
     @Body() form: FollowMultiCommunity,
     @Inject() options?: RequestOptions,
