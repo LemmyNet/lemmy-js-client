@@ -11,5 +11,5 @@ export type ListPersonLiked = {
   like_type?: LikeType;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: number;
+  limit?: bigint;
 };

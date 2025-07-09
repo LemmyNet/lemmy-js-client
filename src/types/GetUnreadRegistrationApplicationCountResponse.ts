@@ -4,5 +4,5 @@
  * The count of unread registration applications.
  */
 export type GetUnreadRegistrationApplicationCountResponse = {
-  registration_applications: number;
+  registration_applications: bigint;
 };

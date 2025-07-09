@@ -42,5 +42,5 @@ export type GetModlog = {
   comment_id?: CommentId;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: number;
+  limit?: bigint;
 };

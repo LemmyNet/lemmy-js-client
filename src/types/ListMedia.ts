@@ -7,5 +7,5 @@ import type { PaginationCursor } from "./PaginationCursor";
 export type ListMedia = {
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: number;
+  limit?: bigint;
 };

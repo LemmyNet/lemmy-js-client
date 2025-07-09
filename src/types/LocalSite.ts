@@ -121,26 +121,26 @@ export type LocalSite = {
    * Block NSFW content being created
    */
   disallow_nsfw_content: boolean;
-  users: number;
-  posts: number;
-  comments: number;
-  communities: number;
+  users: bigint;
+  posts: bigint;
+  comments: bigint;
+  communities: bigint;
   /**
    * The number of users with any activity in the last day.
    */
-  users_active_day: number;
+  users_active_day: bigint;
   /**
    * The number of users with any activity in the last week.
    */
-  users_active_week: number;
+  users_active_week: bigint;
   /**
    * The number of users with any activity in the last month.
    */
-  users_active_month: number;
+  users_active_month: bigint;
   /**
    * The number of users with any activity in the last half year.
    */
-  users_active_half_year: number;
+  users_active_half_year: bigint;
   /**
    * Dont send email notifications to users for new replies, mentions etc
    */

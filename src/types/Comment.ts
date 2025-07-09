@@ -41,9 +41,9 @@ export type Comment = {
    */
   distinguished: boolean;
   language_id: LanguageId;
-  score: number;
-  upvotes: number;
-  downvotes: number;
+  score: bigint;
+  upvotes: bigint;
+  downvotes: bigint;
   /**
    * The total number of children in this comment branch.
    */

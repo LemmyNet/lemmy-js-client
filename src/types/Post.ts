@@ -81,10 +81,10 @@ export type Post = {
    * Time at which the post will be published. None means publish immediately.
    */
   scheduled_publish_time_at?: string;
-  comments: number;
-  score: number;
-  upvotes: number;
-  downvotes: number;
+  comments: bigint;
+  score: bigint;
+  upvotes: bigint;
+  downvotes: bigint;
   /**
    * The time of the newest comment in the post.
    */

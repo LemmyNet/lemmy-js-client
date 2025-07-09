@@ -20,5 +20,5 @@ export type BanFromCommunity = {
    *
    * An i64 unix timestamp is used for a simpler API client implementation.
    */
-  expires_at?: number;
+  expires_at?: bigint;
 };

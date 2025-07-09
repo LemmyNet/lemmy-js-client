@@ -13,7 +13,7 @@ export type PostActions = {
    * The number of comments you read last. Subtract this from total comments to get an unread
    * count.
    */
-  read_comments_amount?: number;
+  read_comments_amount?: bigint;
   /**
    * When the post was saved.
    */

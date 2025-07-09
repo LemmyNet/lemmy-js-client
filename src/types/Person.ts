@@ -48,6 +48,6 @@ export type Person = {
    */
   bot_account: boolean;
   instance_id: InstanceId;
-  post_count: number;
-  comment_count: number;
+  post_count: bigint;
+  comment_count: bigint;
 };

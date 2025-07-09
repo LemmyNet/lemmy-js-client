@@ -9,5 +9,5 @@ export type ListCommunityPendingFollows = {
   all_communities?: boolean;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: number;
+  limit?: bigint;
 };

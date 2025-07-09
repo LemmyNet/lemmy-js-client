@@ -32,5 +32,5 @@ export type Search = {
   show_nsfw?: boolean;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: number;
+  limit?: bigint;
 };
