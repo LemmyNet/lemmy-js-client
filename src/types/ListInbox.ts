@@ -10,5 +10,5 @@ export type ListInbox = {
   unread_only?: boolean;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: bigint;
+  limit?: number;
 };

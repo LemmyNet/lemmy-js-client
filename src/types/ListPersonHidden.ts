@@ -7,5 +7,5 @@ import type { PaginationCursor } from "./PaginationCursor";
 export type ListPersonHidden = {
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: bigint;
+  limit?: number;
 };

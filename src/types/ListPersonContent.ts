@@ -17,5 +17,5 @@ export type ListPersonContent = {
   username?: string;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: bigint;
+  limit?: number;
 };

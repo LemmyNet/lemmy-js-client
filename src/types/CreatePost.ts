@@ -32,5 +32,5 @@ export type CreatePost = {
   /**
    * Time when this post should be scheduled. Null means publish immediately.
    */
-  scheduled_publish_time_at?: bigint;
+  scheduled_publish_time_at?: number;
 };

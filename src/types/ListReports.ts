@@ -26,7 +26,7 @@ export type ListReports = {
   community_id?: CommunityId;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: bigint;
+  limit?: number;
   /**
    * Only for admins: also show reports with `violates_instance_rules=false`
    */

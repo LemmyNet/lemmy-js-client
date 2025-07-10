@@ -9,5 +9,5 @@ export type ListCommentLikes = {
   comment_id: CommentId;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: bigint;
+  limit?: number;
 };

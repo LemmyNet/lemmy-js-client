@@ -20,7 +20,7 @@ export type GetComments = {
   max_depth?: number;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
-  limit?: bigint;
+  limit?: number;
   community_id?: CommunityId;
   community_name?: string;
   post_id?: PostId;
