@@ -1842,7 +1842,7 @@ export class LemmyHttp extends Controller {
    * @summary Get your inbox (replies, comment mentions, post mentions, and messages)
    */
   @Security("bearerAuth")
-  @Get("/account/inbox")
+  @Get("/account/notifications")
   @Tags("Account")
   async listNotifications(
     @Queries() form: ListNotificationsI,
@@ -1850,7 +1850,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<ListNotifications, ListNotificationsResponse>(
       HttpType.Get,
-      "/account/inbox",
+      "/account/notifications",
       form,
       options,
     );
