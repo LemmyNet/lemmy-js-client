@@ -8,5 +8,6 @@ export type NotificationView = {
   id: NotificationId;
   kind: NotificationTypes;
   recipient_id: PersonId;
+  published_at: string;
   data: NotificationData;
 };
