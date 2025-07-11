@@ -33,7 +33,7 @@ import {
   ListCommunitiesI,
   ListCommunityPendingFollowsI,
   ListCustomEmojisI,
-  ListInboxI,
+  ListNotificationsI,
   ListMediaI,
   ListMultiCommunitiesI,
   ListPersonContentI,
@@ -203,8 +203,6 @@ import { ListPersonSaved } from "./types/ListPersonSaved";
 import { ListPersonSavedResponse } from "./types/ListPersonSavedResponse";
 import { DeleteImageParams } from "./types/DeleteImageParams";
 import { UploadImageResponse } from "./types/UploadImageResponse";
-import { ListInboxResponse } from "./types/ListInboxResponse";
-import { ListInbox } from "./types/ListInbox";
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
@@ -225,6 +223,8 @@ import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
 import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
 import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
+import { ListNotifications } from "./types/ListNotifications";
+import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
 
 enum HttpType {
   Get = "GET",
@@ -1844,11 +1844,11 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/inbox")
   @Tags("Account")
-  async listInbox(
-    @Queries() form: ListInboxI,
+  async listNotifications(
+    @Queries() form: ListNotificationsI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListInbox, ListInboxResponse>(
+    return this.#wrapper<ListNotifications, ListNotificationsResponse>(
       HttpType.Get,
       "/account/inbox",
       form,

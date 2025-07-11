@@ -3,7 +3,7 @@ import type { PostId } from "./PostId";
 import type { PostNotificationsMode } from "./PostNotificationsMode";
 
 /**
- * Disable reply notifications for a post and all comments inside it
+ * Change notification settings for a post
  */
 export type UpdatePostNotifications = {
   post_id: PostId;

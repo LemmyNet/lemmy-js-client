@@ -5,8 +5,8 @@ import type { PaginationCursor } from "./PaginationCursor";
 /**
  * Get your inbox (replies, comment mentions, post mentions, and messages)
  */
-export type ListInboxResponse = {
-  inbox: Array<NotificationView>;
+export type ListNotificationsResponse = {
+  notifications: Array<NotificationView>;
   /**
    * the pagination cursor to use to fetch the next page
    */

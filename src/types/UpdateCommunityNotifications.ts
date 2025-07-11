@@ -3,7 +3,7 @@ import type { CommunityId } from "./CommunityId";
 import type { CommunityNotificationsMode } from "./CommunityNotificationsMode";
 
 /**
- * Disable reply notifications for a post and all comments inside it
+ * Change notification settings for a community
  */
 export type UpdateCommunityNotifications = {
   community_id: CommunityId;
