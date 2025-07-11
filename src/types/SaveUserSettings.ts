@@ -128,4 +128,8 @@ export type SaveUserSettings = {
    * Whether to hide posts containing images/videos.
    */
   hide_media?: boolean;
+  /**
+   * Whether to show vote totals given to others.
+   */
+  show_person_votes?: boolean;
 };
