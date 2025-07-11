@@ -68,7 +68,6 @@ export type LemmyErrorType =
   | { error: "no_email_setup" }
   | { error: "local_site_not_setup" }
   | { error: "invalid_email_address"; message: string }
-  | { error: "rate_limit_error" }
   | { error: "invalid_name" }
   | { error: "invalid_code_verifier" }
   | { error: "invalid_display_name" }
