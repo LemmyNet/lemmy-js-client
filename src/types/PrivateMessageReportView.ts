@@ -12,4 +12,6 @@ export type PrivateMessageReportView = {
   creator: Person;
   private_message_creator: Person;
   resolver?: Person;
+  creator_is_admin: boolean;
+  creator_banned: boolean;
 };

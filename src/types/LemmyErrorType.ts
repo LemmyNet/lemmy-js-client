@@ -97,10 +97,8 @@ export type LemmyErrorType =
   | { error: "couldnt_update_read_comments" }
   | { error: "couldnt_hide_post" }
   | { error: "couldnt_update_community" }
-  | { error: "couldnt_create_person_comment_mention" }
-  | { error: "couldnt_update_person_comment_mention" }
-  | { error: "couldnt_create_person_post_mention" }
-  | { error: "couldnt_update_person_post_mention" }
+  | { error: "couldnt_create_notification" }
+  | { error: "couldnt_update_notification" }
   | { error: "couldnt_create_post" }
   | { error: "couldnt_create_private_message" }
   | { error: "couldnt_update_private_message" }
@@ -143,9 +141,6 @@ export type LemmyErrorType =
   | { error: "couldnt_parse_pagination_token" }
   | { error: "plugin_error"; message: string }
   | { error: "invalid_fetch_limit" }
-  | { error: "couldnt_create_comment_reply" }
-  | { error: "couldnt_update_comment_reply" }
-  | { error: "couldnt_mark_comment_reply_as_read" }
   | { error: "couldnt_create_emoji" }
   | { error: "couldnt_update_emoji" }
   | { error: "couldnt_create_person" }
