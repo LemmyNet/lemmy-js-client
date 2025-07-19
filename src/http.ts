@@ -147,6 +147,8 @@ enum HttpType {
   Put = "PUT",
 }
 
+type RequestOptions = Pick<RequestInit, "signal">;
+
 /**
  * Helps build lemmy HTTP requests.
  */
@@ -154,7 +156,7 @@ export class LemmyHttp {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
   #pictrsUrl: string;
-  #fetchFunction = fetch.bind(globalThis);
+  #fetchFunction: typeof fetch = fetch.bind(globalThis);
 
   /**
    * Generates a new instance of LemmyHttp.
@@ -184,8 +186,13 @@ export class LemmyHttp {
    *
    * `HTTP.GET /site`
    */
-  getSite() {
-    return this.#wrapper<object, GetSiteResponse>(HttpType.Get, "/site", {});
+  getSite(options?: RequestOptions) {
+    return this.#wrapper<object, GetSiteResponse>(
+      HttpType.Get,
+      "/site",
+      {},
+      options,
+    );
   }
 
   /**
@@ -193,11 +200,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /site`
    */
-  createSite(form: CreateSite) {
+  createSite(form: CreateSite, options?: RequestOptions) {
     return this.#wrapper<CreateSite, SiteResponse>(
       HttpType.Post,
       "/site",
       form,
+      options,
     );
   }
 
@@ -206,8 +214,13 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /site`
    */
-  editSite(form: EditSite) {
-    return this.#wrapper<EditSite, SiteResponse>(HttpType.Put, "/site", form);
+  editSite(form: EditSite, options?: RequestOptions) {
+    return this.#wrapper<EditSite, SiteResponse>(
+      HttpType.Put,
+      "/site",
+      form,
+      options,
+    );
   }
 
   /**
@@ -215,11 +228,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/leave_admin`
    */
-  leaveAdmin() {
+  leaveAdmin(options?: RequestOptions) {
     return this.#wrapper<object, GetSiteResponse>(
       HttpType.Post,
       "/user/leave_admin",
       {},
+      options,
     );
   }
 
@@ -230,11 +244,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/totp/generate`
    */
-  generateTotpSecret() {
+  generateTotpSecret(options?: RequestOptions) {
     return this.#wrapper<object, GenerateTotpSecretResponse>(
       HttpType.Post,
       "/user/totp/generate",
       {},
+      options,
     );
   }
 
@@ -244,11 +259,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/export_settings`
    */
-  exportSettings() {
+  exportSettings(options?: RequestOptions) {
     return this.#wrapper<object, string>(
       HttpType.Get,
       "/user/export_settings",
       {},
+      options,
     );
   }
 
@@ -257,11 +273,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/import_settings`
    */
-  importSettings(form: any) {
+  importSettings(form: any, options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/import_settings",
       form,
+      options,
     );
   }
 
@@ -270,11 +287,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/list_logins`
    */
-  listLogins() {
+  listLogins(options?: RequestOptions) {
     return this.#wrapper<object, LoginToken[]>(
       HttpType.Get,
       "/user/list_logins",
       {},
+      options,
     );
   }
 
@@ -283,11 +301,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/validate_auth`
    */
-  validateAuth() {
+  validateAuth(options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Get,
       "/user/validate_auth",
       {},
+      options,
     );
   }
 
@@ -296,11 +315,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /account/list_media`
    */
-  listMedia(form: ListMedia = {}) {
+  listMedia(form: ListMedia = {}, options?: RequestOptions) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
       "/account/list_media",
       form,
+      options,
     );
   }
 
@@ -309,11 +329,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /admin/list_all_media`
    */
-  listAllMedia(form: ListMedia = {}) {
+  listAllMedia(form: ListMedia = {}, options?: RequestOptions) {
     return this.#wrapper<ListMedia, ListMediaResponse>(
       HttpType.Get,
       "/admin/list_all_media",
       form,
+      options,
     );
   }
 
@@ -326,11 +347,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/totp/update`
    */
-  updateTotp(form: UpdateTotp) {
+  updateTotp(form: UpdateTotp, options?: RequestOptions) {
     return this.#wrapper<UpdateTotp, UpdateTotpResponse>(
       HttpType.Post,
       "/user/totp/update",
       form,
+      options,
     );
   }
 
@@ -339,11 +361,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /modlog`
    */
-  getModlog(form: GetModlog = {}) {
+  getModlog(form: GetModlog = {}, options?: RequestOptions) {
     return this.#wrapper<GetModlog, GetModlogResponse>(
       HttpType.Get,
       "/modlog",
       form,
+      options,
     );
   }
 
@@ -352,8 +375,13 @@ export class LemmyHttp {
    *
    * `HTTP.GET /search`
    */
-  search(form: Search) {
-    return this.#wrapper<Search, SearchResponse>(HttpType.Get, "/search", form);
+  search(form: Search, options?: RequestOptions) {
+    return this.#wrapper<Search, SearchResponse>(
+      HttpType.Get,
+      "/search",
+      form,
+      options,
+    );
   }
 
   /**
@@ -361,11 +389,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /resolve_object`
    */
-  resolveObject(form: ResolveObject) {
+  resolveObject(form: ResolveObject, options?: RequestOptions) {
     return this.#wrapper<ResolveObject, ResolveObjectResponse>(
       HttpType.Get,
       "/resolve_object",
       form,
+      options,
     );
   }
 
@@ -374,11 +403,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community`
    */
-  createCommunity(form: CreateCommunity) {
+  createCommunity(form: CreateCommunity, options?: RequestOptions) {
     return this.#wrapper<CreateCommunity, CommunityResponse>(
       HttpType.Post,
       "/community",
       form,
+      options,
     );
   }
 
@@ -387,11 +417,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /community`
    */
-  getCommunity(form: GetCommunity = {}) {
+  getCommunity(form: GetCommunity = {}, options?: RequestOptions) {
     return this.#wrapper<GetCommunity, GetCommunityResponse>(
       HttpType.Get,
       "/community",
       form,
+      options,
     );
   }
 
@@ -400,11 +431,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /community`
    */
-  editCommunity(form: EditCommunity) {
+  editCommunity(form: EditCommunity, options?: RequestOptions) {
     return this.#wrapper<EditCommunity, CommunityResponse>(
       HttpType.Put,
       "/community",
       form,
+      options,
     );
   }
 
@@ -413,11 +445,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /community/list`
    */
-  listCommunities(form: ListCommunities = {}) {
+  listCommunities(form: ListCommunities = {}, options?: RequestOptions) {
     return this.#wrapper<ListCommunities, ListCommunitiesResponse>(
       HttpType.Get,
       "/community/list",
       form,
+      options,
     );
   }
 
@@ -426,11 +459,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community/follow`
    */
-  followCommunity(form: FollowCommunity) {
+  followCommunity(form: FollowCommunity, options?: RequestOptions) {
     return this.#wrapper<FollowCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/follow",
       form,
+      options,
     );
   }
 
@@ -439,11 +473,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community/block`
    */
-  blockCommunity(form: BlockCommunity) {
+  blockCommunity(form: BlockCommunity, options?: RequestOptions) {
     return this.#wrapper<BlockCommunity, BlockCommunityResponse>(
       HttpType.Post,
       "/community/block",
       form,
+      options,
     );
   }
 
@@ -452,11 +487,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community/delete`
    */
-  deleteCommunity(form: DeleteCommunity) {
+  deleteCommunity(form: DeleteCommunity, options?: RequestOptions) {
     return this.#wrapper<DeleteCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/delete",
       form,
+      options,
     );
   }
 
@@ -465,11 +501,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /community/hide`
    */
-  hideCommunity(form: HideCommunity) {
+  hideCommunity(form: HideCommunity, options?: RequestOptions) {
     return this.#wrapper<HideCommunity, SuccessResponse>(
       HttpType.Put,
       "/community/hide",
       form,
+      options,
     );
   }
 
@@ -478,11 +515,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community/remove`
    */
-  removeCommunity(form: RemoveCommunity) {
+  removeCommunity(form: RemoveCommunity, options?: RequestOptions) {
     return this.#wrapper<RemoveCommunity, CommunityResponse>(
       HttpType.Post,
       "/community/remove",
       form,
+      options,
     );
   }
 
@@ -491,11 +529,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community/transfer`
    */
-  transferCommunity(form: TransferCommunity) {
+  transferCommunity(form: TransferCommunity, options?: RequestOptions) {
     return this.#wrapper<TransferCommunity, GetCommunityResponse>(
       HttpType.Post,
       "/community/transfer",
       form,
+      options,
     );
   }
 
@@ -504,11 +543,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community/ban_user`
    */
-  banFromCommunity(form: BanFromCommunity) {
+  banFromCommunity(form: BanFromCommunity, options?: RequestOptions) {
     return this.#wrapper<BanFromCommunity, BanFromCommunityResponse>(
       HttpType.Post,
       "/community/ban_user",
       form,
+      options,
     );
   }
 
@@ -517,11 +557,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /community/mod`
    */
-  addModToCommunity(form: AddModToCommunity) {
+  addModToCommunity(form: AddModToCommunity, options?: RequestOptions) {
     return this.#wrapper<AddModToCommunity, AddModToCommunityResponse>(
       HttpType.Post,
       "/community/mod",
       form,
+      options,
     );
   }
 
@@ -530,11 +571,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post`
    */
-  createPost(form: CreatePost) {
+  createPost(form: CreatePost, options?: RequestOptions) {
     return this.#wrapper<CreatePost, PostResponse>(
       HttpType.Post,
       "/post",
       form,
+      options,
     );
   }
 
@@ -543,8 +585,13 @@ export class LemmyHttp {
    *
    * `HTTP.GET /post`
    */
-  getPost(form: GetPost = {}) {
-    return this.#wrapper<GetPost, GetPostResponse>(HttpType.Get, "/post", form);
+  getPost(form: GetPost = {}, options?: RequestOptions) {
+    return this.#wrapper<GetPost, GetPostResponse>(
+      HttpType.Get,
+      "/post",
+      form,
+      options,
+    );
   }
 
   /**
@@ -552,8 +599,13 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /post`
    */
-  editPost(form: EditPost) {
-    return this.#wrapper<EditPost, PostResponse>(HttpType.Put, "/post", form);
+  editPost(form: EditPost, options?: RequestOptions) {
+    return this.#wrapper<EditPost, PostResponse>(
+      HttpType.Put,
+      "/post",
+      form,
+      options,
+    );
   }
 
   /**
@@ -561,11 +613,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/delete`
    */
-  deletePost(form: DeletePost) {
+  deletePost(form: DeletePost, options?: RequestOptions) {
     return this.#wrapper<DeletePost, PostResponse>(
       HttpType.Post,
       "/post/delete",
       form,
+      options,
     );
   }
 
@@ -574,11 +627,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/remove`
    */
-  removePost(form: RemovePost) {
+  removePost(form: RemovePost, options?: RequestOptions) {
     return this.#wrapper<RemovePost, PostResponse>(
       HttpType.Post,
       "/post/remove",
       form,
+      options,
     );
   }
 
@@ -587,11 +641,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/mark_as_read`
    */
-  markPostAsRead(form: MarkPostAsRead) {
+  markPostAsRead(form: MarkPostAsRead, options?: RequestOptions) {
     return this.#wrapper<MarkPostAsRead, SuccessResponse>(
       HttpType.Post,
       "/post/mark_as_read",
       form,
+      options,
     );
   }
 
@@ -600,11 +655,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/hide`
    */
-  hidePost(form: HidePost) {
+  hidePost(form: HidePost, options?: RequestOptions) {
     return this.#wrapper<HidePost, SuccessResponse>(
       HttpType.Post,
       "/post/hide",
       form,
+      options,
     );
   }
 
@@ -613,11 +669,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/lock`
    */
-  lockPost(form: LockPost) {
+  lockPost(form: LockPost, options?: RequestOptions) {
     return this.#wrapper<LockPost, PostResponse>(
       HttpType.Post,
       "/post/lock",
       form,
+      options,
     );
   }
 
@@ -626,11 +683,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/feature`
    */
-  featurePost(form: FeaturePost) {
+  featurePost(form: FeaturePost, options?: RequestOptions) {
     return this.#wrapper<FeaturePost, PostResponse>(
       HttpType.Post,
       "/post/feature",
       form,
+      options,
     );
   }
 
@@ -639,11 +697,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /post/list`
    */
-  getPosts(form: GetPosts = {}) {
+  getPosts(form: GetPosts = {}, options?: RequestOptions) {
     return this.#wrapper<GetPosts, GetPostsResponse>(
       HttpType.Get,
       "/post/list",
       form,
+      options,
     );
   }
 
@@ -652,11 +711,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/like`
    */
-  likePost(form: CreatePostLike) {
+  likePost(form: CreatePostLike, options?: RequestOptions) {
     return this.#wrapper<CreatePostLike, PostResponse>(
       HttpType.Post,
       "/post/like",
       form,
+      options,
     );
   }
 
@@ -665,11 +725,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /post/like/list`
    */
-  listPostLikes(form: ListPostLikes) {
+  listPostLikes(form: ListPostLikes, options?: RequestOptions) {
     return this.#wrapper<ListPostLikes, ListPostLikesResponse>(
       HttpType.Get,
       "/post/like/list",
       form,
+      options,
     );
   }
 
@@ -678,11 +739,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /post/save`
    */
-  savePost(form: SavePost) {
+  savePost(form: SavePost, options?: RequestOptions) {
     return this.#wrapper<SavePost, PostResponse>(
       HttpType.Put,
       "/post/save",
       form,
+      options,
     );
   }
 
@@ -691,11 +753,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /post/report`
    */
-  createPostReport(form: CreatePostReport) {
+  createPostReport(form: CreatePostReport, options?: RequestOptions) {
     return this.#wrapper<CreatePostReport, PostReportResponse>(
       HttpType.Post,
       "/post/report",
       form,
+      options,
     );
   }
 
@@ -704,11 +767,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /post/report/resolve`
    */
-  resolvePostReport(form: ResolvePostReport) {
+  resolvePostReport(form: ResolvePostReport, options?: RequestOptions) {
     return this.#wrapper<ResolvePostReport, PostReportResponse>(
       HttpType.Put,
       "/post/report/resolve",
       form,
+      options,
     );
   }
 
@@ -717,11 +781,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /post/report/list`
    */
-  listPostReports(form: ListPostReports) {
+  listPostReports(form: ListPostReports, options?: RequestOptions) {
     return this.#wrapper<ListPostReports, ListPostReportsResponse>(
       HttpType.Get,
       "/post/report/list",
       form,
+      options,
     );
   }
 
@@ -730,11 +795,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /post/site_metadata`
    */
-  getSiteMetadata(form: GetSiteMetadata) {
+  getSiteMetadata(form: GetSiteMetadata, options?: RequestOptions) {
     return this.#wrapper<GetSiteMetadata, GetSiteMetadataResponse>(
       HttpType.Get,
       "/post/site_metadata",
       form,
+      options,
     );
   }
 
@@ -743,11 +809,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment`
    */
-  createComment(form: CreateComment) {
+  createComment(form: CreateComment, options?: RequestOptions) {
     return this.#wrapper<CreateComment, CommentResponse>(
       HttpType.Post,
       "/comment",
       form,
+      options,
     );
   }
 
@@ -756,11 +823,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /comment`
    */
-  editComment(form: EditComment) {
+  editComment(form: EditComment, options?: RequestOptions) {
     return this.#wrapper<EditComment, CommentResponse>(
       HttpType.Put,
       "/comment",
       form,
+      options,
     );
   }
 
@@ -769,11 +837,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/delete`
    */
-  deleteComment(form: DeleteComment) {
+  deleteComment(form: DeleteComment, options?: RequestOptions) {
     return this.#wrapper<DeleteComment, CommentResponse>(
       HttpType.Post,
       "/comment/delete",
       form,
+      options,
     );
   }
 
@@ -782,11 +851,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/remove`
    */
-  removeComment(form: RemoveComment) {
+  removeComment(form: RemoveComment, options?: RequestOptions) {
     return this.#wrapper<RemoveComment, CommentResponse>(
       HttpType.Post,
       "/comment/remove",
       form,
+      options,
     );
   }
 
@@ -795,11 +865,15 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/mark_as_read`
    */
-  markCommentReplyAsRead(form: MarkCommentReplyAsRead) {
+  markCommentReplyAsRead(
+    form: MarkCommentReplyAsRead,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<MarkCommentReplyAsRead, CommentReplyResponse>(
       HttpType.Post,
       "/comment/mark_as_read",
       form,
+      options,
     );
   }
 
@@ -808,11 +882,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/like`
    */
-  likeComment(form: CreateCommentLike) {
+  likeComment(form: CreateCommentLike, options?: RequestOptions) {
     return this.#wrapper<CreateCommentLike, CommentResponse>(
       HttpType.Post,
       "/comment/like",
       form,
+      options,
     );
   }
 
@@ -821,11 +896,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /comment/like/list`
    */
-  listCommentLikes(form: ListCommentLikes) {
+  listCommentLikes(form: ListCommentLikes, options?: RequestOptions) {
     return this.#wrapper<ListCommentLikes, ListCommentLikesResponse>(
       HttpType.Get,
       "/comment/like/list",
       form,
+      options,
     );
   }
 
@@ -834,11 +910,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /comment/save`
    */
-  saveComment(form: SaveComment) {
+  saveComment(form: SaveComment, options?: RequestOptions) {
     return this.#wrapper<SaveComment, CommentResponse>(
       HttpType.Put,
       "/comment/save",
       form,
+      options,
     );
   }
 
@@ -847,11 +924,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/distinguish`
    */
-  distinguishComment(form: DistinguishComment) {
+  distinguishComment(form: DistinguishComment, options?: RequestOptions) {
     return this.#wrapper<DistinguishComment, CommentResponse>(
       HttpType.Post,
       "/comment/distinguish",
       form,
+      options,
     );
   }
 
@@ -860,11 +938,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /comment/list`
    */
-  getComments(form: GetComments = {}) {
+  getComments(form: GetComments = {}, options?: RequestOptions) {
     return this.#wrapper<GetComments, GetCommentsResponse>(
       HttpType.Get,
       "/comment/list",
       form,
+      options,
     );
   }
 
@@ -873,11 +952,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /comment`
    */
-  getComment(form: GetComment) {
+  getComment(form: GetComment, options?: RequestOptions) {
     return this.#wrapper<GetComment, CommentResponse>(
       HttpType.Get,
       "/comment",
       form,
+      options,
     );
   }
 
@@ -886,11 +966,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /comment/report`
    */
-  createCommentReport(form: CreateCommentReport) {
+  createCommentReport(form: CreateCommentReport, options?: RequestOptions) {
     return this.#wrapper<CreateCommentReport, CommentReportResponse>(
       HttpType.Post,
       "/comment/report",
       form,
+      options,
     );
   }
 
@@ -899,11 +980,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /comment/report/resolve`
    */
-  resolveCommentReport(form: ResolveCommentReport) {
+  resolveCommentReport(form: ResolveCommentReport, options?: RequestOptions) {
     return this.#wrapper<ResolveCommentReport, CommentReportResponse>(
       HttpType.Put,
       "/comment/report/resolve",
       form,
+      options,
     );
   }
 
@@ -912,11 +994,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /comment/report/list`
    */
-  listCommentReports(form: ListCommentReports) {
+  listCommentReports(form: ListCommentReports, options?: RequestOptions) {
     return this.#wrapper<ListCommentReports, ListCommentReportsResponse>(
       HttpType.Get,
       "/comment/report/list",
       form,
+      options,
     );
   }
 
@@ -925,11 +1008,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /private_message/list`
    */
-  getPrivateMessages(form: GetPrivateMessages) {
+  getPrivateMessages(form: GetPrivateMessages, options?: RequestOptions) {
     return this.#wrapper<GetPrivateMessages, PrivateMessagesResponse>(
       HttpType.Get,
       "/private_message/list",
       form,
+      options,
     );
   }
 
@@ -938,11 +1022,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /private_message`
    */
-  createPrivateMessage(form: CreatePrivateMessage) {
+  createPrivateMessage(form: CreatePrivateMessage, options?: RequestOptions) {
     return this.#wrapper<CreatePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message",
       form,
+      options,
     );
   }
 
@@ -951,11 +1036,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /private_message`
    */
-  editPrivateMessage(form: EditPrivateMessage) {
+  editPrivateMessage(form: EditPrivateMessage, options?: RequestOptions) {
     return this.#wrapper<EditPrivateMessage, PrivateMessageResponse>(
       HttpType.Put,
       "/private_message",
       form,
+      options,
     );
   }
 
@@ -964,11 +1050,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /private_message/delete`
    */
-  deletePrivateMessage(form: DeletePrivateMessage) {
+  deletePrivateMessage(form: DeletePrivateMessage, options?: RequestOptions) {
     return this.#wrapper<DeletePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/delete",
       form,
+      options,
     );
   }
 
@@ -977,11 +1064,15 @@ export class LemmyHttp {
    *
    * `HTTP.POST /private_message/mark_as_read`
    */
-  markPrivateMessageAsRead(form: MarkPrivateMessageAsRead) {
+  markPrivateMessageAsRead(
+    form: MarkPrivateMessageAsRead,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<MarkPrivateMessageAsRead, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/mark_as_read",
       form,
+      options,
     );
   }
 
@@ -990,11 +1081,14 @@ export class LemmyHttp {
    *
    * `HTTP.POST /private_message/report`
    */
-  createPrivateMessageReport(form: CreatePrivateMessageReport) {
+  createPrivateMessageReport(
+    form: CreatePrivateMessageReport,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<
       CreatePrivateMessageReport,
       PrivateMessageReportResponse
-    >(HttpType.Post, "/private_message/report", form);
+    >(HttpType.Post, "/private_message/report", form, options);
   }
 
   /**
@@ -1002,11 +1096,14 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /private_message/report/resolve`
    */
-  resolvePrivateMessageReport(form: ResolvePrivateMessageReport) {
+  resolvePrivateMessageReport(
+    form: ResolvePrivateMessageReport,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<
       ResolvePrivateMessageReport,
       PrivateMessageReportResponse
-    >(HttpType.Put, "/private_message/report/resolve", form);
+    >(HttpType.Put, "/private_message/report/resolve", form, options);
   }
 
   /**
@@ -1014,11 +1111,14 @@ export class LemmyHttp {
    *
    * `HTTP.GET /private_message/report/list`
    */
-  listPrivateMessageReports(form: ListPrivateMessageReports) {
+  listPrivateMessageReports(
+    form: ListPrivateMessageReports,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<
       ListPrivateMessageReports,
       ListPrivateMessageReportsResponse
-    >(HttpType.Get, "/private_message/report/list", form);
+    >(HttpType.Get, "/private_message/report/list", form, options);
   }
 
   /**
@@ -1026,11 +1126,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/register`
    */
-  register(form: Register) {
+  register(form: Register, options?: RequestOptions) {
     return this.#wrapper<Register, LoginResponse>(
       HttpType.Post,
       "/user/register",
       form,
+      options,
     );
   }
 
@@ -1039,11 +1140,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/login`
    */
-  login(form: Login) {
+  login(form: Login, options?: RequestOptions) {
     return this.#wrapper<Login, LoginResponse>(
       HttpType.Post,
       "/user/login",
       form,
+      options,
     );
   }
 
@@ -1052,11 +1154,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/logout`
    */
-  logout() {
+  logout(options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/logout",
       {},
+      options,
     );
   }
 
@@ -1065,11 +1168,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user`
    */
-  getPersonDetails(form: GetPersonDetails = {}) {
+  getPersonDetails(form: GetPersonDetails = {}, options?: RequestOptions) {
     return this.#wrapper<GetPersonDetails, GetPersonDetailsResponse>(
       HttpType.Get,
       "/user",
       form,
+      options,
     );
   }
 
@@ -1078,11 +1182,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/mention`
    */
-  getPersonMentions(form: GetPersonMentions) {
+  getPersonMentions(form: GetPersonMentions, options?: RequestOptions) {
     return this.#wrapper<GetPersonMentions, GetPersonMentionsResponse>(
       HttpType.Get,
       "/user/mention",
       form,
+      options,
     );
   }
 
@@ -1091,11 +1196,15 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/mention/mark_as_read`
    */
-  markPersonMentionAsRead(form: MarkPersonMentionAsRead) {
+  markPersonMentionAsRead(
+    form: MarkPersonMentionAsRead,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<MarkPersonMentionAsRead, PersonMentionResponse>(
       HttpType.Post,
       "/user/mention/mark_as_read",
       form,
+      options,
     );
   }
 
@@ -1104,11 +1213,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/replies`
    */
-  getReplies(form: GetReplies) {
+  getReplies(form: GetReplies, options?: RequestOptions) {
     return this.#wrapper<GetReplies, GetRepliesResponse>(
       HttpType.Get,
       "/user/replies",
       form,
+      options,
     );
   }
 
@@ -1117,11 +1227,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/ban`
    */
-  banPerson(form: BanPerson) {
+  banPerson(form: BanPerson, options?: RequestOptions) {
     return this.#wrapper<BanPerson, BanPersonResponse>(
       HttpType.Post,
       "/user/ban",
       form,
+      options,
     );
   }
 
@@ -1130,11 +1241,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/banned`
    */
-  getBannedPersons() {
+  getBannedPersons(options?: RequestOptions) {
     return this.#wrapper<object, BannedPersonsResponse>(
       HttpType.Get,
       "/user/banned",
       {},
+      options,
     );
   }
 
@@ -1143,11 +1255,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/block`
    */
-  blockPerson(form: BlockPerson) {
+  blockPerson(form: BlockPerson, options?: RequestOptions) {
     return this.#wrapper<BlockPerson, BlockPersonResponse>(
       HttpType.Post,
       "/user/block",
       form,
+      options,
     );
   }
 
@@ -1156,11 +1269,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/get_captcha`
    */
-  getCaptcha() {
+  getCaptcha(options?: RequestOptions) {
     return this.#wrapper<object, GetCaptchaResponse>(
       HttpType.Get,
       "/user/get_captcha",
       {},
+      options,
     );
   }
 
@@ -1169,11 +1283,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/delete_account`
    */
-  deleteAccount(form: DeleteAccount) {
+  deleteAccount(form: DeleteAccount, options?: RequestOptions) {
     return this.#wrapper<DeleteAccount, SuccessResponse>(
       HttpType.Post,
       "/user/delete_account",
       form,
+      options,
     );
   }
 
@@ -1182,11 +1297,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/password_reset`
    */
-  passwordReset(form: PasswordReset) {
+  passwordReset(form: PasswordReset, options?: RequestOptions) {
     return this.#wrapper<PasswordReset, SuccessResponse>(
       HttpType.Post,
       "/user/password_reset",
       form,
+      options,
     );
   }
 
@@ -1195,11 +1311,15 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/password_change`
    */
-  passwordChangeAfterReset(form: PasswordChangeAfterReset) {
+  passwordChangeAfterReset(
+    form: PasswordChangeAfterReset,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<PasswordChangeAfterReset, SuccessResponse>(
       HttpType.Post,
       "/user/password_change",
       form,
+      options,
     );
   }
 
@@ -1208,11 +1328,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/mark_all_as_read`
    */
-  markAllAsRead() {
+  markAllAsRead(options?: RequestOptions) {
     return this.#wrapper<object, GetRepliesResponse>(
       HttpType.Post,
       "/user/mark_all_as_read",
       {},
+      options,
     );
   }
 
@@ -1221,11 +1342,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /user/save_user_settings`
    */
-  saveUserSettings(form: SaveUserSettings) {
+  saveUserSettings(form: SaveUserSettings, options?: RequestOptions) {
     return this.#wrapper<SaveUserSettings, SuccessResponse>(
       HttpType.Put,
       "/user/save_user_settings",
       form,
+      options,
     );
   }
 
@@ -1234,11 +1356,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /user/change_password`
    */
-  changePassword(form: ChangePassword) {
+  changePassword(form: ChangePassword, options?: RequestOptions) {
     return this.#wrapper<ChangePassword, LoginResponse>(
       HttpType.Put,
       "/user/change_password",
       form,
+      options,
     );
   }
 
@@ -1247,11 +1370,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/report_count`
    */
-  getReportCount(form: GetReportCount) {
+  getReportCount(form: GetReportCount, options?: RequestOptions) {
     return this.#wrapper<GetReportCount, GetReportCountResponse>(
       HttpType.Get,
       "/user/report_count",
       form,
+      options,
     );
   }
 
@@ -1260,11 +1384,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /user/unread_count`
    */
-  getUnreadCount() {
+  getUnreadCount(options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadCountResponse>(
       HttpType.Get,
       "/user/unread_count",
       {},
+      options,
     );
   }
 
@@ -1273,11 +1398,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/verify_email`
    */
-  verifyEmail(form: VerifyEmail) {
+  verifyEmail(form: VerifyEmail, options?: RequestOptions) {
     return this.#wrapper<VerifyEmail, SuccessResponse>(
       HttpType.Post,
       "/user/verify_email",
       form,
+      options,
     );
   }
 
@@ -1286,11 +1412,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /admin/add`
    */
-  addAdmin(form: AddAdmin) {
+  addAdmin(form: AddAdmin, options?: RequestOptions) {
     return this.#wrapper<AddAdmin, AddAdminResponse>(
       HttpType.Post,
       "/admin/add",
       form,
+      options,
     );
   }
 
@@ -1299,11 +1426,12 @@ export class LemmyHttp {
    *
    * `HTTP.GET /admin/registration_application/count`
    */
-  getUnreadRegistrationApplicationCount() {
+  getUnreadRegistrationApplicationCount(options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadRegistrationApplicationCountResponse>(
       HttpType.Get,
       "/admin/registration_application/count",
       {},
+      options,
     );
   }
 
@@ -1312,11 +1440,14 @@ export class LemmyHttp {
    *
    * `HTTP.GET /admin/registration_application/list`
    */
-  listRegistrationApplications(form: ListRegistrationApplications) {
+  listRegistrationApplications(
+    form: ListRegistrationApplications,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<
       ListRegistrationApplications,
       ListRegistrationApplicationsResponse
-    >(HttpType.Get, "/admin/registration_application/list", form);
+    >(HttpType.Get, "/admin/registration_application/list", form, options);
   }
 
   /**
@@ -1324,11 +1455,14 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /admin/registration_application/approve`
    */
-  approveRegistrationApplication(form: ApproveRegistrationApplication) {
+  approveRegistrationApplication(
+    form: ApproveRegistrationApplication,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<
       ApproveRegistrationApplication,
       RegistrationApplicationResponse
-    >(HttpType.Put, "/admin/registration_application/approve", form);
+    >(HttpType.Put, "/admin/registration_application/approve", form, options);
   }
 
   /**
@@ -1336,11 +1470,14 @@ export class LemmyHttp {
    *
    * `HTTP.GET /admin/registration_application`
    */
-  getRegistrationApplication(form: GetRegistrationApplication) {
+  getRegistrationApplication(
+    form: GetRegistrationApplication,
+    options?: RequestOptions,
+  ) {
     return this.#wrapper<
       GetRegistrationApplication,
       RegistrationApplicationResponse
-    >(HttpType.Get, "/admin/registration_application", form);
+    >(HttpType.Get, "/admin/registration_application", form, options);
   }
 
   /**
@@ -1348,11 +1485,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /admin/purge/person`
    */
-  purgePerson(form: PurgePerson) {
+  purgePerson(form: PurgePerson, options?: RequestOptions) {
     return this.#wrapper<PurgePerson, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/person",
       form,
+      options,
     );
   }
 
@@ -1361,11 +1499,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /admin/purge/community`
    */
-  purgeCommunity(form: PurgeCommunity) {
+  purgeCommunity(form: PurgeCommunity, options?: RequestOptions) {
     return this.#wrapper<PurgeCommunity, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/community",
       form,
+      options,
     );
   }
 
@@ -1374,11 +1513,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /admin/purge/post`
    */
-  purgePost(form: PurgePost) {
+  purgePost(form: PurgePost, options?: RequestOptions) {
     return this.#wrapper<PurgePost, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/post",
       form,
+      options,
     );
   }
 
@@ -1387,11 +1527,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /admin/purge/comment`
    */
-  purgeComment(form: PurgeComment) {
+  purgeComment(form: PurgeComment, options?: RequestOptions) {
     return this.#wrapper<PurgeComment, SuccessResponse>(
       HttpType.Post,
       "/admin/purge/comment",
       form,
+      options,
     );
   }
 
@@ -1400,11 +1541,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /custom_emoji`
    */
-  createCustomEmoji(form: CreateCustomEmoji) {
+  createCustomEmoji(form: CreateCustomEmoji, options?: RequestOptions) {
     return this.#wrapper<CreateCustomEmoji, CustomEmojiResponse>(
       HttpType.Post,
       "/custom_emoji",
       form,
+      options,
     );
   }
 
@@ -1413,11 +1555,12 @@ export class LemmyHttp {
    *
    * `HTTP.PUT /custom_emoji`
    */
-  editCustomEmoji(form: EditCustomEmoji) {
+  editCustomEmoji(form: EditCustomEmoji, options?: RequestOptions) {
     return this.#wrapper<EditCustomEmoji, CustomEmojiResponse>(
       HttpType.Put,
       "/custom_emoji",
       form,
+      options,
     );
   }
 
@@ -1426,11 +1569,12 @@ export class LemmyHttp {
    *
    * `HTTP.Post /custom_emoji/delete`
    */
-  deleteCustomEmoji(form: DeleteCustomEmoji) {
+  deleteCustomEmoji(form: DeleteCustomEmoji, options?: RequestOptions) {
     return this.#wrapper<DeleteCustomEmoji, SuccessResponse>(
       HttpType.Post,
       "/custom_emoji/delete",
       form,
+      options,
     );
   }
 
@@ -1439,11 +1583,12 @@ export class LemmyHttp {
    *
    * `HTTP.Get /federated_instances`
    */
-  getFederatedInstances() {
+  getFederatedInstances(options?: RequestOptions) {
     return this.#wrapper<object, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
       {},
+      options,
     );
   }
 
@@ -1452,24 +1597,29 @@ export class LemmyHttp {
    *
    * `HTTP.Post /site/block`
    */
-  blockInstance(form: BlockInstance) {
+  blockInstance(form: BlockInstance, options?: RequestOptions) {
     return this.#wrapper<BlockInstance, BlockInstanceResponse>(
       HttpType.Post,
       "/site/block",
       form,
+      options,
     );
   }
 
   /**
    * Upload an image to the server.
    */
-  async uploadImage({ image }: UploadImage): Promise<UploadImageResponse> {
+  async uploadImage(
+    { image }: UploadImage,
+    options?: RequestOptions,
+  ): Promise<UploadImageResponse> {
     const formData = createFormData(image);
 
     let url: string | undefined = undefined;
     let delete_url: string | undefined = undefined;
 
     const response = await this.#fetchFunction(this.#pictrsUrl, {
+      ...options,
       method: HttpType.Post,
       body: formData as unknown as BodyInit,
       headers: this.#headers,
@@ -1497,10 +1647,14 @@ export class LemmyHttp {
   /**
    * Delete a pictrs image
    */
-  async deleteImage({ token, filename }: DeleteImage): Promise<boolean> {
+  async deleteImage(
+    { token, filename }: DeleteImage,
+    options?: RequestOptions,
+  ): Promise<boolean> {
     const deleteUrl = `${this.#pictrsUrl}/delete/${token}/${filename}`;
 
     const response = await this.#fetchFunction(deleteUrl, {
+      ...options,
       method: HttpType.Get,
       headers: this.#headers,
     });
@@ -1513,11 +1667,12 @@ export class LemmyHttp {
    *
    * `HTTP.POST /user/donation_dialog_shown`
    */
-  donation_dialog_shown() {
+  donation_dialog_shown(options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/user/donation_dialog_shown",
       {},
+      options,
     );
   }
 
@@ -1529,16 +1684,19 @@ export class LemmyHttp {
     type_: HttpType,
     endpoint: string,
     form: BodyType,
+    options: RequestOptions | undefined,
   ): Promise<ResponseType> {
     let response: Response;
     if (type_ === HttpType.Get) {
       const getUrl = `${this.#buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
       response = await this.#fetchFunction(getUrl, {
+        ...options,
         method: HttpType.Get,
         headers: this.#headers,
       });
     } else {
       response = await this.#fetchFunction(this.#buildFullUrl(endpoint), {
+        ...options,
         method: type_,
         headers: {
           "Content-Type": "application/json",
