@@ -351,7 +351,6 @@ export { TaglineResponse } from "./types/TaglineResponse";
 export { TagsView } from "./types/TagsView";
 export { TransferCommunity } from "./types/TransferCommunity";
 export { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
-export { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 export { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
 export { UpdatePostNotifications } from "./types/UpdatePostNotifications";
 export { UpdateTagline } from "./types/UpdateTagline";

@@ -161,7 +161,6 @@ import { Search } from "./types/Search";
 import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
-import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
@@ -2269,24 +2268,6 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<CreateCommunityTag, Tag>(
       HttpType.Post,
-      "/community/tag",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Update a community post tag.
-   */
-  @Security("bearerAuth")
-  @Put("/community/tag")
-  @Tags("Community")
-  updateCommunityTag(
-    @Body() form: UpdateCommunityTag,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<UpdateCommunityTag, Tag>(
-      HttpType.Put,
       "/community/tag",
       form,
       options,
