@@ -25,5 +25,5 @@ export type FederationError =
   | "CantDeleteSite"
   | "ObjectIsNotPublic"
   | "ObjectIsNotPrivate"
-  | "PlatformLackingPrivateCommunitySupport"
+  | { InvalidFollow: string }
   | "Unreachable";
