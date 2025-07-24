@@ -33,7 +33,7 @@ import {
   ListCommunitiesI,
   ListCommunityPendingFollowsI,
   ListCustomEmojisI,
-  ListInboxI,
+  ListNotificationsI,
   ListMediaI,
   ListMultiCommunitiesI,
   ListPersonContentI,
@@ -75,6 +75,7 @@ import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
 import { CreateCommunityReport } from "./types/CreateCommunityReport";
 import { CreateCommunityTag } from "./types/CreateCommunityTag";
+import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
 import { CreateOAuthProvider } from "./types/CreateOAuthProvider";
 import { CreatePost } from "./types/CreatePost";
@@ -132,7 +133,6 @@ import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationAp
 import { LockPost } from "./types/LockPost";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
-import { MarkCommentReplyAsRead } from "./types/MarkCommentReplyAsRead";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
 import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
@@ -162,7 +162,6 @@ import { Search } from "./types/Search";
 import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
-import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
@@ -203,10 +202,6 @@ import { ListPersonSaved } from "./types/ListPersonSaved";
 import { ListPersonSavedResponse } from "./types/ListPersonSavedResponse";
 import { DeleteImageParams } from "./types/DeleteImageParams";
 import { UploadImageResponse } from "./types/UploadImageResponse";
-import { ListInboxResponse } from "./types/ListInboxResponse";
-import { ListInbox } from "./types/ListInbox";
-import { MarkPersonCommentMentionAsRead } from "./types/MarkPersonCommentMentionAsRead";
-import { MarkPersonPostMentionAsRead } from "./types/MarkPersonPostMentionAsRead";
 import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
@@ -229,6 +224,10 @@ import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
 import { NotePerson } from "./types/NotePerson";
 import { UserBlockInstanceCommunitiesParams } from "./types/UserBlockInstanceCommunitiesParams";
 import { UserBlockInstancePersonsParams } from "./types/UserBlockInstancePersonsParams";
+import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
+import { ListNotifications } from "./types/ListNotifications";
+import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
+import { ModEditPost } from "./types/ModEditPost";
 
 enum HttpType {
   Get = "GET",
@@ -956,6 +955,24 @@ export class LemmyHttp extends Controller {
   }
 
   /**
+   * @summary Mods can change nsfw flag and tags for a post
+   */
+  @Security("bearerAuth")
+  @Put("/post/mod_update")
+  @Tags("Post")
+  async modEditPost(
+    @Body() form: ModEditPost,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ModEditPost, PostResponse>(
+      HttpType.Put,
+      "/post/mod_update",
+      form,
+      options,
+    );
+  }
+
+  /**
    * @summary Delete a post.
    */
   @Security("bearerAuth")
@@ -1266,24 +1283,6 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<RemoveComment, CommentResponse>(
       HttpType.Post,
       "/comment/remove",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Mark a comment as read.
-   */
-  @Security("bearerAuth")
-  @Post("/comment/mark_as_read")
-  @Tags("Comment")
-  async markCommentReplyAsRead(
-    @Body() form: MarkCommentReplyAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkCommentReplyAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/comment/mark_as_read",
       form,
       options,
     );
@@ -1658,42 +1657,6 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Mark a person mention as read.
-   */
-  @Security("bearerAuth")
-  @Post("/account/mention/comment/mark_as_read")
-  @Tags("Account", "Person")
-  async markCommentMentionAsRead(
-    @Body() form: MarkPersonCommentMentionAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkPersonCommentMentionAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/account/mention/comment/mark_as_read",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Mark a person post body mention as read.
-   */
-  @Security("bearerAuth")
-  @Post("/account/mention/post/mark_as_read")
-  @Tags("Account", "Post")
-  async markPostMentionAsRead(
-    @Body() form: MarkPersonPostMentionAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkPersonPostMentionAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/account/mention/post/mark_as_read",
-      form,
-      options,
-    );
-  }
-
-  /**
    * @summary Ban a person from your site.
    */
   @Security("bearerAuth")
@@ -1828,6 +1791,24 @@ export class LemmyHttp extends Controller {
   }
 
   /**
+   * @summary Mark a comment as read.
+   */
+  @Security("bearerAuth")
+  @Post("/account/mark_as_read")
+  @Tags("Account")
+  async markNotificationAsRead(
+    @Body() form: MarkNotificationAsRead,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<MarkNotificationAsRead, SuccessResponse>(
+      HttpType.Post,
+      "/account/mark_as_read",
+      form,
+      options,
+    );
+  }
+
+  /**
    * @summary Save your user settings.
    */
   @Security("bearerAuth")
@@ -1900,15 +1881,15 @@ export class LemmyHttp extends Controller {
    * @summary Get your inbox (replies, comment mentions, post mentions, and messages)
    */
   @Security("bearerAuth")
-  @Get("/account/inbox")
+  @Get("/account/notifications")
   @Tags("Account")
-  async listInbox(
-    @Queries() form: ListInboxI,
+  async listNotifications(
+    @Queries() form: ListNotificationsI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListInbox, ListInboxResponse>(
+    return this.#wrapper<ListNotifications, ListNotificationsResponse>(
       HttpType.Get,
-      "/account/inbox",
+      "/account/notifications",
       form,
       options,
     );
@@ -2334,7 +2315,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Update a community post tag.
+   * @summary Edit a community post tag.
    */
   @Security("bearerAuth")
   @Put("/community/tag")
@@ -2344,7 +2325,7 @@ export class LemmyHttp extends Controller {
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<UpdateCommunityTag, Tag>(
-      HttpType.Put,
+      HttpType.Post,
       "/community/tag",
       form,
       options,
@@ -2759,6 +2740,7 @@ export class LemmyHttp extends Controller {
    */
   @Security("bearerAuth")
   @Post("/user/donation_dialog_shown")
+  @Tags("Miscellaneous")
   donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
@@ -2770,6 +2752,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Post("/multi_community")
+  @Tags("Multicommunity")
   createMultiCommunity(
     @Body() form: CreateMultiCommunity,
     @Inject() options?: RequestOptions,
@@ -2784,6 +2767,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Put("/multi_community")
+  @Tags("Multicommunity")
   updateMultiCommunity(
     @Body() form: UpdateMultiCommunity,
     @Inject() options?: RequestOptions,
@@ -2797,6 +2781,7 @@ export class LemmyHttp extends Controller {
   }
 
   @Get("/multi_community")
+  @Tags("Multicommunity")
   getMultiCommunity(
     @Queries() form: GetMultiCommunityI,
     @Inject() options?: RequestOptions,
@@ -2811,6 +2796,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Post("/multi_community/entry")
+  @Tags("Multicommunity")
   createMultiCommunityEntry(
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
@@ -2825,6 +2811,7 @@ export class LemmyHttp extends Controller {
 
   @Security("bearerAuth")
   @Delete("/multi_community/entry")
+  @Tags("Multicommunity")
   deleteMultiCommunityEntry(
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
@@ -2838,6 +2825,7 @@ export class LemmyHttp extends Controller {
   }
 
   @Get("/multi_community/list")
+  @Tags("Multicommunity")
   listMultiCommunities(
     @Queries() form: ListMultiCommunitiesI,
     @Inject() options?: RequestOptions,
@@ -2851,6 +2839,7 @@ export class LemmyHttp extends Controller {
   }
 
   @Post("/multi_community/follow")
+  @Tags("Multicommunity")
   followMultiCommunity(
     @Body() form: FollowMultiCommunity,
     @Inject() options?: RequestOptions,

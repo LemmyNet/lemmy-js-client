@@ -12,7 +12,6 @@ export type PrivateMessage = {
   recipient_id: PersonId;
   content: string;
   deleted: boolean;
-  read: boolean;
   published_at: string;
   updated_at?: string;
   ap_id: DbUrl;

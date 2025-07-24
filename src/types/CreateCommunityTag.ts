@@ -6,5 +6,7 @@ import type { CommunityId } from "./CommunityId";
  */
 export type CreateCommunityTag = {
   community_id: CommunityId;
-  display_name: string;
+  name: string;
+  display_name?: string;
+  description?: string;
 };

@@ -18,7 +18,7 @@ import { ListCommentLikes } from "./types/ListCommentLikes";
 import { ListCommunities } from "./types/ListCommunities";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { ListCustomEmojis } from "./types/ListCustomEmojis";
-import { ListInbox } from "./types/ListInbox";
+import { ListNotifications } from "./types/ListNotifications";
 import { ListMedia } from "./types/ListMedia";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { ListPersonContent } from "./types/ListPersonContent";
@@ -62,7 +62,7 @@ export interface GetCommentI extends GetComment {}
 export interface GetPersonDetailsI extends GetPersonDetails {}
 export interface ListPersonContentI extends ListPersonContent {}
 export interface GetReportCountI extends GetReportCount {}
-export interface ListInboxI extends ListInbox {}
+export interface ListNotificationsI extends ListNotifications {}
 export interface ListPersonSavedI extends ListPersonSaved {}
 export interface ListPersonReadI extends ListPersonRead {}
 export interface ListPersonHiddenI extends ListPersonHidden {}
