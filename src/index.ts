@@ -229,6 +229,7 @@ export { ModBanView } from "./types/ModBanView";
 export { ModChangeCommunityVisibility } from "./types/ModChangeCommunityVisibility";
 export { ModChangeCommunityVisibilityId } from "./types/ModChangeCommunityVisibilityId";
 export { ModChangeCommunityVisibilityView } from "./types/ModChangeCommunityVisibilityView";
+export { ModEditPost } from "./types/ModEditPost";
 export { ModFeaturePost } from "./types/ModFeaturePost";
 export { ModFeaturePostId } from "./types/ModFeaturePostId";
 export { ModFeaturePostView } from "./types/ModFeaturePostView";

@@ -122,7 +122,6 @@ export type LemmyErrorType =
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }
-  | { error: "invalid_tag_name" }
   | { error: "tag_not_in_community" }
   | { error: "cant_block_local_instance" }
   | { error: "unknown"; message: string }
@@ -154,7 +153,6 @@ export type LemmyErrorType =
   | { error: "couldnt_create_tag" }
   | { error: "couldnt_update_tag" }
   | { error: "couldnt_create_post_tag" }
-  | { error: "couldnt_update_post_tag" }
   | { error: "couldnt_create_tagline" }
   | { error: "couldnt_update_tagline" }
   | { error: "couldnt_create_image" }
