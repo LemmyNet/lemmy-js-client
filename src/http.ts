@@ -75,6 +75,7 @@ import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
 import { CreateCommunityReport } from "./types/CreateCommunityReport";
 import { CreateCommunityTag } from "./types/CreateCommunityTag";
+import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
 import { CreateOAuthProvider } from "./types/CreateOAuthProvider";
 import { CreatePost } from "./types/CreatePost";
@@ -161,7 +162,6 @@ import { Search } from "./types/Search";
 import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
-import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
@@ -225,6 +225,7 @@ import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
 import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 import { ListNotifications } from "./types/ListNotifications";
 import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
+import { ModEditPost } from "./types/ModEditPost";
 
 enum HttpType {
   Get = "GET",
@@ -946,6 +947,24 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<EditPost, PostResponse>(
       HttpType.Put,
       "/post",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Mods can change nsfw flag and tags for a post
+   */
+  @Security("bearerAuth")
+  @Put("/post/mod_update")
+  @Tags("Post")
+  async modEditPost(
+    @Body() form: ModEditPost,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ModEditPost, PostResponse>(
+      HttpType.Put,
+      "/post/mod_update",
       form,
       options,
     );
@@ -2276,7 +2295,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Update a community post tag.
+   * @summary Edit a community post tag.
    */
   @Security("bearerAuth")
   @Put("/community/tag")
@@ -2286,7 +2305,7 @@ export class LemmyHttp extends Controller {
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<UpdateCommunityTag, Tag>(
-      HttpType.Put,
+      HttpType.Post,
       "/community/tag",
       form,
       options,

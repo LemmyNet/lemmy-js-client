@@ -3,9 +3,9 @@ import type { AdminAddId } from "./AdminAddId";
 import type { PersonId } from "./PersonId";
 
 /**
- * When someone is added as a site moderator.
+ * When someone is added as a site admin.
  */
-export type ModAdd = {
+export type AdminAdd = {
   id: AdminAddId;
   mod_person_id: PersonId;
   other_person_id: PersonId;
