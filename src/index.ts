@@ -153,7 +153,6 @@ export { HidePost } from "./types/HidePost";
 export { ImageDetails } from "./types/ImageDetails";
 export { ImageGetParams } from "./types/ImageGetParams";
 export { ImageProxyParams } from "./types/ImageProxyParams";
-export { InboxCombinedId } from "./types/InboxCombinedId";
 export { InboxDataType } from "./types/InboxDataType";
 export { Instance } from "./types/Instance";
 export { InstanceActions } from "./types/InstanceActions";
