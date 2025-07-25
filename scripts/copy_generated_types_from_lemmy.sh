@@ -10,7 +10,7 @@ rm -rf src/types/*
 
 # Remove the old bindings
 pushd ../lemmy/crates
-find . -name bindings -type d -exec rm -rf {} \;
+find . -name bindings -type d -exec rm -rf {} \; || true
 popd
 
 # First re-generate the types by running cargo test on lemmy
