@@ -15,7 +15,8 @@ export type MyUserInfo = {
   follows: Array<CommunityFollowerView>;
   moderates: Array<CommunityModeratorView>;
   community_blocks: Array<Community>;
-  instance_blocks: Array<Instance>;
+  instance_communities_blocks: Array<Instance>;
+  instance_persons_blocks: Array<Instance>;
   person_blocks: Array<Person>;
   keyword_blocks: Array<string>;
   discussion_languages: Array<LanguageId>;
