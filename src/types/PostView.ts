@@ -2,7 +2,6 @@
 import type { Community } from "./Community";
 import type { CommunityActions } from "./CommunityActions";
 import type { ImageDetails } from "./ImageDetails";
-import type { InstanceActions } from "./InstanceActions";
 import type { Person } from "./Person";
 import type { PersonActions } from "./PersonActions";
 import type { Post } from "./Post";
@@ -20,8 +19,6 @@ export type PostView = {
   community_actions?: CommunityActions;
   person_actions?: PersonActions;
   post_actions?: PostActions;
-  instance_communities_actions?: InstanceActions;
-  instance_persons_actions?: InstanceActions;
   creator_is_admin: boolean;
   tags: TagsView;
   can_mod: boolean;

@@ -3,7 +3,6 @@ import type { Comment } from "./Comment";
 import type { CommentActions } from "./CommentActions";
 import type { Community } from "./Community";
 import type { CommunityActions } from "./CommunityActions";
-import type { InstanceActions } from "./InstanceActions";
 import type { Person } from "./Person";
 import type { PersonActions } from "./PersonActions";
 import type { Post } from "./Post";
@@ -20,8 +19,6 @@ export type CommentView = {
   community_actions?: CommunityActions;
   comment_actions?: CommentActions;
   person_actions?: PersonActions;
-  instance_communities_actions?: InstanceActions;
-  instance_persons_actions?: InstanceActions;
   creator_is_admin: boolean;
   post_tags: TagsView;
   can_mod: boolean;
