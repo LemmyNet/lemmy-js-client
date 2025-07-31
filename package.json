@@ -28,6 +28,7 @@
     "@types/node": "^22.7.4",
     "@typescript-eslint/eslint-plugin": "^8.7.0",
     "@typescript-eslint/parser": "^8.7.0",
+    "ajv": "^8.17.1",
     "eslint": "^9.11.1",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
