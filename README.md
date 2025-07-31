@@ -52,6 +52,12 @@ Use `pnpm add` to develop and test changes locally:
 
 `pnpm add path/to/lemmy-js-client`
 
+Alternatively, use `yalc publish` and `yalc add lemmy-js-client`
+
+## Generating typescript types from lemmy structs
+
+Run `./scripts/copy_generated_types_from_lemmy.sh`
+
 ## OpenAPI
 
 To generate OpenAPI docs, run `pnpm tsoa`

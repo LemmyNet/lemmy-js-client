@@ -117,7 +117,8 @@ export type LemmyErrorType =
   | { error: "invalid_url_scheme" }
   | { error: "couldnt_send_webmention" }
   | { error: "contradicting_filters" }
-  | { error: "instance_block_already_exists" }
+  | { error: "instance_block_communities_already_exists" }
+  | { error: "instance_block_persons_already_exists" }
   | { error: "too_many_items" }
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }

@@ -1,25 +1,33 @@
 #!/bin/bash
 set -e
 
+CWD="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)"
+
+cd "$CWD/../"
+
 # Remove the old types
 rm -rf src/types/*
 
 # Remove the old bindings
 pushd ../lemmy/crates
-rm -rf */**/bindings
+find . -name bindings -type d -exec rm -rf {} \; || true
 popd
 
 # First re-generate the types by running cargo test on lemmy
 pushd ../lemmy
-pwd
-../lemmy-js-client/scripts/ts_bindings_check.sh
+
+# Export the ts-rs bindings
 cargo test --workspace export_bindings --features ts-rs
 
-cd crates
+# Make sure no rows are returned
+! grep -nr --include=\*.ts ' | null' ./crates/bindings_check.sh
+
+pushd crates
 
 # Copy them over to the types folder
 find . -type f -name "*.ts" -exec cp {} ../../lemmy-js-client/src/types/ \;
 
+popd
 popd
 
 # Remove the Sensitive type
