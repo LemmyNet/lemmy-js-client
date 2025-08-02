@@ -5,7 +5,7 @@ import type { ModLockComment } from "./ModLockComment";
 import type { Person } from "./Person";
 
 /**
- * When a moderator locks a comment (prevents new replies being made).
+ * When a moderator locks a comment (prevents replies to it or its children).
  */
 export type ModLockCommentView = {
   mod_lock_comment: ModLockComment;
