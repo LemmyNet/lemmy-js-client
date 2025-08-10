@@ -2951,7 +2951,7 @@ function createFormData(image: File | Buffer): FormData {
     // The filename doesn't affect the file type or file name that ends up in pictrs
     formData.append(
       "images[]",
-      new Blob([image], { type: "image/jpeg" }),
+      new Blob([image as BlobPart], { type: "image/jpeg" }),
       "image.jpg",
     );
   }
