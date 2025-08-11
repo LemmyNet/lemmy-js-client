@@ -11,6 +11,7 @@ import type { ModBanFromCommunityView } from "./ModBanFromCommunityView";
 import type { ModBanView } from "./ModBanView";
 import type { ModChangeCommunityVisibilityView } from "./ModChangeCommunityVisibilityView";
 import type { ModFeaturePostView } from "./ModFeaturePostView";
+import type { ModLockCommentView } from "./ModLockCommentView";
 import type { ModLockPostView } from "./ModLockPostView";
 import type { ModRemoveCommentView } from "./ModRemoveCommentView";
 import type { ModRemoveCommunityView } from "./ModRemoveCommunityView";
@@ -36,4 +37,5 @@ export type ModlogCombinedView =
   | ({ type_: "ModRemoveComment" } & ModRemoveCommentView)
   | ({ type_: "ModRemoveCommunity" } & ModRemoveCommunityView)
   | ({ type_: "ModRemovePost" } & ModRemovePostView)
-  | ({ type_: "ModTransferCommunity" } & ModTransferCommunityView);
+  | ({ type_: "ModTransferCommunity" } & ModTransferCommunityView)
+  | ({ type_: "ModLockComment" } & ModLockCommentView);

@@ -55,4 +55,8 @@ export type Comment = {
    * accepted by the community (by receiving it back via federation).
    */
   federation_pending: boolean;
+  /**
+   * Whether the comment is locked.
+   */
+  locked: boolean;
 };
