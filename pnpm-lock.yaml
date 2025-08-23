@@ -41,7 +41,7 @@ importers:
         version: 9.1.7
       joi:
         specifier: ^18.0.0
-        version: 18.0.0
+        version: 18.0.1
       lint-staged:
         specifier: ^16.0.0
         version: 16.1.5
@@ -1466,8 +1466,8 @@ packages:
     resolution: {integrity: sha512-sBkD+Xi9DtcChsI3L3u0+N0opgPYnCRPtGcQYrgXmR+hmt/fYfWAL0xRXYU8eWOdfuLgBe0YCW3AFtnRLagq/g==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
 
-  joi@18.0.0:
-    resolution: {integrity: sha512-fpbpXN/TD04Xz1/cCXzUR3ghDkhyiHjbzTILx3wNyKXIzQJ55uYAkUGWwhX72uHge/6MdFA/kp1ZUh35DlYmaA==}
+  joi@18.0.1:
+    resolution: {integrity: sha512-IiQpRyypSnLisQf3PwuN2eIHAsAIGZIrLZkd4zdvIar2bDyhM91ubRjy8a3eYablXsh9BeI/c7dmPYHca5qtoA==}
     engines: {node: '>= 20'}
 
   js-levenshtein@1.1.6:
@@ -4070,7 +4070,7 @@ snapshots:
       jest-get-type: 29.6.3
       pretty-format: 29.7.0
 
-  joi@18.0.0:
+  joi@18.0.1:
     dependencies:
       '@hapi/address': 5.1.1
       '@hapi/formula': 3.0.2
