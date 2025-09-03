@@ -228,6 +228,7 @@ import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 import { ListNotifications } from "./types/ListNotifications";
 import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
 import { ModEditPost } from "./types/ModEditPost";
+import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
 
 enum HttpType {
   Get = "GET",
@@ -1157,6 +1158,24 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<SavePost, PostResponse>(
       HttpType.Put,
       "/post/save",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Save a post.
+   */
+  @Security("bearerAuth")
+  @Put("/post/notifications")
+  @Tags("Post")
+  async updatePostNotifications(
+    @Body() form: UpdatePostNotifications,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdatePostNotifications, SuccessResponse>(
+      HttpType.Post,
+      "/post/notifications",
       form,
       options,
     );
