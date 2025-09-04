@@ -228,6 +228,8 @@ import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 import { ListNotifications } from "./types/ListNotifications";
 import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
 import { ModEditPost } from "./types/ModEditPost";
+import { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
+import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
 
 enum HttpType {
   Get = "GET",
@@ -2847,6 +2849,42 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/multi_community/follow",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Change notification settings for a community
+   */
+  @Security("bearerAuth")
+  @Put("/community/notifications")
+  @Tags("Community")
+  updateCommunityNotifications(
+    @Body() form: UpdateCommunityNotifications,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdateCommunityNotifications, SuccessResponse>(
+      HttpType.Post,
+      "/community/notifications",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Change notification settings for a post
+   */
+  @Security("bearerAuth")
+  @Put("/post/notifications")
+  @Tags("Post")
+  updatePostNotifications(
+    @Body() form: UpdatePostNotifications,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdatePostNotifications, SuccessResponse>(
+      HttpType.Post,
+      "/post/notifications",
       form,
       options,
     );
