@@ -9,5 +9,6 @@ export type PersonView = {
   person: Person;
   is_admin: boolean;
   person_actions?: PersonActions;
-  creator_banned: boolean;
+  banned: boolean;
+  ban_expires_at?: string;
 };

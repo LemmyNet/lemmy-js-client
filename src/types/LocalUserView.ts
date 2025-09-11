@@ -9,4 +9,5 @@ export type LocalUserView = {
   local_user: LocalUser;
   person: Person;
   banned: boolean;
+  ban_expires_at?: string;
 };

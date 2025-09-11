@@ -134,7 +134,6 @@ import { LockPost } from "./types/LockPost";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
-import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 import { PasswordReset } from "./types/PasswordReset";
 import { PostReportResponse } from "./types/PostReportResponse";
@@ -1504,24 +1503,6 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<DeletePrivateMessage, PrivateMessageResponse>(
       HttpType.Post,
       "/private_message/delete",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Mark a private message as read.
-   */
-  @Security("bearerAuth")
-  @Post("/private_message/mark_as_read")
-  @Tags("PrivateMessage")
-  async markPrivateMessageAsRead(
-    @Body() form: MarkPrivateMessageAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkPrivateMessageAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/private_message/mark_as_read",
       form,
       options,
     );

@@ -147,4 +147,5 @@ export type LocalSite = {
   disable_email_notifications: boolean;
   suggested_communities?: MultiCommunityId;
   multi_comm_follower: PersonId;
+  default_items_per_page: number;
 };
