@@ -13,8 +13,6 @@ export type FederationError =
   | { PersonIsBannedFromSite: string }
   | "InvalidVoteValue"
   | "PageDoesNotSpecifyCreator"
-  | "CouldntGetComments"
-  | "CouldntGetPosts"
   | "FederationDisabled"
   | { DomainBlocked: string }
   | { DomainNotInAllowList: string }

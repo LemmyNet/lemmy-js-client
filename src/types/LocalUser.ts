@@ -105,4 +105,5 @@ export type LocalUser = {
   show_downvotes: VoteShow;
   show_upvote_percentage: boolean;
   show_person_votes: boolean;
+  default_items_per_page: number;
 };
