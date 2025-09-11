@@ -24,10 +24,6 @@ export type UserSettingsBackup = {
   saved_comments: Array<string>;
   blocked_communities: Array<string>;
   blocked_users: Array<string>;
-  /**
-   * Only kept for v0.19 compatibility
-   */
-  blocked_instances: Array<string>;
   blocked_instances_communities: Array<string>;
   blocked_instances_persons: Array<string>;
 };

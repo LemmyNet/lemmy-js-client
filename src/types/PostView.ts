@@ -23,6 +23,8 @@ export type PostView = {
   tags: TagsView;
   can_mod: boolean;
   creator_banned: boolean;
+  creator_ban_expires_at?: string;
   creator_is_moderator: boolean;
   creator_banned_from_community: boolean;
+  creator_community_ban_expires_at?: string;
 };

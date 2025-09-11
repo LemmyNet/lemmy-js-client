@@ -9,5 +9,9 @@ export type LinkMetadata = {
   title?: string;
   description?: string;
   image?: DbUrl;
+  image_width?: number;
+  image_height?: number;
   embed_video_url?: DbUrl;
+  video_width?: number;
+  video_height?: number;
 };

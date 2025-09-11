@@ -32,19 +32,19 @@
     "eslint": "^9.11.1",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
-    "joi": "^17.13.3",
+    "joi": "^18.0.0",
     "lint-staged": "^16.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-import-sort": "^0.0.7",
     "prettier-plugin-organize-imports": "^4.0.0",
     "prettier-plugin-packagejson": "^2.5.1",
-    "sortpack": "^2.4.0",
+    "sortpack": "^3.0.0",
     "tsoa": "^6.6.0",
     "typedoc": "^0.28.0",
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.7.0"
   },
-  "packageManager": "pnpm@10.14.0",
+  "packageManager": "pnpm@10.15.1",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [

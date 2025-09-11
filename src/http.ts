@@ -135,7 +135,6 @@ import { LockComment } from "./types/LockComment";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
-import { MarkPrivateMessageAsRead } from "./types/MarkPrivateMessageAsRead";
 import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
 import { PasswordReset } from "./types/PasswordReset";
 import { PostReportResponse } from "./types/PostReportResponse";
@@ -229,6 +228,8 @@ import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 import { ListNotifications } from "./types/ListNotifications";
 import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
 import { ModEditPost } from "./types/ModEditPost";
+import { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
+import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
 
 enum HttpType {
   Get = "GET",
@@ -1527,24 +1528,6 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Mark a private message as read.
-   */
-  @Security("bearerAuth")
-  @Post("/private_message/mark_as_read")
-  @Tags("PrivateMessage")
-  async markPrivateMessageAsRead(
-    @Body() form: MarkPrivateMessageAsRead,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<MarkPrivateMessageAsRead, SuccessResponse>(
-      HttpType.Post,
-      "/private_message/mark_as_read",
-      form,
-      options,
-    );
-  }
-
-  /**
    * @summary Create a report for a private message.
    */
   @Security("bearerAuth")
@@ -2758,12 +2741,12 @@ export class LemmyHttp extends Controller {
    * Mark donation dialog as shown, so it isn't displayed anymore.
    */
   @Security("bearerAuth")
-  @Post("/user/donation_dialog_shown")
-  @Tags("Miscellaneous")
+  @Post("/account/donation_dialog_shown")
+  @Tags("Account")
   donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
-      "/user/donation_dialog_shown",
+      "/account/donation_dialog_shown",
       {},
       options,
     );
@@ -2871,6 +2854,42 @@ export class LemmyHttp extends Controller {
     );
   }
 
+  /**
+   * @summary Change notification settings for a community
+   */
+  @Security("bearerAuth")
+  @Put("/community/notifications")
+  @Tags("Community")
+  updateCommunityNotifications(
+    @Body() form: UpdateCommunityNotifications,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdateCommunityNotifications, SuccessResponse>(
+      HttpType.Post,
+      "/community/notifications",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Change notification settings for a post
+   */
+  @Security("bearerAuth")
+  @Put("/post/notifications")
+  @Tags("Post")
+  updatePostNotifications(
+    @Body() form: UpdatePostNotifications,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<UpdatePostNotifications, SuccessResponse>(
+      HttpType.Post,
+      "/post/notifications",
+      form,
+      options,
+    );
+  }
+
   #buildFullUrl(endpoint: string) {
     return `${this.#apiUrl}${endpoint}`;
   }
@@ -2970,7 +2989,7 @@ function createFormData(image: File | Buffer): FormData {
     // The filename doesn't affect the file type or file name that ends up in pictrs
     formData.append(
       "images[]",
-      new Blob([image], { type: "image/jpeg" }),
+      new Blob([image as BlobPart], { type: "image/jpeg" }),
       "image.jpg",
     );
   }

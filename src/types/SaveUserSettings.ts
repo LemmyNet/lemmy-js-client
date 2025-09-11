@@ -40,6 +40,10 @@ export type SaveUserSettings = {
    */
   default_post_time_range_seconds?: number;
   /**
+   * A default fetch limit for number of items returned.
+   */
+  default_items_per_page?: number;
+  /**
    * The default comment sort, usually "hot"
    */
   default_comment_sort_type?: CommentSortType;
