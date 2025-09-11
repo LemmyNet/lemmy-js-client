@@ -131,6 +131,7 @@ import { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
 import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
 import { LockPost } from "./types/LockPost";
+import { LockComment } from "./types/LockComment";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
@@ -1290,7 +1291,25 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Like / vote on a comment.
+   * @summary A moderator can lock a comment (IE disable replies).
+   */
+  @Security("bearerAuth")
+  @Post("/comment/lock")
+  @Tags("Comment", "Moderator")
+  async lockComment(
+    @Body() form: LockComment,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<LockComment, CommentResponse>(
+      HttpType.Post,
+      "/comment/lock",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @Summary Like / vote on a comment.
    */
   @Security("bearerAuth")
   @Post("/comment/like")
