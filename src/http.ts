@@ -229,6 +229,7 @@ import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
 import { ModEditPost } from "./types/ModEditPost";
 import { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
 import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
+import { LockComment } from "./types/LockComment";
 
 enum HttpType {
   Get = "GET",
@@ -1356,6 +1357,24 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<DistinguishComment, CommentResponse>(
       HttpType.Post,
       "/comment/distinguish",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Locks a comment and its children, IE prevents new replies.
+   */
+  @Security("bearerAuth")
+  @Post("/comment/lock")
+  @Tags("Comment", "Moderator")
+  async lockComment(
+    @Body() form: LockComment,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<LockComment, CommentResponse>(
+      HttpType.Post,
+      "/comment/lock",
       form,
       options,
     );
