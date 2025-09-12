@@ -2939,7 +2939,7 @@ export class LemmyHttp extends Controller {
     }
 
     if (!response.ok) {
-      console.log(
+      console.error(
         `Request error while calling ${type_} ${endpoint} with ${form}`,
       );
       let err = new LemmyError(json.error ?? response.statusText, json.message);
