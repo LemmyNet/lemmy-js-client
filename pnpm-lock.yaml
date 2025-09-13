@@ -17,7 +17,7 @@ importers:
         version: 9.35.0
       '@redocly/cli':
         specifier: ^2.0.0
-        version: 2.0.8(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)
+        version: 2.1.1(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)
       '@types/node':
         specifier: ^22.7.4
         version: 22.18.3
@@ -130,8 +130,8 @@ packages:
     engines: {node: '>=6.0.0'}
     hasBin: true
 
-  '@babel/runtime@7.28.3':
-    resolution: {integrity: sha512-9uIQ10o0WGdpP6GDhXcdOJPJuDgFtIDtN/9+ArJQ2NAfAmiuhTQdzkaTGR33v43GYS2UrSA0eX2pPPHoFVvpxA==}
+  '@babel/runtime@7.28.4':
+    resolution: {integrity: sha512-Q/N6JNWvIvPnLDvjlE1OUBLPQHH6l3CltCEsHIujp45zQUSSh8K+gHnaEX45yAT1nyngnINhvWtzN+Nb9D8RAQ==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.27.2':
@@ -506,27 +506,27 @@ packages:
   '@redocly/ajv@8.11.3':
     resolution: {integrity: sha512-4P3iZse91TkBiY+Dx5DUgxQ9GXkVJf++cmI0MOyLDxV9b5MUBI4II6ES8zA5JCbO72nKAJxWrw4PUPW+YP3ZDQ==}
 
-  '@redocly/cli@2.0.8':
-    resolution: {integrity: sha512-FWBhB2hvF8rXWViCVgbKT3AmQH9ChRDNCmN3SyLRaL0GQ5SLi10p9rV26/7GktcMAKetM9XC4ETQQJMup3CVQQ==}
+  '@redocly/cli@2.1.1':
+    resolution: {integrity: sha512-U8upf4sRM+SyhVDUZKW/p24eorP3xFSrc+ur9El5w53HrWkuHyTrZ5uhAfKlwPsJLwFSmXEUVzE3BgBzS2+Mmw==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
     hasBin: true
 
   '@redocly/config@0.22.2':
     resolution: {integrity: sha512-roRDai8/zr2S9YfmzUfNhKjOF0NdcOIqF7bhf4MVC5UxpjIysDjyudvlAiVbpPHp3eDRWbdzUgtkK1a7YiDNyQ==}
 
-  '@redocly/config@0.29.0':
-    resolution: {integrity: sha512-AkP1Berx9GvD15aN6r0IcOo289ElHp52XgeFTxXCumJ4gaUXUmvzqfZTfFFJWDaGgZvUZvmQrs1UdaPjZEXeHA==}
+  '@redocly/config@0.29.1':
+    resolution: {integrity: sha512-IYkTEFupr0NgbB3XrfNn/pF3rk6l2w0X50GwMmXXLqPhvqZqeZV9bpUKPS5ja4dgNIjIvt9BU3FhunQYCGphHA==}
 
   '@redocly/openapi-core@1.34.5':
     resolution: {integrity: sha512-0EbE8LRbkogtcCXU7liAyC00n9uNG9hJ+eMyHFdUsy9lB/WGqnEBgwjA9q2cyzAVcdTkQqTBBU1XePNnN3OijA==}
     engines: {node: '>=18.17.0', npm: '>=9.5.0'}
 
-  '@redocly/openapi-core@2.0.8':
-    resolution: {integrity: sha512-ShnpeEgcQY0YxopFDH/m94PWiHgCuWGa9FIcHchdHMZGA0mgV/Eojhi46A/hi2KP7TaVsgZc6+8u7GxTTeTC5g==}
+  '@redocly/openapi-core@2.1.1':
+    resolution: {integrity: sha512-ebTDErAKKDQhPiS0msRK8tKtaDbD7kGNbtoxxomZLeoWjQzjFfiREvn0yQm+dYAku2VaVwkHfaLQBlFO0QC19w==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
-  '@redocly/respect-core@2.0.8':
-    resolution: {integrity: sha512-gKOjUn/UmoHYIDKHV7RanAvFkhQIgQh9oiA3qfYHMI/N4+tWGoJd03Soc+2bn3Zie8DTXjKwQIy0k5n2kZA7hw==}
+  '@redocly/respect-core@2.1.1':
+    resolution: {integrity: sha512-ClkLKYuFCKMCKer4Lg1UP3aglZSrBLmxcTn7AHdv2shdjNSTcZsSNd0XA6oWANUhDMIHdzKMFWDlvnSosxLDeQ==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
   '@shikijs/engine-oniguruma@3.12.2':
@@ -1577,8 +1577,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lru-cache@11.1.0:
-    resolution: {integrity: sha512-QIXZUBJUx+2zHUdQujWejBkcD9+cs94tLn0+YL8UrCh+D5sCXZ4c7LaEH48pNwRY3MLDgqUFyhlCyjJPf1WP0A==}
+  lru-cache@11.2.1:
+    resolution: {integrity: sha512-r8LA6i4LP4EeWOhqBaZZjDWwehd1xUJPCJd9Sv300H0ZmcUER4+JPh7bqqZeqs1o5pgtgvXm+d9UGrB5zZGDiQ==}
     engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
@@ -2509,7 +2509,7 @@ snapshots:
     dependencies:
       '@babel/types': 7.27.6
 
-  '@babel/runtime@7.28.3': {}
+  '@babel/runtime@7.28.4': {}
 
   '@babel/template@7.27.2':
     dependencies:
@@ -2960,14 +2960,14 @@ snapshots:
       require-from-string: 2.0.2
       uri-js-replace: 1.0.1
 
-  '@redocly/cli@2.0.8(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)':
+  '@redocly/cli@2.1.1(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)':
     dependencies:
       '@opentelemetry/exporter-trace-otlp-http': 0.202.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/resources': 2.0.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-node': 2.0.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.34.0
-      '@redocly/openapi-core': 2.0.8(ajv@8.17.1)
-      '@redocly/respect-core': 2.0.8(ajv@8.17.1)
+      '@redocly/openapi-core': 2.1.1(ajv@8.17.1)
+      '@redocly/respect-core': 2.1.1(ajv@8.17.1)
       abort-controller: 3.0.0
       chokidar: 3.6.0
       colorette: 1.4.0
@@ -3000,7 +3000,7 @@ snapshots:
 
   '@redocly/config@0.22.2': {}
 
-  '@redocly/config@0.29.0':
+  '@redocly/config@0.29.1':
     dependencies:
       json-schema-to-ts: 2.7.2
 
@@ -3018,10 +3018,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@redocly/openapi-core@2.0.8(ajv@8.17.1)':
+  '@redocly/openapi-core@2.1.1(ajv@8.17.1)':
     dependencies:
       '@redocly/ajv': 8.11.3
-      '@redocly/config': 0.29.0
+      '@redocly/config': 0.29.1
       ajv-formats: 2.1.1(ajv@8.17.1)
       colorette: 1.4.0
       js-levenshtein: 1.1.6
@@ -3032,12 +3032,12 @@ snapshots:
     transitivePeerDependencies:
       - ajv
 
-  '@redocly/respect-core@2.0.8(ajv@8.17.1)':
+  '@redocly/respect-core@2.1.1(ajv@8.17.1)':
     dependencies:
       '@faker-js/faker': 7.6.0
       '@noble/hashes': 1.8.0
       '@redocly/ajv': 8.11.2
-      '@redocly/openapi-core': 2.0.8(ajv@8.17.1)
+      '@redocly/openapi-core': 2.1.1(ajv@8.17.1)
       better-ajv-errors: 1.2.0(ajv@8.17.1)
       colorette: 2.0.20
       jest-diff: 29.7.0
@@ -4101,7 +4101,7 @@ snapshots:
 
   json-schema-to-ts@2.7.2:
     dependencies:
-      '@babel/runtime': 7.28.3
+      '@babel/runtime': 7.28.4
       '@types/json-schema': 7.0.15
       ts-algebra: 1.2.2
 
@@ -4190,7 +4190,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lru-cache@11.1.0: {}
+  lru-cache@11.2.1: {}
 
   lru-cache@5.1.1:
     dependencies:
@@ -4408,7 +4408,7 @@ snapshots:
 
   path-scurry@2.0.0:
     dependencies:
-      lru-cache: 11.1.0
+      lru-cache: 11.2.1
       minipass: 7.1.2
 
   path-to-regexp@0.1.12: {}
@@ -4427,7 +4427,7 @@ snapshots:
 
   polished@4.3.1:
     dependencies:
-      '@babel/runtime': 7.28.3
+      '@babel/runtime': 7.28.4
 
   postcss-value-parser@4.2.0: {}
 
