@@ -4,6 +4,6 @@ import type { Post } from "./Post";
 import type { PrivateMessage } from "./PrivateMessage";
 
 export type PostOrCommentOrPrivateMessage =
-  | { Post: Post }
-  | { Comment: Comment }
-  | { PrivateMessage: PrivateMessage };
+  | ({ type_: "Post" } & Post)
+  | ({ type_: "Comment" } & Comment)
+  | ({ type_: "PrivateMessage" } & PrivateMessage);

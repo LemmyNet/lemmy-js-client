@@ -29,7 +29,6 @@ export type CreateSite = {
   application_email_admins?: boolean;
   discussion_languages?: Array<LanguageId>;
   slur_filter_regex?: string;
-  actor_name_max_length?: number;
   rate_limit_message_max_requests?: number;
   rate_limit_message_interval_seconds?: number;
   rate_limit_post_max_requests?: number;
