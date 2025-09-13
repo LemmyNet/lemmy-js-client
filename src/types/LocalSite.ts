@@ -54,10 +54,6 @@ export type LocalSite = {
    */
   slur_filter_regex?: string;
   /**
-   * The max actor name length.
-   */
-  actor_name_max_length: number;
-  /**
    * Whether federation is enabled.
    */
   federation_enabled: boolean;

@@ -82,10 +82,6 @@ export type EditSite = {
    */
   slur_filter_regex?: string;
   /**
-   * The max length of actor names.
-   */
-  actor_name_max_length?: number;
-  /**
    * The number of messages allowed in a given time frame.
    */
   rate_limit_message_max_requests?: number;
