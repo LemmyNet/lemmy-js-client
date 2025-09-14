@@ -17,6 +17,7 @@ export type LemmyErrorType =
   | { error: "email_not_verified" }
   | { error: "email_required" }
   | { error: "cannot_leave_admin" }
+  | { error: "cannot_leave_mod" }
   | { error: "pictrs_response_error"; message: string }
   | { error: "pictrs_purge_response_error"; message: string }
   | { error: "image_url_missing_path_segments" }

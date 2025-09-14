@@ -3,6 +3,7 @@ import type { Comment } from "./Comment";
 import type { Community } from "./Community";
 import type { ModLockComment } from "./ModLockComment";
 import type { Person } from "./Person";
+import type { Post } from "./Post";
 
 /**
  * When a moderator locks a comment (prevents replies to it or its children).
@@ -12,5 +13,6 @@ export type ModLockCommentView = {
   moderator?: Person;
   other_person: Person;
   comment: Comment;
+  post: Post;
   community: Community;
 };
