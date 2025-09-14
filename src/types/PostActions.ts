@@ -11,25 +11,25 @@ export type PostActions = {
    */
   read_comments_at?: string;
   /**
+   * When the post was saved.
+   */
+  saved_at?: string;
+  /**
+   * When the post was upvoted or downvoted.
+   */
+  voted_at?: string;
+  /**
+   * When the post was hidden.
+   */
+  hidden_at?: string;
+  /**
    * The number of comments you read last. Subtract this from total comments to get an unread
    * count.
    */
   read_comments_amount?: number;
   /**
-   * When the post was saved.
+   * True if upvoted, false if downvoted. Upvote is greater than downvote.
    */
-  saved_at?: string;
-  /**
-   * When the post was liked.
-   */
-  liked_at?: string;
-  /**
-   * The like / score of the post.
-   */
-  like_score?: number;
-  /**
-   * When the post was hidden.
-   */
-  hidden_at?: string;
+  vote_is_upvote?: boolean;
   notifications?: PostNotificationsMode;
 };
