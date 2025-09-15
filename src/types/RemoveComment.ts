@@ -7,5 +7,5 @@ import type { CommentId } from "./CommentId";
 export type RemoveComment = {
   comment_id: CommentId;
   removed: boolean;
-  reason?: string;
+  reason: string;
 };

@@ -120,7 +120,7 @@ export type SaveUserSettings = {
   /**
    * Some vote display mode settings
    */
-  show_scores?: boolean;
+  show_score?: boolean;
   show_upvotes?: boolean;
   show_downvotes?: VoteShow;
   show_upvote_percentage?: boolean;

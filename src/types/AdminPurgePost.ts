@@ -10,6 +10,6 @@ export type AdminPurgePost = {
   id: AdminPurgePostId;
   admin_person_id: PersonId;
   community_id: CommunityId;
-  reason?: string;
+  reason: string;
   published_at: string;
 };
