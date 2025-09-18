@@ -3,6 +3,6 @@
 export type AdminBlockInstanceParams = {
   instance: string;
   block: boolean;
-  reason?: string;
+  reason: string;
   expires_at?: string;
 };

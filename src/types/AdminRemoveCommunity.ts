@@ -10,7 +10,7 @@ export type AdminRemoveCommunity = {
   id: AdminRemoveCommunityId;
   mod_person_id: PersonId;
   community_id: CommunityId;
-  reason?: string;
+  reason: string;
   removed: boolean;
   published_at: string;
 };

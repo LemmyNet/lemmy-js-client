@@ -7,5 +7,5 @@ import type { CommentId } from "./CommentId";
 export type LockComment = {
   comment_id: CommentId;
   locked: boolean;
-  reason?: string;
+  reason: string;
 };
