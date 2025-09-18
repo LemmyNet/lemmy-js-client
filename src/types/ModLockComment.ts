@@ -11,6 +11,6 @@ export type ModLockComment = {
   mod_person_id: PersonId;
   comment_id: CommentId;
   locked: boolean;
-  reason?: string;
+  reason: string;
   published_at: string;
 };

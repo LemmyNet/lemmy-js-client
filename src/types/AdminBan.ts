@@ -10,7 +10,7 @@ export type AdminBan = {
   id: AdminBanId;
   mod_person_id: PersonId;
   other_person_id: PersonId;
-  reason?: string;
+  reason: string;
   banned: boolean;
   expires_at?: string;
   published_at: string;
