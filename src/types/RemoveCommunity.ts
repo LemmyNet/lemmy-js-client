@@ -7,5 +7,5 @@ import type { CommunityId } from "./CommunityId";
 export type RemoveCommunity = {
   community_id: CommunityId;
   removed: boolean;
-  reason?: string;
+  reason: string;
 };

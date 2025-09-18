@@ -7,5 +7,5 @@ import type { CommunityId } from "./CommunityId";
 export type HideCommunity = {
   community_id: CommunityId;
   hidden: boolean;
-  reason?: string;
+  reason: string;
 };

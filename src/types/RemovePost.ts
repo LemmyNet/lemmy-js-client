@@ -4,4 +4,4 @@ import type { PostId } from "./PostId";
 /**
  * Remove a post (only doable by mods).
  */
-export type RemovePost = { post_id: PostId; removed: boolean; reason?: string };
+export type RemovePost = { post_id: PostId; removed: boolean; reason: string };

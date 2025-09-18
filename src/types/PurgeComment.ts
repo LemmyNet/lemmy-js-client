@@ -4,4 +4,4 @@ import type { CommentId } from "./CommentId";
 /**
  * Purges a comment from the database. This will delete all content attached to that comment.
  */
-export type PurgeComment = { comment_id: CommentId; reason?: string };
+export type PurgeComment = { comment_id: CommentId; reason: string };

@@ -8,6 +8,6 @@ import type { PersonId } from "./PersonId";
 export type AdminPurgePerson = {
   id: AdminPurgePersonId;
   admin_person_id: PersonId;
-  reason?: string;
+  reason: string;
   published_at: string;
 };

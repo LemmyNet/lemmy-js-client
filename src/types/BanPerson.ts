@@ -12,7 +12,7 @@ export type BanPerson = {
    * If ban is true, then this means remove. If ban is false, it means restore.
    */
   remove_or_restore_data?: boolean;
-  reason?: string;
+  reason: string;
   /**
    * A time that the ban will expire, in unix epoch seconds.
    *

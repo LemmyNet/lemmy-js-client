@@ -3,7 +3,7 @@
 /**
  * Types of notifications which can be received in inbox
  */
-export type NotificationTypes =
+export type NotificationType =
   | "Mention"
   | "Reply"
   | "Subscribed"

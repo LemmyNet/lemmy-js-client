@@ -4,4 +4,4 @@ import type { PostId } from "./PostId";
 /**
  * Lock a post (prevent new comments).
  */
-export type LockPost = { post_id: PostId; locked: boolean; reason?: string };
+export type LockPost = { post_id: PostId; locked: boolean; reason: string };

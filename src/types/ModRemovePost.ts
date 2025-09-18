@@ -10,7 +10,7 @@ export type ModRemovePost = {
   id: ModRemovePostId;
   mod_person_id: PersonId;
   post_id: PostId;
-  reason?: string;
+  reason: string;
   removed: boolean;
   published_at: string;
 };
