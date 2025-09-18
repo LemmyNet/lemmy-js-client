@@ -9,5 +9,5 @@ export type CreateCustomEmoji = {
   shortcode: string;
   image_url: DbUrl;
   alt_text: string;
-  keywords: Array<string>;
+  keywords?: Array<string>;
 };
