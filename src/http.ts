@@ -2954,14 +2954,18 @@ export class LemmyHttp extends Controller {
     try {
       json = await response.json();
     } catch {
-      throw new LemmyError(response.statusText);
+      throw new LemmyError(response.statusText, response.status);
     }
 
     if (!response.ok) {
       console.error(
         `Request error while calling ${type_} ${endpoint} with ${form}`,
       );
-      let err = new LemmyError(json.error ?? response.statusText, json.message);
+      let err = new LemmyError(
+        json.error ?? response.statusText,
+        response.status,
+        json.message,
+      );
       throw err;
     } else {
       return json;
@@ -3007,9 +3011,11 @@ function createFormData(image: File | Buffer): FormData {
  * The msg is either an empty string, or extra non-translatable info.
  */
 export class LemmyError extends Error {
-  constructor(name: string, msg?: string) {
+  status: number;
+  constructor(name: string, status: number, msg?: string) {
     super(msg ?? "");
     this.name = name;
+    this.status = status;
 
     // Set the prototype explicitly.
     Object.setPrototypeOf(this, LemmyError.prototype);
