@@ -2,15 +2,15 @@
 
 export type CommentActions = {
   /**
-   * The like / score for the comment.
+   * When the comment was upvoted or downvoted.
    */
-  like_score?: number;
-  /**
-   * When the comment was liked.
-   */
-  liked_at?: string;
+  voted_at?: string;
   /**
    * When the comment was saved.
    */
   saved_at?: string;
+  /**
+   * True if upvoted, false if downvoted. Upvote is greater than downvote.
+   */
+  vote_is_upvote?: boolean;
 };
