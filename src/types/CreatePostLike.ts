@@ -4,10 +4,4 @@ import type { PostId } from "./PostId";
 /**
  * Like a post.
  */
-export type CreatePostLike = {
-  post_id: PostId;
-  /**
-   * Score must be -1, 0, or 1.
-   */
-  score: number;
-};
+export type CreatePostLike = { post_id: PostId; is_upvote?: boolean };
