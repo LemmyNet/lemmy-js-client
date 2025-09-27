@@ -17,7 +17,7 @@ importers:
         version: 9.36.0
       '@redocly/cli':
         specifier: ^2.0.0
-        version: 2.1.5(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)
+        version: 2.2.2(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)
       '@types/node':
         specifier: ^22.7.4
         version: 22.18.6
@@ -506,8 +506,8 @@ packages:
   '@redocly/ajv@8.11.3':
     resolution: {integrity: sha512-4P3iZse91TkBiY+Dx5DUgxQ9GXkVJf++cmI0MOyLDxV9b5MUBI4II6ES8zA5JCbO72nKAJxWrw4PUPW+YP3ZDQ==}
 
-  '@redocly/cli@2.1.5':
-    resolution: {integrity: sha512-4IbZMK2+fLi/INvlMlqseH4C7aIu7/WMRU2VgTw1uFWpffuYS91F3/Nzrah9sKuUqb3nidiZJY1rXHLk5/zrmg==}
+  '@redocly/cli@2.2.2':
+    resolution: {integrity: sha512-LqC7VGoMxWZZC6P96vZO5JOXGSo5Aj6A2KiLcPYPLrZT4Rr/aMBjMauJ4lacX/Z2SuaWZ5CrcnprY1QlL/ZFkQ==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
     hasBin: true
 
@@ -521,12 +521,12 @@ packages:
     resolution: {integrity: sha512-0EbE8LRbkogtcCXU7liAyC00n9uNG9hJ+eMyHFdUsy9lB/WGqnEBgwjA9q2cyzAVcdTkQqTBBU1XePNnN3OijA==}
     engines: {node: '>=18.17.0', npm: '>=9.5.0'}
 
-  '@redocly/openapi-core@2.1.5':
-    resolution: {integrity: sha512-zIvPUIWxOrravypkBV52aCQFUuJpMfwhw5of9nW+23VK/nrqOkyB0mhLTFpdCUQG3WgTl8qpnpWQnNeWcrPvGA==}
+  '@redocly/openapi-core@2.2.2':
+    resolution: {integrity: sha512-7Db3yYOAH0k0dq+EkWEh0Cff+KzlzR82YG+R0UphG3sxgtVT7EE4OoDKGcVYey0Dh+Qn728WCKNXdBBKb3Svhw==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
-  '@redocly/respect-core@2.1.5':
-    resolution: {integrity: sha512-/naxE4mfi3jRDLcIBhl0BZQg9XnQRs3nVhen0jcLNqfnYVryAfF4pZsczZAEGDAYITNSuuiDZzMRZ3/EY1XC5A==}
+  '@redocly/respect-core@2.2.2':
+    resolution: {integrity: sha512-OpiS9LFlBd8xfHAzH5WJ7zTDsjL7FO9jH5QNLCy6/macnL0b6tg/uDUmMjxyUU7/eL2eQUEr8wlIa5oZaN5ZNg==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
 
   '@shikijs/engine-oniguruma@3.13.0':
@@ -1590,8 +1590,8 @@ packages:
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
 
-  lru-cache@11.2.1:
-    resolution: {integrity: sha512-r8LA6i4LP4EeWOhqBaZZjDWwehd1xUJPCJd9Sv300H0ZmcUER4+JPh7bqqZeqs1o5pgtgvXm+d9UGrB5zZGDiQ==}
+  lru-cache@11.2.2:
+    resolution: {integrity: sha512-F9ODfyqML2coTIsQpSkRHnLSZMtkU8Q+mSfcaIyKwy58u+8k5nvAYeiNhsyMARvzNcXJ9QfWVrcPsC9e9rAxtg==}
     engines: {node: 20 || >=22}
 
   lru-cache@5.1.1:
@@ -1711,8 +1711,8 @@ packages:
       react-native:
         optional: true
 
-  mobx@6.13.7:
-    resolution: {integrity: sha512-aChaVU/DO5aRPmk1GX8L+whocagUUpBQqoPtJk+cm7UOXUk87J4PeWCh6nNmTTIfEhiR9DI/+FnA8dln/hTK7g==}
+  mobx@6.15.0:
+    resolution: {integrity: sha512-UczzB+0nnwGotYSgllfARAqWCJ5e/skuV2K/l+Zyck/H6pJIhLXuBnz+6vn2i211o7DtbE78HQtsYEKICHGI+g==}
 
   ms@2.0.0:
     resolution: {integrity: sha512-Tpp60P6IUJDTuOq/5Z8cdskzJujfwqfOTkrwIwj7IRISpnkJnT6SyJ4PCPnGMoFjC9ddhal5KVIYtAt97ix05A==}
@@ -1995,8 +1995,8 @@ packages:
     resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
     engines: {node: '>=8.10.0'}
 
-  redoc@2.5.0:
-    resolution: {integrity: sha512-NpYsOZ1PD9qFdjbLVBZJWptqE+4Y6TkUuvEOqPUmoH7AKOmPcE+hYjotLxQNTqVoWL4z0T2uxILmcc8JGDci+Q==}
+  redoc@2.5.1:
+    resolution: {integrity: sha512-LmqA+4A3CmhTllGG197F0arUpmChukAj9klfSdxNRemT9Hr07xXr7OGKu4PHzBs359sgrJ+4JwmOlM7nxLPGMg==}
     engines: {node: '>=6.9', npm: '>=3.0.0'}
     peerDependencies:
       core-js: ^3.1.4
@@ -2977,14 +2977,14 @@ snapshots:
       require-from-string: 2.0.2
       uri-js-replace: 1.0.1
 
-  '@redocly/cli@2.1.5(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)':
+  '@redocly/cli@2.2.2(@opentelemetry/api@1.9.0)(ajv@8.17.1)(core-js@3.44.0)':
     dependencies:
       '@opentelemetry/exporter-trace-otlp-http': 0.202.0(@opentelemetry/api@1.9.0)
       '@opentelemetry/resources': 2.0.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/sdk-trace-node': 2.0.1(@opentelemetry/api@1.9.0)
       '@opentelemetry/semantic-conventions': 1.34.0
-      '@redocly/openapi-core': 2.1.5(ajv@8.17.1)
-      '@redocly/respect-core': 2.1.5(ajv@8.17.1)
+      '@redocly/openapi-core': 2.2.2(ajv@8.17.1)
+      '@redocly/respect-core': 2.2.2(ajv@8.17.1)
       abort-controller: 3.0.0
       chokidar: 3.6.0
       colorette: 1.4.0
@@ -2994,11 +2994,11 @@ snapshots:
       glob: 11.0.3
       handlebars: 4.7.8
       https-proxy-agent: 7.0.6
-      mobx: 6.13.7
+      mobx: 6.15.0
       pluralize: 8.0.0
       react: 19.1.1
       react-dom: 19.1.1(react@19.1.1)
-      redoc: 2.5.0(core-js@3.44.0)(mobx@6.13.7)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(styled-components@6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
+      redoc: 2.5.1(core-js@3.44.0)(mobx@6.15.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(styled-components@6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1))
       semver: 7.7.2
       set-cookie-parser: 2.7.1
       simple-websocket: 9.1.0
@@ -3035,7 +3035,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@redocly/openapi-core@2.1.5(ajv@8.17.1)':
+  '@redocly/openapi-core@2.2.2(ajv@8.17.1)':
     dependencies:
       '@redocly/ajv': 8.11.3
       '@redocly/config': 0.31.0
@@ -3049,12 +3049,12 @@ snapshots:
     transitivePeerDependencies:
       - ajv
 
-  '@redocly/respect-core@2.1.5(ajv@8.17.1)':
+  '@redocly/respect-core@2.2.2(ajv@8.17.1)':
     dependencies:
       '@faker-js/faker': 7.6.0
       '@noble/hashes': 1.8.0
       '@redocly/ajv': 8.11.2
-      '@redocly/openapi-core': 2.1.5(ajv@8.17.1)
+      '@redocly/openapi-core': 2.2.2(ajv@8.17.1)
       better-ajv-errors: 1.2.0(ajv@8.17.1)
       colorette: 2.0.20
       jest-matcher-utils: 29.7.0
@@ -4212,7 +4212,7 @@ snapshots:
 
   lru-cache@10.4.3: {}
 
-  lru-cache@11.2.1: {}
+  lru-cache@11.2.2: {}
 
   lru-cache@5.1.1:
     dependencies:
@@ -4286,23 +4286,23 @@ snapshots:
 
   minipass@7.1.2: {}
 
-  mobx-react-lite@4.1.0(mobx@6.13.7)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  mobx-react-lite@4.1.0(mobx@6.15.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
-      mobx: 6.13.7
+      mobx: 6.15.0
       react: 19.1.1
       use-sync-external-store: 1.5.0(react@19.1.1)
     optionalDependencies:
       react-dom: 19.1.1(react@19.1.1)
 
-  mobx-react@9.2.0(mobx@6.13.7)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
+  mobx-react@9.2.0(mobx@6.15.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1):
     dependencies:
-      mobx: 6.13.7
-      mobx-react-lite: 4.1.0(mobx@6.13.7)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      mobx: 6.15.0
+      mobx-react-lite: 4.1.0(mobx@6.15.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       react: 19.1.1
     optionalDependencies:
       react-dom: 19.1.1(react@19.1.1)
 
-  mobx@6.13.7: {}
+  mobx@6.15.0: {}
 
   ms@2.0.0: {}
 
@@ -4430,7 +4430,7 @@ snapshots:
 
   path-scurry@2.0.0:
     dependencies:
-      lru-cache: 11.2.1
+      lru-cache: 11.2.2
       minipass: 7.1.2
 
   path-to-regexp@0.1.12: {}
@@ -4573,7 +4573,7 @@ snapshots:
     dependencies:
       picomatch: 2.3.1
 
-  redoc@2.5.0(core-js@3.44.0)(mobx@6.13.7)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(styled-components@6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1)):
+  redoc@2.5.1(core-js@3.44.0)(mobx@6.15.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)(styled-components@6.1.19(react-dom@19.1.1(react@19.1.1))(react@19.1.1)):
     dependencies:
       '@redocly/openapi-core': 1.34.5
       classnames: 2.5.1
@@ -4585,8 +4585,8 @@ snapshots:
       lunr: 2.3.9
       mark.js: 8.11.1
       marked: 4.3.0
-      mobx: 6.13.7
-      mobx-react: 9.2.0(mobx@6.13.7)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+      mobx: 6.15.0
+      mobx-react: 9.2.0(mobx@6.15.0)(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       openapi-sampler: 1.6.1
       path-browserify: 1.0.1
       perfect-scrollbar: 1.5.6
@@ -4808,7 +4808,7 @@ snapshots:
     dependencies:
       emoji-regex: 10.5.0
       get-east-asian-width: 1.3.1
-      strip-ansi: 7.1.2
+      strip-ansi: 7.1.0
 
   string_decoder@1.3.0:
     dependencies:
