@@ -1793,7 +1793,7 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Mark a comment as read.
+   * @summary Mark a notification as read.
    */
   @Security("bearerAuth")
   @Post("/account/mark_as_read")
