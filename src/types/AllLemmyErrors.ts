@@ -1,4 +1,4 @@
-export let AllLemmyErrors = [
+export let AllLemmyErrors: string[] = [
   "block_keyword_too_short",
   "block_keyword_too_long",
   "couldnt_update",
