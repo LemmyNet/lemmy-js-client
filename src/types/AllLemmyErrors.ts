@@ -1,4 +1,4 @@
-export type AllLemmyErrors = [
+export let AllLemmyErrors = [
   "block_keyword_too_short",
   "block_keyword_too_long",
   "couldnt_update",
