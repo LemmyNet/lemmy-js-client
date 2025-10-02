@@ -10,7 +10,7 @@ export type ModRemoveComment = {
   id: ModRemoveCommentId;
   mod_person_id: PersonId;
   comment_id: CommentId;
-  reason?: string;
+  reason: string;
   removed: boolean;
   published_at: string;
 };

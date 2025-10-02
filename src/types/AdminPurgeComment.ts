@@ -10,6 +10,6 @@ export type AdminPurgeComment = {
   id: AdminPurgeCommentId;
   admin_person_id: PersonId;
   post_id: PostId;
-  reason?: string;
+  reason: string;
   published_at: string;
 };
