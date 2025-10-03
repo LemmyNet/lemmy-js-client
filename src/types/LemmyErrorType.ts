@@ -116,4 +116,5 @@ export type LemmyErrorType =
   | { error: "email_notifications_disabled" }
   | { error: "multi_community_update_wrong_user" }
   | { error: "cannot_combine_community_id_and_multi_community_id" }
-  | { error: "multi_community_entry_limit_reached" };
+  | { error: "multi_community_entry_limit_reached" }
+  | { error: "too_many_requests" };

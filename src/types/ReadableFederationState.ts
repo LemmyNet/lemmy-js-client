@@ -6,7 +6,7 @@ export type ReadableFederationState = {
   /**
    * timestamp of the next retry attempt (null if fail count is 0)
    */
-  next_retry?: string;
+  next_retry_at?: string;
   instance_id: InstanceId;
   /**
    * the last successfully sent activity id
