@@ -36,6 +36,7 @@ export { AdminPurgePostView } from "./types/AdminPurgePostView";
 export { AdminRemoveCommunity } from "./types/AdminRemoveCommunity";
 export { AdminRemoveCommunityId } from "./types/AdminRemoveCommunityId";
 export { AdminRemoveCommunityView } from "./types/AdminRemoveCommunityView";
+export { AllLemmyErrors } from "./types/AllLemmyErrors";
 export { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
 export { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 export { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
