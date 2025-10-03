@@ -101,10 +101,6 @@ export type SaveUserSettings = {
    */
   infinite_scroll_enabled?: boolean;
   /**
-   * Whether to allow keyboard navigation (for browsing and interacting with posts and comments).
-   */
-  enable_keyboard_navigation?: boolean;
-  /**
    * Whether user avatars or inline images in the UI that are gifs should be allowed to play or
    * should be paused
    */
