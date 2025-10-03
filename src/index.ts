@@ -261,7 +261,7 @@ export { Notification } from "./types/Notification";
 export { NotificationData } from "./types/NotificationData";
 export { NotificationDataType } from "./types/NotificationDataType";
 export { NotificationId } from "./types/NotificationId";
-export { NotificationTypes } from "./types/NotificationTypes";
+export { NotificationType } from "./types/NotificationType";
 export { NotificationView } from "./types/NotificationView";
 export { OAuthAccount } from "./types/OAuthAccount";
 export { OAuthProvider } from "./types/OAuthProvider";
