@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "1.0.0-error-status-code.0",
+  "version": "1.0.0-emoji-shortcode.2",
   "author": "Dessalines",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
@@ -44,7 +44,7 @@
     "typescript": "^5.5.4",
     "typescript-eslint": "^8.7.0"
   },
-  "packageManager": "pnpm@10.17.1",
+  "packageManager": "pnpm@10.18.0",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
