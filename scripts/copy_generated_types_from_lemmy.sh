@@ -43,6 +43,7 @@ find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
 # find src/types -type f -name '*.ts' -exec sed -i '' -e 's/bigint/number/g' {} \;
 
 # Parse LemmyErrorType and convert it to array.
+pnpm prettier -w src/types/LemmyErrorType.ts
 ALL_ERRORS=$(cat src/types/LemmyErrorType.ts | \
 perl -nle 'm/\{ \s*error:\s*"(.*?)" \}/; print $1' | \
 sed '/^[[:space:]]*$/d'| \
