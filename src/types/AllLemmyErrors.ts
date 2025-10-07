@@ -1,4 +1,4 @@
-export let AllLemmyErrors: string[] = [
+export const AllLemmyErrors = [
   "block_keyword_too_short",
   "block_keyword_too_long",
   "couldnt_update",
@@ -14,8 +14,9 @@ export let AllLemmyErrors: string[] = [
   "email_not_verified",
   "email_required",
   "cannot_leave_admin",
-  "cannot_leave_admin",
-  "cannot_leave_admin",
+  "cannot_leave_mod",
+  "cannot_leave_mod",
+  "cannot_leave_mod",
   "image_url_missing_path_segments",
   "image_url_missing_last_path_segment",
   "pictrs_api_key_not_provided",
@@ -87,7 +88,6 @@ export let AllLemmyErrors: string[] = [
   "couldnt_create_audio_captcha",
   "couldnt_create_image_captcha",
   "invalid_url_scheme",
-  "couldnt_send_webmention",
   "contradicting_filters",
   "too_many_items",
   "ban_expiration_in_past",
@@ -101,7 +101,6 @@ export let AllLemmyErrors: string[] = [
   "oauth_login_failed",
   "oauth_registration_closed",
   "not_found",
-  "community_has_no_followers",
   "post_schedule_time_must_be_in_future",
   "too_many_scheduled_posts",
   "cannot_combine_federation_blocklist_and_allowlist",
@@ -113,4 +112,5 @@ export let AllLemmyErrors: string[] = [
   "multi_community_update_wrong_user",
   "cannot_combine_community_id_and_multi_community_id",
   "multi_community_entry_limit_reached",
+  "too_many_requests",
 ];
