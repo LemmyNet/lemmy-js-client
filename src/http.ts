@@ -1053,7 +1053,7 @@ export class LemmyHttp extends Controller {
   @Post("/post/hide")
   @Tags("Post")
   async hidePost(@Body() form: HidePost, @Inject() options?: RequestOptions) {
-    return this.#wrapper<HidePost, SuccessResponse>(
+    return this.#wrapper<HidePost, PostResponse>(
       HttpType.Post,
       "/post/hide",
       form,
