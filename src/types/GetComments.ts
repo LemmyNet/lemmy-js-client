@@ -3,6 +3,7 @@ import type { CommentId } from "./CommentId";
 import type { CommentSortType } from "./CommentSortType";
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
+import type { NameOrId } from "./NameOrId";
 import type { PaginationCursor } from "./PaginationCursor";
 import type { PostId } from "./PostId";
 
@@ -21,8 +22,10 @@ export type GetComments = {
   page_cursor?: PaginationCursor;
   page_back?: boolean;
   limit?: number;
-  community_id?: CommunityId;
-  community_name?: string;
+  /**
+   * Example: `star_trek`, or `star_trek@xyz.tld` or `12`
+   */
+  community_name_or_id?: NameOrId<CommunityId>;
   post_id?: PostId;
   parent_id?: CommentId;
 };

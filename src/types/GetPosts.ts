@@ -2,6 +2,7 @@
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { MultiCommunityId } from "./MultiCommunityId";
+import type { NameOrId } from "./NameOrId";
 import type { PaginationCursor } from "./PaginationCursor";
 import type { PostSortType } from "./PostSortType";
 
@@ -17,9 +18,11 @@ export type GetPosts = {
    * Use Zero to override the local_site and local_user time_range.
    */
   time_range_seconds?: number;
-  community_id?: CommunityId;
-  community_name?: string;
-  multi_community_id?: MultiCommunityId;
+  /**
+   * Example: `star_trek`, or `star_trek@xyz.tld` or `12`
+   */
+  community_name_or_id?: NameOrId<CommunityId>;
+  multi_community_name_or_id?: NameOrId<MultiCommunityId>;
   show_hidden?: boolean;
   /**
    * If true, then show the read posts (even if your user setting is to hide them)
