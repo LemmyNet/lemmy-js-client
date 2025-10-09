@@ -23,12 +23,10 @@ export type LemmyErrorType =
   | { error: "cannot_leave_mod" }
   | { error: "pictrs_response_error"; message: string }
   | { error: "pictrs_purge_response_error"; message: string }
-  | { error: "image_url_missing_path_segments" }
-  | { error: "image_url_missing_last_path_segment" }
   | { error: "pictrs_api_key_not_provided" }
+  | { error: "pictrs_invalid_image_upload"; message: string }
   | { error: "no_content_type_header" }
   | { error: "not_an_image_type" }
-  | { error: "invalid_image_upload" }
   | { error: "image_upload_disabled" }
   | { error: "not_a_mod_or_admin" }
   | { error: "not_top_mod" }
@@ -62,7 +60,6 @@ export type LemmyErrorType =
   | { error: "email_already_taken" }
   | { error: "username_already_taken" }
   | { error: "person_is_banned_from_community" }
-  | { error: "no_id_given" }
   | { error: "incorrect_login" }
   | { error: "no_email_setup" }
   | { error: "local_site_not_setup" }
