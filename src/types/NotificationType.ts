@@ -7,4 +7,5 @@ export type NotificationType =
   | "Mention"
   | "Reply"
   | "Subscribed"
-  | "PrivateMessage";
+  | "PrivateMessage"
+  | "ModAction";
