@@ -59,11 +59,8 @@ import { BanFromCommunity } from "./types/BanFromCommunity";
 import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
 import { MarkManyPostsAsRead } from "./types/MarkManyPostsAsRead";
 import { BanPerson } from "./types/BanPerson";
-import { BanPersonResponse } from "./types/BanPersonResponse";
 import { BlockCommunity } from "./types/BlockCommunity";
-import { BlockCommunityResponse } from "./types/BlockCommunityResponse";
 import { BlockPerson } from "./types/BlockPerson";
-import { BlockPersonResponse } from "./types/BlockPersonResponse";
 import { ChangePassword } from "./types/ChangePassword";
 import { CommentReportResponse } from "./types/CommentReportResponse";
 import { CommentResponse } from "./types/CommentResponse";
@@ -230,6 +227,8 @@ import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
 import { ModEditPost } from "./types/ModEditPost";
 import { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
 import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
+import { MultiCommunityResponse } from "./types/MultiCommunityResponse";
+import { PersonResponse } from "./types/PersonResponse";
 
 enum HttpType {
   Get = "GET",
@@ -733,7 +732,7 @@ export class LemmyHttp extends Controller {
     @Body() form: BlockCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<BlockCommunity, BlockCommunityResponse>(
+    return this.#wrapper<BlockCommunity, CommunityResponse>(
       HttpType.Post,
       "/account/block/community",
       form,
@@ -1665,7 +1664,7 @@ export class LemmyHttp extends Controller {
   @Post("/admin/ban")
   @Tags("Admin")
   async banPerson(@Body() form: BanPerson, @Inject() options?: RequestOptions) {
-    return this.#wrapper<BanPerson, BanPersonResponse>(
+    return this.#wrapper<BanPerson, PersonResponse>(
       HttpType.Post,
       "/admin/ban",
       form,
@@ -1701,7 +1700,7 @@ export class LemmyHttp extends Controller {
     @Body() form: BlockPerson,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<BlockPerson, BlockPersonResponse>(
+    return this.#wrapper<BlockPerson, PersonResponse>(
       HttpType.Post,
       "/account/block/person",
       form,
@@ -2759,7 +2758,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, GetMultiCommunityResponse>(
+    return this.#wrapper<object, MultiCommunityResponse>(
       HttpType.Post,
       "/multi_community",
       form,
@@ -2774,7 +2773,7 @@ export class LemmyHttp extends Controller {
     @Body() form: UpdateMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, SuccessResponse>(
+    return this.#wrapper<object, MultiCommunityResponse>(
       HttpType.Put,
       "/multi_community",
       form,
@@ -2803,7 +2802,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, SuccessResponse>(
+    return this.#wrapper<object, CommunityResponse>(
       HttpType.Post,
       "/multi_community/entry",
       form,
@@ -2846,7 +2845,7 @@ export class LemmyHttp extends Controller {
     @Body() form: FollowMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, SuccessResponse>(
+    return this.#wrapper<object, MultiCommunityResponse>(
       HttpType.Post,
       "/multi_community/follow",
       form,

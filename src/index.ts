@@ -250,6 +250,7 @@ export { ModlogCombinedView } from "./types/ModlogCombinedView";
 export { MultiCommunity } from "./types/MultiCommunity";
 export { MultiCommunityFollow } from "./types/MultiCommunityFollow";
 export { MultiCommunityId } from "./types/MultiCommunityId";
+export { MultiCommunityResponse } from "./types/MultiCommunityResponse";
 export { MultiCommunityView } from "./types/MultiCommunityView";
 export { MyUserInfo } from "./types/MyUserInfo";
 export { NotePerson } from "./types/NotePerson";
