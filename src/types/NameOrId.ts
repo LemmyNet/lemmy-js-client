@@ -3,4 +3,4 @@
 /**
  * Takes either a name or a numeric ID. For example `main`, `main@lemmy.ml` or `12`.
  */
-export type NameOrId<T> = string | T;
+export type NameOrId = { Name: string } | { Id: number };

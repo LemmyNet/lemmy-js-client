@@ -2,7 +2,6 @@
 import type { NameOrId } from "./NameOrId";
 import type { PaginationCursor } from "./PaginationCursor";
 import type { PersonContentType } from "./PersonContentType";
-import type { PersonId } from "./PersonId";
 
 /**
  * Gets a person's content (posts and comments)
@@ -12,7 +11,7 @@ export type ListPersonContent = {
   /**
    * Example: `dessalines`, or `dessalines@xyz.tld`, or `12`
    */
-  person_name_or_id: NameOrId<PersonId>;
+  person_name_or_id: NameOrId;
   page_cursor?: PaginationCursor;
   page_back?: boolean;
   limit?: number;
