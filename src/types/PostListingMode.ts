@@ -3,4 +3,4 @@
 /**
  * A post-view mode that changes how multiple post listings look.
  */
-export type PostListingMode = "List" | "Card" | "SmallCard";
+export type PostListingMode = "list" | "card" | "small_card";
