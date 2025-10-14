@@ -4,8 +4,8 @@
  * A list of possible types for the inbox.
  */
 export type NotificationDataType =
-  | "All"
-  | "Reply"
-  | "Mention"
-  | "PrivateMessage"
-  | "Subscribed";
+  | "all"
+  | "reply"
+  | "mention"
+  | "private_message"
+  | "subscribed";
