@@ -3,6 +3,11 @@
 export type AdminBlockInstanceParams = {
   instance: string;
   block: boolean;
-  reason?: string;
-  expires_at?: string;
+  reason: string;
+  /**
+   * A time that the block will expire, in unix epoch seconds.
+   *
+   * An i64 unix timestamp is used for a simpler API client implementation.
+   */
+  expires_at?: number;
 };

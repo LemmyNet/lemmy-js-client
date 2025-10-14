@@ -96,4 +96,6 @@ export type Post = {
    * accepted by the community (by receiving it back via federation).
    */
   federation_pending: boolean;
+  embed_video_width?: number;
+  embed_video_height?: number;
 };

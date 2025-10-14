@@ -4,7 +4,6 @@ import type { FederationMode } from "./FederationMode";
 import type { ListingType } from "./ListingType";
 import type { LocalSiteId } from "./LocalSiteId";
 import type { MultiCommunityId } from "./MultiCommunityId";
-import type { PersonId } from "./PersonId";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { RegistrationMode } from "./RegistrationMode";
@@ -53,10 +52,6 @@ export type LocalSite = {
    * An optional regex to filter words.
    */
   slur_filter_regex?: string;
-  /**
-   * The max actor name length.
-   */
-  actor_name_max_length: number;
   /**
    * Whether federation is enabled.
    */
@@ -146,6 +141,5 @@ export type LocalSite = {
    */
   disable_email_notifications: boolean;
   suggested_communities?: MultiCommunityId;
-  multi_comm_follower: PersonId;
   default_items_per_page: number;
 };
