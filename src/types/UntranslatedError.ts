@@ -24,6 +24,7 @@ export type UntranslatedError =
   | "ObjectIsNotPublic"
   | "ObjectIsNotPrivate"
   | { InvalidFollow: string }
+  | "PurgeInvalidImageUrl"
   | "Unreachable"
   | "CouldntSendWebmention"
   | "CommunityHasNoFollowers";
