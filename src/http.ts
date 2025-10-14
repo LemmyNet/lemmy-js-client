@@ -2803,7 +2803,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, SuccessResponse>(
+    return this.#wrapper<object, CommunityResponse>(
       HttpType.Post,
       "/multi_community/entry",
       form,
