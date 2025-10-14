@@ -19,7 +19,6 @@ import {
   GetCommentI,
   GetCommentsI,
   GetCommunityI,
-  GetCommunityPendingFollowsCountI,
   GetModlogI,
   GetMultiCommunityI,
   GetPersonDetailsI,
@@ -184,7 +183,6 @@ import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
-import { GetCommunityPendingFollowsCount } from "./types/GetCommunityPendingFollowsCount";
 import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPendingFollowsCountResponse";
 import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendingFollowsResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
@@ -678,14 +676,13 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/community/pending_follows/count")
   @Tags("Community")
-  async getCommunityPendingFollowsCount(
-    @Queries() form: GetCommunityPendingFollowsCountI,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<
-      GetCommunityPendingFollowsCount,
-      GetCommunityPendingFollowsCountResponse
-    >(HttpType.Get, "/community/pending_follows/count", form, options);
+  async getCommunityPendingFollowsCount(@Inject() options?: RequestOptions) {
+    return this.#wrapper<{}, GetCommunityPendingFollowsCountResponse>(
+      HttpType.Get,
+      "/community/pending_follows/count",
+      {},
+      options,
+    );
   }
 
   /**
