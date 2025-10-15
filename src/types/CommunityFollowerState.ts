@@ -3,4 +3,5 @@
 export type CommunityFollowerState =
   | "accepted"
   | "pending"
-  | "approval_required";
+  | "approval_required"
+  | "denied";
