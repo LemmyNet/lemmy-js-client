@@ -3,4 +3,4 @@
 /**
  * The federation mode for an item
  */
-export type FederationMode = "All" | "Local" | "Disable";
+export type FederationMode = "all" | "local" | "disable";
