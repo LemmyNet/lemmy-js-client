@@ -4,8 +4,8 @@
  * Defines who can browse and interact with content in a community.
  */
 export type CommunityVisibility =
-  | "Public"
-  | "Unlisted"
-  | "LocalOnlyPublic"
-  | "LocalOnlyPrivate"
-  | "Private";
+  | "public"
+  | "unlisted"
+  | "local_only_public"
+  | "local_only_private"
+  | "private";

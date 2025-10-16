@@ -4,12 +4,12 @@
  * The post sort types. See here for descriptions: https://join-lemmy.org/docs/en/users/03-votes-and-ranking.html
  */
 export type PostSortType =
-  | "Active"
-  | "Hot"
-  | "New"
-  | "Old"
-  | "Top"
-  | "MostComments"
-  | "NewComments"
-  | "Controversial"
-  | "Scaled";
+  | "active"
+  | "hot"
+  | "new"
+  | "old"
+  | "top"
+  | "most_comments"
+  | "new_comments"
+  | "controversial"
+  | "scaled";

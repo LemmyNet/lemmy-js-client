@@ -4,8 +4,8 @@
  * Types of notifications which can be received in inbox
  */
 export type NotificationType =
-  | "Mention"
-  | "Reply"
-  | "Subscribed"
-  | "PrivateMessage"
-  | "ModAction";
+  | "mention"
+  | "reply"
+  | "subscribed"
+  | "private_message"
+  | "mod_action";

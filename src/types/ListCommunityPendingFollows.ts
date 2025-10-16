@@ -5,7 +5,7 @@ export type ListCommunityPendingFollows = {
   /**
    * Only shows the unapproved applications
    */
-  pending_only?: boolean;
+  unread_only?: boolean;
   all_communities?: boolean;
   page_cursor?: PaginationCursor;
   page_back?: boolean;

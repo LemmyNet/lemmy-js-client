@@ -3,4 +3,4 @@
 /**
  * The search sort types.
  */
-export type SearchSortType = "New" | "Top" | "Old";
+export type SearchSortType = "new" | "top" | "old";

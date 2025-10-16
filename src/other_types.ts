@@ -4,7 +4,6 @@ import { DeleteImageParams } from "./types/DeleteImageParams";
 import { GetComment } from "./types/GetComment";
 import { GetComments } from "./types/GetComments";
 import { GetCommunity } from "./types/GetCommunity";
-import { GetCommunityPendingFollowsCount } from "./types/GetCommunityPendingFollowsCount";
 import { GetModlog } from "./types/GetModlog";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { GetPersonDetails } from "./types/GetPersonDetails";
@@ -47,8 +46,6 @@ export interface SearchI extends Search {}
 export interface ResolveObjectI extends ResolveObject {}
 export interface GetCommunityI extends GetCommunity {}
 export interface ListCommunitiesI extends ListCommunities {}
-export interface GetCommunityPendingFollowsCountI
-  extends GetCommunityPendingFollowsCount {}
 export interface ListCommunityPendingFollowsI
   extends ListCommunityPendingFollows {}
 export interface GetRandomCommunityI extends GetRandomCommunity {}

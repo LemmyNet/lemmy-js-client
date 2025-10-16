@@ -4,16 +4,16 @@
  * The community sort types. See here for descriptions: https://join-lemmy.org/docs/en/users/03-votes-and-ranking.html
  */
 export type CommunitySortType =
-  | "ActiveSixMonths"
-  | "ActiveMonthly"
-  | "ActiveWeekly"
-  | "ActiveDaily"
-  | "Hot"
-  | "New"
-  | "Old"
-  | "NameAsc"
-  | "NameDesc"
-  | "Comments"
-  | "Posts"
-  | "Subscribers"
-  | "SubscribersLocal";
+  | "active_six_months"
+  | "active_monthly"
+  | "active_weekly"
+  | "active_daily"
+  | "hot"
+  | "new"
+  | "old"
+  | "name_asc"
+  | "name_desc"
+  | "comments"
+  | "posts"
+  | "subscribers"
+  | "subscribers_local";
