@@ -19,23 +19,23 @@ import type { ModRemovePostView } from "./ModRemovePostView";
 import type { ModTransferCommunityView } from "./ModTransferCommunityView";
 
 export type ModlogCombinedView =
-  | ({ type_: "AdminAllowInstance" } & AdminAllowInstanceView)
-  | ({ type_: "AdminBlockInstance" } & AdminBlockInstanceView)
-  | ({ type_: "AdminPurgeComment" } & AdminPurgeCommentView)
-  | ({ type_: "AdminPurgeCommunity" } & AdminPurgeCommunityView)
-  | ({ type_: "AdminPurgePerson" } & AdminPurgePersonView)
-  | ({ type_: "AdminPurgePost" } & AdminPurgePostView)
-  | ({ type_: "AdminAdd" } & AdminAddView)
-  | ({ type_: "ModAddToCommunity" } & ModAddToCommunityView)
-  | ({ type_: "AdminBan" } & AdminBanView)
-  | ({ type_: "ModBanFromCommunity" } & ModBanFromCommunityView)
-  | ({ type_: "ModFeaturePost" } & ModFeaturePostView)
+  | ({ type_: "admin_allow_instance" } & AdminAllowInstanceView)
+  | ({ type_: "admin_block_instance" } & AdminBlockInstanceView)
+  | ({ type_: "admin_purge_comment" } & AdminPurgeCommentView)
+  | ({ type_: "admin_purge_community" } & AdminPurgeCommunityView)
+  | ({ type_: "admin_purge_person" } & AdminPurgePersonView)
+  | ({ type_: "admin_purge_post" } & AdminPurgePostView)
+  | ({ type_: "admin_add" } & AdminAddView)
+  | ({ type_: "mod_add_to_community" } & ModAddToCommunityView)
+  | ({ type_: "admin_ban" } & AdminBanView)
+  | ({ type_: "mod_ban_from_community" } & ModBanFromCommunityView)
+  | ({ type_: "mod_feature_post" } & ModFeaturePostView)
   | ({
-      type_: "ModChangeCommunityVisibility";
+      type_: "mod_change_community_visibility";
     } & ModChangeCommunityVisibilityView)
-  | ({ type_: "ModLockPost" } & ModLockPostView)
-  | ({ type_: "ModRemoveComment" } & ModRemoveCommentView)
-  | ({ type_: "AdminRemoveCommunity" } & AdminRemoveCommunityView)
-  | ({ type_: "ModRemovePost" } & ModRemovePostView)
-  | ({ type_: "ModTransferCommunity" } & ModTransferCommunityView)
-  | ({ type_: "ModLockComment" } & ModLockCommentView);
+  | ({ type_: "mod_lock_post" } & ModLockPostView)
+  | ({ type_: "mod_remove_comment" } & ModRemoveCommentView)
+  | ({ type_: "admin_remove_community" } & AdminRemoveCommunityView)
+  | ({ type_: "mod_remove_post" } & ModRemovePostView)
+  | ({ type_: "mod_transfer_community" } & ModTransferCommunityView)
+  | ({ type_: "mod_lock_comment" } & ModLockCommentView);
