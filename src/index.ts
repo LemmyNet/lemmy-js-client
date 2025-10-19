@@ -247,6 +247,7 @@ export { ModTransferCommunityView } from "./types/ModTransferCommunityView";
 export { ModlogActionType } from "./types/ModlogActionType";
 export { ModlogCombinedView } from "./types/ModlogCombinedView";
 export { MultiCommunity } from "./types/MultiCommunity";
+export { MultiCommunityEntry } from "./types/MultiCommunityEntry";
 export { MultiCommunityFollow } from "./types/MultiCommunityFollow";
 export { MultiCommunityId } from "./types/MultiCommunityId";
 export { MultiCommunityResponse } from "./types/MultiCommunityResponse";
