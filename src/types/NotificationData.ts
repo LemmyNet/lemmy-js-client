@@ -14,16 +14,16 @@ import type { PostView } from "./PostView";
 import type { PrivateMessageView } from "./PrivateMessageView";
 
 export type NotificationData =
-  | ({ type_: "Comment" } & CommentView)
-  | ({ type_: "Post" } & PostView)
-  | ({ type_: "PrivateMessage" } & PrivateMessageView)
-  | ({ type_: "AdminAdd" } & AdminAdd)
-  | ({ type_: "ModAddToCommunity" } & ModAddToCommunity)
-  | ({ type_: "AdminBan" } & AdminBan)
-  | ({ type_: "ModBanFromCommunity" } & ModBanFromCommunity)
-  | ({ type_: "ModLockPost" } & ModLockPost)
-  | ({ type_: "ModLockComment" } & ModLockComment)
-  | ({ type_: "ModRemovePost" } & ModRemovePost)
-  | ({ type_: "ModRemoveComment" } & ModRemoveComment)
-  | ({ type_: "AdminRemoveCommunity" } & AdminRemoveCommunity)
-  | ({ type_: "ModTransferCommunity" } & ModTransferCommunity);
+  | ({ type_: "comment" } & CommentView)
+  | ({ type_: "post" } & PostView)
+  | ({ type_: "private_message" } & PrivateMessageView)
+  | ({ type_: "admin_add" } & AdminAdd)
+  | ({ type_: "mod_add_to_community" } & ModAddToCommunity)
+  | ({ type_: "admin_ban" } & AdminBan)
+  | ({ type_: "mod_ban_from_community" } & ModBanFromCommunity)
+  | ({ type_: "mod_lock_post" } & ModLockPost)
+  | ({ type_: "mod_lock_comment" } & ModLockComment)
+  | ({ type_: "mod_remove_post" } & ModRemovePost)
+  | ({ type_: "mod_remove_comment" } & ModRemoveComment)
+  | ({ type_: "admin_remove_community" } & AdminRemoveCommunity)
+  | ({ type_: "mod_transfer_community" } & ModTransferCommunity);
