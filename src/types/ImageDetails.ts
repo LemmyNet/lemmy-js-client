@@ -7,4 +7,5 @@ export type ImageDetails = {
   height: number;
   content_type: string;
   blurhash?: string;
+  blurhash_base64?: string;
 };
