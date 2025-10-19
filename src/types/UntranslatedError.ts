@@ -27,4 +27,4 @@ export type UntranslatedError =
   | "PurgeInvalidImageUrl"
   | "Unreachable"
   | "CouldntSendWebmention"
-  | "CommunityHasNoFollowers";
+  | { CommunityHasNoFollowers: string };

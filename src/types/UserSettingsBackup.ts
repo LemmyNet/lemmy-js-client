@@ -26,4 +26,6 @@ export type UserSettingsBackup = {
   blocked_users: Array<string>;
   blocked_instances_communities: Array<string>;
   blocked_instances_persons: Array<string>;
+  blocking_keywords: Array<string>;
+  discussion_languages: Array<string>;
 };
