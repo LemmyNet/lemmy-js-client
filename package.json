@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "1.0.0-bool-vote.2",
+  "version": "1.0.0-blurhash-base64.0",
   "author": "Dessalines",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
