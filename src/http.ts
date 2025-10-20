@@ -3007,7 +3007,7 @@ function createFormData(image: File | Buffer): FormData {
  * The msg is either an empty string, or extra non-translatable info.
  */
 export class LemmyError extends Error {
-  status: number;
+  public status: number;
   constructor(name: string, status: number, msg?: string) {
     super(msg ?? "");
     this.name = name;
