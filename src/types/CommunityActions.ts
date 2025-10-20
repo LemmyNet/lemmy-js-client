@@ -8,10 +8,6 @@ export type CommunityActions = {
    */
   followed_at?: string;
   /**
-   * The state of the community follow.
-   */
-  follow_state?: CommunityFollowerState;
-  /**
    * When the community was blocked.
    */
   blocked_at?: string;
@@ -27,5 +23,9 @@ export type CommunityActions = {
    * When their ban expires.
    */
   ban_expires_at?: string;
+  /**
+   * The state of the community follow.
+   */
+  follow_state?: CommunityFollowerState;
   notifications?: CommunityNotificationsMode;
 };

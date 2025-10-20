@@ -6,8 +6,8 @@ import type { PersonView } from "./PersonView";
 import type { PostView } from "./PostView";
 
 export type SearchCombinedView =
-  | ({ type_: "Post" } & PostView)
-  | ({ type_: "Comment" } & CommentView)
-  | ({ type_: "Community" } & CommunityView)
-  | ({ type_: "Person" } & PersonView)
-  | ({ type_: "MultiCommunity" } & MultiCommunityView);
+  | ({ type_: "post" } & PostView)
+  | ({ type_: "comment" } & CommentView)
+  | ({ type_: "community" } & CommunityView)
+  | ({ type_: "person" } & PersonView)
+  | ({ type_: "multi_community" } & MultiCommunityView);
