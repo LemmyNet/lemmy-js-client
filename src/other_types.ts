@@ -31,6 +31,7 @@ import { ListReports } from "./types/ListReports";
 import { ListTaglines } from "./types/ListTaglines";
 import { ResolveObject } from "./types/ResolveObject";
 import { Search } from "./types/Search";
+import { GetFederatedInstances } from "./types/GetFederatedInstances";
 
 export const VERSION = "v4";
 
@@ -76,3 +77,4 @@ export interface AdminListUsersI extends AdminListUsers {}
 export interface CommunityIdQueryI extends CommunityIdQuery {}
 export interface ListMultiCommunitiesI extends ListMultiCommunities {}
 export interface GetMultiCommunityI extends GetMultiCommunity {}
+export interface GetFederatedInstancesI extends GetFederatedInstances {}

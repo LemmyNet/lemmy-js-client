@@ -48,6 +48,7 @@ import {
   SearchI,
   UploadImage,
   VERSION,
+  GetFederatedInstancesI,
 } from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -227,6 +228,7 @@ import { UpdateCommunityNotifications } from "./types/UpdateCommunityNotificatio
 import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
 import { MultiCommunityResponse } from "./types/MultiCommunityResponse";
 import { PersonResponse } from "./types/PersonResponse";
+import { GetFederatedInstances } from "./types/GetFederatedInstances";
 
 enum HttpType {
   Get = "GET",
@@ -2425,11 +2427,14 @@ export class LemmyHttp extends Controller {
    */
   @Get("/federated_instances")
   @Tags("Miscellaneous")
-  async getFederatedInstances(@Inject() options?: RequestOptions) {
-    return this.#wrapper<object, GetFederatedInstancesResponse>(
+  async getFederatedInstances(
+    @Queries() form: GetFederatedInstancesI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<GetFederatedInstances, GetFederatedInstancesResponse>(
       HttpType.Get,
       "/federated_instances",
-      {},
+      form,
       options,
     );
   }
