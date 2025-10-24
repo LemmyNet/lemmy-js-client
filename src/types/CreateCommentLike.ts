@@ -4,4 +4,10 @@ import type { CommentId } from "./CommentId";
 /**
  * Like a comment.
  */
-export type CreateCommentLike = { comment_id: CommentId; is_upvote?: boolean };
+export type CreateCommentLike = {
+  comment_id: CommentId;
+  /**
+   * True means Upvote, False means Downvote, and None means remove vote.
+   */
+  is_upvote?: boolean;
+};

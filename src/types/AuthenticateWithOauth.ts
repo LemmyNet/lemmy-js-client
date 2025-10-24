@@ -18,4 +18,8 @@ export type AuthenticateWithOauth = {
    */
   answer?: string;
   pkce_code_verifier?: string;
+  /**
+   * If this is true the login is valid forever, otherwise it expires after one week.
+   */
+  stay_logged_in?: boolean;
 };

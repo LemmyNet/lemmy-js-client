@@ -8,5 +8,8 @@ export type VoteView = {
   creator: Person;
   creator_banned: boolean;
   creator_banned_from_community: boolean;
+  /**
+   * True means Upvote, False means Downvote.
+   */
   is_upvote: boolean;
 };

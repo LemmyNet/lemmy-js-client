@@ -33,9 +33,6 @@ popd
 # Remove the Sensitive type
 rm src/types/Sensitive.ts || true
 
-# Remove the federation queue state since it gets flattened and isnt used.
-rm src/types/FederationQueueState.ts || true
-
 # Change all the bigints to numbers
 find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
 
