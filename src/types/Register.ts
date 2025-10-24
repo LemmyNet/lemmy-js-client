@@ -29,4 +29,8 @@ export type Register = {
    * An answer is mandatory if require application is enabled on the server
    */
   answer?: string;
+  /**
+   * If this is true the login is valid forever, otherwise it expires after one week.
+   */
+  stay_logged_in?: boolean;
 };

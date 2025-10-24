@@ -14,4 +14,8 @@ export type Login = {
    * May be required, if totp is enabled for their account.
    */
   totp_2fa_token?: string;
+  /**
+   * If this is true the login is valid forever, otherwise it expires after one week.
+   */
+  stay_logged_in?: boolean;
 };

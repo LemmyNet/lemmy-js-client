@@ -8,4 +8,8 @@ export type ChangePassword = {
   new_password: SensitiveString;
   new_password_verify: SensitiveString;
   old_password: SensitiveString;
+  /**
+   * If this is true the login is valid forever, otherwise it expires after one week.
+   */
+  stay_logged_in?: boolean;
 };
