@@ -56,7 +56,6 @@ import { AddModToCommunity } from "./types/AddModToCommunity";
 import { AddModToCommunityResponse } from "./types/AddModToCommunityResponse";
 import { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 import { BanFromCommunity } from "./types/BanFromCommunity";
-import { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
 import { MarkManyPostsAsRead } from "./types/MarkManyPostsAsRead";
 import { BanPerson } from "./types/BanPerson";
 import { BlockCommunity } from "./types/BlockCommunity";
@@ -821,7 +820,7 @@ export class LemmyHttp extends Controller {
     @Body() form: BanFromCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<BanFromCommunity, BanFromCommunityResponse>(
+    return this.#wrapper<BanFromCommunity, PersonResponse>(
       HttpType.Post,
       "/community/ban_user",
       form,
