@@ -1,7 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 
-const exportRegex = /export\s+(?:enum|interface|type)\s+([A-Za-z0-9_]+)/g;
+const exportRegex = /export\s+(?:enum|interface|type|const)\s+([A-Za-z0-9_]+)/g;
 
 const baseExports = [
   'export * from "./http";',
