@@ -27,7 +27,7 @@ export { AdminPurgePersonView } from "./types/AdminPurgePersonView";
 export { AdminPurgePost } from "./types/AdminPurgePost";
 export { AdminPurgePostId } from "./types/AdminPurgePostId";
 export { AdminPurgePostView } from "./types/AdminPurgePostView";
-export {} from "./types/AllLemmyErrors";
+export { AllLemmyErrors } from "./types/AllLemmyErrors";
 export { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
 export { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 export { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
