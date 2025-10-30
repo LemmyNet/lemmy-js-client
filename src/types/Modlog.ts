@@ -7,5 +7,6 @@ export type Modlog = {
   kind: ModlogKind;
   is_revert: boolean;
   reason?: string;
+  expires_at?: string;
   published_at: string;
 };
