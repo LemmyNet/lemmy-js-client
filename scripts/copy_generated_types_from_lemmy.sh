@@ -9,12 +9,12 @@ cd "$CWD/../"
 rm -rf src/types/*
 
 # Remove the old bindings
-pushd ../lemmy/crates
+pushd ../lemmy0.19/crates
 find . -name bindings -type d -exec rm -rf {} \; || true
 popd
 
 # First re-generate the types by running cargo test on lemmy
-pushd ../lemmy
+pushd ../lemmy0.19
 
 # Export the ts-rs bindings
 cargo test --workspace export_bindings --features ts-rs

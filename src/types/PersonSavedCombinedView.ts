@@ -3,5 +3,5 @@ import type { CommentView } from "./CommentView";
 import type { PostView } from "./PostView";
 
 export type PersonSavedCombinedView =
-  | ({ type_: "Post" } & PostView)
-  | ({ type_: "Comment" } & CommentView);
+  | ({ type_: "post" } & PostView)
+  | ({ type_: "comment" } & CommentView);
