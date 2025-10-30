@@ -41,7 +41,6 @@ export { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPending
 export { ApproveRegistrationApplication } from "./types/ApproveRegistrationApplication";
 export { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 export { BanFromCommunity } from "./types/BanFromCommunity";
-export { BanFromCommunityResponse } from "./types/BanFromCommunityResponse";
 export { BanPerson } from "./types/BanPerson";
 export { BlockCommunity } from "./types/BlockCommunity";
 export { BlockPerson } from "./types/BlockPerson";
