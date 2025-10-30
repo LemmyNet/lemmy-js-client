@@ -3,16 +3,10 @@ import type { Person } from "./Person";
 import type { PrivateMessage } from "./PrivateMessage";
 import type { PrivateMessageReport } from "./PrivateMessageReport";
 
-/**
- * A private message report view.
- */
-export type PrivateMessageReportView = {
+export interface PrivateMessageReportView {
   private_message_report: PrivateMessageReport;
   private_message: PrivateMessage;
-  creator: Person;
   private_message_creator: Person;
+  creator: Person;
   resolver?: Person;
-  creator_is_admin: boolean;
-  creator_banned: boolean;
-  creator_ban_expires_at?: string;
-};
+}

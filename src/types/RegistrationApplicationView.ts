@@ -3,12 +3,9 @@ import type { LocalUser } from "./LocalUser";
 import type { Person } from "./Person";
 import type { RegistrationApplication } from "./RegistrationApplication";
 
-/**
- * A registration application view.
- */
-export type RegistrationApplicationView = {
+export interface RegistrationApplicationView {
   registration_application: RegistrationApplication;
   creator_local_user: LocalUser;
   creator: Person;
   admin?: Person;
-};
+}

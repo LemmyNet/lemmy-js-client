@@ -5,7 +5,7 @@ import type { PostReportView } from "./PostReportView";
 import type { PrivateMessageReportView } from "./PrivateMessageReportView";
 
 export type ReportCombinedView =
-  | ({ type_: "post" } & PostReportView)
-  | ({ type_: "comment" } & CommentReportView)
-  | ({ type_: "private_message" } & PrivateMessageReportView)
-  | ({ type_: "community" } & CommunityReportView);
+  | ({ type_: "Post" } & PostReportView)
+  | ({ type_: "Comment" } & CommentReportView)
+  | ({ type_: "PrivateMessage" } & PrivateMessageReportView)
+  | ({ type_: "Community" } & CommunityReportView);
