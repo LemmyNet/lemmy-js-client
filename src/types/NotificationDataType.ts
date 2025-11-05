@@ -8,5 +8,4 @@ export type NotificationDataType =
   | "reply"
   | "mention"
   | "private_message"
-  | "subscribed"
-  | "mod_action";
+  | "subscribed";
