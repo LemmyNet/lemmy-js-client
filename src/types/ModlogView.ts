@@ -8,10 +8,10 @@ import type { Post } from "./Post";
 
 export type ModlogView = {
   modlog: Modlog;
-  moderator: Person | null;
-  target_person: Person | null;
-  target_instance: Instance | null;
-  target_community: Community | null;
-  target_post: Post | null;
-  target_comment: Comment | null;
+  moderator?: Person;
+  target_person?: Person;
+  target_instance?: Instance;
+  target_community?: Community;
+  target_post?: Post;
+  target_comment?: Comment;
 };
