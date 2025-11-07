@@ -31,12 +31,9 @@ popd
 CONTAINS_NULL=$(grep -nr --include=\*.ts ' | null' src/ || true)
 
 if [ -n "$CONTAINS_NULL" ] ; then
-    echo "test3"
-    RED='\033[0;31m'
-    NC='\033[0m' # No Color
-    echo -e "${RED}Error: missing derive attribute 'ts(optional_fields)':${NC}"
+    echo -e "Error: missing derive attribute 'ts(optional_fields)':"
     echo "$CONTAINS_NULL"
-    #exit 1
+    exit 1
 fi
 
 # Remove the Sensitive type
