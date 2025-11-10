@@ -19,9 +19,6 @@ pushd ../lemmy
 # Export the ts-rs bindings
 cargo test --workspace export_bindings --features ts-rs
 
-# Make sure no rows are returned
-! grep -nr --include=\*.ts ' | null' ./crates/bindings_check.sh
-
 pushd crates
 
 # Copy them over to the types folder
@@ -30,8 +27,17 @@ find . -type f -name "*.ts" -exec cp {} ../../lemmy-js-client/src/types/ \;
 popd
 popd
 
+# Make sure that all fields use `?` and not `| null`
+CONTAINS_NULL=$(grep -nr --include=\*.ts ' | null' src/ || true)
+
+if [ -n "$CONTAINS_NULL" ] ; then
+    echo -e "Error: missing derive attribute 'ts(optional_fields)':"
+    echo "$CONTAINS_NULL"
+    exit 1
+fi
+
 # Remove the Sensitive type
-rm src/types/Sensitive.ts || true
+rm src/types/SensitiveString.ts || true
 
 # Change all the bigints to numbers
 find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
