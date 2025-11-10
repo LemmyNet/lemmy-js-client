@@ -16,4 +16,7 @@ export type MultiCommunity = {
   ap_id: DbUrl;
   published_at: string;
   updated_at?: string;
+  subscribers: number;
+  subscribers_local: number;
+  communities: number;
 };
