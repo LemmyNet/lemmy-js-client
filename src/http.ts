@@ -404,12 +404,12 @@ export class LemmyHttp extends Controller {
    * @summary List login tokens for your user
    */
   @Security("bearerAuth")
-  @Get("/account/list_logins")
+  @Get("/account/login/list")
   @Tags("Account")
   async listLogins(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, ListLoginsResponse>(
       HttpType.Get,
-      "/account/list_logins",
+      "/account/login/list",
       {},
       options,
     );
@@ -742,15 +742,15 @@ export class LemmyHttp extends Controller {
    * @summary Delete a community.
    */
   @Security("bearerAuth")
-  @Post("/community/delete")
+  @Delete("/community")
   @Tags("Community")
   async deleteCommunity(
     @Body() form: DeleteCommunity,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteCommunity, CommunityResponse>(
-      HttpType.Post,
-      "/community/delete",
+      HttpType.Delete,
+      "/community",
       form,
       options,
     );
@@ -975,15 +975,15 @@ export class LemmyHttp extends Controller {
    * @summary Delete a post.
    */
   @Security("bearerAuth")
-  @Post("/post/delete")
+  @Delete("/post")
   @Tags("Post")
   async deletePost(
     @Body() form: DeletePost,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeletePost, PostResponse>(
-      HttpType.Post,
-      "/post/delete",
+      HttpType.Delete,
+      "/post",
       form,
       options,
     );
@@ -1255,15 +1255,15 @@ export class LemmyHttp extends Controller {
    * @summary Delete a comment.
    */
   @Security("bearerAuth")
-  @Post("/comment/delete")
+  @Delete("/comment")
   @Tags("Comment")
   async deleteComment(
     @Body() form: DeleteComment,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteComment, CommentResponse>(
-      HttpType.Post,
-      "/comment/delete",
+      HttpType.Delete,
+      "/comment",
       form,
       options,
     );
@@ -1510,15 +1510,15 @@ export class LemmyHttp extends Controller {
    * @summary Delete a private message.
    */
   @Security("bearerAuth")
-  @Post("/private_message/delete")
+  @Delete("/private_message")
   @Tags("PrivateMessage")
   async deletePrivateMessage(
     @Body() form: DeletePrivateMessage,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeletePrivateMessage, PrivateMessageResponse>(
-      HttpType.Post,
-      "/private_message/delete",
+      HttpType.Delete,
+      "/private_message",
       form,
       options,
     );
@@ -1724,15 +1724,15 @@ export class LemmyHttp extends Controller {
    * @summary Delete your account.
    */
   @Security("bearerAuth")
-  @Post("/account/delete")
+  @Delete("/account")
   @Tags("Account")
   async deleteAccount(
     @Body() form: DeleteAccount,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteAccount, SuccessResponse>(
-      HttpType.Post,
-      "/account/delete",
+      HttpType.Delete,
+      "/account",
       form,
       options,
     );
@@ -1775,15 +1775,15 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Mark all replies as read.
+   * @summary Mark all notifications as read.
    */
   @Security("bearerAuth")
-  @Post("/account/mark_as_read/all")
+  @Post("/account/notification/mark_as_read/all")
   @Tags("Account")
   async markAllNotificationsAsRead(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
-      "/account/mark_as_read/all",
+      "/account/notification/mark_as_read/all",
       {},
       options,
     );
@@ -1793,7 +1793,7 @@ export class LemmyHttp extends Controller {
    * @summary Mark a notification as read.
    */
   @Security("bearerAuth")
-  @Post("/account/mark_as_read")
+  @Post("/account/notification/mark_as_read")
   @Tags("Account")
   async markNotificationAsRead(
     @Body() form: MarkNotificationAsRead,
@@ -1801,7 +1801,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<MarkNotificationAsRead, SuccessResponse>(
       HttpType.Post,
-      "/account/mark_as_read",
+      "/account/notification/mark_as_read",
       form,
       options,
     );
@@ -1865,12 +1865,12 @@ export class LemmyHttp extends Controller {
    * @summary Get your unread counts.
    */
   @Security("bearerAuth")
-  @Get("/account/unread_count")
+  @Get("/account/notification/unread_count")
   @Tags("Account")
   async getUnreadCount(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadCountResponse>(
       HttpType.Get,
-      "/account/unread_count",
+      "/account/notification/unread_count",
       {},
       options,
     );
@@ -1880,7 +1880,7 @@ export class LemmyHttp extends Controller {
    * @summary Get your inbox (replies, comment mentions, post mentions, and messages)
    */
   @Security("bearerAuth")
-  @Get("/account/notifications")
+  @Get("/account/notification/list")
   @Tags("Account")
   async listNotifications(
     @Queries() form: ListNotificationsI,
@@ -1888,7 +1888,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<ListNotifications, ListNotificationsResponse>(
       HttpType.Get,
-      "/account/notifications",
+      "/account/notification/list",
       form,
       options,
     );
@@ -2262,15 +2262,15 @@ export class LemmyHttp extends Controller {
    * @summary Delete a tagline
    */
   @Security("bearerAuth")
-  @Post("/admin/tagline/delete")
+  @Delete("/admin/tagline")
   @Tags("Admin", "Tagline")
   async deleteTagline(
     @Body() form: DeleteTagline,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteTagline, SuccessResponse>(
-      HttpType.Post,
-      "/admin/tagline/delete",
+      HttpType.Delete,
+      "/admin/tagline",
       form,
       options,
     );
@@ -2389,15 +2389,15 @@ export class LemmyHttp extends Controller {
    * @summary Delete an oauth provider method
    */
   @Security("bearerAuth")
-  @Post("/oauth_provider/delete")
+  @Delete("/oauth_provider")
   @Tags("Miscellaneous", "OAuth")
   async deleteOAuthProvider(
     @Body() form: DeleteOAuthProvider,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteOAuthProvider, SuccessResponse>(
-      HttpType.Post,
-      "/oauth_provider/delete",
+      HttpType.Delete,
+      "/oauth_provider",
       form,
       options,
     );
