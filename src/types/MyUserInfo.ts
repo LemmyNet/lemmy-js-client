@@ -5,6 +5,7 @@ import type { CommunityModeratorView } from "./CommunityModeratorView";
 import type { Instance } from "./Instance";
 import type { LanguageId } from "./LanguageId";
 import type { LocalUserView } from "./LocalUserView";
+import type { MultiCommunityView } from "./MultiCommunityView";
 import type { Person } from "./Person";
 
 /**
@@ -14,6 +15,7 @@ export type MyUserInfo = {
   local_user_view: LocalUserView;
   follows: Array<CommunityFollowerView>;
   moderates: Array<CommunityModeratorView>;
+  multi_community_follows: Array<MultiCommunityView>;
   community_blocks: Array<Community>;
   instance_communities_blocks: Array<Instance>;
   instance_persons_blocks: Array<Instance>;
