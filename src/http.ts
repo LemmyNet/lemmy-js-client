@@ -1865,12 +1865,12 @@ export class LemmyHttp extends Controller {
    * @summary Get your unread counts.
    */
   @Security("bearerAuth")
-  @Get("/account/notification/unread_count")
+  @Get("/account/notification/count")
   @Tags("Account")
   async getUnreadCount(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, GetUnreadCountResponse>(
       HttpType.Get,
-      "/account/notification/unread_count",
+      "/account/notification/count",
       {},
       options,
     );
