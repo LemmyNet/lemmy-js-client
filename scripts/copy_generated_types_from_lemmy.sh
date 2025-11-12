@@ -30,10 +30,10 @@ popd
 # Make sure that all fields use `?` and not `| null`
 CONTAINS_NULL=$(grep -nr --include=\*.ts ' | null' src/ || true)
 
-if [ -n "$CONTAINS_NULL" ] ; then
-    echo -e "Error: missing derive attribute 'ts(optional_fields)':"
-    echo "$CONTAINS_NULL"
-    exit 1
+if [ -n "$CONTAINS_NULL" ]; then
+  echo -e "Error: missing derive attribute 'ts(optional_fields)':"
+  echo "$CONTAINS_NULL"
+  exit 1
 fi
 
 # Remove the Sensitive type

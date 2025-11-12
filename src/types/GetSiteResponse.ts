@@ -30,4 +30,10 @@ export type GetSiteResponse = {
   blocked_urls: Array<LocalSiteUrlBlocklist>;
   image_upload_disabled: boolean;
   active_plugins: Array<PluginMetadata>;
+  /**
+   * The number of seconds between the last application published, and approved / denied time.
+   *
+   * Useful for estimating when your application will be approved.
+   */
+  last_application_duration_seconds?: number;
 };
