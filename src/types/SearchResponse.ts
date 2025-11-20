@@ -6,7 +6,17 @@ import type { SearchCombinedView } from "./SearchCombinedView";
  * The search response, containing lists of the return type possibilities
  */
 export type SearchResponse = {
-  results: Array<SearchCombinedView>;
+  /**
+   * If `Search.q` contains an ActivityPub ID (eg `https://lemmy.world/comment/1`) or an
+   * identifier (eg `!fediverse@lemmy.ml`) then this field contains the resolved object.
+   * It should always be shown above other search results.
+   */
+  resolve?: SearchCombinedView;
+  /**
+   * Items which contain the search string in post body, comment text, community sidebar etc.
+   * This is always empty when calling `/api/v4/resolve_object`
+   */
+  search: Array<SearchCombinedView>;
   /**
    * the pagination cursor to use to fetch the next page
    */

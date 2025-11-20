@@ -8,6 +8,5 @@ import type { PersonContentType } from "./PersonContentType";
 export type ListPersonSaved = {
   type_?: PersonContentType;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };

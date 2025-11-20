@@ -8,6 +8,5 @@ export type ListCommunityPendingFollows = {
   unread_only?: boolean;
   all_communities?: boolean;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };
