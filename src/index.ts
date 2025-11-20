@@ -262,6 +262,7 @@ export { SavePost } from "./types/SavePost";
 export { SaveUserSettings } from "./types/SaveUserSettings";
 export { Search } from "./types/Search";
 export { SearchCombinedView } from "./types/SearchCombinedView";
+export { SearchResponse } from "./types/SearchResponse";
 export { SearchSortType } from "./types/SearchSortType";
 export { SearchType } from "./types/SearchType";
 export { Site } from "./types/Site";
