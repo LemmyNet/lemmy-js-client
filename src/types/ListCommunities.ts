@@ -16,6 +16,5 @@ export type ListCommunities = {
   time_range_seconds?: number;
   show_nsfw?: boolean;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };

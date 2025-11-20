@@ -9,6 +9,5 @@ export type ListNotifications = {
   type_?: NotificationDataType;
   unread_only?: boolean;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };

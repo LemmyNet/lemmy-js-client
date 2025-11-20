@@ -19,7 +19,6 @@ export type GetComments = {
   time_range_seconds?: number;
   max_depth?: number;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
   community_id?: CommunityId;
   community_name?: string;
