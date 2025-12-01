@@ -103,18 +103,14 @@ import { FollowCommunity } from "./types/FollowCommunity";
 import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
 import { GetComment } from "./types/GetComment";
 import { GetComments } from "./types/GetComments";
-import { GetCommentsResponse } from "./types/GetCommentsResponse";
 import { GetCommunity } from "./types/GetCommunity";
 import { GetCommunityResponse } from "./types/GetCommunityResponse";
-import { GetFederatedInstancesResponse } from "./types/GetFederatedInstancesResponse";
 import { GetModlog } from "./types/GetModlog";
-import { GetModlogResponse } from "./types/GetModlogResponse";
 import { GetPersonDetails } from "./types/GetPersonDetails";
 import { GetPersonDetailsResponse } from "./types/GetPersonDetailsResponse";
 import { GetPost } from "./types/GetPost";
 import { GetPostResponse } from "./types/GetPostResponse";
 import { GetPosts } from "./types/GetPosts";
-import { GetPostsResponse } from "./types/GetPostsResponse";
 import { GetReportCount } from "./types/GetReportCount";
 import { GetReportCountResponse } from "./types/GetReportCountResponse";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
@@ -123,9 +119,7 @@ import { GetSiteResponse } from "./types/GetSiteResponse";
 import { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
 import { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
 import { ListCommunities } from "./types/ListCommunities";
-import { ListCommunitiesResponse } from "./types/ListCommunitiesResponse";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
-import { ListRegistrationApplicationsResponse } from "./types/ListRegistrationApplicationsResponse";
 import { LockPost } from "./types/LockPost";
 import { LockComment } from "./types/LockComment";
 import { Login } from "./types/Login";
@@ -165,12 +159,9 @@ import { UpdateTotp } from "./types/UpdateTotp";
 import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
 import { SuccessResponse } from "./types/SuccessResponse";
 import { ListPostLikes } from "./types/ListPostLikes";
-import { ListPostLikesResponse } from "./types/ListPostLikesResponse";
 import { ListCommentLikes } from "./types/ListCommentLikes";
-import { ListCommentLikesResponse } from "./types/ListCommentLikesResponse";
 import { HidePost } from "./types/HidePost";
 import { ListMedia } from "./types/ListMedia";
-import { ListMediaResponse } from "./types/ListMediaResponse";
 import { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 import { CreateTagline } from "./types/CreateTagline";
@@ -178,56 +169,63 @@ import { TaglineResponse } from "./types/TaglineResponse";
 import { UpdateTagline } from "./types/UpdateTagline";
 import { DeleteTagline } from "./types/DeleteTagline";
 import { ListTaglines } from "./types/ListTaglines";
-import { ListTaglinesResponse } from "./types/ListTaglinesResponse";
 import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
 import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPendingFollowsCountResponse";
-import { ListCommunityPendingFollowsResponse } from "./types/ListCommunityPendingFollowsResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { ListReports } from "./types/ListReports";
-import { ListReportsResponse } from "./types/ListReportsResponse";
 import { MyUserInfo } from "./types/MyUserInfo";
 import { AdminAllowInstanceParams } from "./types/AdminAllowInstanceParams";
 import { AdminBlockInstanceParams } from "./types/AdminBlockInstanceParams";
 import { ListPersonContent } from "./types/ListPersonContent";
-import { ListPersonContentResponse } from "./types/ListPersonContentResponse";
 import { ListPersonSaved } from "./types/ListPersonSaved";
-import { ListPersonSavedResponse } from "./types/ListPersonSavedResponse";
 import { DeleteImageParams } from "./types/DeleteImageParams";
 import { UploadImageResponse } from "./types/UploadImageResponse";
-import { GetCommentsSlimResponse } from "./types/GetCommentsSlimResponse";
 import { Tag } from "./types/Tag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 import { ListPersonRead } from "./types/ListPersonRead";
-import { ListPersonReadResponse } from "./types/ListPersonReadResponse";
 import { ListPersonHidden } from "./types/ListPersonHidden";
-import { ListPersonHiddenResponse } from "./types/ListPersonHiddenResponse";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { CreateMultiCommunity } from "./types/CreateMultiCommunity";
 import { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
-import { ListMultiCommunitiesResponse } from "./types/ListMultiCommunitiesResponse";
 import { AdminListUsers } from "./types/AdminListUsers";
-import { AdminListUsersResponse } from "./types/AdminListUsersResponse";
 import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCommunityEntry";
 import { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
 import { FollowMultiCommunity } from "./types/FollowMultiCommunity";
 import { ListLoginsResponse } from "./types/ListLoginsResponse";
 import { ListPersonLiked } from "./types/ListPersonLiked";
-import { ListPersonLikedResponse } from "./types/ListPersonLikedResponse";
 import { NotePerson } from "./types/NotePerson";
 import { UserBlockInstanceCommunitiesParams } from "./types/UserBlockInstanceCommunitiesParams";
 import { UserBlockInstancePersonsParams } from "./types/UserBlockInstancePersonsParams";
 import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 import { ListNotifications } from "./types/ListNotifications";
-import { ListNotificationsResponse } from "./types/ListNotificationsResponse";
 import { ModEditPost } from "./types/ModEditPost";
 import { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
 import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
 import { MultiCommunityResponse } from "./types/MultiCommunityResponse";
 import { PersonResponse } from "./types/PersonResponse";
 import { GetFederatedInstances } from "./types/GetFederatedInstances";
+import { LocalImageView } from "./types/LocalImageView";
+import { PagedResponse } from "./types/PagedResponse";
+import { ModlogView } from "./types/ModlogView";
+import { CommunityView } from "./types/CommunityView";
+import { PendingFollowerView } from "./types/PendingFollowerView";
+import { PostView } from "./types/PostView";
+import { VoteView } from "./types/VoteView";
+import { CommentView } from "./types/CommentView";
+import { CommentSlimView } from "./types/CommentSlimView";
+import { PersonContentCombinedView } from "./types/PersonContentCombinedView";
+import { LocalUserView } from "./types/LocalUserView";
+import { PersonSavedCombinedView } from "./types/PersonSavedCombinedView";
+import { NotificationView } from "./types/NotificationView";
+import { PersonLikedCombinedView } from "./types/PersonLikedCombinedView";
+import { RegistrationApplicationView } from "./types/RegistrationApplicationView";
+import { Tagline } from "./types/Tagline";
+import { ReportCombinedView } from "./types/ReportCombinedView";
+import { FederatedInstanceView } from "./types/FederatedInstanceView";
+import { MultiCommunityView } from "./types/MultiCommunityView";
 
 enum HttpType {
   Get = "GET",
@@ -440,7 +438,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListMediaI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListMedia, ListMediaResponse>(
+    return this.#wrapper<ListMedia, PagedResponse<LocalImageView>>(
       HttpType.Get,
       "/account/media/list",
       form,
@@ -494,7 +492,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListMediaI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListMedia, ListMediaResponse>(
+    return this.#wrapper<ListMedia, PagedResponse<LocalImageView>>(
       HttpType.Get,
       "/image/list",
       form,
@@ -536,7 +534,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: GetModlogI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<GetModlog, GetModlogResponse>(
+    return this.#wrapper<GetModlog, PagedResponse<ModlogView>>(
       HttpType.Get,
       "/modlog",
       form,
@@ -645,7 +643,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListCommunitiesI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListCommunities, ListCommunitiesResponse>(
+    return this.#wrapper<ListCommunities, PagedResponse<CommunityView>>(
       HttpType.Get,
       "/community/list",
       form,
@@ -698,7 +696,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<
       ListCommunityPendingFollows,
-      ListCommunityPendingFollowsResponse
+      PagedResponse<PendingFollowerView>
     >(HttpType.Get, "/community/pending_follows/list", form, options);
   }
 
@@ -1102,7 +1100,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: GetPostsI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<GetPosts, GetPostsResponse>(
+    return this.#wrapper<GetPosts, PagedResponse<PostView>>(
       HttpType.Get,
       "/post/list",
       form,
@@ -1138,7 +1136,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListPostLikesI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListPostLikes, ListPostLikesResponse>(
+    return this.#wrapper<ListPostLikes, PagedResponse<VoteView>>(
       HttpType.Get,
       "/post/like/list",
       form,
@@ -1333,7 +1331,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListCommentLikesI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListCommentLikes, ListCommentLikesResponse>(
+    return this.#wrapper<ListCommentLikes, PagedResponse<VoteView>>(
       HttpType.Get,
       "/comment/like/list",
       form,
@@ -1388,7 +1386,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: GetCommentsI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<GetComments, GetCommentsResponse>(
+    return this.#wrapper<GetComments, PagedResponse<CommentView>>(
       HttpType.Get,
       "/comment/list",
       form,
@@ -1407,7 +1405,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: GetCommentsI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<GetComments, GetCommentsSlimResponse>(
+    return this.#wrapper<GetComments, PagedResponse<CommentSlimView>>(
       HttpType.Get,
       "/comment/list/slim",
       form,
@@ -1629,12 +1627,10 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListPersonContentI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListPersonContent, ListPersonContentResponse>(
-      HttpType.Get,
-      "/person/content",
-      form,
-      options,
-    );
+    return this.#wrapper<
+      ListPersonContent,
+      PagedResponse<PersonContentCombinedView>
+    >(HttpType.Get, "/person/content", form, options);
   }
 
   /**
@@ -1680,7 +1676,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: AdminListUsersI = {},
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<AdminListUsers, AdminListUsersResponse>(
+    return this.#wrapper<AdminListUsers, PagedResponse<LocalUserView>>(
       HttpType.Get,
       "/admin/users",
       form,
@@ -1886,7 +1882,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListNotificationsI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListNotifications, ListNotificationsResponse>(
+    return this.#wrapper<ListNotifications, PagedResponse<NotificationView>>(
       HttpType.Get,
       "/account/notification/list",
       form,
@@ -1938,12 +1934,10 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListPersonSavedI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListPersonSaved, ListPersonSavedResponse>(
-      HttpType.Get,
-      "/account/saved",
-      form,
-      options,
-    );
+    return this.#wrapper<
+      ListPersonSaved,
+      PagedResponse<PersonSavedCombinedView>
+    >(HttpType.Get, "/account/saved", form, options);
   }
 
   /**
@@ -1956,7 +1950,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListPersonReadI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListPersonRead, ListPersonReadResponse>(
+    return this.#wrapper<ListPersonRead, PagedResponse<PendingFollowerView>>(
       HttpType.Get,
       "/account/read",
       form,
@@ -1974,7 +1968,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListPersonHiddenI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListPersonHidden, ListPersonHiddenResponse>(
+    return this.#wrapper<ListPersonHidden, PagedResponse<PostView>>(
       HttpType.Get,
       "/account/hidden",
       form,
@@ -1992,12 +1986,10 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListPersonLikedI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListPersonLiked, ListPersonLikedResponse>(
-      HttpType.Get,
-      "/account/liked",
-      form,
-      options,
-    );
+    return this.#wrapper<
+      ListPersonLiked,
+      PagedResponse<PersonLikedCombinedView>
+    >(HttpType.Get, "/account/liked", form, options);
   }
 
   /**
@@ -2044,7 +2036,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<
       ListRegistrationApplications,
-      ListRegistrationApplicationsResponse
+      PagedResponse<RegistrationApplicationView>
     >(HttpType.Get, "/admin/registration_application/list", form, options);
   }
 
@@ -2287,7 +2279,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListTaglinesI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListTaglines, ListTaglinesResponse>(
+    return this.#wrapper<ListTaglines, PagedResponse<Tagline>>(
       HttpType.Get,
       "/admin/tagline/list",
       form,
@@ -2430,12 +2422,10 @@ export class LemmyHttp extends Controller {
     @Queries() form: GetFederatedInstancesI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<GetFederatedInstances, GetFederatedInstancesResponse>(
-      HttpType.Get,
-      "/federated_instances",
-      form,
-      options,
-    );
+    return this.#wrapper<
+      GetFederatedInstances,
+      PagedResponse<FederatedInstanceView>
+    >(HttpType.Get, "/federated_instances", form, options);
   }
 
   /**
@@ -2448,7 +2438,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListReportsI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListReports, ListReportsResponse>(
+    return this.#wrapper<ListReports, PagedResponse<ReportCombinedView>>(
       HttpType.Get,
       "/report/list",
       form,
@@ -2832,7 +2822,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListMultiCommunitiesI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, ListMultiCommunitiesResponse>(
+    return this.#wrapper<object, PagedResponse<MultiCommunityView>>(
       HttpType.Get,
       "/multi_community/list",
       form,

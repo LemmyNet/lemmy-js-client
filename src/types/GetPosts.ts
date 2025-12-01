@@ -43,6 +43,5 @@ export type GetPosts = {
    */
   no_comments_only?: boolean;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };

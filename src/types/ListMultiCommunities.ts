@@ -14,6 +14,5 @@ export type ListMultiCommunities = {
    */
   time_range_seconds?: number;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };

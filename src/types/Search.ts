@@ -10,6 +10,10 @@ import type { SearchType } from "./SearchType";
  * Searches the site, given a search term, and some optional filters.
  */
 export type Search = {
+  /**
+   * The search query. Can be a plain text, or an object ID which will be resolved
+   * (eg `https://lemmy.world/comment/1` or `!fediverse@lemmy.ml`).
+   */
   q: string;
   community_id?: CommunityId;
   community_name?: string;
@@ -31,6 +35,5 @@ export type Search = {
    */
   show_nsfw?: boolean;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };

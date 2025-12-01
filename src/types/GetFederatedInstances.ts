@@ -6,6 +6,5 @@ export type GetFederatedInstances = {
   domain_filter?: string;
   kind: GetFederatedInstancesKind;
   page_cursor?: PaginationCursor;
-  page_back?: boolean;
   limit?: number;
 };
