@@ -1950,7 +1950,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListPersonReadI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<ListPersonRead, PagedResponse<PendingFollowerView>>(
+    return this.#wrapper<ListPersonRead, PagedResponse<PostView>>(
       HttpType.Get,
       "/account/read",
       form,

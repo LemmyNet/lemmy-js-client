@@ -265,6 +265,7 @@ export { SearchCombinedView } from "./types/SearchCombinedView";
 export { SearchResponse } from "./types/SearchResponse";
 export { SearchSortType } from "./types/SearchSortType";
 export { SearchType } from "./types/SearchType";
+export { SensitiveString } from "./types/SensitiveString";
 export { Site } from "./types/Site";
 export { SiteId } from "./types/SiteId";
 export { SiteResponse } from "./types/SiteResponse";
