@@ -36,9 +36,6 @@ if [ -n "$CONTAINS_NULL" ]; then
   exit 1
 fi
 
-# Remove the Sensitive type
-rm src/types/SensitiveString.ts || true
-
 # Change all the bigints to numbers
 find src/types -type f -name '*.ts' -exec sed -i 's/bigint/number/g' {} +
 
