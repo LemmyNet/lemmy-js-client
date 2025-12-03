@@ -7,7 +7,7 @@ import type { PaginationCursor } from "./PaginationCursor";
  * parameter. For going to the previous page, use `prev_page` instead.
  */
 export type PagedResponse<T> = {
-  data: Array<T>;
+  items: Array<T>;
   next_page?: PaginationCursor;
   prev_page?: PaginationCursor;
 };
