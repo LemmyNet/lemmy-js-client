@@ -47,7 +47,8 @@ export interface SearchI extends Search {}
 export interface ResolveObjectI extends ResolveObject {}
 export interface GetCommunityI extends GetCommunity {}
 export interface ListCommunitiesI extends ListCommunities {}
-export interface ListCommunityPendingFollowsI extends ListCommunityPendingFollows {}
+export interface ListCommunityPendingFollowsI
+  extends ListCommunityPendingFollows {}
 export interface GetRandomCommunityI extends GetRandomCommunity {}
 export interface GetPostI extends GetPost {}
 export interface GetPostsI extends GetPosts {}
@@ -64,8 +65,10 @@ export interface ListPersonSavedI extends ListPersonSaved {}
 export interface ListPersonReadI extends ListPersonRead {}
 export interface ListPersonHiddenI extends ListPersonHidden {}
 export interface ListPersonLikedI extends ListPersonLiked {}
-export interface ListRegistrationApplicationsI extends ListRegistrationApplications {}
-export interface GetRegistrationApplicationI extends GetRegistrationApplication {}
+export interface ListRegistrationApplicationsI
+  extends ListRegistrationApplications {}
+export interface GetRegistrationApplicationI
+  extends GetRegistrationApplication {}
 export interface ListCustomEmojisI extends ListCustomEmojis {}
 export interface ListTaglinesI extends ListTaglines {}
 export interface ListReportsI extends ListReports {}
