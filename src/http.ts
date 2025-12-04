@@ -1843,7 +1843,7 @@ export class LemmyHttp extends Controller {
    * @summary Get counts for your reports.
    */
   @Security("bearerAuth")
-  @Get("/account/report_count")
+  @Get("/report/count")
   @Tags("Account")
   async getReportCount(
     @Queries() form: GetReportCountI,
@@ -1851,7 +1851,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<GetReportCount, GetReportCountResponse>(
       HttpType.Get,
-      "/account/report_count",
+      "/report/count",
       form,
       options,
     );
