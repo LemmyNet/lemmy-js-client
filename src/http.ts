@@ -216,16 +216,14 @@ import { PostView } from "./types/PostView";
 import { VoteView } from "./types/VoteView";
 import { CommentView } from "./types/CommentView";
 import { CommentSlimView } from "./types/CommentSlimView";
-import { PersonContentCombinedView } from "./types/PersonContentCombinedView";
 import { LocalUserView } from "./types/LocalUserView";
-import { PersonSavedCombinedView } from "./types/PersonSavedCombinedView";
 import { NotificationView } from "./types/NotificationView";
-import { PersonLikedCombinedView } from "./types/PersonLikedCombinedView";
 import { RegistrationApplicationView } from "./types/RegistrationApplicationView";
 import { Tagline } from "./types/Tagline";
 import { ReportCombinedView } from "./types/ReportCombinedView";
 import { FederatedInstanceView } from "./types/FederatedInstanceView";
 import { MultiCommunityView } from "./types/MultiCommunityView";
+import { PostCommentCombinedView } from "./types/PostCommentCombinedView";
 
 enum HttpType {
   Get = "GET",
@@ -1629,7 +1627,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<
       ListPersonContent,
-      PagedResponse<PersonContentCombinedView>
+      PagedResponse<PostCommentCombinedView>
     >(HttpType.Get, "/person/content", form, options);
   }
 
@@ -1936,7 +1934,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<
       ListPersonSaved,
-      PagedResponse<PersonSavedCombinedView>
+      PagedResponse<PostCommentCombinedView>
     >(HttpType.Get, "/account/saved", form, options);
   }
 
@@ -1988,7 +1986,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<
       ListPersonLiked,
-      PagedResponse<PersonLikedCombinedView>
+      PagedResponse<PostCommentCombinedView>
     >(HttpType.Get, "/account/liked", form, options);
   }
 
