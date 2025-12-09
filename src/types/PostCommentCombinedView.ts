@@ -2,6 +2,6 @@
 import type { CommentView } from "./CommentView";
 import type { PostView } from "./PostView";
 
-export type PersonContentCombinedView =
+export type PostCommentCombinedView =
   | ({ type_: "post" } & PostView)
   | ({ type_: "comment" } & CommentView);
