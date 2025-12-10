@@ -26,7 +26,6 @@ import {
   GetPostsI,
   GetRandomCommunityI,
   GetRegistrationApplicationI,
-  GetReportCountI,
   GetSiteMetadataI,
   ListCommentLikesI,
   ListCommunitiesI,
@@ -111,8 +110,6 @@ import { GetPersonDetailsResponse } from "./types/GetPersonDetailsResponse";
 import { GetPost } from "./types/GetPost";
 import { GetPostResponse } from "./types/GetPostResponse";
 import { GetPosts } from "./types/GetPosts";
-import { GetReportCount } from "./types/GetReportCount";
-import { GetReportCountResponse } from "./types/GetReportCountResponse";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
 import { GetSiteMetadataResponse } from "./types/GetSiteMetadataResponse";
 import { GetSiteResponse } from "./types/GetSiteResponse";
@@ -173,7 +170,7 @@ import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
-import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPendingFollowsCountResponse";
+import { CountsResponse } from "./types/CountsResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { ListReports } from "./types/ListReports";
 import { MyUserInfo } from "./types/MyUserInfo";
@@ -671,12 +668,12 @@ export class LemmyHttp extends Controller {
    * @summary Get a community's pending follows count.
    */
   @Security("bearerAuth")
-  @Get("/community/pending_follows/count")
+  @Get("/account/counts")
   @Tags("Community")
   async getCommunityPendingFollowsCount(@Inject() options?: RequestOptions) {
-    return this.#wrapper<{}, GetCommunityPendingFollowsCountResponse>(
+    return this.#wrapper<{}, CountsResponse>(
       HttpType.Get,
-      "/community/pending_follows/count",
+      "/account/counts",
       {},
       options,
     );
@@ -1832,24 +1829,6 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ChangePassword, LoginResponse>(
       HttpType.Put,
       "/account/auth/change_password",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Get counts for your reports.
-   */
-  @Security("bearerAuth")
-  @Get("/report/count")
-  @Tags("Account")
-  async getReportCount(
-    @Queries() form: GetReportCountI,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<GetReportCount, GetReportCountResponse>(
-      HttpType.Get,
-      "/report/count",
       form,
       options,
     );
