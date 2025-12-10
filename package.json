@@ -1,7 +1,7 @@
 {
   "name": "lemmy-js-client",
   "description": "A javascript / typescript client for Lemmy",
-  "version": "1.0.0-post-comment-combined-view.0",
+  "version": "1.0.0-merge-count-endpoints.0",
   "author": "Dessalines",
   "license": "AGPL-3.0",
   "main": "./dist/index.js",
