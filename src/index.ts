@@ -116,8 +116,6 @@ export { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 export { GetSiteMetadata } from "./types/GetSiteMetadata";
 export { GetSiteMetadataResponse } from "./types/GetSiteMetadataResponse";
 export { GetSiteResponse } from "./types/GetSiteResponse";
-export { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
-export { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
 export { HideCommunity } from "./types/HideCommunity";
 export { HidePost } from "./types/HidePost";
 export { ImageDetails } from "./types/ImageDetails";
