@@ -170,7 +170,6 @@ import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
-import { CountsResponse } from "./types/CountsResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { ListReports } from "./types/ListReports";
 import { MyUserInfo } from "./types/MyUserInfo";
@@ -221,6 +220,7 @@ import { ReportCombinedView } from "./types/ReportCombinedView";
 import { FederatedInstanceView } from "./types/FederatedInstanceView";
 import { MultiCommunityView } from "./types/MultiCommunityView";
 import { PostCommentCombinedView } from "./types/PostCommentCombinedView";
+import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
 
 enum HttpType {
   Get = "GET",
@@ -671,7 +671,7 @@ export class LemmyHttp extends Controller {
   @Get("/account/unread_counts")
   @Tags("Community")
   async getCommunityPendingFollowsCount(@Inject() options?: RequestOptions) {
-    return this.#wrapper<{}, CountsResponse>(
+    return this.#wrapper<{}, UnreadCountsResponse>(
       HttpType.Get,
       "/account/unread_counts",
       {},
