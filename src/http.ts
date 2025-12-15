@@ -668,12 +668,12 @@ export class LemmyHttp extends Controller {
    * @summary Get a community's pending follows count.
    */
   @Security("bearerAuth")
-  @Get("/account/counts")
+  @Get("/account/unread_counts")
   @Tags("Community")
   async getCommunityPendingFollowsCount(@Inject() options?: RequestOptions) {
     return this.#wrapper<{}, CountsResponse>(
       HttpType.Get,
-      "/account/counts",
+      "/account/unread_counts",
       {},
       options,
     );
