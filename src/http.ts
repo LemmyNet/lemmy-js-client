@@ -26,7 +26,6 @@ import {
   GetPostsI,
   GetRandomCommunityI,
   GetRegistrationApplicationI,
-  GetReportCountI,
   GetSiteMetadataI,
   ListCommentLikesI,
   ListCommunitiesI,
@@ -111,13 +110,9 @@ import { GetPersonDetailsResponse } from "./types/GetPersonDetailsResponse";
 import { GetPost } from "./types/GetPost";
 import { GetPostResponse } from "./types/GetPostResponse";
 import { GetPosts } from "./types/GetPosts";
-import { GetReportCount } from "./types/GetReportCount";
-import { GetReportCountResponse } from "./types/GetReportCountResponse";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
 import { GetSiteMetadataResponse } from "./types/GetSiteMetadataResponse";
 import { GetSiteResponse } from "./types/GetSiteResponse";
-import { GetUnreadCountResponse } from "./types/GetUnreadCountResponse";
-import { GetUnreadRegistrationApplicationCountResponse } from "./types/GetUnreadRegistrationApplicationCountResponse";
 import { ListCommunities } from "./types/ListCommunities";
 import { ListRegistrationApplications } from "./types/ListRegistrationApplications";
 import { LockPost } from "./types/LockPost";
@@ -173,7 +168,6 @@ import { ListCustomEmojis } from "./types/ListCustomEmojis";
 import { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { ApproveCommunityPendingFollower } from "./types/ApproveCommunityPendingFollower";
-import { GetCommunityPendingFollowsCountResponse } from "./types/GetCommunityPendingFollowsCountResponse";
 import { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 import { ListReports } from "./types/ListReports";
 import { MyUserInfo } from "./types/MyUserInfo";
@@ -224,6 +218,7 @@ import { ReportCombinedView } from "./types/ReportCombinedView";
 import { FederatedInstanceView } from "./types/FederatedInstanceView";
 import { MultiCommunityView } from "./types/MultiCommunityView";
 import { PostCommentCombinedView } from "./types/PostCommentCombinedView";
+import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
 
 enum HttpType {
   Get = "GET",
@@ -668,15 +663,16 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Get a community's pending follows count.
+   * @summary Returns the amount of unread items of various types. For normal users this means * the number of unread notifications, mods and admins get additional unread counts for
+   * reports, registration applications and pending follows to private communities.
    */
   @Security("bearerAuth")
-  @Get("/community/pending_follows/count")
-  @Tags("Community")
-  async getCommunityPendingFollowsCount(@Inject() options?: RequestOptions) {
-    return this.#wrapper<{}, GetCommunityPendingFollowsCountResponse>(
+  @Get("/account/unread_counts")
+  @Tags("Account")
+  async getUnreadCounts(@Inject() options?: RequestOptions) {
+    return this.#wrapper<{}, UnreadCountsResponse>(
       HttpType.Get,
-      "/community/pending_follows/count",
+      "/account/unread_counts",
       {},
       options,
     );
@@ -1838,39 +1834,6 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary Get counts for your reports.
-   */
-  @Security("bearerAuth")
-  @Get("/report/count")
-  @Tags("Account")
-  async getReportCount(
-    @Queries() form: GetReportCountI,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<GetReportCount, GetReportCountResponse>(
-      HttpType.Get,
-      "/report/count",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Get your unread counts.
-   */
-  @Security("bearerAuth")
-  @Get("/account/notification/count")
-  @Tags("Account")
-  async getUnreadCount(@Inject() options?: RequestOptions) {
-    return this.#wrapper<object, GetUnreadCountResponse>(
-      HttpType.Get,
-      "/account/notification/count",
-      {},
-      options,
-    );
-  }
-
-  /**
    * @summary Get your inbox (replies, comment mentions, post mentions, and messages)
    */
   @Security("bearerAuth")
@@ -2001,23 +1964,6 @@ export class LemmyHttp extends Controller {
       HttpType.Post,
       "/admin/add",
       form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Get the unread registration applications count.
-   */
-  @Security("bearerAuth")
-  @Get("/admin/registration_application/count")
-  @Tags("Admin")
-  async getUnreadRegistrationApplicationCount(
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<object, GetUnreadRegistrationApplicationCountResponse>(
-      HttpType.Get,
-      "/admin/registration_application/count",
-      {},
       options,
     );
   }

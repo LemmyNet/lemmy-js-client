@@ -11,7 +11,6 @@ import { GetPost } from "./types/GetPost";
 import { GetPosts } from "./types/GetPosts";
 import { GetRandomCommunity } from "./types/GetRandomCommunity";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
-import { GetReportCount } from "./types/GetReportCount";
 import { GetSiteMetadata } from "./types/GetSiteMetadata";
 import { ListCommentLikes } from "./types/ListCommentLikes";
 import { ListCommunities } from "./types/ListCommunities";
@@ -58,7 +57,6 @@ export interface GetCommentsI extends GetComments {}
 export interface GetCommentI extends GetComment {}
 export interface GetPersonDetailsI extends GetPersonDetails {}
 export interface ListPersonContentI extends ListPersonContent {}
-export interface GetReportCountI extends GetReportCount {}
 export interface ListNotificationsI extends ListNotifications {}
 export interface ListPersonSavedI extends ListPersonSaved {}
 export interface ListPersonReadI extends ListPersonRead {}
