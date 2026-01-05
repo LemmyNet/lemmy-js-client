@@ -2942,16 +2942,19 @@ function createFormData(image: File | Buffer): FormData {
  * A Lemmy error type.
  *
  * The name is the i18n translatable error code.
- * The msg is either an empty string, or extra non-translatable info.
+ * The message is either an empty string, or extra non-translatable info.
  */
 export class LemmyError extends Error {
+  name: string;
   status: number;
-  constructor(name: string, status: number, msg?: string) {
-    super(msg ?? "");
-    this.name = name;
-    this.status = status;
+  message: string;
+  cause: any;
 
-    // Set the prototype explicitly.
-    Object.setPrototypeOf(this, LemmyError.prototype);
+  constructor(name: string, status: number, message: string = "", cause?: any) {
+    super();
+    this.name = name;
+    this.message = message;
+    this.status = status;
+    this.cause = cause;
   }
 }
