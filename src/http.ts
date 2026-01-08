@@ -96,7 +96,6 @@ import { EditOAuthProvider } from "./types/EditOAuthProvider";
 import { EditPost } from "./types/EditPost";
 import { EditPrivateMessage } from "./types/EditPrivateMessage";
 import { EditSite } from "./types/EditSite";
-import { OAuthProvider } from "./types/OAuthProvider";
 import { FeaturePost } from "./types/FeaturePost";
 import { FollowCommunity } from "./types/FollowCommunity";
 import { GetCaptchaResponse } from "./types/GetCaptchaResponse";
@@ -219,6 +218,7 @@ import { FederatedInstanceView } from "./types/FederatedInstanceView";
 import { MultiCommunityView } from "./types/MultiCommunityView";
 import { PostCommentCombinedView } from "./types/PostCommentCombinedView";
 import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
+import { AdminOAuthProvider } from "./types/AdminOAuthProvider";
 
 enum HttpType {
   Get = "GET",
@@ -2295,7 +2295,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateOAuthProvider,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<CreateOAuthProvider, OAuthProvider>(
+    return this.#wrapper<CreateOAuthProvider, AdminOAuthProvider>(
       HttpType.Post,
       "/oauth_provider",
       form,
@@ -2313,7 +2313,7 @@ export class LemmyHttp extends Controller {
     @Body() form: EditOAuthProvider,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<EditOAuthProvider, OAuthProvider>(
+    return this.#wrapper<EditOAuthProvider, AdminOAuthProvider>(
       HttpType.Put,
       "/oauth_provider",
       form,

@@ -83,7 +83,7 @@ export type LemmyErrorType =
   | { error: "invalid_url" }
   | { error: "email_send_failed" }
   | { error: "slurs" }
-  | { error: "registration_denied"; message: { reason?: string } }
+  | { error: "registration_denied"; message: string }
   | { error: "site_name_required" }
   | { error: "site_name_length_overflow" }
   | { error: "permissive_regex" }
@@ -108,7 +108,6 @@ export type LemmyErrorType =
   | { error: "post_schedule_time_must_be_in_future" }
   | { error: "too_many_scheduled_posts" }
   | { error: "cannot_combine_federation_blocklist_and_allowlist" }
-  | { error: "untranslated_error"; message: { error?: UntranslatedError } }
   | { error: "couldnt_parse_pagination_token" }
   | { error: "plugin_error"; message: string }
   | { error: "invalid_fetch_limit" }
@@ -116,4 +115,6 @@ export type LemmyErrorType =
   | { error: "multi_community_update_wrong_user" }
   | { error: "cannot_combine_community_id_and_multi_community_id" }
   | { error: "multi_community_entry_limit_reached" }
-  | { error: "too_many_requests" };
+  | { error: "too_many_requests" }
+  | { error: "resolve_object_failed"; message: string }
+  | { error?: UntranslatedError };

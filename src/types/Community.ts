@@ -17,7 +17,7 @@ export type Community = {
   /**
    * A sidebar for the community in markdown.
    */
-  sidebar?: string;
+  description?: string;
   /**
    * Whether the community is removed by a mod.
    */
@@ -57,7 +57,7 @@ export type Community = {
   /**
    * A shorter, one-line description of the site.
    */
-  description?: string;
+  summary?: string;
   subscribers: number;
   posts: number;
   comments: number;
