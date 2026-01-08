@@ -4,7 +4,7 @@ import type { OAuthProviderId } from "./OAuthProviderId";
 /**
  * oauth provider with client_secret - should never be sent to the client
  */
-export type OAuthProvider = {
+export type AdminOAuthProvider = {
   id: OAuthProviderId;
   /**
    * The OAuth 2.0 provider name displayed to the user on the Login page
