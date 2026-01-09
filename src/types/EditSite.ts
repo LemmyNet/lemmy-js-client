@@ -16,11 +16,11 @@ export type EditSite = {
   /**
    * A sidebar for the site, in markdown.
    */
-  sidebar?: string;
+  description?: string;
   /**
    * A shorter, one line description of your site.
    */
-  description?: string;
+  summary?: string;
   /**
    * Limits community creation to admins only.
    */

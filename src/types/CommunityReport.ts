@@ -12,8 +12,8 @@ export type CommunityReport = {
   community_id: CommunityId;
   original_community_name: string;
   original_community_title: string;
+  original_community_summary?: string;
   original_community_description?: string;
-  original_community_sidebar?: string;
   original_community_icon?: string;
   original_community_banner?: string;
   reason: string;
