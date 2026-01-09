@@ -110,4 +110,5 @@ export const AllLemmyErrors = [
   "cannot_combine_community_id_and_multi_community_id",
   "multi_community_entry_limit_reached",
   "too_many_requests",
+  "too_many_requests",
 ];

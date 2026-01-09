@@ -272,7 +272,6 @@ export { TaglineResponse } from "./types/TaglineResponse";
 export { TagsView } from "./types/TagsView";
 export { TransferCommunity } from "./types/TransferCommunity";
 export { UnreadCountsResponse } from "./types/UnreadCountsResponse";
-export { UntranslatedError } from "./types/UntranslatedError";
 export { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
 export { UpdateCommunityTag } from "./types/UpdateCommunityTag";
 export { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
