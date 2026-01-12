@@ -13,8 +13,8 @@ import type { RegistrationMode } from "./RegistrationMode";
  */
 export type CreateSite = {
   name: string;
-  sidebar?: string;
   description?: string;
+  summary?: string;
   community_creation_admin_only?: boolean;
   require_email_verification?: boolean;
   application_question?: string;

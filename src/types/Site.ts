@@ -13,7 +13,7 @@ export type Site = {
   /**
    * A sidebar for the site in markdown.
    */
-  sidebar?: string;
+  description?: string;
   published_at: string;
   updated_at?: string;
   /**
@@ -25,9 +25,9 @@ export type Site = {
    */
   banner?: DbUrl;
   /**
-   * A shorter, one-line description of the site.
+   * A shorter, one-line summary of the site.
    */
-  description?: string;
+  summary?: string;
   /**
    * The federated ap_id.
    */

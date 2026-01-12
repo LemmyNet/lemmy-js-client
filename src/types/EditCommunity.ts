@@ -15,11 +15,11 @@ export type EditCommunity = {
   /**
    * A sidebar for the community in markdown.
    */
-  sidebar?: string;
-  /**
-   * A shorter, one line description of your community.
-   */
   description?: string;
+  /**
+   * A shorter, one line summary of your community.
+   */
+  summary?: string;
   /**
    * Whether its an NSFW community.
    */

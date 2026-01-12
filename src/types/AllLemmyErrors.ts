@@ -102,7 +102,6 @@ export const AllLemmyErrors = [
   "post_schedule_time_must_be_in_future",
   "too_many_scheduled_posts",
   "cannot_combine_federation_blocklist_and_allowlist",
-  "cannot_combine_federation_blocklist_and_allowlist",
   "couldnt_parse_pagination_token",
   "couldnt_parse_pagination_token",
   "invalid_fetch_limit",
@@ -110,5 +109,6 @@ export const AllLemmyErrors = [
   "multi_community_update_wrong_user",
   "cannot_combine_community_id_and_multi_community_id",
   "multi_community_entry_limit_reached",
+  "too_many_requests",
   "too_many_requests",
 ];
