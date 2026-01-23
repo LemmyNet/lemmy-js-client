@@ -504,7 +504,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/auth/totp/update")
   @Tags("Account")
-  async updateTotp(@Body() form: EditTotp, @Inject() options?: RequestOptions) {
+  async editTotp(@Body() form: EditTotp, @Inject() options?: RequestOptions) {
     return this.#wrapper<EditTotp, EditTotpResponse>(
       HttpType.Post,
       "/account/auth/totp/update",
