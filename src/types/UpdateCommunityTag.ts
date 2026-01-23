@@ -7,5 +7,5 @@ import type { TagId } from "./TagId";
 export type UpdateCommunityTag = {
   tag_id: TagId;
   display_name?: string;
-  description?: string;
+  summary?: string;
 };

@@ -12,7 +12,7 @@ export type Tag = {
   ap_id: DbUrl;
   name: string;
   display_name?: string;
-  description?: string;
+  summary?: string;
   /**
    * The community that this tag belongs to
    */

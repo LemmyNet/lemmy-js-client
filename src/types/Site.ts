@@ -13,7 +13,7 @@ export type Site = {
   /**
    * A sidebar for the site in markdown.
    */
-  description?: string;
+  sidebar?: string;
   published_at: string;
   updated_at?: string;
   /**

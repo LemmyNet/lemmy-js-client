@@ -16,7 +16,7 @@ export type EditSite = {
   /**
    * A sidebar for the site, in markdown.
    */
-  description?: string;
+  sidebar?: string;
   /**
    * A shorter, one line description of your site.
    */

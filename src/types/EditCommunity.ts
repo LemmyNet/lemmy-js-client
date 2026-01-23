@@ -15,7 +15,7 @@ export type EditCommunity = {
   /**
    * A sidebar for the community in markdown.
    */
-  description?: string;
+  sidebar?: string;
   /**
    * A shorter, one line summary of your community.
    */

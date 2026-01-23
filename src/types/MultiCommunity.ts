@@ -10,7 +10,7 @@ export type MultiCommunity = {
   instance_id: InstanceId;
   name: string;
   title?: string;
-  description?: string;
+  summary?: string;
   local: boolean;
   deleted: boolean;
   ap_id: DbUrl;

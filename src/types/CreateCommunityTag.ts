@@ -8,5 +8,5 @@ export type CreateCommunityTag = {
   community_id: CommunityId;
   name: string;
   display_name?: string;
-  description?: string;
+  summary?: string;
 };
