@@ -5,7 +5,7 @@ import type { CommunityNotificationsMode } from "./CommunityNotificationsMode";
 /**
  * Change notification settings for a community
  */
-export type UpdateCommunityNotifications = {
+export type EditCommunityNotifications = {
   community_id: CommunityId;
   mode: CommunityNotificationsMode;
 };
