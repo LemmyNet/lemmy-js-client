@@ -2257,7 +2257,7 @@ export class LemmyHttp extends Controller {
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<EditCommunityTag, Tag>(
-      HttpType.Post,
+      HttpType.Put,
       "/community/tag",
       form,
       options,
