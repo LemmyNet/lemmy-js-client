@@ -329,7 +329,7 @@ export class LemmyHttp extends Controller {
    * @summary Generate a TOTP / two-factor secret.
    *
    * Generate a TOTP / two-factor secret.
-   * Afterwards you need to call `/account/auth/totp/update` with a valid token to enable it.
+   * Afterwards you need to call `/account/auth/totp/edit` with a valid token to enable it.
    */
   @Security("bearerAuth")
   @Post("/account/auth/totp/generate")
@@ -502,12 +502,12 @@ export class LemmyHttp extends Controller {
    */
 
   @Security("bearerAuth")
-  @Post("/account/auth/totp/update")
+  @Post("/account/auth/totp/edit")
   @Tags("Account")
   async editTotp(@Body() form: EditTotp, @Inject() options?: RequestOptions) {
     return this.#wrapper<EditTotp, EditTotpResponse>(
       HttpType.Post,
-      "/account/auth/totp/update",
+      "/account/auth/totp/edit",
       form,
       options,
     );
@@ -946,7 +946,7 @@ export class LemmyHttp extends Controller {
    * @summary Mods can change nsfw flag and tags for a post
    */
   @Security("bearerAuth")
-  @Put("/post/mod_update")
+  @Put("/post/mod_edit")
   @Tags("Post")
   async modEditPost(
     @Body() form: ModEditPost,
@@ -954,7 +954,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<ModEditPost, PostResponse>(
       HttpType.Put,
-      "/post/mod_update",
+      "/post/mod_edit",
       form,
       options,
     );
@@ -2252,7 +2252,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community/tag")
   @Tags("Community")
-  updateCommunityTag(
+  editCommunityTag(
     @Body() form: EditCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
@@ -2701,7 +2701,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/multi_community")
   @Tags("Multicommunity")
-  updateMultiCommunity(
+  editMultiCommunity(
     @Body() form: EditMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -2791,7 +2791,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community/notifications")
   @Tags("Community")
-  updateCommunityNotifications(
+  editCommunityNotifications(
     @Body() form: EditCommunityNotifications,
     @Inject() options?: RequestOptions,
   ) {
@@ -2809,7 +2809,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/post/notifications")
   @Tags("Post")
-  updatePostNotifications(
+  editPostNotifications(
     @Body() form: EditPostNotifications,
     @Inject() options?: RequestOptions,
   ) {
