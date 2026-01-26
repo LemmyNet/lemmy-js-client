@@ -4,7 +4,7 @@ import type { TagId } from "./TagId";
 /**
  * Make changes to a community tag
  */
-export type UpdateCommunityTag = {
+export type EditCommunityTag = {
   tag_id: TagId;
   display_name?: string;
   description?: string;
