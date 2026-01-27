@@ -273,6 +273,7 @@ export { SiteResponse } from "./types/SiteResponse";
 export { SiteView } from "./types/SiteView";
 export { SuccessResponse } from "./types/SuccessResponse";
 export { Tag } from "./types/Tag";
+export { TagColor } from "./types/TagColor";
 export { TagId } from "./types/TagId";
 export { Tagline } from "./types/Tagline";
 export { TaglineId } from "./types/TaglineId";
