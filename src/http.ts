@@ -70,7 +70,7 @@ import { CreateCommentReport } from "./types/CreateCommentReport";
 import { CreateCommunity } from "./types/CreateCommunity";
 import { CreateCommunityReport } from "./types/CreateCommunityReport";
 import { CreateCommunityTag } from "./types/CreateCommunityTag";
-import { UpdateCommunityTag } from "./types/UpdateCommunityTag";
+import { EditCommunityTag } from "./types/EditCommunityTag";
 import { CreateCustomEmoji } from "./types/CreateCustomEmoji";
 import { CreateOAuthProvider } from "./types/CreateOAuthProvider";
 import { CreatePost } from "./types/CreatePost";
@@ -149,8 +149,8 @@ import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
 import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
-import { UpdateTotp } from "./types/UpdateTotp";
-import { UpdateTotpResponse } from "./types/UpdateTotpResponse";
+import { EditTotp } from "./types/EditTotp";
+import { EditTotpResponse } from "./types/EditTotpResponse";
 import { SuccessResponse } from "./types/SuccessResponse";
 import { ListPostLikes } from "./types/ListPostLikes";
 import { ListCommentLikes } from "./types/ListCommentLikes";
@@ -160,7 +160,7 @@ import { AuthenticateWithOauth } from "./types/AuthenticateWithOauth";
 import { GetRegistrationApplication } from "./types/GetRegistrationApplication";
 import { CreateTagline } from "./types/CreateTagline";
 import { TaglineResponse } from "./types/TaglineResponse";
-import { UpdateTagline } from "./types/UpdateTagline";
+import { EditTagline } from "./types/EditTagline";
 import { DeleteTagline } from "./types/DeleteTagline";
 import { ListTaglines } from "./types/ListTaglines";
 import { ListCustomEmojis } from "./types/ListCustomEmojis";
@@ -182,7 +182,7 @@ import { ListPersonRead } from "./types/ListPersonRead";
 import { ListPersonHidden } from "./types/ListPersonHidden";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { CreateMultiCommunity } from "./types/CreateMultiCommunity";
-import { UpdateMultiCommunity } from "./types/UpdateMultiCommunity";
+import { EditMultiCommunity } from "./types/EditMultiCommunity";
 import { AdminListUsers } from "./types/AdminListUsers";
 import { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCommunityEntry";
 import { GetMultiCommunityResponse } from "./types/GetMultiCommunityResponse";
@@ -195,8 +195,8 @@ import { UserBlockInstancePersonsParams } from "./types/UserBlockInstancePersons
 import { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 import { ListNotifications } from "./types/ListNotifications";
 import { ModEditPost } from "./types/ModEditPost";
-import { UpdateCommunityNotifications } from "./types/UpdateCommunityNotifications";
-import { UpdatePostNotifications } from "./types/UpdatePostNotifications";
+import { EditCommunityNotifications } from "./types/EditCommunityNotifications";
+import { EditPostNotifications } from "./types/EditPostNotifications";
 import { MultiCommunityResponse } from "./types/MultiCommunityResponse";
 import { PersonResponse } from "./types/PersonResponse";
 import { GetFederatedInstances } from "./types/GetFederatedInstances";
@@ -329,7 +329,7 @@ export class LemmyHttp extends Controller {
    * @summary Generate a TOTP / two-factor secret.
    *
    * Generate a TOTP / two-factor secret.
-   * Afterwards you need to call `/account/auth/totp/update` with a valid token to enable it.
+   * Afterwards you need to call `/account/auth/totp/edit` with a valid token to enable it.
    */
   @Security("bearerAuth")
   @Post("/account/auth/totp/generate")
@@ -502,15 +502,12 @@ export class LemmyHttp extends Controller {
    */
 
   @Security("bearerAuth")
-  @Post("/account/auth/totp/update")
+  @Post("/account/auth/totp/edit")
   @Tags("Account")
-  async updateTotp(
-    @Body() form: UpdateTotp,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<UpdateTotp, UpdateTotpResponse>(
+  async editTotp(@Body() form: EditTotp, @Inject() options?: RequestOptions) {
+    return this.#wrapper<EditTotp, EditTotpResponse>(
       HttpType.Post,
-      "/account/auth/totp/update",
+      "/account/auth/totp/edit",
       form,
       options,
     );
@@ -949,7 +946,7 @@ export class LemmyHttp extends Controller {
    * @summary Mods can change nsfw flag and tags for a post
    */
   @Security("bearerAuth")
-  @Put("/post/mod_update")
+  @Put("/post/mod_edit")
   @Tags("Post")
   async modEditPost(
     @Body() form: ModEditPost,
@@ -957,7 +954,7 @@ export class LemmyHttp extends Controller {
   ) {
     return this.#wrapper<ModEditPost, PostResponse>(
       HttpType.Put,
-      "/post/mod_update",
+      "/post/mod_edit",
       form,
       options,
     );
@@ -2183,10 +2180,10 @@ export class LemmyHttp extends Controller {
   @Put("/admin/tagline")
   @Tags("Admin", "Tagline")
   async editTagline(
-    @Body() form: UpdateTagline,
+    @Body() form: EditTagline,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<UpdateTagline, TaglineResponse>(
+    return this.#wrapper<EditTagline, TaglineResponse>(
       HttpType.Put,
       "/admin/tagline",
       form,
@@ -2255,11 +2252,11 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community/tag")
   @Tags("Community")
-  updateCommunityTag(
-    @Body() form: UpdateCommunityTag,
+  editCommunityTag(
+    @Body() form: EditCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<UpdateCommunityTag, Tag>(
+    return this.#wrapper<EditCommunityTag, Tag>(
       HttpType.Put,
       "/community/tag",
       form,
@@ -2704,8 +2701,8 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/multi_community")
   @Tags("Multicommunity")
-  updateMultiCommunity(
-    @Body() form: UpdateMultiCommunity,
+  editMultiCommunity(
+    @Body() form: EditMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<object, MultiCommunityResponse>(
@@ -2794,11 +2791,11 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community/notifications")
   @Tags("Community")
-  updateCommunityNotifications(
-    @Body() form: UpdateCommunityNotifications,
+  editCommunityNotifications(
+    @Body() form: EditCommunityNotifications,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<UpdateCommunityNotifications, SuccessResponse>(
+    return this.#wrapper<EditCommunityNotifications, SuccessResponse>(
       HttpType.Post,
       "/community/notifications",
       form,
@@ -2812,11 +2809,11 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/post/notifications")
   @Tags("Post")
-  updatePostNotifications(
-    @Body() form: UpdatePostNotifications,
+  editPostNotifications(
+    @Body() form: EditPostNotifications,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<UpdatePostNotifications, SuccessResponse>(
+    return this.#wrapper<EditPostNotifications, SuccessResponse>(
       HttpType.Post,
       "/post/notifications",
       form,
