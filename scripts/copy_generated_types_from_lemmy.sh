@@ -8,24 +8,19 @@ cd "$CWD/../"
 # Remove the old types
 rm -rf src/types/*
 
+lemmy_dir=../lemmy
+
 # Remove the old bindings
-pushd ../lemmy/crates
-find . -name bindings -type d -exec rm -rf {} \; || true
-popd
+find ${lemmy_dir}/crates -name bindings -type d -exec rm -rf {} \; || true
 
 # First re-generate the types by running cargo test on lemmy
-pushd ../lemmy
-
 # Export the ts-rs bindings
+pushd $lemmy_dir
 cargo test --workspace export_bindings --features ts-rs
-
-pushd crates
+popd
 
 # Copy them over to the types folder
-find . -type f -name "*.ts" -exec cp {} ../../lemmy-js-client/src/types/ \;
-
-popd
-popd
+find ${lemmy_dir}/crates -type f -name "*.ts" -exec cp {} src/types/ \;
 
 # Make sure that all fields use `?` and not `| null`
 CONTAINS_NULL=$(grep -nr --include=\*.ts ' | null' src/ || true)
