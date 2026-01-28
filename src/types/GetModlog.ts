@@ -2,7 +2,7 @@
 import type { CommentId } from "./CommentId";
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
-import type { ModlogKind } from "./ModlogKind";
+import type { ModlogKindFilter } from "./ModlogKindFilter";
 import type { PaginationCursor } from "./PaginationCursor";
 import type { PersonId } from "./PersonId";
 import type { PostId } from "./PostId";
@@ -22,7 +22,7 @@ export type GetModlog = {
   /**
    * Filter by the modlog action type.
    */
-  type_?: ModlogKind;
+  type_?: ModlogKindFilter;
   /**
    * Filter by listing type. When not using All, it will remove the non-community modlog entries,
    * such as site bans, instance blocks, adding an admin, etc.
