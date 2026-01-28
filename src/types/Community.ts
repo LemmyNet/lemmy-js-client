@@ -17,7 +17,7 @@ export type Community = {
   /**
    * A sidebar for the community in markdown.
    */
-  description?: string;
+  sidebar?: string;
   /**
    * Whether the community is removed by a mod.
    */

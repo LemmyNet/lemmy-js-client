@@ -4,6 +4,6 @@ import type { MultiCommunityId } from "./MultiCommunityId";
 export type EditMultiCommunity = {
   id: MultiCommunityId;
   title?: string;
-  description?: string;
+  summary?: string;
   deleted?: boolean;
 };

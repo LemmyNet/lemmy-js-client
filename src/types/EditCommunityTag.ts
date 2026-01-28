@@ -8,6 +8,6 @@ import type { TagId } from "./TagId";
 export type EditCommunityTag = {
   tag_id: TagId;
   display_name?: string;
-  description?: string;
+  summary?: string;
   color?: TagColor;
 };
