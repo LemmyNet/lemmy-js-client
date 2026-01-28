@@ -289,5 +289,3 @@ export { UserSettingsBackup } from "./types/UserSettingsBackup";
 export { VerifyEmail } from "./types/VerifyEmail";
 export { VoteShow } from "./types/VoteShow";
 export { VoteView } from "./types/VoteView";
-export { VoteViewComment } from "./types/VoteViewComment";
-export { VoteViewPost } from "./types/VoteViewPost";
