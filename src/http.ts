@@ -176,7 +176,7 @@ import { ListPersonContent } from "./types/ListPersonContent";
 import { ListPersonSaved } from "./types/ListPersonSaved";
 import { DeleteImageParams } from "./types/DeleteImageParams";
 import { UploadImageResponse } from "./types/UploadImageResponse";
-import { Tag } from "./types/Tag";
+import { CommunityTag } from "./types/CommunityTag";
 import { ResendVerificationEmail } from "./types/ResendVerificationEmail";
 import { ListPersonRead } from "./types/ListPersonRead";
 import { ListPersonHidden } from "./types/ListPersonHidden";
@@ -2238,7 +2238,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<CreateCommunityTag, Tag>(
+    return this.#wrapper<CreateCommunityTag, CommunityTag>(
       HttpType.Post,
       "/community/tag",
       form,
@@ -2256,7 +2256,7 @@ export class LemmyHttp extends Controller {
     @Body() form: EditCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<EditCommunityTag, Tag>(
+    return this.#wrapper<EditCommunityTag, CommunityTag>(
       HttpType.Put,
       "/community/tag",
       form,
@@ -2274,7 +2274,7 @@ export class LemmyHttp extends Controller {
     @Body() form: DeleteCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<DeleteCommunityTag, Tag>(
+    return this.#wrapper<DeleteCommunityTag, CommunityTag>(
       HttpType.Delete,
       "/community/tag",
       form,

@@ -3,10 +3,10 @@ import type { Comment } from "./Comment";
 import type { CommentActions } from "./CommentActions";
 import type { Community } from "./Community";
 import type { CommunityActions } from "./CommunityActions";
+import type { CommunityTagsView } from "./CommunityTagsView";
 import type { Person } from "./Person";
 import type { PersonActions } from "./PersonActions";
 import type { Post } from "./Post";
-import type { TagsView } from "./TagsView";
 
 /**
  * A comment view.
@@ -20,7 +20,7 @@ export type CommentView = {
   comment_actions?: CommentActions;
   person_actions?: PersonActions;
   creator_is_admin: boolean;
-  post_tags: TagsView;
+  tags: CommunityTagsView;
   can_mod: boolean;
   creator_banned: boolean;
   creator_ban_expires_at?: string;
