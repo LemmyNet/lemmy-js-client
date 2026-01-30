@@ -48,6 +48,7 @@ import {
   UploadImage,
   VERSION,
   GetFederatedInstancesI,
+  ListCommunityTagsI,
 } from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -219,6 +220,7 @@ import { MultiCommunityView } from "./types/MultiCommunityView";
 import { PostCommentCombinedView } from "./types/PostCommentCombinedView";
 import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
 import { AdminOAuthProvider } from "./types/AdminOAuthProvider";
+import { ListCommunityTags } from "./types/ListCommunityTags";
 
 enum HttpType {
   Get = "GET",
@@ -2223,6 +2225,25 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<ListTaglines, PagedResponse<Tagline>>(
       HttpType.Get,
       "/admin/tagline/list",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List community tags.
+   */
+  @Security("bearerAuth")
+  @Security({})
+  @Get("/community/tag/list")
+  @Tags("Community")
+  async listCommunityTags(
+    @Queries() form: ListCommunityTagsI,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<ListCommunityTags, CommunityTag[]>(
+      HttpType.Get,
+      "/community/tag/list",
       form,
       options,
     );

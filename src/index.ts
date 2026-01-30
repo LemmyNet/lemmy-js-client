@@ -144,6 +144,7 @@ export { LinkMetadata } from "./types/LinkMetadata";
 export { ListCommentLikes } from "./types/ListCommentLikes";
 export { ListCommunities } from "./types/ListCommunities";
 export { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
+export { ListCommunityTags } from "./types/ListCommunityTags";
 export { ListCustomEmojis } from "./types/ListCustomEmojis";
 export { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
 export { ListLoginsResponse } from "./types/ListLoginsResponse";
