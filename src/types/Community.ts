@@ -40,6 +40,7 @@ export type Community = {
    * Whether the community is local.
    */
   local: boolean;
+  last_refreshed_at: string;
   /**
    * A URL for an icon.
    */

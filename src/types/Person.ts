@@ -31,6 +31,7 @@ export type Person = {
    * Whether the person is local to our site.
    */
   local: boolean;
+  last_refreshed_at: string;
   /**
    * A URL for a banner.
    */
