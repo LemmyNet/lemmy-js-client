@@ -14,6 +14,7 @@ export type MultiCommunity = {
   local: boolean;
   deleted: boolean;
   ap_id: DbUrl;
+  last_refreshed_at: string;
   published_at: string;
   updated_at?: string;
   subscribers: number;
