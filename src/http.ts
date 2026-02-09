@@ -2880,7 +2880,7 @@ export class LemmyHttp extends Controller {
       });
     }
 
-    let json: any | undefined = undefined;
+    let json: any | undefined;
 
     try {
       json = await response.json();
