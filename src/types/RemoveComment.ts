@@ -8,4 +8,9 @@ export type RemoveComment = {
   comment_id: CommentId;
   removed: boolean;
   reason: string;
+  /**
+   * Setting this will override whatever `removed` was set to,
+   * leave as null or unset to act just on the comment itself.
+   */
+  remove_children?: boolean;
 };

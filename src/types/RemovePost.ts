@@ -4,4 +4,13 @@ import type { PostId } from "./PostId";
 /**
  * Remove a post (only doable by mods).
  */
-export type RemovePost = { post_id: PostId; removed: boolean; reason: string };
+export type RemovePost = {
+  post_id: PostId;
+  removed: boolean;
+  reason: string;
+  /**
+   * Setting this will override whatever `removed` was set to,
+   * leave as null or unset to act just on the post itself.
+   */
+  remove_children?: boolean;
+};
