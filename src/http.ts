@@ -997,24 +997,6 @@ export class LemmyHttp extends Controller {
   }
 
   /**
-   * @summary A moderator remove for a post with its children.
-   */
-  @Security("bearerAuth")
-  @Post("/post/remove_with_children")
-  @Tags("Post", "Moderator")
-  async removePostWithChildren(
-    @Body() form: RemovePost,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<RemovePost, PostResponse>(
-      HttpType.Post,
-      "/post/remove_with_children",
-      form,
-      options,
-    );
-  }
-
-  /**
    * @summary Mark a post as read.
    */
   @Security("bearerAuth")
@@ -1289,24 +1271,6 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<RemoveComment, CommentResponse>(
       HttpType.Post,
       "/comment/remove",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary A moderator remove for a comment with its children.
-   */
-  @Security("bearerAuth")
-  @Post("/comment/remove_with_children")
-  @Tags("Comment", "Moderator")
-  async removeCommentWithChildren(
-    @Body() form: RemoveComment,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.#wrapper<RemoveComment, CommentResponse>(
-      HttpType.Post,
-      "/comment/remove_with_children",
       form,
       options,
     );
