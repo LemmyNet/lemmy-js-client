@@ -140,6 +140,6 @@ export type LocalSite = {
    * Dont send email notifications to users for new replies, mentions etc
    */
   disable_email_notifications: boolean;
-  suggested_communities?: MultiCommunityId;
+  suggested_multi_community_id?: MultiCommunityId;
   default_items_per_page: number;
 };
