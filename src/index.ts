@@ -52,6 +52,7 @@ export { CommunityVisibility } from "./types/CommunityVisibility";
 export { CreateComment } from "./types/CreateComment";
 export { CreateCommentLike } from "./types/CreateCommentLike";
 export { CreateCommentReport } from "./types/CreateCommentReport";
+export { CreateCommentWarning } from "./types/CreateCommentWarning";
 export { CreateCommunity } from "./types/CreateCommunity";
 export { CreateCommunityReport } from "./types/CreateCommunityReport";
 export { CreateCommunityTag } from "./types/CreateCommunityTag";
@@ -62,6 +63,7 @@ export { CreateOrDeleteMultiCommunityEntry } from "./types/CreateOrDeleteMultiCo
 export { CreatePost } from "./types/CreatePost";
 export { CreatePostLike } from "./types/CreatePostLike";
 export { CreatePostReport } from "./types/CreatePostReport";
+export { CreatePostWarning } from "./types/CreatePostWarning";
 export { CreatePrivateMessage } from "./types/CreatePrivateMessage";
 export { CreatePrivateMessageReport } from "./types/CreatePrivateMessageReport";
 export { CreateSite } from "./types/CreateSite";

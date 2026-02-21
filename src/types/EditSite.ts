@@ -171,7 +171,8 @@ export type EditSite = {
    */
   disable_email_notifications?: boolean;
   /**
-   * A multicommunity with suggested communities which is shown on the homepage
+   * A multicommunity with suggested communities which is shown on the homepage. Sending a zero
+   * erases this field.
    */
-  suggested_communities?: MultiCommunityId;
+  suggested_multi_community_id?: MultiCommunityId;
 };

@@ -22,4 +22,6 @@ export type ModlogKind =
   | "admin_remove_community"
   | "mod_remove_post"
   | "mod_transfer_community"
-  | "mod_lock_comment";
+  | "mod_lock_comment"
+  | "mod_warn_comment"
+  | "mod_warn_post";

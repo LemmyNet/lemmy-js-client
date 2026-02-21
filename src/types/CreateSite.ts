@@ -55,5 +55,5 @@ export type CreateSite = {
   comment_downvotes?: FederationMode;
   disallow_nsfw_content?: boolean;
   disable_email_notifications?: boolean;
-  suggested_communities?: MultiCommunityId;
+  suggested_multi_community_id?: MultiCommunityId;
 };
