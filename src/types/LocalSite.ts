@@ -56,14 +56,6 @@ export type LocalSite = {
    * Whether federation is enabled.
    */
   federation_enabled: boolean;
-  /**
-   * Whether captcha is enabled.
-   */
-  captcha_enabled: boolean;
-  /**
-   * The captcha difficulty.
-   */
-  captcha_difficulty: string;
   published_at: string;
   updated_at?: string;
   registration_mode: RegistrationMode;

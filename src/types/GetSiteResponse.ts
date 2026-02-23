@@ -36,4 +36,5 @@ export type GetSiteResponse = {
    * Useful for estimating when your application will be approved.
    */
   last_application_duration_seconds?: number;
+  captcha_enabled: boolean;
 };
