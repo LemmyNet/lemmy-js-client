@@ -44,8 +44,6 @@ export type CreateSite = {
   rate_limit_import_user_settings_max_requests?: number;
   rate_limit_import_user_settings_interval_seconds?: number;
   federation_enabled?: boolean;
-  captcha_enabled?: boolean;
-  captcha_difficulty?: string;
   registration_mode?: RegistrationMode;
   oauth_registration?: boolean;
   content_warning?: string;

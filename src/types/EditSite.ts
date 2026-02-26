@@ -121,14 +121,6 @@ export type EditSite = {
    */
   federation_enabled?: boolean;
   /**
-   * Whether to enable captchas for signups.
-   */
-  captcha_enabled?: boolean;
-  /**
-   * The captcha difficulty. Can be easy, medium, or hard
-   */
-  captcha_difficulty?: string;
-  /**
    * A list of blocked URLs
    */
   blocked_urls?: Array<string>;

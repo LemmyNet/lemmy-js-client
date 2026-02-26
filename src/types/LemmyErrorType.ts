@@ -87,9 +87,6 @@ export type LemmyErrorType =
   | { error: "site_name_length_overflow" }
   | { error: "permissive_regex" }
   | { error: "invalid_regex" }
-  | { error: "captcha_incorrect" }
-  | { error: "couldnt_create_audio_captcha" }
-  | { error: "couldnt_create_image_captcha" }
   | { error: "invalid_url_scheme" }
   | { error: "contradicting_filters" }
   | { error: "too_many_items" }
