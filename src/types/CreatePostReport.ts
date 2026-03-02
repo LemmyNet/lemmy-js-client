@@ -7,5 +7,9 @@ import type { PostId } from "./PostId";
 export type CreatePostReport = {
   post_id: PostId;
   reason: string;
+  /**
+   * The post violates rules of the local instance. This report will only be shown to local
+   * admins, not to community mods and will not be federated.
+   */
   violates_instance_rules?: boolean;
 };
