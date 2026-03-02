@@ -219,6 +219,8 @@ import { MultiCommunityView } from "./types/MultiCommunityView";
 import { PostCommentCombinedView } from "./types/PostCommentCombinedView";
 import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
 import { AdminOAuthProvider } from "./types/AdminOAuthProvider";
+import { CreatePostWarning } from "./types/CreatePostWarning";
+import { CreateCommentWarning } from "./types/CreateCommentWarning";
 
 enum HttpType {
   Get = "GET",
@@ -961,6 +963,24 @@ export class LemmyHttp extends Controller {
   }
 
   /**
+   * @summary Creates a warning against a post and notifies the user.
+   */
+  @Security("bearerAuth")
+  @Post("/post/warn")
+  @Tags("Post")
+  async warnPost(
+    @Body() form: CreatePostWarning,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<CreatePostWarning, PostResponse>(
+      HttpType.Post,
+      "/post/warn",
+      form,
+      options,
+    );
+  }
+
+  /**
    * @summary Delete a post.
    */
   @Security("bearerAuth")
@@ -1418,6 +1438,24 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<GetComment, CommentResponse>(
       HttpType.Get,
       "/comment",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Creates a warning against a comment and notifies the user.
+   */
+  @Security("bearerAuth")
+  @Post("/comment/warn")
+  @Tags("Comment")
+  async warnComment(
+    @Body() form: CreateCommentWarning,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.#wrapper<CreateCommentWarning, CommentResponse>(
+      HttpType.Post,
+      "/comment/warn",
       form,
       options,
     );
