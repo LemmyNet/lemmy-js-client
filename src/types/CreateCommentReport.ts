@@ -7,5 +7,9 @@ import type { CommentId } from "./CommentId";
 export type CreateCommentReport = {
   comment_id: CommentId;
   reason: string;
+  /**
+   * The comment violates rules of the local instance. This report will only be shown to local
+   * admins, not to community mods and will not be federated.
+   */
   violates_instance_rules?: boolean;
 };

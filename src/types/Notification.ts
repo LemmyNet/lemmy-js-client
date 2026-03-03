@@ -17,4 +17,5 @@ export type Notification = {
   post_id?: PostId;
   private_message_id?: PrivateMessageId;
   modlog_id?: ModlogId;
+  creator_id: PersonId;
 };
