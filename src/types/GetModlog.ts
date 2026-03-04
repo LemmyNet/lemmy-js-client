@@ -2,6 +2,7 @@
 import type { CommentId } from "./CommentId";
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
+import type { ModlogId } from "./ModlogId";
 import type { ModlogKindFilter } from "./ModlogKindFilter";
 import type { PaginationCursor } from "./PaginationCursor";
 import type { PersonId } from "./PersonId";
@@ -40,6 +41,14 @@ export type GetModlog = {
    * Filter by comment.
    */
   comment_id?: CommentId;
+  /**
+   * When `true` show all. When `false` or `None`, hide bulk actions (default).
+   */
+  show_bulk?: boolean;
+  /**
+   * Return only child entries triggered by this parent modlog action.
+   */
+  bulk_action_parent_id?: ModlogId;
   page_cursor?: PaginationCursor;
   limit?: number;
 };

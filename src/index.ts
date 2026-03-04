@@ -133,6 +133,7 @@ export { HideCommunity } from "./types/HideCommunity";
 export { HidePost } from "./types/HidePost";
 export { ImageDetails } from "./types/ImageDetails";
 export { ImageGetParams } from "./types/ImageGetParams";
+export { ImageMode } from "./types/ImageMode";
 export { ImageProxyParams } from "./types/ImageProxyParams";
 export { Instance } from "./types/Instance";
 export { InstanceActions } from "./types/InstanceActions";
