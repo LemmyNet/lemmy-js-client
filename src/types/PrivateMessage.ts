@@ -17,4 +17,5 @@ export type PrivateMessage = {
   ap_id: DbUrl;
   local: boolean;
   removed: boolean;
+  deleted_by_recipient: boolean;
 };
