@@ -24,4 +24,5 @@ export type GetComments = {
   community_name?: string;
   post_id?: PostId;
   parent_id?: CommentId;
+  search_term?: string;
 };

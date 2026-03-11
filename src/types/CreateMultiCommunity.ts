@@ -4,4 +4,5 @@ export type CreateMultiCommunity = {
   name: string;
   title?: string;
   summary?: string;
+  sidebar?: string;
 };
