@@ -40,7 +40,6 @@ export type Site = {
    * The site inbox
    */
   inbox_url: DbUrl;
-  public_key: string;
   instance_id: InstanceId;
   /**
    * If present, nsfw content is visible by default. Should be displayed by frontends/clients

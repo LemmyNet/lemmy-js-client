@@ -5,5 +5,6 @@ export type EditMultiCommunity = {
   id: MultiCommunityId;
   title?: string;
   summary?: string;
+  sidebar?: string;
   deleted?: boolean;
 };
