@@ -42,6 +42,9 @@ export type GetPosts = {
    * If true, then only show posts with no comments
    */
   no_comments_only?: boolean;
+  search_term?: string;
+  search_title_only?: boolean;
+  search_url_only?: boolean;
   page_cursor?: PaginationCursor;
   limit?: number;
 };

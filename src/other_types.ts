@@ -29,8 +29,8 @@ import { ListRegistrationApplications } from "./types/ListRegistrationApplicatio
 import { ListReports } from "./types/ListReports";
 import { ListTaglines } from "./types/ListTaglines";
 import { ResolveObject } from "./types/ResolveObject";
-import { Search } from "./types/Search";
 import { GetFederatedInstances } from "./types/GetFederatedInstances";
+import { ListPersons } from "./types/ListPersons";
 
 export const VERSION = "v4";
 
@@ -42,7 +42,6 @@ export interface UploadImage {
 // https://github.com/lukeautry/tsoa/issues/1743
 export interface ListMediaI extends ListMedia {}
 export interface GetModlogI extends GetModlog {}
-export interface SearchI extends Search {}
 export interface ResolveObjectI extends ResolveObject {}
 export interface GetCommunityI extends GetCommunity {}
 export interface ListCommunitiesI extends ListCommunities {}
@@ -57,6 +56,7 @@ export interface GetCommentsI extends GetComments {}
 export interface GetCommentI extends GetComment {}
 export interface GetPersonDetailsI extends GetPersonDetails {}
 export interface ListPersonContentI extends ListPersonContent {}
+export interface ListPersonsI extends ListPersons {}
 export interface ListNotificationsI extends ListNotifications {}
 export interface ListPersonSavedI extends ListPersonSaved {}
 export interface ListPersonReadI extends ListPersonRead {}

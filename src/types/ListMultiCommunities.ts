@@ -13,6 +13,8 @@ export type ListMultiCommunities = {
    * IE 60 would give results for the past minute.
    */
   time_range_seconds?: number;
+  search_term?: string;
+  search_title_only?: boolean;
   page_cursor?: PaginationCursor;
   limit?: number;
 };
