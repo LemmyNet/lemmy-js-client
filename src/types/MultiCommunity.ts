@@ -10,6 +10,9 @@ export type MultiCommunity = {
   instance_id: InstanceId;
   name: string;
   title?: string;
+  /**
+   * A shorter, one-line summary.
+   */
   summary?: string;
   local: boolean;
   deleted: boolean;
@@ -20,4 +23,8 @@ export type MultiCommunity = {
   subscribers: number;
   subscribers_local: number;
   communities: number;
+  /**
+   * A sidebar in markdown.
+   */
+  sidebar?: string;
 };

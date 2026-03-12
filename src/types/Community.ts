@@ -56,7 +56,7 @@ export type Community = {
   instance_id: InstanceId;
   visibility: CommunityVisibility;
   /**
-   * A shorter, one-line summary of the site.
+   * A shorter, one-line summary.
    */
   summary?: string;
   subscribers: number;
