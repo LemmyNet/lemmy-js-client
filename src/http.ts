@@ -2272,7 +2272,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/community/tag")
   @Tags("Community")
-  createCommunityTag(
+  async createCommunityTag(
     @Body() form: CreateCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
@@ -2290,7 +2290,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community/tag")
   @Tags("Community")
-  editCommunityTag(
+  async editCommunityTag(
     @Body() form: EditCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
@@ -2308,7 +2308,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Delete("/community/tag")
   @Tags("Community")
-  deleteCommunityTag(
+  async deleteCommunityTag(
     @Body() form: DeleteCommunityTag,
     @Inject() options?: RequestOptions,
   ) {
@@ -2712,7 +2712,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/donation_dialog_shown")
   @Tags("Account")
-  donationDialogShown(@Inject() options?: RequestOptions) {
+  async donationDialogShown(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/donation_dialog_shown",
@@ -2724,7 +2724,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/multi_community")
   @Tags("Multicommunity")
-  createMultiCommunity(
+  async createMultiCommunity(
     @Body() form: CreateMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -2739,7 +2739,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/multi_community")
   @Tags("Multicommunity")
-  editMultiCommunity(
+  async editMultiCommunity(
     @Body() form: EditMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -2753,7 +2753,7 @@ export class LemmyHttp extends Controller {
 
   @Get("/multi_community")
   @Tags("Multicommunity")
-  getMultiCommunity(
+  async getMultiCommunity(
     @Queries() form: GetMultiCommunityI,
     @Inject() options?: RequestOptions,
   ) {
@@ -2768,7 +2768,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/multi_community/entry")
   @Tags("Multicommunity")
-  createMultiCommunityEntry(
+  async createMultiCommunityEntry(
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
   ) {
@@ -2783,7 +2783,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Delete("/multi_community/entry")
   @Tags("Multicommunity")
-  deleteMultiCommunityEntry(
+  async deleteMultiCommunityEntry(
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
   ) {
@@ -2797,7 +2797,7 @@ export class LemmyHttp extends Controller {
 
   @Get("/multi_community/list")
   @Tags("Multicommunity")
-  listMultiCommunities(
+  async listMultiCommunities(
     @Queries() form: ListMultiCommunitiesI,
     @Inject() options?: RequestOptions,
   ) {
@@ -2811,7 +2811,7 @@ export class LemmyHttp extends Controller {
 
   @Post("/multi_community/follow")
   @Tags("Multicommunity")
-  followMultiCommunity(
+  async followMultiCommunity(
     @Body() form: FollowMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
@@ -2829,7 +2829,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/community/notifications")
   @Tags("Community")
-  editCommunityNotifications(
+  async editCommunityNotifications(
     @Body() form: EditCommunityNotifications,
     @Inject() options?: RequestOptions,
   ) {
@@ -2847,7 +2847,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Put("/post/notifications")
   @Tags("Post")
-  editPostNotifications(
+  async editPostNotifications(
     @Body() form: EditPostNotifications,
     @Inject() options?: RequestOptions,
   ) {
