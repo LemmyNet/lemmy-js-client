@@ -221,6 +221,8 @@ import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
 import { AdminOAuthProvider } from "./types/AdminOAuthProvider";
 import { CreatePostWarning } from "./types/CreatePostWarning";
 import { CreateCommentWarning } from "./types/CreateCommentWarning";
+import { GetMultiCommunity } from "./types/GetMultiCommunity";
+import { ListMultiCommunities } from "./types/ListMultiCommunities";
 
 enum HttpType {
   Get = "GET",
@@ -2728,7 +2730,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, MultiCommunityResponse>(
+    return this.#wrapper<CreateMultiCommunity, MultiCommunityResponse>(
       HttpType.Post,
       "/multi_community",
       form,
@@ -2743,7 +2745,7 @@ export class LemmyHttp extends Controller {
     @Body() form: EditMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, MultiCommunityResponse>(
+    return this.#wrapper<EditMultiCommunity, MultiCommunityResponse>(
       HttpType.Put,
       "/multi_community",
       form,
@@ -2757,7 +2759,7 @@ export class LemmyHttp extends Controller {
     @Queries() form: GetMultiCommunityI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, GetMultiCommunityResponse>(
+    return this.#wrapper<GetMultiCommunity, GetMultiCommunityResponse>(
       HttpType.Get,
       "/multi_community",
       form,
@@ -2772,7 +2774,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, CommunityResponse>(
+    return this.#wrapper<CreateOrDeleteMultiCommunityEntry, CommunityResponse>(
       HttpType.Post,
       "/multi_community/entry",
       form,
@@ -2787,7 +2789,7 @@ export class LemmyHttp extends Controller {
     @Body() form: CreateOrDeleteMultiCommunityEntry,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, SuccessResponse>(
+    return this.#wrapper<CreateOrDeleteMultiCommunityEntry, SuccessResponse>(
       HttpType.Delete,
       "/multi_community/entry",
       form,
@@ -2801,12 +2803,10 @@ export class LemmyHttp extends Controller {
     @Queries() form: ListMultiCommunitiesI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, PagedResponse<MultiCommunityView>>(
-      HttpType.Get,
-      "/multi_community/list",
-      form,
-      options,
-    );
+    return this.#wrapper<
+      ListMultiCommunities,
+      PagedResponse<MultiCommunityView>
+    >(HttpType.Get, "/multi_community/list", form, options);
   }
 
   @Post("/multi_community/follow")
@@ -2815,7 +2815,7 @@ export class LemmyHttp extends Controller {
     @Body() form: FollowMultiCommunity,
     @Inject() options?: RequestOptions,
   ) {
-    return this.#wrapper<object, MultiCommunityResponse>(
+    return this.#wrapper<FollowMultiCommunity, MultiCommunityResponse>(
       HttpType.Post,
       "/multi_community/follow",
       form,
