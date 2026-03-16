@@ -223,6 +223,7 @@ import { CreatePostWarning } from "./types/CreatePostWarning";
 import { CreateCommentWarning } from "./types/CreateCommentWarning";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
+import { UserSettingsBackup } from "./types/UserSettingsBackup";
 
 enum HttpType {
   Get = "GET",
@@ -240,7 +241,7 @@ type RequestOptions = Pick<RequestInit, "signal">;
 export class LemmyHttp extends Controller {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
-  #fetchFunction: typeof fetch = fetch.bind(globalThis);
+  #fetchFunction = fetch.bind(globalThis) as typeof fetch;
 
   /**
    * Generates a new instance of LemmyHttp.
@@ -386,7 +387,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/settings/import")
   @Tags("Account")
-  async importSettings(@Body() form: any, @Inject() options?: RequestOptions) {
+  async importSettings(
+    @Body() form: UserSettingsBackup,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/settings/import",
@@ -671,7 +675,7 @@ export class LemmyHttp extends Controller {
   @Get("/account/unread_counts")
   @Tags("Account")
   async getUnreadCounts(@Inject() options?: RequestOptions) {
-    return this.#wrapper<{}, UnreadCountsResponse>(
+    return this.#wrapper<object, UnreadCountsResponse>(
       HttpType.Get,
       "/account/unread_counts",
       {},
@@ -2876,7 +2880,7 @@ export class LemmyHttp extends Controller {
       body: formData as unknown as BodyInit,
       headers: this.#headers,
     });
-    return response.json();
+    return response.json() as ResponseType;
   }
 
   async #uploadWithQuery<QueryType extends object, ResponseType>(
@@ -2918,8 +2922,7 @@ export class LemmyHttp extends Controller {
       });
     }
 
-    let json: any | undefined;
-
+    let json: unknown;
     try {
       json = await response.json();
     } catch {
@@ -2930,14 +2933,15 @@ export class LemmyHttp extends Controller {
       console.error(
         `Request error while calling ${type_} ${endpoint} with ${JSON.stringify(form)}`,
       );
-      let err = new LemmyError(
-        json.error ?? response.statusText,
+      const json2 = json as LemmyErrorDummy;
+      const err = new LemmyError(
+        json2.error ?? response.statusText,
         response.status,
-        json.message,
+        json2.message,
       );
       throw err;
     } else {
-      return json;
+      return json as ResponseType;
     }
   }
 
@@ -2949,6 +2953,11 @@ export class LemmyHttp extends Controller {
   }
 }
 
+interface LemmyErrorDummy {
+  error: string;
+  message?: string;
+}
+
 function encodeGetParams<BodyType extends object>(p: BodyType): string {
   return Object.entries(p)
     .filter(kv => kv[1] !== undefined && kv[1] !== null)
@@ -2957,7 +2966,7 @@ function encodeGetParams<BodyType extends object>(p: BodyType): string {
 }
 
 function createFormData(image: File | Buffer): FormData {
-  let formData = new FormData();
+  const formData = new FormData();
 
   if (image instanceof File) {
     formData.append("images[]", image);
@@ -2983,9 +2992,14 @@ export class LemmyError extends Error {
   name: string;
   status: number;
   message: string;
-  cause: any;
+  cause: unknown;
 
-  constructor(name: string, status: number, message: string = "", cause?: any) {
+  constructor(
+    name: string,
+    status: number,
+    message: string = "",
+    cause?: unknown,
+  ) {
     super();
     this.name = name;
     this.message = message;
