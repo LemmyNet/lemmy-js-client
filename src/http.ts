@@ -448,7 +448,7 @@ export class LemmyHttp extends Controller {
   @Delete("/account/media")
   @Tags("Account", "Media")
   async deleteMedia(
-    @Queries() form: DeleteImageParamsI,
+    @Body() form: DeleteImageParamsI,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteImageParams, SuccessResponse>(
@@ -466,7 +466,7 @@ export class LemmyHttp extends Controller {
   @Delete("/image")
   @Tags("Admin", "Media")
   async deleteMediaAdmin(
-    @Queries() form: DeleteImageParamsI,
+    @Body() form: DeleteImageParamsI,
     @Inject() options?: RequestOptions,
   ) {
     return this.#wrapper<DeleteImageParams, SuccessResponse>(
