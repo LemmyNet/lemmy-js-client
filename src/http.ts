@@ -223,6 +223,8 @@ import { CreatePostWarning } from "./types/CreatePostWarning";
 import { CreateCommentWarning } from "./types/CreateCommentWarning";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
+import { object } from "joi";
+import { NodeInfo } from "./types/NodeInfo";
 
 enum HttpType {
   Get = "GET",
@@ -2855,6 +2857,20 @@ export class LemmyHttp extends Controller {
       HttpType.Post,
       "/post/notifications",
       form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Metadata for the instance
+   */
+  @Get("/nodeinfo/2.1")
+  @Tags("Post")
+  async nodeinfo(@Inject() options?: RequestOptions) {
+    return this.#wrapper<object, NodeInfo>(
+      HttpType.Get,
+      "/nodeinfo/2.1",
+      object,
       options,
     );
   }
