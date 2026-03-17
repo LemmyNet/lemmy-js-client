@@ -223,7 +223,6 @@ import { CreatePostWarning } from "./types/CreatePostWarning";
 import { CreateCommentWarning } from "./types/CreateCommentWarning";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
-import { object } from "joi";
 import { NodeInfo } from "./types/NodeInfo";
 
 enum HttpType {
@@ -2870,8 +2869,9 @@ export class LemmyHttp extends Controller {
     return this.#wrapper<object, NodeInfo>(
       HttpType.Get,
       "/nodeinfo/2.1",
-      object,
+      {},
       options,
+      true,
     );
   }
 
@@ -2913,17 +2913,25 @@ export class LemmyHttp extends Controller {
     endpoint: string,
     form: BodyType,
     options: RequestOptions | undefined,
+    no_prefix: boolean = false,
   ): Promise<ResponseType> {
+    let url: string;
+    if (no_prefix) {
+      url = endpoint;
+    } else {
+      url = this.#buildFullUrl(endpoint);
+    }
+
     let response: Response;
     if (type_ === HttpType.Get) {
-      const getUrl = `${this.#buildFullUrl(endpoint)}?${encodeGetParams(form)}`;
+      const getUrl = `${url}?${encodeGetParams(form)}`;
       response = await this.#fetchFunction(getUrl, {
         ...options,
         method: HttpType.Get,
         headers: this.#headers,
       });
     } else {
-      response = await this.#fetchFunction(this.#buildFullUrl(endpoint), {
+      response = await this.#fetchFunction(url, {
         ...options,
         method: type_,
         headers: {
