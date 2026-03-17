@@ -2937,7 +2937,7 @@ export class LemmyHttp extends Controller {
       const err = new LemmyError(
         json2.error ?? response.statusText,
         response.status,
-        json2.message,
+        json2.message ?? "",
       );
       throw err;
     } else {
