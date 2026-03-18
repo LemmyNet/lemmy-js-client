@@ -238,6 +238,7 @@ type RequestOptions = Pick<RequestInit, "signal">;
  * Helps build lemmy HTTP requests.
  */
 @Route("api/v4")
+@Route("")
 export class LemmyHttp extends Controller {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
