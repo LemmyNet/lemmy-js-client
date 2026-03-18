@@ -2915,12 +2915,7 @@ export class LemmyHttp extends Controller {
     options: RequestOptions | undefined,
     no_prefix: boolean = false,
   ): Promise<ResponseType> {
-    let url: string;
-    if (no_prefix) {
-      url = endpoint;
-    } else {
-      url = this.#buildFullUrl(endpoint);
-    }
+    let url = no_prefix ? endpoint : this.#buildFullUrl(endpoint);
 
     let response: Response;
     if (type_ === HttpType.Get) {
