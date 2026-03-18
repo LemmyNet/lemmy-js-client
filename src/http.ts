@@ -371,7 +371,7 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Get("/account/settings/export")
   @Tags("Account")
-  async exportSettings(@Inject() options?: RequestOptions) {
+  async exportUserSettings(@Inject() options?: RequestOptions) {
     return this.#wrapper<object, string>(
       HttpType.Get,
       "/account/settings/export",
@@ -386,7 +386,10 @@ export class LemmyHttp extends Controller {
   @Security("bearerAuth")
   @Post("/account/settings/import")
   @Tags("Account")
-  async importSettings(@Body() form: any, @Inject() options?: RequestOptions) {
+  async importUserSettings(
+    @Body() form: any,
+    @Inject() options?: RequestOptions,
+  ) {
     return this.#wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/settings/import",
