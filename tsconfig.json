@@ -14,8 +14,8 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": true
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "dist","tsoa_build/routes.ts"]
+  "exclude": ["node_modules", "dist", "tsoa_build/routes.ts"]
 }
