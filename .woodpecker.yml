@@ -10,6 +10,13 @@ steps:
     when:
       - event: pull_request
 
+  prettier_check:
+    image: jauderho/prettier:3.8.1-alpine
+    commands:
+      - prettier --no-config --arrow-parens avoid -c .
+    when:
+      - event: pull_request
+
   tsoa:
     image: node:alpine
     commands:
