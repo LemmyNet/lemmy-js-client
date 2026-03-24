@@ -48,6 +48,7 @@ import {
   VERSION,
   GetFederatedInstancesI,
   ListPersonsI,
+  SearchI,
 } from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -650,7 +651,7 @@ export class LemmyHttp extends LemmyController {
   @Security({})
   @Get("/search")
   @Tags("Miscellaneous")
-  async search(@Queries() form: Search, @Inject() options?: RequestOptions) {
+  async search(@Queries() form: SearchI, @Inject() options?: RequestOptions) {
     return this.wrapper<Search, SearchResponse>(
       HttpType.Get,
       "/search",

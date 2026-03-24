@@ -32,6 +32,7 @@ import { ListTaglines } from "./types/ListTaglines";
 import { ResolveObject } from "./types/ResolveObject";
 import { GetFederatedInstances } from "./types/GetFederatedInstances";
 import { ListPersons } from "./types/ListPersons";
+import { Search } from "./types/Search";
 
 export const VERSION = "v4";
 
@@ -74,3 +75,4 @@ export interface CommunityIdQueryI extends CommunityIdQuery {}
 export interface ListMultiCommunitiesI extends ListMultiCommunities {}
 export interface GetMultiCommunityI extends GetMultiCommunity {}
 export interface GetFederatedInstancesI extends GetFederatedInstances {}
+export interface SearchI extends Search {}
