@@ -29,6 +29,7 @@ export default [
   {
     files: ["src/**/*"],
     rules: {
-      "@typescript-eslint/no-useless-constructor": "error",},
+      "@typescript-eslint/no-useless-constructor": "error",
+    },
   },
 ];
