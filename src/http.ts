@@ -1756,24 +1756,6 @@ export class LemmyHttp extends LemmyController {
   }
 
   /**
-   * @summary List persons.
-   */
-  @Security("bearerAuth")
-  @Security({})
-  @Get("/person/list")
-  @Tags("Person")
-  async listPersons(
-    @Queries() form: ListPersonsI = {},
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.wrapper<ListPersons, PagedResponse<PersonView>>(
-      HttpType.Get,
-      "/person/list",
-      form,
-      options,
-    );
-  }
-  /**
    * @summary List the content for a person.
    */
   @Security("bearerAuth")
@@ -1803,6 +1785,25 @@ export class LemmyHttp extends LemmyController {
     return this.wrapper<NotePerson, SuccessResponse>(
       HttpType.Post,
       "/person/note",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List persons.
+   */
+  @Security("bearerAuth")
+  @Security({})
+  @Get("/person/list")
+  @Tags("Person")
+  async listPersons(
+    @Queries() form: ListPersonsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.wrapper<ListPersons, PagedResponse<PersonView>>(
+      HttpType.Get,
+      "/person/list",
       form,
       options,
     );
