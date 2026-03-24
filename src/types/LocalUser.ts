@@ -69,7 +69,7 @@ export type LocalUser = {
    * Whether user avatars and inline images in the UI that are gifs should be allowed to play or
    * should be paused
    */
-  enable_animated_images: boolean;
+  animated_images_enabled: boolean;
   /**
    * Whether to auto-collapse bot comments.
    */
@@ -82,7 +82,7 @@ export type LocalUser = {
   /**
    * Whether a user can send / receive private messages
    */
-  enable_private_messages: boolean;
+  private_messages_enabled: boolean;
   default_comment_sort_type: CommentSortType;
   /**
    * Whether to automatically mark fetched posts as read.

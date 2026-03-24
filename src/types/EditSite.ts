@@ -29,7 +29,7 @@ export type EditSite = {
   /**
    * Whether to require email verification.
    */
-  require_email_verification?: boolean;
+  email_verification_required?: boolean;
   /**
    * Your application question form. This is in markdown, and can be many questions.
    */
@@ -163,11 +163,11 @@ export type EditSite = {
   /**
    * Block NSFW content being created
    */
-  disallow_nsfw_content?: boolean;
+  nsfw_content_disallowed?: boolean;
   /**
    * Dont send email notifications to users for new replies, mentions etc
    */
-  disable_email_notifications?: boolean;
+  email_notifications_disabled?: boolean;
   /**
    * A multicommunity with suggested communities which is shown on the homepage. Sending a zero
    * erases this field.

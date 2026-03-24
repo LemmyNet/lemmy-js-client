@@ -27,7 +27,7 @@ export type LocalSite = {
   /**
    * Whether emails are required.
    */
-  require_email_verification: boolean;
+  email_verification_required: boolean;
   /**
    * An optional registration application questionnaire in markdown.
    */
@@ -108,7 +108,7 @@ export type LocalSite = {
   /**
    * Block NSFW content being created
    */
-  disallow_nsfw_content: boolean;
+  nsfw_content_disallowed: boolean;
   users: number;
   posts: number;
   comments: number;
@@ -132,7 +132,7 @@ export type LocalSite = {
   /**
    * Dont send email notifications to users for new replies, mentions etc
    */
-  disable_email_notifications: boolean;
+  email_notifications_disabled: boolean;
   suggested_multi_community_id?: MultiCommunityId;
   default_items_per_page: number;
   /**
