@@ -28,6 +28,8 @@ export default [
   },
   {
     files: ["src/**/*"],
-    rules: {},
+    rules: {
+      "@typescript-eslint/no-useless-constructor": "error",
+    },
   },
 ];
