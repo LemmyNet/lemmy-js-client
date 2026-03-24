@@ -48,6 +48,7 @@ import {
   UploadImage,
   VERSION,
   GetFederatedInstancesI,
+  ListPersonsI,
 } from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -225,6 +226,8 @@ import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { NodeInfo } from "./types/NodeInfo";
 import { UserSettingsBackup } from "./types/UserSettingsBackup";
+import { ListPersons } from "./types/ListPersons";
+import { PersonView } from "./types/PersonView";
 
 enum HttpType {
   Get = "GET",
@@ -1751,6 +1754,24 @@ export class LemmyHttp extends LemmyController {
     );
   }
 
+  /**
+   * @summary List the content for a person.
+   */
+  @Security("bearerAuth")
+  @Security({})
+  @Get("/person/list")
+  @Tags("Person")
+  async listPersons(
+    @Queries() form: ListPersonsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.wrapper<ListPersons, PagedResponse<PersonView>>(
+      HttpType.Get,
+      "/person/list",
+      form,
+      options,
+    );
+  }
   /**
    * @summary List the content for a person.
    */

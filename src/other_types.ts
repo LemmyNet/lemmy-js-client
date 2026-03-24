@@ -32,6 +32,7 @@ import { ListTaglines } from "./types/ListTaglines";
 import { ResolveObject } from "./types/ResolveObject";
 import { Search } from "./types/Search";
 import { GetFederatedInstances } from "./types/GetFederatedInstances";
+import { ListPersons } from "./types/ListPersons";
 
 export const VERSION = "v4";
 
@@ -57,6 +58,7 @@ export interface ListCommentLikesI extends ListCommentLikes {}
 export interface GetCommentsI extends GetComments {}
 export interface GetCommentI extends GetComment {}
 export interface GetPersonDetailsI extends GetPersonDetails {}
+export interface ListPersonsI extends ListPersons {}
 export interface ListPersonContentI extends ListPersonContent {}
 export interface ListNotificationsI extends ListNotifications {}
 export interface ListPersonSavedI extends ListPersonSaved {}

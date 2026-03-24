@@ -104,11 +104,11 @@ export type SaveUserSettings = {
    * Whether user avatars or inline images in the UI that are gifs should be allowed to play or
    * should be paused
    */
-  enable_animated_images?: boolean;
+  animated_images_enabled?: boolean;
   /**
    * Whether a user can send / receive private messages
    */
-  enable_private_messages?: boolean;
+  private_messages_enabled?: boolean;
   /**
    * Whether to auto-collapse bot comments.
    */

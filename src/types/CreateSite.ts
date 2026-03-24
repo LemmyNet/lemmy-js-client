@@ -17,7 +17,7 @@ export type CreateSite = {
   sidebar?: string;
   summary?: string;
   community_creation_admin_only?: boolean;
-  require_email_verification?: boolean;
+  email_verification_required?: boolean;
   application_question?: string;
   private_instance?: boolean;
   default_theme?: string;
@@ -55,8 +55,8 @@ export type CreateSite = {
   post_downvotes?: FederationMode;
   comment_upvotes?: FederationMode;
   comment_downvotes?: FederationMode;
-  disallow_nsfw_content?: boolean;
-  disable_email_notifications?: boolean;
+  nsfw_content_disallowed?: boolean;
+  email_notifications_disabled?: boolean;
   suggested_multi_community_id?: MultiCommunityId;
   image_mode?: ImageMode;
   image_proxy_bypass_domains?: string;

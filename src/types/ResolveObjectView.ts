@@ -5,9 +5,9 @@ import type { MultiCommunityView } from "./MultiCommunityView";
 import type { PersonView } from "./PersonView";
 import type { PostView } from "./PostView";
 
-export type SearchCombinedView =
+export type ResolveObjectView =
   | ({ type_: "post" } & PostView)
   | ({ type_: "comment" } & CommentView)
-  | ({ type_: "community" } & CommunityView)
   | ({ type_: "person" } & PersonView)
+  | ({ type_: "community" } & CommunityView)
   | ({ type_: "multi_community" } & MultiCommunityView);
