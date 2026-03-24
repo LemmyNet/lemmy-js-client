@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-object-type */
 import { AdminListUsers } from "./types/AdminListUsers";
 import { CommunityIdQuery } from "./types/CommunityIdQuery";
 import { DeleteImageParams } from "./types/DeleteImageParams";
