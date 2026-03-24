@@ -44,10 +44,11 @@ import {
   ListReportsI,
   ListTaglinesI,
   ResolveObjectI,
-  SearchI,
   UploadImage,
   VERSION,
   GetFederatedInstancesI,
+  ListPersonsI,
+  SearchI,
 } from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -142,8 +143,6 @@ import { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport
 import { SaveComment } from "./types/SaveComment";
 import { SavePost } from "./types/SavePost";
 import { SaveUserSettings } from "./types/SaveUserSettings";
-import { Search } from "./types/Search";
-import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
@@ -221,10 +220,15 @@ import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
 import { AdminOAuthProvider } from "./types/AdminOAuthProvider";
 import { CreatePostWarning } from "./types/CreatePostWarning";
 import { CreateCommentWarning } from "./types/CreateCommentWarning";
+import { ResolveObjectView } from "./types/ResolveObjectView";
+import { ListPersons } from "./types/ListPersons";
+import { PersonView } from "./types/PersonView";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { NodeInfo } from "./types/NodeInfo";
 import { UserSettingsBackup } from "./types/UserSettingsBackup";
+import { SearchResponse } from "./types/SearchResponse";
+import { Search } from "./types/Search";
 
 enum HttpType {
   Get = "GET",
@@ -667,7 +671,7 @@ export class LemmyHttp extends LemmyController {
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.wrapper<ResolveObject, SearchResponse>(
+    return this.wrapper<ResolveObject, ResolveObjectView>(
       HttpType.Get,
       "/resolve_object",
       form,
@@ -1781,6 +1785,25 @@ export class LemmyHttp extends LemmyController {
     return this.wrapper<NotePerson, SuccessResponse>(
       HttpType.Post,
       "/person/note",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary List persons.
+   */
+  @Security("bearerAuth")
+  @Security({})
+  @Get("/person/list")
+  @Tags("Person")
+  async listPersons(
+    @Queries() form: ListPersonsI = {},
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.wrapper<ListPersons, PagedResponse<PersonView>>(
+      HttpType.Get,
+      "/person/list",
       form,
       options,
     );
