@@ -143,8 +143,6 @@ import { ResolvePrivateMessageReport } from "./types/ResolvePrivateMessageReport
 import { SaveComment } from "./types/SaveComment";
 import { SavePost } from "./types/SavePost";
 import { SaveUserSettings } from "./types/SaveUserSettings";
-import { Search } from "./types/Search";
-import { SearchResponse } from "./types/SearchResponse";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
@@ -222,13 +220,15 @@ import { UnreadCountsResponse } from "./types/UnreadCountsResponse";
 import { AdminOAuthProvider } from "./types/AdminOAuthProvider";
 import { CreatePostWarning } from "./types/CreatePostWarning";
 import { CreateCommentWarning } from "./types/CreateCommentWarning";
+import { ResolveObjectView } from "./types/ResolveObjectView";
+import { ListPersons } from "./types/ListPersons";
+import { PersonView } from "./types/PersonView";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { NodeInfo } from "./types/NodeInfo";
 import { UserSettingsBackup } from "./types/UserSettingsBackup";
-import { ListPersons } from "./types/ListPersons";
-import { PersonView } from "./types/PersonView";
-import { ResolveObjectView } from "./types/ResolveObjectView";
+import { SearchResponse } from "./types/SearchResponse";
+import { Search } from "./types/Search";
 
 enum HttpType {
   Get = "GET",
