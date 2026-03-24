@@ -60,6 +60,7 @@ export interface GetCommentI extends GetComment {}
 export interface GetPersonDetailsI extends GetPersonDetails {}
 export interface ListPersonsI extends ListPersons {}
 export interface ListPersonContentI extends ListPersonContent {}
+export interface ListPersonsI extends ListPersons {}
 export interface ListNotificationsI extends ListNotifications {}
 export interface ListPersonSavedI extends ListPersonSaved {}
 export interface ListPersonReadI extends ListPersonRead {}

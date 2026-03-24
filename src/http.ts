@@ -44,11 +44,11 @@ import {
   ListReportsI,
   ListTaglinesI,
   ResolveObjectI,
-  SearchI,
   UploadImage,
   VERSION,
   GetFederatedInstancesI,
   ListPersonsI,
+  SearchI,
 } from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -1756,7 +1756,7 @@ export class LemmyHttp extends LemmyController {
   }
 
   /**
-   * @summary List the content for a person.
+   * @summary List persons.
    */
   @Security("bearerAuth")
   @Security({})
