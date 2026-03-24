@@ -228,6 +228,7 @@ import { NodeInfo } from "./types/NodeInfo";
 import { UserSettingsBackup } from "./types/UserSettingsBackup";
 import { ListPersons } from "./types/ListPersons";
 import { PersonView } from "./types/PersonView";
+import { ResolveObjectView } from "./types/ResolveObjectView";
 
 enum HttpType {
   Get = "GET",
@@ -670,7 +671,7 @@ export class LemmyHttp extends LemmyController {
     @Queries() form: ResolveObjectI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.wrapper<ResolveObject, SearchResponse>(
+    return this.wrapper<ResolveObject, ResolveObjectView>(
       HttpType.Get,
       "/resolve_object",
       form,
