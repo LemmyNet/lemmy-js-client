@@ -224,6 +224,7 @@ import { CreateCommentWarning } from "./types/CreateCommentWarning";
 import { GetMultiCommunity } from "./types/GetMultiCommunity";
 import { ListMultiCommunities } from "./types/ListMultiCommunities";
 import { NodeInfo } from "./types/NodeInfo";
+import { UserSettingsBackup } from "./types/UserSettingsBackup";
 
 enum HttpType {
   Get = "GET",
@@ -237,8 +238,13 @@ type RequestOptions = Pick<RequestInit, "signal">;
 class LemmyController extends Controller {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
-  #fetchFunction: typeof fetch = fetch.bind(globalThis);
+  #fetchFunction = fetch.bind(globalThis) as typeof fetch;
 
+  /**
+   * Generates a new instance of LemmyHttp.
+   * @param baseUrl the base url, without the vX version: https://lemmy.ml -> goes to https://lemmy.ml/api/vX
+   * @param headers optional headers. Should contain `x-real-ip` and `x-forwarded-for` .
+   */
   constructor(
     baseUrl: string,
     options?: {
@@ -274,7 +280,7 @@ class LemmyController extends Controller {
       body: formData as unknown as BodyInit,
       headers: this.#headers,
     });
-    return response.json();
+    return response.json() as ResponseType;
   }
 
   async uploadWithQuery<QueryType extends object, ResponseType>(
@@ -297,7 +303,7 @@ class LemmyController extends Controller {
     options: RequestOptions | undefined,
     no_prefix: boolean = false,
   ): Promise<ResponseType> {
-    let url = no_prefix ? endpoint : this.#buildFullUrl(endpoint);
+    const url = no_prefix ? endpoint : this.#buildFullUrl(endpoint);
 
     let response: Response;
     if (type_ === HttpType.Get) {
@@ -319,8 +325,7 @@ class LemmyController extends Controller {
       });
     }
 
-    let json: any | undefined;
-
+    let json: unknown;
     try {
       json = await response.json();
     } catch {
@@ -331,14 +336,15 @@ class LemmyController extends Controller {
       console.error(
         `Request error while calling ${type_} ${endpoint} with ${JSON.stringify(form)}`,
       );
-      let err = new LemmyError(
-        json.error ?? response.statusText,
+      const json2 = json as LemmyErrorDummy;
+      const err = new LemmyError(
+        json2.error ?? response.statusText,
         response.status,
-        json.message,
+        json2.message ?? "",
       );
       throw err;
     } else {
-      return json;
+      return json as ResponseType;
     }
   }
 
@@ -350,26 +356,16 @@ class LemmyController extends Controller {
   }
 }
 
+interface LemmyErrorDummy {
+  error: string;
+  message?: string;
+}
+
 /**
  * Helps build lemmy HTTP requests.
  */
 @Route("api/v4")
 export class LemmyHttp extends LemmyController {
-  /**
-   * Generates a new instance of LemmyHttp.
-   * @param baseUrl the base url, without the vX version: https://lemmy.ml -> goes to https://lemmy.ml/api/vX
-   * @param headers optional headers. Should contain `x-real-ip` and `x-forwarded-for` .
-   */
-  constructor(
-    baseUrl: string,
-    options?: {
-      fetchFunction?: typeof fetch;
-      headers?: { [key: string]: string };
-    },
-  ) {
-    super(baseUrl, options);
-  }
-
   /**
    * @summary Gets the site, and your user data.
    */
@@ -492,10 +488,10 @@ export class LemmyHttp extends LemmyController {
   @Post("/account/settings/import")
   @Tags("Account")
   async importUserSettings(
-    @Body() form: any,
+    @Body() form: UserSettingsBackup,
     @Inject() options?: RequestOptions,
   ) {
-    return this.wrapper<object, SuccessResponse>(
+    return this.wrapper<UserSettingsBackup, SuccessResponse>(
       HttpType.Post,
       "/account/settings/import",
       form,
@@ -779,7 +775,7 @@ export class LemmyHttp extends LemmyController {
   @Get("/account/unread_counts")
   @Tags("Account")
   async getUnreadCounts(@Inject() options?: RequestOptions) {
-    return this.wrapper<{}, UnreadCountsResponse>(
+    return this.wrapper<object, UnreadCountsResponse>(
       HttpType.Get,
       "/account/unread_counts",
       {},
@@ -2970,16 +2966,6 @@ export class LemmyHttp extends LemmyController {
 
 @Route("")
 export class NodeInfoHttp extends LemmyController {
-  constructor(
-    baseUrl: string,
-    options?: {
-      fetchFunction?: typeof fetch;
-      headers?: { [key: string]: string };
-    },
-  ) {
-    super(baseUrl, options);
-  }
-
   /**
    * @summary Metadata for the instance
    */
@@ -3004,7 +2990,7 @@ function encodeGetParams<BodyType extends object>(p: BodyType): string {
 }
 
 function createFormData(image: File | Buffer): FormData {
-  let formData = new FormData();
+  const formData = new FormData();
 
   if (image instanceof File) {
     formData.append("images[]", image);
@@ -3030,9 +3016,14 @@ export class LemmyError extends Error {
   name: string;
   status: number;
   message: string;
-  cause: any;
+  cause: unknown;
 
-  constructor(name: string, status: number, message: string = "", cause?: any) {
+  constructor(
+    name: string,
+    status: number,
+    message: string = "",
+    cause?: unknown,
+  ) {
     super();
     this.name = name;
     this.message = message;
