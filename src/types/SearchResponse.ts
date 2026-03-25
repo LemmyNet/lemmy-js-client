@@ -4,11 +4,18 @@ import type { CommunityView } from "./CommunityView";
 import type { MultiCommunityView } from "./MultiCommunityView";
 import type { PersonView } from "./PersonView";
 import type { PostView } from "./PostView";
+import type { ResolveObjectView } from "./ResolveObjectView";
 
 /**
  * The search response, containing lists of the return type possibilities
  */
 export type SearchResponse = {
+  /**
+   * If `Search.q` contains an ActivityPub ID (eg `https://lemmy.world/comment/1`) or an
+   * identifier (eg `!fediverse@lemmy.ml`) then this field contains the resolved object.
+   * It should always be shown above other search results.
+   */
+  resolve?: ResolveObjectView;
   comments: Array<CommentView>;
   posts: Array<PostView>;
   communities: Array<CommunityView>;
