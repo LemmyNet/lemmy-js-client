@@ -277,7 +277,7 @@ export { SavePost } from "./types/SavePost";
 export { SaveUserSettings } from "./types/SaveUserSettings";
 export { Search } from "./types/Search";
 export { SearchResponse } from "./types/SearchResponse";
-export { SearchSortType } from "./types/SearchSortType";
+export { SearchType } from "./types/SearchType";
 export { SensitiveString } from "./types/SensitiveString";
 export { Site } from "./types/Site";
 export { SiteId } from "./types/SiteId";
