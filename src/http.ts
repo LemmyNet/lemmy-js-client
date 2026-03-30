@@ -2836,12 +2836,12 @@ export class LemmyHttp extends LemmyController {
   }
 
   /**
-   * Mark donation dialog as shown, so it isn't displayed anymore.
+   * Mark the donation dialog as shown, so it isn't displayed anymore.
    */
   @Security("bearerAuth")
   @Post("/account/donation_dialog_shown")
   @Tags("Account")
-  async donationDialogShown(@Inject() options?: RequestOptions) {
+  async markDonationDialogShown(@Inject() options?: RequestOptions) {
     return this.wrapper<object, SuccessResponse>(
       HttpType.Post,
       "/account/donation_dialog_shown",
