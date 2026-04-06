@@ -242,7 +242,7 @@ type RequestOptions = Pick<RequestInit, "signal">;
 class LemmyController extends Controller {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
-  #fetchFunction = fetch.bind(globalThis) as typeof fetch;
+  #fetchFunction = fetch.bind(globalThis);
 
   /**
    * Generates a new instance of LemmyHttp.
