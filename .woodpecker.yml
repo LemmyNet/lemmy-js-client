@@ -13,7 +13,7 @@ steps:
   prettier_check:
     image: jauderho/prettier:3.8.1-alpine
     commands:
-      - prettier --no-config --arrow-parens avoid -c .
+      - prettier -c .
     when:
       - event: pull_request
 
