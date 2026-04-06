@@ -53,7 +53,7 @@ importers:
         version: 0.0.7(prettier@3.8.1)
       prettier-plugin-organize-imports:
         specifier: ^4.0.0
-        version: 4.3.0(prettier@3.8.1)(typescript@5.9.3)
+        version: 4.3.0(prettier@3.8.1)(typescript@6.0.2)
       prettier-plugin-packagejson:
         specifier: ^3.0.0
         version: 3.0.2(prettier@3.8.1)
@@ -67,8 +67,8 @@ importers:
         specifier: ^0.28.0
         version: 0.28.18(typescript@5.9.3)
       typescript:
-        specifier: ^5.5.4
-        version: 5.9.3
+        specifier: ^6.0.0
+        version: 6.0.2
       typescript-eslint:
         specifier: ^8.7.0
         version: 8.58.0(eslint@10.2.0)(typescript@5.9.3)
@@ -2119,6 +2119,11 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  typescript@6.0.2:
+    resolution: {integrity: sha512-bGdAIrZ0wiGDo5l8c++HWtbaNCWTS4UTv7RaTH/ThVIgjkveJt83m74bBHMJkuCbslY8ixgLBVZJIOiQlQTjfQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
   uc.micro@2.1.0:
     resolution: {integrity: sha512-ARDJmphmdvUk6Glw7y9DQ2bFkKBHwQHLi2lsaH6PPmz/Ka9sFOBsBluozhDltWmnv9u/cF6Rt87znRTPV+yp/A==}
 
@@ -3024,8 +3029,8 @@ snapshots:
       eslint: 10.2.0
       ignore: 7.0.5
       natural-compare: 1.4.0
-      ts-api-utils: 2.5.0(typescript@5.9.3)
-      typescript: 5.9.3
+      ts-api-utils: 2.5.0(typescript@6.0.2)
+      typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -3037,7 +3042,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.58.0
       debug: 4.4.3
       eslint: 10.2.0
-      typescript: 5.9.3
+      typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -3046,7 +3051,7 @@ snapshots:
       '@typescript-eslint/tsconfig-utils': 8.58.0(typescript@5.9.3)
       '@typescript-eslint/types': 8.58.0
       debug: 4.4.3
-      typescript: 5.9.3
+      typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -3057,7 +3062,7 @@ snapshots:
 
   '@typescript-eslint/tsconfig-utils@8.58.0(typescript@5.9.3)':
     dependencies:
-      typescript: 5.9.3
+      typescript: 6.0.2
 
   '@typescript-eslint/type-utils@8.58.0(eslint@10.2.0)(typescript@5.9.3)':
     dependencies:
@@ -3066,8 +3071,8 @@ snapshots:
       '@typescript-eslint/utils': 8.58.0(eslint@10.2.0)(typescript@5.9.3)
       debug: 4.4.3
       eslint: 10.2.0
-      ts-api-utils: 2.5.0(typescript@5.9.3)
-      typescript: 5.9.3
+      ts-api-utils: 2.5.0(typescript@6.0.2)
+      typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -3083,8 +3088,8 @@ snapshots:
       minimatch: 10.2.5
       semver: 7.7.4
       tinyglobby: 0.2.15
-      ts-api-utils: 2.5.0(typescript@5.9.3)
-      typescript: 5.9.3
+      ts-api-utils: 2.5.0(typescript@6.0.2)
+      typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -3095,7 +3100,7 @@ snapshots:
       '@typescript-eslint/types': 8.58.0
       '@typescript-eslint/typescript-estree': 8.58.0(typescript@5.9.3)
       eslint: 10.2.0
-      typescript: 5.9.3
+      typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
@@ -4132,10 +4137,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  prettier-plugin-organize-imports@4.3.0(prettier@3.8.1)(typescript@5.9.3):
+  prettier-plugin-organize-imports@4.3.0(prettier@3.8.1)(typescript@6.0.2):
     dependencies:
       prettier: 3.8.1
-      typescript: 5.9.3
+      typescript: 6.0.2
 
   prettier-plugin-packagejson@3.0.2(prettier@3.8.1):
     dependencies:
@@ -4523,9 +4528,9 @@ snapshots:
 
   ts-algebra@1.2.2: {}
 
-  ts-api-utils@2.5.0(typescript@5.9.3):
+  ts-api-utils@2.5.0(typescript@6.0.2):
     dependencies:
-      typescript: 5.9.3
+      typescript: 6.0.2
 
   ts-deepmerge@7.0.3: {}
 
@@ -4563,13 +4568,15 @@ snapshots:
       '@typescript-eslint/typescript-estree': 8.58.0(typescript@5.9.3)
       '@typescript-eslint/utils': 8.58.0(eslint@10.2.0)(typescript@5.9.3)
       eslint: 10.2.0
-      typescript: 5.9.3
+      typescript: 6.0.2
     transitivePeerDependencies:
       - supports-color
 
   typescript@3.9.10: {}
 
   typescript@5.9.3: {}
+
+  typescript@6.0.2: {}
 
   uc.micro@2.1.0: {}
 
