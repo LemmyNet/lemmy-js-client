@@ -355,7 +355,7 @@ class LemmyController extends Controller {
   /**
    * Set the headers (can be used to set the auth header)
    */
-  setHeaders(headers: { [key: string]: string }) {
+  public setHeaders(headers: { [key: string]: string }) {
     this.#headers = headers;
   }
 }
