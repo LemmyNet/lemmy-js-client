@@ -4,6 +4,7 @@ import type { CommentSortType } from "./CommentSortType";
 import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { PaginationCursor } from "./PaginationCursor";
+import type { PersonId } from "./PersonId";
 import type { PostId } from "./PostId";
 
 /**
@@ -22,6 +23,8 @@ export type GetComments = {
   limit?: number;
   community_id?: CommunityId;
   community_name?: string;
+  creator_id?: PersonId;
+  creator_username?: string;
   post_id?: PostId;
   parent_id?: CommentId;
   search_term?: string;

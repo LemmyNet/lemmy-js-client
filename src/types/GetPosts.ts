@@ -3,6 +3,7 @@ import type { CommunityId } from "./CommunityId";
 import type { ListingType } from "./ListingType";
 import type { MultiCommunityId } from "./MultiCommunityId";
 import type { PaginationCursor } from "./PaginationCursor";
+import type { PersonId } from "./PersonId";
 import type { PostSortType } from "./PostSortType";
 
 /**
@@ -19,6 +20,8 @@ export type GetPosts = {
   time_range_seconds?: number;
   community_id?: CommunityId;
   community_name?: string;
+  creator_id?: PersonId;
+  creator_username?: string;
   multi_community_id?: MultiCommunityId;
   multi_community_name?: string;
   show_hidden?: boolean;
