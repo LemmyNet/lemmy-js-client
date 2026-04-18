@@ -2961,7 +2961,7 @@ export class LemmyHttp extends LemmyController {
     @Inject() options?: RequestOptions,
   ) {
     return this.wrapper<EditCommunityNotifications, SuccessResponse>(
-      HttpType.Post,
+      HttpType.Put,
       "/community/notifications",
       form,
       options,
@@ -2979,7 +2979,7 @@ export class LemmyHttp extends LemmyController {
     @Inject() options?: RequestOptions,
   ) {
     return this.wrapper<EditPostNotifications, SuccessResponse>(
-      HttpType.Post,
+      HttpType.Put,
       "/post/notifications",
       form,
       options,
