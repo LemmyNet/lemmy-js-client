@@ -120,8 +120,8 @@ import { LockComment } from "./types/LockComment";
 import { Login } from "./types/Login";
 import { LoginResponse } from "./types/LoginResponse";
 import { MarkPostAsRead } from "./types/MarkPostAsRead";
-import { PasswordChangeAfterReset } from "./types/PasswordChangeAfterReset";
-import { PasswordReset } from "./types/PasswordReset";
+import { ChangePasswordAfterReset } from "./types/ChangePasswordAfterReset";
+import { ResetPassword } from "./types/ResetPassword";
 import { PostReportResponse } from "./types/PostReportResponse";
 import { PostResponse } from "./types/PostResponse";
 import { PrivateMessageReportResponse } from "./types/PrivateMessageReportResponse";
@@ -1898,11 +1898,11 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Post("/account/auth/password_reset")
   @Tags("Account")
-  async passwordReset(
-    @Body() form: PasswordReset,
+  async resetPassword(
+    @Body() form: ResetPassword,
     @Inject() options?: RequestOptions,
   ) {
-    return this.wrapper<PasswordReset, SuccessResponse>(
+    return this.wrapper<ResetPassword, SuccessResponse>(
       HttpType.Post,
       "/account/auth/password_reset",
       form,
@@ -1916,11 +1916,11 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Post("/account/auth/password_change")
   @Tags("Account")
-  async passwordChangeAfterReset(
-    @Body() form: PasswordChangeAfterReset,
+  async changePasswordAfterReset(
+    @Body() form: ChangePasswordAfterReset,
     @Inject() options?: RequestOptions,
   ) {
-    return this.wrapper<PasswordChangeAfterReset, SuccessResponse>(
+    return this.wrapper<ChangePasswordAfterReset, SuccessResponse>(
       HttpType.Post,
       "/account/auth/password_change",
       form,
