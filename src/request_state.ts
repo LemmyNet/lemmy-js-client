@@ -1,6 +1,3 @@
-import { LemmyHttp } from "../http";
-import { ApiKey, wrapLemmyClient } from "./wrapper";
-
 export const EMPTY_REQUEST = { state: "empty" } as const;
 export type EmptyRequestState = typeof EMPTY_REQUEST;
 
@@ -22,7 +19,7 @@ export type RequestState<T> =
   | FailedRequestState
   | SuccessRequestState<T>;
 
-function mapToRequestState<ResultT>(
+export function mapToRequestState<ResultT>(
   result?: ResultT,
   error?: Error,
 ): RequestState<ResultT> {
@@ -34,13 +31,3 @@ function mapToRequestState<ResultT>(
   }
   return { state: "empty" };
 }
-
-type RequestStateApi = {
-  [K in ApiKey]: typeof mapToRequestState<Awaited<ReturnType<LemmyHttp[K]>>>;
-};
-
-export function wrapClient(client: LemmyHttp) {
-  return wrapLemmyClient<RequestStateApi>(client, mapToRequestState);
-}
-
-export type WrappedLemmyHttp = ReturnType<typeof wrapClient>;
