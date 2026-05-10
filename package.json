@@ -33,7 +33,7 @@
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^9.1.4",
     "joi": "^18.0.0",
-    "lint-staged": "^16.0.0",
+    "lint-staged": "^17.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-import-sort": "^0.0.7",
     "prettier-plugin-organize-imports": "^4.0.0",
@@ -44,7 +44,7 @@
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.7.0"
   },
-  "packageManager": "pnpm@10.33.2",
+  "packageManager": "pnpm@10.33.4",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
