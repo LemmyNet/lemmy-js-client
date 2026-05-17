@@ -2,7 +2,7 @@ export const EMPTY_REQUEST = { state: "empty" } as const;
 export type EmptyRequestState = typeof EMPTY_REQUEST;
 
 export const LOADING_REQUEST = { state: "loading" } as const;
-export type LoadingRequestState = typeof LOADING_REQUEST;
+export type LoadingRequestState = { state: "loading" };
 
 export type FailedRequestState = { state: "failed"; err: Error };
 
