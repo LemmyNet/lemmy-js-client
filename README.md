@@ -65,7 +65,7 @@ switch (postsRes.state) {
     const err = postsRes.err;
     break;
   }
-  case "success": {}
+  case "success": {
     const data = postsRes.data;
     break;
   }
