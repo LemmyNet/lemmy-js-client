@@ -1,5 +1,5 @@
 export const EMPTY_REQUEST = { state: "empty" } as const;
-export type EmptyRequestState = typeof EMPTY_REQUEST;
+export type EmptyRequestState = { state: "empty" };
 
 export const LOADING_REQUEST = { state: "loading" } as const;
 export type LoadingRequestState = { state: "loading" };
