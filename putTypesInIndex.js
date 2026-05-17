@@ -5,7 +5,8 @@ const exportRegex = /export\s+(?:enum|interface|type|const)\s+([A-Za-z0-9_]+)/g;
 
 const baseExports = [
   'export * from "./http";',
-  'export {UploadImage} from "./other_types";',
+  'export * from "./request_state";',
+  'export { UploadImage } from "./other_types";',
 ];
 
 async function putTypesInIndex() {
