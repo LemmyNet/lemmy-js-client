@@ -21,4 +21,6 @@ export type SearchResponse = {
   communities: Array<CommunityView>;
   persons: Array<PersonView>;
   multi_communities: Array<MultiCommunityView>;
+  prev_page?: string;
+  next_page?: string;
 };
