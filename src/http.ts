@@ -229,6 +229,7 @@ import { NodeInfo } from "./types/NodeInfo";
 import { UserSettingsBackup } from "./types/UserSettingsBackup";
 import { SearchResponse } from "./types/SearchResponse";
 import { Search } from "./types/Search";
+import { mapToRequestState, RequestState } from "./request_state";
 
 enum HttpType {
   Get = "GET",
@@ -275,16 +276,24 @@ class LemmyController extends Controller {
     path: string,
     { image }: UploadImage,
     options?: RequestOptions,
-  ): Promise<ResponseType> {
-    const formData = createFormData(image);
+  ): Promise<RequestState<ResponseType>> {
+    let error: Error | undefined;
+    let result: ResponseType | undefined;
+    try {
+      const formData = createFormData(image);
 
-    const response = await this.#fetchFunction(this.#buildFullUrl(path), {
-      ...options,
-      method: HttpType.Post,
-      body: formData as unknown as BodyInit,
-      headers: this.#headers,
-    });
-    return response.json() as ResponseType;
+      const response = await this.#fetchFunction(this.#buildFullUrl(path), {
+        ...options,
+        method: HttpType.Post,
+        body: formData as unknown as BodyInit,
+        headers: this.#headers,
+      });
+      result = response.json() as ResponseType;
+    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+      error = err instanceof Error ? err : new Error("" + err);
+    }
+    return mapToRequestState(result, error);
   }
 
   async uploadWithQuery<QueryType extends object, ResponseType>(
@@ -292,7 +301,7 @@ class LemmyController extends Controller {
     query: QueryType,
     { image }: UploadImage,
     options?: RequestOptions,
-  ): Promise<ResponseType> {
+  ): Promise<RequestState<ResponseType>> {
     return this.upload<ResponseType>(
       `${path}?${encodeGetParams(query)}`,
       { image },
@@ -306,50 +315,58 @@ class LemmyController extends Controller {
     form: BodyType,
     options: RequestOptions | undefined,
     no_prefix: boolean = false,
-  ): Promise<ResponseType> {
-    const url = no_prefix ? endpoint : this.#buildFullUrl(endpoint);
-
-    let response: Response;
-    if (type_ === HttpType.Get) {
-      const getUrl = `${url}?${encodeGetParams(form)}`;
-      response = await this.#fetchFunction(getUrl, {
-        ...options,
-        method: HttpType.Get,
-        headers: this.#headers,
-      });
-    } else {
-      response = await this.#fetchFunction(url, {
-        ...options,
-        method: type_,
-        headers: {
-          "Content-Type": "application/json",
-          ...this.#headers,
-        },
-        body: JSON.stringify(form),
-      });
-    }
-
-    let json: unknown;
+  ): Promise<RequestState<ResponseType>> {
+    let error: Error | undefined;
+    let result: ResponseType | undefined;
     try {
-      json = await response.json();
-    } catch {
-      throw new LemmyError(response.statusText, response.status);
-    }
+      const url = no_prefix ? endpoint : this.#buildFullUrl(endpoint);
 
-    if (!response.ok) {
-      console.error(
-        `Request error while calling ${type_} ${endpoint} with ${JSON.stringify(form)}`,
-      );
-      const json2 = json as LemmyErrorDummy;
-      const err = new LemmyError(
-        json2.error ?? response.statusText,
-        response.status,
-        json2.message ?? "",
-      );
-      throw err;
-    } else {
-      return json as ResponseType;
+      let response: Response;
+      if (type_ === HttpType.Get) {
+        const getUrl = `${url}?${encodeGetParams(form)}`;
+        response = await this.#fetchFunction(getUrl, {
+          ...options,
+          method: HttpType.Get,
+          headers: this.#headers,
+        });
+      } else {
+        response = await this.#fetchFunction(url, {
+          ...options,
+          method: type_,
+          headers: {
+            "Content-Type": "application/json",
+            ...this.#headers,
+          },
+          body: JSON.stringify(form),
+        });
+      }
+
+      let json: unknown;
+      try {
+        json = await response.json();
+      } catch {
+        throw new LemmyError(response.statusText, response.status);
+      }
+
+      if (!response.ok) {
+        console.error(
+          `Request error while calling ${type_} ${endpoint} with ${JSON.stringify(form)}`,
+        );
+        const json2 = json as LemmyErrorDummy;
+        const err = new LemmyError(
+          json2.error ?? response.statusText,
+          response.status,
+          json2.message ?? "",
+        );
+        throw err;
+      } else {
+        result = json as ResponseType;
+      }
+    } catch (err) {
+      // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
+      error = err instanceof Error ? err : new Error("" + err);
     }
+    return mapToRequestState(result, error);
   }
 
   /**
@@ -2635,8 +2652,8 @@ export class LemmyHttp extends LemmyController {
   async uploadUserAvatar(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<UploadImageResponse> {
-    return this.upload("/account/avatar", image, options);
+  ) {
+    return this.upload<UploadImageResponse>("/account/avatar", image, options);
   }
 
   /**
@@ -2645,9 +2662,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Delete("/account/avatar")
   @Tags("Account", "Media")
-  async deleteUserAvatar(
-    @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  async deleteUserAvatar(@Inject() options?: RequestOptions) {
     return this.wrapper<object, SuccessResponse>(
       HttpType.Delete,
       "/account/avatar",
@@ -2665,8 +2680,8 @@ export class LemmyHttp extends LemmyController {
   async uploadUserBanner(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<UploadImageResponse> {
-    return this.upload("/account/banner", image, options);
+  ) {
+    return this.upload<UploadImageResponse>("/account/banner", image, options);
   }
 
   /**
@@ -2694,8 +2709,13 @@ export class LemmyHttp extends LemmyController {
     @Queries() query: CommunityIdQueryI,
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<UploadImageResponse> {
-    return this.uploadWithQuery("/community/icon", query, image, options);
+  ) {
+    return this.uploadWithQuery<CommunityIdQuery, UploadImageResponse>(
+      "/community/icon",
+      query,
+      image,
+      options,
+    );
   }
 
   /**
@@ -2707,7 +2727,7 @@ export class LemmyHttp extends LemmyController {
   async deleteCommunityIcon(
     @Body() form: CommunityIdQuery,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ) {
     return this.wrapper<CommunityIdQuery, SuccessResponse>(
       HttpType.Delete,
       "/community/icon",
@@ -2726,8 +2746,13 @@ export class LemmyHttp extends LemmyController {
     @Queries() query: CommunityIdQueryI,
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<UploadImageResponse> {
-    return this.uploadWithQuery("/community/banner", query, image, options);
+  ) {
+    return this.uploadWithQuery<CommunityIdQuery, UploadImageResponse>(
+      "/community/banner",
+      query,
+      image,
+      options,
+    );
   }
 
   /**
@@ -2739,7 +2764,7 @@ export class LemmyHttp extends LemmyController {
   async deleteCommunityBanner(
     @Body() form: CommunityIdQuery,
     @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  ) {
     return this.wrapper<CommunityIdQuery, SuccessResponse>(
       HttpType.Delete,
       "/community/banner",
@@ -2757,8 +2782,8 @@ export class LemmyHttp extends LemmyController {
   async uploadSiteIcon(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<UploadImageResponse> {
-    return this.upload("/site/icon", image, options);
+  ) {
+    return this.upload<UploadImageResponse>("/site/icon", image, options);
   }
 
   /**
@@ -2767,9 +2792,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Delete("/site/icon")
   @Tags("Site", "Media")
-  async deleteSiteIcon(
-    @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  async deleteSiteIcon(@Inject() options?: RequestOptions) {
     return this.wrapper<object, SuccessResponse>(
       HttpType.Delete,
       "/site/icon",
@@ -2787,8 +2810,8 @@ export class LemmyHttp extends LemmyController {
   async uploadSiteBanner(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<UploadImageResponse> {
-    return this.upload("/site/banner", image, options);
+  ) {
+    return this.upload<UploadImageResponse>("/site/banner", image, options);
   }
 
   /**
@@ -2797,9 +2820,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Delete("/site/banner")
   @Tags("Site", "Media")
-  async deleteSiteBanner(
-    @Inject() options?: RequestOptions,
-  ): Promise<SuccessResponse> {
+  async deleteSiteBanner(@Inject() options?: RequestOptions) {
     return this.wrapper<object, SuccessResponse>(
       HttpType.Delete,
       "/site/banner",
@@ -2817,8 +2838,8 @@ export class LemmyHttp extends LemmyController {
   async uploadImage(
     @UploadedFile() image: UploadImage,
     @Inject() options?: RequestOptions,
-  ): Promise<UploadImageResponse> {
-    return this.upload("/image", image, options);
+  ) {
+    return this.upload<UploadImageResponse>("/image", image, options);
   }
 
   /**

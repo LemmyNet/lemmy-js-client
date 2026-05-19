@@ -26,7 +26,8 @@ import { LemmyHttp, Login } from "lemmy-js-client";
 
 // Build the client
 const baseUrl = "https://lemmy.ml";
-const client: LemmyHttp = new LemmyHttp(baseUrl);
+const headers = {["x-real-ip": ...]};
+const client: LemmyHttp = new LemmyHttp(baseUrl, { headers });
 
 // Build the login form
 const loginForm: Login = {
@@ -35,15 +36,40 @@ const loginForm: Login = {
 };
 
 // Login and set the client headers with your jwt
-const { jwt } = await client.login(loginForm);
-client.setHeaders({ Authorization: `Bearer ${jwt}` });
+const loginRes = await client.login(loginForm);
+
+// Make sure its successful
+if (loginRes.state === "success") {
+  const jwt = login.data.jwt;
+  client.setHeaders({ Authorization: `Bearer ${jwt}` });
+} else if (loginRes.state === "failed") {
+  const err = login.err;
+}
 
 // Fetch top posts for the day
 const getPostsForm: GetPosts = {
   sort: "TopDay",
   type_: "Local",
 };
-const posts = await client.getPosts(getPostsForm);
+const postsRes = await client.getPosts(getPostsForm);
+
+// Handle the different request states
+switch (postsRes.state) {
+  case "empty": {
+    break;
+  }
+  case "loading": {
+    break;
+  }
+  case "failed": {
+    const err = postsRes.err;
+    break;
+  }
+  case "success": {
+    const data = postsRes.data;
+    break;
+  }
+}
 ```
 
 ## Development
