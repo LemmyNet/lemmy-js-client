@@ -67,4 +67,5 @@ export type CreateSite = {
   image_max_upload_size?: number;
   image_allow_video_uploads?: boolean;
   image_upload_disabled?: boolean;
+  max_invites_per_user_allowed?: number;
 };

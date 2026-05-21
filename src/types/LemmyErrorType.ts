@@ -39,6 +39,7 @@ export type LemmyErrorType =
   | { error: "instance_is_blocked" }
   | { error: "instance_is_private" }
   | { error: "invalid_password" }
+  | { error: "invalid_invite_token" }
   | { error: "site_description_length_overflow" }
   | { error: "honeypot_failed" }
   | { error: "registration_application_is_pending" }
@@ -76,6 +77,7 @@ export type LemmyErrorType =
   | { error: "couldnt_generate_totp" }
   | { error: "missing_totp_token" }
   | { error: "missing_totp_secret" }
+  | { error: "missing_invite_token" }
   | { error: "incorrect_totp_token" }
   | { error: "totp_already_enabled" }
   | { error: "blocked_url" }
@@ -90,6 +92,7 @@ export type LemmyErrorType =
   | { error: "invalid_url_scheme" }
   | { error: "contradicting_filters" }
   | { error: "too_many_items" }
+  | { error: "too_many_invites" }
   | { error: "ban_expiration_in_past" }
   | { error: "invalid_unix_time" }
   | { error: "invalid_bot_action" }

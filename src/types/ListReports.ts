@@ -2,6 +2,7 @@
 import type { CommunityId } from "./CommunityId";
 import type { PaginationCursor } from "./PaginationCursor";
 import type { PostId } from "./PostId";
+import type { ReportSortType } from "./ReportSortType";
 import type { ReportType } from "./ReportType";
 
 /**
@@ -24,6 +25,11 @@ export type ListReports = {
    * if no community is given, it returns reports for all communities moderated by the auth user
    */
   community_id?: CommunityId;
+  /**
+   * If this is None, then the default sort is Old / First In First Out if viewing unresolved
+   * reports, but new if viewing all reports. Setting this overrides the default.
+   */
+  sort?: ReportSortType;
   page_cursor?: PaginationCursor;
   limit?: number;
   /**

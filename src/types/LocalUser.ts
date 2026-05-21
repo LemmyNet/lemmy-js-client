@@ -102,4 +102,5 @@ export type LocalUser = {
   show_upvote_percentage: boolean;
   show_person_votes: boolean;
   default_items_per_page: number;
+  invited_by_local_user_id?: LocalUserId;
 };
