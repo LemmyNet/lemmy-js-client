@@ -230,6 +230,11 @@ import { UserSettingsBackup } from "./types/UserSettingsBackup";
 import { SearchResponse } from "./types/SearchResponse";
 import { Search } from "./types/Search";
 import { mapToRequestState, RequestState } from "./request_state";
+import { CreateInvitation } from "./types/CreateInvitation";
+import { CreateInvitationResponse } from "./types/CreateInvitationResponse";
+import { RevokeInvitation } from "./types/RevokeInvitation";
+import { ListInvitations } from "./types/ListInvitations";
+import { LocalUserInvite } from "./types/LocalUserInvite";
 
 enum HttpType {
   Get = "GET",
@@ -3006,6 +3011,60 @@ export class LemmyHttp extends LemmyController {
       options,
     );
   }
+
+  /**
+   * @summary Create a new registration invitation
+   */
+  @Security("bearerAuth")
+  @Post("/account/invite")
+  @Tags("Account")
+  async createRegistrationInvitation(
+    @Body() form: CreateInvitation,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.wrapper<CreateInvitation, CreateInvitationResponse>(
+      HttpType.Post,
+      "/account/invite",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Revoke a previously created registration invitation
+   */
+  @Security("bearerAuth")
+  @Delete("/account/invite")
+  @Tags("Account")
+  async revokeRegistrationInvitation(
+    @Body() form: RevokeInvitation,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.wrapper<RevokeInvitation, SuccessResponse>(
+      HttpType.Delete,
+      "/account/invite",
+      form,
+      options,
+    );
+  }
+
+  /**
+   * @summary Revoke a previously created registration invitation
+   */
+  @Security("bearerAuth")
+  @Get("/account/invite/list")
+  @Tags("Account")
+  async listRegistrationInvitations(
+    @Body() form: ListInvitations,
+    @Inject() options?: RequestOptions,
+  ) {
+    return this.wrapper<ListInvitations, PagedResponse<LocalUserInvite>>(
+      HttpType.Get,
+      "/account/invite",
+      form,
+      options,
+    );
+  }
 }
 
 @Route("")
@@ -3014,7 +3073,7 @@ export class NodeInfoHttp extends LemmyController {
    * @summary Metadata for the instance
    */
   @Get("/nodeinfo/2.1")
-  @Tags("Post")
+  @Tags("Site")
   async nodeinfo(@Inject() options?: RequestOptions) {
     return this.wrapper<object, NodeInfo>(
       HttpType.Get,
