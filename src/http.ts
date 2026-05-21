@@ -288,7 +288,7 @@ class LemmyController extends Controller {
         body: formData as unknown as BodyInit,
         headers: this.#headers,
       });
-      result = response.json() as ResponseType;
+      result = (await response.json()) as ResponseType;
     } catch (err) {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       error = err instanceof Error ? err : new Error("" + err);
