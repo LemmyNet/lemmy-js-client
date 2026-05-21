@@ -49,6 +49,7 @@ import {
   GetFederatedInstancesI,
   ListPersonsI,
   SearchI,
+  ListInvitationsI,
 } from "./other_types";
 import { AddAdmin } from "./types/AddAdmin";
 import { AddAdminResponse } from "./types/AddAdminResponse";
@@ -233,7 +234,6 @@ import { mapToRequestState, RequestState } from "./request_state";
 import { CreateInvitation } from "./types/CreateInvitation";
 import { CreateInvitationResponse } from "./types/CreateInvitationResponse";
 import { RevokeInvitation } from "./types/RevokeInvitation";
-import { ListInvitations } from "./types/ListInvitations";
 import { LocalUserInvite } from "./types/LocalUserInvite";
 
 enum HttpType {
@@ -3055,10 +3055,10 @@ export class LemmyHttp extends LemmyController {
   @Get("/account/invite/list")
   @Tags("Account")
   async listRegistrationInvitations(
-    @Body() form: ListInvitations,
+    @Queries() form: ListInvitationsI,
     @Inject() options?: RequestOptions,
   ) {
-    return this.wrapper<ListInvitations, PagedResponse<LocalUserInvite>>(
+    return this.wrapper<ListInvitationsI, PagedResponse<LocalUserInvite>>(
       HttpType.Get,
       "/account/invite",
       form,
