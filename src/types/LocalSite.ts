@@ -162,4 +162,8 @@ export type LocalSite = {
    */
   image_allow_video_uploads: boolean;
   image_upload_disabled: boolean;
+  /**
+   * How many active invite links a user can have
+   */
+  max_invites_per_user_allowed: number;
 };

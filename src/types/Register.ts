@@ -33,4 +33,8 @@ export type Register = {
    * If this is true the login is valid forever, otherwise it expires after one week.
    */
   stay_logged_in?: boolean;
+  /**
+   * Invitation token
+   */
+  token?: string;
 };

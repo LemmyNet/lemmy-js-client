@@ -33,6 +33,7 @@ import { ResolveObject } from "./types/ResolveObject";
 import { GetFederatedInstances } from "./types/GetFederatedInstances";
 import { ListPersons } from "./types/ListPersons";
 import { Search } from "./types/Search";
+import { ListInvitations } from "./types/ListInvitations";
 
 export const VERSION = "v4";
 
@@ -76,3 +77,4 @@ export interface ListMultiCommunitiesI extends ListMultiCommunities {}
 export interface GetMultiCommunityI extends GetMultiCommunity {}
 export interface GetFederatedInstancesI extends GetFederatedInstances {}
 export interface SearchI extends Search {}
+export interface ListInvitationsI extends ListInvitations {}

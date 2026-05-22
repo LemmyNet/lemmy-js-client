@@ -3,4 +3,8 @@
 /**
  * The registration mode for your site. Determines what happens after a user signs up.
  */
-export type RegistrationMode = "closed" | "require_application" | "open";
+export type RegistrationMode =
+  | "closed"
+  | "require_application"
+  | "require_invitation"
+  | "open";
