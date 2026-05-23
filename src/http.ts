@@ -1852,7 +1852,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Get("/admin/users")
   @Tags("Admin", "Miscellaneous")
-  async listUsers(
+  async adminListUsers(
     @Queries() form: AdminListUsersI = {},
     @Inject() options?: RequestOptions,
   ) {
