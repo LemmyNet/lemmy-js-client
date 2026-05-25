@@ -1172,7 +1172,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Post("/post/mark_as_read/many")
   @Tags("Post")
-  async markManyPostAsRead(
+  async markManyPostsAsRead(
     @Body() form: MarkManyPostsAsRead,
     @Inject() options?: RequestOptions,
   ) {
