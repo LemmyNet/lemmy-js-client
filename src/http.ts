@@ -597,7 +597,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Delete("/image")
   @Tags("Admin", "Media")
-  async deleteMediaAdmin(
+  async adminDeleteMedia(
     @Body() form: DeleteImageParamsI,
     @Inject() options?: RequestOptions,
   ) {
@@ -615,7 +615,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Get("/image/list")
   @Tags("Admin", "Media")
-  async listMediaAdmin(
+  async adminListMedia(
     @Queries() form: ListMediaI = {},
     @Inject() options?: RequestOptions,
   ) {
