@@ -293,7 +293,19 @@ class LemmyController extends Controller {
         body: formData as unknown as BodyInit,
         headers: this.#headers,
       });
-      result = (await response.json()) as ResponseType;
+
+      if (!response.ok) {
+        console.error(`Request error while uploading to ${path}`);
+        const json2 = (await response.json()) as LemmyErrorDummy;
+        const err = new LemmyError(
+          json2.error ?? response.statusText,
+          response.status,
+          json2.message ?? "",
+        );
+        throw err;
+      } else {
+        result = (await response.json()) as ResponseType;
+      }
     } catch (err) {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       error = err instanceof Error ? err : new Error("" + err);
@@ -1172,7 +1184,7 @@ export class LemmyHttp extends LemmyController {
   @Security("bearerAuth")
   @Post("/post/mark_as_read/many")
   @Tags("Post")
-  async markManyPostAsRead(
+  async markManyPostsAsRead(
     @Body() form: MarkManyPostsAsRead,
     @Inject() options?: RequestOptions,
   ) {
