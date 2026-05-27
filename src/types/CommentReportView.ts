@@ -4,6 +4,7 @@ import type { CommentActions } from "./CommentActions";
 import type { CommentReport } from "./CommentReport";
 import type { Community } from "./Community";
 import type { CommunityActions } from "./CommunityActions";
+import type { CommunityTagsView } from "./CommunityTagsView";
 import type { Person } from "./Person";
 import type { PersonActions } from "./PersonActions";
 import type { Post } from "./Post";
@@ -28,4 +29,5 @@ export type CommentReportView = {
   creator_ban_expires_at?: string;
   creator_banned_from_community: boolean;
   creator_community_ban_expires_at?: string;
+  tags: CommunityTagsView;
 };

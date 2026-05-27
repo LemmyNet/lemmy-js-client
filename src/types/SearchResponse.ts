@@ -2,6 +2,7 @@
 import type { CommentView } from "./CommentView";
 import type { CommunityView } from "./CommunityView";
 import type { MultiCommunityView } from "./MultiCommunityView";
+import type { PaginationCursor } from "./PaginationCursor";
 import type { PersonView } from "./PersonView";
 import type { PostView } from "./PostView";
 import type { ResolveObjectView } from "./ResolveObjectView";
@@ -11,7 +12,7 @@ import type { ResolveObjectView } from "./ResolveObjectView";
  */
 export type SearchResponse = {
   /**
-   * If `Search.q` contains an ActivityPub ID (eg `https://lemmy.world/comment/1`) or an
+   * If `Search.search_term` contains an ActivityPub ID (eg `https://lemmy.world/comment/1`) or an
    * identifier (eg `!fediverse@lemmy.ml`) then this field contains the resolved object.
    * It should always be shown above other search results.
    */
@@ -21,6 +22,6 @@ export type SearchResponse = {
   communities: Array<CommunityView>;
   persons: Array<PersonView>;
   multi_communities: Array<MultiCommunityView>;
-  prev_page?: string;
-  next_page?: string;
+  prev_page?: PaginationCursor;
+  next_page?: PaginationCursor;
 };
