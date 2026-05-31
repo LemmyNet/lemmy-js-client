@@ -249,6 +249,7 @@ class LemmyController extends Controller {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
   #fetchFunction = fetch.bind(globalThis);
+  #useRequestState: boolean = false;
 
   /**
    * Generates a new instance of LemmyHttp.
@@ -260,6 +261,7 @@ class LemmyController extends Controller {
     options?: {
       fetchFunction?: typeof fetch;
       headers?: { [key: string]: string };
+      useRequestState: boolean;
     },
   ) {
     super();
@@ -270,6 +272,9 @@ class LemmyController extends Controller {
     }
     if (options?.fetchFunction) {
       this.#fetchFunction = options.fetchFunction;
+    }
+    if (options?.useRequestState) {
+      this.#useRequestState = options.useRequestState;
     }
   }
 
@@ -331,12 +336,12 @@ class LemmyController extends Controller {
     endpoint: string,
     form: BodyType,
     options: RequestOptions | undefined,
-    no_prefix: boolean = false,
-  ): Promise<RequestState<ResponseType>> {
+    noPrefix: boolean = false,
+  ): Promise<RequestState<ResponseType> | ResponseType | undefined> {
     let error: Error | undefined;
     let result: ResponseType | undefined;
     try {
-      const url = no_prefix ? endpoint : this.#buildFullUrl(endpoint);
+      const url = noPrefix ? endpoint : this.#buildFullUrl(endpoint);
 
       let response: Response;
       if (type_ === HttpType.Get) {
@@ -383,7 +388,12 @@ class LemmyController extends Controller {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       error = err instanceof Error ? err : new Error("" + err);
     }
-    return mapToRequestState(result, error);
+
+    if (this.#useRequestState) {
+      return mapToRequestState(result, error);
+    } else {
+      return result;
+    }
   }
 
   /**
