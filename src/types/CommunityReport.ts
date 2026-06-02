@@ -11,7 +11,7 @@ export type CommunityReport = {
   creator_id: PersonId;
   community_id: CommunityId;
   original_community_name: string;
-  original_community_title: string;
+  original_community_title?: string;
   original_community_summary?: string;
   original_community_sidebar?: string;
   original_community_icon?: string;
