@@ -13,7 +13,7 @@ export type CreateCommunity = {
   /**
    * A longer title.
    */
-  title: string;
+  title?: string;
   /**
    * A sidebar for the community in markdown.
    */

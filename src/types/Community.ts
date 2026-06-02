@@ -13,7 +13,7 @@ export type Community = {
   /**
    * A longer title, that can contain other characters, and doesn't have to be unique.
    */
-  title: string;
+  title?: string;
   /**
    * A sidebar for the community in markdown.
    */
