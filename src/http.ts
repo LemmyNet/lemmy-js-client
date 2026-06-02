@@ -230,11 +230,11 @@ import { NodeInfo } from "./types/NodeInfo";
 import { UserSettingsBackup } from "./types/UserSettingsBackup";
 import { SearchResponse } from "./types/SearchResponse";
 import { Search } from "./types/Search";
-import { mapToRequestState, RequestState } from "./request_state";
 import { CreateInvitation } from "./types/CreateInvitation";
 import { CreateInvitationResponse } from "./types/CreateInvitationResponse";
 import { RevokeInvitation } from "./types/RevokeInvitation";
 import { LocalUserInvite } from "./types/LocalUserInvite";
+import { mapToRequestState } from "./map_request_state";
 
 enum HttpType {
   Get = "GET",
@@ -286,7 +286,7 @@ class LemmyController extends Controller {
     path: string,
     { image }: UploadImage,
     options?: RequestOptions,
-  ): Promise<RequestState<ResponseType>> {
+  ) {
     let error: Error | undefined;
     let result: ResponseType | undefined;
     try {
@@ -315,7 +315,7 @@ class LemmyController extends Controller {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       error = err instanceof Error ? err : new Error("" + err);
     }
-    return mapToRequestState(result, error);
+    return mapToRequestState(this.#useRequestState, result, error);
   }
 
   async uploadWithQuery<QueryType extends object, ResponseType>(
@@ -323,7 +323,7 @@ class LemmyController extends Controller {
     query: QueryType,
     { image }: UploadImage,
     options?: RequestOptions,
-  ): Promise<RequestState<ResponseType>> {
+  ) {
     return this.upload<ResponseType>(
       `${path}?${encodeGetParams(query)}`,
       { image },
@@ -337,7 +337,7 @@ class LemmyController extends Controller {
     form: BodyType,
     options: RequestOptions | undefined,
     noPrefix: boolean = false,
-  ): Promise<RequestState<ResponseType> | ResponseType | undefined> {
+  ) {
     let error: Error | undefined;
     let result: ResponseType | undefined;
     try {
@@ -389,11 +389,7 @@ class LemmyController extends Controller {
       error = err instanceof Error ? err : new Error("" + err);
     }
 
-    if (this.#useRequestState) {
-      return mapToRequestState(result, error);
-    } else {
-      return result;
-    }
+    return mapToRequestState(this.#useRequestState, result, error);
   }
 
   /**
