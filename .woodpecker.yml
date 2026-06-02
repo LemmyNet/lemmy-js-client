@@ -20,6 +20,7 @@ steps:
   tsoa:
     image: node:alpine
     commands:
+      - apk add git
       - *install_pnpm
       - pnpm tsoa
     when:
