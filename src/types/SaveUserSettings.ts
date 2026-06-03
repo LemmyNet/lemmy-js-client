@@ -72,6 +72,10 @@ export type SaveUserSettings = {
    */
   show_avatars?: boolean;
   /**
+   * Whether to show media in the UI.
+   */
+  show_media?: boolean;
+  /**
    * Sends notifications to your email.
    */
   send_notifications_to_email?: boolean;
@@ -125,9 +129,9 @@ export type SaveUserSettings = {
    */
   auto_mark_fetched_posts_as_read?: boolean;
   /**
-   * Whether to hide posts containing images/videos.
+   * Whether to hide posts containing images/videos. Often labeled hide_memes.
    */
-  hide_media?: boolean;
+  hide_posts_with_media?: boolean;
   /**
    * Whether to show vote totals given to others.
    */

@@ -36,7 +36,7 @@ export type GetPosts = {
   /**
    * If false, then show posts with media attached (even if your user setting is to hide them)
    */
-  hide_media?: boolean;
+  hide_posts_with_media?: boolean;
   /**
    * Whether to automatically mark fetched posts as read.
    */

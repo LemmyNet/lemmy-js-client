@@ -89,9 +89,9 @@ export type LocalUser = {
    */
   auto_mark_fetched_posts_as_read: boolean;
   /**
-   * Whether to hide posts containing images/videos
+   * Whether to hide posts containing images/videos. Often labeled hide_memes.
    */
-  hide_media: boolean;
+  hide_posts_with_media: boolean;
   /**
    * A default time range limit to apply to post sorts, in seconds.
    */
@@ -103,4 +103,8 @@ export type LocalUser = {
   show_person_votes: boolean;
   default_items_per_page: number;
   invited_by_local_user_id?: LocalUserId;
+  /**
+   * Whether to show media in the UI.
+   */
+  show_media: boolean;
 };
