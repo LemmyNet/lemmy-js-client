@@ -30,6 +30,10 @@ export default [
     files: ["src/**/*"],
     rules: {
       "@typescript-eslint/no-useless-constructor": "error",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_" },
+      ],
     },
   },
 ];

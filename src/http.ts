@@ -230,11 +230,11 @@ import { NodeInfo } from "./types/NodeInfo";
 import { UserSettingsBackup } from "./types/UserSettingsBackup";
 import { SearchResponse } from "./types/SearchResponse";
 import { Search } from "./types/Search";
-import { mapToRequestState, RequestState } from "./request_state";
 import { CreateInvitation } from "./types/CreateInvitation";
 import { CreateInvitationResponse } from "./types/CreateInvitationResponse";
 import { RevokeInvitation } from "./types/RevokeInvitation";
 import { LocalUserInvite } from "./types/LocalUserInvite";
+import { mapToRequestState } from "./map_request_state";
 
 enum HttpType {
   Get = "GET",
@@ -249,6 +249,7 @@ class LemmyController extends Controller {
   #apiUrl: string;
   #headers: { [key: string]: string } = {};
   #fetchFunction = fetch.bind(globalThis);
+  #useRequestState: boolean = false;
 
   /**
    * Generates a new instance of LemmyHttp.
@@ -260,6 +261,7 @@ class LemmyController extends Controller {
     options?: {
       fetchFunction?: typeof fetch;
       headers?: { [key: string]: string };
+      useRequestState: boolean;
     },
   ) {
     super();
@@ -271,6 +273,9 @@ class LemmyController extends Controller {
     if (options?.fetchFunction) {
       this.#fetchFunction = options.fetchFunction;
     }
+    if (options?.useRequestState) {
+      this.#useRequestState = options.useRequestState;
+    }
   }
 
   #buildFullUrl(endpoint: string) {
@@ -281,7 +286,7 @@ class LemmyController extends Controller {
     path: string,
     { image }: UploadImage,
     options?: RequestOptions,
-  ): Promise<RequestState<ResponseType>> {
+  ) {
     let error: Error | undefined;
     let result: ResponseType | undefined;
     try {
@@ -310,7 +315,7 @@ class LemmyController extends Controller {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       error = err instanceof Error ? err : new Error("" + err);
     }
-    return mapToRequestState(result, error);
+    return mapToRequestState(this.#useRequestState, result, error);
   }
 
   async uploadWithQuery<QueryType extends object, ResponseType>(
@@ -318,7 +323,7 @@ class LemmyController extends Controller {
     query: QueryType,
     { image }: UploadImage,
     options?: RequestOptions,
-  ): Promise<RequestState<ResponseType>> {
+  ) {
     return this.upload<ResponseType>(
       `${path}?${encodeGetParams(query)}`,
       { image },
@@ -331,12 +336,12 @@ class LemmyController extends Controller {
     endpoint: string,
     form: BodyType,
     options: RequestOptions | undefined,
-    no_prefix: boolean = false,
-  ): Promise<RequestState<ResponseType>> {
+    noPrefix: boolean = false,
+  ) {
     let error: Error | undefined;
     let result: ResponseType | undefined;
     try {
-      const url = no_prefix ? endpoint : this.#buildFullUrl(endpoint);
+      const url = noPrefix ? endpoint : this.#buildFullUrl(endpoint);
 
       let response: Response;
       if (type_ === HttpType.Get) {
@@ -383,7 +388,8 @@ class LemmyController extends Controller {
       // eslint-disable-next-line @typescript-eslint/restrict-plus-operands
       error = err instanceof Error ? err : new Error("" + err);
     }
-    return mapToRequestState(result, error);
+
+    return mapToRequestState(this.#useRequestState, result, error);
   }
 
   /**

@@ -27,7 +27,10 @@ import { LemmyHttp, Login } from "lemmy-js-client";
 // Build the client
 const baseUrl = "https://lemmy.ml";
 const headers = {["x-real-ip": ...]};
-const client: LemmyHttp = new LemmyHttp(baseUrl, { headers });
+const client: LemmyHttp = new LemmyHttp(baseUrl, {
+  headers,
+  useRequestState: true
+});
 
 // Build the login form
 const loginForm: Login = {
