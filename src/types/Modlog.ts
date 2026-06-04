@@ -10,4 +10,5 @@ export type Modlog = {
   expires_at?: string;
   published_at: string;
   bulk_action_parent_id?: ModlogId;
+  child_count: number;
 };
