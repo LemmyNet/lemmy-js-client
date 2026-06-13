@@ -11,7 +11,7 @@ steps:
       - event: pull_request
 
   prettier_check:
-    image: jauderho/prettier:3.8.3-alpine
+    image: jauderho/prettier:3.8.4-alpine
     commands:
       - prettier -c .
     when:
