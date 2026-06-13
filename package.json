@@ -44,7 +44,7 @@
     "typescript": "^6.0.0",
     "typescript-eslint": "^8.7.0"
   },
-  "packageManager": "pnpm@11.5.2",
+  "packageManager": "pnpm@11.6.0",
   "types": "./dist/index.d.ts",
   "lint-staged": {
     "*.{ts,tsx,js}": [
