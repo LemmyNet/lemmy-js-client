@@ -17,7 +17,7 @@ importers:
         version: 10.0.1(eslint@10.5.0)
       '@redocly/cli':
         specifier: ^2.0.0
-        version: 2.34.0
+        version: 2.35.1
       '@types/node':
         specifier: ^24.0.0
         version: 24.13.2
@@ -337,8 +337,8 @@ packages:
     resolution: {integrity: sha512-SEeaJLb3qBNF/OaXnaR1NmmBbFYk1zC0ZH/52fATcRPLFg/p791YrcyFFy44Bo9sLaGuSuLp5Q6axbb/O+v/RA==}
     engines: {node: ^14.18.0 || >=16.0.0}
 
-  '@redocly/cli@2.34.0':
-    resolution: {integrity: sha512-wlEy03fyf+xrEatHbSSLFGP7T8slYwyJHO6xooArvUOntiGRMPuTGivaSPhxx+f2bFhe69zDDzDy51+CsvJ/zw==}
+  '@redocly/cli@2.35.1':
+    resolution: {integrity: sha512-8XcUIR6bCI4KmVg6RJyzL3peZhld/tu7oO8WGVaHp43byhcds6ProHlfqEFa+dZA+qA+dUMebgRELVOe5AW4Lg==}
     engines: {node: '>=22.12.0 || >=20.19.0 <21.0.0', npm: '>=10'}
     hasBin: true
 
@@ -2011,7 +2011,7 @@ snapshots:
 
   '@pkgr/core@0.3.6': {}
 
-  '@redocly/cli@2.34.0': {}
+  '@redocly/cli@2.35.1': {}
 
   '@shikijs/engine-oniguruma@3.23.0':
     dependencies:
