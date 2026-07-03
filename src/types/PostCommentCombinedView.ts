@@ -3,5 +3,4 @@ import type { CommentView } from "./CommentView";
 import type { PostView } from "./PostView";
 
 export type PostCommentCombinedView =
-  | ({ type_: "post" } & PostView)
-  | ({ type_: "comment" } & CommentView);
+  ({ type_: "post" } & PostView) | ({ type_: "comment" } & CommentView);

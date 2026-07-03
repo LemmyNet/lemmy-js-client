@@ -4,7 +4,4 @@
  * Available settings for community notifications
  */
 export type CommunityNotificationsMode =
-  | "all_posts_and_comments"
-  | "all_posts"
-  | "replies_and_mentions"
-  | "mute";
+  "all_posts_and_comments" | "all_posts" | "replies_and_mentions" | "mute";
