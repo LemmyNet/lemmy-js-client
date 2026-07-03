@@ -4,8 +4,4 @@
  * A list of possible types for reports.
  */
 export type ReportType =
-  | "all"
-  | "posts"
-  | "comments"
-  | "private_messages"
-  | "communities";
+  "all" | "posts" | "comments" | "private_messages" | "communities";

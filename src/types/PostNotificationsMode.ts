@@ -4,6 +4,4 @@
  * Available settings for post notifications
  */
 export type PostNotificationsMode =
-  | "all_comments"
-  | "replies_and_mentions"
-  | "mute";
+  "all_comments" | "replies_and_mentions" | "mute";

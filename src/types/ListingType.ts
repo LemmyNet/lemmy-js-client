@@ -4,8 +4,4 @@
  * A listing type for post and comment list fetches.
  */
 export type ListingType =
-  | "all"
-  | "local"
-  | "subscribed"
-  | "moderator_view"
-  | "suggested";
+  "all" | "local" | "subscribed" | "moderator_view" | "suggested";

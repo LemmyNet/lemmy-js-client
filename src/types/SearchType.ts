@@ -4,9 +4,4 @@
  * The type of content returned from a search.
  */
 export type SearchType =
-  | "all"
-  | "comments"
-  | "posts"
-  | "communities"
-  | "users"
-  | "multi_communities";
+  "all" | "comments" | "posts" | "communities" | "users" | "multi_communities";
