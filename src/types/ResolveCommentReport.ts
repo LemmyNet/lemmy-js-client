@@ -7,4 +7,5 @@ import type { CommentReportId } from "./CommentReportId";
 export type ResolveCommentReport = {
   report_id: CommentReportId;
   resolved: boolean;
+  resolve_reason?: string;
 };

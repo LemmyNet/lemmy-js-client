@@ -4,4 +4,8 @@ import type { PostReportId } from "./PostReportId";
 /**
  * Resolve a post report (mods only).
  */
-export type ResolvePostReport = { report_id: PostReportId; resolved: boolean };
+export type ResolvePostReport = {
+  report_id: PostReportId;
+  resolved: boolean;
+  resolve_reason?: string;
+};
