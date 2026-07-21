@@ -7,5 +7,4 @@ import type { PrivateMessageReportId } from "./PrivateMessageReportId";
 export type ResolvePrivateMessageReport = {
   report_id: PrivateMessageReportId;
   resolved: boolean;
-  resolve_reason?: string;
 };

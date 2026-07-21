@@ -19,5 +19,4 @@ export type PrivateMessageReport = {
   resolver_id?: PersonId;
   published_at: string;
   updated_at?: string;
-  resolve_reason?: string;
 };
