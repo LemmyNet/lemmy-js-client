@@ -7,5 +7,5 @@ import type { PostReportId } from "./PostReportId";
 export type ResolvePostReport = {
   report_id: PostReportId;
   resolved: boolean;
-  resolve_reason?: string;
+  conclusion?: string;
 };
