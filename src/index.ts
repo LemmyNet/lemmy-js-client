@@ -151,6 +151,7 @@ export { LikeType } from "./types/LikeType";
 export { LinkMetadata } from "./types/LinkMetadata";
 export { ListCommentLikes } from "./types/ListCommentLikes";
 export { ListCommunities } from "./types/ListCommunities";
+export { ListCommunityFollowers } from "./types/ListCommunityFollowers";
 export { ListCommunityPendingFollows } from "./types/ListCommunityPendingFollows";
 export { ListCustomEmojis } from "./types/ListCustomEmojis";
 export { ListCustomEmojisResponse } from "./types/ListCustomEmojisResponse";
