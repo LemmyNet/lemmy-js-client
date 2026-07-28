@@ -17,5 +17,5 @@ export type CommentReport = {
   published_at: string;
   updated_at?: string;
   violates_instance_rules: boolean;
-  resolve_reason?: string;
+  conclusion?: string;
 };
