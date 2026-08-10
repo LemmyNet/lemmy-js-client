@@ -3073,7 +3073,7 @@ export class LemmyHttp extends LemmyController {
   ) {
     return this.wrapper<ListInvitationsI, PagedResponse<LocalUserInvite>>(
       HttpType.Get,
-      "/account/invite",
+      "/account/invite/list",
       form,
       options,
     );
