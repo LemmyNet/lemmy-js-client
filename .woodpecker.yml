@@ -50,11 +50,12 @@ steps:
   notify_success:
     image: alpine:3
     environment:
-      REPO_NAME: "$CI_REPO_NAME"
-      COMMIT_SOURCE_BRANCHE: "$CI_COMMIT_SOURCE_BRANCH"
-      PIPELINE_URL: "$CI_PIPELINE_URL"
+      REPO_NAME: CI_REPO_NAME
+      COMMIT_SOURCE_BRANCHE: CI_COMMIT_SOURCE_BRANCH
+      PIPELINE_URL: CI_PIPELINE_URL
     commands:
       - apk add curl
+      - echo ${REPO_NAME}
       - "curl -H'Title: ✔️ ${REPO_NAME}/${COMMIT_SOURCE_BRANCH}' -d'${PIPELINE_URL}' ntfy.sh/lemmy_drone_ci"
     when:
       - event: pull_request
