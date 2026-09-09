@@ -70,7 +70,7 @@ steps:
   notify_on_tag_deploy:
     image: codeberg.org/l-x/woodpecker-ntfy
     when:
-      event: tag
+      - event: tag
     settings:
       url: https://ntfy.sh/lemmy_drone_ci
       icon: https://woodpecker-ci.org/img/logo.svg
