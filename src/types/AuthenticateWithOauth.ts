@@ -19,6 +19,10 @@ export type AuthenticateWithOauth = {
   answer?: string;
   pkce_code_verifier?: string;
   /**
+   * Required if the user has TOTP 2FA enabled.
+   */
+  totp_2fa_token?: string;
+  /**
    * If this is true the login is valid forever, otherwise it expires after one week.
    */
   stay_logged_in?: boolean;
