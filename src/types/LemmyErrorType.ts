@@ -101,7 +101,13 @@ export type LemmyErrorType =
   | { error: "unknown"; message: string }
   | { error: "url_length_overflow" }
   | { error: "oauth_authorization_invalid" }
-  | { error: "oauth_login_failed" }
+  | { error: "oauth_id_claim_missing" }
+  | { error: "oauth_token_request_send_failed" }
+  | { error: "oauth_token_request_error_status" }
+  | { error: "oauth_token_response_parse_failed" }
+  | { error: "oauth_user_info_request_send_failed" }
+  | { error: "oauth_user_info_error_status" }
+  | { error: "oauth_user_info_parse_failed" }
   | { error: "oauth_registration_closed" }
   | { error: "not_found" }
   | { error: "post_schedule_time_must_be_in_future" }
