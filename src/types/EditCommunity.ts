@@ -2,6 +2,7 @@
 import type { CommunityId } from "./CommunityId";
 import type { CommunityVisibility } from "./CommunityVisibility";
 import type { LanguageId } from "./LanguageId";
+import type { VoteSettings } from "./VoteSettings";
 
 /**
  * Edit a community.
@@ -30,4 +31,8 @@ export type EditCommunity = {
   posting_restricted_to_mods?: boolean;
   discussion_languages?: Array<LanguageId>;
   visibility?: CommunityVisibility;
+  post_upvotes?: VoteSettings;
+  post_downvotes?: VoteSettings;
+  comment_upvotes?: VoteSettings;
+  comment_downvotes?: VoteSettings;
 };

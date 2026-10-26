@@ -14,7 +14,6 @@ export type LemmyErrorType =
   | { error: "not_an_admin" }
   | { error: "cant_block_yourself" }
   | { error: "cant_note_yourself" }
-  | { error: "cant_block_admin" }
   | { error: "passwords_do_not_match" }
   | { error: "email_not_verified" }
   | { error: "email_required" }
@@ -73,7 +72,6 @@ export type LemmyErrorType =
   | { error: "invalid_body_field" }
   | { error: "bio_length_overflow" }
   | { error: "alt_text_length_overflow" }
-  | { error: "couldnt_parse_totp_secret" }
   | { error: "couldnt_generate_totp" }
   | { error: "missing_totp_token" }
   | { error: "missing_totp_secret" }

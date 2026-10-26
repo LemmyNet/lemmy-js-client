@@ -3,6 +3,7 @@ import type { CommunityId } from "./CommunityId";
 import type { CommunityVisibility } from "./CommunityVisibility";
 import type { DbUrl } from "./DbUrl";
 import type { InstanceId } from "./InstanceId";
+import type { VoteSettings } from "./VoteSettings";
 
 /**
  * A community.
@@ -82,4 +83,8 @@ export type Community = {
   report_count: number;
   unresolved_report_count: number;
   local_removed: boolean;
+  post_upvotes: VoteSettings;
+  post_downvotes: VoteSettings;
+  comment_upvotes: VoteSettings;
+  comment_downvotes: VoteSettings;
 };
