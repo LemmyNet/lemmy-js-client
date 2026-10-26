@@ -109,7 +109,6 @@ export { FeaturePost } from "./types/FeaturePost";
 export { FederatedInstanceView } from "./types/FederatedInstanceView";
 export { FederationAllowList } from "./types/FederationAllowList";
 export { FederationBlockList } from "./types/FederationBlockList";
-export { FederationMode } from "./types/FederationMode";
 export { FederationQueueState } from "./types/FederationQueueState";
 export { FollowCommunity } from "./types/FollowCommunity";
 export { FollowMultiCommunity } from "./types/FollowMultiCommunity";
@@ -304,5 +303,6 @@ export { UserBlockInstanceCommunitiesParams } from "./types/UserBlockInstanceCom
 export { UserBlockInstancePersonsParams } from "./types/UserBlockInstancePersonsParams";
 export { UserSettingsBackup } from "./types/UserSettingsBackup";
 export { VerifyEmail } from "./types/VerifyEmail";
+export { VoteSettings } from "./types/VoteSettings";
 export { VoteShow } from "./types/VoteShow";
 export { VoteView } from "./types/VoteView";

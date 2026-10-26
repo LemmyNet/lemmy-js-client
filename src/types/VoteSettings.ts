@@ -3,4 +3,4 @@
 /**
  * The federation mode for an item
  */
-export type FederationMode = "all" | "local" | "disable";
+export type VoteSettings = "all" | "local" | "subscribed" | "disable";

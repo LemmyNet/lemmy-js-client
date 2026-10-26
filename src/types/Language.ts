@@ -4,4 +4,10 @@ import type { LanguageId } from "./LanguageId";
 /**
  * A language.
  */
-export type Language = { id: LanguageId; code: string; name: string };
+export type Language = {
+  id: LanguageId;
+  code: string;
+  name: string;
+  usage_in_local_posts_percent: number;
+  usage_in_local_comments_percent: number;
+};
