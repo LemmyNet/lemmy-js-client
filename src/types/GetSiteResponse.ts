@@ -6,6 +6,7 @@ import type { LocalSiteUrlBlocklist } from "./LocalSiteUrlBlocklist";
 import type { PersonView } from "./PersonView";
 import type { PluginMetadata } from "./PluginMetadata";
 import type { PublicOAuthProvider } from "./PublicOAuthProvider";
+import type { SensitiveString } from "./SensitiveString";
 import type { SiteView } from "./SiteView";
 import type { Tagline } from "./Tagline";
 
@@ -29,6 +30,10 @@ export type GetSiteResponse = {
   admin_oauth_providers: Array<AdminOAuthProvider>;
   blocked_urls: Array<LocalSiteUrlBlocklist>;
   active_plugins: Array<PluginMetadata>;
+  /**
+   * JWT for authenticated RSS feeds (readonly)
+   */
+  my_feed_token?: SensitiveString;
   /**
    * The number of seconds between the last application published, and approved / denied time.
    *
