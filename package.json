@@ -11,7 +11,7 @@
   "scripts": {
     "build": "tsc",
     "docs": "typedoc src/index.ts",
-    "lint": "tsc --noEmit && eslint --report-unused-disable-directives && prettier --check src",
+    "lint": "tsc --noEmit && eslint --report-unused-disable-directives && prettier --check .",
     "prepare": "pnpm run build && husky",
     "tsoa": "./scripts/tsoa.sh"
   },
@@ -28,6 +28,7 @@
     "@types/node": "^26.0.0",
     "@typescript-eslint/eslint-plugin": "^8.7.0",
     "@typescript-eslint/parser": "^8.7.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "ajv": "^8.17.1",
     "eslint": "^10.0.0",
     "eslint-plugin-prettier": "^5.2.1",
@@ -41,7 +42,7 @@
     "sortpack": "^4.0.0",
     "tsoa": "^6.6.0",
     "typedoc": "^0.28.0",
-    "typescript": "^7.0.0",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
     "typescript-eslint": "^8.7.0"
   },
   "packageManager": "pnpm@11.28.10",
