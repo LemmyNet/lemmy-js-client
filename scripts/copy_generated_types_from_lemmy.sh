@@ -8,7 +8,7 @@ cd "$CWD/../"
 # Remove the old types
 rm -rf src/types/*
 
-lemmy_dir=../lemmy
+lemmy_dir=../lemmy/add_isint_to_ids
 
 # Remove the old bindings
 find ${lemmy_dir}/crates -name bindings -type d -exec rm -rf {} \; || true
