@@ -35,7 +35,7 @@ importers:
         version: 10.11.0
       eslint-plugin-prettier:
         specifier: ^5.2.1
-        version: 5.5.7(eslint@10.11.0)(prettier@3.9.9)
+        version: 5.5.7(eslint@10.11.0)(prettier@3.9.10)
       husky:
         specifier: ^9.1.4
         version: 9.1.7
@@ -47,16 +47,16 @@ importers:
         version: 17.4.1
       prettier:
         specifier: ^3.3.3
-        version: 3.9.9
+        version: 3.9.10
       prettier-plugin-import-sort:
         specifier: ^0.0.7
-        version: 0.0.7(prettier@3.9.9)
+        version: 0.0.7(prettier@3.9.10)
       prettier-plugin-organize-imports:
         specifier: ^4.0.0
-        version: 4.3.0(prettier@3.9.9)(typescript@6.0.3)
+        version: 4.3.0(prettier@3.9.10)(typescript@6.0.3)
       prettier-plugin-packagejson:
         specifier: ^3.0.0
-        version: 3.0.2(prettier@3.9.9)
+        version: 3.0.2(prettier@3.9.10)
       sortpack:
         specifier: ^4.0.0
         version: 4.0.1
@@ -1282,8 +1282,8 @@ packages:
       prettier:
         optional: true
 
-  prettier@3.9.9:
-    resolution: {integrity: sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==}
+  prettier@3.9.10:
+    resolution: {integrity: sha512-skGHTH1Yb9QvaTC4hWnRTzEYtCpApF0UMBPz+t/0ZPzP8ihefo/btKd+QA7pUE0fEwA1SbS/NmhyEcstdXOIdA==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -2441,10 +2441,10 @@ snapshots:
 
   escape-string-regexp@4.0.0: {}
 
-  eslint-plugin-prettier@5.5.7(eslint@10.11.0)(prettier@3.9.9):
+  eslint-plugin-prettier@5.5.7(eslint@10.11.0)(prettier@3.9.10):
     dependencies:
       eslint: 10.11.0
-      prettier: 3.9.9
+      prettier: 3.9.10
       prettier-linter-helpers: 1.0.1
       synckit: 0.12.3
 
@@ -2960,28 +2960,28 @@ snapshots:
     dependencies:
       fast-diff: 1.3.0
 
-  prettier-plugin-import-sort@0.0.7(prettier@3.9.9):
+  prettier-plugin-import-sort@0.0.7(prettier@3.9.10):
     dependencies:
       import-sort: 6.0.0
       import-sort-config: 6.0.0
       import-sort-parser-babylon: 6.0.0
       import-sort-parser-typescript: 6.0.0
-      prettier: 3.9.9
+      prettier: 3.9.10
     transitivePeerDependencies:
       - supports-color
 
-  prettier-plugin-organize-imports@4.3.0(prettier@3.9.9)(typescript@6.0.3):
+  prettier-plugin-organize-imports@4.3.0(prettier@3.9.10)(typescript@6.0.3):
     dependencies:
-      prettier: 3.9.9
+      prettier: 3.9.10
       typescript: 6.0.3
 
-  prettier-plugin-packagejson@3.0.2(prettier@3.9.9):
+  prettier-plugin-packagejson@3.0.2(prettier@3.9.10):
     dependencies:
       sort-package-json: 3.6.1
     optionalDependencies:
-      prettier: 3.9.9
+      prettier: 3.9.10
 
-  prettier@3.9.9: {}
+  prettier@3.9.10: {}
 
   proxy-addr@2.0.7:
     dependencies:
