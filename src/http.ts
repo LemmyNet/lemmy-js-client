@@ -455,21 +455,6 @@ export class LemmyHttp extends LemmyController {
   }
 
   /**
-   * @summary Leave the Site admins.
-   */
-  @Security("bearerAuth")
-  @Post("/admin/leave")
-  @Tags("Admin")
-  async leaveAdmin(@Inject() options?: RequestOptions) {
-    return this.wrapper<object, GetSiteResponse>(
-      HttpType.Post,
-      "/admin/leave",
-      {},
-      options,
-    );
-  }
-
-  /**
    * @summary Generate a TOTP / two-factor secret.
    *
    * Generate a TOTP / two-factor secret.
