@@ -147,7 +147,6 @@ import { SaveUserSettings } from "./types/SaveUserSettings";
 import { SiteResponse } from "./types/SiteResponse";
 import { TransferCommunity } from "./types/TransferCommunity";
 import { VerifyEmail } from "./types/VerifyEmail";
-import { HideCommunity } from "./types/HideCommunity";
 import { GenerateTotpSecretResponse } from "./types/GenerateTotpSecretResponse";
 import { EditTotp } from "./types/EditTotp";
 import { EditTotpResponse } from "./types/EditTotpResponse";
@@ -872,24 +871,6 @@ export class LemmyHttp extends LemmyController {
     return this.wrapper<DeleteCommunity, CommunityResponse>(
       HttpType.Delete,
       "/community",
-      form,
-      options,
-    );
-  }
-
-  /**
-   * @summary Hide a community from public / "All" view. Admins only.
-   */
-  @Security("bearerAuth")
-  @Put("/community/hide")
-  @Tags("Community", "Admin")
-  async hideCommunity(
-    @Body() form: HideCommunity,
-    @Inject() options?: RequestOptions,
-  ) {
-    return this.wrapper<HideCommunity, SuccessResponse>(
-      HttpType.Put,
-      "/community/hide",
       form,
       options,
     );
