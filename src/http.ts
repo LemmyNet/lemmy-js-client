@@ -2309,15 +2309,15 @@ export class LemmyHttp extends LemmyController {
    * @summary Delete a custom emoji.
    */
   @Security("bearerAuth")
-  @Post("/custom_emoji/delete")
+  @Delete("/custom_emoji")
   @Tags("CustomEmoji")
   async deleteCustomEmoji(
     @Body() form: DeleteCustomEmoji,
     @Inject() options?: RequestOptions,
   ) {
     return this.wrapper<DeleteCustomEmoji, SuccessResponse>(
-      HttpType.Post,
-      "/custom_emoji/delete",
+      HttpType.Delete,
+      "/custom_emoji",
       form,
       options,
     );
