@@ -17,4 +17,5 @@ export type CreateOAuthProvider = {
   account_linking_enabled?: boolean;
   use_pkce?: boolean;
   enabled?: boolean;
+  username_claim?: string;
 };

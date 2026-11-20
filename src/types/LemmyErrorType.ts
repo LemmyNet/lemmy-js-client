@@ -100,6 +100,7 @@ export type LemmyErrorType =
   | { error: "url_length_overflow" }
   | { error: "oauth_authorization_invalid" }
   | { error: "oauth_id_claim_missing" }
+  | { error: "oauth_username_claim_missing" }
   | { error: "oauth_token_request_send_failed" }
   | { error: "oauth_token_request_error_status" }
   | { error: "oauth_token_response_parse_failed" }
