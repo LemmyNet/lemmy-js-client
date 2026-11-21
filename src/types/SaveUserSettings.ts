@@ -2,6 +2,7 @@
 import type { CommentSortType } from "./CommentSortType";
 import type { LanguageId } from "./LanguageId";
 import type { ListingType } from "./ListingType";
+import type { LowBandwidthMode } from "./LowBandwidthMode";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
 import type { SensitiveString } from "./SensitiveString";
@@ -75,6 +76,11 @@ export type SaveUserSettings = {
    * Whether to show media in the UI.
    */
   show_media?: boolean;
+  /**
+   * Hide images and video on first load. `auto` follows device data saver (web treats it as
+   * `never`), `never` shows them, `always` hides them until requested.
+   */
+  low_bandwidth_mode?: LowBandwidthMode;
   /**
    * Sends notifications to your email.
    */

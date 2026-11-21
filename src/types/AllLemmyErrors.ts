@@ -95,6 +95,7 @@ export const AllLemmyErrors = [
   "url_length_overflow",
   "oauth_authorization_invalid",
   "oauth_id_claim_missing",
+  "oauth_username_claim_missing",
   "oauth_token_request_send_failed",
   "oauth_token_request_error_status",
   "oauth_token_response_parse_failed",

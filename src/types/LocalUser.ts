@@ -2,6 +2,7 @@
 import type { CommentSortType } from "./CommentSortType";
 import type { ListingType } from "./ListingType";
 import type { LocalUserId } from "./LocalUserId";
+import type { LowBandwidthMode } from "./LowBandwidthMode";
 import type { PersonId } from "./PersonId";
 import type { PostListingMode } from "./PostListingMode";
 import type { PostSortType } from "./PostSortType";
@@ -107,4 +108,9 @@ export type LocalUser = {
    * Whether to show media in the UI.
    */
   show_media: boolean;
+  /**
+   * Whether the UI should hide images and video until the user asks for them.
+   * `auto` follows the device data-saver setting; web UIs treat it as `never`.
+   */
+  low_bandwidth_mode: LowBandwidthMode;
 };

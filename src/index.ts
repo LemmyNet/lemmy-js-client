@@ -185,6 +185,7 @@ export { LockPost } from "./types/LockPost";
 export { Login } from "./types/Login";
 export { LoginResponse } from "./types/LoginResponse";
 export { LoginToken } from "./types/LoginToken";
+export { LowBandwidthMode } from "./types/LowBandwidthMode";
 export { MarkManyPostsAsRead } from "./types/MarkManyPostsAsRead";
 export { MarkNotificationAsRead } from "./types/MarkNotificationAsRead";
 export { MarkPostAsRead } from "./types/MarkPostAsRead";

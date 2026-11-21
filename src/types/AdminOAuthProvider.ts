@@ -62,4 +62,9 @@ export type AdminOAuthProvider = {
    * switch to enable or disable PKCE
    */
   use_pkce: boolean;
+  /**
+   * The OAuth 2.0 claim whose value becomes the username of a new user. If set, users can't
+   * choose their own name.
+   */
+  username_claim?: string;
 };
